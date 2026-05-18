@@ -1,0 +1,44 @@
+name: build
+
+# Required status check for the Markethink website. Used as the merge gate for
+# auto-publish PRs created by the Markethink agent: GitHub will only auto-merge
+# a PR after this workflow completes successfully. Branch protection on `main`
+# requires this check to pass before any merge (manual or automated).
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Astro build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Verify dist output exists
+        run: |
+          test -d dist && test -f dist/index.html || (echo "::error::dist/ or dist/index.html missing after build"; exit 1)
