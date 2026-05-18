@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Markethink Form Registration</title>
+  </head>
+  <body>
+    <form
+      name="markethink-walkthrough"
+      method="POST"
+      action="/thank-you/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="markethink-walkthrough" />
+      <input type="hidden" name="source" value="schedule-a-walkthrough-page" />
+      <input name="bot-field" />
+      <input type="text" name="full_name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company_or_website" />
+      <select name="main_priority">
+        <option value="">Select one</option>
+        <option>More qualified leads</option>
+        <option>Consistent social content</option>
+        <option>Landing pages and campaigns</option>
+        <option>Blog and web management</option>
+        <option>Agency partnership</option>
+      </select>
+      <textarea name="goal"></textarea>
+    </form>
+  </body>
+</html>

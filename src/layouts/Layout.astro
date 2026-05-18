@@ -1,0 +1,305 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: "website" | "article";
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title = "Markethink — Marketing that ships and keeps getting sharper",
+  description = "Markethink learns your brand, organizes your campaigns, and helps your marketing improve as new AI tools and creative capabilities become available.",
+  image = "/images/hero-image.png",
+  canonical,
+  type = "website",
+  structuredData,
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://markethink.ai";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{title}</title>
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content="Markethink" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+      import Lenis from "lenis";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time: number) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      function initAnimations() {
+        gsap.utils.toArray<HTMLElement>(".animate-fade-up").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        gsap.utils.toArray<HTMLElement>(".animate-stagger").forEach((container) => {
+          const children = container.children;
+          gsap.fromTo(
+            children,
+            { opacity: 0, y: 40, scale: 0.97 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.7,
+              stagger: 0.12,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 82%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        gsap.utils.toArray<HTMLElement>(".animate-scale-in").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, scale: 0.92 },
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 0.9,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        gsap.utils.toArray<HTMLElement>(".animate-parallax").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { y: -20 },
+            {
+              y: 20,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
+
+      function initNavbar() {
+        const navbar = document.querySelector(".navbar") as HTMLElement | null;
+        if (!navbar) return;
+
+        ScrollTrigger.create({
+          start: 40,
+          onUpdate: (self) => {
+            navbar.style.backgroundColor = self.direction === 1 || self.progress > 0
+              ? "rgba(15, 18, 19, 0.92)"
+              : "rgba(15, 18, 19, 0.8)";
+          },
+        });
+      }
+
+      function init() {
+        initAnimations();
+        initNavbar();
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+      if (document.readyState !== "loading") {
+        init();
+      }
+    </script>
+    <style is:global>
+      :root {
+        --bg-primary: #0f1213;
+        --bg-secondary: #171b1c;
+        --tabs-bg: #f5f5f1;
+        --text-primary: #0f1213;
+        --text-invert: #f5f5f1;
+        --color-secondary: #69d254;
+        --neutral-200: rgba(15, 18, 19, 0.08);
+        --radius-medium: 1.5rem;
+        --radius-button: 999px;
+        --font-body: "Inter", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg-primary);
+        color: var(--text-invert);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        color: inherit;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 7rem 0;
+      }
+
+      .section.light-green {
+        background: #edf4ea;
+        color: var(--text-primary);
+      }
+
+      .section.dark {
+        background: var(--bg-primary);
+      }
+
+      .subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .section.light-green .subtitle {
+        color: rgba(15, 18, 19, 0.5);
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-family: "Instrument Serif", Georgia, serif;
+        font-weight: 400;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.9rem 1.4rem;
+        border-radius: var(--radius-button);
+        background: var(--color-secondary);
+        color: #0f1213;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(105, 210, 84, 0.18);
+      }
+
+      .button.is-secondary {
+        background: transparent;
+        color: var(--text-invert);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .section.light-green .button.is-secondary {
+        color: var(--text-primary);
+        border-color: rgba(15, 18, 19, 0.12);
+      }
+
+      @media (max-width: 767px) {
+        .section {
+          padding: 4.5rem 0;
+        }
+      }
+    </style>
+  </body>
+</html>

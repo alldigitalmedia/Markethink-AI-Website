@@ -1,0 +1,93 @@
+---
+const walkthroughHref = "/schedule-a-walkthrough/";
+---
+
+<section class="section dark final-cta" id="early-access">
+  <div class="container">
+    <div class="cta-main animate-fade-up">
+      <div class="cta-content-holder">
+        <div class="cta-content">
+          <p class="subtitle">READY FOR MARKETING THAT KEEPS IMPROVING?</p>
+          <h2>Stop chasing every new AI tool.<br />Build a marketing system that grows with them.</h2>
+          <p class="cta-description">
+            New models, image generators, creative workflows, and automation tools will keep coming. Markethink turns that change into an advantage by learning your brand, organizing your campaigns, and improving as better technology becomes available.
+          </p>
+          <div class="button-group">
+            <a href={walkthroughHref} class="button">Book a Walkthrough</a>
+            <a href="/#how-it-works" class="button is-secondary">See How It Works</a>
+          </div>
+        </div>
+      </div>
+      <div class="cta-image-holder animate-scale-in">
+        <img src="/images/cta-stone.avif" alt="Markethink guided system preview" class="cta-image animate-parallax" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    padding: 8rem 0;
+    overflow: hidden;
+  }
+
+  .cta-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.7;
+    max-width: 34rem;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-image-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-image {
+    max-width: 100%;
+    border-radius: var(--radius-medium);
+  }
+
+  @media (max-width: 767px) {
+    .final-cta {
+      padding: 4rem 0;
+    }
+
+    .cta-main {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .cta-content {
+      align-items: center;
+    }
+
+    .button-group {
+      justify-content: center;
+    }
+
+    .cta-image-holder {
+      order: -1;
+    }
+  }
+</style>

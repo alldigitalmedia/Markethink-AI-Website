@@ -1,0 +1,273 @@
+---
+const processes = [
+  {
+    label: "HOW IT WORKS",
+    title: "1. Markethink learns your business",
+    description: "Your website, offers, audience, competitors, voice, goals, visuals, and approval rules become a usable brand foundation for future campaigns.",
+    image: "/images/process-markethink-learns-business.avif",
+  },
+  {
+    label: "HOW IT WORKS",
+    title: "2. Your marketing gets organized",
+    description: "Campaigns, social posts, web content, creative assets, approvals, and next steps live in one dashboard instead of scattered docs and disconnected tools.",
+    image: "/images/process-markethink-organized.avif",
+  },
+  {
+    label: "HOW IT WORKS",
+    title: "3. The system learns what works",
+    description: "Every approval, revision, campaign, and result gives Markethink more context about your standards, your audience, and the marketing your business needs more of.",
+    image: "/images/process-markethink-learns-what-works.avif",
+  },
+  {
+    label: "HOW IT WORKS",
+    title: "4. Markethink improves as AI improves",
+    description: "You do not have to track every model, image generator, or workflow release. Markethink is designed to evolve as better technology becomes useful.",
+    image: "/images/process-markethink-ai-improves.avif",
+  },
+];
+
+const steps = ["Brand context", "Campaign flow", "Approval memory", "Continuous upgrades"];
+---
+
+<section class="how-it-works-outer" id="how-it-works">
+  <div class="how-it-works-pin">
+    <div class="container">
+      <div class="how-grid">
+        <div class="how-left">
+          {processes.map((process, i) => (
+            <div class={`process-panel ${i === 0 ? "active" : ""}`} data-index={i}>
+              <p class="subtitle">{process.label}</p>
+              <h2>{process.title}</h2>
+              <p class="process-description">{process.description}</p>
+              <div class="steps-list">
+                {steps.map((step) => (
+                  <div class="step-item">
+                    <div class="step-line"></div>
+                    <span class="step-text">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="how-right">
+          <div class="process-images-wrap">
+            {processes.map((process, i) => (
+              <img
+                src={process.image}
+                alt={process.title}
+                class={`process-image ${i === 0 ? "active" : ""}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initHowItWorks() {
+    const outer = document.querySelector(".how-it-works-outer") as HTMLElement;
+    const pinTarget = document.querySelector(".how-it-works-pin") as HTMLElement;
+    if (!outer || !pinTarget || outer.dataset.howItWorksReady === "true") return;
+    outer.dataset.howItWorksReady = "true";
+
+    const panels = pinTarget.querySelectorAll<HTMLElement>(".process-panel");
+    const images = pinTarget.querySelectorAll<HTMLElement>(".process-image");
+    const count = panels.length;
+    if (!count) return;
+
+    let currentIndex = -1;
+
+    function showPanel(index: number) {
+      if (index === currentIndex) return;
+
+      gsap.killTweensOf([...panels, ...images]);
+
+      panels.forEach((panel, i) => {
+        if (i === index) {
+          panel.classList.add("active");
+          gsap.fromTo(panel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", overwrite: true });
+        } else {
+          panel.classList.remove("active");
+          gsap.set(panel, { opacity: 0, y: -20 });
+        }
+      });
+
+      images.forEach((img, i) => {
+        img.classList.toggle("active", i === index);
+        if (i === index) {
+          gsap.to(img, { opacity: 1, duration: 0.5, ease: "power2.out", overwrite: true });
+        } else {
+          gsap.set(img, { opacity: 0 });
+        }
+      });
+
+      currentIndex = index;
+    }
+
+    function indexFromProgress(progress: number) {
+      return Math.min(Math.floor(progress * count), count - 1);
+    }
+
+    showPanel(0);
+
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: outer,
+      start: "top top",
+      end: "bottom bottom",
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        showPanel(indexFromProgress(self.progress));
+      },
+      onRefresh: (self) => {
+        showPanel(indexFromProgress(self.progress));
+      },
+    });
+
+    showPanel(indexFromProgress(scrollTrigger.progress));
+    window.requestAnimationFrame(() => ScrollTrigger.refresh());
+  }
+
+  document.addEventListener("DOMContentLoaded", initHowItWorks);
+  if (document.readyState !== "loading") {
+    initHowItWorks();
+  }
+</script>
+
+<style>
+  .how-it-works-outer {
+    background-color: var(--bg-primary);
+    min-height: 400vh;
+  }
+
+  .how-it-works-pin {
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .how-left {
+    position: relative;
+    min-height: 360px;
+  }
+
+  .process-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .process-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+  }
+
+  .process-panel .subtitle {
+    margin-bottom: 0.5rem;
+  }
+
+  .process-panel h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .process-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.68);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    max-width: 34rem;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .step-line {
+    width: 3rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .step-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .how-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .process-images-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 544 / 539;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+  }
+
+  .process-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-medium);
+    opacity: 0;
+  }
+
+  .process-image.active {
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    .how-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .how-right {
+      order: -1;
+    }
+
+    .how-left {
+      min-height: 300px;
+    }
+
+    .process-panel h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

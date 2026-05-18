@@ -1,0 +1,229 @@
+---
+const tabs = [
+  {
+    title: "Brand intelligence",
+    description: "Your positioning, offers, audience, voice, visuals, competitors, and approval rules become one living foundation.",
+  },
+  {
+    title: "Campaign workflow",
+    description: "Plan, draft, review, and approve marketing from one dashboard instead of spreading work across disconnected tools.",
+  },
+  {
+    title: "Continuous improvement",
+    description: "Your marketing gets sharper as Markethink learns your brand and new AI capabilities become useful.",
+  },
+];
+
+const prompts = [
+  {
+    title: "More consistent output",
+    description: "Keep campaigns, posts, pages, and creative moving even when the week gets busy.",
+  },
+  {
+    title: "Better brand alignment",
+    description: "Create from the same voice, offers, audience, and approval standards every time.",
+  },
+  {
+    title: "Faster campaign movement",
+    description: "Move from idea to draft to approved asset with less tool-switching and fewer resets.",
+  },
+  {
+    title: "Smarter over time",
+    description: "Benefit from your own history and from the broader improvement of AI tools.",
+  },
+];
+---
+
+<section class="section light-green product-preview" id="workspace">
+  <div class="container">
+    <div class="section-header text-center animate-fade-up">
+      <h2>Everything your marketing needs to stop restarting from zero.</h2>
+      <p class="section-desc">
+        Markethink gives your business a central marketing system that combines brand context, campaign planning, content creation, creative review, approvals, and continuous improvement.
+      </p>
+    </div>
+
+    <div class="tabs-container animate-fade-up">
+      <div class="tabs-nav">
+        {tabs.map((tab, i) => (
+          <button class={`tab-link ${i === 0 ? "active" : ""}`} data-tab={i}>
+            <span class="tab-title">{tab.title}</span>
+            <span class="tab-desc">{tab.description}</span>
+          </button>
+        ))}
+      </div>
+      <div class="tabs-content">
+        <div class="tab-image-wrap">
+          <img src="/images/product-brand-intelligence.png" alt="Markethink brand intelligence workspace preview" class="tab-image active" data-tab-img="0" />
+          <img src="/images/product-campaign-workflow.png" alt="Markethink campaign workflow board preview" class="tab-image" data-tab-img="1" />
+          <img src="/images/product-continuous-improvement.png" alt="Markethink continuous improvement campaign evolution preview" class="tab-image" data-tab-img="2" />
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid animate-stagger">
+      {prompts.map((prompt) => (
+        <div class="stat-item">
+          <h3 class="stat-title">{prompt.title}</h3>
+          <p class="stat-label">{prompt.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabLinks = document.querySelectorAll(".tab-link");
+  const tabImages = document.querySelectorAll(".tab-image");
+
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const index = link.getAttribute("data-tab");
+      tabLinks.forEach((l) => l.classList.remove("active"));
+      link.classList.add("active");
+      tabImages.forEach((img) => img.classList.remove("active"));
+      document.querySelector(`[data-tab-img="${index}"]`)?.classList.add("active");
+    });
+  });
+</script>
+
+<style>
+  .product-preview {
+    color: var(--text-primary);
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: rgba(15, 18, 19, 0.6);
+    margin-top: 1rem;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .tabs-container {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .tabs-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-link {
+    flex: 1;
+    min-width: 200px;
+    padding: 1rem 1.25rem;
+    background: transparent;
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.35s;
+    font-family: var(--font-body);
+  }
+
+  .tab-link.active {
+    background: white;
+    border-color: rgba(15, 18, 19, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .tab-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .tab-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(15, 18, 19, 0.5);
+    line-height: 1.5;
+  }
+
+  .tabs-content {
+    position: relative;
+  }
+
+  .tab-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    background: var(--bg-primary);
+  }
+
+  .tab-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .tab-image.active {
+    opacity: 1;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .stat-title {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(15, 18, 19, 0.6);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 767px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .tabs-nav {
+      flex-direction: column;
+    }
+
+    .tab-link {
+      min-width: auto;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

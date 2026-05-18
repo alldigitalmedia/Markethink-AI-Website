@@ -1,0 +1,126 @@
+---
+const pageLinks = [
+  { label: "Home", href: "/#hero" },
+  { label: "Problem", href: "/#system-context" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Workspace", href: "/#workspace" },
+  { label: "Insights", href: "/blog/" },
+  { label: "Schedule Walkthrough", href: "/schedule-a-walkthrough/" },
+];
+
+const socialLinks = [
+  { label: "LinkedIn", href: "#" },
+  { label: "X", href: "#" },
+  { label: "Email", href: "mailto:hello@markethink.ai" },
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/#hero" class="footer-logo-link">
+          <img src="/images/logo.svg" alt="Markethink" class="footer-logo" />
+        </a>
+        <p class="footer-description">
+          Markethink is a continuously improving marketing system that learns your brand, organizes your campaigns, and helps your business create more consistent marketing as AI gets better.
+        </p>
+      </div>
+      <div class="footer-links-col">
+        <h5 class="footer-heading">Pages</h5>
+        <ul class="footer-link-list">
+          {pageLinks.map((link) => (
+            <li>
+              <a href={link.href} class="footer-link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h5 class="footer-heading">Contact</h5>
+        <ul class="footer-link-list">
+          {socialLinks.map((link) => (
+            <li>
+              <a href={link.href} class="footer-link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">Markethink — marketing that ships and keeps getting sharper.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 5rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-description {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    max-width: 20rem;
+  }
+
+  .footer-heading {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-link-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-link {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s;
+  }
+
+  .footer-link:hover {
+    color: var(--text-invert);
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,195 @@
+---
+const walkthroughHref = "/schedule-a-walkthrough/";
+
+const pillars = [
+  {
+    eyebrow: "01",
+    title: "Brand Intelligence",
+    description: "A living foundation for your positioning, audience, offers, voice, competitors, visuals, and approval rules.",
+    points: [
+      "Start every campaign with real business context",
+      "Keep your offer, audience, and voice in one place",
+      "Turn approvals and revisions into useful memory",
+      "Make future work easier because the groundwork is kept current",
+    ],
+  },
+  {
+    eyebrow: "02",
+    title: "Campaign Dashboard",
+    description: "One place to manage ideas, drafts, approvals, assets, social content, web updates, and next steps.",
+    points: [
+      "Move marketing from idea to approved asset",
+      "Keep work organized across web, social, and outreach",
+      "Review, request changes, and approve without losing control",
+      "Help your business show up more consistently",
+    ],
+    popular: true,
+  },
+  {
+    eyebrow: "03",
+    title: "Continuous Improvement",
+    description: "As your brand context grows and AI tools improve, Markethink keeps getting sharper in the background.",
+    points: [
+      "Spend less time chasing new models and tools",
+      "Benefit from better creative and workflow capabilities as they become useful",
+      "Let campaign history inform what gets created next",
+      "Build marketing that improves instead of aging",
+    ],
+  },
+];
+---
+
+<section class="section light-green pricing-section" id="soft-launch">
+  <div class="container">
+    <div class="section-header text-center animate-fade-up">
+      <p class="subtitle pricing-subtitle">BUILT FOR GROWTH</p>
+      <h2>The point is not more AI. The point is better marketing that brings in business.</h2>
+      <p class="pricing-description">
+        Most businesses do not care which model wrote the first draft. They care whether the marketing feels right, gets finished, builds trust, and creates more chances to win the right clients.
+      </p>
+    </div>
+
+    <div class="pricing-grid animate-stagger">
+      {pillars.map((pillar) => (
+        <div class={`pricing-card ${pillar.popular ? "popular" : ""}`}>
+          <div class="pricing-card-header">
+            <span class="plan-eyebrow">{pillar.eyebrow}</span>
+            <h3 class="plan-name">{pillar.title}</h3>
+            <p class="plan-description">{pillar.description}</p>
+          </div>
+          <ul class="plan-features">
+            {pillar.points.map((point) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {point}
+              </li>
+            ))}
+          </ul>
+          <a href={walkthroughHref} class="button pricing-button">Book a Walkthrough</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    color: var(--text-primary);
+  }
+
+  .pricing-subtitle {
+    color: var(--text-primary);
+    opacity: 0.6;
+  }
+
+  .pricing-description {
+    margin-top: 1rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(15, 18, 19, 0.62);
+    line-height: 1.7;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: white;
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    border-radius: var(--radius-medium);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing-card.popular {
+    background: var(--bg-primary);
+    color: var(--text-invert);
+    border-color: rgba(105, 210, 84, 0.3);
+  }
+
+  .plan-eyebrow {
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(15, 18, 19, 0.45);
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card.popular .plan-eyebrow {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .plan-name {
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .plan-description {
+    font-size: 0.92rem;
+    color: rgba(15, 18, 19, 0.64);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.popular .plan-description {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .plan-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex: 1;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: rgba(15, 18, 19, 0.72);
+    line-height: 1.55;
+  }
+
+  .pricing-card.popular .plan-features li {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .plan-features li svg {
+    flex-shrink: 0;
+    color: var(--color-secondary);
+    margin-top: 0.15rem;
+  }
+
+  .pricing-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 991px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

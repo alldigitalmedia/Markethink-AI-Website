@@ -1,0 +1,76 @@
+---
+---
+
+<section class="trust-section">
+  <div class="container">
+    <p class="trust-text animate-fade-up">Trusted by leading brands and partners worldwide</p>
+    <div class="trust-logos animate-fade-up">
+      <div class="trust-logo-track">
+        <img src="/images/partner-1.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-2.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-3.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-4.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-5.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-6.svg" alt="Partner" class="trust-logo" />
+        <!-- Duplicate for seamless scroll -->
+        <img src="/images/partner-1.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-2.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-3.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-4.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-5.svg" alt="Partner" class="trust-logo" />
+        <img src="/images/partner-6.svg" alt="Partner" class="trust-logo" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-section {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+.trust-text {
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+  }
+
+  .trust-logos {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .trust-logo-track {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    animation: scroll-logos 20s linear infinite;
+    width: max-content;
+  }
+
+  .trust-logo {
+    height: 2rem;
+    opacity: 0.5;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s;
+  }
+
+  .trust-logo:hover {
+    opacity: 0.8;
+  }
+
+  @keyframes scroll-logos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

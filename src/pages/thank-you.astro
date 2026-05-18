@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Thank You | Markethink"
+  description="Thanks for requesting a Markethink walkthrough."
+  canonical="https://markethink.ai/thank-you/"
+  noindex={true}
+>
+  <Navbar />
+  <main class="thank-you-page">
+    <section class="thank-you-hero">
+      <div class="container thank-you-grid">
+        <div class="thank-you-copy animate-fade-up">
+          <p class="subtitle">REQUEST RECEIVED</p>
+          <h1>Thanks. We will send over times and a focused agenda.</h1>
+          <p>
+            We will review your business context first so the walkthrough can focus on where Markethink can create momentum fastest.
+          </p>
+          <div class="button-group">
+            <a href="/" class="button">Back to Home</a>
+            <a href="/blog/" class="button is-secondary">Read Insights</a>
+          </div>
+        </div>
+        <div class="thank-you-visual animate-scale-in">
+          <img src="/images/product-continuous-improvement.png" alt="Markethink continuous improvement preview" />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .thank-you-page {
+    background: var(--bg-primary);
+    color: var(--text-invert);
+  }
+
+  .thank-you-hero {
+    min-height: 84vh;
+    display: flex;
+    align-items: center;
+    padding: 8.5rem 0 5rem;
+  }
+
+  .thank-you-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .thank-you-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .thank-you-copy h1 {
+    font-size: clamp(2.7rem, 5vw, 5rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .thank-you-copy p {
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.75;
+    max-width: 34rem;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .thank-you-visual {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111516;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  }
+
+  .thank-you-visual img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 767px) {
+    .thank-you-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .thank-you-copy h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>

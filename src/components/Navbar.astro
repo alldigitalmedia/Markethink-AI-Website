@@ -1,0 +1,161 @@
+---
+const walkthroughHref = "/schedule-a-walkthrough/";
+---
+
+<nav class="navbar">
+  <div class="navbar-inner container">
+    <a href="/#hero" class="nav-brand">
+      <img src="/images/logo.svg" alt="Markethink" class="nav-logo" />
+    </a>
+    <div class="nav-links">
+      <a href="/#system-context" class="nav-link active">The System</a>
+      <a href="/#how-it-works" class="nav-link">How It Works</a>
+      <a href="/#workspace" class="nav-link">Product</a>
+      <a href="/#soft-launch" class="nav-link">Capabilities</a>
+      <a href="/blog/" class="nav-link">Insights</a>
+    </div>
+    <div class="nav-actions">
+      <a href={walkthroughHref} class="button nav-button">Book a Walkthrough</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+  const navActions = document.querySelector(".nav-actions");
+
+  menuBtn?.addEventListener("click", () => {
+    menuBtn.classList.toggle("open");
+    navLinks?.classList.toggle("open");
+    navActions?.classList.toggle("open");
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    background-color: rgba(15, 18, 19, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 0.3s;
+  }
+
+  .navbar-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  .nav-brand {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    margin-left: 0;
+  }
+
+  .nav-logo {
+    height: 1.2rem;
+    width: auto;
+    max-width: 140px;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
+    transition: color 0.3s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text-invert);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 1rem;
+  }
+
+  .download-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.72);
+    transition: color 0.3s;
+  }
+
+  .download-link:hover {
+    color: var(--text-invert);
+  }
+
+  .nav-button {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    justify-self: end;
+  }
+
+  .mobile-menu-btn span {
+    width: 22px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    .navbar-inner {
+      grid-template-columns: auto auto;
+      row-gap: 1rem;
+    }
+
+    .nav-links,
+    .nav-actions {
+      display: none;
+      grid-column: 1 / -1;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .nav-links.open,
+    .nav-actions.open {
+      display: flex;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+  }
+</style>

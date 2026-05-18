@@ -1,0 +1,126 @@
+---
+const features = [
+  {
+    title: "You need clients, not more tools",
+    description: "Every new app promises better marketing, but your business still needs clear offers, consistent content, and campaigns that actually move people closer to buying.",
+    image: "/images/feature-card-clients-at-door.avif",
+  },
+  {
+    title: "AI keeps changing underneath you",
+    description: "Claude gets better, ChatGPT adds features, Gemini expands, and new image models launch. Most teams do not have time to test what is useful and rebuild around it.",
+    image: "/images/feature-card-ai-logo-floor.avif",
+  },
+  {
+    title: "Your marketing needs memory",
+    description: "A better model still needs your voice, offers, approvals, past campaigns, and what has worked before. Without that context, every campaign starts too close to zero.",
+    image: "/images/feature-card-marketing-memory-command.avif",
+  },
+];
+---
+
+<section class="section light-green" id="system-context">
+  <div class="container">
+    <div class="section-header text-center animate-fade-up">
+      <p class="subtitle">THE REAL PROBLEM</p>
+      <h2>Every business wants more clients.<br />Most marketing systems are not built to keep up.</h2>
+      <p class="section-copy">
+        You need marketing that brings in attention, builds trust, and turns interest into real opportunities. But the tools keep changing, the work stays scattered, and the question remains the same: what will actually help the business grow?
+      </p>
+    </div>
+    <div class="features-grid animate-stagger">
+      {features.map((feature) => (
+        <div class="feature-card">
+          <div class="feature-card-image">
+            <img src={feature.image} alt={feature.title} />
+          </div>
+          <div class="feature-card-content">
+            <h4>{feature.title}</h4>
+            <p>{feature.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header .subtitle {
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .section-copy {
+    margin-top: 1rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(15, 18, 19, 0.62);
+    line-height: 1.7;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    border: 1px solid var(--neutral-200);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    background: transparent;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(105, 210, 84, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .feature-card-image {
+    width: 100%;
+    aspect-ratio: 368 / 282;
+    overflow: hidden;
+  }
+
+  .feature-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .feature-card:hover .feature-card-image img {
+    transform: scale(1.05);
+  }
+
+  .feature-card-content {
+    padding: 1.5rem;
+  }
+
+  .feature-card-content h4 {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .feature-card-content p {
+    font-size: 0.875rem;
+    color: rgba(15, 18, 19, 0.56);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 767px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+</style>

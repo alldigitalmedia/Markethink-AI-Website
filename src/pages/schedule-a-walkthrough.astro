@@ -1,0 +1,384 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Schedule a Markethink Walkthrough | See Your Marketing System";
+const pageDescription =
+  "Book a focused Markethink walkthrough and see how your business can turn brand intelligence, campaign workflow, web updates, content, and leads into one marketing system.";
+
+const walkthroughSteps = [
+  {
+    title: "Your business",
+    copy: "We look at your website, offers, audience, and current marketing rhythm.",
+  },
+  {
+    title: "Your first workflows",
+    copy: "We map where Markethink could help first: campaigns, social, web, blog, or leads.",
+  },
+  {
+    title: "Your next step",
+    copy: "You leave with a clear idea of what the first month could look like.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Schedule a Markethink Walkthrough",
+    description: pageDescription,
+    url: "https://markethink.ai/schedule-a-walkthrough/",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Markethink Walkthrough Request",
+    url: "https://markethink.ai/schedule-a-walkthrough/",
+    mainEntity: {
+      "@type": "Service",
+      name: "Markethink",
+      description:
+        "A marketing system that learns a business, organizes campaigns, and helps marketing improve every week.",
+      provider: {
+        "@type": "Organization",
+        name: "Markethink",
+        url: "https://markethink.ai/",
+      },
+    },
+  },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image="/images/hero-image.png"
+  canonical="https://markethink.ai/schedule-a-walkthrough/"
+  structuredData={structuredData}
+>
+  <Navbar />
+  <main class="walkthrough-page">
+    <section class="walkthrough-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="subtitle animate-fade-up">SCHEDULE A WALKTHROUGH</p>
+          <h1 class="animate-fade-up">See how Markethink can help you get more clients.</h1>
+          <p class="hero-description animate-fade-up">
+            A short, practical walkthrough built around your business, your marketing gaps, and the fastest path to more consistent campaigns, content, web updates, and lead opportunities.
+          </p>
+
+          <div class="signal-row animate-fade-up">
+            <span>30 minutes</span>
+            <span>No generic demo</span>
+            <span>Clear next move</span>
+          </div>
+
+          <div class="mini-plan animate-stagger">
+            {walkthroughSteps.map((step) => (
+              <article>
+                <h2>{step.title}</h2>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <form
+          name="markethink-walkthrough"
+          method="POST"
+          action="/thank-you/"
+          netlify
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="walkthrough-form animate-fade-up"
+        >
+          <input type="hidden" name="form-name" value="markethink-walkthrough" />
+          <input type="hidden" name="source" value="schedule-a-walkthrough-page" />
+          <p class="hidden-field">
+            <label>Do not fill this out <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-header">
+            <p class="form-kicker">Request your walkthrough</p>
+            <h2>Tell us where to start</h2>
+            <p>
+              We will use this to make the session useful from minute one.
+            </p>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span>Full name</span>
+              <input type="text" name="full_name" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Work email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Phone number</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
+          </label>
+
+          <label>
+            <span>Company or website</span>
+            <input type="text" name="company_or_website" autocomplete="organization" required />
+          </label>
+
+          <label>
+            <span>Main priority</span>
+            <select name="main_priority" required>
+              <option value="">Select one</option>
+              <option>More qualified leads</option>
+              <option>Consistent social content</option>
+              <option>Landing pages and campaigns</option>
+              <option>Blog and web management</option>
+              <option>Agency partnership</option>
+            </select>
+          </label>
+
+          <label>
+            <span>What would make this useful?</span>
+            <textarea
+              name="goal"
+              rows="3"
+              placeholder="Example: We need more qualified leads and a better content rhythm."
+            ></textarea>
+          </label>
+
+          <button type="submit" class="button form-button">Schedule My Walkthrough</button>
+          <p class="form-note">We will reply with available times and a short agenda for your business.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .walkthrough-page {
+    background: var(--bg-primary);
+    color: var(--text-invert);
+  }
+
+  .walkthrough-hero {
+    padding: 8.25rem 0 4rem;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 45rem;
+    font-size: clamp(3rem, 5.7vw, 5.2rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .hero-description {
+    max-width: 38rem;
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .signal-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .signal-row span {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mini-plan {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 44rem;
+  }
+
+  .mini-plan article {
+    min-height: 146px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .mini-plan h2 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    margin-bottom: 0.45rem;
+  }
+
+  .mini-plan p {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .walkthrough-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: #f5f5f1;
+    color: var(--text-primary);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.3);
+  }
+
+  .hidden-field {
+    display: none;
+  }
+
+  .form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .form-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(15, 18, 19, 0.48);
+  }
+
+  .form-header h2 {
+    font-family: var(--font-body);
+    font-size: 1.45rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  .form-header p,
+  .form-note {
+    color: rgba(15, 18, 19, 0.6);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  label span {
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: rgba(15, 18, 19, 0.74);
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 18, 19, 0.12);
+    border-radius: 10px;
+    background: white;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 0.82rem 0.88rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 88px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(105, 210, 84, 0.95);
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
+  }
+
+  .form-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .form-note {
+    text-align: center;
+  }
+
+  @media (max-width: 991px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .walkthrough-form {
+      max-width: 680px;
+    }
+
+    .mini-plan {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .walkthrough-hero {
+      padding: 7.5rem 0 4rem;
+      min-height: auto;
+    }
+
+    .hero-grid {
+      gap: 2rem;
+    }
+
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-copy h1 {
+      font-size: 2.6rem;
+    }
+  }
+</style>

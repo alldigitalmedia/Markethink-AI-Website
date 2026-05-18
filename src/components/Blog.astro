@@ -1,0 +1,162 @@
+---
+import { insightPosts, journeyPosts } from "../data/blogPosts";
+
+const largePosts = journeyPosts;
+const smallPosts = insightPosts.map((post) => ({
+  title: post.title,
+  label: post.label,
+  image: post.image,
+  href: `/blog/${post.slug}/`,
+}));
+---
+
+<section class="section dark blog-section" id="questions">
+  <div class="container">
+    <div class="section-header text-center animate-fade-up">
+      <h2>Marketing that gets easier to run and harder to ignore.</h2>
+      <p class="blog-desc">Success is not having the most AI subscriptions. It is having a marketing system that helps your business show up consistently, communicate clearly, and create more opportunities to win clients.</p>
+      <a href="/blog/" class="blog-index-link">Read all insights</a>
+    </div>
+
+    <div class="blog-grid animate-stagger">
+      <div class="blog-large-grid">
+        {largePosts.map((post) => (
+          <a href={post.href} class="blog-card blog-card-large">
+            <div class="blog-card-image">
+              <img src={post.image} alt={post.title} />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-date">{post.label}</span>
+              <h4>{post.title}</h4>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="blog-small-grid">
+        {smallPosts.map((post) => (
+          <a href={post.href} class="blog-card blog-card-small">
+            <div class="blog-card-image">
+              <img src={post.image} alt={post.title} />
+            </div>
+            <div class="blog-card-content">
+              <span class="blog-date">{post.label}</span>
+              <h4>{post.title}</h4>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .blog-index-link {
+    display: inline-flex;
+    margin-top: 1.4rem;
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .blog-grid {
+    margin-top: 3rem;
+  }
+
+  .blog-large-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-small-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .blog-card {
+    display: block;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.4s, transform 0.4s;
+  }
+
+  .blog-card:hover {
+    border-color: rgba(105, 210, 84, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .blog-card-image {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .blog-card-large .blog-card-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .blog-card-small .blog-card-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .blog-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .blog-card:hover .blog-card-image img {
+    transform: scale(1.05);
+  }
+
+  .blog-card-content {
+    padding: 1.25rem;
+  }
+
+  .blog-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.35rem;
+    display: block;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .blog-card-content h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .blog-card-small .blog-card-content h4 {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 991px) {
+    .blog-small-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .blog-large-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-small-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

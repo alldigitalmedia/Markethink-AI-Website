@@ -1,0 +1,123 @@
+---
+const walkthroughHref = "/schedule-a-walkthrough/";
+---
+
+<section class="section-hero" id="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <p class="subtitle animate-fade-up">MARKETING THAT SHIPS — AND KEEPS GETTING SHARPER</p>
+      <h1 class="hero-heading animate-fade-up">
+        More clients. Less guesswork. Marketing that improves every week.
+      </h1>
+      <p class="hero-description animate-fade-up">
+        Markethink helps your business plan, create, review, and improve marketing from one place. It learns your brand, offers, audience, and approvals — then keeps getting better as new AI tools and creative capabilities become available.
+      </p>
+      <div class="button-group animate-fade-up">
+        <a href="#how-it-works" class="button">See How It Works</a>
+        <a href={walkthroughHref} class="button is-secondary">Book a Walkthrough</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="/images/hero-image.png" alt="Markethink guided workspace preview" class="hero-image" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-hero {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 34rem;
+  }
+
+  .hero-heading {
+    font-size: 4.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 31rem;
+    line-height: 1.7;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 540px;
+    border-radius: var(--radius-medium);
+  }
+
+  @media (max-width: 991px) {
+    .hero-heading {
+      font-size: 3.2rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .section-hero {
+      padding-top: 7rem;
+      min-height: auto;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-text {
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .hero-heading {
+      font-size: 2.5rem;
+    }
+
+    .button-group {
+      justify-content: center;
+    }
+
+    .hero-image {
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .hero-heading {
+      font-size: 2rem;
+    }
+  }
+</style>

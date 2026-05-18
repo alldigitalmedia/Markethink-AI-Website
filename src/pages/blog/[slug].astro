@@ -1,0 +1,485 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
+import { insightPosts, type BlogPost } from "../../data/blogPosts";
+
+export function getStaticPaths() {
+  return insightPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: BlogPost };
+const siteUrl = "https://markethink.ai";
+const canonical = `${siteUrl}/blog/${post.slug}/`;
+const imageUrl = new URL(post.image, siteUrl).toString();
+const relatedPosts = insightPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.description,
+  image: imageUrl,
+  datePublished: post.publishedDate,
+  dateModified: post.updatedDate,
+  author: {
+    "@type": "Organization",
+    name: post.author.name,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Markethink",
+    url: siteUrl,
+    logo: `${siteUrl}/images/logo.svg`,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonical,
+  },
+  keywords: post.keywords.join(", "),
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: post.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${siteUrl}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: `${siteUrl}/blog/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: post.title,
+      item: canonical,
+    },
+  ],
+};
+---
+
+<Layout
+  title={post.seoTitle}
+  description={post.description}
+  image={post.image}
+  canonical={canonical}
+  type="article"
+  structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
+>
+  <Navbar />
+  <main class="article-page">
+    <article>
+      <header class="article-hero">
+        <div class="container article-hero-grid">
+          <div class="article-hero-copy animate-fade-up">
+            <a href="/blog/" class="article-back">Insights</a>
+            <p class="article-kicker">{post.category}</p>
+            <h1>{post.title}</h1>
+            <p class="article-excerpt">{post.excerpt}</p>
+            <div class="article-meta" aria-label="Article details">
+              <span>By {post.author.name}</span>
+              <span>{post.readingTime}</span>
+              <span>Updated {new Date(post.updatedDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+            </div>
+          </div>
+          <div class="article-hero-image animate-scale-in">
+            <img src={post.image} alt={post.imageAlt} />
+          </div>
+        </div>
+      </header>
+
+      <div class="container article-layout">
+        <aside class="article-sidebar">
+          <div class="sidebar-panel">
+            <p class="sidebar-label">In this guide</p>
+            <ol>
+              {post.sections.map((section, index) => (
+                <li>
+                  <a href={`#section-${index + 1}`}>{section.heading}</a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </aside>
+
+        <div class="article-content">
+          <section class="article-intro">
+            {post.intro.map((paragraph) => <p>{paragraph}</p>)}
+          </section>
+
+          {post.sections.map((section, index) => (
+            <section id={`section-${index + 1}`} class="article-section">
+              <h2>{section.heading}</h2>
+              {section.body.map((paragraph) => <p>{paragraph}</p>)}
+              {section.bullets && (
+                <ul>
+                  {section.bullets.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+
+          <section class="article-cta">
+            <p class="article-cta-label">Markethink perspective</p>
+            <h2>Marketing improves faster when the system remembers the work.</h2>
+            <p>
+              Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system.
+            </p>
+            <a href="/schedule-a-walkthrough/" class="button">Book a Walkthrough</a>
+          </section>
+
+          <section class="article-faq">
+            <p class="article-cta-label">FAQ</p>
+            <h2>Common questions</h2>
+            {post.faq.map((item) => (
+              <details>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </section>
+        </div>
+      </div>
+    </article>
+
+    <section class="related-section">
+      <div class="container">
+        <div class="related-header">
+          <p class="subtitle">KEEP READING</p>
+          <h2>More Markethink insights</h2>
+        </div>
+        <div class="related-grid">
+          {relatedPosts.map((related) => (
+            <a href={`/blog/${related.slug}/`} class="related-card">
+              <img src={related.image} alt={related.imageAlt} loading="lazy" />
+              <div>
+                <span>{related.category}</span>
+                <h3>{related.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <FinalCTA />
+  <Footer />
+</Layout>
+
+<style>
+  .article-page {
+    background: var(--bg-primary);
+  }
+
+  .article-hero {
+    padding: 10rem 0 5rem;
+  }
+
+  .article-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .article-back {
+    display: inline-flex;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .article-kicker,
+  .article-cta-label {
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .article-hero h1 {
+    margin-top: 0.9rem;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .article-excerpt {
+    margin-top: 1.5rem;
+    max-width: 40rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.08rem;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.82rem;
+  }
+
+  .article-meta span:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.8rem;
+    color: rgba(255, 255, 255, 0.24);
+  }
+
+  .article-hero-image {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .article-hero-image img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 44rem);
+    gap: 4rem;
+    align-items: start;
+    padding-bottom: 5rem;
+  }
+
+  .article-sidebar {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .sidebar-panel {
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .sidebar-label {
+    margin-bottom: 0.9rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-panel ol {
+    display: grid;
+    gap: 0.8rem;
+    padding-left: 1rem;
+  }
+
+  .sidebar-panel a {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.86rem;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+
+  .sidebar-panel a:hover {
+    color: var(--text-invert);
+  }
+
+  .article-content {
+    max-width: 44rem;
+  }
+
+  .article-intro {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .article-content p,
+  .article-content li {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.02rem;
+    line-height: 1.78;
+  }
+
+  .article-content p + p {
+    margin-top: 1.1rem;
+  }
+
+  .article-section {
+    padding: 3rem 0 0;
+  }
+
+  .article-section h2,
+  .article-cta h2,
+  .article-faq h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+  }
+
+  .article-section ul {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.3rem;
+    padding: 1.5rem 1.5rem 1.5rem 2.4rem;
+    border: 1px solid rgba(105, 210, 84, 0.18);
+    border-radius: 1rem;
+    background: rgba(105, 210, 84, 0.05);
+  }
+
+  .article-section li::marker {
+    color: var(--color-secondary);
+  }
+
+  .article-cta,
+  .article-faq {
+    margin-top: 3.5rem;
+    padding: 2rem;
+    border-radius: var(--radius-medium);
+  }
+
+  .article-cta {
+    background: var(--color-secondary);
+    color: var(--text-primary);
+  }
+
+  .article-cta .article-cta-label,
+  .article-cta p {
+    color: rgba(15, 18, 19, 0.75);
+  }
+
+  .article-cta .button {
+    margin-top: 1.4rem;
+    background: var(--bg-primary);
+    color: var(--text-invert);
+  }
+
+  .article-faq {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  details {
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--text-invert);
+    font-weight: 600;
+  }
+
+  details p {
+    margin-top: 0.8rem;
+  }
+
+  .related-section {
+    padding: 5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .related-header h2 {
+    margin-top: 0.8rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.2rem;
+  }
+
+  .related-card {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(105, 210, 84, 0.34);
+  }
+
+  .related-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .related-card div {
+    padding: 1rem;
+  }
+
+  .related-card span {
+    color: var(--color-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .related-card h3 {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+
+  @media (max-width: 991px) {
+    .article-hero-grid,
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .article-sidebar {
+      position: static;
+      order: 2;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .article-hero {
+      padding: 8rem 0 3.5rem;
+    }
+
+    .article-layout {
+      gap: 2rem;
+    }
+
+    .article-meta span::after {
+      display: none;
+    }
+  }
+</style>
