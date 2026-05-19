@@ -1,0 +1,600 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Start your Markethink subscription — Markethink"
+  description="Review your Markethink package and start your subscription through secure checkout."
+  canonical="https://markethink.ai/start/"
+  noindex={true}
+>
+  <main class="billing-page">
+    <section class="billing-shell">
+      <div class="billing-brand" aria-label="Markethink">
+        <a href="/" class="brand-link">Markethink</a>
+      </div>
+
+      <div class="billing-grid">
+        <section class="billing-copy" aria-labelledby="billing-heading">
+          <p class="subtitle">MARKETHINK SUBSCRIPTION</p>
+          <h1 id="billing-heading">Start the marketing system built around your business.</h1>
+          <p>
+            Review the package prepared for you, then continue to secure checkout. After payment, your Markethink work can move into the weekly rhythm: campaigns, assets, approvals, and next steps in one place.
+          </p>
+        </section>
+
+        <section class="offer-panel" aria-live="polite">
+          <div id="loading-state" class="state-block">
+            <div class="skeleton skeleton-label"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-line"></div>
+            <div class="skeleton skeleton-line short"></div>
+            <div class="skeleton-list">
+              <div class="skeleton skeleton-item"></div>
+              <div class="skeleton skeleton-item"></div>
+              <div class="skeleton skeleton-item"></div>
+            </div>
+            <div class="skeleton skeleton-button"></div>
+          </div>
+
+          <div id="unavailable-state" class="state-block hidden">
+            <p class="panel-eyebrow">Link unavailable</p>
+            <h2>This subscription link is no longer available.</h2>
+            <p>Please contact your Markethink rep.</p>
+          </div>
+
+          <div id="active-state" class="state-block hidden">
+            <p class="panel-eyebrow">Subscription status</p>
+            <h2>Subscription already active.</h2>
+            <p>Contact us to manage billing.</p>
+          </div>
+
+          <div id="offer-state" class="state-block hidden">
+            <div id="canceled-notice" class="notice hidden" role="status">
+              Payment canceled — you can try again any time.
+            </div>
+
+            <p class="panel-eyebrow" id="customer-label">Prepared package</p>
+            <div class="offer-heading-row">
+              <div>
+                <h2 id="package-name"></h2>
+                <p id="package-description" class="package-description"></p>
+              </div>
+              <div class="price-card" aria-label="Package price">
+                <strong id="package-price"></strong>
+                <span id="package-price-label">per month</span>
+              </div>
+            </div>
+
+            <div id="package-details" class="package-details"></div>
+
+            <div class="includes-card">
+              <h3>Included</h3>
+              <ul id="includes-list"></ul>
+            </div>
+
+            <button id="subscribe-button" class="button subscribe-button" type="button">
+              Start subscription
+            </button>
+            <p id="submit-error" class="inline-error hidden" role="alert"></p>
+            <p id="checkout-note" class="checkout-note">
+              You will continue to secure hosted checkout. Markethink does not collect card details on this page.
+            </p>
+
+            <div id="policy-links" class="policy-links hidden"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const proposalBaseUrl = "https://dashboard.markethink.ai/api/public/billing/proposals/";
+    const checkoutBaseUrl = "https://dashboard.markethink.ai/api/public/billing/checkout/";
+    const slugPattern = /^[a-z0-9-]{6,120}$/;
+
+    const loadingState = document.getElementById("loading-state");
+    const unavailableState = document.getElementById("unavailable-state");
+    const activeState = document.getElementById("active-state");
+    const offerState = document.getElementById("offer-state");
+    const canceledNotice = document.getElementById("canceled-notice");
+    const customerLabel = document.getElementById("customer-label");
+    const packageName = document.getElementById("package-name");
+    const packageDescription = document.getElementById("package-description");
+    const packagePrice = document.getElementById("package-price");
+    const packageDetails = document.getElementById("package-details");
+    const includesList = document.getElementById("includes-list");
+    const subscribeButton = document.getElementById("subscribe-button");
+    const submitError = document.getElementById("submit-error");
+    const checkoutNote = document.getElementById("checkout-note");
+    const policyLinks = document.getElementById("policy-links");
+
+    let currentSlug = "";
+
+    function showState(state) {
+      [loadingState, unavailableState, activeState, offerState].forEach((element) => {
+        element?.classList.add("hidden");
+      });
+      state?.classList.remove("hidden");
+    }
+
+    function readSlug() {
+      const segments = window.location.pathname.split("/").filter(Boolean);
+      const startIndex = segments.indexOf("start");
+      return startIndex >= 0 ? segments[startIndex + 1] || "" : "";
+    }
+
+    function formatPrice(cents, currency) {
+      const amount = Number(cents || 0) / 100;
+      const safeCurrency = String(currency || "usd").toUpperCase();
+      try {
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: safeCurrency,
+          maximumFractionDigits: amount % 1 === 0 ? 0 : 2,
+        }).format(amount);
+      } catch {
+        return `${safeCurrency} ${amount.toFixed(2)}`;
+      }
+    }
+
+    function renderPolicyLinks(proposal) {
+      if (!policyLinks) return;
+      policyLinks.innerHTML = "";
+
+      const links = [];
+      if (proposal.termsUrl) links.push({ label: "Terms", url: proposal.termsUrl });
+      if (proposal.privacyUrl) links.push({ label: "Privacy", url: proposal.privacyUrl });
+
+      if (!links.length) {
+        policyLinks.classList.add("hidden");
+        return;
+      }
+
+      links.forEach((link, index) => {
+        if (index > 0) {
+          const separator = document.createElement("span");
+          separator.setAttribute("aria-hidden", "true");
+          separator.textContent = "•";
+          policyLinks.appendChild(separator);
+        }
+
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.label;
+        policyLinks.appendChild(anchor);
+      });
+
+      policyLinks.classList.remove("hidden");
+    }
+
+    function renderOffer(proposal) {
+      const pkg = proposal.package || {};
+      const customer = proposal.customer || {};
+      const customerParts = [customer.name, customer.company].filter(Boolean);
+
+      if (customerLabel) {
+        customerLabel.textContent = customerParts.length ? `Prepared for ${customerParts.join(" · ")}` : "Prepared package";
+      }
+      if (packageName) packageName.textContent = pkg.name || "Markethink subscription";
+      if (packageDescription) packageDescription.textContent = pkg.description || "Your Markethink package is ready for checkout.";
+      if (packagePrice) packagePrice.textContent = formatPrice(pkg.monthlyPriceCents, pkg.currency);
+
+      const detailItems = [];
+      if (Number.isFinite(pkg.setupFeeCents) && pkg.setupFeeCents > 0) {
+        detailItems.push(`<span>${formatPrice(pkg.setupFeeCents, pkg.currency)} setup fee</span>`);
+      }
+      if (Number.isFinite(pkg.trialDays) && pkg.trialDays > 0) {
+        detailItems.push(`<span>${pkg.trialDays}-day trial</span>`);
+      }
+      if (packageDetails) {
+        packageDetails.innerHTML = detailItems.join("");
+        packageDetails.classList.toggle("hidden", detailItems.length === 0);
+      }
+
+      if (includesList) {
+        includesList.innerHTML = "";
+        (Array.isArray(pkg.includes) ? pkg.includes : []).forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<span class="checkmark" aria-hidden="true">✓</span><span></span>`;
+          const textSpan = li.querySelector("span:last-child");
+          if (textSpan) textSpan.textContent = String(item);
+          includesList.appendChild(li);
+        });
+      }
+
+      const checkoutReady = proposal.stripeConfigured !== false;
+      if (subscribeButton) {
+        subscribeButton.disabled = !checkoutReady;
+        subscribeButton.textContent = checkoutReady ? "Start subscription" : "Checkout is not available yet";
+      }
+      if (checkoutNote) {
+        checkoutNote.textContent = checkoutReady
+          ? "You will continue to secure hosted checkout. Markethink does not collect card details on this page."
+          : "Please contact your Markethink rep to finish billing setup.";
+      }
+
+      renderPolicyLinks(proposal);
+      if (new URLSearchParams(window.location.search).get("canceled") === "1") {
+        canceledNotice?.classList.remove("hidden");
+      }
+      showState(offerState);
+    }
+
+    async function loadProposal() {
+      currentSlug = readSlug();
+      if (!slugPattern.test(currentSlug)) {
+        showState(unavailableState);
+        return;
+      }
+
+      showState(loadingState);
+      try {
+        const response = await fetch(`${proposalBaseUrl}${encodeURIComponent(currentSlug)}`, {
+          method: "GET",
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.status === 404 || response.status === 410) {
+          showState(unavailableState);
+          return;
+        }
+
+        if (!response.ok) {
+          showState(unavailableState);
+          return;
+        }
+
+        const data = await response.json();
+        const proposal = data && data.ok ? data.proposal : null;
+        if (!proposal) {
+          showState(unavailableState);
+          return;
+        }
+
+        if (proposal.status === "active" || proposal.status === "past_due") {
+          showState(activeState);
+          return;
+        }
+
+        if (proposal.status !== "sent") {
+          showState(unavailableState);
+          return;
+        }
+
+        renderOffer(proposal);
+      } catch {
+        showState(unavailableState);
+      }
+    }
+
+    async function startSubscription() {
+      if (!currentSlug || !slugPattern.test(currentSlug) || !subscribeButton) return;
+      submitError?.classList.add("hidden");
+      subscribeButton.disabled = true;
+      subscribeButton.textContent = "Opening checkout…";
+
+      try {
+        const response = await fetch(`${checkoutBaseUrl}${encodeURIComponent(currentSlug)}`, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+        });
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok || !data?.url) {
+          throw new Error(data?.error || "Checkout could not be started. Please try again or contact your Markethink rep.");
+        }
+
+        window.location.assign(data.url);
+      } catch (error) {
+        if (submitError) {
+          submitError.textContent = error instanceof Error ? error.message : "Checkout could not be started. Please try again or contact your Markethink rep.";
+          submitError.classList.remove("hidden");
+        }
+        subscribeButton.disabled = false;
+        subscribeButton.textContent = "Start subscription";
+      }
+    }
+
+    subscribeButton?.addEventListener("click", startSubscription);
+    loadProposal();
+  </script>
+</Layout>
+
+<style>
+  .billing-page {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(105, 210, 84, 0.16), transparent 28rem),
+      linear-gradient(135deg, #0f1213 0%, #171b1c 100%);
+    color: var(--text-invert);
+  }
+
+  .billing-shell {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1.5rem 0 4rem;
+  }
+
+  .billing-brand {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0 3rem;
+  }
+
+  .brand-link {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+  }
+
+  .billing-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.78fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    min-height: calc(100vh - 9rem);
+  }
+
+  .billing-copy {
+    max-width: 42rem;
+  }
+
+  .billing-copy h1 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .billing-copy p:not(.subtitle) {
+    margin-top: 1.5rem;
+    max-width: 34rem;
+    color: rgba(245, 245, 241, 0.72);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .offer-panel {
+    background: #f5f5f1;
+    color: var(--text-primary);
+    border: 1px solid rgba(245, 245, 241, 0.18);
+    border-radius: 2rem;
+    padding: clamp(1.3rem, 4vw, 2rem);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  }
+
+  .state-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .panel-eyebrow {
+    color: rgba(15, 18, 19, 0.52);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .offer-panel h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .offer-panel p {
+    color: rgba(15, 18, 19, 0.68);
+    line-height: 1.7;
+  }
+
+  .offer-heading-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .package-description {
+    margin-top: 0.65rem;
+  }
+
+  .price-card {
+    min-width: 8.5rem;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: #edf4ea;
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    text-align: right;
+  }
+
+  .price-card strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.45rem;
+    letter-spacing: -0.04em;
+  }
+
+  .price-card span {
+    display: block;
+    margin-top: 0.2rem;
+    color: rgba(15, 18, 19, 0.56);
+    font-size: 0.78rem;
+  }
+
+  .package-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .package-details span,
+  .notice {
+    border-radius: 999px;
+    background: rgba(105, 210, 84, 0.16);
+    color: #0f1213;
+    border: 1px solid rgba(105, 210, 84, 0.28);
+    padding: 0.62rem 0.82rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .includes-card {
+    margin-top: 0.25rem;
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    border-radius: 1.4rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .includes-card h3 {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  #includes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  #includes-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: rgba(15, 18, 19, 0.72);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: var(--color-secondary);
+    color: #0f1213;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin-top: 0.1rem;
+  }
+
+  .subscribe-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    margin-top: 0.3rem;
+  }
+
+  .subscribe-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .checkout-note,
+  .inline-error,
+  .policy-links {
+    font-size: 0.82rem;
+  }
+
+  .inline-error {
+    color: #8f2626 !important;
+    background: rgba(143, 38, 38, 0.08);
+    border: 1px solid rgba(143, 38, 38, 0.18);
+    border-radius: 1rem;
+    padding: 0.8rem;
+  }
+
+  .policy-links {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    color: rgba(15, 18, 19, 0.58);
+  }
+
+  .policy-links a {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: rgba(15, 18, 19, 0.08);
+    border-radius: 999px;
+  }
+
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.52), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+
+  .skeleton-label { width: 42%; height: 0.8rem; }
+  .skeleton-title { width: 86%; height: 3rem; border-radius: 1rem; }
+  .skeleton-line { width: 100%; height: 1rem; }
+  .skeleton-line.short { width: 70%; }
+  .skeleton-list { display: grid; gap: 0.8rem; margin: 1rem 0; }
+  .skeleton-item { width: 100%; height: 2.1rem; border-radius: 0.9rem; }
+  .skeleton-button { width: 100%; height: 3.1rem; }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  @media (max-width: 860px) {
+    .billing-shell {
+      padding-bottom: 2rem;
+    }
+
+    .billing-brand {
+      padding-bottom: 2rem;
+    }
+
+    .billing-grid {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .billing-copy h1 {
+      font-size: clamp(2.7rem, 12vw, 4.2rem);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .billing-shell {
+      width: min(100% - 1rem, 1120px);
+    }
+
+    .offer-panel {
+      border-radius: 1.4rem;
+    }
+
+    .offer-heading-row {
+      grid-template-columns: 1fr;
+    }
+
+    .price-card {
+      text-align: left;
+      width: 100%;
+    }
+  }
+</style>
