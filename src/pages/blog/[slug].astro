@@ -129,6 +129,11 @@ const breadcrumbSchema = {
         <div class="article-content">
           <section class="article-intro">
             {post.intro.map((paragraph) => <p>{paragraph}</p>)}
+            {post.seoHubLink && (
+              <p class="article-hub-link">
+                {post.seoHubLink.copy} <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a> guide explains how to turn tools, content, approvals, and follow-up into one repeatable marketing system.
+              </p>
+            )}
           </section>
 
           {post.sections.map((section, index) => (
@@ -329,6 +334,21 @@ const breadcrumbSchema = {
 
   .article-content p + p {
     margin-top: 1.1rem;
+  }
+
+  .article-hub-link {
+    margin-top: 1.4rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(105, 210, 84, 0.22);
+    border-radius: 1rem;
+    background: rgba(105, 210, 84, 0.06);
+  }
+
+  .article-hub-link a {
+    color: var(--color-secondary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
 
   .article-section {
