@@ -22,6 +22,11 @@ export type BlogPost = {
     body: string[];
     bullets?: string[];
   }[];
+  seoHubLink?: {
+    copy: string;
+    anchor: string;
+    href: string;
+  };
   faq: {
     question: string;
     answer: string;
@@ -76,6 +81,11 @@ export const insightPosts: BlogPost[] = [
       "Consistent marketing means your offer is clear, your content has a rhythm, your campaigns connect to real business goals, and your team learns from what gets approved, published, and acted on.",
       "That is why a marketing operating system often creates more value than another disconnected app. The system gives your business a repeatable way to turn ideas into useful marketing output.",
     ],
+    seoHubLink: {
+      copy: "If you are still deciding how AI should fit into your marketing, our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
     sections: [
       {
         heading: "More tools do not automatically create more demand",
@@ -179,6 +189,11 @@ export const insightPosts: BlogPost[] = [
       "A founder edits a headline. A marketing lead changes the tone. A client rejects a visual direction. A campaign performs better when it leads with a specific pain point. Those are not just comments. They are signals.",
       "Brand memory is the system that turns those signals into reusable guidance so the next campaign starts closer to approval.",
     ],
+    seoHubLink: {
+      copy: "Brand memory is one reason AI marketing works better inside a system. Our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
     sections: [
       {
         heading: "Why approvals slow down",
@@ -274,6 +289,11 @@ export const insightPosts: BlogPost[] = [
       "A prompt lives in one tool. Brand notes live in a document. Web updates are in a task board. Blog ideas are in a spreadsheet. Social drafts are in another app. Feedback is in a chat thread. The team can still work, but every campaign carries extra friction.",
       "That friction is the hidden cost of disconnected marketing.",
     ],
+    seoHubLink: {
+      copy: "The deeper issue is not the number of apps. It is whether the business has a system. Our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
     sections: [
       {
         heading: "The real cost is repeated context",
@@ -368,6 +388,11 @@ export const insightPosts: BlogPost[] = [
       "A founder mentions a new offer. A salesperson hears the same objection three times. A client asks a great question. A market trend appears. A new partnership angle opens up. Each of those could become marketing, but only if the business has a way to organize it.",
       "The difference between scattered ideas and real opportunities is a campaign system.",
     ],
+    seoHubLink: {
+      copy: "For small businesses using AI to move faster, the missing piece is usually the campaign system around the draft. Our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
     sections: [
       {
         heading: "An idea is not a campaign yet",
