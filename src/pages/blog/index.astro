@@ -59,6 +59,13 @@ const structuredData = [
 
     <section class="section dark">
       <div class="container">
+        <a class="featured-guide animate-fade-up" href="/ai-marketing-for-small-business/">
+          <span>Start here</span>
+          <div>
+            <h2>AI marketing for small business</h2>
+            <p>How to turn scattered tools, prompts, approvals, and follow-up into a marketing system that ships every week.</p>
+          </div>
+        </a>
         <div class="insight-grid animate-stagger">
           {insightPosts.map((post) => (
             <article class="insight-card">
@@ -108,6 +115,43 @@ const structuredData = [
     margin-top: 1.5rem;
     color: rgba(255, 255, 255, 0.68);
     font-size: 1.05rem;
+  }
+
+  .featured-guide {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(105, 210, 84, 0.28);
+    border-radius: var(--radius-medium);
+    background: rgba(105, 210, 84, 0.07);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .featured-guide:hover {
+    transform: translateY(-3px);
+    border-color: rgba(105, 210, 84, 0.52);
+  }
+
+  .featured-guide span {
+    color: var(--color-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .featured-guide h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .featured-guide p {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.66);
+    max-width: 44rem;
   }
 
   .insight-grid {
@@ -182,6 +226,10 @@ const structuredData = [
   @media (max-width: 767px) {
     .blog-hero {
       padding-top: 8rem;
+    }
+
+    .featured-guide {
+      grid-template-columns: 1fr;
     }
 
     .insight-grid {
