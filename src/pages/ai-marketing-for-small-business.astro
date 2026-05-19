@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "AI Marketing for Small Business | Weekly Marketing System | Markethink";
+const pageDescription = "AI marketing for small business works best as a weekly marketing system: campaigns, approvals, content, web updates, follow-up, and learning in one place.";
+const canonicalUrl = "https://markethink.ai/ai-marketing-for-small-business/";
+const walkthroughHref = "/schedule-a-walkthrough/";
+
+const systemPieces = [
+  ["Brand and offer context", "Your audience, services, voice, visuals, and approval rules should be available before any campaign starts."],
+  ["Campaign workflow", "Ideas need a path into landing pages, social posts, blog content, email copy, and follow-up tasks."],
+  ["Approval memory", "Every edit should make the next draft sharper instead of forcing your team to repeat the same direction."],
+  ["Opportunity follow-up", "Marketing should connect to real buyer conversations, lead lists, walkthroughs, and next steps."],
+];
+
+const faqs = [
+  { question: "What is AI marketing for small business?", answer: "AI marketing for small business means using modern AI capabilities to help with campaign planning, content drafts, web copy, lead research, and review workflows. The strongest approach is not a pile of disconnected tools. It is a marketing system that gives those capabilities the right business context." },
+  { question: "Can AI run marketing for a small business?", answer: "AI can support many marketing tasks, but the business still needs human judgment, offer direction, approvals, and buyer knowledge. Markethink keeps humans in charge while making the weekly marketing operation more organized and easier to ship." },
+  { question: "Is Markethink an AI content generator?", answer: "No. Markethink is a marketing system. It helps organize campaigns, create assets, manage approvals, remember feedback, and keep improving the work every week. Content creation is one part of the system, not the product by itself." },
+  { question: "What kind of small business is a good fit?", answer: "Markethink is a strong fit for service businesses, agencies, real estate brands, wellness brands, B2B companies, and growing teams that need campaigns, web updates, content, and leads to move more consistently." },
+  { question: "How do we start?", answer: "Start with a walkthrough or marketing system audit. We look at your current website, offers, audience, campaigns, and approval flow, then map the first workflow Markethink should improve." },
+];
+
+const structuredData = [
+  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Small Business", description: pageDescription, url: canonicalUrl, inLanguage: "en", publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
+  { "@context": "https://schema.org", "@type": "Service", name: "Markethink Marketing System", serviceType: "Marketing system for small business campaigns, content, approvals, and follow-up", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, description: "Markethink helps small businesses organize campaigns, create marketing assets, manage approvals, and improve their marketing rhythm over time." },
+  { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" }, { "@type": "ListItem", position: 2, name: "AI Marketing for Small Business", item: canonicalUrl }] },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} image="/images/ai-marketing-small-business-hero.svg" canonical={canonicalUrl} structuredData={structuredData}>
+  <Navbar />
+  <main class="seo-page">
+    <section class="seo-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="subtitle animate-fade-up">AI MARKETING FOR SMALL BUSINESS</p>
+          <h1 class="animate-fade-up">AI marketing works when it becomes a system your business can use every week.</h1>
+          <p class="hero-description animate-fade-up">Small businesses do not need more scattered apps, prompts, and unfinished drafts. They need a marketing system that learns the business, organizes campaigns, captures approvals, and helps the work ship consistently.</p>
+          <div class="button-group animate-fade-up"><a href={walkthroughHref} class="button">Request a Marketing System Audit</a><a href="#how-it-works" class="button is-secondary">See the system</a></div>
+          <div class="trust-row animate-fade-up"><span>Built and operated by AllDigitalMedia</span><span>Sales-led walkthrough</span><span>No generic tool setup</span></div>
+        </div>
+        <div class="hero-visual animate-scale-in"><img src="/images/ai-marketing-small-business-hero.svg" alt="A Markethink marketing system diagram for small business campaigns, approvals, content, and client opportunities" width="1200" height="900" /></div>
+      </div>
+    </section>
+
+    <section class="section light-green"><div class="container two-column"><div><p class="subtitle">THE REAL SEARCH INTENT</p><h2>Most teams search for AI marketing because the current marketing rhythm is too hard to maintain.</h2></div><div class="rich-copy"><p>A small business owner usually does not wake up wanting another marketing app. They want clearer offers, more consistent content, better follow-up, a website that keeps pace with the business, and fewer stalled campaigns.</p><p>AI can help with speed. But speed alone does not solve the real problem. If the offer, voice, audience, assets, and approvals live in different places, every new draft still starts with missing context.</p><p>Markethink turns AI-supported marketing into a weekly operating system: learn the business, organize the campaign, create the assets, review the work, remember what changed, and keep improving.</p></div></div></section>
+
+    <section class="section dark" id="how-it-works"><div class="container"><div class="section-header text-center"><p class="subtitle">WHAT A SMALL BUSINESS ACTUALLY NEEDS</p><h2>A marketing system, not another disconnected tool.</h2><p class="section-description dark-copy">The useful question is not “Which AI tool should we try next?” It is “What system helps our marketing ship and get sharper every week?”</p></div><div class="system-grid animate-stagger">{systemPieces.map(([title, copy]) => (<article class="system-card"><h3>{title}</h3><p>{copy}</p></article>))}</div></div></section>
+
+    <section class="section rhythm-section"><div class="container rhythm-grid"><div class="rhythm-visual"><img src="/images/ai-marketing-small-business-rhythm.svg" alt="A weekly Markethink rhythm diagram showing audit, planning, asset creation, approvals, and follow-up" width="1100" height="620" loading="lazy" /></div><div class="rhythm-copy"><p class="subtitle">THE WEEKLY RHYTHM</p><h2>From scattered marketing ideas to campaigns that move.</h2><p>Markethink is built for the work small businesses need to keep moving: website updates, campaign pages, blog posts, social content, lead research, review rounds, and follow-up copy.</p><ul><li>Clarify the offer before creating more content.</li><li>Turn one campaign idea into web, blog, social, and follow-up assets.</li><li>Keep approvals organized so the business does not restart from zero.</li><li>Use feedback to improve future drafts, visuals, and campaigns.</li></ul></div></div></section>
+
+    <section class="section light-green"><div class="container"><div class="section-header"><p class="subtitle">TOOLS VS. SYSTEM</p><h2>AI tools can help with tasks. A marketing system helps the business improve.</h2></div><div class="comparison-list"><article><strong>Disconnected tool path:</strong> someone opens a tool and tries to write the right prompt. Copy, visuals, feedback, and next steps spread across documents, chats, and folders.</article><article><strong>Markethink system path:</strong> the business context, campaign goal, and approval rules are already part of the workflow. Campaigns, assets, approvals, and decisions stay connected in one place.</article></div></div></section>
+
+    <section class="section dark"><div class="container fit-grid"><div class="fit-card"><p class="subtitle">GOOD FIT</p><h2>Built for teams that need marketing to ship.</h2><ul><li>Small businesses with a real offer but inconsistent marketing execution.</li><li>Service businesses and B2B teams that need more qualified conversations.</li><li>Agencies that want a delivery system for consistent client work.</li></ul></div><div class="fit-card muted"><p class="subtitle">NOT THE RIGHT FIT</p><h2>Not for cheap content volume.</h2><ul><li>You only want a self-serve caption generator.</li><li>You want to publish without review or human judgment.</li><li>You need guaranteed lead, revenue, or viral results.</li></ul></div></div></section>
+
+    <section class="section proof-section"><div class="container proof-grid"><div><p class="subtitle">WHY TRUST THIS APPROACH</p><h2>Built by an agency that uses the system on real marketing operations.</h2></div><div class="proof-copy"><p>Markethink is built and operated by AllDigitalMedia, the agency behind the system. That matters because the product is shaped around the weekly reality of marketing work: unclear briefs, moving campaigns, client approvals, scattered assets, and the need to turn good ideas into shipped work.</p><p>We do not use fabricated case studies, fake counters, or inflated promises. The walkthrough starts with your business, your current marketing gaps, and the first workflow that would create momentum.</p><div class="proof-links"><a href="/blog/consistent-marketing-beats-chasing-ai-tools/">Read: consistency beats chasing tools</a><a href="/blog/brand-memory-feedback-approved-campaigns/">Read: how brand memory improves approvals</a><a href="/blog/scattered-ideas-to-client-opportunities/">Read: turning ideas into client opportunities</a></div></div></div></section>
+
+    <section class="section light-green"><div class="container faq-grid"><div><p class="subtitle">FAQ</p><h2>Questions small businesses ask before using AI in marketing.</h2></div><div class="faq-list">{faqs.map((faq) => (<details><summary>{faq.question}</summary><p>{faq.answer}</p></details>))}</div></div></section>
+
+    <section class="seo-final-cta"><div class="container final-panel"><p class="subtitle">START WITH THE SYSTEM</p><h2>Find the gaps before you add another marketing tool.</h2><p>Book a focused walkthrough. We will look at your current marketing rhythm and map where Markethink can help first: campaign planning, content, web updates, approvals, leads, or follow-up.</p><a href={walkthroughHref} class="button">Request a Marketing System Audit</a></div></section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .seo-page{background:var(--bg-primary);color:var(--text-invert)}.seo-hero{padding:9rem 0 5rem;min-height:100vh;display:flex;align-items:center}.hero-grid,.two-column,.rhythm-grid,.fit-grid,.proof-grid,.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.hero-copy{display:flex;flex-direction:column;gap:1.4rem}.hero-copy h1,h2{font-size:clamp(2.7rem,5.4vw,5.5rem);line-height:1;letter-spacing:-.035em}.hero-description,.rich-copy,.rhythm-copy,.proof-copy{font-size:1rem;line-height:1.8;color:rgba(255,255,255,.72)}.light-green .rich-copy,.rhythm-copy,.proof-copy{color:rgba(15,18,19,.72)}.button-group,.trust-row,.proof-links{display:flex;flex-wrap:wrap;gap:1rem}.trust-row span,.proof-links a{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.55rem .85rem;color:rgba(255,255,255,.72);font-size:.82rem;background:rgba(255,255,255,.045)}.hero-visual img,.rhythm-visual img{width:100%;height:auto;border-radius:var(--radius-medium);box-shadow:0 30px 100px rgba(0,0,0,.34)}.section-header{max-width:820px;margin-bottom:2.5rem}.dark-copy{color:rgba(255,255,255,.65)}.system-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}.system-card,.fit-card{border:1px solid rgba(255,255,255,.11);border-radius:var(--radius-medium);background:rgba(255,255,255,.045);padding:1.5rem}.system-card h3{font-family:var(--font-body);font-size:1.15rem;margin-bottom:.7rem}.system-card p,.fit-card li{color:rgba(255,255,255,.66);line-height:1.65;font-size:.93rem}.rhythm-section,.proof-section,.seo-final-cta{background:#f5f5f1;color:var(--text-primary)}.rhythm-copy ul,.fit-card ul{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem}.comparison-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.comparison-list article{border:1px solid rgba(15,18,19,.1);border-radius:20px;background:#f5f5f1;color:rgba(15,18,19,.72);padding:1.25rem;line-height:1.65}.fit-card.muted{background:#171b1c}.proof-links a{background:#fff;color:rgba(15,18,19,.78);border-color:rgba(15,18,19,.1)}.faq-list{display:flex;flex-direction:column;gap:.85rem}details{border:1px solid rgba(15,18,19,.1);border-radius:18px;background:#f5f5f1;padding:1.1rem 1.25rem}summary{cursor:pointer;font-weight:700;color:var(--text-primary)}details p{margin-top:.7rem;color:rgba(15,18,19,.68);line-height:1.65}.seo-final-cta{padding:0 0 7rem}.final-panel{border-radius:32px;background:#0f1213;color:#f5f5f1;padding:clamp(2rem,6vw,4rem);text-align:center}.final-panel p{max-width:680px;margin:1rem auto 1.5rem;color:rgba(255,255,255,.68);line-height:1.8}@media(max-width:991px){.hero-grid,.two-column,.rhythm-grid,.fit-grid,.proof-grid,.faq-grid,.comparison-list{grid-template-columns:1fr}.system-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:767px){.seo-hero{padding-top:7rem;min-height:auto}.system-grid{grid-template-columns:1fr}}
+</style>
