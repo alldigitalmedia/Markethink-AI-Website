@@ -18,6 +18,11 @@ const staticPages = [
     priority: "0.9",
     changefreq: "monthly",
   },
+  {
+    path: "/ai-marketing-for-small-business/",
+    priority: "0.9",
+    changefreq: "monthly",
+  },
 ];
 
 const articlePages = insightPosts.map((post) => ({
