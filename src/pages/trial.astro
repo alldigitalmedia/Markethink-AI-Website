@@ -1,0 +1,536 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Apply for a 30-Day Markethink Trial | Markethink";
+const pageDescription =
+  "Apply for a selective 30-day Markethink trial and see what your marketing looks like when campaigns, approvals, follow-up, and next steps start moving from one system.";
+
+const includedItems = [
+  "A focused marketing system audit around one business line or campaign",
+  "A starter campaign structure so the next moves are clear",
+  "A lightweight CRM/contact foundation for the first motion",
+  "An approval rhythm that keeps work moving instead of getting stuck",
+  "A small set of launch-ready marketing assets or recommendations",
+  "A next-month plan if the trial is useful and there is a fit",
+];
+
+const fitItems = [
+  "You have a real offer and need marketing to move more consistently.",
+  "Your campaigns, emails, website, leads, or follow-up feel scattered.",
+  "You want a system that learns the business instead of one-off content.",
+  "You are open to continuing monthly if the trial creates momentum.",
+];
+
+const trialBoundaries = [
+  "One business line or campaign focus",
+  "No full website build during the trial",
+  "No full CRM migration or custom integrations during the trial",
+  "No paid ad spend included",
+  "No unlimited content or unlimited revisions",
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Apply for a 30-Day Markethink Trial",
+  description: pageDescription,
+  url: "https://markethink.ai/trial/",
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image="/images/hero-image.png"
+  canonical="https://markethink.ai/trial/"
+  structuredData={structuredData}
+>
+  <Navbar />
+  <main class="trial-page">
+    <section class="trial-hero">
+      <div class="container trial-hero-grid">
+        <div class="trial-copy">
+          <p class="subtitle animate-fade-up">30-DAY MARKETHINK TRIAL</p>
+          <h1 class="animate-fade-up">Stop restarting your marketing from zero every week.</h1>
+          <p class="hero-description animate-fade-up">
+            Apply for a 30-day Markethink trial. We will organize one campaign, set up the approval rhythm, and show what your marketing can look like when it keeps moving from one system.
+          </p>
+          <div class="button-group animate-fade-up">
+            <a href="#apply" class="button">Apply for the Trial</a>
+            <a href="#how-it-works" class="button is-secondary">See What Is Included</a>
+          </div>
+          <div class="signal-row animate-fade-up" aria-label="Trial signals">
+            <span>Selected businesses only</span>
+            <span>One focused campaign</span>
+            <span>Clear next-month plan</span>
+          </div>
+        </div>
+
+        <aside class="trial-panel animate-scale-in" aria-label="Trial summary">
+          <p class="panel-kicker">What you get</p>
+          <h2>A focused first month inside Markethink.</h2>
+          <p>
+            This is not a generic demo. We use one real marketing problem — a campaign, email rhythm, follow-up gap, or messy process — and turn it into a working system you can review.
+          </p>
+          <ul>
+            <li><span>01</span> Audit what is stuck</li>
+            <li><span>02</span> Organize the first campaign</li>
+            <li><span>03</span> Build the review rhythm</li>
+            <li><span>04</span> Map the next paid month</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section light-green" id="how-it-works">
+      <div class="container split-section">
+        <div class="section-heading animate-fade-up">
+          <p class="subtitle">WHAT THE TRIAL PROVES</p>
+          <h2>Marketing feels different when the system remembers the work.</h2>
+        </div>
+        <div class="explain-copy animate-fade-up">
+          <p>
+            Most teams do not need another content sprint. They need a way to keep campaigns, approvals, leads, emails, website notes, and next steps connected. The trial is built to show that operating rhythm in a small, controlled scope.
+          </p>
+        </div>
+      </div>
+
+      <div class="container card-grid animate-stagger">
+        {includedItems.map((item) => (
+          <article class="info-card">
+            <span class="checkmark" aria-hidden="true">✓</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container two-column">
+        <div class="fit-block animate-fade-up">
+          <p class="subtitle">BEST FIT</p>
+          <h2>This is for businesses that have something real to market.</h2>
+          <div class="line-list">
+            {fitItems.map((item) => <p>{item}</p>)}
+          </div>
+        </div>
+
+        <div class="boundary-block animate-fade-up">
+          <p class="subtitle">CLEAR SCOPE</p>
+          <h2>Useful, focused, and not unlimited.</h2>
+          <p class="boundary-intro">
+            The trial is designed to prove the system, not to replace a full monthly engagement or website build.
+          </p>
+          <ul>
+            {trialBoundaries.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green application-section" id="apply">
+      <div class="container application-grid">
+        <div class="application-copy animate-fade-up">
+          <p class="subtitle">APPLY FOR THE TRIAL</p>
+          <h2>Tell us what needs to move first.</h2>
+          <p>
+            We review each application so the trial stays useful. If there is a fit, we will reply with the recommended first focus and the next step to begin.
+          </p>
+        </div>
+
+        <form
+          name="markethink-trial-application"
+          method="POST"
+          action="/thank-you/"
+          netlify
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="trial-form animate-fade-up"
+        >
+          <input type="hidden" name="form-name" value="markethink-trial-application" />
+          <input type="hidden" name="source" value="trial-page" />
+          <p class="hidden-field">
+            <label>Do not fill this out <input name="bot-field" /></label>
+          </p>
+
+          <div class="field-grid">
+            <label>
+              <span>Full name</span>
+              <input type="text" name="full_name" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Work email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Business / website</span>
+            <input type="text" name="business_or_website" autocomplete="organization" required />
+          </label>
+
+          <label>
+            <span>What does your business sell?</span>
+            <textarea name="business_offer" rows="3" required></textarea>
+          </label>
+
+          <label>
+            <span>What is currently stuck in your marketing?</span>
+            <textarea name="marketing_stuck_point" rows="3" required></textarea>
+          </label>
+
+          <label>
+            <span>Where should Markethink help first?</span>
+            <select name="first_focus" required>
+              <option value="">Select one</option>
+              <option>Campaigns and content rhythm</option>
+              <option>Email or newsletter</option>
+              <option>CRM and follow-up</option>
+              <option>Website or landing page</option>
+              <option>Lead generation</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Are you open to continuing monthly if the trial is useful?</span>
+            <select name="monthly_intent" required>
+              <option value="">Select one</option>
+              <option>Yes</option>
+              <option>Not sure yet</option>
+              <option>No</option>
+            </select>
+          </label>
+
+          <button type="submit" class="button form-button">Apply for a 30-day Markethink trial</button>
+          <p class="form-note">Selected businesses receive a focused 30-day trial. We will reply with the best first move if there is a fit.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .trial-page {
+    background: var(--bg-primary);
+    color: var(--text-invert);
+  }
+
+  .trial-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8.5rem 0 5rem;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 16% 18%, rgba(105, 210, 84, 0.16), transparent 30rem),
+      linear-gradient(135deg, #0f1213 0%, #171b1c 100%);
+  }
+
+  .trial-hero-grid,
+  .application-grid,
+  .two-column,
+  .split-section {
+    display: grid;
+    gap: clamp(2rem, 6vw, 4.5rem);
+    align-items: center;
+  }
+
+  .trial-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.72fr);
+  }
+
+  .trial-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    max-width: 48rem;
+  }
+
+  .trial-copy h1 {
+    font-size: clamp(3.2rem, 7vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+  }
+
+  .hero-description {
+    max-width: 39rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.08rem;
+    line-height: 1.78;
+  }
+
+  .button-group,
+  .signal-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .signal-row span {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
+    color: rgba(255, 255, 255, 0.74);
+    background: rgba(255, 255, 255, 0.045);
+    font-size: 0.82rem;
+  }
+
+  .trial-panel,
+  .trial-form,
+  .info-card,
+  .boundary-block {
+    border-radius: 1.5rem;
+  }
+
+  .trial-panel {
+    padding: clamp(1.25rem, 4vw, 2rem);
+    background: #f5f5f1;
+    color: var(--text-primary);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+  }
+
+  .panel-kicker {
+    color: rgba(15, 18, 19, 0.52);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .trial-panel h2 {
+    margin-top: 0.7rem;
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .trial-panel p:not(.panel-kicker) {
+    margin-top: 1rem;
+    color: rgba(15, 18, 19, 0.68);
+    line-height: 1.7;
+  }
+
+  .trial-panel ul {
+    list-style: none;
+    display: grid;
+    gap: 0.72rem;
+    margin-top: 1.4rem;
+  }
+
+  .trial-panel li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(15, 18, 19, 0.76);
+    font-weight: 600;
+  }
+
+  .trial-panel li span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #edf4ea;
+    color: #0f1213;
+    font-size: 0.78rem;
+  }
+
+  .split-section,
+  .application-grid,
+  .two-column {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  }
+
+  .section-heading h2,
+  .application-copy h2,
+  .fit-block h2,
+  .boundary-block h2 {
+    margin-top: 0.85rem;
+    max-width: 40rem;
+  }
+
+  .explain-copy p,
+  .application-copy p,
+  .boundary-intro {
+    color: rgba(15, 18, 19, 0.68);
+    line-height: 1.78;
+    font-size: 1rem;
+  }
+
+  .dark .boundary-intro {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .info-card {
+    min-height: 168px;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.66);
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    color: var(--text-primary);
+  }
+
+  .checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 999px;
+    background: var(--color-secondary);
+    color: #0f1213;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .info-card p,
+  .line-list p,
+  .boundary-block li {
+    line-height: 1.62;
+  }
+
+  .line-list {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.35rem;
+  }
+
+  .line-list p {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.045);
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .boundary-block {
+    padding: clamp(1.25rem, 4vw, 1.7rem);
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .boundary-block ul {
+    margin-top: 1rem;
+    padding-left: 1.15rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .boundary-block li + li {
+    margin-top: 0.55rem;
+  }
+
+  .trial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.15rem, 3vw, 1.45rem);
+    background: #f5f5f1;
+    color: var(--text-primary);
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    box-shadow: 0 24px 70px rgba(15, 18, 19, 0.12);
+  }
+
+  .hidden-field {
+    display: none;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+  }
+
+  label span {
+    color: rgba(15, 18, 19, 0.74);
+    font-size: 0.78rem;
+    font-weight: 650;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 18, 19, 0.12);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 0.82rem 0.88rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 88px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(105, 210, 84, 0.95);
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
+  }
+
+  .form-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .form-note {
+    color: rgba(15, 18, 19, 0.6);
+    font-size: 0.86rem;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  @media (max-width: 991px) {
+    .trial-hero-grid,
+    .split-section,
+    .application-grid,
+    .two-column {
+      grid-template-columns: 1fr;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .trial-hero {
+      min-height: auto;
+      padding-top: 7.5rem;
+    }
+
+    .trial-copy h1 {
+      font-size: 3rem;
+    }
+
+    .card-grid,
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
