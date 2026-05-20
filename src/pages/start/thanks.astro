@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Thank you — Markethink"
+  description="Your Markethink subscription is active. We'll reach out shortly with onboarding next steps."
+  canonical="https://markethink.ai/start/thanks"
+  noindex={true}
+>
+  <main class="billing-page">
+    <section class="billing-shell">
+      <div class="billing-brand" aria-label="Markethink">
+        <a href="/" class="brand-link">Markethink</a>
+      </div>
+
+      <div class="thanks-grid">
+        <section class="billing-copy thanks-copy" aria-labelledby="thanks-heading">
+          <p class="subtitle">MARKETHINK</p>
+          <h1 id="thanks-heading">Thank you — we look forward to working with you.</h1>
+          <p>
+            Your subscription is active. We'll reach out shortly with onboarding next steps. In the meantime, you can reply to your Stripe receipt email if you have any questions.
+          </p>
+          <a class="back-link" href="/">Back to markethink.ai</a>
+        </section>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .billing-page {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(105, 210, 84, 0.16), transparent 28rem),
+      linear-gradient(135deg, #0f1213 0%, #171b1c 100%);
+    color: var(--text-invert);
+  }
+
+  .billing-shell {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1.5rem 0 4rem;
+  }
+
+  .billing-brand {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 0 3rem;
+  }
+
+  .brand-link {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+  }
+
+  .thanks-grid {
+    display: grid;
+    align-items: center;
+    min-height: calc(100vh - 9rem);
+  }
+
+  .billing-copy {
+    max-width: 42rem;
+  }
+
+  .billing-copy h1 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .billing-copy p:not(.subtitle) {
+    margin-top: 1.5rem;
+    max-width: 34rem;
+    color: rgba(245, 245, 241, 0.72);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .thanks-copy {
+    padding-bottom: clamp(2rem, 8vw, 6rem);
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-top: 2rem;
+    color: rgba(245, 245, 241, 0.68);
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 0.28em;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: #f5f5f1;
+  }
+
+  @media (max-width: 860px) {
+    .billing-shell {
+      padding-bottom: 2rem;
+    }
+
+    .billing-brand {
+      padding-bottom: 2rem;
+    }
+
+    .thanks-grid {
+      min-height: auto;
+      padding-top: clamp(2rem, 12vw, 5rem);
+    }
+
+    .billing-copy h1 {
+      font-size: clamp(2.7rem, 12vw, 4.2rem);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .billing-shell {
+      width: min(100% - 1rem, 1120px);
+    }
+  }
+</style>
