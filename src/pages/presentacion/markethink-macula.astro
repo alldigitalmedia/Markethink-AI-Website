@@ -18,7 +18,10 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
         <span>01</span>
         <strong>Apertura</strong>
       </a>
-      <span class="rail-item muted"><span>02</span><strong>Problema</strong></span>
+      <a href="#problem" class="rail-item">
+        <span>02</span>
+        <strong>Problema</strong>
+      </a>
       <span class="rail-item muted"><span>03</span><strong>Sistema</strong></span>
       <span class="rail-item muted"><span>04</span><strong>Piloto</strong></span>
     </aside>
@@ -38,7 +41,7 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
       </header>
 
       <div class="slide-content">
-        <p class="eyebrow">PRESENTACIÓN PRIVADA · PRIMERA SLIDE</p>
+        <p class="eyebrow">PRESENTACIÓN PRIVADA · SLIDE 01</p>
         <h1>Marketing que no se reinicia cada semana.</h1>
         <p class="lead">
           Markethink y Mácula proponen una forma más controlada de organizar campañas,
@@ -47,7 +50,7 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
         </p>
 
         <div class="hero-actions" aria-label="Acciones de presentación">
-          <a href="#opening" class="primary-action">Iniciar la conversación</a>
+          <a href="#problem" class="primary-action">Ver el problema</a>
           <span class="context-note">Diseñado para equipos empresariales que necesitan continuidad, gobernanza y aprobación humana.</span>
         </div>
       </div>
@@ -55,6 +58,53 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
       <div class="slide-footer">
         <span>01 / Apertura</span>
         <span>Sistema + aliado tecnológico estratégico</span>
+      </div>
+    </section>
+
+    <section id="problem" class="presentation-slide problem-slide" aria-label="Slide 02: el problema operativo">
+      <div class="problem-grid" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="problem-content">
+        <p class="eyebrow">SLIDE 02 · EL PROBLEMA</p>
+        <h2>La operación de marketing se parte en demasiados lugares.</h2>
+        <p class="problem-lead">
+          En equipos grandes, el contexto vive repartido entre reuniones, documentos, agencias, áreas internas, comentarios y versiones.
+          Antes de que el trabajo pueda volverse estratégico, la operación ya está cargando retrabajo.
+        </p>
+
+        <div class="fragment-board" aria-label="Piezas de trabajo fragmentadas">
+          <article class="fragment-card card-brief">
+            <span>Brief</span>
+            <strong>Criterios iniciales</strong>
+            <small>Contexto que cambia entre áreas.</small>
+          </article>
+          <article class="fragment-card card-comments">
+            <span>Comentarios</span>
+            <strong>Feedback disperso</strong>
+            <small>Decisiones que no siempre quedan registradas.</small>
+          </article>
+          <article class="fragment-card card-version">
+            <span>Versiones</span>
+            <strong>Activos duplicados</strong>
+            <small>La última versión no siempre es obvia.</small>
+          </article>
+          <article class="fragment-card card-calendar">
+            <span>Calendario</span>
+            <strong>Prioridades móviles</strong>
+            <small>La operación avanza, pero pierde continuidad.</small>
+          </article>
+          <div class="fragment-center">
+            <span>Resultado</span>
+            <strong>Más coordinación que aprendizaje.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <span>02 / Problema</span>
+        <span>Fragmentación antes de estrategia</span>
       </div>
     </section>
   </main>
@@ -69,7 +119,7 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
     min-height: 100vh;
     background: #0f1213;
     color: #f5f5f1;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .presentation-slide {
@@ -153,13 +203,13 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
   .macula-logo {
     display: inline-flex;
     align-items: center;
-    height: 1.7rem;
+    height: 2.05rem;
   }
 
   .macula-logo :global(svg) {
     display: block;
     width: auto;
-    height: 1.7rem;
+    height: 2.05rem;
   }
 
   .slide-content {
@@ -236,7 +286,7 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
   }
 
   .slide-footer {
-    position: fixed;
+    position: absolute;
     left: clamp(1.25rem, 4vw, 4rem);
     right: clamp(1.25rem, 4vw, 4rem);
     bottom: clamp(1rem, 2vw, 2rem);
@@ -307,6 +357,156 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
     opacity: 0.42;
   }
 
+
+  .problem-slide {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 78% 28%, rgba(243, 216, 50, 0.12), transparent 26%),
+      radial-gradient(circle at 24% 74%, rgba(105, 210, 84, 0.12), transparent 32%),
+      linear-gradient(135deg, #0f1213 0%, #171b1b 52%, #0f1213 100%);
+  }
+
+  .problem-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.34;
+    background-image:
+      linear-gradient(rgba(245, 245, 241, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 245, 241, 0.055) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at 58% 50%, black, transparent 74%);
+  }
+
+  .problem-grid span {
+    position: absolute;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #69d254;
+    box-shadow: 0 0 0 0.35rem rgba(105, 210, 84, 0.12);
+  }
+
+  .problem-grid span:nth-child(1) { top: 22%; left: 18%; }
+  .problem-grid span:nth-child(2) { top: 31%; right: 27%; background: #f3d832; box-shadow: 0 0 0 0.35rem rgba(243, 216, 50, 0.1); }
+  .problem-grid span:nth-child(3) { bottom: 24%; left: 38%; }
+  .problem-grid span:nth-child(4) { bottom: 18%; right: 17%; background: #f3d832; box-shadow: 0 0 0 0.35rem rgba(243, 216, 50, 0.1); }
+
+  .problem-content {
+    width: min(1180px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+    margin: 0 auto;
+    padding: 7rem 0 5rem;
+  }
+
+  h2 {
+    max-width: 10.5ch;
+    margin: 0;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(3.8rem, 7.4vw, 7.8rem);
+    font-weight: 400;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+    color: #f5f5f1;
+  }
+
+  .problem-lead {
+    max-width: 41rem;
+    margin-top: 1.5rem;
+    color: rgba(245, 245, 241, 0.72);
+    font-size: clamp(1.02rem, 1.25vw, 1.22rem);
+    line-height: 1.65;
+  }
+
+  .fragment-board {
+    position: relative;
+    min-height: 580px;
+  }
+
+  .fragment-card,
+  .fragment-center {
+    position: absolute;
+    border: 1px solid rgba(245, 245, 241, 0.12);
+    background: rgba(245, 245, 241, 0.075);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+  }
+
+  .fragment-card {
+    width: min(15.5rem, 42vw);
+    padding: 1.05rem;
+    border-radius: 1.3rem;
+  }
+
+  .fragment-card span,
+  .fragment-center span {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: #69d254;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .fragment-card strong,
+  .fragment-center strong {
+    display: block;
+    color: #f5f5f1;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .fragment-card small {
+    display: block;
+    margin-top: 0.55rem;
+    color: rgba(245, 245, 241, 0.56);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .card-brief { top: 2%; left: 4%; transform: rotate(-4deg); }
+  .card-comments { top: 19%; right: 2%; transform: rotate(3deg); }
+  .card-version { bottom: 15%; left: 0; transform: rotate(2deg); }
+  .card-calendar { bottom: 2%; right: 8%; transform: rotate(-3deg); }
+
+  .fragment-center {
+    top: 50%;
+    left: 50%;
+    width: min(19rem, 48vw);
+    padding: 1.3rem;
+    border-radius: 1.6rem;
+    transform: translate(-50%, -50%);
+    background:
+      linear-gradient(135deg, rgba(105, 210, 84, 0.16), rgba(243, 216, 50, 0.08)),
+      rgba(15, 18, 19, 0.72);
+    border-color: rgba(105, 210, 84, 0.26);
+  }
+
+  .fragment-center span {
+    color: #f3d832;
+  }
+
+  .fragment-board::before,
+  .fragment-board::after {
+    content: "";
+    position: absolute;
+    inset: 18% 14%;
+    border: 1px dashed rgba(245, 245, 241, 0.18);
+    border-radius: 999px;
+    transform: rotate(-18deg);
+  }
+
+  .fragment-board::after {
+    inset: 26% 8%;
+    transform: rotate(22deg);
+    border-color: rgba(105, 210, 84, 0.18);
+  }
+
   @media (max-width: 980px) {
     .presentation-slide {
       padding-right: clamp(1.25rem, 4vw, 4rem);
@@ -314,6 +514,15 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
 
     .slide-rail {
       display: none;
+    }
+
+    .problem-content {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .fragment-board {
+      min-height: 500px;
     }
 
     h1 {
@@ -345,13 +554,44 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
 
     .macula-logo,
     .macula-logo :global(svg) {
-      height: 1.35rem;
+      height: 1.55rem;
     }
 
     .slide-content {
       align-self: end;
       padding-top: 9rem;
       padding-bottom: 5rem;
+    }
+
+    .problem-content {
+      padding-top: 8rem;
+      padding-bottom: 5.5rem;
+    }
+
+    h2 {
+      max-width: 11ch;
+      font-size: clamp(3.3rem, 15vw, 5.6rem);
+    }
+
+    .problem-lead {
+      font-size: 1rem;
+    }
+
+    .fragment-board {
+      min-height: 620px;
+    }
+
+    .fragment-card {
+      width: min(15rem, 76vw);
+    }
+
+    .card-brief { top: 0; left: 0; }
+    .card-comments { top: 22%; right: 0; }
+    .card-version { bottom: 22%; left: 0; }
+    .card-calendar { bottom: 0; right: 0; }
+
+    .fragment-center {
+      width: min(17rem, 74vw);
     }
 
     .hero-actions {
