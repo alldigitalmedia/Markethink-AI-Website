@@ -23,6 +23,11 @@ const staticPages = [
     priority: "0.9",
     changefreq: "monthly",
   },
+  {
+    path: "/privacy/",
+    priority: "0.3",
+    changefreq: "yearly",
+  },
 ];
 
 const articlePages = insightPosts.map((post) => ({
