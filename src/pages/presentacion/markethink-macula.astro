@@ -108,8 +108,8 @@ const slides = [
     "id": "workflow",
     "nav": "Flujo",
     "kicker": "SLIDE 05 · CÓMO TRABAJA",
-    "title": "De objetivo a piezas listas para aprobar.",
-    "lead": "Un flujo simple: definir qué se quiere mover, estructurar la campaña, producir activos, revisar con claridad y aprender del ciclo.",
+    "title": "De objetivo comercial a trabajo listo para aprobar.",
+    "lead": "Un flujo claro para tomar una prioridad real —una campaña, una audiencia, una línea de negocio o una oportunidad comercial— y convertirla en piezas listas para revisar, publicar y aprender.",
     "image": "https://markethink.ai/images/product-continuous-improvement.png?v=workflow-full-1",
     "layout": "library",
     "backgroundOnly": false,
@@ -117,18 +117,18 @@ const slides = [
     "action": "Siguiente",
     "note": "Un flujo completo",
     "chips": [
-      "Objetivo",
-      "Estrategia",
+      "Objetivo comercial",
+      "ICP y estrategia",
       "Producción",
       "Revisión",
       "Aprendizaje"
     ],
     "details": [
-      "1. Objetivo: campaña, oferta, audiencia u oportunidad",
-      "2. Estrategia: mensaje, ángulo, canal y siguiente paso",
-      "3. Producción: landing, posts, emails, visuales y seguimiento",
-      "4. Revisión: cambios claros antes de publicar o enviar",
-      "5. Aprendizaje: cada ciclo mejora el siguiente"
+      "1. Objetivo comercial: definir qué se quiere mover y por qué importa ahora",
+      "2. ICP y estrategia: identificar el ICP, definir mensaje, ángulo, canal y siguiente paso",
+      "3. Producción: crear landing, posts, emails, visuales y material de seguimiento",
+      "4. Revisión: aprobar, ajustar o corregir antes de publicar o enviar",
+      "5. Aprendizaje: usar feedback y datos para mejorar el siguiente ciclo"
     ]
   },
   {
@@ -136,7 +136,7 @@ const slides = [
     "id": "ai-brand",
     "nav": "Criterio",
     "kicker": "SLIDE 06 · IA + CRITERIO + MARCA",
-    "title": "Velocidad de IA, criterio de marketers expertos y contenido siempre on brand.",
+    "title": "Velocidad de IA, criterio de expertos en marketing y contenido siempre <strong>on-brand</strong>.",
     "lead": "La IA acelera investigación, copy, diseño y producción. El criterio experto define estrategia, calidad y enfoque comercial. La marca y la audiencia guían cada pieza.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-macula-dynamic-slide-9.png?v=rawfix2",
     "layout": "roadmap",
@@ -163,7 +163,7 @@ const slides = [
     "nav": "Cambio",
     "kicker": "SLIDE 07 · ANTES Y DESPUÉS",
     "title": "De piezas sueltas a marketing que avanza todos los días.",
-    "lead": "Antes: ideas sin ejecución, copy separado del diseño, landings atrasadas y CRM desconectado. Después: campañas organizadas, activos producidos, revisión clara y seguimiento alineado.",
+    "lead": "Antes: landings atrasadas y CRM desconectado. Después: campañas organizadas, activos producidos, revisión clara e integración con CRM para seguimiento comercial.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-macula-dynamic-slide-10.png?v=rawfix2",
     "layout": "gates",
     "backgroundOnly": false,
@@ -177,7 +177,7 @@ const slides = [
     "details": [
       "Landings y posts alineados con marca",
       "Aprobaciones claras",
-      "Seguimiento comercial ordenado",
+      "Seguimiento comercial e integración con CRM",
       "Memoria de decisiones",
       "Cada ciclo mejora el siguiente"
     ]
@@ -186,9 +186,9 @@ const slides = [
     "n": "08",
     "id": "macula",
     "nav": "Mácula",
-    "kicker": "SLIDE 08 · IMPLEMENTACIÓN Y CONTROL",
-    "title": "Mácula convierte el sistema en una implementación confiable para empresas grandes.",
-    "lead": "Markethink aporta la operación de marketing. Mácula aporta criterio tecnológico, acompañamiento consultivo, integración y gobierno para adoptar con control.",
+    "kicker": "SLIDE 08 · ACOMPAÑAMIENTO, INTEGRACIÓN Y CONTROL",
+    "title": "Acompañamiento, integración y control.",
+    "lead": "Markethink aporta la operación de marketing. Mácula aporta acompañamiento consultivo, integración, gobierno y contexto tecnológico para que la adopción sea clara, controlada y útil para cada empresa.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-macula-dynamic-slide-6.png?v=rawfix2",
     "layout": "consulting",
     "backgroundOnly": true,
@@ -213,8 +213,8 @@ const slides = [
     "id": "next-step",
     "nav": "Siguiente",
     "kicker": "SLIDE 09 · SIGUIENTE PASO",
-    "title": "El siguiente paso no es probar otra herramienta. Es escoger un flujo real.",
-    "lead": "Una campaña, una línea de negocio o un proceso comercial donde Markethink y Mácula puedan convertir marketing pendiente en trabajo listo para revisar.",
+    "title": "El siguiente paso no es probar otra herramienta. Es elegir un objetivo real donde IA, estrategia y ejecución trabajen juntas.",
+    "lead": "Una campaña, una línea de negocio o un proceso comercial donde Markethink y Mácula puedan convertir marketing pendiente en trabajo listo para revisar, medir y mejorar.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-macula-hero.jpg?v=ipad-dashboard-1",
     "layout": "closing",
     "backgroundOnly": true,
@@ -273,7 +273,7 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
         <div class="slide-shell">
           <div class="story-content">
             <p class="eyebrow">{slide.kicker}</p>
-            <h1>{slide.title}</h1>
+            <h1 set:html={slide.title}></h1>
             <p class="lead">{slide.lead}</p>
             {slide.chips?.length > 0 && (
               <div class="chip-row" aria-label="Puntos clave">
