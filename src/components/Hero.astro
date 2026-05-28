@@ -4,22 +4,22 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 ---
 
 <section class="section-hero" id="hero">
+  <div class="hero-backdrop" aria-hidden="true">
+    <img src="/images/hero-image.png" alt="" class="hero-backdrop-image" />
+  </div>
   <div class="container hero-content">
     <div class="hero-text">
       <p class="subtitle animate-fade-up">MARKETING THAT SHIPS EVERY WEEK</p>
       <h1 class="hero-heading animate-fade-up">
-        Turn scattered marketing into a system that ships every week.
+        The marketing you meant to do is costing you clients.
       </h1>
       <p class="hero-description animate-fade-up">
-        Markethink learns your business, organizes campaigns and approvals, and helps your team create the content, web updates, outreach, and follow-up that keep growth moving.
+        Markethink helps you ship the campaigns, content, web updates, outreach, and follow-up your business keeps pushing off — aligned with your brand, your audience, and what gets approved over time.
       </p>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
         <a href={trialHref} class="button is-secondary">Apply for a 30-Day Trial</a>
       </div>
-    </div>
-    <div class="hero-image-wrap">
-      <img src="/images/hero-image.png" alt="Markethink guided workspace preview" class="hero-image" />
     </div>
   </div>
 </section>
@@ -33,57 +33,99 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     align-items: center;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+  }
+
+  .section-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(105, 210, 84, 0.16), transparent 30rem),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.2) 0%, #0f1213 86%);
+  }
+
+  .section-hero::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2.75rem;
+    z-index: -1;
+    width: min(840px, 82vw);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(105, 210, 84, 0.48), transparent);
+    opacity: 0.7;
+  }
+
+  .hero-backdrop {
+    position: absolute;
+    inset: 6rem 0 auto;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .hero-backdrop-image {
+    width: min(1040px, 90vw);
+    max-height: 600px;
+    object-fit: contain;
+    opacity: 0.18;
+    filter: saturate(0.78) contrast(1.08);
+    transform: translate(18%, 1rem) scale(1.08);
+    mask-image: radial-gradient(circle at 62% 42%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 34%, transparent 72%);
+    -webkit-mask-image: radial-gradient(circle at 62% 42%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 34%, transparent 72%);
   }
 
   .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    min-height: calc(100vh - 12rem);
   }
 
   .hero-text {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
-    max-width: 34rem;
+    max-width: 58rem;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .hero-heading {
-    font-size: 4.4rem;
-    line-height: 1.15;
-    letter-spacing: -0.04em;
+    max-width: 55rem;
+    font-size: clamp(3.2rem, 8vw, 7.8rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
   }
 
   .hero-description {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 31rem;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.76);
+    max-width: 47rem;
     line-height: 1.7;
   }
 
   .button-group {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
   }
 
-  .hero-image-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-image {
-    width: 100%;
-    max-width: 540px;
-    border-radius: var(--radius-medium);
-  }
-
   @media (max-width: 991px) {
-    .hero-heading {
-      font-size: 3.2rem;
+    .section-hero {
+      padding-top: 7rem;
+    }
+
+    .hero-backdrop-image {
+      width: 110vw;
+      opacity: 0.14;
+      transform: translate(10%, 2rem) scale(1.06);
     }
   }
 
@@ -94,31 +136,35 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-content {
-      grid-template-columns: 1fr;
-      text-align: center;
+      min-height: 34rem;
     }
 
     .hero-text {
-      align-items: center;
-      margin: 0 auto;
+      gap: 1.25rem;
     }
 
     .hero-heading {
-      font-size: 2.5rem;
+      font-size: clamp(3rem, 16vw, 4.6rem);
     }
 
-    .button-group {
-      justify-content: center;
-    }
-
-    .hero-image {
-      max-width: 400px;
+    .hero-description {
+      font-size: 1rem;
     }
   }
 
   @media (max-width: 479px) {
-    .hero-heading {
-      font-size: 2rem;
+    .section-hero {
+      padding-bottom: 3rem;
+    }
+
+    .hero-content {
+      min-height: 31rem;
+    }
+
+    .hero-backdrop-image {
+      width: 140vw;
+      opacity: 0.12;
+      transform: translate(8%, 4rem) scale(1.12);
     }
   }
 </style>
