@@ -1,0 +1,337 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const slides = [
+  {
+    n: "01",
+    id: "opening",
+    nav: "Opening",
+    kicker: "PRIVATE PRESENTATION · SLIDE 01",
+    title: "Stop managing marketing chaos. Start shipping.",
+    lead: "Markethink turns campaigns, content, approvals, lead follow-up, and learning into one operating rhythm for your business.",
+    image: "/images/hero-image.png",
+    layout: "hero",
+    backgroundOnly: true,
+    note: "The core promise",
+    chips: ["Campaigns that move", "One place", "Approval memory", "Keeps getting sharper"],
+  },
+  {
+    n: "02",
+    id: "problem",
+    nav: "Problem",
+    kicker: "SLIDE 02 · THE OPERATING GAP",
+    title: "Most marketing does not fail from a lack of ideas. It breaks because the work is scattered.",
+    lead: "The plan starts in one place, the assets live somewhere else, approvals happen in a chat, and sales follow-up gets disconnected. Markethink gives that work a system.",
+    image: "/images/key-feature-context-campaigns.avif",
+    layout: "library",
+    backgroundOnly: false,
+    note: "From scattered work to a clear flow",
+    chips: ["Strategy", "Content", "Landing pages", "Approval", "Follow-up"],
+    details: [
+      "Campaign ideas lose momentum before they become assets",
+      "Brand decisions get repeated instead of remembered",
+      "Landing pages, posts, and emails drift out of sync",
+      "Good opportunities go cold without a clean next step",
+    ],
+  },
+  {
+    n: "03",
+    id: "system",
+    nav: "System",
+    kicker: "SLIDE 03 · WHAT MARKETHINK IS",
+    title: "Markethink is the marketing system that learns your business and helps the work ship every week.",
+    lead: "It organizes campaigns, prepares review-ready assets, keeps brand decisions close, and carries useful learning into the next cycle.",
+    image: "/images/product-campaign-workflow.png",
+    layout: "product",
+    backgroundOnly: false,
+    note: "A delivery system for marketing work",
+    chips: ["Learns", "Organizes", "Creates", "Remembers"],
+    details: [
+      "Turns business priorities into campaign direction",
+      "Keeps voice, visuals, offers, and limits aligned",
+      "Creates work that is ready to review, not just brainstorm",
+      "Builds continuity from approvals, feedback, and performance signals",
+    ],
+  },
+  {
+    n: "04",
+    id: "deliverables",
+    nav: "What it ships",
+    kicker: "SLIDE 04 · REAL MARKETING OUTPUT",
+    title: "The output is practical: the assets your business needs to keep moving.",
+    lead: "Markethink is built around work that can be reviewed, improved, approved, and used — not loose ideas that sit in a document.",
+    image: "/images/key-feature-markethink-branded-flow.avif",
+    layout: "library",
+    backgroundOnly: false,
+    note: "Assets ready for review",
+    chips: ["Landing pages", "Social", "Email", "Sales material", "Lead follow-up"],
+    details: [
+      "Campaign pages and service pages for specific audiences",
+      "Posts, carousels, and graphics that stay on brand",
+      "Emails and follow-up messages tied to the campaign",
+      "Sales notes, offer angles, and next-step material for real opportunities",
+    ],
+  },
+  {
+    n: "05",
+    id: "workflow",
+    nav: "Workflow",
+    kicker: "SLIDE 05 · HOW THE WORK MOVES",
+    title: "From business objective to work ready for approval.",
+    lead: "A clear weekly rhythm: choose what needs to move, define the audience and message, produce the assets, review the work, then carry the learning forward.",
+    image: "/images/product-continuous-improvement.png",
+    layout: "roadmap",
+    backgroundOnly: false,
+    note: "A complete operating loop",
+    chips: ["Objective", "Audience", "Production", "Review", "Learning"],
+    details: [
+      "1. Objective: decide what needs to move and why it matters now",
+      "2. Direction: define audience, angle, offer, channel, and next step",
+      "3. Production: create the page, posts, emails, visuals, and sales support",
+      "4. Review: approve, correct, or refine before anything goes live",
+      "5. Learning: use feedback and performance signals to sharpen the next cycle",
+    ],
+  },
+  {
+    n: "06",
+    id: "memory",
+    nav: "Memory",
+    kicker: "SLIDE 06 · APPROVAL MEMORY",
+    title: "Your marketing should not restart from zero every week.",
+    lead: "Markethink remembers what was approved, what was rejected, what worked, and what should change next time — so the system gets sharper instead of noisier.",
+    image: "/images/process-markethink-learns-what-works.avif",
+    layout: "gates",
+    backgroundOnly: false,
+    note: "The system remembers what worked",
+    chips: ["Approved direction", "Rejected patterns", "Useful feedback", "Next-cycle learning"],
+    details: [
+      "Fewer repeated corrections",
+      "More consistent voice and visual direction",
+      "Cleaner handoff between campaigns",
+      "Better decisions as the business context grows",
+    ],
+  },
+  {
+    n: "07",
+    id: "growth",
+    nav: "Growth",
+    kicker: "SLIDE 07 · BUSINESS OUTCOME",
+    title: "The goal is not more content. The goal is more clients, less guesswork.",
+    lead: "Markethink connects the marketing work to the next commercial step: campaigns that explain the offer, assets that support the sale, and follow-up that does not get lost.",
+    image: "/images/feature-card-clients-at-door.avif",
+    layout: "consulting",
+    backgroundOnly: false,
+    note: "Marketing tied to the next step",
+    chips: ["Clear offer", "Review-ready assets", "Lead follow-up", "Sales support"],
+    details: [
+      "Turn business priorities into visible campaigns",
+      "Support the sale with consistent messages and proof points",
+      "Keep lead and follow-up work connected to the campaign",
+      "Improve the system from what the market actually responds to",
+    ],
+  },
+  {
+    n: "08",
+    id: "next-step",
+    nav: "Next step",
+    kicker: "SLIDE 08 · START WITH ONE REAL PRIORITY",
+    title: "The best starting point is one campaign, one audience, or one sales opportunity that needs to move now.",
+    lead: "Pick a real business priority. Markethink turns it into the first campaign path: message, page, content, follow-up, review, and learning loop.",
+    image: "/images/cta-full-mockup.png",
+    layout: "closing",
+    backgroundOnly: true,
+    note: "Define the first marketing flow",
+    chips: ["Campaign", "Landing + social", "Follow-up", "Review"],
+    details: [
+      "Choose a priority with real friction or opportunity",
+      "Define the audience, offer, and next decision",
+      "Ship the first set of review-ready assets",
+      "Use the learning to make the next cycle sharper",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Markethink Presentation — Marketing that ships"
+  description="A private Markethink presentation for direct clients: how the marketing system learns your business, organizes campaigns, and helps marketing ship every week."
+  image="https://markethink.ai/images/hero-image.png"
+  canonical="https://markethink.ai/presentation/"
+  noindex={true}
+>
+  <main class="presentation-page" aria-label="Markethink presentation">
+    <header class="presentation-topbar">
+      <a href="/" class="logo-lockup" aria-label="Markethink">
+        <img src="/images/logo.svg" alt="Markethink" class="markethink-logo" />
+      </a>
+      <span class="deck-label">Private presentation</span>
+    </header>
+
+    <aside class="slide-rail" aria-label="Presentation sections">
+      {slides.map((slide) => (
+        <a href={`#${slide.id}`} class={`rail-item ${slide.n === '01' ? 'active' : ''}`} data-slide-link={slide.id} aria-current={slide.n === '01' ? 'step' : undefined}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide, index) => (
+      <section id={slide.id} data-slide-id={slide.id} data-slide-index={index} class={`presentation-slide layout-${slide.layout} ${slide.backgroundOnly ? 'background-led' : ''} ${slide.n === '01' ? 'is-active' : ''}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="slide-background" aria-hidden="true">
+          <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+        </div>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="slide-shell">
+          <div class="story-content">
+            <p class="eyebrow">{slide.kicker}</p>
+            <h1 set:html={slide.title}></h1>
+            <p class="lead">{slide.lead}</p>
+            {slide.chips?.length > 0 && (
+              <div class="chip-row" aria-label="Key points">
+                {slide.chips.map((chip) => <span>{chip}</span>)}
+              </div>
+            )}
+            {slide.details && (
+              <ul class="detail-list" aria-label="Section details">
+                {slide.details.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            <div class="hero-actions" aria-label="Presentation context">
+              <span class="context-note">Markethink · {slide.note}</span>
+            </div>
+          </div>
+
+          {!slide.backgroundOnly && (
+            <div class="visual-stack">
+              <div class="visual-card" aria-hidden="true">
+                <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div class="slide-footer">
+          <span>{slide.n} / {slide.nav}</span>
+          <span>{slide.note}</span>
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const slides = Array.from(document.querySelectorAll('.presentation-slide[data-slide-id]'));
+    const railItems = Array.from(document.querySelectorAll('.rail-item[data-slide-link]'));
+
+    if (!slides.length || !railItems.length) return;
+
+    const setActiveSlide = (id) => {
+      railItems.forEach((item) => {
+        const isActive = item.dataset.slideLink === id;
+        item.classList.toggle('active', isActive);
+        if (isActive) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+
+      slides.forEach((slide) => {
+        slide.classList.toggle('is-active', slide.dataset.slideId === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.dataset?.slideId) {
+          setActiveSlide(visible.target.dataset.slideId);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.28, 0.42, 0.58, 0.72],
+        rootMargin: '-22% 0px -34% 0px',
+      }
+    );
+
+    slides.forEach((slide) => observer.observe(slide));
+
+    railItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (item.dataset.slideLink) setActiveSlide(item.dataset.slideLink);
+      });
+    });
+  })();
+</script>
+
+<style>
+  :global(html) { background: #0f1213; scroll-behavior: smooth; }
+  .presentation-page { background: #0f1213; color: #f5f5f1; overflow-x: hidden; }
+  .presentation-slide { position: relative; min-height: 100svh; isolation: isolate; display: grid; align-items: center; padding: clamp(6.5rem, 9vh, 8rem) clamp(1.3rem, 5vw, 5rem) clamp(4.8rem, 7vh, 6.4rem); background: #0f1213; overflow: hidden; scroll-margin-top: 0; }
+  .presentation-slide .story-content { opacity: .72; transform: translateY(18px); transition: opacity .72s ease, transform .72s ease; }
+  .presentation-slide .visual-card { opacity: .76; transition: opacity .72s ease, transform .72s ease, box-shadow .72s ease; }
+  .presentation-slide .slide-background img { transition: opacity .9s ease, transform 1.15s ease, filter .9s ease; }
+  .presentation-slide.is-active .story-content { opacity: 1; transform: translateY(0); }
+  .presentation-slide.is-active .visual-card { opacity: 1; box-shadow: 0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(105,210,84,.06); }
+  .presentation-slide.is-active .slide-background img { transform: scale(1.01); }
+  .presentation-slide.is-active .motion-field span { animation: softPulse 3.8s ease-in-out infinite; }
+  .slide-background, .slide-overlay, .motion-field { position: absolute; inset: 0; }
+  .slide-background { z-index: -4; }
+  .slide-background img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.23; filter: saturate(0.82) contrast(1.08); transform: scale(1.04); }
+  .slide-overlay { z-index: -3; background: radial-gradient(circle at var(--hot-x, 72%) var(--hot-y, 48%), rgba(105,210,84,.18), transparent 28%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.78) 46%, rgba(15,18,19,.42) 100%), linear-gradient(180deg, rgba(15,18,19,.14), rgba(15,18,19,.84)); }
+  .motion-field { z-index: -2; opacity: .58; background-image: linear-gradient(rgba(245,245,241,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,.055) 1px, transparent 1px); background-size: 72px 72px; mask-image: radial-gradient(circle at 62% 50%, black, transparent 76%); }
+  .motion-field span { position: absolute; width: .55rem; height: .55rem; border-radius: 999px; background: #69d254; box-shadow: 0 0 0 .42rem rgba(105,210,84,.13); }
+  .motion-field span:nth-child(1){ top: 22%; left: 20%; } .motion-field span:nth-child(2){ top: 30%; right: 28%; } .motion-field span:nth-child(3){ bottom:24%; left:38%; } .motion-field span:nth-child(4){ bottom:18%; right:17%; }
+  .presentation-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+  .logo-lockup { pointer-events:auto; display:inline-flex; align-items:center; min-height:3.1rem; padding:.85rem 1.1rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.66); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.28); }
+  .markethink-logo{ height:1.15rem; width:auto; filter:brightness(0) invert(1); }
+  .deck-label { pointer-events:none; padding:.75rem 1rem; border:1px solid rgba(245,245,241,.11); border-radius:999px; color:rgba(245,245,241,.58); background:rgba(15,18,19,.44); backdrop-filter:blur(14px); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+  .slide-shell { width:min(1240px, 100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0, .95fr) minmax(340px, .9fr); gap:clamp(2rem,5vw,5.5rem); align-items:center; padding-block:clamp(1.2rem,2.5vh,2rem); }
+  .story-content{ max-width:760px; position:relative; z-index:2; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:.65rem; margin:0 0 1.15rem; color:rgba(237,244,234,.72); font-size:.75rem; line-height:1; letter-spacing:.16em; text-transform:uppercase; } .eyebrow::before{ content:""; width:.52rem; height:.52rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .32rem rgba(105,210,84,.12); }
+  h1{ max-width:20ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.25rem,4.2vw,4.72rem); font-weight:400; line-height:1.03; letter-spacing:-.032em; color:#f5f5f1; text-wrap:balance; }
+  .lead{ max-width:46rem; margin-top:clamp(.85rem,1.7vw,1.25rem); color:rgba(245,245,241,.80); font-size:clamp(.98rem,1.12vw,1.12rem); line-height:1.48; text-wrap:balance; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.15rem; } .chip-row span{ padding:.68rem .86rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.55); color:rgba(245,245,241,.74); backdrop-filter:blur(12px); font-size:.8rem; }
+  .detail-list{ max-width:50rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.52rem; margin:1.05rem 0 0; padding:0; list-style:none; }
+  .detail-list li{ position:relative; padding:.72rem .78rem .72rem 1.55rem; border:1px solid rgba(245,245,241,.10); border-radius:1rem; background:rgba(15,18,19,.38); color:rgba(245,245,241,.72); font-size:clamp(.86rem,.98vw,.95rem); line-height:1.34; backdrop-filter:blur(10px); }
+  .detail-list li::before{ content:""; position:absolute; left:.78rem; top:1.05rem; width:.42rem; height:.42rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .18rem rgba(105,210,84,.12); }
+  .hero-actions{ display:flex; align-items:center; gap:1.15rem; flex-wrap:wrap; margin-top:1.35rem; } .context-note{ max-width:27rem; color:rgba(245,245,241,.52); font-size:.86rem; line-height:1.45; }
+  .visual-stack{ display:grid; gap:clamp(.85rem,1.4vw,1.15rem); align-items:start; }
+  .visual-card{ position:relative; width:100%; border:1px solid rgba(245,245,241,.13); border-radius:clamp(1.4rem,3vw,2.6rem); overflow:hidden; background:#141718; box-shadow:0 40px 110px rgba(0,0,0,.42); transform:translateY(1rem); }
+  .visual-card::before{ content:""; position:absolute; inset:0; z-index:2; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.20); pointer-events:none; }
+  .visual-card::after{ content:""; position:absolute; width:32%; aspect-ratio:1; right:-10%; top:-12%; border-radius:999px; background:rgba(105,210,84,.16); filter:blur(24px); z-index:1; }
+  .visual-card img{ width:100%; height:auto; object-fit:contain; display:block; transform:none; background:#0f1213; }
+  .background-led .slide-background img { opacity: .78; filter: saturate(.98) contrast(1.08); transform: scale(1.02); }
+  .background-led .slide-overlay { background: radial-gradient(circle at var(--hot-x, 70%) var(--hot-y, 48%), rgba(105,210,84,.12), transparent 30%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.88) 28%, rgba(15,18,19,.44) 62%, rgba(15,18,19,.20) 100%), linear-gradient(180deg, rgba(15,18,19,.10), rgba(15,18,19,.72)); }
+  .background-led .slide-shell { grid-template-columns: 1fr; }
+  .background-led .story-content { max-width: min(880px, 72vw); padding: clamp(1.4rem, 2vw, 2rem); border-left: 1px solid rgba(105,210,84,.28); background: linear-gradient(90deg, rgba(15,18,19,.50), rgba(15,18,19,.16)); backdrop-filter: blur(2px); }
+  .background-led h1 { max-width: 14.4ch; }
+  .layout-hero .story-content { background: transparent; border-left: 0; padding-left: 0; }
+  .layout-hero .slide-shell{ grid-template-columns:1fr; } .layout-hero .visual-card{ display:none; } .layout-hero .story-content{ max-width:1020px; } .layout-hero h1{ max-width:16ch; } .layout-hero .lead{ max-width:54rem; font-size:clamp(1.05rem,1.36vw,1.35rem); }
+  .layout-product .slide-shell{ grid-template-columns:minmax(0,.82fr) minmax(460px,1.05fr); } .layout-product .visual-card{ transform:perspective(900px) rotateY(-4deg); }
+  .layout-consulting .slide-shell{ grid-template-columns:minmax(430px,.98fr) minmax(0,.9fr); } .layout-consulting .story-content{ order:2; } .layout-consulting .visual-card{ order:1; transform:rotate(-2deg); }
+  .layout-library .slide-shell{ grid-template-columns:minmax(0,.88fr) minmax(470px,1fr); } .layout-library .visual-card{ transform:rotate(1deg) scale(1.02); }
+  .layout-gates .story-content{ order:2; } .layout-gates .visual-card{ order:1; border-radius:2.8rem; }
+  .layout-roadmap .visual-card{ transform:rotate(-.8deg); }
+  .layout-closing .slide-shell{ grid-template-columns:1fr; } .layout-closing .story-content{ max-width:960px; } .layout-closing .visual-card{ position:absolute; right:4vw; bottom:10vh; width:min(42vw,620px); opacity:.50; z-index:0; transform:rotate(2deg); }
+  .slide-footer{ position:absolute; left:clamp(1.25rem,4vw,4rem); right:clamp(1.25rem,4vw,4rem); bottom:clamp(1rem,2vw,2rem); z-index:3; display:flex; justify-content:space-between; gap:1rem; color:rgba(245,245,241,.48); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; pointer-events:none; }
+  .slide-rail{ position:fixed; top:50%; right:clamp(1rem,2vw,2rem); z-index:7; display:grid; gap:.42rem; transform:translateY(-50%); }
+  .rail-item{ width:8.55rem; display:grid; grid-template-columns:1.8rem 1fr; align-items:center; gap:.48rem; padding:.46rem; border:1px solid rgba(245,245,241,.11); border-radius:.9rem; background:rgba(15,18,19,.48); backdrop-filter:blur(16px); color:rgba(245,245,241,.70); text-decoration:none; transform:translateX(.2rem); transition:transform .28s ease, border-color .28s ease, background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item span{ width:1.8rem; height:1.8rem; display:inline-grid; place-items:center; border-radius:.66rem; background:rgba(245,245,241,.08); color:rgba(245,245,241,.62); font-size:.64rem; font-weight:700; transition:background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item strong{ font-family:var(--font-body); font-size:.72rem; font-weight:600; }
+  .rail-item:hover{ transform:translateX(0); border-color:rgba(245,245,241,.22); color:rgba(245,245,241,.92); background:rgba(15,18,19,.66); }
+  .rail-item.active{ transform:translateX(-.18rem); color:#f5f5f1; border-color:rgba(105,210,84,.58); background:linear-gradient(90deg, rgba(105,210,84,.14), rgba(15,18,19,.62)); box-shadow:0 0 0 1px rgba(105,210,84,.14), 0 24px 60px rgba(0,0,0,.28); }
+  .rail-item.active span{ background:rgba(105,210,84,.20); color:#69d254; box-shadow:0 0 0 .26rem rgba(105,210,84,.08); }
+  @keyframes softPulse { 0%, 100% { transform: scale(1); opacity:.72; } 50% { transform: scale(1.36); opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
+  @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
+  @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:7.25rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
+  @media (max-width:680px){ .presentation-slide{ padding:6.9rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ max-width:calc(100vw - 2.5rem); overflow:hidden; } .markethink-logo{ height:1rem; } .slide-shell{ padding-block:0; gap:1.35rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+</style>
