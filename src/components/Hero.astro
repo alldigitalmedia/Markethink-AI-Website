@@ -9,9 +9,9 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   </div>
   <div class="container hero-content">
     <div class="hero-text">
-      <p class="subtitle animate-fade-up">MARKETING THAT SHIPS</p>
       <h1 class="hero-heading animate-fade-up">
-        Stop managing marketing chaos. Start shipping.
+        <span>Stop managing marketing chaos.</span>
+        <span class="hero-heading-accent">Start shipping.</span>
       </h1>
       <p class="hero-description animate-fade-up">
         Markethink learns your brand, understands your ideal clients, plans campaigns, creates content and visuals, organizes approvals, finds opportunities, and keeps the next move clear — so the marketing you meant to do actually gets done.
@@ -97,10 +97,16 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   }
 
   .hero-heading {
+    display: flex;
+    flex-direction: column;
     max-width: 55rem;
     font-size: clamp(3.2rem, 8vw, 7.8rem);
     line-height: 0.95;
     letter-spacing: -0.06em;
+  }
+
+  .hero-heading-accent {
+    color: #69D254;
   }
 
   .hero-description {
