@@ -250,7 +250,9 @@ const slides = [
     {slides.map((slide, index) => (
       <section id={slide.id} data-slide-id={slide.id} data-slide-index={index} class={`presentation-slide layout-${slide.layout} ${slide.backgroundOnly ? 'background-led' : ''} ${slide.n === '01' ? 'is-active' : ''}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
         <div class="slide-background" aria-hidden="true">
-          <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+          {slide.backgroundOnly && (
+            <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+          )}
         </div>
         <div class="slide-overlay" aria-hidden="true"></div>
         <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
