@@ -9,6 +9,8 @@ const brands = [
   { name: "The 0.07%", type: "text", className: "zero" },
 ];
 
+const vendorLogos = ["OpenAI", "Anthropic", "Grok", "Gemini"];
+
 const slides = [
   {
     n: "01",
@@ -21,16 +23,16 @@ const slides = [
     layout: "hero",
     backgroundOnly: true,
     note: "Growth for private-access brands",
-    chips: ["Ultra-wealth audience", "Private access", "Concierge flow", "Brand control"],
+    chips: ["Private-client audience", "Selective access", "Concierge flow", "Brand control"],
   },
   {
     n: "02",
     id: "audience",
     nav: "Audience",
     kicker: "SLIDE 02 · THE AUDIENCE STANDARD",
-    title: "Ultra-wealthy clients do not respond to louder marketing. They respond to signal.",
-    lead: "For this audience, every impression needs to feel curated: the page, the invitation, the follow-up, the image, the timing, and the path to speak with someone who can make access happen.",
-    image: `${assetBase}/quiet-luxury-access.png`,
+    title: "Private-client audiences do not respond to louder marketing. They respond to signal.",
+    lead: "For high-net-worth members and invitation-led buyers, every impression needs to feel curated: the page, the invitation, the follow-up, the image, the timing, and the path to speak with someone who can make access happen.",
+    image: `${assetBase}/audience-signal.png`,
     layout: "luxury",
     backgroundOnly: true,
     note: "Less volume, more precision",
@@ -44,30 +46,30 @@ const slides = [
   },
   {
     n: "03",
-    id: "opportunity",
-    nav: "Opportunity",
-    kicker: "SLIDE 03 · WHERE THE BRANDS CAN GROW",
-    title: "InList and The 0.07% already live where access, lifestyle, and relationship meet.",
-    lead: "Markethink turns that position into a working marketing rhythm: campaign ideas, landing pages, member-facing content, follow-up, and decision memory organized in one place.",
-    image: `${assetBase}/inlist-phone.jpg`,
-    layout: "product",
+    id: "what-markethink-does",
+    nav: "What it does",
+    kicker: "SLIDE 03 · WHAT MARKETHINK DOES",
+    title: "Markethink keeps strategy, production, approvals, and follow-up connected.",
+    lead: "It learns the brand, organizes the campaign, drafts the assets, prepares pages and content, tracks feedback, and carries those decisions into the next round so the team stops rebuilding context every week.",
+    image: `${assetBase}/private-access-system.png`,
+    layout: "library",
     backgroundOnly: false,
-    note: "From brand position to weekly output",
-    chips: ["Events", "Private bookings", "Membership", "Concierge"],
+    note: "One place for the work",
+    chips: ["Brand memory", "Campaign briefs", "Production", "Approvals"],
     details: [
-      "Present premium experiences with sharper context",
-      "Build focused pages for cities, events, and member segments",
-      "Keep campaign material aligned across web, social, and follow-up",
-      "Make each cycle easier because the system remembers decisions",
+      "Turns objectives into campaign plans and review-ready deliverables",
+      "Keeps web, social, email, and sales material aligned",
+      "Captures approval preferences so future work gets sharper",
+      "Organizes follow-up context before interest goes cold",
     ],
   },
   {
     n: "04",
     id: "system",
     nav: "System",
-    kicker: "SLIDE 04 · WHAT MARKETHINK ADDS",
-    title: "Markethink becomes the operating layer between strategy and shipped work.",
-    lead: "Instead of scattering ideas across chats, documents, designers, pages, and follow-up lists, Markethink organizes the campaign and produces the assets ready for review.",
+    kicker: "SLIDE 04 · THE OPERATING LAYER",
+    title: "The work moves through one managed rhythm instead of disconnected requests.",
+    lead: "Markethink is the place where the team can define the audience, shape the offer, create the page, write the campaign, review the visuals, prepare follow-up, and improve the next cycle from what was approved.",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/presentation/presentation-weekly-deliverables.png",
     layout: "library",
     backgroundOnly: false,
@@ -85,9 +87,9 @@ const slides = [
     id: "growth",
     nav: "Growth",
     kicker: "SLIDE 05 · GROWTH WITHOUT CHEAPENING THE BRAND",
-    title: "Growth for luxury access brands has to feel selective, not aggressive.",
-    lead: "Markethink can help create campaigns that invite the right people in: refined landing pages, private-event narratives, member communications, and follow-up that respects the relationship.",
-    image: `${assetBase}/quiet-luxury-access.png`,
+    title: "Growth for private-access brands has to feel selective, not aggressive.",
+    lead: "Markethink can create campaigns that invite the right people in: refined landing pages, private-event narratives, member communications, concierge handoff, and follow-up that respects the relationship.",
+    image: `${assetBase}/growth-campaign-flow.png`,
     layout: "split",
     backgroundOnly: false,
     note: "More demand, less noise",
@@ -104,7 +106,7 @@ const slides = [
     id: "personalization",
     nav: "Personalization",
     kicker: "SLIDE 06 · CUSTOM USER EXPERIENCE",
-    title: "The experience can change based on who the visitor is and what they are trying to access.",
+    title: "The experience can adapt based on who the visitor is and what they are trying to access.",
     lead: "Markethink can help design content paths for different member moments: a new high-intent visitor, an existing member, a city-specific opportunity, a private event, or a concierge-led request.",
     image: "https://markethink.ai/images/product-continuous-improvement.png?v=workflow-full-1",
     layout: "gates",
@@ -139,14 +141,34 @@ const slides = [
   },
   {
     n: "08",
+    id: "latest-ai-systems",
+    nav: "AI systems",
+    kicker: "SLIDE 08 · BEST AVAILABLE SYSTEMS, ALWAYS IMPROVING",
+    title: "Markethink keeps improving because the system keeps learning.",
+    lead: "Markethink is built to use the strongest available AI systems for reasoning, copy, image direction, research, analysis, and production support — while our own skills and knowledge improve from every approved campaign, edit, and client decision.",
+    image: `${assetBase}/ai-systems-learning.png`,
+    layout: "tech",
+    backgroundOnly: false,
+    note: "Latest systems, stronger memory",
+    chips: ["Current models", "Brand knowledge", "Production skills", "Review memory"],
+    vendorLogos,
+    details: [
+      "We track new model capabilities and use the best fit for the job",
+      "Brand-specific knowledge compounds instead of resetting",
+      "Creative, web, lead, and campaign workflows keep getting sharper",
+      "Humans keep control of judgment, approval, and final decisions",
+    ],
+  },
+  {
+    n: "09",
     id: "content-system",
     nav: "Content",
-    kicker: "SLIDE 08 · QUIET-LUXURY CONTENT SYSTEM",
+    kicker: "SLIDE 09 · QUIET-LUXURY CONTENT SYSTEM",
     title: "The content should feel like access, not advertising.",
     lead: "Markethink can turn events, destinations, experiences, and member stories into a refined content system: cinematic social posts, editorial landing sections, email invitations, and follow-up assets that stay visually consistent.",
-    image: `${assetBase}/quiet-luxury-access.png`,
+    image: `${assetBase}/content-editorial-luxury.png`,
     layout: "consulting",
-    backgroundOnly: true,
+    backgroundOnly: false,
     note: "Editorial, restrained, premium",
     chips: ["Editorial tone", "Lifestyle imagery", "Invitation flow", "Brand memory"],
     details: [
@@ -157,10 +179,10 @@ const slides = [
     ],
   },
   {
-    n: "09",
+    n: "10",
     id: "commercial-flow",
     nav: "Follow-up",
-    kicker: "SLIDE 09 · FROM INTEREST TO CONCIERGE FOLLOW-UP",
+    kicker: "SLIDE 10 · FROM INTEREST TO CONCIERGE FOLLOW-UP",
     title: "High-value interest needs a clean handoff, not a messy inbox.",
     lead: "Markethink can organize the path from campaign response to follow-up: who is interested, what they want, what they saw, what should happen next, and what message should be sent before the opportunity goes cold.",
     image: `${assetBase}/private-concierge-flow.png`,
@@ -176,13 +198,13 @@ const slides = [
     ],
   },
   {
-    n: "10",
+    n: "11",
     id: "pilot",
     nav: "Pilot",
-    kicker: "SLIDE 10 · RECOMMENDED FIRST MOVE",
+    kicker: "SLIDE 11 · RECOMMENDED FIRST MOVE",
     title: "Start with one premium growth flow and make it real.",
     lead: "Choose one high-value experience, city, member segment, or private offer. Markethink builds the campaign spine around it: page, content, email, follow-up, review process, and learning loop.",
-    image: `${assetBase}/private-concierge-flow.png`,
+    image: `${assetBase}/pilot-sprint-private-offer.png`,
     layout: "closing",
     backgroundOnly: true,
     note: "A focused first sprint",
@@ -250,6 +272,11 @@ const slides = [
             {slide.chips?.length > 0 && (
               <div class="chip-row" aria-label="Key points">
                 {slide.chips.map((chip) => <span>{chip}</span>)}
+              </div>
+            )}
+            {slide.vendorLogos?.length > 0 && (
+              <div class="vendor-row" aria-label="Leading AI systems referenced">
+                {slide.vendorLogos.map((vendor) => <span>{vendor}</span>)}
               </div>
             )}
             {slide.details && (
@@ -366,6 +393,7 @@ const slides = [
   h1{ max-width:20ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.25rem,4.2vw,4.72rem); font-weight:400; line-height:1.03; letter-spacing:-.032em; color:#f5f5f1; text-wrap:balance; }
   .lead{ max-width:48rem; margin-top:clamp(.85rem,1.7vw,1.25rem); color:rgba(245,245,241,.82); font-size:clamp(.98rem,1.12vw,1.12rem); line-height:1.48; text-wrap:balance; }
   .chip-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.15rem; } .chip-row span{ padding:.68rem .86rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.55); color:rgba(245,245,241,.74); backdrop-filter:blur(12px); font-size:.8rem; }
+  .vendor-row{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.62rem; max-width:42rem; margin-top:1.05rem; } .vendor-row span{ min-height:3.35rem; display:grid; place-items:center; padding:.72rem .82rem; border:1px solid rgba(245,245,241,.15); border-radius:1rem; background:linear-gradient(145deg,rgba(245,245,241,.10),rgba(245,245,241,.035)); color:#f5f5f1; font-weight:700; letter-spacing:.02em; box-shadow:inset 0 1px 0 rgba(255,255,255,.05); }
   .detail-list{ max-width:50rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.52rem; margin:1.05rem 0 0; padding:0; list-style:none; }
   .detail-list li{ position:relative; padding:.72rem .78rem .72rem 1.55rem; border:1px solid rgba(245,245,241,.10); border-radius:1rem; background:rgba(15,18,19,.38); color:rgba(245,245,241,.72); font-size:clamp(.86rem,.98vw,.95rem); line-height:1.34; backdrop-filter:blur(10px); }
   .detail-list li::before{ content:""; position:absolute; left:.78rem; top:1.05rem; width:.42rem; height:.42rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .18rem rgba(105,210,84,.12); }
@@ -403,5 +431,5 @@ const slides = [
   @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
   @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
   @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:8rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .presentation-topbar{ align-items:flex-start; } .prospect-lockup{ max-width:calc(100vw - 11rem); overflow:hidden; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell, .layout-split .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-product .visual-card{ width:min(100%,360px); justify-self:start; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
-  @media (max-width:680px){ .presentation-slide{ padding:7.25rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ max-width:calc(100vw - 2.5rem); overflow:hidden; padding:.72rem .9rem; } .prospect-lockup{ display:none; } .markethink-logo{ height:1rem; } .slide-shell{ padding-block:0; gap:1.35rem; } .brand-row{ gap:.45rem; } .brand-pill{ min-height:2.25rem; padding:.55rem .72rem; } .brand-pill img{ height:.88rem; max-width:6.5rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+  @media (max-width:680px){ .presentation-slide{ padding:7.25rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ max-width:calc(100vw - 2.5rem); overflow:hidden; padding:.72rem .9rem; } .prospect-lockup{ display:none; } .markethink-logo{ height:1rem; } .slide-shell{ padding-block:0; gap:1.35rem; } .brand-row{ gap:.45rem; } .brand-pill{ min-height:2.25rem; padding:.55rem .72rem; } .brand-pill img{ height:.88rem; max-width:6.5rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .vendor-row{ grid-template-columns:repeat(2,minmax(0,1fr)); } .vendor-row span{ min-height:2.8rem; font-size:.82rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
 </style>
