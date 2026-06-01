@@ -163,9 +163,64 @@ const imageUrl = new URL(image, siteUrl).toString();
         });
       }
 
+
+      function summarizeFormValue(value: FormDataEntryValue) {
+        if (typeof value === "string") return value;
+        const file = value as File;
+        return file && file.name ? `[file] ${file.name}` : "[file attached]";
+      }
+
+      function formFields(formData: FormData) {
+        const fields: Record<string, string | string[]> = {};
+        formData.forEach((value, key) => {
+          const rendered = summarizeFormValue(value);
+          if (!rendered) return;
+          const existing = fields[key];
+          if (Array.isArray(existing)) {
+            existing.push(rendered);
+          } else if (typeof existing === "string") {
+            fields[key] = [existing, rendered];
+          } else {
+            fields[key] = rendered;
+          }
+        });
+        return fields;
+      }
+
+      function notifyMarkethinkFormSubmission(form: HTMLFormElement) {
+        const formData = new FormData(form);
+        const formName = form.getAttribute("name") || String(formData.get("form-name") || "markethink-website-form");
+        const payload = {
+          clientId: "markethink",
+          formName,
+          pageUrl: window.location.href,
+          submittedAt: new Date().toISOString(),
+          fields: formFields(formData),
+        };
+
+        fetch("https://dashboard.markethink.ai/api/public/website-form-submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          keepalive: true,
+        }).catch(() => {
+          // Netlify remains the source of truth for the form submission. The
+          // alert copy is best-effort so a notification issue never blocks the lead.
+        });
+      }
+
+      function initFormNotifications() {
+        document.querySelectorAll<HTMLFormElement>('form[data-netlify="true"], form[netlify]').forEach((form) => {
+          if (form.dataset.markethinkNotifyAttached === "true") return;
+          form.dataset.markethinkNotifyAttached = "true";
+          form.addEventListener("submit", () => notifyMarkethinkFormSubmission(form));
+        });
+      }
+
       function init() {
         initAnimations();
         initNavbar();
+        initFormNotifications();
       }
 
       document.addEventListener("DOMContentLoaded", init);
