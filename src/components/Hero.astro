@@ -4,8 +4,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 ---
 
 <section class="section-hero" id="hero">
-  <div class="hero-backdrop" aria-hidden="true">
-    <img src="/images/hero-image.png" alt="" class="hero-backdrop-image" />
+  <div class="hero-background" aria-hidden="true">
+    <img src="/images/hero-office-background.svg" alt="" class="hero-background-image" />
   </div>
   <div class="container hero-content">
     <div class="hero-text">
@@ -20,7 +20,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
         </span>
       </h1>
       <p class="hero-description animate-fade-up">
-        Markethink learns your brand, understands your ideal clients, plans campaigns, creates content and visuals, organizes approvals, finds opportunities, and keeps the next move clear — so the marketing you meant to do actually gets done.
+        Markethink helps brands plan campaigns, create content that connects, manage approvals with ease, and keep marketing moving — so nothing slows you down.
       </p>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
@@ -32,96 +32,89 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
 <style>
   .section-hero {
-    padding-top: 8rem;
-    padding-bottom: 4rem;
     min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
     isolation: isolate;
+    padding: 9.5rem 0 4.5rem;
+    background: #0f1213;
   }
 
   .section-hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -3;
+    z-index: -1;
     background:
-      radial-gradient(circle at 50% 18%, rgba(105, 210, 84, 0.16), transparent 30rem),
-      linear-gradient(180deg, rgba(15, 18, 19, 0.2) 0%, #0f1213 86%);
+      linear-gradient(90deg, rgba(4, 6, 6, 0.94) 0%, rgba(4, 6, 6, 0.78) 24%, rgba(4, 6, 6, 0.34) 48%, rgba(4, 6, 6, 0.04) 78%),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.1) 0%, rgba(15, 18, 19, 0.14) 58%, #0f1213 100%);
+    pointer-events: none;
   }
 
   .section-hero::after {
     content: "";
     position: absolute;
-    left: 50%;
-    bottom: 2.75rem;
+    inset: 0;
     z-index: -1;
-    width: min(840px, 82vw);
-    height: 1px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(105, 210, 84, 0.48), transparent);
-    opacity: 0.7;
-  }
-
-  .hero-backdrop {
-    position: absolute;
-    inset: 6rem 0 auto;
-    z-index: -2;
-    display: flex;
-    justify-content: center;
+    background: radial-gradient(circle at 23% 50%, rgba(105, 210, 84, 0.1), transparent 32rem);
     pointer-events: none;
   }
 
-  .hero-backdrop-image {
-    width: min(1040px, 90vw);
-    max-height: 600px;
-    object-fit: contain;
-    opacity: 0.18;
-    filter: saturate(0.78) contrast(1.08);
-    transform: translate(18%, 1rem) scale(1.08);
-    mask-image: radial-gradient(circle at 62% 42%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 34%, transparent 72%);
-    -webkit-mask-image: radial-gradient(circle at 62% 42%, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.5) 34%, transparent 72%);
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero-background-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    filter: saturate(0.96) contrast(1.04);
+    transform: scale(1.015);
   }
 
   .hero-content {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 14rem);
   }
 
   .hero-text {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    max-width: 58rem;
-    margin: 0 auto;
-    text-align: center;
+    align-items: flex-start;
+    gap: 1.65rem;
+    max-width: min(43rem, 48vw);
+    text-align: left;
   }
 
   .hero-heading {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: min(72rem, 96vw);
-    font-size: clamp(3rem, 6.25vw, 6rem);
-    line-height: 0.95;
+    align-items: flex-start;
+    max-width: min(46rem, 52vw);
+    font-size: clamp(4.4rem, 6.35vw, 7.4rem);
+    line-height: 0.88;
     letter-spacing: -0.065em;
+    text-wrap: balance;
   }
 
   .hero-heading-line {
     color: #fff;
-    white-space: nowrap;
   }
 
   .hero-heading-rotator {
     position: relative;
     display: block;
     width: 100%;
-    min-height: 1.08em;
+    min-height: 1.02em;
     overflow: hidden;
   }
 
@@ -130,29 +123,29 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     inset: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #69D254;
     opacity: 0;
     transform: translateY(0.24em);
-    animation: hero-rotate 17.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: hero-rotate 20s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     white-space: nowrap;
     will-change: opacity, transform;
   }
 
   .hero-heading-accent:nth-child(2) {
-    animation-delay: 3.5s;
+    animation-delay: 4s;
   }
 
   .hero-heading-accent:nth-child(3) {
-    animation-delay: 7s;
+    animation-delay: 8s;
   }
 
   .hero-heading-accent:nth-child(4) {
-    animation-delay: 10.5s;
+    animation-delay: 12s;
   }
 
   .hero-heading-accent:nth-child(5) {
-    animation-delay: 14s;
+    animation-delay: 16s;
   }
 
   @keyframes hero-rotate {
@@ -186,52 +179,86 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   }
 
   .hero-description {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.76);
-    max-width: 47rem;
-    line-height: 1.7;
+    font-size: clamp(1.03rem, 1.35vw, 1.35rem);
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 42rem;
+    line-height: 1.62;
   }
 
   .button-group {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
     flex-wrap: wrap;
+    padding-top: 0.5rem;
   }
 
-  @media (max-width: 991px) {
-    .section-hero {
-      padding-top: 7rem;
+  .button-group .button {
+    min-height: 3.9rem;
+    padding-inline: 1.75rem;
+    border-radius: 999px;
+    font-size: clamp(0.98rem, 1.05vw, 1.15rem);
+    font-weight: 750;
+  }
+
+  .button-group .button.is-secondary {
+    color: #ffffff;
+    border-color: rgba(105, 210, 84, 0.82);
+    background: rgba(15, 18, 19, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  @media (max-width: 1180px) {
+    .hero-text {
+      max-width: 54rem;
     }
 
-    .hero-backdrop-image {
-      width: 110vw;
-      opacity: 0.14;
-      transform: translate(10%, 2rem) scale(1.06);
+    .hero-heading {
+      max-width: 56rem;
+      font-size: clamp(3.3rem, 7.8vw, 6rem);
+    }
+
+    .section-hero::before {
+      background:
+        linear-gradient(90deg, rgba(4, 6, 6, 0.92) 0%, rgba(4, 6, 6, 0.74) 38%, rgba(4, 6, 6, 0.22) 72%),
+        linear-gradient(180deg, rgba(15, 18, 19, 0.1) 0%, rgba(15, 18, 19, 0.18) 58%, #0f1213 100%);
     }
   }
 
   @media (max-width: 767px) {
     .section-hero {
-      padding-top: 7rem;
       min-height: auto;
+      padding: 7.8rem 0 3.5rem;
     }
 
     .hero-content {
-      min-height: 34rem;
+      min-height: 36rem;
+    }
+
+    .hero-background-image {
+      object-position: 62% center;
+    }
+
+    .section-hero::before {
+      background:
+        linear-gradient(180deg, rgba(4, 6, 6, 0.72) 0%, rgba(4, 6, 6, 0.66) 46%, #0f1213 100%),
+        linear-gradient(90deg, rgba(4, 6, 6, 0.78) 0%, rgba(4, 6, 6, 0.3) 100%);
     }
 
     .hero-text {
+      max-width: 100%;
       gap: 1.25rem;
     }
 
     .hero-heading {
-      font-size: clamp(2.15rem, 9vw, 3.6rem);
-      max-width: 96vw;
+      max-width: 100%;
+      font-size: clamp(2.6rem, 12vw, 4.2rem);
     }
 
     .hero-description {
       font-size: 1rem;
+      max-width: 34rem;
     }
   }
 
@@ -241,17 +268,25 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-content {
-      min-height: 31rem;
+      min-height: 33rem;
     }
 
     .hero-heading {
-      font-size: clamp(1.55rem, 7.2vw, 2.05rem);
+      font-size: clamp(2.18rem, 11.2vw, 3rem);
+      letter-spacing: -0.055em;
     }
 
-    .hero-backdrop-image {
-      width: 140vw;
-      opacity: 0.12;
-      transform: translate(8%, 4rem) scale(1.12);
+    .hero-heading-accent {
+      white-space: normal;
+    }
+
+    .button-group,
+    .button-group .button {
+      width: 100%;
+    }
+
+    .button-group .button {
+      justify-content: center;
     }
   }
 </style>
