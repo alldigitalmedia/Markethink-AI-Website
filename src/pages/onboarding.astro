@@ -106,7 +106,7 @@ const setupSteps = [
                 </label>
                 <label>
                   <span>Website</span>
-                  <input type="url" name="website" autocomplete="url" placeholder="https://" data-summary="website" />
+                  <input type="text" name="website" autocomplete="url" inputmode="url" placeholder="yourcompany.com or @profile" data-summary="website" />
                 </label>
               </div>
               <label>
@@ -175,7 +175,7 @@ const setupSteps = [
               <legend>Assets and links</legend>
               <label>
                 <span>Brand or asset folder link</span>
-                <input type="url" name="asset_folder" placeholder="Google Drive, Dropbox, website media page, etc." />
+                <input type="text" name="asset_folder" inputmode="url" placeholder="Drive folder, Dropbox link, website page, or any asset location" />
               </label>
               <label>
                 <span>Upload a logo, brand guide, or useful reference file</span>
@@ -221,19 +221,6 @@ const setupSteps = [
             <button type="submit" class="step-button next-button hidden" id="submit-step">Send onboarding context</button>
           </div>
         </form>
-
-        <aside class="context-panel" aria-label="What this step prepares">
-          <p class="panel-kicker">WHAT THIS PREPARES</p>
-          <div class="context-card">
-            <span id="context-number">01</span>
-            <h3 id="context-title">Workspace identity</h3>
-            <p id="context-copy">We start with the business basics so every campaign, asset, and approval has the right owner and context.</p>
-          </div>
-          <div class="summary-strip">
-            <p>Captured so far</p>
-            <strong id="summary-line">Nothing yet — start with the business snapshot.</strong>
-          </div>
-        </aside>
       </div>
     </section>
   </main>
@@ -244,43 +231,31 @@ const setupSteps = [
         label: "Business",
         title: "First, tell us who we’re building around.",
         helper: "This gives us the basic workspace identity: company, contact, and what the business does.",
-        contextTitle: "Workspace identity",
-        contextCopy: "We start with the business basics so every campaign, asset, and approval has the right owner and context.",
       },
       {
         label: "Audience",
         title: "Who are we trying to move?",
         helper: "Good marketing starts with the buyer, the problem, and the market context.",
-        contextTitle: "Buyer context",
-        contextCopy: "This helps Markethink avoid generic messaging and shape campaigns around the people most likely to act.",
       },
       {
         label: "Offer",
         title: "What should Markethink help sell or move first?",
         helper: "We focus the first motion instead of trying to boil the ocean.",
-        contextTitle: "First campaign direction",
-        contextCopy: "The offer and goal tell us which campaign, page, email, or follow-up motion deserves the first push.",
       },
       {
         label: "Marketing",
         title: "What is already happening today?",
         helper: "We look for what is working, what is stuck, and where momentum can start fastest.",
-        contextTitle: "Current motion",
-        contextCopy: "Existing channels and bottlenecks show us where to improve the system instead of creating random assets.",
       },
       {
         label: "Assets",
         title: "Share the useful brand and marketing references.",
         helper: "Links and files help us avoid restarting from zero.",
-        contextTitle: "Brand library",
-        contextCopy: "Assets, links, and references become the raw material for consistent client work.",
       },
       {
         label: "Approvals",
         title: "Last step: how should reviews and guardrails work?",
         helper: "Approval style becomes memory for the work that follows.",
-        contextTitle: "Approval memory",
-        contextCopy: "Guardrails and approval style help future work move faster without losing the human review layer.",
       },
     ];
 
@@ -295,10 +270,6 @@ const setupSteps = [
     const stepTitle = document.getElementById("step-title");
     const stepHelper = document.getElementById("step-helper");
     const progressBar = document.getElementById("progress-bar");
-    const contextNumber = document.getElementById("context-number");
-    const contextTitle = document.getElementById("context-title");
-    const contextCopy = document.getElementById("context-copy");
-    const summaryLine = document.getElementById("summary-line");
     let currentStep = 0;
 
     function fieldsForStep(step) {
@@ -313,18 +284,6 @@ const setupSteps = [
       });
     }
 
-    function updateSummary() {
-      if (!form || !summaryLine) return;
-      const data = new FormData(form);
-      const company = String(data.get("company") || "").trim();
-      const goal = String(data.get("primary_goal") || "").trim();
-      const approval = String(data.get("approval_speed") || "").trim();
-      const parts = [];
-      if (company) parts.push(company);
-      if (goal) parts.push(goal);
-      if (approval) parts.push(approval);
-      summaryLine.textContent = parts.length ? parts.join(" · ") : "Nothing yet — start with the business snapshot.";
-    }
 
     function renderStep() {
       const meta = stepMeta[currentStep];
@@ -337,15 +296,11 @@ const setupSteps = [
       if (stepLabel) stepLabel.textContent = meta.label;
       if (stepTitle) stepTitle.textContent = meta.title;
       if (stepHelper) stepHelper.textContent = meta.helper;
-      if (contextNumber) contextNumber.textContent = String(currentStep + 1).padStart(2, "0");
-      if (contextTitle) contextTitle.textContent = meta.contextTitle;
-      if (contextCopy) contextCopy.textContent = meta.contextCopy;
       if (progressBar) progressBar.style.width = `${Math.round(((currentStep + 1) / steps.length) * 100)}%`;
       if (previousButton) previousButton.disabled = currentStep === 0;
       const isLast = currentStep === steps.length - 1;
       nextButton?.classList.toggle("hidden", isLast);
       submitButton?.classList.toggle("hidden", !isLast);
-      updateSummary();
     }
 
     previousButton?.addEventListener("click", () => {
@@ -359,8 +314,6 @@ const setupSteps = [
       renderStep();
     });
 
-    form?.addEventListener("input", updateSummary);
-    form?.addEventListener("change", updateSummary);
     renderStep();
   </script>
 </Layout>
@@ -481,18 +434,17 @@ const setupSteps = [
   }
 
   .setup-layout {
-    width: min(1280px, 100%);
+    width: min(1160px, 100%);
     height: calc(100dvh - 6.2rem);
     margin: 1rem auto 0;
     display: grid;
-    grid-template-columns: minmax(230px, 0.58fr) minmax(480px, 1.08fr) minmax(230px, 0.58fr);
+    grid-template-columns: minmax(260px, 0.58fr) minmax(520px, 1.42fr);
     gap: clamp(0.85rem, 1.6vw, 1.35rem);
     align-items: stretch;
   }
 
   .setup-rail,
-  .setup-card,
-  .context-panel {
+  .setup-card {
     min-height: 0;
     border: 1px solid rgba(255, 255, 255, 0.13);
     border-radius: 1.55rem;
@@ -508,8 +460,7 @@ const setupSteps = [
     padding: clamp(1rem, 2vw, 1.35rem);
   }
 
-  .rail-kicker,
-  .panel-kicker {
+  .rail-kicker {
     color: rgba(245, 245, 241, 0.5);
     font-size: 0.72rem;
     font-weight: 800;
@@ -788,70 +739,6 @@ const setupSteps = [
     grid-column: 2;
   }
 
-  .context-panel {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(1rem, 2vw, 1.25rem);
-  }
-
-  .context-card {
-    margin-top: 0.85rem;
-    padding: 1rem;
-    border: 1px solid rgba(105, 210, 84, 0.3);
-    border-radius: 1.15rem;
-    background: rgba(105, 210, 84, 0.09);
-  }
-
-  .context-card > span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.1rem;
-    height: 2.1rem;
-    border-radius: 999px;
-    background: #69d254;
-    color: #0f1213;
-    font-size: 0.78rem;
-    font-weight: 850;
-  }
-
-  .context-card h3 {
-    margin-top: 1rem;
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    font-weight: 850;
-  }
-
-  .context-card p {
-    margin-top: 0.48rem;
-    color: rgba(245, 245, 241, 0.66);
-    line-height: 1.58;
-    font-size: 0.9rem;
-  }
-
-  .summary-strip {
-    margin-top: auto;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1.15rem;
-    background: rgba(245, 245, 241, 0.06);
-  }
-
-  .summary-strip p {
-    color: rgba(245, 245, 241, 0.46);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .summary-strip strong {
-    display: block;
-    margin-top: 0.45rem;
-    color: rgba(245, 245, 241, 0.82);
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
 
   @keyframes step-in {
     from { opacity: 0; transform: translateY(8px); }
@@ -880,11 +767,7 @@ const setupSteps = [
 
   @media (max-width: 1100px) {
     .setup-layout {
-      grid-template-columns: minmax(190px, 0.45fr) minmax(0, 1fr);
-    }
-
-    .context-panel {
-      display: none;
+      grid-template-columns: minmax(210px, 0.48fr) minmax(0, 1fr);
     }
   }
 
