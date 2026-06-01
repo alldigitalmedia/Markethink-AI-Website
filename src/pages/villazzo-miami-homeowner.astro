@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 
 const deckUrl = "https://markethink.ai/villazzo-miami-homeowner/";
+const villazzoLogo = "https://www.villazzo.com/wp-content/uploads/2024/05/Villazzo.webp";
+
 const images = {
   villa: "https://dashboard.markethink.ai/generated/landing/markethink/villazzo-miami-homeowner/01-miami-villa.png",
   staff: "https://dashboard.markethink.ai/generated/landing/markethink/villazzo-miami-homeowner/02-staff-prep.png",
@@ -179,10 +181,7 @@ const slides = [
   <main class="villazzo-deck" aria-label="Villazzo private Miami homeowner presentation">
     <header class="deck-topbar">
       <a href="#opening" class="brand-lockup" aria-label="Villazzo presentation home">
-        <span class="villazzo-mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" role="img" focusable="false"><path d="M50 6 62 22h34L67 39 50 94 33 39 4 22h34L50 6Z"/><path d="M50 15 57 25H43l7-10Z" class="inner"/></svg>
-        </span>
-        <span class="brand-name">Villazzo</span>
+        <img class="brand-logo-img" src={villazzoLogo} alt="Villazzo" loading="eager" decoding="async" />
       </a>
       <span class="deck-label">Private owner presentation · Miami</span>
     </header>
@@ -203,8 +202,7 @@ const slides = [
           <div class="story-content">
             {slide.n === '01' && (
               <div class="hero-logo" aria-label="Villazzo">
-                <span class="villazzo-mark large" aria-hidden="true"><svg viewBox="0 0 100 100" role="img" focusable="false"><path d="M50 6 62 22h34L67 39 50 94 33 39 4 22h34L50 6Z"/><path d="M50 15 57 25H43l7-10Z" class="inner"/></svg></span>
-                <span>Villazzo</span>
+                <img class="hero-logo-img" src={villazzoLogo} alt="Villazzo" loading="eager" decoding="async" />
               </div>
             )}
             <p class="eyebrow"><span>{slide.n}</span>{slide.kicker}</p>
@@ -268,13 +266,10 @@ const slides = [
   .tone-warm { background: linear-gradient(120deg, #fbfaf6 0%, #f4eadb 48%, #eaddc7 100%); }
   .paper-grain { position: absolute; inset: 0; z-index: -2; opacity: .32; pointer-events: none; background-image: radial-gradient(rgba(84,63,34,.10) .7px, transparent .7px); background-size: 4px 4px; mix-blend-mode: multiply; }
   .deck-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display: flex; align-items: center; justify-content: space-between; gap: 1rem; pointer-events: none; }
-  .brand-lockup { pointer-events: auto; display: inline-flex; align-items: center; gap: .8rem; min-height: 3.4rem; padding: .72rem 1.15rem .72rem .78rem; border: 1px solid rgba(173,139,76,.26); border-radius: 999px; background: rgba(255,255,255,.76); color: #16130e; text-decoration: none; backdrop-filter: blur(18px); box-shadow: 0 22px 70px rgba(62,48,26,.12); }
-  .villazzo-mark { display: inline-grid; place-items: center; width: 2rem; height: 2rem; color: #b48b45; }
-  .villazzo-mark svg { width: 100%; height: 100%; display: block; fill: currentColor; filter: drop-shadow(0 1px 0 rgba(255,255,255,.42)); }
-  .villazzo-mark .inner { fill: rgba(255,255,255,.36); }
-  .villazzo-mark.large { width: 3.8rem; height: 3.8rem; }
-  .brand-name, .hero-logo span:last-child { font-family: Cinzel, Georgia, serif; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
-  .brand-name { font-size: 1.14rem; }
+  .brand-lockup { pointer-events: auto; display: inline-flex; align-items: center; gap: .8rem; min-height: 3.4rem; padding: .74rem 1.08rem; border: 1px solid rgba(173,139,76,.26); border-radius: 999px; background: rgba(255,255,255,.76); color: #16130e; text-decoration: none; backdrop-filter: blur(18px); box-shadow: 0 22px 70px rgba(62,48,26,.12); }
+  .brand-logo-img { display: block; width: clamp(132px, 11vw, 178px); height: auto; object-fit: contain; }
+  .hero-logo-img { display: block; width: clamp(190px, 20vw, 320px); height: auto; object-fit: contain; }
+  .hero-logo { min-height: clamp(3.2rem, 5vw, 5.4rem); }
   .deck-label { pointer-events: none; padding: .82rem 1rem; border: 1px solid rgba(173,139,76,.18); border-radius: 999px; color: rgba(41,35,25,.64); background: rgba(255,255,255,.58); backdrop-filter: blur(14px); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; }
   .slide-shell { width: min(1160px, 100%); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; }
   .story-content { position: relative; z-index: 2; max-width: min(760px, 62vw); opacity: .74; transform: translateY(18px); transition: opacity .72s ease, transform .72s ease; }
@@ -300,5 +295,5 @@ const slides = [
   @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } .story-content, .rail-item { transition: none; } }
   @media (min-width:1081px) { .presentation-slide { padding-right: clamp(10.5rem,13vw,14rem); } .slide-footer { right: clamp(10.5rem,13vw,14rem); } }
   @media (max-width:1080px) { .slide-rail { display: none; } .deck-label { display:none; } .presentation-slide { align-items: start; padding-top: 8rem; min-height: auto; } .presentation-slide::before { inset: .8rem; } .story-content, .tone-reverse .story-content, .tone-light.reverse .story-content, .tone-warm.reverse .story-content { max-width: 100%; margin-left: 0; padding: 0; } .image-field img, .tone-reverse .image-field img, .tone-light.reverse .image-field img, .tone-warm.reverse .image-field img { width: 100%; min-height: 0; right: 0; left: 0; opacity: .24; -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.72), transparent 76%); mask-image: linear-gradient(180deg, rgba(0,0,0,.72), transparent 76%); } .slide-footer { position: relative; left: auto; right: auto; bottom: auto; margin-top: 2rem; } }
-  @media (max-width:680px) { .presentation-slide { padding: 7.15rem 1.25rem 1.6rem; } .deck-topbar { position: absolute; } .brand-name { font-size: 1rem; } .villazzo-mark.large { width: 3rem; height: 3rem; } h1 { font-size: clamp(2.25rem,10.2vw,4rem); max-width: 12.8ch; } .lead { font-size: 1.16rem; } .detail-list { grid-template-columns: 1fr; } .slide-footer { display:none; } }
+  @media (max-width:680px) { .presentation-slide { padding: 7.15rem 1.25rem 1.6rem; } .deck-topbar { position: absolute; } .brand-name { font-size: 1rem; } .hero-logo-img { width: clamp(168px, 46vw, 245px); } h1 { font-size: clamp(2.25rem,10.2vw,4rem); max-width: 12.8ch; } .lead { font-size: 1.16rem; } .detail-list { grid-template-columns: 1fr; } .slide-footer { display:none; } }
 </style>
