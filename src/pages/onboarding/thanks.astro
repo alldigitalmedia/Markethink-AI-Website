@@ -1,0 +1,259 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Onboarding received | Markethink"
+  description="Your Markethink onboarding context has been received."
+  canonical="https://markethink.ai/onboarding/thanks/"
+  noindex={true}
+>
+  <main class="onboarding-thanks-page">
+    <section class="thanks-hero">
+      <div class="thanks-background" aria-hidden="true"></div>
+      <header class="thanks-topbar" aria-label="Markethink">
+        <a href="/" class="thanks-logo" aria-label="Markethink home">
+          <img src="/images/logo-white.svg" alt="Markethink" />
+        </a>
+        <span>Context received</span>
+      </header>
+
+      <div class="container thanks-grid">
+        <section class="thanks-copy animate-fade-up" aria-labelledby="thanks-heading">
+          <p class="subtitle">ONBOARDING RECEIVED</p>
+          <h1 id="thanks-heading">Your marketing system setup has started.</h1>
+          <p>
+            We’ll review your context, organize the first campaign direction, and come back with the next useful decision to approve. If anything important was missing, reply directly to your Markethink contact with the extra link or note.
+          </p>
+          <div class="thanks-actions">
+            <a href="/" class="button">Back to Markethink</a>
+            <a href="/schedule-a-walkthrough/" class="button is-secondary">Book a walkthrough</a>
+          </div>
+        </section>
+
+        <aside class="activation-panel animate-scale-in" aria-label="Next steps">
+          <div class="panel-status">
+            <span aria-hidden="true">✓</span>
+            <strong>Setup intake complete</strong>
+          </div>
+          <ol>
+            <li>
+              <span>01</span>
+              <div>
+                <strong>Review business context</strong>
+                <p>We turn your notes into usable operating context.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>Find the first marketing move</strong>
+                <p>Campaign, asset, page, or follow-up priority.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>Send the next decision</strong>
+                <p>You approve the direction before work starts moving.</p>
+              </div>
+            </li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .onboarding-thanks-page {
+    min-height: 100vh;
+    background: #0f1213;
+    color: var(--text-invert);
+  }
+
+  .thanks-hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 1.25rem 0 5rem;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .thanks-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 74% 22%, rgba(105, 210, 84, 0.22), transparent 30rem),
+      linear-gradient(115deg, rgba(15, 18, 19, 0.96), rgba(15, 18, 19, 0.78)),
+      url("/images/hero-office-background.svg") center top / cover no-repeat,
+      #0f1213;
+  }
+
+  .thanks-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent, #0f1213 95%);
+  }
+
+  .thanks-topbar {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 1.35rem;
+    background: rgba(15, 18, 19, 0.54);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(18px) saturate(1.08);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  }
+
+  .thanks-logo img {
+    width: clamp(150px, 13vw, 210px);
+    height: auto;
+  }
+
+  .thanks-topbar span {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    color: rgba(245, 245, 241, 0.76);
+    font-size: 0.82rem;
+    font-weight: 650;
+  }
+
+  .thanks-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.62fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+    min-height: calc(100vh - 7rem);
+    padding-top: clamp(3.5rem, 8vw, 7rem);
+  }
+
+  .thanks-copy {
+    max-width: 50rem;
+  }
+
+  .thanks-copy h1 {
+    margin-top: 1.1rem;
+    font-size: clamp(3.4rem, 7vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+  }
+
+  .thanks-copy p:not(.subtitle) {
+    max-width: 39rem;
+    margin-top: 1.4rem;
+    color: rgba(245, 245, 241, 0.72);
+    font-size: 1.06rem;
+    line-height: 1.78;
+  }
+
+  .thanks-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+  }
+
+  .activation-panel {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 2rem;
+    padding: clamp(1.15rem, 3vw, 1.5rem);
+    background: linear-gradient(180deg, rgba(245, 245, 241, 0.12), rgba(245, 245, 241, 0.055));
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(24px) saturate(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.08);
+  }
+
+  .panel-status {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    border: 1px solid rgba(105, 210, 84, 0.34);
+    border-radius: 1.15rem;
+    background: rgba(105, 210, 84, 0.1);
+  }
+
+  .panel-status span,
+  .activation-panel li > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #69d254;
+    color: #0f1213;
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+
+  .panel-status strong {
+    color: rgba(245, 245, 241, 0.9);
+  }
+
+  .activation-panel ol {
+    list-style: none;
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .activation-panel li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    align-items: start;
+    padding: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(245, 245, 241, 0.055);
+  }
+
+  .activation-panel li > span {
+    background: rgba(245, 245, 241, 0.1);
+    color: rgba(245, 245, 241, 0.76);
+  }
+
+  .activation-panel li strong {
+    color: rgba(245, 245, 241, 0.9);
+  }
+
+  .activation-panel li p {
+    margin-top: 0.28rem;
+    color: rgba(245, 245, 241, 0.58);
+    line-height: 1.55;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .thanks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .thanks-topbar {
+      width: min(100% - 1rem, 1180px);
+      border-radius: 1rem;
+      padding: 0.8rem;
+    }
+
+    .thanks-topbar span {
+      display: none;
+    }
+
+    .thanks-copy h1 {
+      font-size: clamp(3rem, 16vw, 4.2rem);
+    }
+  }
+</style>
