@@ -3,22 +3,15 @@ import Layout from "../layouts/Layout.astro";
 
 const pageTitle = "Client Onboarding | Markethink";
 const pageDescription =
-  "Set up your Markethink workspace with a guided onboarding experience for your business, brand, audience, offers, goals, assets, and approval rhythm.";
+  "Set up your Markethink workspace with a focused step-by-step onboarding flow for your business, brand, audience, offers, goals, assets, and approval rhythm.";
 
 const setupSteps = [
-  { id: "business", label: "Business", short: "Snapshot" },
-  { id: "audience", label: "Audience", short: "Who you serve" },
-  { id: "offers", label: "Offers", short: "What you sell" },
-  { id: "marketing", label: "Marketing", short: "Current motion" },
-  { id: "assets", label: "Assets", short: "Brand library" },
-  { id: "approvals", label: "Approvals", short: "How work moves" },
-];
-
-const workspaceSignals = [
-  "Campaign context",
-  "Brand memory",
-  "Approval rhythm",
-  "Next best moves",
+  { label: "Business", title: "First, tell us who we’re building around.", helper: "This gives us the basic workspace identity: company, contact, and what the business does." },
+  { label: "Audience", title: "Who are we trying to move?", helper: "Good marketing starts with the buyer, the problem, and the market context." },
+  { label: "Offer", title: "What should Markethink help sell or move first?", helper: "We focus the first motion instead of trying to boil the ocean." },
+  { label: "Marketing", title: "What is already happening today?", helper: "We look for what is working, what is stuck, and where momentum can start fastest." },
+  { label: "Assets", title: "Share the useful brand and marketing references.", helper: "Links and files help us avoid restarting from zero." },
+  { label: "Approvals", title: "Last step: how should reviews and guardrails work?", helper: "Approval style becomes memory for the work that follows." },
 ];
 ---
 
@@ -28,91 +21,40 @@ const workspaceSignals = [
   canonical="https://markethink.ai/onboarding/"
   noindex={true}
 >
-  <main class="onboarding-page">
-    <section class="onboarding-hero" aria-labelledby="onboarding-heading">
-      <div class="hero-background" aria-hidden="true">
-        <div class="grid-glow"></div>
-        <div class="orb orb-one"></div>
-        <div class="orb orb-two"></div>
+  <main class="setup-page">
+    <section class="setup-screen" aria-labelledby="setup-heading">
+      <div class="screen-bg" aria-hidden="true">
+        <div class="screen-grid"></div>
+        <div class="soft-orb orb-a"></div>
+        <div class="soft-orb orb-b"></div>
       </div>
 
-      <header class="onboarding-topbar" aria-label="Markethink onboarding header">
-        <a href="/" class="onboarding-logo" aria-label="Markethink home">
+      <header class="setup-header">
+        <a href="/" class="setup-logo" aria-label="Markethink home">
           <img src="/images/logo-white.svg" alt="Markethink" />
         </a>
-        <div class="topbar-status">
-          <span class="status-dot" aria-hidden="true"></span>
-          Client setup workspace
+        <div class="setup-status">
+          <span aria-hidden="true"></span>
+          Guided client setup
         </div>
       </header>
 
-      <div class="container onboarding-shell">
-        <div class="hero-copy animate-fade-up">
-          <p class="subtitle">MARKETHINK SETUP</p>
-          <h1 id="onboarding-heading">Let’s build the marketing system around your business.</h1>
-          <p class="hero-description">
-            Share the context once: your brand, offers, audience, goals, current marketing, assets, and approval style. We use this foundation to organize campaigns, create assets, manage reviews, and keep the next move clear.
+      <div class="setup-layout">
+        <aside class="setup-rail" aria-label="Onboarding progress">
+          <p class="rail-kicker">MARKETHINK SETUP</p>
+          <h1 id="setup-heading">Let’s build the marketing system around your business.</h1>
+          <p class="rail-copy">
+            One focused step at a time. No long intake wall. No guessing what to do next.
           </p>
-          <div class="hero-actions">
-            <a href="#setup" class="button">Start onboarding</a>
-            <a href="#what-happens-next" class="button is-secondary">See the flow</a>
-          </div>
-          <div class="hero-signals" aria-label="Onboarding outcomes">
-            {workspaceSignals.map((signal) => <span>{signal}</span>)}
-          </div>
-        </div>
-
-        <aside class="workspace-preview animate-scale-in" aria-label="Markethink workspace preview">
-          <div class="preview-topline">
-            <span>Workspace readiness</span>
-            <strong id="readiness-label">0%</strong>
-          </div>
-          <div class="readiness-bar" aria-hidden="true"><span id="readiness-bar"></span></div>
-
-          <div class="preview-window">
-            <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
-            <div class="workspace-card is-active">
-              <p>Business snapshot</p>
-              <strong id="summary-business">Waiting for company context</strong>
-            </div>
-            <div class="workspace-card">
-              <p>Campaign direction</p>
-              <strong id="summary-goal">Goals will appear here</strong>
-            </div>
-            <div class="workspace-card">
-              <p>Approval memory</p>
-              <strong id="summary-approval">Review style not set yet</strong>
-            </div>
-          </div>
-
-          <ol class="setup-timeline" aria-label="Setup timeline">
+          <ol class="rail-steps">
             {setupSteps.map((step, index) => (
-              <li class={index === 0 ? "active" : ""} data-timeline-step={index + 1}>
+              <li class={index === 0 ? "active" : ""} data-rail-step={index}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{step.label}</strong>
-                  <p>{step.short}</p>
-                </div>
+                <strong>{step.label}</strong>
               </li>
             ))}
           </ol>
         </aside>
-      </div>
-    </section>
-
-    <section class="setup-section" id="setup">
-      <div class="container setup-grid">
-        <div class="setup-intro animate-fade-up">
-          <p class="subtitle">GUIDED INTAKE</p>
-          <h2>Not a generic form. A setup flow for marketing that has to ship.</h2>
-          <p>
-            The questions are designed to give Markethink useful operating context: what the business sells, who it serves, what is already working, what is stuck, and how approvals should move.
-          </p>
-          <div class="privacy-note">
-            <span aria-hidden="true">↳</span>
-            Your notes help us prepare the first campaign direction. Do not include passwords or private account credentials here.
-          </div>
-        </div>
 
         <form
           id="onboarding-form"
@@ -123,382 +65,414 @@ const workspaceSignals = [
           data-netlify="true"
           netlify-honeypot="bot-field"
           enctype="multipart/form-data"
-          class="onboarding-form animate-fade-up"
+          class="setup-card"
         >
           <input type="hidden" name="form-name" value="markethink-client-onboarding" />
-          <input type="hidden" name="source" value="onboarding-page" />
+          <input type="hidden" name="source" value="onboarding-page-single-screen" />
           <p class="hidden-field">
             <label>Do not fill this out <input name="bot-field" /></label>
           </p>
 
-          <div class="form-progress" aria-label="Onboarding progress">
+          <div class="card-topline">
             <div>
               <span id="step-count">Step 1 of 6</span>
-              <strong id="step-title">Business snapshot</strong>
+              <strong id="step-label">Business</strong>
             </div>
-            <div class="mini-progress" aria-hidden="true"><span id="mini-progress-bar"></span></div>
+            <div class="progress-pill" aria-hidden="true"><span id="progress-bar"></span></div>
           </div>
 
-          <fieldset class="form-step is-active" data-step="1" data-title="Business snapshot">
-            <legend>Business snapshot</legend>
-            <div class="field-grid">
+          <div class="step-copy">
+            <h2 id="step-title">First, tell us who we’re building around.</h2>
+            <p id="step-helper">This gives us the basic workspace identity: company, contact, and what the business does.</p>
+          </div>
+
+          <div class="step-viewport">
+            <fieldset class="form-step is-active" data-step="0">
+              <legend>Business snapshot</legend>
+              <div class="field-grid two">
+                <label>
+                  <span>Your name</span>
+                  <input type="text" name="full_name" autocomplete="name" required data-summary="name" />
+                </label>
+                <label>
+                  <span>Work email</span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+              </div>
+              <div class="field-grid two">
+                <label>
+                  <span>Company</span>
+                  <input type="text" name="company" autocomplete="organization" required data-summary="company" />
+                </label>
+                <label>
+                  <span>Website</span>
+                  <input type="url" name="website" autocomplete="url" placeholder="https://" data-summary="website" />
+                </label>
+              </div>
               <label>
-                <span>Your name</span>
-                <input type="text" name="full_name" autocomplete="name" required data-summary="name" />
+                <span>What does the business do?</span>
+                <textarea name="business_description" rows="3" required placeholder="Short version is fine. What do you sell, and who buys it?"></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="1">
+              <legend>Audience and market</legend>
+              <label>
+                <span>Who is the ideal customer?</span>
+                <textarea name="ideal_customer" rows="3" required placeholder="Describe the buyer, role, location, budget level, or customer type."></textarea>
               </label>
               <label>
-                <span>Work email</span>
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-            </div>
-            <div class="field-grid">
-              <label>
-                <span>Company</span>
-                <input type="text" name="company" autocomplete="organization" required data-summary="company" />
+                <span>What problem brings them to you?</span>
+                <textarea name="customer_problem" rows="3" placeholder="What are they trying to solve, avoid, improve, or achieve?"></textarea>
               </label>
               <label>
-                <span>Website</span>
-                <input type="url" name="website" autocomplete="url" placeholder="https://" data-summary="website" />
+                <span>Any competitors or references we should understand?</span>
+                <textarea name="market_references" rows="2" placeholder="Links or names are useful. Include brands you like or want to avoid."></textarea>
               </label>
-            </div>
-            <label>
-              <span>What does the business do?</span>
-              <textarea name="business_description" rows="3" required placeholder="Short version is fine. What do you sell, and who buys it?"></textarea>
-            </label>
-          </fieldset>
+            </fieldset>
 
-          <fieldset class="form-step" data-step="2" data-title="Audience and market">
-            <legend>Audience and market</legend>
-            <label>
-              <span>Who is the ideal customer?</span>
-              <textarea name="ideal_customer" rows="3" required placeholder="Describe the buyer, role, location, budget level, or customer type."></textarea>
-            </label>
-            <label>
-              <span>What problem brings them to you?</span>
-              <textarea name="customer_problem" rows="3" placeholder="What are they trying to solve, avoid, improve, or achieve?"></textarea>
-            </label>
-            <label>
-              <span>Any competitors, references, or brands we should understand?</span>
-              <textarea name="market_references" rows="3" placeholder="Links or names are useful. You can include brands you like or want to avoid."></textarea>
-            </label>
-          </fieldset>
-
-          <fieldset class="form-step" data-step="3" data-title="Offers and priorities">
-            <legend>Offers and priorities</legend>
-            <label>
-              <span>Primary offer, product, or service to focus on first</span>
-              <textarea name="primary_offer" rows="3" required data-summary="offer" placeholder="What should Markethink help move first?"></textarea>
-            </label>
-            <label>
-              <span>What makes this offer different?</span>
-              <textarea name="offer_difference" rows="3" placeholder="Use plain language. No need for polished copy."></textarea>
-            </label>
-            <label>
-              <span>Main business goal for the next 30–60 days</span>
-              <select name="primary_goal" required data-summary="goal">
-                <option value="">Select one</option>
-                <option>More qualified leads</option>
-                <option>More consistent campaigns</option>
-                <option>Better website conversion</option>
-                <option>More polished social presence</option>
-                <option>Better email or newsletter rhythm</option>
-                <option>Cleaner client approvals and follow-up</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="form-step" data-step="4" data-title="Current marketing motion">
-            <legend>Current marketing motion</legend>
-            <label>
-              <span>Where is your marketing active today?</span>
-              <textarea name="active_channels" rows="3" placeholder="Instagram, LinkedIn, email, paid ads, website, referrals, events, outbound, etc."></textarea>
-            </label>
-            <label>
-              <span>What is working right now?</span>
-              <textarea name="whats_working" rows="3" placeholder="Even small signals help: best posts, strongest services, sales questions, referrals, campaigns."></textarea>
-            </label>
-            <label>
-              <span>What feels scattered, slow, or stuck?</span>
-              <textarea name="whats_stuck" rows="3" required placeholder="This helps us find the first useful system fix."></textarea>
-            </label>
-          </fieldset>
-
-          <fieldset class="form-step" data-step="5" data-title="Assets and links">
-            <legend>Assets and links</legend>
-            <label>
-              <span>Brand or asset folder link</span>
-              <input type="url" name="asset_folder" placeholder="Google Drive, Dropbox, website media page, etc." />
-            </label>
-            <label>
-              <span>Upload a logo, brand guide, or useful reference file</span>
-              <input type="file" name="brand_asset" accept=".pdf,.png,.jpg,.jpeg,.webp,.svg" />
-            </label>
-            <label>
-              <span>Important links</span>
-              <textarea name="important_links" rows="3" placeholder="Social profiles, landing pages, past campaigns, press, portfolio, products, booking links."></textarea>
-            </label>
-          </fieldset>
-
-          <fieldset class="form-step" data-step="6" data-title="Approvals and guardrails">
-            <legend>Approvals and guardrails</legend>
-            <div class="field-grid">
+            <fieldset class="form-step" data-step="2">
+              <legend>Offers and priorities</legend>
               <label>
-                <span>Who approves marketing work?</span>
-                <input type="text" name="approver" placeholder="Name / role" data-summary="approver" />
+                <span>Primary offer, product, or service to focus on first</span>
+                <textarea name="primary_offer" rows="3" required data-summary="offer" placeholder="What should Markethink help move first?"></textarea>
               </label>
               <label>
-                <span>Preferred approval speed</span>
-                <select name="approval_speed" data-summary="approval">
+                <span>What makes this offer different?</span>
+                <textarea name="offer_difference" rows="3" placeholder="Use plain language. No need for polished copy."></textarea>
+              </label>
+              <label>
+                <span>Main business goal for the next 30–60 days</span>
+                <select name="primary_goal" required data-summary="goal">
                   <option value="">Select one</option>
-                  <option>Fast and direct</option>
-                  <option>Careful and polished</option>
-                  <option>Collaborative with a few options</option>
+                  <option>More qualified leads</option>
+                  <option>More consistent campaigns</option>
+                  <option>Better website conversion</option>
+                  <option>More polished social presence</option>
+                  <option>Better email or newsletter rhythm</option>
+                  <option>Cleaner client approvals and follow-up</option>
                 </select>
               </label>
-            </div>
-            <label>
-              <span>What should Markethink avoid?</span>
-              <textarea name="avoid" rows="3" placeholder="Claims, words, offers, visual styles, audiences, compliance limits, or anything sensitive."></textarea>
-            </label>
-            <label class="confirm-row">
-              <input type="checkbox" name="credential_confirmation" required />
-              <span>I understand this form is for onboarding context, not passwords or private account credentials.</span>
-            </label>
-          </fieldset>
+            </fieldset>
 
-          <div class="form-navigation">
-            <button type="button" class="nav-step secondary-step" id="prev-step" disabled>Back</button>
-            <button type="button" class="nav-step" id="next-step">Continue</button>
-            <button type="submit" class="nav-step submit-step hidden" id="submit-onboarding">Send onboarding context</button>
+            <fieldset class="form-step" data-step="3">
+              <legend>Current marketing motion</legend>
+              <label>
+                <span>Where is your marketing active today?</span>
+                <textarea name="active_channels" rows="3" placeholder="Instagram, LinkedIn, email, paid ads, website, referrals, events, outbound, etc."></textarea>
+              </label>
+              <label>
+                <span>What is working right now?</span>
+                <textarea name="whats_working" rows="3" placeholder="Best posts, strongest services, sales questions, referrals, campaigns, or anything with signal."></textarea>
+              </label>
+              <label>
+                <span>What feels scattered, slow, or stuck?</span>
+                <textarea name="whats_stuck" rows="3" required placeholder="This helps us find the first useful system fix."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="4">
+              <legend>Assets and links</legend>
+              <label>
+                <span>Brand or asset folder link</span>
+                <input type="url" name="asset_folder" placeholder="Google Drive, Dropbox, website media page, etc." />
+              </label>
+              <label>
+                <span>Upload a logo, brand guide, or useful reference file</span>
+                <input type="file" name="brand_asset" accept=".pdf,.png,.jpg,.jpeg,.webp,.svg" />
+              </label>
+              <label>
+                <span>Important links</span>
+                <textarea name="important_links" rows="3" placeholder="Social profiles, landing pages, past campaigns, press, portfolio, products, booking links."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="5">
+              <legend>Approvals and guardrails</legend>
+              <div class="field-grid two">
+                <label>
+                  <span>Who approves marketing work?</span>
+                  <input type="text" name="approver" placeholder="Name / role" data-summary="approver" />
+                </label>
+                <label>
+                  <span>Preferred approval style</span>
+                  <select name="approval_speed" data-summary="approval">
+                    <option value="">Select one</option>
+                    <option>Fast and direct</option>
+                    <option>Careful and polished</option>
+                    <option>Collaborative with a few options</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                <span>What should Markethink avoid?</span>
+                <textarea name="avoid" rows="3" placeholder="Claims, words, offers, visual styles, audiences, compliance limits, or anything sensitive."></textarea>
+              </label>
+              <label class="confirm-row">
+                <input type="checkbox" name="credential_confirmation" required />
+                <span>I understand this form is for onboarding context, not passwords or private account credentials.</span>
+              </label>
+            </fieldset>
           </div>
-          <p class="form-note">After submission, we review the context and prepare the first useful next step for your Markethink workspace.</p>
-        </form>
-      </div>
-    </section>
 
-    <section class="system-section" id="what-happens-next">
-      <div class="container system-grid">
-        <div class="system-copy animate-fade-up">
-          <p class="subtitle">WHAT HAPPENS NEXT</p>
-          <h2>The setup turns into an operating rhythm.</h2>
-          <p>
-            We review the context, organize the first campaign direction, identify the first approval decisions, and use the notes as memory for the work that follows.
-          </p>
-        </div>
-        <div class="next-cards animate-stagger">
-          <article>
-            <span>01</span>
-            <h3>We map the business</h3>
-            <p>Your audience, offers, marketing surfaces, current bottlenecks, and approval style become the starting point.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>We find the first move</h3>
-            <p>The goal is not to do everything at once. It is to identify the campaign, asset, page, or follow-up motion that should move first.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>We keep approvals moving</h3>
-            <p>Feedback becomes useful context, so the next round starts sharper instead of restarting from zero.</p>
-          </article>
-        </div>
+          <div class="card-actions">
+            <button type="button" class="step-button back-button" id="prev-step" disabled>Back</button>
+            <button type="button" class="step-button next-button" id="next-step">Continue</button>
+            <button type="submit" class="step-button next-button hidden" id="submit-step">Send onboarding context</button>
+          </div>
+        </form>
+
+        <aside class="context-panel" aria-label="What this step prepares">
+          <p class="panel-kicker">WHAT THIS PREPARES</p>
+          <div class="context-card">
+            <span id="context-number">01</span>
+            <h3 id="context-title">Workspace identity</h3>
+            <p id="context-copy">We start with the business basics so every campaign, asset, and approval has the right owner and context.</p>
+          </div>
+          <div class="summary-strip">
+            <p>Captured so far</p>
+            <strong id="summary-line">Nothing yet — start with the business snapshot.</strong>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
   <script>
+    const stepMeta = [
+      {
+        label: "Business",
+        title: "First, tell us who we’re building around.",
+        helper: "This gives us the basic workspace identity: company, contact, and what the business does.",
+        contextTitle: "Workspace identity",
+        contextCopy: "We start with the business basics so every campaign, asset, and approval has the right owner and context.",
+      },
+      {
+        label: "Audience",
+        title: "Who are we trying to move?",
+        helper: "Good marketing starts with the buyer, the problem, and the market context.",
+        contextTitle: "Buyer context",
+        contextCopy: "This helps Markethink avoid generic messaging and shape campaigns around the people most likely to act.",
+      },
+      {
+        label: "Offer",
+        title: "What should Markethink help sell or move first?",
+        helper: "We focus the first motion instead of trying to boil the ocean.",
+        contextTitle: "First campaign direction",
+        contextCopy: "The offer and goal tell us which campaign, page, email, or follow-up motion deserves the first push.",
+      },
+      {
+        label: "Marketing",
+        title: "What is already happening today?",
+        helper: "We look for what is working, what is stuck, and where momentum can start fastest.",
+        contextTitle: "Current motion",
+        contextCopy: "Existing channels and bottlenecks show us where to improve the system instead of creating random assets.",
+      },
+      {
+        label: "Assets",
+        title: "Share the useful brand and marketing references.",
+        helper: "Links and files help us avoid restarting from zero.",
+        contextTitle: "Brand library",
+        contextCopy: "Assets, links, and references become the raw material for consistent client work.",
+      },
+      {
+        label: "Approvals",
+        title: "Last step: how should reviews and guardrails work?",
+        helper: "Approval style becomes memory for the work that follows.",
+        contextTitle: "Approval memory",
+        contextCopy: "Guardrails and approval style help future work move faster without losing the human review layer.",
+      },
+    ];
+
     const form = document.getElementById("onboarding-form");
     const steps = Array.from(document.querySelectorAll(".form-step"));
+    const railSteps = Array.from(document.querySelectorAll("[data-rail-step]"));
     const previousButton = document.getElementById("prev-step");
     const nextButton = document.getElementById("next-step");
-    const submitButton = document.getElementById("submit-onboarding");
+    const submitButton = document.getElementById("submit-step");
     const stepCount = document.getElementById("step-count");
+    const stepLabel = document.getElementById("step-label");
     const stepTitle = document.getElementById("step-title");
-    const miniProgressBar = document.getElementById("mini-progress-bar");
-    const readinessBar = document.getElementById("readiness-bar");
-    const readinessLabel = document.getElementById("readiness-label");
-    const summaryBusiness = document.getElementById("summary-business");
-    const summaryGoal = document.getElementById("summary-goal");
-    const summaryApproval = document.getElementById("summary-approval");
-    const timelineItems = Array.from(document.querySelectorAll("[data-timeline-step]"));
+    const stepHelper = document.getElementById("step-helper");
+    const progressBar = document.getElementById("progress-bar");
+    const contextNumber = document.getElementById("context-number");
+    const contextTitle = document.getElementById("context-title");
+    const contextCopy = document.getElementById("context-copy");
+    const summaryLine = document.getElementById("summary-line");
     let currentStep = 0;
 
-    function stepFields(step) {
+    function fieldsForStep(step) {
       return Array.from(step.querySelectorAll("input, select, textarea"));
     }
 
-    function validateCurrentStep() {
-      const fields = stepFields(steps[currentStep]);
+    function validateStep() {
+      const fields = fieldsForStep(steps[currentStep]);
       return fields.every((field) => {
         if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement)) return true;
         return field.reportValidity();
       });
     }
 
-    function updatePreview() {
-      const formData = new FormData(form);
-      const company = String(formData.get("company") || "").trim();
-      const website = String(formData.get("website") || "").trim();
-      const goal = String(formData.get("primary_goal") || "").trim();
-      const offer = String(formData.get("primary_offer") || "").trim();
-      const approval = String(formData.get("approval_speed") || "").trim();
-      const approver = String(formData.get("approver") || "").trim();
-
-      if (summaryBusiness) summaryBusiness.textContent = company ? `${company}${website ? ` · ${website.replace(/^https?:\/\//, "")}` : ""}` : "Waiting for company context";
-      if (summaryGoal) summaryGoal.textContent = goal || (offer ? offer.slice(0, 72) : "Goals will appear here");
-      if (summaryApproval) summaryApproval.textContent = approval ? `${approval}${approver ? ` · ${approver}` : ""}` : "Review style not set yet";
-
-      const touchedSteps = steps.reduce((count, step) => {
-        const fields = stepFields(step).filter((field) => field.name && field.name !== "bot-field");
-        const hasValue = fields.some((field) => {
-          if (field instanceof HTMLInputElement && field.type === "file") return field.files && field.files.length > 0;
-          if (field instanceof HTMLInputElement && field.type === "checkbox") return field.checked;
-          return "value" in field && String(field.value || "").trim().length > 0;
-        });
-        return count + (hasValue ? 1 : 0);
-      }, 0);
-      const percent = Math.min(100, Math.round((touchedSteps / steps.length) * 100));
-      if (readinessBar) readinessBar.style.width = `${percent}%`;
-      if (readinessLabel) readinessLabel.textContent = `${percent}%`;
+    function updateSummary() {
+      if (!form || !summaryLine) return;
+      const data = new FormData(form);
+      const company = String(data.get("company") || "").trim();
+      const goal = String(data.get("primary_goal") || "").trim();
+      const approval = String(data.get("approval_speed") || "").trim();
+      const parts = [];
+      if (company) parts.push(company);
+      if (goal) parts.push(goal);
+      if (approval) parts.push(approval);
+      summaryLine.textContent = parts.length ? parts.join(" · ") : "Nothing yet — start with the business snapshot.";
     }
 
     function renderStep() {
+      const meta = stepMeta[currentStep];
       steps.forEach((step, index) => step.classList.toggle("is-active", index === currentStep));
-      timelineItems.forEach((item, index) => {
-        item.classList.toggle("active", index === currentStep);
-        item.classList.toggle("complete", index < currentStep);
+      railSteps.forEach((step, index) => {
+        step.classList.toggle("active", index === currentStep);
+        step.classList.toggle("complete", index < currentStep);
       });
+      if (stepCount) stepCount.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+      if (stepLabel) stepLabel.textContent = meta.label;
+      if (stepTitle) stepTitle.textContent = meta.title;
+      if (stepHelper) stepHelper.textContent = meta.helper;
+      if (contextNumber) contextNumber.textContent = String(currentStep + 1).padStart(2, "0");
+      if (contextTitle) contextTitle.textContent = meta.contextTitle;
+      if (contextCopy) contextCopy.textContent = meta.contextCopy;
+      if (progressBar) progressBar.style.width = `${Math.round(((currentStep + 1) / steps.length) * 100)}%`;
       if (previousButton) previousButton.disabled = currentStep === 0;
       const isLast = currentStep === steps.length - 1;
       nextButton?.classList.toggle("hidden", isLast);
       submitButton?.classList.toggle("hidden", !isLast);
-      if (stepCount) stepCount.textContent = `Step ${currentStep + 1} of ${steps.length}`;
-      if (stepTitle) stepTitle.textContent = steps[currentStep]?.getAttribute("data-title") || "Setup";
-      const percent = Math.round(((currentStep + 1) / steps.length) * 100);
-      if (miniProgressBar) miniProgressBar.style.width = `${percent}%`;
-      updatePreview();
+      updateSummary();
     }
 
     previousButton?.addEventListener("click", () => {
       currentStep = Math.max(0, currentStep - 1);
       renderStep();
-      form?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     nextButton?.addEventListener("click", () => {
-      if (!validateCurrentStep()) return;
+      if (!validateStep()) return;
       currentStep = Math.min(steps.length - 1, currentStep + 1);
       renderStep();
-      form?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
-    form?.addEventListener("input", updatePreview);
-    form?.addEventListener("change", updatePreview);
+    form?.addEventListener("input", updateSummary);
+    form?.addEventListener("change", updateSummary);
     renderStep();
   </script>
 </Layout>
 
 <style>
-  .onboarding-page {
-    min-height: 100vh;
+  .setup-page {
+    min-height: 100dvh;
     background: #0f1213;
     color: var(--text-invert);
     overflow: hidden;
   }
 
-  .onboarding-hero {
+  .setup-screen {
     position: relative;
-    min-height: 100vh;
-    padding: 1.25rem 0 6rem;
+    min-height: 100dvh;
+    height: 100dvh;
+    padding: clamp(0.85rem, 1.7vw, 1.4rem);
     isolation: isolate;
+    overflow: hidden;
   }
 
-  .hero-background {
+  .screen-bg {
     position: absolute;
     inset: 0;
     z-index: -1;
     overflow: hidden;
     background:
-      linear-gradient(115deg, rgba(15, 18, 19, 0.96) 0%, rgba(15, 18, 19, 0.86) 50%, rgba(15, 18, 19, 0.72) 100%),
+      linear-gradient(118deg, rgba(15, 18, 19, 0.97) 0%, rgba(15, 18, 19, 0.86) 52%, rgba(15, 18, 19, 0.72) 100%),
       url("/images/hero-office-background.svg") center top / cover no-repeat,
       #0f1213;
   }
 
-  .hero-background::after {
+  .screen-bg::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(15, 18, 19, 0.15), #0f1213 94%);
+    background:
+      radial-gradient(circle at 72% 20%, rgba(105, 210, 84, 0.18), transparent 28rem),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.1), rgba(15, 18, 19, 0.94));
   }
 
-  .grid-glow {
+  .screen-grid {
     position: absolute;
     inset: 0;
-    opacity: 0.18;
+    opacity: 0.14;
     background-image:
       linear-gradient(rgba(245, 245, 241, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(245, 245, 241, 0.08) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(circle at 64% 42%, black, transparent 68%);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(circle at 58% 45%, black, transparent 68%);
   }
 
-  .orb {
+  .soft-orb {
     position: absolute;
-    width: 28rem;
-    height: 28rem;
+    width: 24rem;
+    height: 24rem;
     border-radius: 999px;
-    filter: blur(40px);
-    opacity: 0.28;
-    animation: float-orb 9s ease-in-out infinite alternate;
+    filter: blur(44px);
+    opacity: 0.26;
+    animation: drift 10s ease-in-out infinite alternate;
   }
 
-  .orb-one {
-    top: 8%;
-    right: 6%;
-    background: rgba(105, 210, 84, 0.34);
+  .orb-a {
+    top: 4%;
+    right: 9%;
+    background: rgba(105, 210, 84, 0.38);
   }
 
-  .orb-two {
-    bottom: 14%;
-    left: 4%;
-    background: rgba(237, 244, 234, 0.12);
-    animation-delay: -3s;
+  .orb-b {
+    left: 2%;
+    bottom: 8%;
+    background: rgba(237, 244, 234, 0.11);
+    animation-delay: -4s;
   }
 
-  .onboarding-topbar {
-    width: min(1180px, calc(100% - 2rem));
-    margin: 0 auto;
+  .setup-header {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.9rem 1.05rem;
+    width: min(1280px, 100%);
+    height: 4.6rem;
+    margin: 0 auto;
+    padding: 0.82rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 1.35rem;
+    border-radius: 1.25rem;
     background: rgba(15, 18, 19, 0.54);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
     backdrop-filter: blur(18px) saturate(1.08);
     -webkit-backdrop-filter: blur(18px) saturate(1.08);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
   }
 
-  .onboarding-logo img {
-    width: clamp(150px, 13vw, 210px);
+  .setup-logo img {
+    width: clamp(148px, 12vw, 205px);
     height: auto;
   }
 
-  .topbar-status {
+  .setup-status {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.55rem;
+    padding: 0.55rem 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 999px;
-    padding: 0.55rem 0.8rem;
     color: rgba(245, 245, 241, 0.76);
     font-size: 0.82rem;
     font-weight: 650;
   }
 
-  .status-dot {
+  .setup-status span {
     width: 0.48rem;
     height: 0.48rem;
     border-radius: 999px;
@@ -506,272 +480,111 @@ const workspaceSignals = [
     box-shadow: 0 0 0 6px rgba(105, 210, 84, 0.14);
   }
 
-  .onboarding-shell {
+  .setup-layout {
+    width: min(1280px, 100%);
+    height: calc(100dvh - 6.2rem);
+    margin: 1rem auto 0;
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.78fr);
-    align-items: center;
-    gap: clamp(2rem, 6vw, 5rem);
-    min-height: calc(100vh - 7rem);
-    padding-top: clamp(3.5rem, 8vw, 7rem);
+    grid-template-columns: minmax(230px, 0.58fr) minmax(480px, 1.08fr) minmax(230px, 0.58fr);
+    gap: clamp(0.85rem, 1.6vw, 1.35rem);
+    align-items: stretch;
   }
 
-  .hero-copy {
-    max-width: 48rem;
-  }
-
-  .hero-copy h1 {
-    margin-top: 1.1rem;
-    font-size: clamp(3.4rem, 7vw, 7.35rem);
-    line-height: 0.92;
-    letter-spacing: -0.06em;
-  }
-
-  .hero-description {
-    max-width: 40rem;
-    margin-top: 1.4rem;
-    color: rgba(245, 245, 241, 0.72);
-    font-size: clamp(1rem, 1.3vw, 1.14rem);
-    line-height: 1.78;
-  }
-
-  .hero-actions,
-  .hero-signals {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-top: 1.6rem;
-  }
-
-  .hero-signals {
-    margin-top: 1.25rem;
-  }
-
-  .hero-signals span {
+  .setup-rail,
+  .setup-card,
+  .context-panel {
+    min-height: 0;
     border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 999px;
-    padding: 0.58rem 0.86rem;
-    background: rgba(245, 245, 241, 0.045);
-    color: rgba(245, 245, 241, 0.72);
-    font-size: 0.82rem;
+    border-radius: 1.55rem;
+    background: rgba(15, 18, 19, 0.5);
+    backdrop-filter: blur(22px) saturate(1.08);
+    -webkit-backdrop-filter: blur(22px) saturate(1.08);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.26);
   }
 
-  .workspace-preview {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 2rem;
-    padding: clamp(1rem, 2.6vw, 1.5rem);
-    background: linear-gradient(180deg, rgba(245, 245, 241, 0.12), rgba(245, 245, 241, 0.055));
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-    backdrop-filter: blur(24px) saturate(1.08);
-    -webkit-backdrop-filter: blur(24px) saturate(1.08);
-  }
-
-  .preview-topline,
-  .form-progress {
+  .setup-rail {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.35rem);
   }
 
-  .preview-topline span,
-  .preview-topline strong {
-    color: rgba(245, 245, 241, 0.76);
-    font-size: 0.86rem;
-  }
-
-  .preview-topline strong {
-    color: #69d254;
-  }
-
-  .readiness-bar,
-  .mini-progress {
-    height: 0.55rem;
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(245, 245, 241, 0.12);
-  }
-
-  .readiness-bar {
-    margin-top: 0.8rem;
-  }
-
-  .readiness-bar span,
-  .mini-progress span {
-    display: block;
-    width: 0%;
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, #69d254, #edf4ea);
-    transition: width 0.35s ease;
-  }
-
-  .preview-window {
-    margin-top: 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 1.4rem;
-    padding: 1rem;
-    background: rgba(15, 18, 19, 0.62);
-  }
-
-  .window-controls {
-    display: flex;
-    gap: 0.34rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .window-controls span {
-    width: 0.56rem;
-    height: 0.56rem;
-    border-radius: 999px;
-    background: rgba(245, 245, 241, 0.24);
-  }
-
-  .workspace-card {
-    padding: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    background: rgba(245, 245, 241, 0.055);
-  }
-
-  .workspace-card + .workspace-card {
-    margin-top: 0.7rem;
-  }
-
-  .workspace-card.is-active {
-    border-color: rgba(105, 210, 84, 0.42);
-    background: rgba(105, 210, 84, 0.09);
-  }
-
-  .workspace-card p {
-    color: rgba(245, 245, 241, 0.48);
-    font-size: 0.75rem;
+  .rail-kicker,
+  .panel-kicker {
+    color: rgba(245, 245, 241, 0.5);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
   }
 
-  .workspace-card strong {
-    display: block;
-    margin-top: 0.32rem;
-    color: rgba(245, 245, 241, 0.88);
-    font-size: 0.98rem;
-    line-height: 1.45;
+  .setup-rail h1 {
+    margin-top: 0.8rem;
+    font-size: clamp(2rem, 3.3vw, 3.8rem);
+    line-height: 0.96;
+    letter-spacing: -0.055em;
   }
 
-  .setup-timeline {
+  .rail-copy {
+    margin-top: 0.95rem;
+    color: rgba(245, 245, 241, 0.64);
+    font-size: 0.92rem;
+    line-height: 1.62;
+  }
+
+  .rail-steps {
     list-style: none;
     display: grid;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 0.56rem;
+    margin-top: auto;
   }
 
-  .setup-timeline li {
+  .rail-steps li {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.72rem;
     align-items: center;
-    padding: 0.72rem;
-    border-radius: 1rem;
-    color: rgba(245, 245, 241, 0.58);
-    transition: background 0.25s ease, color 0.25s ease;
+    gap: 0.68rem;
+    padding: 0.64rem;
+    border-radius: 0.95rem;
+    color: rgba(245, 245, 241, 0.56);
+    transition: background 0.22s ease, color 0.22s ease;
   }
 
-  .setup-timeline li > span {
+  .rail-steps li span {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    width: 1.9rem;
+    height: 1.9rem;
     border-radius: 999px;
     background: rgba(245, 245, 241, 0.08);
-    color: rgba(245, 245, 241, 0.64);
-    font-size: 0.76rem;
-    font-weight: 800;
+    color: rgba(245, 245, 241, 0.62);
+    font-size: 0.72rem;
+    font-weight: 850;
   }
 
-  .setup-timeline strong {
-    display: block;
-    color: rgba(245, 245, 241, 0.88);
-    font-size: 0.88rem;
+  .rail-steps li strong {
+    font-size: 0.86rem;
   }
 
-  .setup-timeline p {
-    color: rgba(245, 245, 241, 0.46);
-    font-size: 0.76rem;
-  }
-
-  .setup-timeline li.active,
-  .setup-timeline li.complete {
+  .rail-steps li.active,
+  .rail-steps li.complete {
     background: rgba(245, 245, 241, 0.075);
+    color: rgba(245, 245, 241, 0.9);
   }
 
-  .setup-timeline li.active > span,
-  .setup-timeline li.complete > span {
+  .rail-steps li.active span,
+  .rail-steps li.complete span {
     background: #69d254;
     color: #0f1213;
   }
 
-  .setup-section {
-    position: relative;
-    padding: 7rem 0;
-    background: #edf4ea;
-    color: var(--text-primary);
-  }
-
-  .setup-grid {
+  .setup-card {
     display: grid;
-    grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1fr);
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
-
-  .setup-intro {
-    position: sticky;
-    top: 2rem;
-  }
-
-  .setup-section .subtitle,
-  .system-section .subtitle {
-    color: rgba(15, 18, 19, 0.5);
-  }
-
-  .setup-intro h2,
-  .system-copy h2 {
-    margin-top: 0.9rem;
-    font-size: clamp(2.4rem, 5vw, 4.8rem);
-    line-height: 1;
-    letter-spacing: -0.045em;
-  }
-
-  .setup-intro > p,
-  .system-copy > p {
-    margin-top: 1.2rem;
-    color: rgba(15, 18, 19, 0.68);
-    line-height: 1.78;
-  }
-
-  .privacy-note {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1.4rem;
-    padding: 1rem;
-    border: 1px solid rgba(15, 18, 19, 0.1);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    color: rgba(15, 18, 19, 0.68);
-    line-height: 1.6;
-  }
-
-  .privacy-note span {
-    color: #0f1213;
-    font-weight: 800;
-  }
-
-  .onboarding-form {
-    border: 1px solid rgba(15, 18, 19, 0.11);
-    border-radius: 2rem;
-    padding: clamp(1rem, 3vw, 1.5rem);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    padding: clamp(1rem, 2vw, 1.35rem);
     background: #f5f5f1;
-    box-shadow: 0 28px 80px rgba(15, 18, 19, 0.13);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .hidden,
@@ -779,48 +592,88 @@ const workspaceSignals = [
     display: none !important;
   }
 
-  .form-progress {
-    margin-bottom: 1rem;
-    padding: 0.85rem;
+  .card-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem;
     border: 1px solid rgba(15, 18, 19, 0.09);
-    border-radius: 1.15rem;
-    background: rgba(237, 244, 234, 0.68);
+    border-radius: 1.05rem;
+    background: rgba(237, 244, 234, 0.7);
   }
 
-  .form-progress span {
+  .card-topline span {
     display: block;
-    color: rgba(15, 18, 19, 0.54);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    color: rgba(15, 18, 19, 0.5);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  .form-progress strong {
+  .card-topline strong {
     display: block;
-    margin-top: 0.2rem;
+    margin-top: 0.1rem;
     font-family: "Instrument Serif", Georgia, serif;
-    font-size: 1.5rem;
+    font-size: 1.42rem;
     font-weight: 400;
     letter-spacing: -0.03em;
   }
 
-  .mini-progress {
-    width: min(34%, 11rem);
+  .progress-pill {
+    width: min(38%, 13rem);
+    height: 0.55rem;
+    border-radius: 999px;
+    overflow: hidden;
     background: rgba(15, 18, 19, 0.1);
+  }
+
+  .progress-pill span {
+    display: block;
+    width: 16.66%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #69d254, #0f1213);
+    transition: width 0.28s ease;
+  }
+
+  .step-copy {
+    padding: clamp(0.95rem, 1.8vw, 1.25rem) 0 0.8rem;
+  }
+
+  .step-copy h2 {
+    max-width: 42rem;
+    font-size: clamp(2rem, 3.5vw, 3.35rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .step-copy p {
+    max-width: 38rem;
+    margin-top: 0.65rem;
+    color: rgba(15, 18, 19, 0.62);
+    line-height: 1.58;
+    font-size: 0.94rem;
+  }
+
+  .step-viewport {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .form-step {
     display: none;
     border: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 
   .form-step.is-active {
     display: grid;
-    gap: 1rem;
-    animation: step-in 0.28s ease both;
+    gap: 0.82rem;
+    animation: step-in 0.24s ease both;
   }
 
   .form-step legend {
@@ -832,22 +685,21 @@ const workspaceSignals = [
     clip: rect(0 0 0 0);
   }
 
-  .field-grid {
+  .field-grid.two {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.9rem;
+    gap: 0.78rem;
   }
 
   label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.42rem;
+    display: grid;
+    gap: 0.36rem;
   }
 
   label span {
-    color: rgba(15, 18, 19, 0.72);
-    font-size: 0.8rem;
-    font-weight: 700;
+    color: rgba(15, 18, 19, 0.7);
+    font-size: 0.78rem;
+    font-weight: 750;
   }
 
   input,
@@ -855,146 +707,150 @@ const workspaceSignals = [
   textarea {
     width: 100%;
     border: 1px solid rgba(15, 18, 19, 0.12);
-    border-radius: 0.9rem;
+    border-radius: 0.84rem;
     background: #fff;
     color: var(--text-primary);
     font-family: var(--font-body);
-    font-size: 0.94rem;
-    padding: 0.92rem 0.95rem;
+    font-size: 0.92rem;
+    padding: 0.82rem 0.88rem;
     outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
   }
 
   textarea {
-    min-height: 112px;
-    resize: vertical;
+    min-height: 5.15rem;
+    resize: none;
   }
 
   input:focus,
   select:focus,
   textarea:focus {
     border-color: rgba(105, 210, 84, 0.95);
-    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
-    background: #fff;
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.15);
   }
 
   .confirm-row {
-    display: grid;
     grid-template-columns: auto 1fr;
     align-items: start;
-    gap: 0.7rem;
-    padding: 0.95rem;
+    gap: 0.68rem;
+    padding: 0.82rem;
     border: 1px solid rgba(15, 18, 19, 0.09);
-    border-radius: 1rem;
-    background: rgba(237, 244, 234, 0.68);
+    border-radius: 0.96rem;
+    background: rgba(237, 244, 234, 0.7);
   }
 
   .confirm-row input {
-    width: 1.05rem;
-    height: 1.05rem;
-    margin-top: 0.16rem;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.18rem;
   }
 
   .confirm-row span {
-    font-weight: 600;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
-  .form-navigation {
+  .card-actions {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 0.78rem;
+    padding-top: 1rem;
   }
 
-  .nav-step {
+  .step-button {
     border: 0;
     border-radius: 999px;
-    padding: 0.98rem 1.2rem;
+    padding: 0.95rem 1.15rem;
     background: #69d254;
     color: #0f1213;
     font-family: var(--font-body);
-    font-weight: 800;
+    font-weight: 850;
     cursor: pointer;
-    transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.22s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   }
 
-  .nav-step:hover:not(:disabled) {
+  .step-button:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow: 0 12px 28px rgba(105, 210, 84, 0.22);
   }
 
-  .nav-step:disabled {
+  .step-button:disabled {
     cursor: not-allowed;
     opacity: 0.42;
   }
 
-  .secondary-step {
+  .back-button {
     background: transparent;
     border: 1px solid rgba(15, 18, 19, 0.14);
-    color: rgba(15, 18, 19, 0.74);
+    color: rgba(15, 18, 19, 0.72);
   }
 
-  .submit-step {
+  .next-button {
     grid-column: 2;
   }
 
-  .form-note {
+  .context-panel {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  .context-card {
     margin-top: 0.85rem;
-    color: rgba(15, 18, 19, 0.55);
-    font-size: 0.82rem;
-    line-height: 1.55;
+    padding: 1rem;
+    border: 1px solid rgba(105, 210, 84, 0.3);
+    border-radius: 1.15rem;
+    background: rgba(105, 210, 84, 0.09);
   }
 
-  .system-section {
-    padding: 7rem 0;
-    background: #f5f5f1;
-    color: var(--text-primary);
-  }
-
-  .system-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.66fr) minmax(0, 1fr);
-    gap: clamp(2rem, 6vw, 4rem);
-    align-items: start;
-  }
-
-  .next-cards {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .next-cards article {
-    border: 1px solid rgba(15, 18, 19, 0.09);
-    border-radius: 1.4rem;
-    padding: 1.25rem;
-    background: rgba(237, 244, 234, 0.72);
-  }
-
-  .next-cards span {
+  .context-card > span {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.15rem;
-    height: 2.15rem;
+    width: 2.1rem;
+    height: 2.1rem;
     border-radius: 999px;
-    background: #0f1213;
-    color: #69d254;
+    background: #69d254;
+    color: #0f1213;
     font-size: 0.78rem;
     font-weight: 850;
   }
 
-  .next-cards h3 {
-    margin-top: 0.85rem;
+  .context-card h3 {
+    margin-top: 1rem;
     font-family: var(--font-body);
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.05rem;
+    font-weight: 850;
   }
 
-  .next-cards p {
+  .context-card p {
+    margin-top: 0.48rem;
+    color: rgba(245, 245, 241, 0.66);
+    line-height: 1.58;
+    font-size: 0.9rem;
+  }
+
+  .summary-strip {
+    margin-top: auto;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.15rem;
+    background: rgba(245, 245, 241, 0.06);
+  }
+
+  .summary-strip p {
+    color: rgba(245, 245, 241, 0.46);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .summary-strip strong {
+    display: block;
     margin-top: 0.45rem;
-    color: rgba(15, 18, 19, 0.66);
-    line-height: 1.65;
+    color: rgba(245, 245, 241, 0.82);
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   @keyframes step-in {
@@ -1002,20 +858,19 @@ const workspaceSignals = [
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes float-orb {
+  @keyframes drift {
     from { transform: translate3d(0, 0, 0) scale(1); }
-    to { transform: translate3d(-1.5rem, 1rem, 0) scale(1.06); }
+    to { transform: translate3d(-1rem, 1rem, 0) scale(1.05); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .orb,
+    .soft-orb,
     .form-step.is-active {
       animation: none;
     }
 
-    .readiness-bar span,
-    .mini-progress span,
-    .nav-step,
+    .progress-pill span,
+    .step-button,
     input,
     select,
     textarea {
@@ -1023,61 +878,65 @@ const workspaceSignals = [
     }
   }
 
-  @media (max-width: 980px) {
-    .onboarding-shell,
-    .setup-grid,
-    .system-grid {
-      grid-template-columns: 1fr;
+  @media (max-width: 1100px) {
+    .setup-layout {
+      grid-template-columns: minmax(190px, 0.45fr) minmax(0, 1fr);
     }
 
-    .setup-intro {
-      position: static;
-    }
-
-    .workspace-preview {
-      max-width: 46rem;
+    .context-panel {
+      display: none;
     }
   }
 
-  @media (max-width: 640px) {
-    .onboarding-hero {
-      padding-top: 0.75rem;
+  @media (max-width: 760px) {
+    .setup-page,
+    .setup-screen {
+      overflow: auto;
     }
 
-    .onboarding-topbar {
-      width: min(100% - 1rem, 1180px);
+    .setup-screen {
+      height: auto;
+      min-height: 100dvh;
+    }
+
+    .setup-header {
+      height: auto;
       border-radius: 1rem;
-      padding: 0.8rem;
     }
 
-    .topbar-status {
+    .setup-status {
       display: none;
     }
 
-    .onboarding-shell {
-      padding-top: 3rem;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(3rem, 16vw, 4.2rem);
-    }
-
-    .field-grid,
-    .form-navigation {
+    .setup-layout {
+      height: auto;
       grid-template-columns: 1fr;
     }
 
-    .submit-step {
+    .setup-rail {
+      display: none;
+    }
+
+    .setup-card {
+      min-height: calc(100dvh - 7rem);
+      border-radius: 1.2rem;
+    }
+
+    .field-grid.two,
+    .card-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .next-button {
       grid-column: auto;
     }
 
-    .mini-progress {
+    .progress-pill {
       width: 7rem;
     }
 
-    .setup-section,
-    .system-section {
-      padding: 4.5rem 0;
+    textarea {
+      resize: vertical;
     }
   }
 </style>
