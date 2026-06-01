@@ -1,0 +1,1083 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const pageTitle = "Client Onboarding | Markethink";
+const pageDescription =
+  "Set up your Markethink workspace with a guided onboarding experience for your business, brand, audience, offers, goals, assets, and approval rhythm.";
+
+const setupSteps = [
+  { id: "business", label: "Business", short: "Snapshot" },
+  { id: "audience", label: "Audience", short: "Who you serve" },
+  { id: "offers", label: "Offers", short: "What you sell" },
+  { id: "marketing", label: "Marketing", short: "Current motion" },
+  { id: "assets", label: "Assets", short: "Brand library" },
+  { id: "approvals", label: "Approvals", short: "How work moves" },
+];
+
+const workspaceSignals = [
+  "Campaign context",
+  "Brand memory",
+  "Approval rhythm",
+  "Next best moves",
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://markethink.ai/onboarding/"
+  noindex={true}
+>
+  <main class="onboarding-page">
+    <section class="onboarding-hero" aria-labelledby="onboarding-heading">
+      <div class="hero-background" aria-hidden="true">
+        <div class="grid-glow"></div>
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+      </div>
+
+      <header class="onboarding-topbar" aria-label="Markethink onboarding header">
+        <a href="/" class="onboarding-logo" aria-label="Markethink home">
+          <img src="/images/logo-white.svg" alt="Markethink" />
+        </a>
+        <div class="topbar-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Client setup workspace
+        </div>
+      </header>
+
+      <div class="container onboarding-shell">
+        <div class="hero-copy animate-fade-up">
+          <p class="subtitle">MARKETHINK SETUP</p>
+          <h1 id="onboarding-heading">Let’s build the marketing system around your business.</h1>
+          <p class="hero-description">
+            Share the context once: your brand, offers, audience, goals, current marketing, assets, and approval style. We use this foundation to organize campaigns, create assets, manage reviews, and keep the next move clear.
+          </p>
+          <div class="hero-actions">
+            <a href="#setup" class="button">Start onboarding</a>
+            <a href="#what-happens-next" class="button is-secondary">See the flow</a>
+          </div>
+          <div class="hero-signals" aria-label="Onboarding outcomes">
+            {workspaceSignals.map((signal) => <span>{signal}</span>)}
+          </div>
+        </div>
+
+        <aside class="workspace-preview animate-scale-in" aria-label="Markethink workspace preview">
+          <div class="preview-topline">
+            <span>Workspace readiness</span>
+            <strong id="readiness-label">0%</strong>
+          </div>
+          <div class="readiness-bar" aria-hidden="true"><span id="readiness-bar"></span></div>
+
+          <div class="preview-window">
+            <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="workspace-card is-active">
+              <p>Business snapshot</p>
+              <strong id="summary-business">Waiting for company context</strong>
+            </div>
+            <div class="workspace-card">
+              <p>Campaign direction</p>
+              <strong id="summary-goal">Goals will appear here</strong>
+            </div>
+            <div class="workspace-card">
+              <p>Approval memory</p>
+              <strong id="summary-approval">Review style not set yet</strong>
+            </div>
+          </div>
+
+          <ol class="setup-timeline" aria-label="Setup timeline">
+            {setupSteps.map((step, index) => (
+              <li class={index === 0 ? "active" : ""} data-timeline-step={index + 1}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <strong>{step.label}</strong>
+                  <p>{step.short}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="setup-section" id="setup">
+      <div class="container setup-grid">
+        <div class="setup-intro animate-fade-up">
+          <p class="subtitle">GUIDED INTAKE</p>
+          <h2>Not a generic form. A setup flow for marketing that has to ship.</h2>
+          <p>
+            The questions are designed to give Markethink useful operating context: what the business sells, who it serves, what is already working, what is stuck, and how approvals should move.
+          </p>
+          <div class="privacy-note">
+            <span aria-hidden="true">↳</span>
+            Your notes help us prepare the first campaign direction. Do not include passwords or private account credentials here.
+          </div>
+        </div>
+
+        <form
+          id="onboarding-form"
+          name="markethink-client-onboarding"
+          method="POST"
+          action="/onboarding/thanks/"
+          netlify
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          enctype="multipart/form-data"
+          class="onboarding-form animate-fade-up"
+        >
+          <input type="hidden" name="form-name" value="markethink-client-onboarding" />
+          <input type="hidden" name="source" value="onboarding-page" />
+          <p class="hidden-field">
+            <label>Do not fill this out <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-progress" aria-label="Onboarding progress">
+            <div>
+              <span id="step-count">Step 1 of 6</span>
+              <strong id="step-title">Business snapshot</strong>
+            </div>
+            <div class="mini-progress" aria-hidden="true"><span id="mini-progress-bar"></span></div>
+          </div>
+
+          <fieldset class="form-step is-active" data-step="1" data-title="Business snapshot">
+            <legend>Business snapshot</legend>
+            <div class="field-grid">
+              <label>
+                <span>Your name</span>
+                <input type="text" name="full_name" autocomplete="name" required data-summary="name" />
+              </label>
+              <label>
+                <span>Work email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+            </div>
+            <div class="field-grid">
+              <label>
+                <span>Company</span>
+                <input type="text" name="company" autocomplete="organization" required data-summary="company" />
+              </label>
+              <label>
+                <span>Website</span>
+                <input type="url" name="website" autocomplete="url" placeholder="https://" data-summary="website" />
+              </label>
+            </div>
+            <label>
+              <span>What does the business do?</span>
+              <textarea name="business_description" rows="3" required placeholder="Short version is fine. What do you sell, and who buys it?"></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="2" data-title="Audience and market">
+            <legend>Audience and market</legend>
+            <label>
+              <span>Who is the ideal customer?</span>
+              <textarea name="ideal_customer" rows="3" required placeholder="Describe the buyer, role, location, budget level, or customer type."></textarea>
+            </label>
+            <label>
+              <span>What problem brings them to you?</span>
+              <textarea name="customer_problem" rows="3" placeholder="What are they trying to solve, avoid, improve, or achieve?"></textarea>
+            </label>
+            <label>
+              <span>Any competitors, references, or brands we should understand?</span>
+              <textarea name="market_references" rows="3" placeholder="Links or names are useful. You can include brands you like or want to avoid."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="3" data-title="Offers and priorities">
+            <legend>Offers and priorities</legend>
+            <label>
+              <span>Primary offer, product, or service to focus on first</span>
+              <textarea name="primary_offer" rows="3" required data-summary="offer" placeholder="What should Markethink help move first?"></textarea>
+            </label>
+            <label>
+              <span>What makes this offer different?</span>
+              <textarea name="offer_difference" rows="3" placeholder="Use plain language. No need for polished copy."></textarea>
+            </label>
+            <label>
+              <span>Main business goal for the next 30–60 days</span>
+              <select name="primary_goal" required data-summary="goal">
+                <option value="">Select one</option>
+                <option>More qualified leads</option>
+                <option>More consistent campaigns</option>
+                <option>Better website conversion</option>
+                <option>More polished social presence</option>
+                <option>Better email or newsletter rhythm</option>
+                <option>Cleaner client approvals and follow-up</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="4" data-title="Current marketing motion">
+            <legend>Current marketing motion</legend>
+            <label>
+              <span>Where is your marketing active today?</span>
+              <textarea name="active_channels" rows="3" placeholder="Instagram, LinkedIn, email, paid ads, website, referrals, events, outbound, etc."></textarea>
+            </label>
+            <label>
+              <span>What is working right now?</span>
+              <textarea name="whats_working" rows="3" placeholder="Even small signals help: best posts, strongest services, sales questions, referrals, campaigns."></textarea>
+            </label>
+            <label>
+              <span>What feels scattered, slow, or stuck?</span>
+              <textarea name="whats_stuck" rows="3" required placeholder="This helps us find the first useful system fix."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="5" data-title="Assets and links">
+            <legend>Assets and links</legend>
+            <label>
+              <span>Brand or asset folder link</span>
+              <input type="url" name="asset_folder" placeholder="Google Drive, Dropbox, website media page, etc." />
+            </label>
+            <label>
+              <span>Upload a logo, brand guide, or useful reference file</span>
+              <input type="file" name="brand_asset" accept=".pdf,.png,.jpg,.jpeg,.webp,.svg" />
+            </label>
+            <label>
+              <span>Important links</span>
+              <textarea name="important_links" rows="3" placeholder="Social profiles, landing pages, past campaigns, press, portfolio, products, booking links."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="6" data-title="Approvals and guardrails">
+            <legend>Approvals and guardrails</legend>
+            <div class="field-grid">
+              <label>
+                <span>Who approves marketing work?</span>
+                <input type="text" name="approver" placeholder="Name / role" data-summary="approver" />
+              </label>
+              <label>
+                <span>Preferred approval speed</span>
+                <select name="approval_speed" data-summary="approval">
+                  <option value="">Select one</option>
+                  <option>Fast and direct</option>
+                  <option>Careful and polished</option>
+                  <option>Collaborative with a few options</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              <span>What should Markethink avoid?</span>
+              <textarea name="avoid" rows="3" placeholder="Claims, words, offers, visual styles, audiences, compliance limits, or anything sensitive."></textarea>
+            </label>
+            <label class="confirm-row">
+              <input type="checkbox" name="credential_confirmation" required />
+              <span>I understand this form is for onboarding context, not passwords or private account credentials.</span>
+            </label>
+          </fieldset>
+
+          <div class="form-navigation">
+            <button type="button" class="nav-step secondary-step" id="prev-step" disabled>Back</button>
+            <button type="button" class="nav-step" id="next-step">Continue</button>
+            <button type="submit" class="nav-step submit-step hidden" id="submit-onboarding">Send onboarding context</button>
+          </div>
+          <p class="form-note">After submission, we review the context and prepare the first useful next step for your Markethink workspace.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="system-section" id="what-happens-next">
+      <div class="container system-grid">
+        <div class="system-copy animate-fade-up">
+          <p class="subtitle">WHAT HAPPENS NEXT</p>
+          <h2>The setup turns into an operating rhythm.</h2>
+          <p>
+            We review the context, organize the first campaign direction, identify the first approval decisions, and use the notes as memory for the work that follows.
+          </p>
+        </div>
+        <div class="next-cards animate-stagger">
+          <article>
+            <span>01</span>
+            <h3>We map the business</h3>
+            <p>Your audience, offers, marketing surfaces, current bottlenecks, and approval style become the starting point.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>We find the first move</h3>
+            <p>The goal is not to do everything at once. It is to identify the campaign, asset, page, or follow-up motion that should move first.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>We keep approvals moving</h3>
+            <p>Feedback becomes useful context, so the next round starts sharper instead of restarting from zero.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("onboarding-form");
+    const steps = Array.from(document.querySelectorAll(".form-step"));
+    const previousButton = document.getElementById("prev-step");
+    const nextButton = document.getElementById("next-step");
+    const submitButton = document.getElementById("submit-onboarding");
+    const stepCount = document.getElementById("step-count");
+    const stepTitle = document.getElementById("step-title");
+    const miniProgressBar = document.getElementById("mini-progress-bar");
+    const readinessBar = document.getElementById("readiness-bar");
+    const readinessLabel = document.getElementById("readiness-label");
+    const summaryBusiness = document.getElementById("summary-business");
+    const summaryGoal = document.getElementById("summary-goal");
+    const summaryApproval = document.getElementById("summary-approval");
+    const timelineItems = Array.from(document.querySelectorAll("[data-timeline-step]"));
+    let currentStep = 0;
+
+    function stepFields(step) {
+      return Array.from(step.querySelectorAll("input, select, textarea"));
+    }
+
+    function validateCurrentStep() {
+      const fields = stepFields(steps[currentStep]);
+      return fields.every((field) => {
+        if (!(field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement || field instanceof HTMLSelectElement)) return true;
+        return field.reportValidity();
+      });
+    }
+
+    function updatePreview() {
+      const formData = new FormData(form);
+      const company = String(formData.get("company") || "").trim();
+      const website = String(formData.get("website") || "").trim();
+      const goal = String(formData.get("primary_goal") || "").trim();
+      const offer = String(formData.get("primary_offer") || "").trim();
+      const approval = String(formData.get("approval_speed") || "").trim();
+      const approver = String(formData.get("approver") || "").trim();
+
+      if (summaryBusiness) summaryBusiness.textContent = company ? `${company}${website ? ` · ${website.replace(/^https?:\/\//, "")}` : ""}` : "Waiting for company context";
+      if (summaryGoal) summaryGoal.textContent = goal || (offer ? offer.slice(0, 72) : "Goals will appear here");
+      if (summaryApproval) summaryApproval.textContent = approval ? `${approval}${approver ? ` · ${approver}` : ""}` : "Review style not set yet";
+
+      const touchedSteps = steps.reduce((count, step) => {
+        const fields = stepFields(step).filter((field) => field.name && field.name !== "bot-field");
+        const hasValue = fields.some((field) => {
+          if (field instanceof HTMLInputElement && field.type === "file") return field.files && field.files.length > 0;
+          if (field instanceof HTMLInputElement && field.type === "checkbox") return field.checked;
+          return "value" in field && String(field.value || "").trim().length > 0;
+        });
+        return count + (hasValue ? 1 : 0);
+      }, 0);
+      const percent = Math.min(100, Math.round((touchedSteps / steps.length) * 100));
+      if (readinessBar) readinessBar.style.width = `${percent}%`;
+      if (readinessLabel) readinessLabel.textContent = `${percent}%`;
+    }
+
+    function renderStep() {
+      steps.forEach((step, index) => step.classList.toggle("is-active", index === currentStep));
+      timelineItems.forEach((item, index) => {
+        item.classList.toggle("active", index === currentStep);
+        item.classList.toggle("complete", index < currentStep);
+      });
+      if (previousButton) previousButton.disabled = currentStep === 0;
+      const isLast = currentStep === steps.length - 1;
+      nextButton?.classList.toggle("hidden", isLast);
+      submitButton?.classList.toggle("hidden", !isLast);
+      if (stepCount) stepCount.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+      if (stepTitle) stepTitle.textContent = steps[currentStep]?.getAttribute("data-title") || "Setup";
+      const percent = Math.round(((currentStep + 1) / steps.length) * 100);
+      if (miniProgressBar) miniProgressBar.style.width = `${percent}%`;
+      updatePreview();
+    }
+
+    previousButton?.addEventListener("click", () => {
+      currentStep = Math.max(0, currentStep - 1);
+      renderStep();
+      form?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    nextButton?.addEventListener("click", () => {
+      if (!validateCurrentStep()) return;
+      currentStep = Math.min(steps.length - 1, currentStep + 1);
+      renderStep();
+      form?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    form?.addEventListener("input", updatePreview);
+    form?.addEventListener("change", updatePreview);
+    renderStep();
+  </script>
+</Layout>
+
+<style>
+  .onboarding-page {
+    min-height: 100vh;
+    background: #0f1213;
+    color: var(--text-invert);
+    overflow: hidden;
+  }
+
+  .onboarding-hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 1.25rem 0 6rem;
+    isolation: isolate;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background:
+      linear-gradient(115deg, rgba(15, 18, 19, 0.96) 0%, rgba(15, 18, 19, 0.86) 50%, rgba(15, 18, 19, 0.72) 100%),
+      url("/images/hero-office-background.svg") center top / cover no-repeat,
+      #0f1213;
+  }
+
+  .hero-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 18, 19, 0.15), #0f1213 94%);
+  }
+
+  .grid-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image:
+      linear-gradient(rgba(245, 245, 241, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 245, 241, 0.08) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(circle at 64% 42%, black, transparent 68%);
+  }
+
+  .orb {
+    position: absolute;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 999px;
+    filter: blur(40px);
+    opacity: 0.28;
+    animation: float-orb 9s ease-in-out infinite alternate;
+  }
+
+  .orb-one {
+    top: 8%;
+    right: 6%;
+    background: rgba(105, 210, 84, 0.34);
+  }
+
+  .orb-two {
+    bottom: 14%;
+    left: 4%;
+    background: rgba(237, 244, 234, 0.12);
+    animation-delay: -3s;
+  }
+
+  .onboarding-topbar {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 1.35rem;
+    background: rgba(15, 18, 19, 0.54);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(18px) saturate(1.08);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  }
+
+  .onboarding-logo img {
+    width: clamp(150px, 13vw, 210px);
+    height: auto;
+  }
+
+  .topbar-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    color: rgba(245, 245, 241, 0.76);
+    font-size: 0.82rem;
+    font-weight: 650;
+  }
+
+  .status-dot {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 999px;
+    background: #69d254;
+    box-shadow: 0 0 0 6px rgba(105, 210, 84, 0.14);
+  }
+
+  .onboarding-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.78fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 5rem);
+    min-height: calc(100vh - 7rem);
+    padding-top: clamp(3.5rem, 8vw, 7rem);
+  }
+
+  .hero-copy {
+    max-width: 48rem;
+  }
+
+  .hero-copy h1 {
+    margin-top: 1.1rem;
+    font-size: clamp(3.4rem, 7vw, 7.35rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+  }
+
+  .hero-description {
+    max-width: 40rem;
+    margin-top: 1.4rem;
+    color: rgba(245, 245, 241, 0.72);
+    font-size: clamp(1rem, 1.3vw, 1.14rem);
+    line-height: 1.78;
+  }
+
+  .hero-actions,
+  .hero-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+  }
+
+  .hero-signals {
+    margin-top: 1.25rem;
+  }
+
+  .hero-signals span {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    padding: 0.58rem 0.86rem;
+    background: rgba(245, 245, 241, 0.045);
+    color: rgba(245, 245, 241, 0.72);
+    font-size: 0.82rem;
+  }
+
+  .workspace-preview {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 2rem;
+    padding: clamp(1rem, 2.6vw, 1.5rem);
+    background: linear-gradient(180deg, rgba(245, 245, 241, 0.12), rgba(245, 245, 241, 0.055));
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(24px) saturate(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.08);
+  }
+
+  .preview-topline,
+  .form-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .preview-topline span,
+  .preview-topline strong {
+    color: rgba(245, 245, 241, 0.76);
+    font-size: 0.86rem;
+  }
+
+  .preview-topline strong {
+    color: #69d254;
+  }
+
+  .readiness-bar,
+  .mini-progress {
+    height: 0.55rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(245, 245, 241, 0.12);
+  }
+
+  .readiness-bar {
+    margin-top: 0.8rem;
+  }
+
+  .readiness-bar span,
+  .mini-progress span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #69d254, #edf4ea);
+    transition: width 0.35s ease;
+  }
+
+  .preview-window {
+    margin-top: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.4rem;
+    padding: 1rem;
+    background: rgba(15, 18, 19, 0.62);
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 0.34rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .window-controls span {
+    width: 0.56rem;
+    height: 0.56rem;
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.24);
+  }
+
+  .workspace-card {
+    padding: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    background: rgba(245, 245, 241, 0.055);
+  }
+
+  .workspace-card + .workspace-card {
+    margin-top: 0.7rem;
+  }
+
+  .workspace-card.is-active {
+    border-color: rgba(105, 210, 84, 0.42);
+    background: rgba(105, 210, 84, 0.09);
+  }
+
+  .workspace-card p {
+    color: rgba(245, 245, 241, 0.48);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .workspace-card strong {
+    display: block;
+    margin-top: 0.32rem;
+    color: rgba(245, 245, 241, 0.88);
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .setup-timeline {
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .setup-timeline li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.72rem;
+    align-items: center;
+    padding: 0.72rem;
+    border-radius: 1rem;
+    color: rgba(245, 245, 241, 0.58);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .setup-timeline li > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.08);
+    color: rgba(245, 245, 241, 0.64);
+    font-size: 0.76rem;
+    font-weight: 800;
+  }
+
+  .setup-timeline strong {
+    display: block;
+    color: rgba(245, 245, 241, 0.88);
+    font-size: 0.88rem;
+  }
+
+  .setup-timeline p {
+    color: rgba(245, 245, 241, 0.46);
+    font-size: 0.76rem;
+  }
+
+  .setup-timeline li.active,
+  .setup-timeline li.complete {
+    background: rgba(245, 245, 241, 0.075);
+  }
+
+  .setup-timeline li.active > span,
+  .setup-timeline li.complete > span {
+    background: #69d254;
+    color: #0f1213;
+  }
+
+  .setup-section {
+    position: relative;
+    padding: 7rem 0;
+    background: #edf4ea;
+    color: var(--text-primary);
+  }
+
+  .setup-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .setup-intro {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .setup-section .subtitle,
+  .system-section .subtitle {
+    color: rgba(15, 18, 19, 0.5);
+  }
+
+  .setup-intro h2,
+  .system-copy h2 {
+    margin-top: 0.9rem;
+    font-size: clamp(2.4rem, 5vw, 4.8rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .setup-intro > p,
+  .system-copy > p {
+    margin-top: 1.2rem;
+    color: rgba(15, 18, 19, 0.68);
+    line-height: 1.78;
+  }
+
+  .privacy-note {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+    padding: 1rem;
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(15, 18, 19, 0.68);
+    line-height: 1.6;
+  }
+
+  .privacy-note span {
+    color: #0f1213;
+    font-weight: 800;
+  }
+
+  .onboarding-form {
+    border: 1px solid rgba(15, 18, 19, 0.11);
+    border-radius: 2rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    background: #f5f5f1;
+    box-shadow: 0 28px 80px rgba(15, 18, 19, 0.13);
+  }
+
+  .hidden,
+  .hidden-field {
+    display: none !important;
+  }
+
+  .form-progress {
+    margin-bottom: 1rem;
+    padding: 0.85rem;
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 1.15rem;
+    background: rgba(237, 244, 234, 0.68);
+  }
+
+  .form-progress span {
+    display: block;
+    color: rgba(15, 18, 19, 0.54);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .form-progress strong {
+    display: block;
+    margin-top: 0.2rem;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  .mini-progress {
+    width: min(34%, 11rem);
+    background: rgba(15, 18, 19, 0.1);
+  }
+
+  .form-step {
+    display: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-step.is-active {
+    display: grid;
+    gap: 1rem;
+    animation: step-in 0.28s ease both;
+  }
+
+  .form-step legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+  }
+
+  label span {
+    color: rgba(15, 18, 19, 0.72);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 18, 19, 0.12);
+    border-radius: 0.9rem;
+    background: #fff;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    padding: 0.92rem 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  textarea {
+    min-height: 112px;
+    resize: vertical;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(105, 210, 84, 0.95);
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
+    background: #fff;
+  }
+
+  .confirm-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.7rem;
+    padding: 0.95rem;
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 1rem;
+    background: rgba(237, 244, 234, 0.68);
+  }
+
+  .confirm-row input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: 0.16rem;
+  }
+
+  .confirm-row span {
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .form-navigation {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .nav-step {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.98rem 1.2rem;
+    background: #69d254;
+    color: #0f1213;
+    font-family: var(--font-body);
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .nav-step:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(105, 210, 84, 0.22);
+  }
+
+  .nav-step:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+  }
+
+  .secondary-step {
+    background: transparent;
+    border: 1px solid rgba(15, 18, 19, 0.14);
+    color: rgba(15, 18, 19, 0.74);
+  }
+
+  .submit-step {
+    grid-column: 2;
+  }
+
+  .form-note {
+    margin-top: 0.85rem;
+    color: rgba(15, 18, 19, 0.55);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .system-section {
+    padding: 7rem 0;
+    background: #f5f5f1;
+    color: var(--text-primary);
+  }
+
+  .system-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.66fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 4rem);
+    align-items: start;
+  }
+
+  .next-cards {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .next-cards article {
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 1.4rem;
+    padding: 1.25rem;
+    background: rgba(237, 244, 234, 0.72);
+  }
+
+  .next-cards span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 999px;
+    background: #0f1213;
+    color: #69d254;
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+
+  .next-cards h3 {
+    margin-top: 0.85rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .next-cards p {
+    margin-top: 0.45rem;
+    color: rgba(15, 18, 19, 0.66);
+    line-height: 1.65;
+  }
+
+  @keyframes step-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float-orb {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(-1.5rem, 1rem, 0) scale(1.06); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb,
+    .form-step.is-active {
+      animation: none;
+    }
+
+    .readiness-bar span,
+    .mini-progress span,
+    .nav-step,
+    input,
+    select,
+    textarea {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .onboarding-shell,
+    .setup-grid,
+    .system-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .setup-intro {
+      position: static;
+    }
+
+    .workspace-preview {
+      max-width: 46rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .onboarding-hero {
+      padding-top: 0.75rem;
+    }
+
+    .onboarding-topbar {
+      width: min(100% - 1rem, 1180px);
+      border-radius: 1rem;
+      padding: 0.8rem;
+    }
+
+    .topbar-status {
+      display: none;
+    }
+
+    .onboarding-shell {
+      padding-top: 3rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 16vw, 4.2rem);
+    }
+
+    .field-grid,
+    .form-navigation {
+      grid-template-columns: 1fr;
+    }
+
+    .submit-step {
+      grid-column: auto;
+    }
+
+    .mini-progress {
+      width: 7rem;
+    }
+
+    .setup-section,
+    .system-section {
+      padding: 4.5rem 0;
+    }
+  }
+</style>
