@@ -1,23 +1,25 @@
 ---
 const walkthroughHref = "/schedule-a-walkthrough/";
+const dashboardHref = "https://dashboard.markethink.ai";
 ---
 
-<nav class="navbar">
-  <div class="navbar-inner container">
-    <a href="/#hero" class="nav-brand">
+<nav class="navbar" aria-label="Primary navigation">
+  <div class="navbar-shell">
+    <a href="/#hero" class="nav-brand" aria-label="Markethink home">
       <img src="/images/logo-white.svg" alt="Markethink" class="nav-logo" />
     </a>
-    <div class="nav-links">
-      <a href="/#system-context" class="nav-link active">The System</a>
-      <a href="/#how-it-works" class="nav-link">How It Works</a>
-      <a href="/#workspace" class="nav-link">Product</a>
-      <a href="/#soft-launch" class="nav-link">Capabilities</a>
-      <a href="/blog/" class="nav-link">Insights</a>
+    <div class="nav-links" id="primary-navigation">
+      <a href="/#workspace" class="nav-link">Platform <span aria-hidden="true">⌄</span></a>
+      <a href="/#soft-launch" class="nav-link">Solutions <span aria-hidden="true">⌄</span></a>
+      <a href="/blog/" class="nav-link">Resources <span aria-hidden="true">⌄</span></a>
+      <a href="/#soft-launch" class="nav-link">Pricing</a>
+      <a href="/#how-it-works" class="nav-link">Company <span aria-hidden="true">⌄</span></a>
     </div>
     <div class="nav-actions">
+      <a href={dashboardHref} class="nav-login">Log in</a>
       <a href={walkthroughHref} class="button nav-button">Book a Walkthrough</a>
     </div>
-    <button class="mobile-menu-btn" aria-label="Toggle menu">
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-controls="primary-navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -31,9 +33,10 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   const navActions = document.querySelector(".nav-actions");
 
   menuBtn?.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    navLinks?.classList.toggle("open");
-    navActions?.classList.toggle("open");
+    const isOpen = menuBtn.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    navLinks?.classList.toggle("open", isOpen);
+    navActions?.classList.toggle("open", isOpen);
   });
 </script>
 
@@ -44,19 +47,26 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem 0;
-    background-color: rgba(15, 18, 19, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    transition: background-color 0.3s;
+    padding: 1.35rem clamp(1rem, 2.2vw, 2rem) 0;
+    pointer-events: none;
   }
 
-  .navbar-inner {
+  .navbar-shell {
+    width: min(100%, 118rem);
+    margin: 0 auto;
+    min-height: 5.25rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    column-gap: 2rem;
+    column-gap: clamp(1.5rem, 3vw, 3.4rem);
+    padding: 0.9rem 1.35rem;
+    border-radius: 1.35rem;
+    background: linear-gradient(180deg, rgba(15, 18, 19, 0.92), rgba(15, 18, 19, 0.82));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    pointer-events: auto;
   }
 
   .nav-brand {
@@ -64,11 +74,10 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     display: flex;
     align-items: center;
     justify-self: start;
-    margin-left: 0;
   }
 
   .nav-logo {
-    width: 166px;
+    width: clamp(148px, 12vw, 210px);
     height: auto;
     display: block;
   }
@@ -77,42 +86,42 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     display: flex;
     align-items: center;
     justify-self: center;
-    gap: 2rem;
+    gap: clamp(1.4rem, 2.4vw, 3.1rem);
   }
 
-  .nav-link {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.72);
-    transition: color 0.3s;
+  .nav-link,
+  .nav-login {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: clamp(0.92rem, 0.95vw, 1.05rem);
+    font-weight: 650;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.88);
+    transition: color 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
   }
 
   .nav-link:hover,
-  .nav-link.active {
-    color: var(--text-invert);
+  .nav-login:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
   }
 
   .nav-actions {
     display: flex;
     align-items: center;
     justify-self: end;
-    gap: 1rem;
-  }
-
-  .download-link {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.72);
-    transition: color 0.3s;
-  }
-
-  .download-link:hover {
-    color: var(--text-invert);
+    gap: clamp(1rem, 1.8vw, 2rem);
   }
 
   .nav-button {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.8rem;
+    min-height: 3.1rem;
+    padding: 0.82rem 1.55rem;
+    border-radius: 0.85rem;
+    font-size: clamp(0.9rem, 0.9vw, 1rem);
+    font-weight: 750;
+    box-shadow: none;
   }
 
   .mobile-menu-btn {
@@ -123,19 +132,22 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     border: none;
     cursor: pointer;
     justify-self: end;
+    padding: 0.5rem;
   }
 
   .mobile-menu-btn span {
-    width: 22px;
+    width: 24px;
     height: 2px;
+    border-radius: 999px;
     background: white;
     transition: all 0.3s ease;
   }
 
-  @media (max-width: 767px) {
-    .navbar-inner {
+  @media (max-width: 1040px) {
+    .navbar-shell {
       grid-template-columns: auto auto;
-      row-gap: 1rem;
+      row-gap: 1.1rem;
+      min-height: auto;
     }
 
     .nav-links,
@@ -144,8 +156,10 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       grid-column: 1 / -1;
       flex-direction: column;
       align-items: flex-start;
+      justify-self: stretch;
       width: 100%;
       gap: 1rem;
+      padding-top: 0.5rem;
     }
 
     .nav-links.open,
@@ -155,6 +169,26 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
     .mobile-menu-btn {
       display: flex;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .navbar {
+      padding: 0.75rem 0.75rem 0;
+    }
+
+    .navbar-shell {
+      border-radius: 1rem;
+      padding: 0.85rem 1rem;
+    }
+
+    .nav-logo {
+      width: 145px;
+    }
+
+    .nav-button {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>
