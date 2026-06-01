@@ -75,9 +75,9 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     height: 100%;
     display: block;
     object-fit: cover;
-    object-position: center center;
+    object-position: center top;
     filter: saturate(0.96) contrast(1.04);
-    transform: scale(1.015);
+    transform: translateY(1.4rem) scale(1.015);
   }
 
   .hero-content {
@@ -237,7 +237,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-background-image {
-      object-position: 62% center;
+      object-position: 62% top;
+      transform: translateY(1rem) scale(1.02);
     }
 
     .section-hero::before {
