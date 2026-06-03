@@ -1,0 +1,715 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const deckUrl = "https://markethink.ai/margarita-bravo-markethink/";
+const assetBase = "https://dashboard.markethink.ai/generated/landing/markethink/margarita-bravo-markethink";
+
+const images = {
+  opening: `${assetBase}/mb-bg-01.jpg`,
+  opportunity: `${assetBase}/mb-bg-02.jpg`,
+  system: `${assetBase}/mb-bg-03.jpg`,
+  memory: `${assetBase}/mb-bg-04.jpg`,
+  activation: `${assetBase}/mb-bg-05.jpg`,
+  foundation: `${assetBase}/mb-bg-06.jpg`,
+  growth: `${assetBase}/mb-bg-08.jpg`,
+  revenue: `${assetBase}/mb-bg-09.jpg`,
+  alignment: `${assetBase}/mb-bg-10.jpg`,
+  next: `${assetBase}/mb-bg-11.jpg`,
+};
+
+const slides = [
+  {
+    n: "01",
+    id: "opening",
+    nav: "Opening",
+    kicker: "MARGARITA BRAVO × MARKETHINK",
+    title: "A marketing system built to help Margarita Bravo grow with more memory, speed, and follow-through.",
+    lead: "Markethink gives Margarita Bravo a dedicated AI Agent trained on the brand, services, clients, content, approvals, follow-up, and opportunities — so the marketing operation can move faster without restarting from zero.",
+    image: images.opening,
+    tone: "hero",
+    chips: ["Dedicated AI Agent", "Marketing memory", "Campaign execution", "Signed relationships"],
+  },
+  {
+    n: "02",
+    id: "opportunity",
+    nav: "Opportunity",
+    kicker: "THE OPPORTUNITY",
+    title: "Margarita Bravo already has the brand. The opportunity is to turn it into a system.",
+    lead: "The portfolio, reputation, design point of view, and luxury audience are already strong. Markethink turns that strength into weekly visibility, sharper messaging, organized follow-up, and campaigns that keep building on each other.",
+    image: images.opportunity,
+    tone: "light",
+    chips: ["Luxury portfolio", "Consistent visibility", "Sharper messaging", "Follow-up structure"],
+    details: [
+      "Keep content, campaigns, approvals, and opportunities in one place",
+      "Turn existing assets into a stronger operating rhythm",
+      "Support high-value client acquisition without adding internal complexity",
+      "Create a system that improves as it learns what works",
+    ],
+  },
+  {
+    n: "03",
+    id: "markethink-system",
+    nav: "System",
+    kicker: "WHAT MARKETHINK BRINGS",
+    title: "A dedicated AI Agent inside a marketing operating system.",
+    lead: "This is not just content production. Markethink becomes the working layer behind Margarita Bravo’s marketing: messaging, social, website updates, email, CRM-style opportunity tracking, outreach support, approvals, and performance learning.",
+    image: images.system,
+    tone: "system",
+    chips: ["Brand messaging", "Campaign planning", "Social + web", "Opportunity tracking"],
+    details: [
+      "The Margarita Bravo AI Agent learns the brand, services, tone, and ideal client profiles",
+      "Campaigns, content, approvals, and follow-up stay connected",
+      "The system captures what was approved, what worked, and what should move next",
+      "Markethink supports the operator work while the humans stay in control",
+    ],
+  },
+  {
+    n: "04",
+    id: "marketing-memory",
+    nav: "Memory",
+    kicker: "MARKETING MEMORY THAT COMPOUNDS",
+    title: "The system keeps learning even when people change.",
+    lead: "Agencies change. Employees change. Freelancers change. Priorities shift. Markethink keeps the marketing memory alive so the business does not lose its voice, approvals, campaign context, or follow-up knowledge every time the team changes.",
+    image: images.memory,
+    tone: "warm",
+    chips: ["Brand voice", "Approved language", "Buyer objections", "Opportunity history"],
+    details: [
+      "Learns the brand, offers, ICP, services, assets, approvals, and preferences",
+      "Remembers what messaging should be repeated and what should be avoided",
+      "Keeps opportunity notes and follow-up context from getting scattered",
+      "Gets sharper every month as more work moves through the system",
+    ],
+  },
+  {
+    n: "05",
+    id: "day-one",
+    nav: "Day one",
+    kicker: "FULL-FORCE FROM DAY ONE",
+    title: "Execution starts immediately while the system trains on the business.",
+    lead: "The first phase is not a slow setup period. Markethink starts moving: website cleanup, social content, first blog/content, campaign priorities, opportunity structure, and the Margarita Bravo AI Agent trained on the brand, offer, ICP, assets, and approval preferences.",
+    image: images.activation,
+    tone: "cinema",
+    chips: ["Website cleanup", "Social output", "Campaign priorities", "AI Agent training"],
+  },
+  {
+    n: "06",
+    id: "foundation",
+    nav: "Foundation",
+    kicker: "PACKAGE 01",
+    title: "Foundation System",
+    lead: "$1,500/mo standard → $1,000/mo preferred launch rate + performance success fee. Built for consistent brand activity, core content, and marketing organization.",
+    image: images.foundation,
+    tone: "package light",
+    chips: ["Up to 3 channels", "3 posts/month", "1 blog/month", "Core AI Agent memory"],
+    details: [
+      "Dedicated Margarita Bravo AI Agent inside Markethink",
+      "Dashboard, approval workflow, brand voice, and campaign memory",
+      "Monthly priorities, content calendar, and light website cleanup",
+      "Basic SEO hygiene and basic opportunity tracking inside Markethink",
+    ],
+  },
+  {
+    n: "07",
+    id: "growth",
+    nav: "Growth",
+    kicker: "PACKAGE 02 · RECOMMENDED",
+    title: "Growth System",
+    lead: "$2,000/mo standard → $1,500/mo preferred launch rate + performance success fee. Built for weekly visibility, stronger content rhythm, deeper AI Agent training, and organized follow-up.",
+    image: images.growth,
+    tone: "package system",
+    chips: ["Up to 5 channels", "5 posts/week", "1 light video/week", "2 blogs/month"],
+    details: [
+      "Everything in Foundation, with deeper Margarita Bravo AI Agent training",
+      "Website management support and 1 email campaign or newsletter/month",
+      "CRM-style opportunity tracking, follow-up organization, and lead/source notes",
+      "AI Agent support for content drafts, email drafts, inquiry organization, and recurring marketing tasks",
+    ],
+  },
+  {
+    n: "08",
+    id: "revenue-visibility",
+    nav: "Revenue",
+    kicker: "PACKAGE 03",
+    title: "Revenue + Visibility System",
+    lead: "$2,500/mo standard → $2,000/mo preferred launch rate + performance success fee. Built for daily visibility, outreach, ads, deeper opportunity management, and light office support tied to marketing and client relationships.",
+    image: images.revenue,
+    tone: "package dark",
+    chips: ["Up to 7 channels", "Daily posting", "2 videos/week", "Ads management"],
+    details: [
+      "Expanded Margarita Bravo AI Agent for marketing operations and selected outreach support",
+      "2–4 blog/SEO pieces/month, 2 email campaigns/month, and priority campaign support",
+      "Deeper CRM-style opportunity management, prospect notes, follow-up tracking, and outreach drafts",
+      "Light office management support connected to marketing workflows, inquiries, and client opportunities; ad spend separate",
+    ],
+  },
+  {
+    n: "09",
+    id: "performance-alignment",
+    nav: "Alignment",
+    kicker: "PREFERRED PRICING + PERFORMANCE ALIGNMENT",
+    title: "Lower fixed cost. Upside only when real relationships sign.",
+    lead: "Markethink is offering preferred launch pricing so Margarita Bravo keeps recurring fixed cost as efficient as possible. The monthly fee covers the operating cost of the system and execution; the performance success fee creates upside only when Markethink helps generate or materially support signed client relationships.",
+    image: images.alignment,
+    tone: "light",
+    chips: ["Not raw leads", "Signed relationships", "Payable after payment", "3% of first paid engagement"],
+    details: [
+      "Applies across all packages",
+      "Tied to a new client relationship that signs and pays",
+      "Can be supported by website inquiries, email, SEO, social, ads, outreach, CRM follow-up, or reactivation",
+      "Recommended structure: 3% of the first paid engagement, payable only after Margarita Bravo receives payment",
+    ],
+  },
+  {
+    n: "10",
+    id: "next-step",
+    nav: "Next step",
+    kicker: "RECOMMENDED PATH",
+    title: "Start with the Growth System and build the Margarita Bravo marketing brain.",
+    lead: "The Growth System gives enough weekly volume to train the dedicated AI Agent quickly while creating real movement from day one: content, website support, email, opportunity tracking, and follow-up organization.",
+    image: images.next,
+    tone: "closing",
+    chips: ["$1,500/month preferred launch", "Dedicated AI Agent", "Weekly visibility", "Performance success fee"],
+    details: [
+      "Approve the package and first-month priorities",
+      "Confirm the first social channels and content sources",
+      "Train Markethink on the brand, offer, ICP, services, assets, and approvals",
+      "Begin the first content, website, campaign, and follow-up cycle",
+    ],
+  },
+];
+---
+
+<Layout
+  title="Margarita Bravo × Markethink · Private Proposal"
+  description="A private Markethink proposal presentation for Margarita Bravo."
+  image={images.opening}
+  canonical={deckUrl}
+  noindex={true}
+>
+  <main class="mb-deck" aria-label="Margarita Bravo and Markethink private proposal presentation">
+    <header class="deck-topbar">
+      <a href="#opening" class="brand-pair" aria-label="Margarita Bravo Markethink presentation home">
+        <span class="mb-wordmark" aria-label="Margarita Bravo">MARGARITA BRAVO</span>
+        <span class="pair-x">×</span>
+        <span class="mt-wordmark"><span class="mt-dot"></span>Markethink</span>
+      </a>
+      <span class="deck-label">Private proposal · marketing system</span>
+    </header>
+
+    <aside class="slide-rail" aria-label="Presentation sections">
+      {slides.map((slide) => (
+        <a href={`#${slide.id}`} data-slide-link={slide.id}>
+          <span>{slide.n}</span>
+          <strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide) => (
+      <section id={slide.id} class:list={["deck-slide", slide.tone]} style={`--slide-image: url('${slide.image}')`}>
+        <div class="slide-bg" aria-hidden="true"></div>
+        <div class="slide-vignette" aria-hidden="true"></div>
+        <div class="slide-system" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="slide-inner">
+          <p class="slide-kicker">{slide.kicker}</p>
+          <h1>{slide.title}</h1>
+          <p class="slide-lead">{slide.lead}</p>
+          <div class="chip-row">
+            {slide.chips.map((chip) => <span>{chip}</span>)}
+          </div>
+          {slide.details && (
+            <div class="detail-grid">
+              {slide.details.map((detail) => <article>{detail}</article>)}
+            </div>
+          )}
+        </div>
+        <footer class="slide-footer">
+          <span>{slide.n} / {slides.length.toString().padStart(2, "0")}</span>
+          <span>Margarita Bravo × Markethink</span>
+        </footer>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #0f1213;
+  }
+
+  .mb-deck {
+    --charcoal: #0f1213;
+    --ink: #231f1d;
+    --cream: #f5f1e9;
+    --warm: #eee5d8;
+    --stone: #c9b7a2;
+    --taupe: #8d7968;
+    --green: #69d254;
+    --green-soft: #edf4ea;
+    --panel: rgba(245, 241, 233, 0.9);
+    color: var(--cream);
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+
+  .deck-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 34px;
+    color: var(--cream);
+    pointer-events: none;
+  }
+
+  .brand-pair {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 11px 15px 10px;
+    border: 1px solid rgba(245, 241, 233, 0.22);
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.5);
+    backdrop-filter: blur(18px);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  }
+
+  .mb-wordmark {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+  }
+
+  .pair-x {
+    color: rgba(245, 241, 233, 0.62);
+    font-family: Georgia, serif;
+  }
+
+  .mt-wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+
+  .mt-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 18px rgba(105, 210, 84, 0.65);
+  }
+
+  .deck-label {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.45);
+    border: 1px solid rgba(245, 241, 233, 0.18);
+    color: rgba(245, 241, 233, 0.72);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    backdrop-filter: blur(18px);
+  }
+
+  .slide-rail {
+    position: fixed;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 42;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .slide-rail a {
+    width: 118px;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: rgba(245, 241, 233, 0.62);
+    text-decoration: none;
+    font-size: 10px;
+    background: rgba(15, 18, 19, 0.34);
+    border: 1px solid rgba(245, 241, 233, 0.14);
+    backdrop-filter: blur(16px);
+    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .slide-rail a:hover,
+  .slide-rail a.is-active {
+    color: var(--cream);
+    border-color: rgba(105, 210, 84, 0.7);
+    background: rgba(15, 18, 19, 0.7);
+    transform: translateX(-5px);
+  }
+
+  .slide-rail span {
+    color: var(--green);
+    font-weight: 750;
+  }
+
+  .slide-rail strong {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .deck-slide {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 120px 160px 86px 88px;
+  }
+
+  .slide-bg,
+  .slide-vignette,
+  .slide-system {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .slide-bg {
+    z-index: -3;
+    background-image: var(--slide-image);
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.04);
+    filter: saturate(0.92) contrast(1.02);
+  }
+
+  .slide-vignette {
+    z-index: -2;
+    background:
+      radial-gradient(circle at 78% 25%, rgba(105, 210, 84, 0.14), transparent 28%),
+      linear-gradient(90deg, rgba(15, 18, 19, 0.9) 0%, rgba(15, 18, 19, 0.72) 38%, rgba(15, 18, 19, 0.28) 68%, rgba(15, 18, 19, 0.5) 100%),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.36), rgba(15, 18, 19, 0.5));
+  }
+
+  .light .slide-vignette,
+  .package.light .slide-vignette {
+    background:
+      radial-gradient(circle at 82% 20%, rgba(105, 210, 84, 0.18), transparent 28%),
+      linear-gradient(90deg, rgba(245, 241, 233, 0.96) 0%, rgba(245, 241, 233, 0.84) 39%, rgba(245, 241, 233, 0.34) 70%, rgba(35, 31, 29, 0.26) 100%),
+      linear-gradient(180deg, rgba(245, 241, 233, 0.18), rgba(15, 18, 19, 0.18));
+  }
+
+  .warm .slide-vignette {
+    background:
+      radial-gradient(circle at 80% 24%, rgba(105, 210, 84, 0.16), transparent 30%),
+      linear-gradient(90deg, rgba(45, 38, 32, 0.88) 0%, rgba(45, 38, 32, 0.66) 42%, rgba(45, 38, 32, 0.24) 72%, rgba(15, 18, 19, 0.45) 100%);
+  }
+
+  .cinema .slide-vignette,
+  .closing .slide-vignette,
+  .package.dark .slide-vignette {
+    background:
+      radial-gradient(circle at 80% 22%, rgba(105, 210, 84, 0.2), transparent 28%),
+      linear-gradient(90deg, rgba(15, 18, 19, 0.94) 0%, rgba(15, 18, 19, 0.75) 42%, rgba(15, 18, 19, 0.3) 72%, rgba(15, 18, 19, 0.62) 100%);
+  }
+
+  .slide-system {
+    z-index: -1;
+  }
+
+  .slide-system span {
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(105, 210, 84, 0.22);
+    box-shadow: 0 0 60px rgba(105, 210, 84, 0.08);
+  }
+
+  .slide-system span:nth-child(1) {
+    width: 520px;
+    height: 520px;
+    right: 120px;
+    top: 180px;
+  }
+
+  .slide-system span:nth-child(2) {
+    width: 330px;
+    height: 330px;
+    right: 205px;
+    top: 265px;
+    border-color: rgba(245, 241, 233, 0.18);
+  }
+
+  .slide-system span:nth-child(3) {
+    width: 9px;
+    height: 9px;
+    right: 368px;
+    top: 425px;
+    border: none;
+    background: var(--green);
+  }
+
+  .slide-inner {
+    width: min(840px, 86vw);
+    position: relative;
+    z-index: 2;
+  }
+
+  .system .slide-inner,
+  .package.system .slide-inner {
+    width: min(980px, 88vw);
+  }
+
+  .slide-kicker {
+    margin: 0 0 18px;
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: clamp(46px, 6.8vw, 96px);
+    line-height: 0.93;
+    letter-spacing: -0.05em;
+    max-width: 1040px;
+    color: var(--cream);
+    text-wrap: balance;
+  }
+
+  .light h1,
+  .package.light h1 {
+    color: var(--ink);
+  }
+
+  .slide-lead {
+    margin: 26px 0 0;
+    max-width: 760px;
+    color: rgba(245, 241, 233, 0.82);
+    font-size: clamp(18px, 2vw, 25px);
+    line-height: 1.42;
+    text-wrap: pretty;
+  }
+
+  .light .slide-lead,
+  .package.light .slide-lead {
+    color: rgba(35, 31, 29, 0.74);
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+    max-width: 860px;
+  }
+
+  .chip-row span {
+    padding: 10px 13px;
+    border-radius: 999px;
+    background: rgba(245, 241, 233, 0.12);
+    border: 1px solid rgba(245, 241, 233, 0.2);
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 12px;
+    font-weight: 680;
+  }
+
+  .light .chip-row span,
+  .package.light .chip-row span {
+    background: rgba(15, 18, 19, 0.06);
+    border-color: rgba(35, 31, 29, 0.12);
+    color: rgba(35, 31, 29, 0.74);
+  }
+
+  .chip-row span:first-child {
+    background: rgba(105, 210, 84, 0.18);
+    border-color: rgba(105, 210, 84, 0.42);
+    color: var(--cream);
+  }
+
+  .light .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    color: #193019;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 920px;
+    margin-top: 30px;
+  }
+
+  .detail-grid article {
+    padding: 17px 18px;
+    border-radius: 22px;
+    background: rgba(245, 241, 233, 0.13);
+    border: 1px solid rgba(245, 241, 233, 0.18);
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 15px;
+    line-height: 1.45;
+    backdrop-filter: blur(16px);
+  }
+
+  .light .detail-grid article,
+  .package.light .detail-grid article {
+    background: rgba(255, 255, 255, 0.34);
+    border-color: rgba(35, 31, 29, 0.12);
+    color: rgba(35, 31, 29, 0.76);
+  }
+
+  .package.dark .detail-grid article,
+  .package.system .detail-grid article {
+    border-color: rgba(105, 210, 84, 0.24);
+  }
+
+  .slide-footer {
+    position: absolute;
+    left: 88px;
+    right: 160px;
+    bottom: 28px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(245, 241, 233, 0.56);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .light .slide-footer,
+  .package.light .slide-footer {
+    color: rgba(35, 31, 29, 0.44);
+  }
+
+  @media (max-width: 980px) {
+    .deck-topbar {
+      padding: 16px;
+    }
+
+    .deck-label {
+      display: none;
+    }
+
+    .slide-rail {
+      display: none;
+    }
+
+    .deck-slide {
+      min-height: 100svh;
+      padding: 104px 22px 76px;
+      align-items: end;
+    }
+
+    .slide-vignette,
+    .light .slide-vignette,
+    .warm .slide-vignette,
+    .cinema .slide-vignette,
+    .closing .slide-vignette,
+    .package.dark .slide-vignette,
+    .package.light .slide-vignette {
+      background:
+        linear-gradient(180deg, rgba(15, 18, 19, 0.2) 0%, rgba(15, 18, 19, 0.58) 38%, rgba(15, 18, 19, 0.92) 100%);
+    }
+
+    .slide-inner,
+    .system .slide-inner,
+    .package.system .slide-inner {
+      width: 100%;
+    }
+
+    .light h1,
+    .package.light h1,
+    h1 {
+      color: var(--cream);
+      font-size: clamp(42px, 13vw, 62px);
+    }
+
+    .light .slide-lead,
+    .package.light .slide-lead,
+    .slide-lead {
+      color: rgba(245, 241, 233, 0.82);
+      font-size: 17px;
+    }
+
+    .detail-grid {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .detail-grid article,
+    .light .detail-grid article,
+    .package.light .detail-grid article {
+      background: rgba(245, 241, 233, 0.12);
+      color: rgba(245, 241, 233, 0.82);
+      border-color: rgba(245, 241, 233, 0.18);
+      font-size: 14px;
+      padding: 14px 15px;
+    }
+
+    .slide-footer {
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+    }
+
+    .slide-footer span:last-child {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+    .slide-rail a {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const links = Array.from(document.querySelectorAll('[data-slide-link]'));
+  const sections = links
+    .map((link) => document.getElementById(link.getAttribute('data-slide-link')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      link.classList.toggle('is-active', link.getAttribute('data-slide-link') === id);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible?.target?.id) setActive(visible.target.id);
+  }, { threshold: [0.35, 0.55, 0.75] });
+
+  sections.forEach((section) => observer.observe(section));
+  if (sections[0]) setActive(sections[0].id);
+</script>
