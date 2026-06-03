@@ -91,25 +91,53 @@ const slides = [
     image: images.foundation,
     tone: "package light",
     package: {
-      standardPrice: "$1,500/mo",
-      launchPrice: "$1,000/mo",
+      standardPrice: "$1,500/month",
+      launchPrice: "$1,000/month",
       note: "Preferred launch rate",
-      scopeLabel: "Markethink operating scope",
+      feeNote: "Plus performance success fee",
+      scopeLabel: "Includes",
+      intro: "Built for consistent brand activity, core content, and marketing organization.",
       items: [
-        "Dedicated Markethink workspace trained on the brand, services, audience, assets, approvals, and sales language",
-        "Monthly campaign priorities and a clear operating rhythm for what needs to move",
-        "Refined content calendar with post concepts, captions, and publishing-ready copy",
-        "Visibility coverage for the most relevant channels: Instagram, Pinterest, and Facebook",
-        "Search-friendly blog/article support to keep expertise and services discoverable",
-        "Website and search hygiene: service clarity, calls to action, inquiry paths, and priority fixes",
-        "Inquiry notes and follow-up context so promising conversations do not get lost",
-        "Approval memory, next-step recommendations, and a monthly review of what should improve next",
+        "Dedicated Margarita Bravo workspace inside Markethink",
+        "Markethink dashboard and approval workflow",
+        "Brand, voice, and campaign memory",
+        "Monthly marketing priorities",
+        "Posting across up to 3 social channels",
+        "3 social media posts per month",
+        "1 blog post per month",
+        "Light website cleanup and content updates",
+        "Basic SEO hygiene",
+        "Basic opportunity tracking inside Markethink",
+        "Monthly content calendar",
+        "Monthly review/check-in",
+      ],
+      learningLabel: "The workspace begins learning",
+      learning: [
+        "brand voice",
+        "services",
+        "portfolio categories",
+        "ideal clients",
+        "approved language",
+        "recurring content themes",
+        "basic lead/opportunity notes",
+      ],
+      iconLabel: "Core mix",
+      icons: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+        { name: "Blog", key: "blog" },
+        { name: "SEO", key: "search" },
+        { name: "Web", key: "web" },
+        { name: "Calendar", key: "calendar" },
+        { name: "Approvals", key: "approval" },
+        { name: "Tracking", key: "tracking" },
       ],
     },
-    chips: ["Brand workspace", "Campaign rhythm", "Website hygiene", "Inquiry memory"],
+    chips: ["Core activity", "Marketing organization", "Approval workflow", "Opportunity notes"],
     details: [
-      "This is the operating base: Markethink keeps the brand organized, prepares review-ready work, and protects the sales context around every marketing move.",
-      "The point is not to outsource social media. The point is to keep marketing, website priorities, inquiries, approvals, and follow-up moving from one connected place.",
+      "Foundation keeps the brand active and organized without making the offer feel like a social-media-only service.",
+      "Markethink starts building the operating memory around the brand, approvals, content rhythm, website basics, and early opportunities.",
     ],
   },
   {
@@ -125,7 +153,9 @@ const slides = [
       standardPrice: "$2,000/mo",
       launchPrice: "$1,500/mo",
       note: "Preferred launch rate · recommended",
-      scopeLabel: "Markethink operating scope",
+      feeNote: "Plus performance success fee",
+      scopeLabel: "Includes",
+      intro: "Built for stronger weekly visibility, website movement, email, and organized sales follow-up.",
       items: [
         "Everything in Foundation, with deeper brand, audience, service, and approval memory",
         "Weekly production rhythm: 5 refined posts and 1 light video per week",
@@ -135,6 +165,19 @@ const slides = [
         "Campaign messaging, content angles, and offer language prepared for review",
         "Inquiry organization, source notes, opportunity tracking, and sales follow-up drafts",
         "Monthly learning loop so approved language, client signals, and performance notes shape the next cycle",
+      ],
+      iconLabel: "Expanded mix",
+      icons: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+        { name: "LinkedIn", key: "linkedin" },
+        { name: "YouTube", key: "youtube" },
+        { name: "Blog", key: "blog" },
+        { name: "Email", key: "email" },
+        { name: "SEO", key: "search" },
+        { name: "Web", key: "web" },
+        { name: "Tracking", key: "tracking" },
       ],
     },
     chips: ["Recommended system", "Weekly production", "Website management", "Sales follow-up"],
@@ -156,7 +199,9 @@ const slides = [
       standardPrice: "$2,500/mo",
       launchPrice: "$2,000/mo",
       note: "Preferred launch rate",
-      scopeLabel: "Markethink operating scope",
+      feeNote: "Plus performance success fee",
+      scopeLabel: "Includes",
+      intro: "Built for the fullest marketing and sales rhythm: visibility, campaigns, outreach, and follow-up.",
       items: [
         "Everything in Growth, expanded into a fuller marketing and sales operating rhythm",
         "Daily visibility rhythm with polished publishing-ready content",
@@ -167,6 +212,20 @@ const slides = [
         "Sales outreach drafts, reactivation language, and follow-up organization for qualified conversations",
         "Paid campaign coordination and ad-management support, with ad spend kept separate",
         "Light office support connected to marketing workflows, inquiries, and client opportunities",
+      ],
+      iconLabel: "Full mix",
+      icons: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+        { name: "LinkedIn", key: "linkedin" },
+        { name: "YouTube", key: "youtube" },
+        { name: "Email", key: "email" },
+        { name: "SEO", key: "search" },
+        { name: "Web", key: "web" },
+        { name: "Ads", key: "ads" },
+        { name: "Outreach", key: "outreach" },
+        { name: "Tracking", key: "tracking" },
       ],
     },
     chips: ["Full operating rhythm", "Campaign support", "Opportunity management", "Outreach support"],
@@ -250,16 +309,74 @@ const slides = [
             <div class="package-offer" aria-label={`${slide.title} pricing and included value`}>
               <div class="price-panel">
                 <span class="standard-label">Standard rate</span>
-                <span class="standard-price">{slide.package.standardPrice}</span>
+                <span class="rate-value standard-price">{slide.package.standardPrice}</span>
                 <span class="launch-label">{slide.package.note}</span>
-                <strong>{slide.package.launchPrice}</strong>
-                <small>plus success-fee alignment on signed client relationships</small>
+                <strong class="rate-value launch-price">{slide.package.launchPrice}</strong>
+                <small>{slide.package.feeNote}</small>
               </div>
               <div class="value-panel">
+                <p class="package-intro">{slide.package.intro}</p>
                 <span class="value-label">{slide.package.scopeLabel}</span>
                 <ul class="package-item-list">
                   {slide.package.items.map((item) => <li>{item}</li>)}
                 </ul>
+                {slide.package.learning && (
+                  <div class="learning-block">
+                    <span>{slide.package.learningLabel}</span>
+                    <p>{slide.package.learning.join(" · ")}</p>
+                  </div>
+                )}
+                <div class="service-icon-strip" aria-label={slide.package.iconLabel}>
+                  <b>{slide.package.iconLabel}</b>
+                  <div class="service-icons">
+                    {slide.package.icons.map((icon) => (
+                      <span title={icon.name} aria-label={icon.name}>
+                        {icon.key === "instagram" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16.3" cy="7.7" r="1.1" fill="currentColor"/></svg>
+                        )}
+                        {icon.key === "pinterest" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 4.5c-4.1 0-6.4 2.7-6.4 5.7 0 1.9 1 3.4 2.5 4 .3.1.5 0 .6-.4l.3-1.2c.1-.4.1-.5-.2-.9-.5-.6-.8-1.3-.8-2.1 0-2.1 1.6-3.7 4-3.7 2.2 0 3.5 1.3 3.5 3.2 0 2.5-1.2 4.3-2.8 4.3-.9 0-1.6-.8-1.4-1.7.3-1.1.8-2.3.8-3.1 0-.7-.4-1.3-1.2-1.3-.9 0-1.7 1-1.7 2.3 0 .8.3 1.4.3 1.4l-1.2 5.1c-.3 1.3-.2 2.8-.1 3.8 0 .3.4.4.5.1.5-.8 1.2-2.1 1.5-3.4l.6-2.3c.5.9 1.5 1.5 2.7 1.5 3.5 0 6-3.2 6-7.1 0-3.4-2.8-6.2-7.1-6.2Z" fill="currentColor"/></svg>
+                        )}
+                        {icon.key === "facebook" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.2h2.2V4.8c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.4v3H4.4v3.8h3.3v7h4.1v-7h3.3l.5-3.8h-3.8v-2.6c0-1.1.3-2.2 2.2-2.2Z" fill="currentColor"/></svg>
+                        )}
+                        {icon.key === "linkedin" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.8 9.4H3.4v10.9h3.4V9.4ZM5.1 4.1a2 2 0 1 0 0 4.1 2 2 0 0 0 0-4.1Zm14.8 10.1c0-3.3-1.8-5.1-4.3-5.1-2 0-2.9 1.1-3.4 1.9V9.4H8.9v10.9h3.4v-5.4c0-1.5.3-2.9 2.1-2.9 1.7 0 1.8 1.6 1.8 3v5.3h3.4v-6.1Z" fill="currentColor"/></svg>
+                        )}
+                        {icon.key === "youtube" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.3 8.2a3 3 0 0 0-2.1-2.1C17.4 5.6 12 5.6 12 5.6s-5.4 0-7.2.5a3 3 0 0 0-2.1 2.1 31 31 0 0 0-.5 3.8c0 1.3.2 2.6.5 3.8a3 3 0 0 0 2.1 2.1c1.8.5 7.2.5 7.2.5s5.4 0 7.2-.5a3 3 0 0 0 2.1-2.1c.3-1.2.5-2.5.5-3.8 0-1.3-.2-2.6-.5-3.8ZM10.1 15.3V8.7l5.7 3.3-5.7 3.3Z" fill="currentColor"/></svg>
+                        )}
+                        {icon.key === "email" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="6.2" width="16.4" height="11.6" rx="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m5.1 8 6.9 5.1L18.9 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        )}
+                        {icon.key === "search" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="5.8" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m15.1 15.1 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "web" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 9h16M8 15.5h4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "blog" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.8h9.5L19 8.3v10.9H6V4.8Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.2 5v3.6h3.6M8.8 12h6.4M8.8 15.5h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "calendar" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="6" width="15" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 4.5v3M16 4.5v3M4.8 10h14.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "approval" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8.7 12.1 2.1 2.1 4.7-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        )}
+                        {icon.key === "tracking" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5h14M7 16v-4M12 16V7M17 16v-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "ads" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13.5 15.5 7v10L5 13.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 14.5 9.5 19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        )}
+                        {icon.key === "outreach" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h9M13.5 12l-3-3M13.5 12l-3 3M15.5 6.5h4v11h-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -564,10 +681,10 @@ const slides = [
   .package-offer {
     --package-accent: #9a7a53;
     display: grid;
-    grid-template-columns: minmax(260px, 0.48fr) minmax(560px, 1.52fr);
+    grid-template-columns: minmax(230px, 0.42fr) minmax(620px, 1.58fr);
     gap: 0;
     align-items: stretch;
-    max-width: 1120px;
+    max-width: 1160px;
     margin-top: 24px;
     border-radius: 20px;
     border: 1px solid rgba(245, 241, 233, 0.24);
@@ -612,16 +729,27 @@ const slides = [
     text-transform: uppercase;
   }
 
-  .standard-price {
+  .rate-value,
+  .price-panel strong.rate-value {
     width: fit-content;
-    margin-top: 7px;
+    margin-top: 8px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(26px, 2.15vw, 36px);
+    font-weight: 720;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+
+  .standard-price {
     color: rgba(245, 241, 233, 0.54);
-    font-size: clamp(21px, 2.8vw, 34px);
-    font-weight: 780;
-    line-height: 1;
     text-decoration-line: line-through;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 2px;
     text-decoration-color: rgba(168, 137, 95, 0.82);
+  }
+
+  .launch-price {
+    color: #8f7047;
   }
 
   .light .standard-price,
@@ -639,15 +767,6 @@ const slides = [
     color: rgba(35, 31, 29, 0.58);
   }
 
-  .price-panel strong {
-    margin-top: 5px;
-    color: #8f7047;
-    font-family: "Times New Roman", Georgia, serif;
-    font-size: clamp(52px, 6.4vw, 84px);
-    line-height: 0.92;
-    letter-spacing: -0.065em;
-  }
-
   .price-panel small {
     max-width: 290px;
     margin-top: 12px;
@@ -662,15 +781,29 @@ const slides = [
   }
 
   .value-panel {
-    padding: 24px 26px;
+    padding: 24px 28px 22px;
+  }
+
+  .package-intro {
+    max-width: 760px;
+    margin: 0 0 16px;
+    color: rgba(245, 241, 233, 0.8);
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  .light .package-intro,
+  .package.light .package-intro {
+    color: rgba(35, 31, 29, 0.72);
   }
 
   .package-item-list {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    margin: 17px 0 0;
+    column-gap: 26px;
+    row-gap: 0;
+    margin: 14px 0 0;
     padding: 0;
     counter-reset: package-items;
   }
@@ -678,22 +811,18 @@ const slides = [
   .package-item-list li {
     counter-increment: package-items;
     position: relative;
-    padding: 13px 16px 13px 38px;
+    padding: 10px 10px 10px 48px;
     border-top: 1px solid rgba(245, 241, 233, 0.14);
     color: rgba(245, 241, 233, 0.82);
-    font-size: 13.4px;
-    line-height: 1.38;
-  }
-
-  .package-item-list li:nth-child(odd) {
-    border-right: 1px solid rgba(245, 241, 233, 0.12);
+    font-size: 12.9px;
+    line-height: 1.32;
   }
 
   .package-item-list li::before {
     content: counter(package-items, decimal-leading-zero);
     position: absolute;
-    left: 0;
-    top: 14px;
+    left: 12px;
+    top: 11px;
     color: var(--package-accent);
     font-size: 10px;
     font-weight: 800;
@@ -706,9 +835,82 @@ const slides = [
     color: rgba(35, 31, 29, 0.74);
   }
 
-  .light .package-item-list li:nth-child(odd),
-  .package.light .package-item-list li:nth-child(odd) {
-    border-right-color: rgba(83, 70, 56, 0.1);
+  .learning-block {
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+  }
+
+  .learning-block span,
+  .service-icon-strip b {
+    color: var(--package-accent);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .learning-block p {
+    margin: 7px 0 0;
+    color: rgba(245, 241, 233, 0.72);
+    font-size: 12.6px;
+    line-height: 1.42;
+  }
+
+  .light .learning-block,
+  .package.light .learning-block {
+    border-top-color: rgba(83, 70, 56, 0.12);
+  }
+
+  .light .learning-block p,
+  .package.light .learning-block p {
+    color: rgba(35, 31, 29, 0.66);
+  }
+
+  .service-icon-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+  }
+
+  .service-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .service-icons span {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(245, 241, 233, 0.14);
+    border: 1px solid rgba(245, 241, 233, 0.26);
+    color: var(--cream);
+  }
+
+  .service-icons svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .light .service-icon-strip,
+  .package.light .service-icon-strip {
+    border-top-color: rgba(83, 70, 56, 0.12);
+  }
+
+  .light .service-icons span,
+  .package.light .service-icons span {
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(83, 70, 56, 0.18);
+    color: #6f5638;
   }
 
   .package-detail-grid {
