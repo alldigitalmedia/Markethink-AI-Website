@@ -87,15 +87,22 @@ const slides = [
     nav: "Foundation",
     kicker: "PACKAGE 01",
     title: "Foundation system",
-    lead: "Standard rate: $1,500 per month. Preferred launch rate: $1,000 per month, plus a success fee on signed client relationships. Best for organizing the basics and keeping the brand active with care.",
+    lead: "The efficient launch package for getting Margarita Bravo organized, visible, and active without rebuilding the whole marketing operation at once.",
     image: images.foundation,
     tone: "package light",
-    chips: ["Up to 3 channels", "3 posts monthly", "1 blog monthly", "Core AI Agent memory"],
+    package: {
+      standardPrice: "$1,500/mo",
+      launchPrice: "$1,000/mo",
+      note: "Preferred launch rate",
+      socialLabel: "Up to 3 active channels",
+      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube"],
+    },
+    chips: ["3 social posts monthly", "1 blog monthly", "Website priorities", "Approval memory"],
     details: [
-      "Dedicated Margarita Bravo AI Agent inside Markethink",
-      "Dashboard, approvals, brand voice, and campaign memory",
-      "Monthly priorities, content calendar, and light website improvements",
-      "Basic search hygiene and light opportunity tracking inside Markethink",
+      "Dedicated Margarita Bravo workspace, dashboard, approvals, and brand memory",
+      "Monthly priorities, content calendar, and campaign direction",
+      "Light website updates and search hygiene so the brand stays current",
+      "Opportunity notes and follow-up context kept in one place",
     ],
   },
   {
@@ -104,15 +111,22 @@ const slides = [
     nav: "Growth",
     kicker: "PACKAGE 02 · RECOMMENDED",
     title: "Growth system",
-    lead: "Standard rate: $2,000 per month. Preferred launch rate: $1,500 per month, plus a success fee on signed client relationships. This is the strongest starting point for weekly visibility and a deeper marketing rhythm.",
+    lead: "The recommended starting point: enough weekly activity for Markethink to learn quickly, keep the brand visible, and turn interest into organized follow-up.",
     image: images.growth,
     tone: "package system",
-    chips: ["Up to 5 channels", "5 posts weekly", "1 light video weekly", "2 blogs monthly"],
+    package: {
+      standardPrice: "$2,000/mo",
+      launchPrice: "$1,500/mo",
+      note: "Preferred launch rate · recommended",
+      socialLabel: "Up to 5 active channels",
+      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube"],
+    },
+    chips: ["5 posts weekly", "1 light video weekly", "2 blogs monthly", "1 email campaign monthly"],
     details: [
-      "Everything in Foundation, with deeper Margarita Bravo AI Agent training",
-      "Website management support and one email campaign or newsletter each month",
-      "Opportunity tracking, follow-up organization, and source notes",
-      "AI Agent support for content drafts, email drafts, inquiry organization, and recurring marketing tasks",
+      "Everything in Foundation, with deeper brand, audience, service, and approval memory",
+      "Website management support, page refreshes, and better conversion paths",
+      "Newsletter or email campaign each month, connected to the content rhythm",
+      "Opportunity tracking, inquiry organization, follow-up drafts, and source notes",
     ],
   },
   {
@@ -121,15 +135,22 @@ const slides = [
     nav: "Revenue",
     kicker: "PACKAGE 03",
     title: "Revenue and visibility system",
-    lead: "Standard rate: $2,500 per month. Preferred launch rate: $2,000 per month, plus a success fee on signed client relationships. Built for daily visibility, outreach support, ads, and a closer connection between marketing activity and client opportunities.",
+    lead: "The most complete option for daily visibility, stronger outreach support, paid campaign coordination, and a closer connection between marketing activity and signed opportunities.",
     image: images.revenue,
     tone: "package dark",
-    chips: ["Up to 7 channels", "Daily posting", "2 videos weekly", "Ads management"],
+    package: {
+      standardPrice: "$2,500/mo",
+      launchPrice: "$2,000/mo",
+      note: "Preferred launch rate",
+      socialLabel: "Up to 7 active channels",
+      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube", "Email"],
+    },
+    chips: ["Daily posting", "2 videos weekly", "2–4 search pieces monthly", "Ads management support"],
     details: [
-      "Expanded Margarita Bravo AI Agent for marketing operations and selected outreach support",
-      "Two to four blog or search pieces each month, two email campaigns each month, and priority campaign support",
+      "Everything in Growth, expanded into a fuller marketing operating rhythm",
+      "Two email campaigns monthly plus priority campaign and landing-page support",
       "Deeper opportunity management, prospect notes, follow-up tracking, and outreach drafts",
-      "Light office support connected to marketing workflows, inquiries, and client opportunities. Ad spend stays separate",
+      "Light office support connected to marketing workflows and client opportunities. Ad spend stays separate",
     ],
   },
   {
@@ -203,11 +224,36 @@ const slides = [
           <p class="slide-kicker">{slide.kicker}</p>
           <h1>{slide.title}</h1>
           <p class="slide-lead">{slide.lead}</p>
-          <div class="chip-row">
-            {slide.chips.map((chip) => <span>{chip}</span>)}
-          </div>
+          {slide.package && (
+            <div class="package-offer" aria-label={`${slide.title} pricing and included value`}>
+              <div class="price-panel">
+                <span class="standard-label">Standard rate</span>
+                <span class="standard-price">{slide.package.standardPrice}</span>
+                <span class="launch-label">{slide.package.note}</span>
+                <strong>{slide.package.launchPrice}</strong>
+                <small>plus success-fee alignment on signed client relationships</small>
+              </div>
+              <div class="value-panel">
+                <span class="value-label">Included rhythm</span>
+                <div class="chip-row package-chips">
+                  {slide.chips.map((chip) => <span>{chip}</span>)}
+                </div>
+                <div class="channel-strip" aria-label={slide.package.socialLabel}>
+                  <b>{slide.package.socialLabel}</b>
+                  <div class="channel-icons">
+                    {slide.package.channels.map((channel) => <span title={channel} aria-label={channel}>{channel.slice(0, 2)}</span>)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          {!slide.package && (
+            <div class="chip-row">
+              {slide.chips.map((chip) => <span>{chip}</span>)}
+            </div>
+          )}
           {slide.details && (
-            <div class="detail-grid">
+            <div class:list={["detail-grid", slide.package && "package-detail-grid"]}>
               {slide.details.map((detail) => <article>{detail}</article>)}
             </div>
           )}
@@ -419,8 +465,9 @@ const slides = [
   }
 
   .system .slide-inner,
+  .package .slide-inner,
   .package.system .slide-inner {
-    width: min(980px, 88vw);
+    width: min(1040px, 88vw);
   }
 
   .slide-kicker {
@@ -496,6 +543,174 @@ const slides = [
   .light .chip-row span:first-child,
   .package.light .chip-row span:first-child {
     color: #193019;
+  }
+
+  .package-offer {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.82fr) minmax(360px, 1.18fr);
+    gap: 16px;
+    align-items: stretch;
+    max-width: 980px;
+    margin-top: 26px;
+  }
+
+  .price-panel,
+  .value-panel {
+    border-radius: 28px;
+    border: 1px solid rgba(245, 241, 233, 0.2);
+    background: rgba(15, 18, 19, 0.5);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(18px);
+  }
+
+  .light .price-panel,
+  .light .value-panel,
+  .package.light .price-panel,
+  .package.light .value-panel {
+    background: rgba(255, 255, 255, 0.58);
+    border-color: rgba(35, 31, 29, 0.12);
+    box-shadow: 0 24px 70px rgba(35, 31, 29, 0.11);
+  }
+
+  .price-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .standard-label,
+  .launch-label,
+  .value-label {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .standard-price {
+    width: fit-content;
+    margin-top: 7px;
+    color: rgba(245, 241, 233, 0.54);
+    font-size: clamp(21px, 2.8vw, 34px);
+    font-weight: 780;
+    line-height: 1;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 3px;
+    text-decoration-color: rgba(105, 210, 84, 0.85);
+  }
+
+  .light .standard-price,
+  .package.light .standard-price {
+    color: rgba(35, 31, 29, 0.42);
+  }
+
+  .launch-label {
+    margin-top: 18px;
+    color: rgba(245, 241, 233, 0.7);
+  }
+
+  .light .launch-label,
+  .package.light .launch-label {
+    color: rgba(35, 31, 29, 0.58);
+  }
+
+  .price-panel strong {
+    margin-top: 5px;
+    color: var(--green);
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: clamp(58px, 7.7vw, 104px);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+  }
+
+  .price-panel small {
+    max-width: 290px;
+    margin-top: 12px;
+    color: rgba(245, 241, 233, 0.68);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .light .price-panel small,
+  .package.light .price-panel small {
+    color: rgba(35, 31, 29, 0.64);
+  }
+
+  .value-panel {
+    padding: 22px;
+  }
+
+  .package-chips {
+    margin-top: 13px;
+    max-width: none;
+  }
+
+  .channel-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 18px;
+    padding: 15px 16px;
+    border-radius: 22px;
+    background: rgba(105, 210, 84, 0.12);
+    border: 1px solid rgba(105, 210, 84, 0.28);
+  }
+
+  .channel-strip b {
+    color: rgba(245, 241, 233, 0.86);
+    font-size: 13px;
+    letter-spacing: -0.01em;
+  }
+
+  .light .channel-strip b,
+  .package.light .channel-strip b {
+    color: rgba(35, 31, 29, 0.78);
+  }
+
+  .channel-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .channel-icons span {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(245, 241, 233, 0.14);
+    border: 1px solid rgba(245, 241, 233, 0.24);
+    color: var(--cream);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+
+  .light .channel-icons span,
+  .package.light .channel-icons span {
+    background: rgba(15, 18, 19, 0.07);
+    border-color: rgba(35, 31, 29, 0.16);
+    color: var(--ink);
+  }
+
+  .package-detail-grid {
+    max-width: 980px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .package-detail-grid article {
+    min-height: 112px;
+    padding: 15px 15px 16px;
+    font-size: 13.5px;
+    line-height: 1.36;
   }
 
   .detail-grid {
@@ -598,7 +813,34 @@ const slides = [
       font-size: 17px;
     }
 
-    .detail-grid {
+    .package-offer {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .price-panel,
+    .value-panel {
+      padding: 18px;
+      border-radius: 24px;
+    }
+
+    .price-panel strong {
+      font-size: clamp(56px, 18vw, 82px);
+    }
+
+    .channel-strip {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .channel-icons {
+      justify-content: flex-start;
+    }
+
+    .detail-grid,
+    .package-detail-grid {
       grid-template-columns: 1fr;
       gap: 9px;
     }
