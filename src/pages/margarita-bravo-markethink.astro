@@ -15,7 +15,7 @@ const images = {
   growth: `${assetBase}/custom-07-growth.png`,
   revenue: `${assetBase}/custom-08-revenue.png`,
   alignment: `${assetBase}/custom-09-alignment.png`,
-  next: `${assetBase}/custom-10-next.png`,
+  next: "/images/hero-office-background.svg",
 };
 
 const slides = [
@@ -97,19 +97,35 @@ const slides = [
       feeNote: "Plus performance success fee",
       scopeLabel: "Includes",
       intro: "Built for consistent brand activity, core content, and marketing organization.",
-      items: [
-        "Dedicated Margarita Bravo workspace inside Markethink",
-        "24/7 trained operating memory dedicated solely to Margarita Bravo",
-        "Brand, voice, and campaign memory",
-        "Monthly marketing priorities",
-        "Posting across up to 3 social channels",
-        "3 social media posts per month",
-        "1 blog post per month",
-        "Light website cleanup and content updates",
-        "Basic SEO hygiene",
-        "Basic opportunity tracking inside Markethink",
-        "Monthly content calendar",
-        "Monthly review/check-in",
+      groups: [
+        {
+          title: "System",
+          items: [
+            "Dedicated Margarita Bravo workspace inside Markethink",
+            "24/7 trained operating memory dedicated solely to Margarita Bravo",
+            "Brand, voice, and campaign memory",
+            "Monthly marketing priorities, content calendar, and review rhythm",
+          ],
+        },
+        {
+          title: "Social",
+          items: [
+            "Posting across up to 3 core social channels",
+            "3 polished social media posts per month",
+          ],
+        },
+        {
+          title: "Search",
+          items: ["1 blog post per month", "Basic SEO hygiene"],
+        },
+        {
+          title: "Web",
+          items: ["Light website cleanup and content updates"],
+        },
+        {
+          title: "CRM",
+          items: ["Basic opportunity tracking inside Markethink"],
+        },
       ],
       learningLabel: "The workspace begins learning",
       learning: [
@@ -156,15 +172,38 @@ const slides = [
       feeNote: "Plus performance success fee",
       scopeLabel: "Includes",
       intro: "Built for stronger weekly visibility, website movement, email, and organized sales follow-up.",
-      items: [
-        "Everything in Foundation, with deeper brand, audience, service, and approval memory",
-        "Weekly production rhythm: 5 refined posts and 1 light video per week",
-        "Two search-friendly blogs/articles per month connected to services, projects, and expertise",
-        "One monthly email campaign or newsletter with audience-specific messaging",
-        "Website management support, page refreshes, stronger inquiry paths, and better conversion flow",
-        "Campaign messaging, content angles, and offer language prepared for review",
-        "Inquiry organization, source notes, opportunity tracking, and sales follow-up drafts",
-        "Monthly learning loop so approved language, client signals, and performance notes shape the next cycle",
+      groups: [
+        {
+          title: "System",
+          items: [
+            "Everything in Foundation, with deeper brand, audience, service, and approval memory",
+            "Monthly learning loop so approved language, client signals, and performance notes shape the next cycle",
+          ],
+        },
+        {
+          title: "Social",
+          items: ["Weekly production rhythm: 5 refined posts and 1 light video per week"],
+        },
+        {
+          title: "Search",
+          items: ["Two search-friendly blogs/articles per month connected to services, projects, and expertise"],
+        },
+        {
+          title: "Email",
+          items: ["One monthly email campaign or newsletter with audience-specific messaging"],
+        },
+        {
+          title: "Web",
+          items: ["Website management support, page refreshes, stronger inquiry paths, and better conversion flow"],
+        },
+        {
+          title: "Campaigns",
+          items: ["Campaign messaging, content angles, and offer language prepared for review"],
+        },
+        {
+          title: "CRM",
+          items: ["Inquiry organization, source notes, opportunity tracking, and sales follow-up drafts"],
+        },
       ],
       iconLabel: "Expanded mix",
       icons: [
@@ -202,16 +241,40 @@ const slides = [
       feeNote: "Plus performance success fee",
       scopeLabel: "Includes",
       intro: "Built for the fullest marketing and sales rhythm: visibility, campaigns, outreach, and follow-up.",
-      items: [
-        "Everything in Growth, expanded into a fuller marketing and sales operating rhythm",
-        "Daily visibility rhythm with polished publishing-ready content",
-        "Two light videos per week for higher-touch visibility and campaign momentum",
-        "Two email campaigns per month, connected to audience segments and service priorities",
-        "Priority campaign, landing-page, and sales-message support when a new push needs to move",
-        "Deeper opportunity management: inquiry notes, prospect context, source tracking, and next steps",
-        "Sales outreach drafts, reactivation language, and follow-up organization for qualified conversations",
-        "Paid campaign coordination and ad-management support, with ad spend kept separate",
-        "Light office support connected to marketing workflows, inquiries, and client opportunities",
+      groups: [
+        {
+          title: "System",
+          items: [
+            "Everything in Growth, expanded into a fuller marketing and sales operating rhythm",
+            "Light office support connected to marketing workflows, inquiries, and client opportunities",
+          ],
+        },
+        {
+          title: "Social",
+          items: [
+            "Daily visibility rhythm with polished publishing-ready content",
+            "Two light videos per week for higher-touch visibility and campaign momentum",
+          ],
+        },
+        {
+          title: "Email",
+          items: ["Two email campaigns per month, connected to audience segments and service priorities"],
+        },
+        {
+          title: "Web + Campaigns",
+          items: ["Priority campaign, landing-page, and sales-message support when a new push needs to move"],
+        },
+        {
+          title: "CRM + Sales",
+          items: [
+            "Deeper opportunity management: inquiry notes, prospect context, source tracking, and next steps",
+            "Sales outreach drafts, reactivation language, and follow-up organization for qualified conversations",
+          ],
+        },
+        {
+          title: "Ads",
+          items: ["Paid campaign coordination and ad-management support, with ad spend kept separate"],
+        },
       ],
       iconLabel: "Full mix",
       icons: [
@@ -256,16 +319,16 @@ const slides = [
     id: "next-step",
     nav: "Next step",
     kicker: "RECOMMENDED PATH",
-    title: "Choose the right starting system and build Margarita Bravo’s marketing and sales memory with care.",
-    lead: "The right starting scope gives Markethink enough weekly activity to produce useful work from the first cycle: content, website support, email, inquiry organization, opportunity tracking, and sales follow-up.",
+    title: "It feels like having a full marketing and sales team dedicated to Margarita Bravo, every day.",
+    lead: "Markethink brings strategy, production, follow-up organization, and approval memory into one evolving system, powered by marketing experts and built to keep getting sharper as the business moves.",
     image: images.next,
     tone: "closing",
-    chips: ["Marketing and sales memory", "Weekly visibility", "Success fee alignment"],
+    chips: ["Marketing team rhythm", "Sales follow-up", "24/7 operating memory", "Keeps evolving"],
     details: [
       "Approve the package and first month priorities",
       "Confirm the first social channels and content sources",
       "Train Markethink on the brand, offer, services, audience, assets, approvals, sales language, and follow-up preferences",
-      "Begin the first content, website, campaign, inquiry, and sales follow-up cycle",
+      "Begin the first content, website, campaign, inquiry, and sales follow-up cycle with the system learning from every approval",
     ],
   },
 ];
@@ -317,9 +380,22 @@ const slides = [
               <div class="value-panel">
                 <p class="package-intro">{slide.package.intro}</p>
                 <span class="value-label">{slide.package.scopeLabel}</span>
-                <ul class="package-item-list">
-                  {slide.package.items.map((item) => <li>{item}</li>)}
-                </ul>
+                {slide.package.groups ? (
+                  <div class="package-group-list">
+                    {slide.package.groups.map((group) => (
+                      <section class="package-group">
+                        <strong>{group.title}</strong>
+                        <ul>
+                          {group.items.map((item) => <li>{item}</li>)}
+                        </ul>
+                      </section>
+                    ))}
+                  </div>
+                ) : (
+                  <ul class="package-item-list">
+                    {slide.package.items.map((item) => <li>{item}</li>)}
+                  </ul>
+                )}
                 {slide.package.learning && (
                   <div class="learning-block">
                     <span>{slide.package.learningLabel}</span>
@@ -835,6 +911,69 @@ const slides = [
     color: rgba(35, 31, 29, 0.74);
   }
 
+
+
+  .package-group-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 13px;
+    margin-top: 13px;
+  }
+
+  .package-group {
+    padding: 12px 13px 13px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+    background: rgba(245, 241, 233, 0.045);
+    border-radius: 16px;
+  }
+
+  .package-group strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--package-accent);
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .package-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+  }
+
+  .package-group li {
+    position: relative;
+    padding-left: 13px;
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 12.7px;
+    line-height: 1.33;
+  }
+
+  .package-group li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--package-accent);
+  }
+
+  .light .package-group,
+  .package.light .package-group {
+    background: rgba(255, 255, 255, 0.24);
+    border-top-color: rgba(83, 70, 56, 0.12);
+  }
+
+  .light .package-group li,
+  .package.light .package-group li {
+    color: rgba(35, 31, 29, 0.74);
+  }
   .learning-block {
     margin-top: 14px;
     padding-top: 13px;
@@ -1079,6 +1218,7 @@ const slides = [
       font-size: clamp(56px, 18vw, 82px);
     }
 
+    .package-group-list,
     .detail-grid,
     .package-detail-grid {
       grid-template-columns: 1fr;
