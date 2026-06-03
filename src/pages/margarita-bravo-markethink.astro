@@ -87,22 +87,26 @@ const slides = [
     nav: "Foundation",
     kicker: "PACKAGE 01",
     title: "Foundation system",
-    lead: "The efficient launch package for getting Margarita Bravo organized, visible, and easier to follow up with, without rebuilding the whole marketing and sales operation at once.",
+    lead: "A polished monthly operating base for keeping the brand visible, organized, and easier to follow up with, without asking the team to manage every moving part.",
     image: images.foundation,
     tone: "package light",
     package: {
       standardPrice: "$1,500/mo",
       launchPrice: "$1,000/mo",
       note: "Preferred launch rate",
-      socialLabel: "Up to 3 active channels",
-      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube"],
+      socialLabel: "Core social presence",
+      channels: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+      ],
     },
-    chips: ["3 social posts monthly", "1 blog monthly", "Website priorities", "Sales follow-up notes"],
+    chips: ["Polished monthly content", "Search-friendly blog", "Website priority list", "Inquiry follow-up notes"],
     details: [
-      "Dedicated Margarita Bravo workspace, approvals, brand memory, and sales context",
-      "Monthly priorities, content calendar, campaign direction, and inquiry follow-up focus",
-      "Light website updates and search hygiene so the brand stays current",
-      "Opportunity notes, inquiry context, and sales follow-up kept in one place",
+      "Dedicated Margarita Bravo workspace with brand voice, approvals, assets, and sales context organized",
+      "Monthly content calendar with refined post concepts, captions, and campaign priorities",
+      "Website and search hygiene so services, calls to action, and inquiry paths stay current",
+      "Inquiry notes and follow-up context captured so promising conversations do not disappear",
     ],
   },
   {
@@ -118,8 +122,14 @@ const slides = [
       standardPrice: "$2,000/mo",
       launchPrice: "$1,500/mo",
       note: "Preferred launch rate · recommended",
-      socialLabel: "Up to 5 active channels",
-      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube"],
+      socialLabel: "Expanded social presence",
+      channels: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+        { name: "LinkedIn", key: "linkedin" },
+        { name: "YouTube", key: "youtube" },
+      ],
     },
     chips: ["5 posts weekly", "1 light video weekly", "2 blogs monthly", "1 email campaign monthly"],
     details: [
@@ -142,8 +152,16 @@ const slides = [
       standardPrice: "$2,500/mo",
       launchPrice: "$2,000/mo",
       note: "Preferred launch rate",
-      socialLabel: "Up to 7 active channels",
-      channels: ["Instagram", "Facebook", "Pinterest", "LinkedIn", "TikTok", "YouTube", "Email"],
+      socialLabel: "Full visibility and follow-up mix",
+      channels: [
+        { name: "Instagram", key: "instagram" },
+        { name: "Pinterest", key: "pinterest" },
+        { name: "Facebook", key: "facebook" },
+        { name: "LinkedIn", key: "linkedin" },
+        { name: "YouTube", key: "youtube" },
+        { name: "Email", key: "email" },
+        { name: "Search", key: "search" },
+      ],
     },
     chips: ["Daily posting", "2 videos weekly", "Sales outreach support", "Ads management support"],
     details: [
@@ -204,7 +222,7 @@ const slides = [
         <span class="pair-x" aria-hidden="true">×</span>
         <img class="brand-logo brand-logo-mt" src={markethinkLogo} alt="Markethink" loading="eager" decoding="async" />
       </a>
-      <span class="deck-label">Private proposal · marketing system</span>
+      <span class="deck-label">Private proposal · marketing and sales system</span>
     </header>
 
     <aside class="slide-rail" aria-label="Presentation sections">
@@ -234,14 +252,38 @@ const slides = [
                 <small>plus success-fee alignment on signed client relationships</small>
               </div>
               <div class="value-panel">
-                <span class="value-label">Included rhythm</span>
+                <span class="value-label">What’s included</span>
                 <div class="chip-row package-chips">
                   {slide.chips.map((chip) => <span>{chip}</span>)}
                 </div>
                 <div class="channel-strip" aria-label={slide.package.socialLabel}>
                   <b>{slide.package.socialLabel}</b>
                   <div class="channel-icons">
-                    {slide.package.channels.map((channel) => <span title={channel} aria-label={channel}>{channel.slice(0, 2)}</span>)}
+                    {slide.package.channels.map((channel) => (
+                      <span title={channel.name} aria-label={channel.name}>
+                        {channel.key === "instagram" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16.3" cy="7.7" r="1.1" fill="currentColor"/></svg>
+                        )}
+                        {channel.key === "pinterest" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.2 4.5c-4.1 0-6.4 2.7-6.4 5.7 0 1.9 1 3.4 2.5 4 .3.1.5 0 .6-.4l.3-1.2c.1-.4.1-.5-.2-.9-.5-.6-.8-1.3-.8-2.1 0-2.1 1.6-3.7 4-3.7 2.2 0 3.5 1.3 3.5 3.2 0 2.5-1.2 4.3-2.8 4.3-.9 0-1.6-.8-1.4-1.7.3-1.1.8-2.3.8-3.1 0-.7-.4-1.3-1.2-1.3-.9 0-1.7 1-1.7 2.3 0 .8.3 1.4.3 1.4l-1.2 5.1c-.3 1.3-.2 2.8-.1 3.8 0 .3.4.4.5.1.5-.8 1.2-2.1 1.5-3.4l.6-2.3c.5.9 1.5 1.5 2.7 1.5 3.5 0 6-3.2 6-7.1 0-3.4-2.8-6.2-7.1-6.2Z" fill="currentColor"/></svg>
+                        )}
+                        {channel.key === "facebook" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.2h2.2V4.8c-.4-.1-1.7-.2-3.2-.2-3.2 0-5.3 1.9-5.3 5.4v3H4.4v3.8h3.3v7h4.1v-7h3.3l.5-3.8h-3.8v-2.6c0-1.1.3-2.2 2.2-2.2Z" fill="currentColor"/></svg>
+                        )}
+                        {channel.key === "linkedin" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.8 9.4H3.4v10.9h3.4V9.4ZM5.1 4.1a2 2 0 1 0 0 4.1 2 2 0 0 0 0-4.1Zm14.8 10.1c0-3.3-1.8-5.1-4.3-5.1-2 0-2.9 1.1-3.4 1.9V9.4H8.9v10.9h3.4v-5.4c0-1.5.3-2.9 2.1-2.9 1.7 0 1.8 1.6 1.8 3v5.3h3.4v-6.1Z" fill="currentColor"/></svg>
+                        )}
+                        {channel.key === "youtube" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.3 8.2a3 3 0 0 0-2.1-2.1C17.4 5.6 12 5.6 12 5.6s-5.4 0-7.2.5a3 3 0 0 0-2.1 2.1 31 31 0 0 0-.5 3.8c0 1.3.2 2.6.5 3.8a3 3 0 0 0 2.1 2.1c1.8.5 7.2.5 7.2.5s5.4 0 7.2-.5a3 3 0 0 0 2.1-2.1c.3-1.2.5-2.5.5-3.8 0-1.3-.2-2.6-.5-3.8ZM10.1 15.3V8.7l5.7 3.3-5.7 3.3Z" fill="currentColor"/></svg>
+                        )}
+                        {channel.key === "email" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.8" y="6.2" width="16.4" height="11.6" rx="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m5.1 8 6.9 5.1L18.9 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        )}
+                        {channel.key === "search" && (
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.7" cy="10.7" r="5.8" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m15.1 15.1 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+                        )}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -546,20 +588,22 @@ const slides = [
   }
 
   .package-offer {
+    --package-accent: #a8895f;
+    --package-accent-soft: rgba(168, 137, 95, 0.14);
     display: grid;
-    grid-template-columns: minmax(250px, 0.82fr) minmax(360px, 1.18fr);
-    gap: 16px;
+    grid-template-columns: minmax(300px, 0.72fr) minmax(430px, 1.28fr);
+    gap: 18px;
     align-items: stretch;
-    max-width: 980px;
-    margin-top: 26px;
+    max-width: 1040px;
+    margin-top: 24px;
   }
 
   .price-panel,
   .value-panel {
-    border-radius: 28px;
-    border: 1px solid rgba(245, 241, 233, 0.2);
-    background: rgba(15, 18, 19, 0.5);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    border-radius: 22px;
+    border: 1px solid rgba(245, 241, 233, 0.24);
+    background: rgba(24, 22, 20, 0.66);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(18px);
   }
 
@@ -567,9 +611,9 @@ const slides = [
   .light .value-panel,
   .package.light .price-panel,
   .package.light .value-panel {
-    background: rgba(255, 255, 255, 0.58);
-    border-color: rgba(35, 31, 29, 0.12);
-    box-shadow: 0 24px 70px rgba(35, 31, 29, 0.11);
+    background: rgba(250, 247, 240, 0.78);
+    border-color: rgba(83, 70, 56, 0.16);
+    box-shadow: 0 26px 80px rgba(83, 70, 56, 0.12);
   }
 
   .price-panel {
@@ -582,8 +626,8 @@ const slides = [
   .standard-label,
   .launch-label,
   .value-label {
-    color: var(--green);
-    font-size: 11px;
+    color: var(--package-accent);
+    font-size: 10px;
     font-weight: 850;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -598,7 +642,7 @@ const slides = [
     line-height: 1;
     text-decoration-line: line-through;
     text-decoration-thickness: 3px;
-    text-decoration-color: rgba(105, 210, 84, 0.85);
+    text-decoration-color: rgba(168, 137, 95, 0.82);
   }
 
   .light .standard-price,
@@ -618,9 +662,9 @@ const slides = [
 
   .price-panel strong {
     margin-top: 5px;
-    color: var(--green);
+    color: #8f7047;
     font-family: "Times New Roman", Georgia, serif;
-    font-size: clamp(58px, 7.7vw, 104px);
+    font-size: clamp(52px, 6.4vw, 84px);
     line-height: 0.92;
     letter-spacing: -0.065em;
   }
@@ -655,8 +699,8 @@ const slides = [
     margin-top: 18px;
     padding: 15px 16px;
     border-radius: 22px;
-    background: rgba(105, 210, 84, 0.12);
-    border: 1px solid rgba(105, 210, 84, 0.28);
+    background: var(--package-accent-soft);
+    border: 1px solid rgba(168, 137, 95, 0.28);
   }
 
   .channel-strip b {
@@ -680,13 +724,13 @@ const slides = [
   .channel-icons span {
     display: inline-grid;
     place-items: center;
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     border-radius: 999px;
-    background: rgba(245, 241, 233, 0.14);
-    border: 1px solid rgba(245, 241, 233, 0.24);
+    background: rgba(245, 241, 233, 0.18);
+    border: 1px solid rgba(245, 241, 233, 0.3);
     color: var(--cream);
-    font-size: 10px;
+    font-size: 0;
     font-weight: 850;
     letter-spacing: -0.04em;
     text-transform: uppercase;
@@ -694,22 +738,22 @@ const slides = [
 
   .light .channel-icons span,
   .package.light .channel-icons span {
-    background: rgba(15, 18, 19, 0.07);
-    border-color: rgba(35, 31, 29, 0.16);
-    color: var(--ink);
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(83, 70, 56, 0.2);
+    color: #6f5638;
   }
 
   .package-detail-grid {
     max-width: 980px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+    gap: 11px;
     margin-top: 18px;
   }
 
   .package-detail-grid article {
-    min-height: 112px;
-    padding: 15px 15px 16px;
-    font-size: 13.5px;
+    min-height: 126px;
+    padding: 16px 16px 17px;
+    font-size: 13.8px;
     line-height: 1.36;
   }
 
@@ -741,7 +785,49 @@ const slides = [
 
   .package.dark .detail-grid article,
   .package.system .detail-grid article {
-    border-color: rgba(105, 210, 84, 0.24);
+    border-color: rgba(168, 137, 95, 0.28);
+  }
+
+
+
+  .package .slide-kicker,
+  .package .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    color: #8f7047;
+  }
+
+  .package .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    background: rgba(168, 137, 95, 0.14);
+    border-color: rgba(168, 137, 95, 0.28);
+  }
+
+  .package .slide-lead {
+    max-width: 980px;
+    font-size: clamp(17px, 1.65vw, 22px);
+  }
+
+  .package .price-panel {
+    overflow: hidden;
+  }
+
+  .package .price-panel strong {
+    white-space: nowrap;
+  }
+
+  .package .channel-icons span svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .package .detail-grid article::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin-bottom: 12px;
+    background: rgba(168, 137, 95, 0.55);
   }
 
   .slide-footer {
