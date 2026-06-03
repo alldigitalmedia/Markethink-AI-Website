@@ -303,22 +303,22 @@ const slides = [
     nav: "Alignment",
     kicker: "PREFERRED PRICING + PERFORMANCE ALIGNMENT",
     title: "Lower fixed cost, with upside tied to real signed relationships.",
-    lead: "The preferred launch pricing keeps the monthly commitment efficient. The upside is tied to sales movement: the success fee only applies when Markethink helps generate, advance, or materially support a new client relationship that signs and pays.",
+    lead: "The preferred launch pricing keeps the monthly commitment efficient. The upside structure should be discussed with the Margarita Bravo team so the dollars are fair, clear, and aligned for everyone when new signed relationships move forward.",
     image: images.alignment,
     tone: "light",
-    chips: ["Signed relationships", "Sales movement", "Clear attribution", "3% of first paid engagement"],
+    chips: ["Signed relationships", "Sales movement", "Clear attribution", "$ structure to discuss"],
     details: [
       "Applies across all packages",
       "Tied to a new client relationship that is generated, advanced, signs, and pays",
       "Can come through website inquiries, email, search, social, ads, outreach, sales follow-up, or reactivation",
-      "Recommended structure: 3% of the first paid engagement, payable only after Margarita Bravo receives payment",
+      "Final $ structure to be discussed with the Margarita Bravo team so incentives are aligned for everyone",
     ],
   },
   {
     n: "09",
     id: "next-step",
     nav: "Next step",
-    kicker: "RECOMMENDED PATH",
+    kicker: "",
     title: "It feels like having a full marketing and sales team dedicated to Margarita Bravo, every day.",
     lead: "Markethink brings strategy, production, follow-up organization, and approval memory into one evolving system, powered by marketing experts and built to keep getting sharper as the business moves.",
     image: images.next,
@@ -365,7 +365,7 @@ const slides = [
         <div class="slide-bg" aria-hidden="true"></div>
         <div class="slide-vignette" aria-hidden="true"></div>
         <div class="slide-inner">
-          <p class="slide-kicker">{slide.kicker}</p>
+          {slide.kicker && <p class="slide-kicker">{slide.kicker}</p>}
           <h1>{slide.title}</h1>
           <p class="slide-lead">{slide.lead}</p>
           {slide.package && (
