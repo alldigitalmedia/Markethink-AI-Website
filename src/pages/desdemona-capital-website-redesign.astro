@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 
 const pageUrl = "https://markethink.ai/desdemona-capital-website-redesign/";
 const markethinkLogo = "/images/logo-white.svg";
-const desdemonaAssetBase = "https://www.desdemonacapital.com";
 
 const slides = [
   {
@@ -11,49 +10,77 @@ const slides = [
     id: "opportunity",
     nav: "Opportunity",
     kicker: "DESDEMONA CAPITAL · WEBSITE REDESIGN",
-    title: "Desdemona needs a sharper digital front door for the group behind InList and The 0.07%.",
-    lead: "The current site should do more than exist. It should quickly explain the parent company, connect the portfolio, signal credibility, and give the right visitor a clear path to the next conversation.",
-    image: `${desdemonaAssetBase}/equity/the007.webp`,
+    title: "A sharper digital front door for the group behind InList and The 0.07%.",
+    lead: "Desdemona Capital should feel like the parent company behind serious, high-access brands: clear, current, premium, and easy to understand in the first few seconds.",
     chips: ["Parent company clarity", "Portfolio connection", "Premium trust signal", "Clear next step"],
     details: [
-      "Create a cleaner first impression for Desdemona Capital",
-      "Position InList and The 0.07% as part of a more intentional company ecosystem",
-      "Make the site feel current, premium, and serious without becoming overbuilt",
-      "Prepare the structure for future content, announcements, and investor or partner conversations",
+      "Explain Desdemona Capital with more authority and less friction",
+      "Connect InList and The 0.07% into a more intentional company story",
+      "Make the site feel current, polished, and serious without overbuilding it",
+      "Create a better foundation for future announcements, partner conversations, and portfolio growth",
     ],
   },
   {
     n: "02",
-    id: "redesign",
-    nav: "Redesign",
-    kicker: "ONE-TIME WEBSITE REFRESH",
-    title: "$2,000 one-time redesign and rebuild.",
-    lead: "A focused redesign to give Desdemona Capital a modern, high-end website foundation: stronger page structure, sharper copy, refined visual direction, mobile polish, and a clearer path into the brands it owns.",
-    image: `${desdemonaAssetBase}/equity/villazzo.webp`,
-    chips: ["Strategy", "Design", "Copy", "Build"],
+    id: "direction",
+    nav: "Direction",
+    kicker: "DESIGN DIRECTION",
+    title: "Premium, minimal, and built around the company’s portfolio gravity.",
+    lead: "The redesign should feel like a private capital and brand platform: dark, architectural, restrained, with subtle technology cues and a stronger hierarchy around what Desdemona owns and where it is going.",
+    chips: ["Dark editorial system", "Portfolio-led structure", "Luxury-tech restraint", "Sharper hierarchy"],
     details: [
-      "Homepage redesign with a stronger company narrative and portfolio flow",
-      "Premium visual system: typography, spacing, dark luxury palette, brand-level polish",
-      "Responsive build for desktop and mobile",
-      "Basic SEO setup, metadata, structured sections, and clear contact path",
-      "Launch-ready review version before publishing",
+      "A cleaner hero that immediately says what Desdemona Capital is",
+      "A portfolio section that treats InList and The 0.07% as high-value assets, not loose links",
+      "A visual system with Desdemona blue, charcoal, steel, and controlled light accents",
+      "Custom background imagery and interface-style compositions instead of low-resolution borrowed images",
     ],
   },
   {
     n: "03",
+    id: "investment",
+    nav: "Investment",
+    kicker: "INITIAL WEBSITE REDESIGN",
+    title: "A focused redesign with a clean investment structure.",
+    lead: "The first phase is intentionally scoped: redesign and rebuild the core Desdemona Capital web presence so it looks sharper, reads clearly, works on mobile, and gives the company a stronger base for future content.",
+    chips: ["One-time project", "Design + copy", "Responsive build", "Launch-ready review"],
+    details: [
+      "Investment: USD 2,000 for the initial redesign and rebuild",
+      "Homepage structure, refined copy, visual direction, and portfolio flow",
+      "Responsive desktop and mobile implementation",
+      "Basic SEO setup, metadata, structured sections, and clear contact path",
+      "Review version prepared before publishing so final polish is controlled",
+    ],
+  },
+  {
+    n: "04",
+    id: "tech-layer",
+    nav: "Tech layer",
+    kicker: "MODERN TECH LAYER",
+    title: "Built on current web infrastructure, not a fragile static brochure.",
+    lead: "The new site can be built with a modern front-end foundation: fast pages, clean component structure, flexible content sections, strong metadata, analytics-ready events, and room to add richer technology-driven features later.",
+    chips: ["Fast front end", "Clean components", "Analytics-ready", "Future pages"],
+    details: [
+      "Modern architecture for speed, responsive polish, and future expansion",
+      "Structured content blocks so new portfolio updates and announcements are easier to add",
+      "SEO and social metadata handled cleanly from the start",
+      "Analytics-ready interaction structure so future traffic and inquiry paths can be understood",
+      "Room for AI-assisted content workflows, richer landing pages, and portfolio storytelling as the company grows",
+    ],
+  },
+  {
+    n: "05",
     id: "ongoing",
     nav: "Ongoing",
-    kicker: "ONGOING MANAGEMENT + MODERN TECH LAYER",
-    title: "After launch, the site can become a managed content and technology surface.",
-    lead: "The redesign creates the foundation. Ongoing management keeps it alive: updates, AI-assisted article production, blog posts, technical SEO, analytics-ready improvements, and new pages as the company keeps moving.",
-    image: `${desdemonaAssetBase}/press/prestige.webp`,
-    chips: ["AI-assisted content", "Blog posts", "Technical SEO", "Website management"],
+    kicker: "ONGOING MANAGEMENT",
+    title: "After launch, the site can stay active instead of going stale.",
+    lead: "The redesign creates the foundation. Ongoing management can keep the site alive with edits, new sections, AI-assisted article drafts, blog posts, technical SEO refreshes, and new pages as Desdemona keeps moving.",
+    chips: ["Website management", "AI-assisted content", "Blog posts", "SEO refreshes"],
     details: [
-      "Modern front-end foundation built for speed, clean structure, and future page expansion",
-      "AI-assisted content workflow for blog posts, announcements, and thought-leadership drafts — with human review before anything goes live",
-      "Ongoing website management for edits, new sections, portfolio updates, and conversion improvements",
-      "Analytics-ready event structure so future traffic, inquiry, and content performance can be understood",
-      "Optional monthly support can be scoped after the redesign: content, blog posts, SEO refreshes, and new page creation",
+      "Monthly support can be scoped after the redesign based on how active the site needs to be",
+      "Blog posts, announcements, and thought-leadership drafts prepared with AI assistance and human review",
+      "New portfolio sections, landing pages, and content updates as opportunities come up",
+      "Technical SEO and conversion-path improvements over time",
+      "A cleaner operating rhythm so the website reflects what the company is actually building",
     ],
   },
 ];
@@ -88,9 +115,17 @@ const slides = [
     </aside>
 
     {slides.map((slide) => (
-      <section id={slide.id} class:list={["slide", slide.id]} style={`--slide-image: url('${slide.image}')`}>
-        <div class="orb orb-a" aria-hidden="true"></div>
-        <div class="orb orb-b" aria-hidden="true"></div>
+      <section id={slide.id} class:list={["slide", slide.id]}>
+        <div class="custom-visual" aria-hidden="true">
+          <span class="frame frame-a"></span>
+          <span class="frame frame-b"></span>
+          <span class="frame frame-c"></span>
+          <span class="beam beam-a"></span>
+          <span class="beam beam-b"></span>
+          <span class="node node-a"></span>
+          <span class="node node-b"></span>
+          <span class="node node-c"></span>
+        </div>
         <div class="gridline" aria-hidden="true"></div>
         <div class="inner">
           <p class="kicker">{slide.kicker}</p>
@@ -122,13 +157,13 @@ const slides = [
     --muted: #b4b6b6;
     --green: #69d254;
     --desdemona-blue: #0d72b6;
+    --desdemona-ice: #8cc6ea;
     --desdemona-slate: #3e3d40;
     --desdemona-steel: #696969;
-    --wash: #edf4ea;
     min-height: 100vh;
     background: var(--charcoal);
     color: var(--cream);
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     overflow-x: hidden;
   }
 
@@ -137,7 +172,7 @@ const slides = [
     top: 0;
     left: 0;
     right: 0;
-    z-index: 20;
+    z-index: 50;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -170,23 +205,14 @@ const slides = [
 
   .desdemona-logo strong { font-size: 23px; }
   .desdemona-logo em { font-size: 16px; color: rgba(245,245,241,0.72); }
-
-  .pair-x {
-    color: rgba(245,245,241,0.42);
-    font-size: 18px;
-  }
-
-  .markethink-logo {
-    display: block;
-    width: 152px;
-    height: auto;
-  }
+  .pair-x { color: rgba(245,245,241,0.42); font-size: 18px; }
+  .markethink-logo { display: block; width: 152px; height: auto; }
 
   .label {
-    color: rgba(245,245,241,0.72);
     font-size: 12px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: rgba(245,245,241,0.58);
   }
 
   .rail {
@@ -194,36 +220,42 @@ const slides = [
     right: 28px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 15;
+    z-index: 45;
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
 
   .rail a {
-    width: 108px;
-    padding: 10px 12px;
-    border: 1px solid rgba(245,245,241,0.12);
-    border-radius: 999px;
-    color: rgba(245,245,241,0.78);
+    color: rgba(245,245,241,0.42);
     text-decoration: none;
-    background: rgba(15,18,19,0.5);
-    backdrop-filter: blur(14px);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 28px 1fr;
     gap: 8px;
+    align-items: center;
     font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
-  .rail strong { font-weight: 600; }
+  .rail span {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(140,198,234,0.24);
+    border-radius: 999px;
+    color: var(--desdemona-ice);
+  }
+
+  .rail strong { font-weight: 500; }
 
   .slide {
     position: relative;
     min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 120px 120px 80px;
-    isolation: isolate;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    isolation: isolate;
   }
 
   .slide::before {
@@ -231,11 +263,10 @@ const slides = [
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(15,18,19,0.92) 0%, rgba(15,18,19,0.82) 42%, rgba(15,18,19,0.54) 100%),
-      linear-gradient(180deg, rgba(15,18,19,0.36), rgba(15,18,19,0.82)),
-      var(--slide-image) center / cover no-repeat,
-      var(--charcoal);
-    z-index: -4;
+      radial-gradient(circle at 76% 22%, rgba(13,114,182,0.30), transparent 28%),
+      radial-gradient(circle at 20% 82%, rgba(105,210,84,0.10), transparent 34%),
+      linear-gradient(115deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.92) 44%, rgba(16,38,53,0.84) 100%);
+    z-index: -5;
   }
 
   .slide::after {
@@ -243,81 +274,128 @@ const slides = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 82% 20%, rgba(13,114,182,0.30), transparent 28%),
-      radial-gradient(circle at 18% 80%, rgba(105,210,84,0.10), transparent 34%),
-      linear-gradient(90deg, rgba(35,111,159,0.16), transparent 42%);
-    mix-blend-mode: screen;
-    opacity: 0.78;
-    z-index: -3;
+      linear-gradient(90deg, rgba(15,18,19,0.96), rgba(15,18,19,0.70) 52%, rgba(15,18,19,0.34)),
+      repeating-linear-gradient(90deg, rgba(245,245,241,0.035) 0 1px, transparent 1px 84px),
+      repeating-linear-gradient(0deg, rgba(245,245,241,0.028) 0 1px, transparent 1px 84px);
+    z-index: -4;
   }
 
-  .redesign::before {
-    background:
-      linear-gradient(90deg, rgba(15,18,19,0.92) 0%, rgba(15,18,19,0.76) 48%, rgba(15,18,19,0.48) 100%),
-      linear-gradient(135deg, rgba(13,114,182,0.16), rgba(105,210,84,0.06)),
-      var(--slide-image) center / cover no-repeat,
-      #0f1213;
+  .direction::before { background: radial-gradient(circle at 74% 28%, rgba(140,198,234,0.25), transparent 28%), linear-gradient(120deg, #0f1213 0%, #111619 46%, #22313d 100%); }
+  .investment::before { background: radial-gradient(circle at 78% 24%, rgba(105,210,84,0.15), transparent 25%), linear-gradient(120deg, #0f1213 0%, #171716 42%, #33312e 100%); }
+  .tech-layer::before { background: radial-gradient(circle at 77% 24%, rgba(13,114,182,0.36), transparent 26%), linear-gradient(120deg, #0f1213 0%, #0d1c27 48%, #173a56 100%); }
+  .ongoing::before { background: radial-gradient(circle at 80% 22%, rgba(140,198,234,0.18), transparent 26%), radial-gradient(circle at 58% 72%, rgba(105,210,84,0.09), transparent 28%), linear-gradient(120deg, #0f1213 0%, #181b1d 44%, #30343a 100%); }
+
+  .custom-visual {
+    position: absolute;
+    right: 6vw;
+    top: 17vh;
+    width: min(520px, 42vw);
+    height: min(560px, 62vh);
+    z-index: -2;
+    opacity: 0.95;
   }
 
-  .ongoing::before {
-    background:
-      linear-gradient(90deg, rgba(15,18,19,0.94) 0%, rgba(15,18,19,0.82) 44%, rgba(15,18,19,0.50) 100%),
-      linear-gradient(135deg, rgba(62,61,64,0.36), rgba(13,114,182,0.18)),
-      var(--slide-image) center / cover no-repeat,
-      #0f1213;
+  .frame,
+  .beam,
+  .node { position: absolute; display: block; }
+
+  .frame {
+    border: 1px solid rgba(140,198,234,0.28);
+    background: linear-gradient(135deg, rgba(245,245,241,0.13), rgba(13,114,182,0.12));
+    box-shadow: 0 28px 80px rgba(0,0,0,0.38), inset 0 1px 0 rgba(245,245,241,0.14);
+    backdrop-filter: blur(12px);
+  }
+
+  .frame-a { width: 74%; height: 40%; right: 0; top: 0; border-radius: 30px; }
+  .frame-b { width: 52%; height: 46%; left: 6%; top: 28%; border-radius: 26px; }
+  .frame-c { width: 64%; height: 24%; right: 8%; bottom: 4%; border-radius: 999px; }
+
+  .beam {
+    height: 2px;
+    transform-origin: left center;
+    background: linear-gradient(90deg, transparent, rgba(140,198,234,0.75), rgba(105,210,84,0.54), transparent);
+    box-shadow: 0 0 28px rgba(140,198,234,0.35);
+  }
+
+  .beam-a { width: 78%; left: 12%; top: 50%; transform: rotate(-18deg); }
+  .beam-b { width: 62%; left: 22%; top: 66%; transform: rotate(14deg); }
+
+  .node {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: var(--green);
+    box-shadow: 0 0 0 9px rgba(105,210,84,0.10), 0 0 28px rgba(105,210,84,0.52);
+  }
+
+  .node-a { right: 12%; top: 12%; }
+  .node-b { left: 18%; top: 48%; background: var(--desdemona-ice); box-shadow: 0 0 0 9px rgba(140,198,234,0.10), 0 0 28px rgba(140,198,234,0.52); }
+  .node-c { right: 26%; bottom: 12%; }
+
+  .investment .frame-a::after {
+    content: "Investment";
+    position: absolute;
+    left: 24px;
+    top: 22px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,245,241,0.62);
+  }
+
+  .investment .frame-b::after {
+    content: "Initial redesign · one-time project";
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+    color: rgba(245,245,241,0.72);
+    font-size: 18px;
+    line-height: 1.25;
   }
 
   .gridline {
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(245,245,241,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,245,241,0.05) 1px, transparent 1px);
-    background-size: 82px 82px;
-    mask-image: radial-gradient(circle at 50% 50%, black, transparent 72%);
+    background-image: linear-gradient(rgba(245,245,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at 70% 45%, black, transparent 62%);
     z-index: -1;
   }
-
-  .orb {
-    position: absolute;
-    border: 1px solid rgba(105,210,84,0.22);
-    border-radius: 999px;
-    z-index: -1;
-  }
-
-  .orb-a { width: 540px; height: 540px; right: -140px; top: 14%; }
-  .orb-b { width: 300px; height: 300px; left: 7%; bottom: 10%; opacity: 0.55; }
 
   .inner {
-    width: min(1040px, 100%);
+    position: relative;
+    z-index: 2;
+    width: min(920px, calc(100vw - 240px));
+    margin-left: clamp(34px, 8vw, 116px);
+    padding: 110px 0 86px;
   }
 
   .kicker {
-    margin: 0 0 24px;
-    color: #8cc6ea;
-    font-size: 12px;
-    font-weight: 700;
+    margin: 0 0 20px;
+    color: var(--desdemona-ice);
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   h1 {
-    max-width: 960px;
     margin: 0;
+    max-width: 880px;
     font-family: "Instrument Serif", Georgia, serif;
-    font-size: clamp(54px, 7vw, 108px);
-    line-height: 0.9;
+    font-size: clamp(52px, 7.6vw, 104px);
+    line-height: 0.92;
     letter-spacing: -0.055em;
     font-weight: 400;
   }
 
   .lead {
-    max-width: 820px;
-    margin: 30px 0 0;
-    color: rgba(245,245,241,0.78);
-    font-size: clamp(19px, 2vw, 27px);
-    line-height: 1.35;
-    letter-spacing: -0.035em;
+    max-width: 720px;
+    margin: 26px 0 0;
+    color: rgba(245,245,241,0.76);
+    font-size: clamp(18px, 1.8vw, 25px);
+    line-height: 1.42;
   }
 
   .chips {
@@ -325,6 +403,7 @@ const slides = [
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 32px;
+    max-width: 760px;
   }
 
   .chips span {
@@ -334,57 +413,56 @@ const slides = [
     background: rgba(13,114,182,0.16);
     color: rgba(245,245,241,0.86);
     font-size: 13px;
-    font-weight: 600;
   }
 
   .details {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 54px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 820px;
+    margin-top: 34px;
   }
 
   .details article {
-    min-height: 116px;
+    padding: 18px 18px 18px 20px;
     border: 1px solid rgba(245,245,241,0.12);
-    border-radius: 24px;
-    padding: 20px;
-    background: rgba(245,245,241,0.075);
-    color: rgba(245,245,241,0.82);
-    line-height: 1.38;
-    font-size: 14px;
+    border-radius: 22px;
+    background: rgba(245,245,241,0.055);
+    color: rgba(245,245,241,0.72);
+    line-height: 1.42;
+    box-shadow: inset 3px 0 0 rgba(140,198,234,0.30);
   }
 
-  .redesign .details article:nth-child(1),
-  .ongoing .details article:nth-child(2) {
-    background: rgba(13,114,182,0.22);
-    border-color: rgba(140,198,234,0.38);
+  .investment .details article:first-child {
+    background: rgba(140,198,234,0.14);
+    border-color: rgba(140,198,234,0.32);
+    color: var(--cream);
+    font-weight: 700;
   }
 
   .footer {
     position: absolute;
-    left: 34px;
+    left: clamp(34px, 8vw, 116px);
     right: 34px;
-    bottom: 26px;
+    bottom: 24px;
     display: flex;
     justify-content: space-between;
     color: rgba(245,245,241,0.42);
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 860px) {
     .topbar { padding: 18px; }
     .markethink-logo { width: 124px; }
     .desdemona-logo strong { font-size: 18px; }
     .desdemona-logo em { font-size: 13px; }
     .label, .rail { display: none; }
-    .slide { padding: 96px 22px 70px; place-items: start; }
-    h1 { font-size: clamp(44px, 15vw, 74px); }
-    .details { grid-template-columns: 1fr; margin-top: 34px; }
-    .details article { min-height: auto; }
-    .footer { left: 22px; right: 22px; }
+    .custom-visual { right: -28vw; top: 10vh; width: 74vw; opacity: 0.48; }
+    .inner { width: calc(100vw - 36px); margin-left: 18px; padding-top: 120px; }
+    h1 { font-size: clamp(44px, 14vw, 72px); }
+    .details { grid-template-columns: 1fr; }
+    .footer { left: 18px; right: 18px; }
   }
 </style>
-
