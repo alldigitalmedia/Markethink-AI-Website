@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 
 const pageUrl = "https://markethink.ai/desdemona-capital-website-redesign/";
+const markethinkLogo = "/images/logo-white.svg";
+const desdemonaAssetBase = "https://www.desdemonacapital.com";
 
 const slides = [
   {
@@ -11,6 +13,7 @@ const slides = [
     kicker: "DESDEMONA CAPITAL · WEBSITE REDESIGN",
     title: "Desdemona needs a sharper digital front door for the group behind InList and The 0.07%.",
     lead: "The current site should do more than exist. It should quickly explain the parent company, connect the portfolio, signal credibility, and give the right visitor a clear path to the next conversation.",
+    image: `${desdemonaAssetBase}/equity/the007.webp`,
     chips: ["Parent company clarity", "Portfolio connection", "Premium trust signal", "Clear next step"],
     details: [
       "Create a cleaner first impression for Desdemona Capital",
@@ -26,6 +29,7 @@ const slides = [
     kicker: "ONE-TIME WEBSITE REFRESH",
     title: "$2,000 one-time redesign and rebuild.",
     lead: "A focused redesign to give Desdemona Capital a modern, high-end website foundation: stronger page structure, sharper copy, refined visual direction, mobile polish, and a clearer path into the brands it owns.",
+    image: `${desdemonaAssetBase}/equity/villazzo.webp`,
     chips: ["Strategy", "Design", "Copy", "Build"],
     details: [
       "Homepage redesign with a stronger company narrative and portfolio flow",
@@ -42,6 +46,7 @@ const slides = [
     kicker: "ONGOING MANAGEMENT + MODERN TECH LAYER",
     title: "After launch, the site can become a managed content and technology surface.",
     lead: "The redesign creates the foundation. Ongoing management keeps it alive: updates, AI-assisted article production, blog posts, technical SEO, analytics-ready improvements, and new pages as the company keeps moving.",
+    image: `${desdemonaAssetBase}/press/prestige.webp`,
     chips: ["AI-assisted content", "Blog posts", "Technical SEO", "Website management"],
     details: [
       "Modern front-end foundation built for speed, clean structure, and future page expansion",
@@ -62,9 +67,13 @@ const slides = [
 >
   <main class="proposal" aria-label="Desdemona Capital website redesign proposal">
     <header class="topbar">
-      <a href="#opportunity" class="brand" aria-label="Desdemona Capital proposal home">
-        <span class="brand-mark">M</span>
-        <span>Markethink</span>
+      <a href="#opportunity" class="brand-pair" aria-label="Desdemona Capital and Markethink proposal home">
+        <span class="desdemona-logo" aria-label="Desdemona Capital">
+          <strong>desdemona</strong>
+          <em>capital</em>
+        </span>
+        <span class="pair-x" aria-hidden="true">×</span>
+        <img class="markethink-logo" src={markethinkLogo} alt="Markethink" loading="eager" decoding="async" />
       </a>
       <span class="label">Private proposal · website redesign</span>
     </header>
@@ -79,7 +88,7 @@ const slides = [
     </aside>
 
     {slides.map((slide) => (
-      <section id={slide.id} class:list={["slide", slide.id]}>
+      <section id={slide.id} class:list={["slide", slide.id]} style={`--slide-image: url('${slide.image}')`}>
         <div class="orb orb-a" aria-hidden="true"></div>
         <div class="orb orb-b" aria-hidden="true"></div>
         <div class="gridline" aria-hidden="true"></div>
@@ -112,6 +121,9 @@ const slides = [
     --cream: #f5f5f1;
     --muted: #b4b6b6;
     --green: #69d254;
+    --desdemona-blue: #0d72b6;
+    --desdemona-slate: #3e3d40;
+    --desdemona-steel: #696969;
     --wash: #edf4ea;
     min-height: 100vh;
     background: var(--charcoal);
@@ -133,27 +145,41 @@ const slides = [
     pointer-events: none;
   }
 
-  .brand {
+  .brand-pair {
     pointer-events: auto;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     color: var(--cream);
     text-decoration: none;
-    font-weight: 600;
-    letter-spacing: -0.03em;
   }
 
-  .brand-mark {
+  .desdemona-logo {
     display: grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--green);
-    color: var(--charcoal);
-    font-family: "Instrument Serif", serif;
-    font-size: 21px;
+    line-height: 0.84;
+    text-transform: lowercase;
+    letter-spacing: -0.06em;
+  }
+
+  .desdemona-logo strong,
+  .desdemona-logo em {
+    font-family: "Century Gothic", Inter, ui-sans-serif, system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .desdemona-logo strong { font-size: 23px; }
+  .desdemona-logo em { font-size: 16px; color: rgba(245,245,241,0.72); }
+
+  .pair-x {
+    color: rgba(245,245,241,0.42);
+    font-size: 18px;
+  }
+
+  .markethink-logo {
+    display: block;
+    width: 152px;
+    height: auto;
   }
 
   .label {
@@ -205,22 +231,40 @@ const slides = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 20% 20%, rgba(105,210,84,0.16), transparent 30%),
-      linear-gradient(135deg, rgba(245,245,241,0.06), transparent 40%),
+      linear-gradient(90deg, rgba(15,18,19,0.92) 0%, rgba(15,18,19,0.82) 42%, rgba(15,18,19,0.54) 100%),
+      linear-gradient(180deg, rgba(15,18,19,0.36), rgba(15,18,19,0.82)),
+      var(--slide-image) center / cover no-repeat,
       var(--charcoal);
+    z-index: -4;
+  }
+
+  .slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 82% 20%, rgba(13,114,182,0.30), transparent 28%),
+      radial-gradient(circle at 18% 80%, rgba(105,210,84,0.10), transparent 34%),
+      linear-gradient(90deg, rgba(35,111,159,0.16), transparent 42%);
+    mix-blend-mode: screen;
+    opacity: 0.78;
     z-index: -3;
   }
 
   .redesign::before {
     background:
-      radial-gradient(circle at 74% 20%, rgba(105,210,84,0.18), transparent 28%),
-      linear-gradient(135deg, #0f1213 0%, #181c1d 58%, #0f1213 100%);
+      linear-gradient(90deg, rgba(15,18,19,0.92) 0%, rgba(15,18,19,0.76) 48%, rgba(15,18,19,0.48) 100%),
+      linear-gradient(135deg, rgba(13,114,182,0.16), rgba(105,210,84,0.06)),
+      var(--slide-image) center / cover no-repeat,
+      #0f1213;
   }
 
   .ongoing::before {
     background:
-      radial-gradient(circle at 15% 75%, rgba(105,210,84,0.16), transparent 32%),
-      linear-gradient(135deg, #0f1213 0%, #19201b 65%, #0f1213 100%);
+      linear-gradient(90deg, rgba(15,18,19,0.94) 0%, rgba(15,18,19,0.82) 44%, rgba(15,18,19,0.50) 100%),
+      linear-gradient(135deg, rgba(62,61,64,0.36), rgba(13,114,182,0.18)),
+      var(--slide-image) center / cover no-repeat,
+      #0f1213;
   }
 
   .gridline {
@@ -231,7 +275,7 @@ const slides = [
       linear-gradient(90deg, rgba(245,245,241,0.05) 1px, transparent 1px);
     background-size: 82px 82px;
     mask-image: radial-gradient(circle at 50% 50%, black, transparent 72%);
-    z-index: -2;
+    z-index: -1;
   }
 
   .orb {
@@ -250,7 +294,7 @@ const slides = [
 
   .kicker {
     margin: 0 0 24px;
-    color: var(--green);
+    color: #8cc6ea;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -284,10 +328,10 @@ const slides = [
   }
 
   .chips span {
-    border: 1px solid rgba(245,245,241,0.18);
+    border: 1px solid rgba(140,198,234,0.24);
     border-radius: 999px;
     padding: 10px 14px;
-    background: rgba(245,245,241,0.06);
+    background: rgba(13,114,182,0.16);
     color: rgba(245,245,241,0.86);
     font-size: 13px;
     font-weight: 600;
@@ -313,8 +357,8 @@ const slides = [
 
   .redesign .details article:nth-child(1),
   .ongoing .details article:nth-child(2) {
-    background: rgba(105,210,84,0.13);
-    border-color: rgba(105,210,84,0.32);
+    background: rgba(13,114,182,0.22);
+    border-color: rgba(140,198,234,0.38);
   }
 
   .footer {
@@ -332,6 +376,9 @@ const slides = [
 
   @media (max-width: 900px) {
     .topbar { padding: 18px; }
+    .markethink-logo { width: 124px; }
+    .desdemona-logo strong { font-size: 18px; }
+    .desdemona-logo em { font-size: 13px; }
     .label, .rail { display: none; }
     .slide { padding: 96px 22px 70px; place-items: start; }
     h1 { font-size: clamp(44px, 15vw, 74px); }
@@ -340,3 +387,4 @@ const slides = [
     .footer { left: 22px; right: 22px; }
   }
 </style>
+
