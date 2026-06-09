@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 
 const pageUrl = "https://markethink.ai/desdemona-capital-website-redesign/";
 const markethinkLogo = "/images/logo-white.svg";
+const customAssetBase = "https://dashboard.markethink.ai/generated/landing/markethink/desdemona-capital-website-redesign";
 
 const slides = [
   {
@@ -12,6 +13,7 @@ const slides = [
     kicker: "DESDEMONA CAPITAL · WEBSITE REDESIGN",
     title: "A sharper digital front door for the group behind InList and The 0.07%.",
     lead: "Desdemona Capital should feel like the parent company behind serious, high-access brands: clear, current, premium, and easy to understand in the first few seconds.",
+    image: `${customAssetBase}/01-opportunity.png`,
     chips: ["Parent company clarity", "Portfolio connection", "Premium trust signal", "Clear next step"],
     details: [
       "Explain Desdemona Capital with more authority and less friction",
@@ -27,6 +29,7 @@ const slides = [
     kicker: "DESIGN DIRECTION",
     title: "Premium, minimal, and built around the company’s portfolio gravity.",
     lead: "The redesign should feel like a private capital and brand platform: dark, architectural, restrained, with subtle technology cues and a stronger hierarchy around what Desdemona owns and where it is going.",
+    image: `${customAssetBase}/02-direction.png`,
     chips: ["Dark editorial system", "Portfolio-led structure", "Luxury-tech restraint", "Sharper hierarchy"],
     details: [
       "A cleaner hero that immediately says what Desdemona Capital is",
@@ -42,6 +45,7 @@ const slides = [
     kicker: "INITIAL WEBSITE REDESIGN",
     title: "A focused redesign with a clean investment structure.",
     lead: "The first phase is intentionally scoped: redesign and rebuild the core Desdemona Capital web presence so it looks sharper, reads clearly, works on mobile, and gives the company a stronger base for future content.",
+    image: `${customAssetBase}/03-investment.png`,
     chips: ["One-time project", "Design + copy", "Responsive build", "Launch-ready review"],
     details: [
       "Investment: USD 2,000 for the initial redesign and rebuild",
@@ -58,6 +62,7 @@ const slides = [
     kicker: "MODERN TECH LAYER",
     title: "Built on current web infrastructure, not a fragile static brochure.",
     lead: "The new site can be built with a modern front-end foundation: fast pages, clean component structure, flexible content sections, strong metadata, analytics-ready events, and room to add richer technology-driven features later.",
+    image: `${customAssetBase}/04-tech.png`,
     chips: ["Fast front end", "Clean components", "Analytics-ready", "Future pages"],
     details: [
       "Modern architecture for speed, responsive polish, and future expansion",
@@ -74,6 +79,7 @@ const slides = [
     kicker: "ONGOING MANAGEMENT",
     title: "After launch, the site can stay active instead of going stale.",
     lead: "The redesign creates the foundation. Ongoing management can keep the site alive with edits, new sections, AI-assisted article drafts, blog posts, technical SEO refreshes, and new pages as Desdemona keeps moving.",
+    image: `${customAssetBase}/05-ongoing.png`,
     chips: ["Website management", "AI-assisted content", "Blog posts", "SEO refreshes"],
     details: [
       "Monthly support can be scoped after the redesign based on how active the site needs to be",
@@ -115,17 +121,7 @@ const slides = [
     </aside>
 
     {slides.map((slide) => (
-      <section id={slide.id} class:list={["slide", slide.id]}>
-        <div class="custom-visual" aria-hidden="true">
-          <span class="frame frame-a"></span>
-          <span class="frame frame-b"></span>
-          <span class="frame frame-c"></span>
-          <span class="beam beam-a"></span>
-          <span class="beam beam-b"></span>
-          <span class="node node-a"></span>
-          <span class="node node-b"></span>
-          <span class="node node-c"></span>
-        </div>
+      <section id={slide.id} class:list={["slide", slide.id]} style={`--slide-image: url('${slide.image}')`}>
         <div class="gridline" aria-hidden="true"></div>
         <div class="inner">
           <p class="kicker">{slide.kicker}</p>
@@ -263,9 +259,10 @@ const slides = [
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 76% 22%, rgba(13,114,182,0.30), transparent 28%),
-      radial-gradient(circle at 20% 82%, rgba(105,210,84,0.10), transparent 34%),
-      linear-gradient(115deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.92) 44%, rgba(16,38,53,0.84) 100%);
+      linear-gradient(90deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.88) 42%, rgba(15,18,19,0.44) 100%),
+      linear-gradient(180deg, rgba(15,18,19,0.32), rgba(15,18,19,0.82)),
+      var(--slide-image) center / cover no-repeat,
+      var(--charcoal);
     z-index: -5;
   }
 
@@ -280,78 +277,15 @@ const slides = [
     z-index: -4;
   }
 
-  .direction::before { background: radial-gradient(circle at 74% 28%, rgba(140,198,234,0.25), transparent 28%), linear-gradient(120deg, #0f1213 0%, #111619 46%, #22313d 100%); }
-  .investment::before { background: radial-gradient(circle at 78% 24%, rgba(105,210,84,0.15), transparent 25%), linear-gradient(120deg, #0f1213 0%, #171716 42%, #33312e 100%); }
-  .tech-layer::before { background: radial-gradient(circle at 77% 24%, rgba(13,114,182,0.36), transparent 26%), linear-gradient(120deg, #0f1213 0%, #0d1c27 48%, #173a56 100%); }
-  .ongoing::before { background: radial-gradient(circle at 80% 22%, rgba(140,198,234,0.18), transparent 26%), radial-gradient(circle at 58% 72%, rgba(105,210,84,0.09), transparent 28%), linear-gradient(120deg, #0f1213 0%, #181b1d 44%, #30343a 100%); }
-
-  .custom-visual {
-    position: absolute;
-    right: 6vw;
-    top: 17vh;
-    width: min(520px, 42vw);
-    height: min(560px, 62vh);
-    z-index: -2;
-    opacity: 0.95;
-  }
-
-  .frame,
-  .beam,
-  .node { position: absolute; display: block; }
-
-  .frame {
-    border: 1px solid rgba(140,198,234,0.28);
-    background: linear-gradient(135deg, rgba(245,245,241,0.13), rgba(13,114,182,0.12));
-    box-shadow: 0 28px 80px rgba(0,0,0,0.38), inset 0 1px 0 rgba(245,245,241,0.14);
-    backdrop-filter: blur(12px);
-  }
-
-  .frame-a { width: 74%; height: 40%; right: 0; top: 0; border-radius: 30px; }
-  .frame-b { width: 52%; height: 46%; left: 6%; top: 28%; border-radius: 26px; }
-  .frame-c { width: 64%; height: 24%; right: 8%; bottom: 4%; border-radius: 999px; }
-
-  .beam {
-    height: 2px;
-    transform-origin: left center;
-    background: linear-gradient(90deg, transparent, rgba(140,198,234,0.75), rgba(105,210,84,0.54), transparent);
-    box-shadow: 0 0 28px rgba(140,198,234,0.35);
-  }
-
-  .beam-a { width: 78%; left: 12%; top: 50%; transform: rotate(-18deg); }
-  .beam-b { width: 62%; left: 22%; top: 66%; transform: rotate(14deg); }
-
-  .node {
-    width: 16px;
-    height: 16px;
-    border-radius: 999px;
-    background: var(--green);
-    box-shadow: 0 0 0 9px rgba(105,210,84,0.10), 0 0 28px rgba(105,210,84,0.52);
-  }
-
-  .node-a { right: 12%; top: 12%; }
-  .node-b { left: 18%; top: 48%; background: var(--desdemona-ice); box-shadow: 0 0 0 9px rgba(140,198,234,0.10), 0 0 28px rgba(140,198,234,0.52); }
-  .node-c { right: 26%; bottom: 12%; }
-
-  .investment .frame-a::after {
-    content: "Investment";
-    position: absolute;
-    left: 24px;
-    top: 22px;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(245,245,241,0.62);
-  }
-
-  .investment .frame-b::after {
-    content: "Initial redesign · one-time project";
-    position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 22px;
-    color: rgba(245,245,241,0.72);
-    font-size: 18px;
-    line-height: 1.25;
+  .direction::before,
+  .investment::before,
+  .tech-layer::before,
+  .ongoing::before {
+    background:
+      linear-gradient(90deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.86) 40%, rgba(15,18,19,0.42) 100%),
+      linear-gradient(180deg, rgba(15,18,19,0.25), rgba(15,18,19,0.82)),
+      var(--slide-image) center / cover no-repeat,
+      var(--charcoal);
   }
 
   .gridline {
@@ -459,7 +393,6 @@ const slides = [
     .desdemona-logo strong { font-size: 18px; }
     .desdemona-logo em { font-size: 13px; }
     .label, .rail { display: none; }
-    .custom-visual { right: -28vw; top: 10vh; width: 74vw; opacity: 0.48; }
     .inner { width: calc(100vw - 36px); margin-left: 18px; padding-top: 120px; }
     h1 { font-size: clamp(44px, 14vw, 72px); }
     .details { grid-template-columns: 1fr; }
