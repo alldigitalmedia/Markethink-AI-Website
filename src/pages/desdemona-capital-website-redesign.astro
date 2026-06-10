@@ -2,19 +2,27 @@
 import Layout from "../layouts/Layout.astro";
 
 const pageUrl = "https://markethink.ai/desdemona-capital-website-redesign/";
-const markethinkLogo = "/images/logo-white.svg";
-const customAssetBase = "https://dashboard.markethink.ai/generated/landing/markethink/desdemona-capital-website-redesign";
+const assetBase = "https://dashboard.markethink.ai/generated/landing/markethink/desdemona-capital-website-redesign";
+
+const brands = [
+  { name: "Markethink", type: "image", src: "/images/logo.svg", className: "markethink" },
+  { name: "Desdemona Capital", type: "desdemona", className: "desdemona" },
+  { name: "Website redesign", type: "text", className: "blueprint" },
+];
 
 const slides = [
   {
     n: "01",
     id: "opportunity",
     nav: "Opportunity",
-    kicker: "DESDEMONA CAPITAL · WEBSITE REDESIGN",
-    title: "A more credible first impression for Desdemona Capital.",
-    lead: "The website should make the company feel as strong as the brands behind it: clear ownership, a polished portfolio story, and a professional path for partners, investors, and future opportunities.",
-    image: `${customAssetBase}/01-opportunity.png`,
-    chips: ["Parent company clarity", "Portfolio connection", "Premium trust signal", "Clear next step"],
+    kicker: "PRIVATE PROPOSAL · DESDEMONA CAPITAL",
+    title: "A sharper digital front door for Desdemona Capital.",
+    lead: "The website should make Desdemona feel as intentional as the portfolio behind it: clear ownership, a polished company story, and a confident path for partners, stakeholders, and future opportunities.",
+    image: `${assetBase}/01-opportunity.png`,
+    layout: "hero",
+    backgroundOnly: true,
+    note: "Website credibility",
+    chips: ["Parent-company clarity", "Portfolio connection", "Premium trust signal", "Clear next step"],
     details: [
       "Clarify what Desdemona Capital is and why the portfolio belongs together",
       "Present InList and The 0.07% as deliberate assets, not isolated links",
@@ -26,10 +34,13 @@ const slides = [
     n: "02",
     id: "direction",
     nav: "Direction",
-    kicker: "DESIGN DIRECTION",
-    title: "A private-capital site, not a generic company page.",
+    kicker: "SLIDE 02 · DESIGN DIRECTION",
+    title: "A private-capital website, not a generic company page.",
     lead: "The design should feel disciplined and current: restrained typography, dark editorial surfaces, discreet technology cues, and a portfolio structure that makes Desdemona look intentional from the first screen.",
-    image: `${customAssetBase}/02-direction.png`,
+    image: `${assetBase}/02-direction.png`,
+    layout: "library",
+    backgroundOnly: false,
+    note: "Disciplined and current",
     chips: ["Dark editorial system", "Portfolio-led structure", "Luxury-tech restraint", "Sharper hierarchy"],
     details: [
       "A hero section that explains the company without making the visitor work",
@@ -42,10 +53,13 @@ const slides = [
     n: "03",
     id: "investment",
     nav: "Investment",
-    kicker: "INITIAL WEBSITE REDESIGN",
-    title: "Initial investment: a focused redesign and rebuild.",
+    kicker: "SLIDE 03 · INITIAL WEBSITE REDESIGN",
+    title: "A focused redesign with a clean investment structure.",
     lead: "The first phase keeps the scope tight: rebuild the core website so it looks credible, reads clearly, works properly on mobile, and gives Desdemona a better foundation without turning this into an oversized project.",
-    image: `${customAssetBase}/03-investment.png`,
+    image: `${assetBase}/03-investment.png`,
+    layout: "split",
+    backgroundOnly: false,
+    note: "Focused first phase",
     chips: ["One-time project", "Design + copy", "Responsive build", "Launch-ready review"],
     details: [
       "Investment: USD 2,000 for the initial redesign and rebuild",
@@ -59,31 +73,37 @@ const slides = [
     n: "04",
     id: "tech-layer",
     nav: "Tech layer",
-    kicker: "MODERN TECH LAYER",
+    kicker: "SLIDE 04 · MODERN TECH LAYER",
     title: "Modern infrastructure, with room to grow.",
     lead: "The rebuild can use a fast, component-based front end with clean metadata, analytics-ready sections, and flexible content blocks — so the site can support future articles, portfolio updates, landing pages, and technology-led features without starting over.",
-    image: `${customAssetBase}/04-tech.png`,
+    image: `${assetBase}/04-tech.png`,
+    layout: "tech",
+    backgroundOnly: false,
+    note: "Built for expansion",
     chips: ["Fast front end", "Clean components", "Analytics-ready", "Future pages"],
     details: [
       "Modern architecture for speed, responsive polish, and future expansion",
       "Structured content blocks for portfolio updates, announcements, and future pages",
       "SEO and social metadata handled cleanly from the start",
       "Analytics-ready interaction structure for traffic, inquiry, and content visibility",
-      "Room for AI-assisted content workflows and richer portfolio storytelling as the company grows",
+      "Room for assisted content workflows and richer portfolio storytelling as the company grows",
     ],
   },
   {
     n: "05",
     id: "ongoing",
     nav: "Ongoing",
-    kicker: "ONGOING MANAGEMENT",
-    title: "Optional ongoing management after launch.",
-    lead: "Once the redesign is live, Desdemona can keep the site current with a light monthly support layer: updates, blog/article drafts, technical SEO refreshes, new pages, and content improvements as the company has more to say.",
-    image: `${customAssetBase}/05-ongoing.png`,
-    chips: ["Website management", "AI-assisted content", "Blog posts", "SEO refreshes"],
+    kicker: "SLIDE 05 · ONGOING MANAGEMENT",
+    title: "The site can keep improving after launch.",
+    lead: "Once the redesign is live, Desdemona can keep the site current with a light monthly support layer: updates, article drafts, technical SEO refreshes, new pages, and content improvements as the company has more to say.",
+    image: `${assetBase}/05-ongoing.png`,
+    layout: "closing",
+    backgroundOnly: true,
+    note: "Optional support layer",
+    chips: ["Website management", "Content drafts", "SEO refreshes", "New pages"],
     details: [
       "Monthly support scoped after the redesign based on how active the site needs to be",
-      "Blog posts, announcements, and thought-leadership drafts prepared with AI assistance and human review",
+      "Blog posts, announcements, and thought-leadership drafts prepared for review",
       "New portfolio sections, landing pages, and content updates as opportunities come up",
       "Technical SEO and conversion-path improvements over time",
       "A cleaner rhythm so the website reflects what the company is actually building",
@@ -95,307 +115,227 @@ const slides = [
 <Layout
   title="Desdemona Capital · Website Redesign Proposal"
   description="A private Markethink proposal for a focused Desdemona Capital website redesign and optional ongoing website management."
+  image={`${assetBase}/01-opportunity.png`}
   canonical={pageUrl}
   noindex={true}
 >
-  <main class="proposal" aria-label="Desdemona Capital website redesign proposal">
-    <header class="topbar">
-      <a href="#opportunity" class="brand-pair" aria-label="Desdemona Capital and Markethink proposal home">
-        <span class="desdemona-logo" aria-label="Desdemona Capital">
-          <strong>desdemona</strong>
-          <em>capital</em>
-        </span>
-        <span class="pair-x" aria-hidden="true">×</span>
-        <img class="markethink-logo" src={markethinkLogo} alt="Markethink" loading="eager" decoding="async" />
+  <main class="presentation-page" aria-label="Desdemona Capital website redesign proposal">
+    <header class="presentation-topbar">
+      <a href="/" class="logo-lockup" aria-label="Markethink">
+        <img src="/images/logo.svg" alt="Markethink" class="markethink-logo" />
       </a>
-      <span class="label">Private proposal · website redesign</span>
+      <div class="prospect-lockup" aria-label="Proposal brands">
+        <span class="desdemona-wordmark" aria-label="Desdemona Capital"><strong>desdemona</strong><em>capital</em></span>
+        <span class="lockup-divider"></span>
+        <span class="zero-wordmark proposal-note">Website redesign</span>
+      </div>
+      <span class="deck-label">Private proposal</span>
     </header>
 
-    <aside class="rail" aria-label="Proposal sections">
+    <aside class="slide-rail" aria-label="Proposal sections">
       {slides.map((slide) => (
-        <a href={`#${slide.id}`}>
-          <span>{slide.n}</span>
-          <strong>{slide.nav}</strong>
+        <a href={`#${slide.id}`} class={`rail-item ${slide.n === '01' ? 'active' : ''}`} data-slide-link={slide.id} aria-current={slide.n === '01' ? 'step' : undefined}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
         </a>
       ))}
     </aside>
 
-    {slides.map((slide) => (
-      <section id={slide.id} class:list={["slide", slide.id]} style={`--slide-image: url('${slide.image}')`}>
-        <div class="gridline" aria-hidden="true"></div>
-        <div class="inner">
-          <p class="kicker">{slide.kicker}</p>
-          <h1>{slide.title}</h1>
-          <p class="lead">{slide.lead}</p>
-          <div class="chips">
-            {slide.chips.map((chip) => <span>{chip}</span>)}
-          </div>
-          <div class="details">
-            {slide.details.map((detail) => <article>{detail}</article>)}
-          </div>
+    {slides.map((slide, index) => (
+      <section id={slide.id} data-slide-id={slide.id} data-slide-index={index} class={`presentation-slide layout-${slide.layout} ${slide.backgroundOnly ? 'background-led' : ''} ${slide.n === '01' ? 'is-active' : ''}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="slide-background" aria-hidden="true">
+          {slide.backgroundOnly && (
+            <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+          )}
         </div>
-        <footer class="footer">
-          <span>{slide.n} / {slides.length.toString().padStart(2, "0")}</span>
-          <span>Desdemona Capital × Markethink</span>
-        </footer>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="slide-shell">
+          <div class="story-content">
+            <p class="eyebrow">{slide.kicker}</p>
+            {slide.n === '01' && (
+              <div class="brand-row" aria-label="Brand lockup">
+                {brands.map((brand) => brand.type === 'image' ? (
+                  <span class={`brand-pill ${brand.className}`}><img src={brand.src} alt={brand.name} /></span>
+                ) : brand.type === 'desdemona' ? (
+                  <span class={`brand-pill ${brand.className}`} aria-label={brand.name}><strong>desdemona</strong><em>capital</em></span>
+                ) : (
+                  <span class={`brand-pill ${brand.className}`}>{brand.name}</span>
+                ))}
+              </div>
+            )}
+            <h1 set:html={slide.title}></h1>
+            <p class="lead">{slide.lead}</p>
+            {slide.chips?.length > 0 && (
+              <div class="chip-row" aria-label="Key points">
+                {slide.chips.map((chip) => <span>{chip}</span>)}
+              </div>
+            )}
+            {slide.details && (
+              <ul class="detail-list" aria-label="Section details">
+                {slide.details.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            <div class="hero-actions" aria-label="Proposal context">
+              <span class="context-note">Desdemona Capital × Markethink · {slide.note}</span>
+            </div>
+          </div>
+
+          {!slide.backgroundOnly && (
+            <div class="visual-stack">
+              <div class="visual-card" aria-hidden="true">
+                <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div class="slide-footer">
+          <span>{slide.n} / {slide.nav}</span>
+          <span>{slide.note}</span>
+        </div>
       </section>
     ))}
   </main>
 </Layout>
 
+<script is:inline>
+  (() => {
+    const slides = Array.from(document.querySelectorAll('.presentation-slide[data-slide-id]'));
+    const railItems = Array.from(document.querySelectorAll('.rail-item[data-slide-link]'));
+
+    if (!slides.length || !railItems.length) return;
+
+    const setActiveSlide = (id) => {
+      railItems.forEach((item) => {
+        const isActive = item.dataset.slideLink === id;
+        item.classList.toggle('active', isActive);
+        if (isActive) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+
+      slides.forEach((slide) => {
+        slide.classList.toggle('is-active', slide.dataset.slideId === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.dataset?.slideId) {
+          setActiveSlide(visible.target.dataset.slideId);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.28, 0.42, 0.58, 0.72],
+        rootMargin: '-22% 0px -34% 0px',
+      }
+    );
+
+    slides.forEach((slide) => observer.observe(slide));
+
+    railItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (item.dataset.slideLink) setActiveSlide(item.dataset.slideLink);
+      });
+    });
+  })();
+</script>
+
 <style>
-  :global(html) { scroll-behavior: smooth; }
-  :global(body) { margin: 0; background: #0f1213; }
+  :global(html) { background: #0f1213; scroll-behavior: smooth; }
+  .presentation-page { background: #0f1213; color: #f5f5f1; overflow-x: hidden; }
+  .presentation-slide { position: relative; min-height: 100svh; isolation: isolate; display: grid; align-items: center; padding: clamp(6.5rem, 9vh, 8rem) clamp(1.3rem, 5vw, 5rem) clamp(4.8rem, 7vh, 6.4rem); background: #0f1213; overflow: hidden; scroll-margin-top: 0; }
+  .presentation-slide .story-content { opacity: .72; transform: translateY(18px); transition: opacity .72s ease, transform .72s ease; }
+  .presentation-slide .visual-card { opacity: .76; transition: opacity .72s ease, transform .72s ease, box-shadow .72s ease; }
+  .presentation-slide .slide-background img { transition: opacity .9s ease, transform 1.15s ease, filter .9s ease; }
+  .presentation-slide.is-active .story-content { opacity: 1; transform: translateY(0); }
+  .presentation-slide.is-active .visual-card { opacity: 1; box-shadow: 0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(205,170,80,.12); }
+  .presentation-slide.is-active .slide-background img { transform: scale(1.01); }
+  .presentation-slide.is-active .motion-field span { animation: softPulse 3.8s ease-in-out infinite; }
+  .slide-background, .slide-overlay, .motion-field { position: absolute; inset: 0; }
+  .slide-background { z-index: -4; }
+  .slide-background img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.25; filter: saturate(0.78) contrast(1.08) brightness(.78); transform: scale(1.04); }
+  .slide-overlay { z-index: -3; background: radial-gradient(circle at var(--hot-x, 72%) var(--hot-y, 48%), rgba(205,170,80,.14), transparent 28%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.80) 46%, rgba(15,18,19,.48) 100%), linear-gradient(180deg, rgba(15,18,19,.18), rgba(15,18,19,.88)); }
+  .motion-field { z-index: -2; opacity: .44; background-image: linear-gradient(rgba(245,245,241,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,.045) 1px, transparent 1px); background-size: 84px 84px; mask-image: radial-gradient(circle at 62% 50%, black, transparent 76%); }
+  .motion-field span { position: absolute; width: .5rem; height: .5rem; border-radius: 999px; background: #69d254; box-shadow: 0 0 0 .42rem rgba(105,210,84,.10); }
+  .motion-field span:nth-child(1){ top: 22%; left: 20%; } .motion-field span:nth-child(2){ top: 30%; right: 28%; } .motion-field span:nth-child(3){ bottom:24%; left:38%; } .motion-field span:nth-child(4){ bottom:18%; right:17%; }
+  .presentation-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display:flex; align-items:center; justify-content:space-between; gap:1rem; pointer-events:none; }
+  .logo-lockup, .prospect-lockup { pointer-events:auto; display:inline-flex; align-items:center; min-height:3.1rem; padding:.85rem 1.1rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.66); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.28); }
+  .markethink-logo{ height:1.15rem; width:auto; filter:brightness(0) invert(1); }
+  .prospect-lockup{ gap:.82rem; min-width:0; }
+  .desdemona-wordmark{ height:1.15rem; width:auto; max-width:7.5rem; filter:brightness(0) invert(1); }
+  .zero-wordmark{ font-family:"Instrument Serif", Georgia, serif; font-size:1.18rem; letter-spacing:.02em; color:#f5f5f1; white-space:nowrap; }
+  .lockup-divider{ width:1px; height:1.1rem; background:rgba(205,170,80,.38); }
+  .deck-label { pointer-events:none; padding:.75rem 1rem; border:1px solid rgba(245,245,241,.11); border-radius:999px; color:rgba(245,245,241,.58); background:rgba(15,18,19,.44); backdrop-filter:blur(14px); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+  .slide-shell { width:min(1240px, 100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0, .95fr) minmax(340px, .9fr); gap:clamp(2rem,5vw,5.5rem); align-items:center; padding-block:clamp(1.2rem,2.5vh,2rem); }
+  .story-content{ max-width:780px; position:relative; z-index:2; }
+  .brand-row{ display:flex; flex-wrap:wrap; gap:.65rem; margin:0 0 1.15rem; }
+  .brand-pill{ min-height:2.55rem; display:inline-flex; align-items:center; justify-content:center; padding:.7rem .95rem; border:1px solid rgba(245,245,241,.14); border-radius:999px; background:rgba(245,245,241,.07); color:#f5f5f1; backdrop-filter:blur(14px); }
+  .brand-pill img{ display:block; height:1.08rem; width:auto; max-width:8.2rem; filter:brightness(0) invert(1); }
+  .brand-pill.zero{ font-family:"Instrument Serif", Georgia, serif; font-size:1.08rem; letter-spacing:.02em; border-color:rgba(205,170,80,.30); color:#f2ddac; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:.65rem; margin:0 0 1.15rem; color:rgba(237,244,234,.72); font-size:.75rem; line-height:1; letter-spacing:.16em; text-transform:uppercase; } .eyebrow::before{ content:""; width:.52rem; height:.52rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .32rem rgba(105,210,84,.12); }
+  h1{ max-width:20ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.25rem,4.2vw,4.72rem); font-weight:400; line-height:1.03; letter-spacing:-.032em; color:#f5f5f1; text-wrap:balance; }
+  .lead{ max-width:48rem; margin-top:clamp(.85rem,1.7vw,1.25rem); color:rgba(245,245,241,.82); font-size:clamp(.98rem,1.12vw,1.12rem); line-height:1.48; text-wrap:balance; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.15rem; } .chip-row span{ padding:.68rem .86rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.55); color:rgba(245,245,241,.74); backdrop-filter:blur(12px); font-size:.8rem; }
+  .technology-panel{ border:1px solid rgba(245,245,241,.14); border-radius:1.35rem; padding:1rem; background:linear-gradient(145deg,rgba(15,18,19,.88),rgba(15,18,19,.56)); box-shadow:0 28px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.045); backdrop-filter:blur(16px); } .technology-panel p{ margin:0 0 .8rem; color:#f5f5f1; font-size:.82rem; line-height:1.25; letter-spacing:.12em; text-transform:uppercase; } .technology-logo-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.65rem; } .tech-logo{ min-height:4.6rem; display:grid; place-items:center; padding:.9rem; border:1px solid rgba(245,245,241,.16); border-radius:1rem; background:radial-gradient(circle at 75% 20%,rgba(105,210,84,.14),transparent 34%),linear-gradient(145deg,rgba(245,245,241,.12),rgba(245,245,241,.035)); box-shadow:inset 0 1px 0 rgba(255,255,255,.05); } .tech-logo img{ display:block; width:auto; max-width:6.2rem; height:1.8rem; object-fit:contain; filter:brightness(0) invert(1); opacity:.96; } .tech-logo-grok img{ height:2.25rem; max-width:2.25rem; filter:none; } .technology-panel small{ display:block; margin-top:.78rem; color:rgba(245,245,241,.58); font-size:.76rem; line-height:1.35; }
+  .detail-list{ max-width:50rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.52rem; margin:1.05rem 0 0; padding:0; list-style:none; }
+  .detail-list li{ position:relative; padding:.72rem .78rem .72rem 1.55rem; border:1px solid rgba(245,245,241,.10); border-radius:1rem; background:rgba(15,18,19,.38); color:rgba(245,245,241,.72); font-size:clamp(.86rem,.98vw,.95rem); line-height:1.34; backdrop-filter:blur(10px); }
+  .detail-list li::before{ content:""; position:absolute; left:.78rem; top:1.05rem; width:.42rem; height:.42rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .18rem rgba(105,210,84,.12); }
+  .hero-actions{ display:flex; align-items:center; gap:1.15rem; flex-wrap:wrap; margin-top:1.35rem; } .context-note{ max-width:27rem; color:rgba(245,245,241,.52); font-size:.86rem; line-height:1.45; }
+  .visual-stack{ display:grid; gap:clamp(.85rem,1.4vw,1.15rem); align-items:start; }
+  .visual-card{ position:relative; width:100%; border:1px solid rgba(245,245,241,.13); border-radius:clamp(1.4rem,3vw,2.6rem); overflow:hidden; background:#141718; box-shadow:0 40px 110px rgba(0,0,0,.42); transform:translateY(1rem); }
+  .visual-card::before{ content:""; position:absolute; inset:0; z-index:2; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.20); pointer-events:none; }
+  .visual-card::after{ content:""; position:absolute; width:32%; aspect-ratio:1; right:-10%; top:-12%; border-radius:999px; background:rgba(205,170,80,.16); filter:blur(24px); z-index:1; }
+  .visual-card img{ width:100%; height:auto; object-fit:contain; display:block; transform:none; background:#0f1213; }
+  .background-led .slide-background img { opacity: .72; filter: saturate(.88) contrast(1.08) brightness(.72); transform: scale(1.02); }
+  .background-led .slide-overlay { background: radial-gradient(circle at var(--hot-x, 70%) var(--hot-y, 48%), rgba(205,170,80,.14), transparent 30%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.88) 30%, rgba(15,18,19,.50) 64%, rgba(15,18,19,.24) 100%), linear-gradient(180deg, rgba(15,18,19,.16), rgba(15,18,19,.78)); }
+  .background-led .slide-shell { grid-template-columns: 1fr; }
+  .background-led .story-content { max-width: min(920px, 72vw); padding: clamp(1.4rem, 2vw, 2rem); border-left: 1px solid rgba(205,170,80,.34); background: linear-gradient(90deg, rgba(15,18,19,.56), rgba(15,18,19,.18)); backdrop-filter: blur(2px); }
+  .background-led h1 { max-width: 14.8ch; }
+  .layout-hero .story-content { background: transparent; border-left: 0; padding-left: 0; }
+  .layout-hero .slide-shell{ grid-template-columns:1fr; } .layout-hero .visual-card{ display:none; } .layout-hero .story-content{ max-width:1040px; } .layout-hero h1{ max-width:16ch; } .layout-hero .lead{ max-width:56rem; font-size:clamp(1.05rem,1.36vw,1.35rem); }
+  .layout-product .slide-shell{ grid-template-columns:minmax(0,.82fr) minmax(360px,.72fr); } .layout-product .visual-card{ width:min(100%,360px); justify-self:center; transform:perspective(900px) rotateY(-4deg); border-radius:2rem; }
+  .layout-product .visual-card img{ width:100%; }
+  .layout-consulting .slide-shell{ grid-template-columns:minmax(430px,.98fr) minmax(0,.9fr); } .layout-consulting .story-content{ order:2; } .layout-consulting .visual-card{ order:1; transform:rotate(-2deg); }
+  .layout-library .slide-shell{ grid-template-columns:minmax(0,.88fr) minmax(470px,1fr); } .layout-library .visual-card{ transform:rotate(1deg) scale(1.02); }
+  .layout-gates .story-content{ order:2; } .layout-gates .visual-card{ order:1; border-radius:2.8rem; }
+  .layout-roadmap .visual-card{ transform:rotate(-.8deg); }
+  .layout-tech .slide-shell{ grid-template-columns:minmax(0,.86fr) minmax(480px,1fr); } .layout-tech .visual-stack{ gap:1rem; } .layout-tech .visual-card{ transform:rotate(.6deg); }
+  .layout-split .slide-shell{ grid-template-columns:minmax(0,.95fr) minmax(420px,.88fr); } .layout-split .visual-card{ transform:rotate(.8deg); }
+  .layout-luxury .story-content{ max-width:min(900px,76vw); }
+  .layout-closing .slide-shell{ grid-template-columns:1fr; } .layout-closing .story-content{ max-width:980px; } .layout-closing .visual-card{ position:absolute; right:4vw; bottom:10vh; width:min(42vw,620px); opacity:.50; z-index:0; transform:rotate(2deg); }
+  .slide-footer{ position:absolute; left:clamp(1.25rem,4vw,4rem); right:clamp(1.25rem,4vw,4rem); bottom:clamp(1rem,2vw,2rem); z-index:3; display:flex; justify-content:space-between; gap:1rem; color:rgba(245,245,241,.48); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; pointer-events:none; }
+  .slide-rail{ position:fixed; top:50%; right:clamp(1rem,2vw,2rem); z-index:7; display:grid; gap:.42rem; transform:translateY(-50%); }
+  .rail-item{ width:8.55rem; display:grid; grid-template-columns:1.8rem 1fr; align-items:center; gap:.48rem; padding:.46rem; border:1px solid rgba(245,245,241,.11); border-radius:.9rem; background:rgba(15,18,19,.48); backdrop-filter:blur(16px); color:rgba(245,245,241,.70); text-decoration:none; transform:translateX(.2rem); transition:transform .28s ease, border-color .28s ease, background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item span{ width:1.8rem; height:1.8rem; display:inline-grid; place-items:center; border-radius:.66rem; background:rgba(245,245,241,.08); color:rgba(245,245,241,.62); font-size:.64rem; font-weight:700; transition:background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item strong{ font-family:var(--font-body); font-size:.72rem; font-weight:600; }
+  .rail-item:hover{ transform:translateX(0); border-color:rgba(245,245,241,.22); color:rgba(245,245,241,.92); background:rgba(15,18,19,.66); }
+  .rail-item.active{ transform:translateX(-.18rem); color:#f5f5f1; border-color:rgba(205,170,80,.58); background:linear-gradient(90deg, rgba(205,170,80,.16), rgba(15,18,19,.62)); box-shadow:0 0 0 1px rgba(205,170,80,.14), 0 24px 60px rgba(0,0,0,.28); }
+  .rail-item.active span{ background:rgba(105,210,84,.18); color:#69d254; box-shadow:0 0 0 .26rem rgba(105,210,84,.08); }
+  @keyframes softPulse { 0%, 100% { transform: scale(1); opacity:.72; } 50% { transform: scale(1.36); opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
+  @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
+  @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:8rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .presentation-topbar{ align-items:flex-start; } .prospect-lockup{ max-width:calc(100vw - 11rem); overflow:hidden; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell, .layout-split .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-product .visual-card{ width:min(100%,360px); justify-self:start; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
+  @media (max-width:680px){ .presentation-slide{ padding:7.25rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ max-width:calc(100vw - 2.5rem); overflow:hidden; padding:.72rem .9rem; } .prospect-lockup{ display:none; } .markethink-logo{ height:1rem; } .slide-shell{ padding-block:0; gap:1.35rem; } .brand-row{ gap:.45rem; } .brand-pill{ min-height:2.25rem; padding:.55rem .72rem; } .brand-pill img{ height:.88rem; max-width:6.5rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .technology-logo-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } .tech-logo{ min-height:3.35rem; } .tech-logo img{ height:1.45rem; max-width:5.2rem; } .tech-logo-grok img{ height:1.9rem; max-width:1.9rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+  .desdemona-wordmark{ display:grid; line-height:.86; text-transform:lowercase; letter-spacing:-.06em; color:#f5f5f1; }
+  .desdemona-wordmark strong,.desdemona-wordmark em{ font-family:"Century Gothic", Inter, ui-sans-serif, system-ui, sans-serif; font-style:normal; font-weight:700; }
+  .desdemona-wordmark strong{ font-size:1.14rem; }
+  .desdemona-wordmark em{ font-size:.82rem; color:rgba(245,245,241,.68); }
+  .brand-pill.desdemona{ display:grid; min-width:8.6rem; line-height:.86; text-transform:lowercase; letter-spacing:-.06em; justify-items:start; }
+  .brand-pill.desdemona strong,.brand-pill.desdemona em{ font-family:"Century Gothic", Inter, ui-sans-serif, system-ui, sans-serif; font-style:normal; font-weight:700; }
+  .brand-pill.desdemona strong{ font-size:1.12rem; }
+  .brand-pill.desdemona em{ font-size:.82rem; color:rgba(245,245,241,.66); }
+  .brand-pill.markethink img{ height:1.05rem; }
+  .brand-pill.blueprint{ border-color:rgba(140,198,234,.34); color:#c9e8fb; }
+  .prospect-lockup .desdemona-wordmark{ min-width:7.8rem; }
+  .proposal-note{ color:#c9e8fb; }
 
-  .proposal {
-    --charcoal: #0f1213;
-    --cream: #f5f5f1;
-    --muted: #b4b6b6;
-    --green: #69d254;
-    --desdemona-blue: #0d72b6;
-    --desdemona-ice: #8cc6ea;
-    --desdemona-slate: #3e3d40;
-    --desdemona-steel: #696969;
-    min-height: 100vh;
-    background: var(--charcoal);
-    color: var(--cream);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    overflow-x: hidden;
-  }
-
-  .topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 34px;
-    pointer-events: none;
-  }
-
-  .brand-pair {
-    pointer-events: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--cream);
-    text-decoration: none;
-  }
-
-  .desdemona-logo {
-    display: grid;
-    line-height: 0.84;
-    text-transform: lowercase;
-    letter-spacing: -0.06em;
-  }
-
-  .desdemona-logo strong,
-  .desdemona-logo em {
-    font-family: "Century Gothic", Inter, ui-sans-serif, system-ui, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-  }
-
-  .desdemona-logo strong { font-size: 23px; }
-  .desdemona-logo em { font-size: 16px; color: rgba(245,245,241,0.72); }
-  .pair-x { color: rgba(245,245,241,0.42); font-size: 18px; }
-  .markethink-logo { display: block; width: 152px; height: auto; }
-
-  .label {
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(245,245,241,0.58);
-  }
-
-  .rail {
-    position: fixed;
-    right: 28px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 45;
-    display: grid;
-    gap: 12px;
-  }
-
-  .rail a {
-    color: rgba(245,245,241,0.42);
-    text-decoration: none;
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 8px;
-    align-items: center;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .rail span {
-    display: grid;
-    place-items: center;
-    width: 26px;
-    height: 26px;
-    border: 1px solid rgba(140,198,234,0.24);
-    border-radius: 999px;
-    color: var(--desdemona-ice);
-  }
-
-  .rail strong { font-weight: 500; }
-
-  .slide {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  .slide::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.88) 42%, rgba(15,18,19,0.44) 100%),
-      linear-gradient(180deg, rgba(15,18,19,0.32), rgba(15,18,19,0.82)),
-      var(--slide-image) center / cover no-repeat,
-      var(--charcoal);
-    z-index: -5;
-  }
-
-  .slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(15,18,19,0.96), rgba(15,18,19,0.70) 52%, rgba(15,18,19,0.34)),
-      repeating-linear-gradient(90deg, rgba(245,245,241,0.035) 0 1px, transparent 1px 84px),
-      repeating-linear-gradient(0deg, rgba(245,245,241,0.028) 0 1px, transparent 1px 84px);
-    z-index: -4;
-  }
-
-  .direction::before,
-  .investment::before,
-  .tech-layer::before,
-  .ongoing::before {
-    background:
-      linear-gradient(90deg, rgba(15,18,19,0.98) 0%, rgba(15,18,19,0.86) 40%, rgba(15,18,19,0.42) 100%),
-      linear-gradient(180deg, rgba(15,18,19,0.25), rgba(15,18,19,0.82)),
-      var(--slide-image) center / cover no-repeat,
-      var(--charcoal);
-  }
-
-  .gridline {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(245,245,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,0.04) 1px, transparent 1px);
-    background-size: 72px 72px;
-    mask-image: radial-gradient(circle at 70% 45%, black, transparent 62%);
-    z-index: -1;
-  }
-
-  .inner {
-    position: relative;
-    z-index: 2;
-    width: min(920px, calc(100vw - 240px));
-    margin-left: clamp(34px, 8vw, 116px);
-    padding: 110px 0 86px;
-  }
-
-  .kicker {
-    margin: 0 0 20px;
-    color: var(--desdemona-ice);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  h1 {
-    margin: 0;
-    max-width: 760px;
-    font-family: "Instrument Serif", Georgia, serif;
-    font-size: clamp(42px, 5.8vw, 78px);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
-    font-weight: 400;
-  }
-
-  .lead {
-    max-width: 760px;
-    margin: 26px 0 0;
-    color: rgba(245,245,241,0.76);
-    font-size: clamp(17px, 1.45vw, 22px);
-    line-height: 1.42;
-  }
-
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 32px;
-    max-width: 760px;
-  }
-
-  .chips span {
-    border: 1px solid rgba(140,198,234,0.24);
-    border-radius: 999px;
-    padding: 10px 14px;
-    background: rgba(13,114,182,0.16);
-    color: rgba(245,245,241,0.86);
-    font-size: 13px;
-  }
-
-  .details {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    max-width: 820px;
-    margin-top: 34px;
-  }
-
-  .details article {
-    padding: 18px 18px 18px 20px;
-    border: 1px solid rgba(245,245,241,0.12);
-    border-radius: 22px;
-    background: rgba(245,245,241,0.055);
-    color: rgba(245,245,241,0.72);
-    line-height: 1.42;
-    box-shadow: inset 3px 0 0 rgba(140,198,234,0.30);
-  }
-
-  .investment .details article:first-child {
-    background: rgba(140,198,234,0.14);
-    border-color: rgba(140,198,234,0.32);
-    color: var(--cream);
-    font-weight: 700;
-  }
-
-  .footer {
-    position: absolute;
-    left: clamp(34px, 8vw, 116px);
-    right: 34px;
-    bottom: 24px;
-    display: flex;
-    justify-content: space-between;
-    color: rgba(245,245,241,0.42);
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: 860px) {
-    .topbar { padding: 18px; }
-    .markethink-logo { width: 124px; }
-    .desdemona-logo strong { font-size: 18px; }
-    .desdemona-logo em { font-size: 13px; }
-    .label, .rail { display: none; }
-    .inner { width: calc(100vw - 36px); margin-left: 18px; padding-top: 120px; }
-    h1 { font-size: clamp(36px, 10vw, 58px); }
-    .details { grid-template-columns: 1fr; }
-    .footer { left: 18px; right: 18px; }
-  }
 </style>
