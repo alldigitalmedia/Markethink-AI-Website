@@ -1,0 +1,334 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "AI Marketing for Interior Designers | First Month Free | Markethink";
+const pageDescription = "AI marketing for interior designers: a selective marketing system that organizes your studio's campaigns, project visuals, approvals, inquiries, and follow-up. Apply for one free month.";
+const canonicalUrl = "https://markethink.ai/ai-marketing-for-interior-designers/";
+const applyHref = "#apply";
+
+const signals = ["Interior design studios", "First month free", "Selective fit review"];
+
+const painPoints = [
+  ["Beautiful projects sit in folders", "Your completed work should become campaigns, portfolio stories, emails, posts, and follow-up — not disappear after the install photos are approved."],
+  ["Marketing restarts every week", "One person asks for captions, another asks for ads, another asks for a newsletter. The studio loses the thread and the work slows down."],
+  ["Inquiries need better follow-up", "A good-fit homeowner, developer, or referral should not land in a spreadsheet with no campaign context or next step."],
+];
+
+const systemPieces = [
+  ["Studio memory", "Your services, locations, project types, tone, visuals, approvals, and buyer objections stay organized so every new asset starts with context."],
+  ["Campaign planning", "We turn one growth priority — full-home projects, remodels, consultations, or trade relationships — into a focused campaign path."],
+  ["Content and landing assets", "Project photos, design decisions, process notes, FAQs, emails, social posts, and landing sections are built together so the message stays consistent."],
+  ["Approval rhythm", "Edits, visual preferences, and wording changes are captured so the next round starts sharper instead of repeating the same feedback."],
+  ["Inquiry follow-up", "Lead notes, reply drafts, next-step messages, and CRM-style follow-up stay connected to the campaign that created the conversation."],
+  ["Weekly shipping", "Every week has a clear set of work to review, approve, and move — not a random list of marketing tasks."],
+];
+
+const freeMonthIncludes = [
+  "A focused audit of your studio's current website, offer, project visuals, and inquiry path",
+  "One campaign angle for the design service or project type you want more of",
+  "A starter content and landing-page plan built around your actual studio work",
+  "A review-ready set of first-month marketing assets or page recommendations",
+  "A simple follow-up structure for inquiries, referrals, and warm prospects",
+  "A clear recommendation for the next paid month if there is a fit",
+];
+
+const process = [
+  ["1", "Apply with your studio context", "Tell us your website, ideal projects, current marketing gap, and what you want to move first."],
+  ["2", "We choose one focused first motion", "The free month is intentionally narrow: one studio, one growth priority, one campaign path."],
+  ["3", "Markethink organizes the system", "We structure the campaign, create reviewable work, capture approvals, and prepare the next steps."],
+  ["4", "You decide if it should continue", "If the first month creates clarity and momentum, we map the paid monthly rhythm. If not, you still leave with a useful audit."],
+];
+
+const faqs = [
+  { question: "What is AI marketing for interior designers?", answer: "AI marketing for interior designers means using modern marketing automation and creation support with the right studio context: your services, project visuals, design voice, approval rules, campaigns, inquiries, and follow-up. Markethink turns that into a marketing system, not a pile of disconnected tools." },
+  { question: "Is this only for large interior design firms?", answer: "No. The strongest fit is a studio with real project work, a clear service offer, and a desire to market more consistently. That can be a boutique studio, a growing firm, or a design-build business." },
+  { question: "What does the free month include?", answer: "The free month includes a focused audit, one campaign direction, starter marketing assets or page recommendations, an approval rhythm, and a next-month plan if the fit is strong. It does not include ad spend, a full website rebuild, or unlimited content." },
+  { question: "Can this support paid ads?", answer: "Yes. The page and first campaign are built with paid traffic in mind: clear message match, a direct offer, a specific audience, and a simple application path. We still keep the page useful for organic search." },
+  { question: "Will Markethink make our studio look generic?", answer: "No. The whole point is to learn the business and preserve the studio's voice, visual taste, approval preferences, and ideal-client direction. The system should make your marketing more consistent, not flatter the brand." },
+  { question: "What happens after I apply?", answer: "We review the studio, the offer, and the first marketing problem. If there is a fit, we reply with the recommended first focus and the next step to begin the free month." },
+];
+
+const structuredData = [
+  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Interior Designers", description: pageDescription, url: canonicalUrl, inLanguage: "en", publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
+  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Interior Designers", serviceType: "Marketing system for interior design studios", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, description: "Markethink helps interior design studios organize campaigns, create marketing assets, manage approvals, and improve inquiry follow-up." },
+  { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" }, { "@type": "ListItem", position: 2, name: "AI Marketing for Interior Designers", item: canonicalUrl }] },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} image="/images/ai-marketing-interior-designers-hero.svg" canonical={canonicalUrl} structuredData={structuredData}>
+  <Navbar />
+  <main class="interior-page">
+    <section class="interior-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="subtitle animate-fade-up">AI MARKETING FOR INTERIOR DESIGNERS</p>
+          <h1 class="animate-fade-up">A marketing system for interior design studios ready to be found, trusted, and followed up.</h1>
+          <p class="hero-description animate-fade-up">
+            Markethink learns your studio, organizes your campaigns, turns project work into review-ready marketing, and keeps inquiry follow-up moving. Apply for a selective first month free.
+          </p>
+          <div class="button-group animate-fade-up">
+            <a href={applyHref} class="button">Apply for 1 Free Month</a>
+            <a href="#system" class="button is-secondary">See What It Does</a>
+          </div>
+          <div class="trust-row animate-fade-up" aria-label="Page signals">
+            {signals.map((signal) => <span>{signal}</span>)}
+          </div>
+        </div>
+        <div class="hero-visual animate-scale-in">
+          <img src="/images/ai-marketing-interior-designers-hero.svg" alt="Interior design studio project assets connected to a Markethink marketing system" width="1200" height="800" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green intent-section">
+      <div class="container two-column">
+        <div>
+          <p class="subtitle">THE REAL PROBLEM</p>
+          <h2>Interior designers do not need more random marketing tasks.</h2>
+        </div>
+        <div class="rich-copy">
+          <p>
+            A strong studio already has material: finished rooms, design decisions, client questions, process notes, vendor relationships, referrals, and a clear point of view. The problem is that those assets rarely become a connected marketing rhythm.
+          </p>
+          <p>
+            That is where Markethink comes in. It turns the studio's work into campaigns, landing-page direction, social posts, emails, lead follow-up, and approval memory — so the marketing keeps moving without losing the brand.
+          </p>
+        </div>
+      </div>
+      <div class="container pain-grid animate-stagger">
+        {painPoints.map(([title, copy]) => (
+          <article>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section dark" id="system">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="subtitle">WHAT MARKETHINK DOES</p>
+          <h2>One place for the campaign, the creative, the approvals, and the next step.</h2>
+          <p class="section-description dark-copy">
+            This page is built for search, but the offer is built for real studios: fewer scattered assets, clearer campaigns, and better follow-up from the first inquiry to the next conversation.
+          </p>
+        </div>
+        <div class="system-grid animate-stagger">
+          {systemPieces.map(([title, copy]) => (
+            <article class="system-card">
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section visual-section">
+      <div class="container visual-grid">
+        <div class="workflow-visual">
+          <img src="/images/ai-marketing-interior-designers-system.svg" alt="A Markethink workflow connecting interior design project archives, campaign planning, approvals, and inquiry follow-up" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="workflow-copy">
+          <p class="subtitle">BUILT FOR ADS AND SEARCH</p>
+          <h2>The page answers the click, then gives the studio a reason to apply.</h2>
+          <p>
+            Paid traffic needs a fast promise: one free month to organize the studio's marketing system. Search traffic needs depth: what AI marketing for interior designers means, what it does, and why a system beats disconnected tools.
+          </p>
+          <ul>
+            <li>Clear message match for ad campaigns aimed at interior designers.</li>
+            <li>Organic sections that answer practical search intent without sounding generic.</li>
+            <li>A selective application flow instead of a cheap signup.</li>
+            <li>Concrete scope so the free month feels valuable and controlled.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green offer-section">
+      <div class="container offer-grid">
+        <div class="offer-card">
+          <p class="subtitle">SELECTIVE FIRST MONTH</p>
+          <h2>Apply for one free month inside Markethink.</h2>
+          <p>
+            We are using this offer to work closely with the right interior design studios and build a strong category position early. The first month is free when there is a clear fit and one focused marketing problem to move.
+          </p>
+          <a href={applyHref} class="button">Apply for 1 Free Month</a>
+        </div>
+        <div class="included-list">
+          {freeMonthIncludes.map((item) => (
+            <article>
+              <span aria-hidden="true">✓</span>
+              <p>{item}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark process-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="subtitle">HOW IT WORKS</p>
+          <h2>A controlled first month, not an open-ended marketing sprint.</h2>
+          <p class="section-description dark-copy">
+            The goal is to prove the system on a real studio priority. We keep the scope tight so the work can move quickly and the next step is obvious.
+          </p>
+        </div>
+        <div class="process-grid">
+          {process.map(([number, title, copy]) => (
+            <article>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green fit-section">
+      <div class="container fit-grid">
+        <div class="fit-card">
+          <p class="subtitle">BEST FIT</p>
+          <h2>For studios with taste, proof, and ambition.</h2>
+          <ul>
+            <li>You have completed projects, a point of view, and a service you want more clients to understand.</li>
+            <li>You want better campaigns, content, website clarity, and follow-up without making the studio feel generic.</li>
+            <li>You are open to a monthly marketing system if the free month creates clarity and useful work.</li>
+          </ul>
+        </div>
+        <div class="fit-card muted">
+          <p class="subtitle">NOT THE RIGHT FIT</p>
+          <h2>Not for cheap content volume.</h2>
+          <ul>
+            <li>You only want hundreds of captions with no strategy or approval rhythm.</li>
+            <li>You want guaranteed leads or revenue claims before a real audit.</li>
+            <li>You are not ready to share enough studio context for the system to learn the business.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container faq-grid">
+        <div>
+          <p class="subtitle">FAQ</p>
+          <h2>Questions before applying.</h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green application-section" id="apply">
+      <div class="container application-grid">
+        <div class="application-copy">
+          <p class="subtitle">APPLY FOR 1 FREE MONTH</p>
+          <h2>Tell us what kind of interior design work you want more of.</h2>
+          <p>
+            We review each studio before starting. If there is a fit, we will reply with the recommended first focus and the next step to begin the free month.
+          </p>
+        </div>
+        <form
+          name="markethink-interior-designers-application"
+          method="POST"
+          action="/thank-you/"
+          netlify
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="studio-form"
+        >
+          <input type="hidden" name="form-name" value="markethink-interior-designers-application" />
+          <input type="hidden" name="source" value="ai-marketing-for-interior-designers" />
+          <p class="hidden-field"><label>Do not fill this out <input name="bot-field" /></label></p>
+          <div class="field-grid">
+            <label><span>Full name</span><input type="text" name="full_name" autocomplete="name" required /></label>
+            <label><span>Work email</span><input type="email" name="email" autocomplete="email" required /></label>
+          </div>
+          <label><span>Studio / website</span><input type="text" name="studio_or_website" autocomplete="organization" required /></label>
+          <label><span>What kind of design projects do you want more of?</span><textarea name="ideal_projects" rows="3" required></textarea></label>
+          <label><span>What is currently stuck in your marketing?</span><textarea name="marketing_gap" rows="3" required></textarea></label>
+          <label>
+            <span>Where should Markethink help first?</span>
+            <select name="first_focus" required>
+              <option value="">Select one</option>
+              <option>Project content and social rhythm</option>
+              <option>Website or landing page clarity</option>
+              <option>Inquiry follow-up and CRM</option>
+              <option>Paid ads campaign foundation</option>
+              <option>Email or referral follow-up</option>
+            </select>
+          </label>
+          <button type="submit" class="button form-button">Apply for 1 free month</button>
+          <p class="form-note">No ad spend is included. The free month is scoped around one studio priority and a fit review.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .interior-page { background: var(--bg-primary); color: var(--text-invert); }
+  .interior-hero { min-height: 100vh; display: flex; align-items: center; padding: 8.5rem 0 5rem; overflow: hidden; background: radial-gradient(circle at 12% 18%, rgba(105, 210, 84, 0.14), transparent 28rem), linear-gradient(135deg, #0f1213 0%, #171b1c 100%); }
+  .hero-grid, .two-column, .visual-grid, .offer-grid, .fit-grid, .faq-grid, .application-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 4.5rem); align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 1.35rem; max-width: 49rem; }
+  .hero-copy h1, .section-header h2, .offer-card h2, .workflow-copy h2, .fit-card h2, .faq-grid h2, .application-copy h2, .intent-section h2 { font-size: clamp(2.6rem, 5.7vw, 5.65rem); line-height: 0.96; letter-spacing: -0.052em; }
+  .hero-description { max-width: 41rem; color: rgba(255,255,255,.74); font-size: 1.08rem; line-height: 1.78; }
+  .button-group, .trust-row { display: flex; flex-wrap: wrap; gap: .85rem; }
+  .trust-row span { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .55rem .85rem; color: rgba(255,255,255,.74); background: rgba(255,255,255,.045); font-size: .82rem; }
+  .hero-visual img, .workflow-visual img { width: 100%; height: auto; border-radius: 1.6rem; box-shadow: 0 34px 110px rgba(0,0,0,.38); }
+  .section-header { max-width: 880px; margin-bottom: 2.8rem; }
+  .text-center { text-align: center; margin-left: auto; margin-right: auto; }
+  .dark-copy { color: rgba(255,255,255,.66); }
+  .rich-copy, .workflow-copy, .offer-card p, .application-copy p { color: rgba(15,18,19,.7); line-height: 1.78; font-size: 1rem; }
+  .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .pain-grid article, .included-list article { border: 1px solid rgba(15,18,19,.1); border-radius: 1.25rem; background: #f5f5f1; padding: 1.35rem; }
+  .pain-grid h3, .system-card h3, .process-grid h3 { font-family: var(--font-body); font-size: 1.08rem; margin-bottom: .7rem; }
+  .pain-grid p { color: rgba(15,18,19,.68); line-height: 1.68; }
+  .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .system-card, .process-grid article { border: 1px solid rgba(255,255,255,.11); border-radius: 1.35rem; background: rgba(255,255,255,.045); padding: 1.45rem; }
+  .system-card p, .process-grid p, .fit-card.muted li { color: rgba(255,255,255,.66); line-height: 1.65; font-size: .94rem; }
+  .visual-section, .faq-section { background: #f5f5f1; color: var(--text-primary); }
+  .workflow-copy ul, .fit-card ul { list-style: none; display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+  .workflow-copy li, .fit-card li { position: relative; padding-left: 1.35rem; color: rgba(15,18,19,.72); line-height: 1.66; }
+  .workflow-copy li::before, .fit-card li::before { content: ""; position: absolute; left: 0; top: .7em; width: .45rem; height: .45rem; border-radius: 999px; background: #69d254; }
+  .offer-card { border-radius: 1.65rem; background: #0f1213; color: #f5f5f1; padding: clamp(1.5rem, 4vw, 2.4rem); box-shadow: 0 26px 80px rgba(15,18,19,.18); }
+  .offer-card p { color: rgba(255,255,255,.72); margin: 1rem 0 1.3rem; }
+  .included-list { display: grid; gap: .85rem; }
+  .included-list article { display: flex; gap: .9rem; align-items: flex-start; }
+  .included-list span { display: inline-flex; align-items: center; justify-content: center; width: 1.7rem; height: 1.7rem; border-radius: 999px; background: #69d254; color: #0f1213; font-weight: 800; flex: 0 0 auto; }
+  .included-list p { color: rgba(15,18,19,.72); line-height: 1.62; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .process-grid span { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border-radius: 999px; background: #69d254; color: #0f1213; font-weight: 800; margin-bottom: 1rem; }
+  .fit-card { border: 1px solid rgba(15,18,19,.1); border-radius: 1.5rem; padding: clamp(1.4rem, 4vw, 2rem); background: #fff; min-height: 100%; }
+  .fit-card.muted { background: #171b1c; color: #f5f5f1; border-color: rgba(255,255,255,.1); }
+  .fit-card h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+  .fit-card.muted li::before { background: rgba(255,255,255,.28); }
+  .faq-list { display: grid; gap: .85rem; }
+  details { border: 1px solid rgba(15,18,19,.1); border-radius: 1.1rem; background: #fff; padding: 1rem 1.15rem; }
+  summary { cursor: pointer; font-weight: 700; color: #0f1213; }
+  details p { color: rgba(15,18,19,.68); line-height: 1.7; margin-top: .8rem; }
+  .application-section { color: var(--text-primary); }
+  .studio-form { display: grid; gap: 1rem; background: #f5f5f1; border-radius: 1.5rem; padding: clamp(1.25rem, 4vw, 2rem); box-shadow: 0 26px 80px rgba(15,18,19,.12); }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .studio-form label { display: grid; gap: .45rem; color: rgba(15,18,19,.78); font-weight: 700; font-size: .9rem; }
+  .studio-form input, .studio-form textarea, .studio-form select { width: 100%; border: 1px solid rgba(15,18,19,.12); border-radius: .85rem; background: #fff; color: #0f1213; padding: .9rem 1rem; font: inherit; }
+  .studio-form textarea { resize: vertical; }
+  .form-button { width: 100%; border: 0; margin-top: .3rem; }
+  .form-note { color: rgba(15,18,19,.58); line-height: 1.55; font-size: .86rem; }
+  .hidden-field { display: none; }
+  @media (max-width: 980px) { .hero-grid, .two-column, .visual-grid, .offer-grid, .fit-grid, .faq-grid, .application-grid { grid-template-columns: 1fr; } .system-grid, .pain-grid, .process-grid { grid-template-columns: 1fr 1fr; } .interior-hero { padding-top: 7rem; } }
+  @media (max-width: 640px) { .system-grid, .pain-grid, .process-grid, .field-grid { grid-template-columns: 1fr; } .hero-copy h1, .section-header h2, .offer-card h2, .workflow-copy h2, .fit-card h2, .faq-grid h2, .application-copy h2, .intent-section h2 { font-size: clamp(2.3rem, 13vw, 3.6rem); } .interior-hero { min-height: auto; } }
+</style>
