@@ -11,8 +11,7 @@ const pageLinks = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", href: "#" },
-  { label: "X", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/markethink.ai/", external: true },
   { label: "Email", href: "mailto:hello@markethink.ai" },
 ];
 ---
@@ -43,7 +42,7 @@ const socialLinks = [
         <ul class="footer-link-list">
           {socialLinks.map((link) => (
             <li>
-              <a href={link.href} class="footer-link">{link.label}</a>
+              <a href={link.href} class="footer-link" target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>{link.label}</a>
             </li>
           ))}
         </ul>
