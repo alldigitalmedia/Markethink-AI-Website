@@ -1,121 +1,58 @@
 ---
-const channels = [
-  "Campaigns",
-  "Content",
-  "Approvals",
-  "Leads",
-  "Web",
-  "Email",
-  "Social",
-  "Search",
-  "Follow-up",
-  "Offers",
-];
-
-const orbitItems = [
-  { label: "Social", angle: 0, delay: 0 },
-  { label: "Email", angle: 45, delay: -1 },
-  { label: "Web", angle: 90, delay: -2 },
-  { label: "CRM", angle: 135, delay: -3 },
-  { label: "Leads", angle: 180, delay: -4 },
-  { label: "Ads", angle: 225, delay: -5 },
-  { label: "Approvals", angle: 270, delay: -6 },
-  { label: "Campaigns", angle: 315, delay: -7 },
-];
-
 const cards = [
   {
     kicker: "Dashboard",
-    title: "See every campaign, approval, and next move.",
+    title: "See what needs to move.",
     description:
-      "Campaigns, content, leads, assets, approvals, and next steps stay organized in one place, so the work does not disappear between chats, files, and follow-ups.",
+      "Campaigns, content, approvals, leads, assets, and next steps stay visible in one organized place instead of getting buried across chats and files.",
+    image: "/generated/website/markethink-system-dashboard.svg",
+    alt: "Organized Markethink dashboard illustration",
+    chips: ["Campaigns", "Approvals", "Leads"],
   },
   {
     kicker: "24/7 Operator",
     title: "Ask once. Keep the context.",
     description:
-      "Your trained operator learns the business, remembers approvals, prepares the next move, and keeps marketing work ready whenever your team needs to act.",
+      "Your trained operator learns the business, remembers approvals, and prepares the next piece of work so your team is not restarting from zero every week.",
+    image: "/generated/website/markethink-system-operator.svg",
+    alt: "Trained Markethink operator illustration",
+    chips: ["Brand memory", "Next move", "Ready"],
   },
   {
     kicker: "Expert Team",
     title: "Real marketers sharpen what ships.",
     description:
-      "Strategy, copy, design, web, lead research, and follow-up support work together behind the system, so you get marketing judgment, not just more output.",
+      "Strategy, copy, design, web, lead research, and follow-up support work behind the system so Markethink delivers judgment, not just output.",
+    image: "/generated/website/markethink-system-team.svg",
+    alt: "Expert Markethink team workflow illustration",
+    chips: ["Strategy", "Design", "Follow-up"],
   },
 ];
 ---
 
-<section class="system-overview" id="markethink-system">
+<section class="system-overview" id="markethink-system" aria-label="How Markethink works">
   <div class="container">
-    <div class="system-marquee" aria-label="Marketing work Markethink helps move">
-      <div class="system-marquee-track">
-        {[...channels, ...channels].map((channel) => (
-          <span class="system-logo-chip">{channel}</span>
-        ))}
-      </div>
-    </div>
-
-    <div class="system-grid">
-      <div class="system-copy animate-fade-up">
-        <p class="subtitle">HOW MARKETHINK WORKS</p>
-        <h2>Dashboard, operator, and expert team in one marketing system.</h2>
-        <p>
-          Markethink gives your business the structure to move marketing every week. The dashboard shows what is happening, the operator keeps context, and the expert team turns that context into campaigns, content, web updates, lead research, and follow-up.
-        </p>
-      </div>
-
-      <div class="system-visual animate-fade-up" aria-hidden="true">
-        <div class="system-orbit">
-          {orbitItems.map((item) => (
-            <span class="orbit-chip" style={`--angle: ${item.angle}deg; --delay: ${item.delay}s`}>
-              {item.label}
-            </span>
-          ))}
-          <div class="dashboard-window">
-            <div class="dashboard-topbar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="dashboard-body">
-              <div class="dashboard-sidebar">
-                <span class="sidebar-dot active"></span>
-                <span class="sidebar-dot"></span>
-                <span class="sidebar-dot"></span>
-                <span class="sidebar-dot"></span>
-              </div>
-              <div class="dashboard-main">
-                <div class="dashboard-line strong"></div>
-                <div class="dashboard-row">
-                  <span>Campaign plan</span>
-                  <strong>Moving</strong>
-                </div>
-                <div class="dashboard-row">
-                  <span>Social cards</span>
-                  <strong>Review</strong>
-                </div>
-                <div class="dashboard-row">
-                  <span>Lead list</span>
-                  <strong>Ready</strong>
-                </div>
-                <div class="dashboard-panels">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
+    <div class="system-cards animate-stagger">
+      {cards.map((card, cardIndex) => (
+        <article class="system-card">
+          <div class="system-visual" aria-hidden="true">
+            <img src={card.image} alt="" loading="lazy" decoding="async" />
+            <div class="motion-layer">
+              {card.chips.map((chip, chipIndex) => (
+                <span
+                  class={`motion-chip chip-${chipIndex + 1}`}
+                  style={`--delay: ${cardIndex * -0.9 + chipIndex * -1.25}s`}
+                >
+                  {chip}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="system-cards animate-stagger">
-      {cards.map((card) => (
-        <article class="system-card">
-          <p>{card.kicker}</p>
-          <h3>{card.title}</h3>
-          <span>{card.description}</span>
+          <div class="system-copy">
+            <p>{card.kicker}</p>
+            <h2>{card.title}</h2>
+            <span>{card.description}</span>
+          </div>
         </article>
       ))}
     </div>
@@ -126,366 +63,244 @@ const cards = [
   .system-overview {
     position: relative;
     overflow: hidden;
-    padding: 7rem 0;
-    background: #0f1213;
-    color: #f5f5f1;
-    isolation: isolate;
+    padding: clamp(4.5rem, 7vw, 7.5rem) 0 2rem;
+    background: #f5f5f1;
+    color: #0f1213;
   }
 
   .system-overview::before {
     content: "";
     position: absolute;
-    inset: auto -10% -28% -10%;
-    height: 34rem;
-    background: radial-gradient(circle at 50% 50%, rgba(105, 210, 84, 0.14), transparent 68%);
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .system-marquee {
-    position: relative;
-    width: min(100%, 68rem);
-    margin: 0 auto 4rem;
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  }
-
-  .system-marquee-track {
-    display: flex;
-    width: max-content;
-    gap: 0.8rem;
-    animation: system-marquee 32s linear infinite;
-  }
-
-  .system-logo-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 7.5rem;
-    height: 2.8rem;
-    border: 1px solid rgba(245, 245, 241, 0.14);
-    border-radius: 999px;
-    background: rgba(245, 245, 241, 0.06);
-    color: rgba(245, 245, 241, 0.74);
-    font-size: 0.78rem;
-    font-weight: 760;
-    letter-spacing: 0.02em;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  @keyframes system-marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .system-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(24rem, 1.05fr);
-    align-items: center;
-    gap: clamp(3rem, 6vw, 6rem);
-  }
-
-  .system-copy .subtitle {
-    margin-bottom: 1rem;
-    color: rgba(105, 210, 84, 0.9);
-  }
-
-  .system-copy h2 {
-    max-width: 48rem;
-    color: #f5f5f1;
-    font-size: clamp(3rem, 5.4vw, 5.8rem);
-    line-height: 0.92;
-    letter-spacing: -0.055em;
-  }
-
-  .system-copy > p:last-child {
-    max-width: 39rem;
-    margin-top: 1.45rem;
-    color: rgba(245, 245, 241, 0.72);
-    font-size: clamp(1rem, 1.2vw, 1.18rem);
-    line-height: 1.72;
-  }
-
-  .system-visual {
-    min-height: 30rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .system-orbit {
-    position: relative;
-    width: min(31rem, 82vw);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+    inset: 0;
     background:
-      radial-gradient(circle at 50% 50%, rgba(105, 210, 84, 0.13), transparent 46%),
-      radial-gradient(circle at 50% 50%, rgba(245, 245, 241, 0.08), transparent 68%);
+      radial-gradient(circle at 18% 12%, rgba(105, 210, 84, 0.12), transparent 28rem),
+      radial-gradient(circle at 82% 36%, rgba(237, 244, 234, 0.9), transparent 32rem);
+    pointer-events: none;
   }
 
-  .system-orbit::before,
-  .system-orbit::after {
-    content: "";
-    position: absolute;
-    inset: 8%;
-    border: 1px solid rgba(245, 245, 241, 0.12);
-    border-radius: 50%;
-  }
-
-  .system-orbit::after {
-    inset: 22%;
-    border-color: rgba(105, 210, 84, 0.18);
-  }
-
-  .orbit-chip {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 4.8rem;
-    height: 2.35rem;
-    padding: 0 0.78rem;
-    border: 1px solid rgba(105, 210, 84, 0.28);
-    border-radius: 999px;
-    background: rgba(15, 18, 19, 0.9);
-    color: #edf4ea;
-    font-size: 0.72rem;
-    font-weight: 780;
-    box-shadow: 0 0 34px rgba(105, 210, 84, 0.11);
-    transform: rotate(var(--angle)) translateX(13.7rem) rotate(calc(-1 * var(--angle)));
-    animation: orbit-pulse 6s ease-in-out infinite;
-    animation-delay: var(--delay);
-    z-index: 2;
-  }
-
-  @keyframes orbit-pulse {
-    0%, 100% {
-      opacity: 0.58;
-      scale: 0.96;
-    }
-
-    45%, 55% {
-      opacity: 1;
-      scale: 1.04;
-    }
-  }
-
-  .dashboard-window {
+  .system-overview .container {
     position: relative;
-    z-index: 3;
-    width: min(23rem, 72vw);
-    border: 1px solid rgba(245, 245, 241, 0.14);
-    border-radius: 1.35rem;
-    overflow: hidden;
-    background: rgba(237, 244, 234, 0.92);
-    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(105, 210, 84, 0.08);
-  }
-
-  .dashboard-topbar {
-    display: flex;
-    gap: 0.4rem;
-    padding: 0.9rem 1rem;
-    background: #f5f5f1;
-    border-bottom: 1px solid rgba(15, 18, 19, 0.08);
-  }
-
-  .dashboard-topbar span {
-    width: 0.56rem;
-    height: 0.56rem;
-    border-radius: 50%;
-    background: rgba(15, 18, 19, 0.18);
-  }
-
-  .dashboard-body {
-    display: grid;
-    grid-template-columns: 3.6rem 1fr;
-    min-height: 15.5rem;
-  }
-
-  .dashboard-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: center;
-    padding: 1.25rem 0;
-    background: #0f1213;
-  }
-
-  .sidebar-dot {
-    width: 1.05rem;
-    height: 1.05rem;
-    border-radius: 0.35rem;
-    background: rgba(245, 245, 241, 0.16);
-  }
-
-  .sidebar-dot.active {
-    background: #69d254;
-    box-shadow: 0 0 20px rgba(105, 210, 84, 0.42);
-  }
-
-  .dashboard-main {
-    padding: 1.15rem;
-    color: #0f1213;
-  }
-
-  .dashboard-line.strong {
-    width: 58%;
-    height: 0.7rem;
-    border-radius: 999px;
-    background: rgba(15, 18, 19, 0.82);
-    margin-bottom: 1rem;
-  }
-
-  .dashboard-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(15, 18, 19, 0.08);
-    font-size: 0.78rem;
-    color: rgba(15, 18, 19, 0.62);
-  }
-
-  .dashboard-row strong {
-    color: #0f1213;
-    font-size: 0.68rem;
-    border: 1px solid rgba(105, 210, 84, 0.42);
-    border-radius: 999px;
-    padding: 0.24rem 0.48rem;
-    background: rgba(105, 210, 84, 0.16);
-  }
-
-  .dashboard-panels {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
-    margin-top: 1rem;
-  }
-
-  .dashboard-panels span {
-    height: 3.2rem;
-    border-radius: 0.75rem;
-    background: linear-gradient(135deg, rgba(15, 18, 19, 0.1), rgba(105, 210, 84, 0.22));
+    z-index: 1;
   }
 
   .system-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.4rem);
   }
 
   .system-card {
-    min-height: 18rem;
-    padding: 1.6rem;
-    border: 1px solid rgba(245, 245, 241, 0.12);
-    border-radius: var(--radius-medium);
-    background:
-      linear-gradient(180deg, rgba(245, 245, 241, 0.075), rgba(245, 245, 241, 0.035)),
-      rgba(15, 18, 19, 0.7);
+    position: relative;
+    overflow: hidden;
+    min-height: 36rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 2rem;
+    background: rgba(255, 255, 252, 0.84);
+    box-shadow: 0 22px 70px rgba(15, 18, 19, 0.08);
   }
 
-  .system-card p {
-    width: max-content;
-    margin-bottom: 1.2rem;
-    padding: 0.4rem 0.7rem;
-    border: 1px solid rgba(105, 210, 84, 0.28);
+  .system-visual {
+    position: relative;
+    min-height: 19rem;
+    overflow: hidden;
+    background: #edf4ea;
+    border-bottom: 1px solid rgba(15, 18, 19, 0.06);
+  }
+
+  .system-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 19rem;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.02);
+  }
+
+  .motion-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .motion-layer::before {
+    content: "";
+    position: absolute;
+    inset: 12% 10%;
+    border: 1px dashed rgba(105, 210, 84, 0.34);
     border-radius: 999px;
-    color: #69d254;
-    font-size: 0.72rem;
-    font-weight: 800;
+    opacity: 0.65;
+    animation: soft-orbit 14s linear infinite;
+  }
+
+  .motion-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5.75rem;
+    height: 2.05rem;
+    padding: 0 0.72rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.88);
+    color: #0f1213;
+    font-size: 0.68rem;
+    font-weight: 760;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 30px rgba(15, 18, 19, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: float-chip 7.5s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  .chip-1 {
+    left: 8%;
+    top: 14%;
+  }
+
+  .chip-2 {
+    right: 9%;
+    top: 42%;
+    background: rgba(15, 18, 19, 0.9);
+    color: #f5f5f1;
+  }
+
+  .chip-3 {
+    left: 28%;
+    bottom: 10%;
+    border-color: rgba(105, 210, 84, 0.38);
+  }
+
+  .chip-3::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.42rem;
+    border-radius: 50%;
+    background: #69d254;
+    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+    animation: pulse-dot 2.4s ease-out infinite;
+  }
+
+  .system-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.35rem, 2vw, 1.8rem);
+  }
+
+  .system-copy p {
+    width: max-content;
+    margin-bottom: 1.1rem;
+    padding: 0.38rem 0.72rem;
+    border: 1px solid rgba(105, 210, 84, 0.34);
+    border-radius: 999px;
+    color: #0f1213;
+    background: rgba(237, 244, 234, 0.86);
+    font-size: 0.7rem;
+    font-weight: 820;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .system-card h3 {
-    max-width: 18rem;
+  .system-copy h2 {
+    max-width: 20rem;
     margin-bottom: 1rem;
-    color: #f5f5f1;
-    font-family: var(--font-body);
-    font-size: clamp(1.32rem, 1.7vw, 1.75rem);
-    font-weight: 650;
-    line-height: 1.08;
-    letter-spacing: -0.035em;
+    color: #0f1213;
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 3.1vw, 3.35rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.052em;
   }
 
-  .system-card span {
+  .system-copy span {
     display: block;
-    color: rgba(245, 245, 241, 0.66);
-    font-size: 0.95rem;
-    line-height: 1.62;
+    margin-top: auto;
+    color: #686b6c;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  @keyframes float-chip {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.92;
+    }
+
+    50% {
+      transform: translate3d(0.5rem, -0.55rem, 0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes soft-orbit {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+
+    to {
+      transform: rotate(360deg) scale(1.02);
+    }
+  }
+
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+    }
+
+    70%, 100% {
+      box-shadow: 0 0 0 0.65rem rgba(105, 210, 84, 0);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .system-marquee-track,
-    .orbit-chip {
+    .motion-chip,
+    .motion-layer::before,
+    .chip-3::before {
       animation: none;
     }
   }
 
-  @media (max-width: 980px) {
-    .system-overview {
-      padding: 5.5rem 0;
-    }
-
-    .system-grid,
+  @media (max-width: 1040px) {
     .system-cards {
       grid-template-columns: 1fr;
-    }
-
-    .system-copy h2,
-    .system-copy > p:last-child {
-      max-width: 100%;
-    }
-
-    .system-visual {
-      min-height: 26rem;
     }
 
     .system-card {
       min-height: auto;
     }
+
+    .system-copy span {
+      margin-top: 0.5rem;
+    }
   }
 
   @media (max-width: 560px) {
-    .system-marquee {
-      margin-bottom: 3rem;
+    .system-overview {
+      padding-top: 4rem;
+    }
+
+    .system-card {
+      border-radius: 1.35rem;
+    }
+
+    .system-visual,
+    .system-visual img {
+      min-height: 15.5rem;
     }
 
     .system-copy h2 {
-      font-size: clamp(2.45rem, 12vw, 3.5rem);
+      font-size: clamp(2.1rem, 11vw, 2.75rem);
     }
 
-    .system-orbit {
-      width: min(23rem, 92vw);
-    }
-
-    .orbit-chip {
-      min-width: 3.6rem;
-      height: 2rem;
-      padding: 0 0.55rem;
-      font-size: 0.62rem;
-      transform: rotate(var(--angle)) translateX(10.2rem) rotate(calc(-1 * var(--angle)));
-    }
-
-    .dashboard-window {
-      width: min(18.6rem, 76vw);
-    }
-
-    .dashboard-body {
-      grid-template-columns: 2.8rem 1fr;
-      min-height: 13rem;
+    .motion-chip {
+      min-width: 4.7rem;
+      height: 1.85rem;
+      font-size: 0.61rem;
     }
   }
 </style>
