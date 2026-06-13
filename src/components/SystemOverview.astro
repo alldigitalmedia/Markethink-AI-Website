@@ -1,100 +1,64 @@
 ---
+const cards = [
+  {
+    modifier: "dashboard",
+    kicker: "Dashboard",
+    title: "One place to handle all of your marketing.",
+    description:
+      "Campaigns, content, approvals, leads, web updates, email, and follow-up stay visible in one organized workspace. When you send the real dashboard image, this box becomes the live product view.",
+    image: "/generated/website/markethink-system-dashboard.svg",
+    alt: "One organized Markethink dashboard workspace",
+    chips: ["Campaigns", "Approvals", "Leads"],
+  },
+  {
+    modifier: "operator",
+    kicker: "Operator",
+    title: "Text the operator. The system moves.",
+    description:
+      "Send a request once — campaign, web update, email, lead follow-up — and Markethink keeps the context, organizes the work, and prepares the next move.",
+    image: "/generated/website/markethink-system-operator.svg",
+    alt: "Requests moving into the Markethink operator",
+    chips: ["Campaign", "Web update", "Email", "Lead follow-up"],
+  },
+  {
+    modifier: "team",
+    kicker: "Expert Team",
+    title: "The team behind the work.",
+    description:
+      "Strategy, copy, design, web, lead research, and follow-up support sharpen what ships. We can tighten this third box once the expert-team story is locked.",
+    image: "/generated/website/markethink-system-team.svg",
+    alt: "Expert marketing team workflow behind Markethink",
+    chips: ["Strategy", "Design", "Follow-up"],
+  },
+];
 ---
 
 <section class="system-overview" id="markethink-system" aria-label="How Markethink works">
   <div class="container">
     <div class="system-cards animate-stagger">
-      <article class="system-card system-card-chat">
-        <div class="system-visual" aria-hidden="true">
-          <div class="visual-glow"></div>
-          <div class="chat-thread chat-thread-left">
-            <div class="message message-user user-one">
-              <span class="avatar avatar-warm"></span>
-              <div>
-                <strong>Team</strong>
-                <p>@Markethink we need next week’s campaign plan</p>
-              </div>
-            </div>
-            <div class="message message-user user-two">
-              <span class="avatar avatar-soft"></span>
-              <div>
-                <strong>Founder</strong>
-                <p>include the lead follow-up angle too</p>
-              </div>
-            </div>
-            <div class="message message-system">
-              <span class="markethink-avatar">M</span>
-              <div>
-                <strong>Markethink <em>system</em></strong>
-                <p>Here you go — ready for review.</p>
-                <span class="file-pill">campaign-plan.pdf</span>
-              </div>
+      {cards.map((card, cardIndex) => (
+        <article class={`system-card system-card-${card.modifier}`}>
+          <div class="system-visual">
+            <img class="system-art" src={card.image} alt={card.alt} loading="lazy" decoding="async" />
+            <img class="card-logo" src="/images/logo.svg" alt="Markethink" loading="lazy" decoding="async" />
+            <div class="motion-layer" aria-hidden="true">
+              {card.chips.map((chip, chipIndex) => (
+                <span
+                  class={`motion-chip chip-${chipIndex + 1}`}
+                  style={`--delay: ${cardIndex * -0.75 + chipIndex * -1.35}s`}
+                >
+                  {chip}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-        <div class="system-copy">
-          <p>Dashboard</p>
-          <h2>Real marketing output, not just chat.</h2>
-          <span>Campaigns, content, approvals, leads, assets, and next steps stay visible in one organized place instead of getting buried across chats and files.</span>
-        </div>
-      </article>
-
-      <article class="system-card system-card-tools">
-        <div class="system-visual" aria-hidden="true">
-          <div class="visual-glow"></div>
-          <div class="tool-orbit">
-            <span class="tool-card tool-ads">Ads</span>
-            <span class="tool-card tool-crm">CRM</span>
-            <span class="tool-card tool-web">Web</span>
-            <span class="tool-card tool-social">Social</span>
-            <span class="tool-card tool-email">Email</span>
-            <span class="tool-card tool-search">Search</span>
-            <div class="tool-center">
-              <span>M</span>
-              <small>one message</small>
-            </div>
+          <div class="system-copy">
+            <p>{card.kicker}</p>
+            <h2>{card.title}</h2>
+            <span>{card.description}</span>
           </div>
-        </div>
-        <div class="system-copy">
-          <p>24/7 Operator</p>
-          <h2>One message moves the system.</h2>
-          <span>Your trained operator learns the business, remembers approvals, and prepares the next piece of work so your team is not restarting from zero every week.</span>
-        </div>
-      </article>
-
-      <article class="system-card system-card-memory">
-        <div class="system-visual" aria-hidden="true">
-          <div class="visual-glow"></div>
-          <div class="chat-thread chat-thread-right">
-            <div class="message message-user user-three">
-              <span class="avatar avatar-charcoal"></span>
-              <div>
-                <strong>Operator</strong>
-                <p>@Markethink any updates?</p>
-              </div>
-            </div>
-            <div class="message message-system compact-card">
-              <span class="markethink-avatar">M</span>
-              <div>
-                <strong>Markethink <em>system</em></strong>
-                <p>Lead list is ready. Follow-up angle is stronger now.</p>
-              </div>
-            </div>
-            <div class="message message-system compact-card second-response">
-              <span class="markethink-avatar">M</span>
-              <div>
-                <strong>Markethink <em>system</em></strong>
-                <p>I kept the approval from last week.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="system-copy">
-          <p>Expert Team</p>
-          <h2>Never restart from zero.</h2>
-          <span>Strategy, copy, design, web, lead research, and follow-up support work behind the system so Markethink delivers judgment, not just output.</span>
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   </div>
 </section>
@@ -103,7 +67,7 @@
   .system-overview {
     position: relative;
     overflow: hidden;
-    padding: clamp(4.5rem, 7vw, 7.5rem) 0 2rem;
+    padding: clamp(4.5rem, 7vw, 7.25rem) 0 2rem;
     background: #f5f5f1;
     color: #0f1213;
   }
@@ -113,8 +77,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 16% 10%, rgba(105, 210, 84, 0.12), transparent 29rem),
-      radial-gradient(circle at 82% 28%, rgba(237, 244, 234, 0.95), transparent 34rem);
+      radial-gradient(circle at 18% 14%, rgba(105, 210, 84, 0.12), transparent 28rem),
+      radial-gradient(circle at 86% 42%, rgba(237, 244, 234, 0.96), transparent 34rem);
     pointer-events: none;
   }
 
@@ -132,249 +96,150 @@
   .system-card {
     position: relative;
     overflow: hidden;
-    min-height: 35rem;
+    min-height: 37rem;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(15, 18, 19, 0.08);
-    border-radius: 2.15rem;
-    background: rgba(255, 255, 252, 0.9);
-    box-shadow: 0 24px 80px rgba(15, 18, 19, 0.09);
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 2rem;
+    background: rgba(255, 255, 252, 0.86);
+    box-shadow: 0 24px 76px rgba(15, 18, 19, 0.08);
   }
 
   .system-visual {
     position: relative;
-    min-height: 19rem;
+    min-height: 20rem;
     overflow: hidden;
-    background:
-      linear-gradient(180deg, rgba(15, 18, 19, 0.92) 0%, rgba(15, 18, 19, 0.92) 36%, rgba(245, 245, 241, 0.98) 36%, rgba(245, 245, 241, 0.98) 100%);
+    background: #edf4ea;
     border-bottom: 1px solid rgba(15, 18, 19, 0.06);
+    isolation: isolate;
   }
 
-  .visual-glow {
+  .system-art {
+    width: 100%;
+    height: 100%;
+    min-height: 20rem;
+    display: block;
+    object-fit: cover;
+    transform: scale(1.02);
+  }
+
+  .card-logo {
     position: absolute;
-    inset: -18% -8% auto -8%;
-    height: 14rem;
-    background: radial-gradient(circle at 50% 45%, rgba(105, 210, 84, 0.36), rgba(237, 244, 234, 0.62) 34%, transparent 72%);
-    filter: blur(12px);
-    opacity: 0.95;
-  }
-
-  .chat-thread {
-    position: absolute;
-    inset: 1.3rem clamp(1rem, 2vw, 1.45rem) auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.74rem;
-  }
-
-  .message {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.62rem;
-    border-radius: 1.2rem;
-    color: #0f1213;
-  }
-
-  .message strong {
-    display: flex;
-    align-items: center;
-    gap: 0.38rem;
-    margin-bottom: 0.16rem;
-    font-size: 0.78rem;
-    font-weight: 850;
-    letter-spacing: -0.02em;
-  }
-
-  .message strong em {
-    display: inline-flex;
-    align-items: center;
-    height: 1rem;
-    padding: 0 0.34rem;
+    z-index: 3;
+    top: 1.05rem;
+    left: 1.05rem;
+    width: min(10.5rem, 46%);
+    height: auto;
+    padding: 0.52rem 0.64rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
     border-radius: 999px;
-    background: rgba(105, 210, 84, 0.18);
-    color: #0f1213;
-    font-size: 0.48rem;
-    font-style: normal;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    background: rgba(245, 245, 241, 0.86);
+    box-shadow: 0 12px 34px rgba(15, 18, 19, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
-  .message p {
-    margin: 0;
-    color: #303333;
-    font-size: clamp(0.72rem, 0.9vw, 0.86rem);
-    line-height: 1.32;
-    letter-spacing: -0.02em;
+  .motion-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
   }
 
-  .message-user {
-    width: min(20rem, 92%);
-    padding: 0.15rem 0.2rem;
-    color: #f5f5f1;
-  }
-
-  .message-user strong,
-  .message-user p {
-    color: #f5f5f1;
-  }
-
-  .message-user p {
-    opacity: 0.94;
-  }
-
-  .message-system {
-    width: min(22rem, 96%);
-    margin-top: 0.15rem;
-    padding: 0.86rem 0.9rem;
-    background: rgba(255, 255, 252, 0.82);
-    border: 1px solid rgba(255, 255, 252, 0.75);
-    box-shadow: 0 18px 58px rgba(15, 18, 19, 0.18), 0 0 48px rgba(105, 210, 84, 0.16);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .chat-thread-left .message-system {
-    animation: answer-float 7s ease-in-out infinite;
-  }
-
-  .chat-thread-right .message-system {
-    width: min(21rem, 94%);
-    animation: answer-float 7.8s ease-in-out infinite;
-  }
-
-  .second-response {
-    align-self: flex-end;
-    animation-delay: -2.4s;
-  }
-
-  .avatar,
-  .markethink-avatar {
-    flex: 0 0 auto;
-    width: 1.85rem;
-    height: 1.85rem;
-    border-radius: 50%;
-  }
-
-  .avatar-warm {
-    background: linear-gradient(135deg, #f5f5f1, #b4b6b6);
-  }
-
-  .avatar-soft {
-    background: linear-gradient(135deg, #edf4ea, #69d254);
-  }
-
-  .avatar-charcoal {
-    background: linear-gradient(135deg, #686b6c, #0f1213);
-    border: 1px solid rgba(245, 245, 241, 0.55);
-  }
-
-  .markethink-avatar {
+  .motion-chip {
+    position: absolute;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.68rem;
-    background: #0f1213;
-    color: #69d254;
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    line-height: 1;
-    box-shadow: 0 10px 24px rgba(15, 18, 19, 0.18);
-  }
-
-  .file-pill {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 0.55rem;
-    padding: 0.34rem 0.62rem;
+    min-width: 5.8rem;
+    height: 2rem;
+    padding: 0 0.74rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
     border-radius: 999px;
-    background: #69d254;
+    background: rgba(245, 245, 241, 0.9);
     color: #0f1213;
-    font-size: 0.72rem;
-    font-weight: 850;
-    letter-spacing: -0.01em;
+    font-size: 0.66rem;
+    font-weight: 760;
+    letter-spacing: 0.01em;
+    box-shadow: 0 14px 34px rgba(15, 18, 19, 0.11);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: float-chip 7.6s ease-in-out infinite;
+    animation-delay: var(--delay);
   }
 
-  .tool-orbit {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    perspective: 900px;
+  .system-card-dashboard .chip-1 {
+    left: 7%;
+    top: 45%;
   }
 
-  .tool-orbit::before,
-  .tool-orbit::after {
+  .system-card-dashboard .chip-2 {
+    right: 8%;
+    top: 18%;
+    background: rgba(15, 18, 19, 0.9);
+    color: #f5f5f1;
+  }
+
+  .system-card-dashboard .chip-3 {
+    right: 11%;
+    bottom: 11%;
+    border-color: rgba(105, 210, 84, 0.36);
+  }
+
+  .system-card-operator .motion-chip {
+    animation-name: request-slide;
+    animation-duration: 8.8s;
+  }
+
+  .system-card-operator .chip-1 {
+    left: 7%;
+    top: 18%;
+  }
+
+  .system-card-operator .chip-2 {
+    left: 6%;
+    bottom: 20%;
+  }
+
+  .system-card-operator .chip-3 {
+    right: 8%;
+    top: 26%;
+  }
+
+  .system-card-operator .chip-4 {
+    right: 7%;
+    bottom: 18%;
+    min-width: 7.25rem;
+    border-color: rgba(105, 210, 84, 0.38);
+  }
+
+  .system-card-team .chip-1 {
+    left: 8%;
+    bottom: 13%;
+  }
+
+  .system-card-team .chip-2 {
+    right: 9%;
+    top: 18%;
+  }
+
+  .system-card-team .chip-3 {
+    right: 10%;
+    bottom: 15%;
+    background: rgba(15, 18, 19, 0.88);
+    color: #f5f5f1;
+  }
+
+  .chip-3::before,
+  .system-card-operator .chip-4::before {
     content: "";
-    position: absolute;
-    width: 16rem;
-    height: 16rem;
+    width: 0.46rem;
+    height: 0.46rem;
+    margin-right: 0.42rem;
     border-radius: 50%;
-    border: 1px dashed rgba(105, 210, 84, 0.28);
-    animation: orbit-spin 18s linear infinite;
-  }
-
-  .tool-orbit::after {
-    width: 11.5rem;
-    height: 11.5rem;
-    border-color: rgba(245, 245, 241, 0.32);
-    animation-duration: 12s;
-    animation-direction: reverse;
-  }
-
-  .tool-card {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    width: 4.5rem;
-    height: 4.5rem;
-    border-radius: 1.05rem;
-    background: rgba(255, 255, 252, 0.88);
-    border: 1px solid rgba(255, 255, 252, 0.85);
-    box-shadow: 0 18px 54px rgba(15, 18, 19, 0.18);
-    color: #0f1213;
-    font-size: 0.72rem;
-    font-weight: 880;
-    letter-spacing: -0.02em;
-    transform: rotate(var(--angle)) translateX(7.2rem) rotate(calc(var(--angle) * -1));
-    animation: tool-breathe 8s ease-in-out infinite;
-  }
-
-  .tool-ads { --angle: -82deg; animation-delay: -0.4s; }
-  .tool-crm { --angle: -22deg; animation-delay: -1.7s; }
-  .tool-web { --angle: 42deg; animation-delay: -3.1s; }
-  .tool-social { --angle: 102deg; animation-delay: -4.5s; }
-  .tool-email { --angle: 164deg; animation-delay: -5.8s; }
-  .tool-search { --angle: 218deg; animation-delay: -6.9s; }
-
-  .tool-center {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 6.25rem;
-    height: 6.25rem;
-    border-radius: 1.45rem;
-    background: rgba(255, 255, 252, 0.94);
-    border: 1px solid rgba(255, 255, 252, 0.9);
-    box-shadow: 0 22px 70px rgba(15, 18, 19, 0.2), 0 0 42px rgba(105, 210, 84, 0.18);
-  }
-
-  .tool-center span {
-    color: #0f1213;
-    font-family: var(--font-display);
-    font-size: 2.55rem;
-    line-height: 0.84;
-  }
-
-  .tool-center small {
-    margin-top: -0.8rem;
-    color: #686b6c;
-    font-size: 0.58rem;
-    font-weight: 850;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    background: #69d254;
+    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+    animation: pulse-dot 2.35s ease-out infinite;
   }
 
   .system-copy {
@@ -384,14 +249,14 @@
     padding: clamp(1.35rem, 2vw, 1.8rem);
   }
 
-  .system-copy > p {
+  .system-copy p {
     width: max-content;
-    margin-bottom: 1.05rem;
+    margin-bottom: 1.1rem;
     padding: 0.38rem 0.72rem;
     border: 1px solid rgba(105, 210, 84, 0.34);
     border-radius: 999px;
     color: #0f1213;
-    background: rgba(237, 244, 234, 0.86);
+    background: rgba(237, 244, 234, 0.88);
     font-size: 0.7rem;
     font-weight: 820;
     letter-spacing: 0.08em;
@@ -403,9 +268,9 @@
     margin-bottom: 1rem;
     color: #0f1213;
     font-family: var(--font-display);
-    font-size: clamp(2.2rem, 3vw, 3.25rem);
+    font-size: clamp(2.18rem, 3.05vw, 3.2rem);
     font-weight: 400;
-    line-height: 0.93;
+    line-height: 0.92;
     letter-spacing: -0.052em;
   }
 
@@ -413,31 +278,53 @@
     display: block;
     margin-top: auto;
     color: #686b6c;
-    font-size: 0.98rem;
-    line-height: 1.65;
+    font-size: 0.97rem;
+    line-height: 1.62;
   }
 
-  @keyframes answer-float {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0.35rem, -0.45rem, 0); }
+  @keyframes float-chip {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0.9;
+    }
+
+    50% {
+      transform: translate3d(0.55rem, -0.58rem, 0);
+      opacity: 1;
+    }
   }
 
-  @keyframes orbit-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes request-slide {
+    0%, 100% {
+      transform: translate3d(-0.35rem, 0.15rem, 0);
+      opacity: 0.72;
+    }
+
+    42% {
+      transform: translate3d(0.75rem, -0.28rem, 0);
+      opacity: 1;
+    }
+
+    72% {
+      transform: translate3d(0.2rem, 0.35rem, 0);
+      opacity: 0.92;
+    }
   }
 
-  @keyframes tool-breathe {
-    0%, 100% { filter: saturate(0.96); opacity: 0.82; }
-    50% { filter: saturate(1.08); opacity: 1; }
+  @keyframes pulse-dot {
+    0% {
+      box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+    }
+
+    70%, 100% {
+      box-shadow: 0 0 0 0.65rem rgba(105, 210, 84, 0);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .chat-thread-left .message-system,
-    .chat-thread-right .message-system,
-    .tool-orbit::before,
-    .tool-orbit::after,
-    .tool-card {
+    .motion-chip,
+    .chip-3::before,
+    .system-card-operator .chip-4::before {
       animation: none;
     }
   }
@@ -465,32 +352,25 @@
       border-radius: 1.35rem;
     }
 
-    .system-visual {
-      min-height: 16.75rem;
+    .system-visual,
+    .system-art {
+      min-height: 15.75rem;
+    }
+
+    .card-logo {
+      width: 8.3rem;
+      top: 0.8rem;
+      left: 0.8rem;
     }
 
     .system-copy h2 {
-      font-size: clamp(2.05rem, 10vw, 2.7rem);
+      font-size: clamp(2.05rem, 10vw, 2.68rem);
     }
 
-    .message p {
-      font-size: 0.7rem;
-    }
-
-    .message-system {
-      padding: 0.76rem;
-    }
-
-    .tool-card {
-      width: 3.65rem;
-      height: 3.65rem;
-      transform: rotate(var(--angle)) translateX(5.6rem) rotate(calc(var(--angle) * -1));
-      font-size: 0.62rem;
-    }
-
-    .tool-center {
-      width: 5.2rem;
-      height: 5.2rem;
+    .motion-chip {
+      min-width: 4.9rem;
+      height: 1.82rem;
+      font-size: 0.58rem;
     }
   }
 </style>
