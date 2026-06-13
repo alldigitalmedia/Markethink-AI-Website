@@ -40,7 +40,6 @@ const cards = [
         <article class={`system-card system-card-${card.modifier}`}>
           <div class="system-visual">
             <img class="system-art" src={card.image} alt={card.alt} loading="lazy" decoding="async" />
-            <img class="card-logo" src="/images/logo.svg" alt="Markethink" loading="lazy" decoding="async" />
             <div class="motion-layer" aria-hidden="true">
               {card.chips.map((chip, chipIndex) => (
                 <span
@@ -127,22 +126,6 @@ const cards = [
 
   .system-card:hover .system-art {
     transform: scale(1.05);
-  }
-
-  .card-logo {
-    position: absolute;
-    z-index: 3;
-    top: 1rem;
-    left: 1rem;
-    width: 9rem;
-    height: auto;
-    padding: 0.48rem 0.6rem;
-    border: 1px solid rgba(15, 18, 19, 0.08);
-    border-radius: var(--radius-button);
-    background: rgba(245, 245, 241, 0.9);
-    box-shadow: 0 8px 22px rgba(15, 18, 19, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
 
   .motion-layer {
@@ -340,12 +323,6 @@ const cards = [
   }
 
   @media (max-width: 479px) {
-    .card-logo {
-      width: 8rem;
-      top: 0.8rem;
-      left: 0.8rem;
-    }
-
     .motion-chip {
       min-width: 4.9rem;
       height: 1.82rem;
