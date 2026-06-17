@@ -20,12 +20,18 @@ const capabilities = [
   </div>
   <div class="container hero-content">
     <div class="hero-text">
-      <p class="hero-kicker animate-fade-up">One connected marketing system</p>
-      <h1 class="hero-heading animate-fade-up">
-        Marketing that ships and keeps getting sharper.
+      <h1 class="hero-heading animate-fade-up" aria-label="The marketing system that ships the work.">
+        <span class="hero-heading-line">The marketing system that</span>
+        <span class="hero-heading-rotator" aria-hidden="true">
+          <span class="hero-heading-accent">ships the work.</span>
+          <span class="hero-heading-accent">learns your brand.</span>
+          <span class="hero-heading-accent">keeps campaigns moving.</span>
+          <span class="hero-heading-accent">remembers what worked.</span>
+          <span class="hero-heading-accent">finds the next opportunity.</span>
+        </span>
       </h1>
       <p class="hero-description animate-fade-up">
-        Markethink learns your business, organizes your campaigns, creates the work, and brings the right decisions back for approval. So your marketing stops restarting from zero every week.
+        Markethink gives your business a dedicated marketing system: expert marketers, a trained operator, and one place to plan campaigns, create content, manage approvals, find opportunities, and keep the work moving. So your team can focus on the business instead of managing marketing every day.
       </p>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
@@ -108,41 +114,92 @@ const capabilities = [
     text-align: left;
   }
 
-  .hero-kicker {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    min-height: 2.3rem;
-    padding: 0 0.9rem;
-    border: 1px solid rgba(105, 210, 84, 0.35);
-    border-radius: var(--radius-button);
-    background: rgba(15, 18, 19, 0.38);
-    color: #edf4ea;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
   .hero-heading {
-    max-width: min(50rem, 55vw);
-    color: #fff;
-    font-size: clamp(4.15rem, 6.1vw, 7rem);
-    line-height: 0.92;
-    letter-spacing: -0.058em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: min(46rem, 52vw);
+    font-size: clamp(4.4rem, 6.35vw, 7.4rem);
+    line-height: 0.88;
+    letter-spacing: -0.065em;
     text-wrap: balance;
   }
 
-  .hero-heading::after {
-    content: "";
+  .hero-heading-line {
+    color: #fff;
+  }
+
+  .hero-heading-rotator {
+    position: relative;
     display: block;
-    width: 7rem;
-    height: 0.3rem;
-    margin-top: 1.15rem;
-    border-radius: 999px;
-    background: #69d254;
+    width: min(100%, 58rem);
+    min-height: 1.28em;
+    padding-bottom: 0.22em;
+    margin-bottom: -0.2em;
+    overflow: hidden;
+    font-size: 0.86em;
+  }
+
+  .hero-heading-accent {
+    position: absolute;
+    inset: 0 0 auto 0;
+    min-height: 1.14em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #69D254;
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(0.24em);
+    animation: hero-rotate 20s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    white-space: nowrap;
+    will-change: opacity, transform;
+  }
+
+  .hero-heading-accent:nth-child(2) {
+    animation-delay: 4s;
+  }
+
+  .hero-heading-accent:nth-child(3) {
+    animation-delay: 8s;
+  }
+
+  .hero-heading-accent:nth-child(4) {
+    animation-delay: 12s;
+  }
+
+  .hero-heading-accent:nth-child(5) {
+    animation-delay: 16s;
+  }
+
+  @keyframes hero-rotate {
+    0% {
+      opacity: 0;
+      transform: translateY(0.24em);
+    }
+
+    4%, 18% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    22%, 100% {
+      opacity: 0;
+      transform: translateY(-0.22em);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-heading-accent {
+      animation: none;
+      opacity: 0;
+      transform: none;
+    }
+
+    .hero-heading-accent:first-child {
+      position: static;
+      opacity: 1;
+    }
   }
 
   .hero-description {
@@ -234,7 +291,7 @@ const capabilities = [
 
     .hero-heading {
       max-width: min(56rem, 94vw);
-      font-size: clamp(3.35rem, 7vw, 5.6rem);
+      font-size: clamp(3.1rem, 6.6vw, 5.4rem);
     }
 
     .section-hero::before {
@@ -272,7 +329,11 @@ const capabilities = [
 
     .hero-heading {
       max-width: 100%;
-      font-size: clamp(2.72rem, 11vw, 4rem);
+      font-size: clamp(2.45rem, 10.6vw, 3.85rem);
+    }
+
+    .hero-heading-rotator {
+      font-size: 0.82em;
     }
 
     .hero-description {
@@ -295,8 +356,13 @@ const capabilities = [
     }
 
     .hero-heading {
-      font-size: clamp(2.34rem, 11.4vw, 3.2rem);
-      letter-spacing: -0.052em;
+      font-size: clamp(2.18rem, 11.2vw, 3rem);
+      letter-spacing: -0.055em;
+    }
+
+    .hero-heading-rotator {
+      font-size: 0.78em;
+      min-height: 1.36em;
     }
 
     .button-group,
