@@ -1,30 +1,45 @@
+---
+const pillars = [
+  {
+    title: "Plan",
+    description: "Turn goals, offers, audience context, and scattered ideas into a campaign plan the business can actually use.",
+  },
+  {
+    title: "Ship",
+    description: "Create social posts, landing pages, lead lists, emails, and sales assets with approvals organized in one place.",
+  },
+  {
+    title: "Learn",
+    description: "Capture what was approved, what changed, and what worked so the next campaign starts sharper than the last one.",
+  },
+];
+---
+
 <section class="section light-green key-features-section" id="system-foundation">
   <div class="container">
     <div class="section-header text-center animate-fade-up">
       <p class="subtitle">THE MARKETHINK DIFFERENCE</p>
-      <h2>A marketing system that learns your brand<br />and keeps getting sharper as technology improves.</h2>
+      <h2>A marketing system that learns your business<br />and keeps getting sharper every week.</h2>
       <p class="section-description">
-        Markethink is built for businesses that want better marketing output without chasing every new tool. It keeps your brand context, campaigns, and approvals in one place while the system gets sharper as better technology becomes useful.
+        Most teams have enough tools. What they are missing is a connected rhythm for planning the work, shipping the assets, tracking approvals, and remembering what should happen next.
       </p>
     </div>
     <div class="feature-system-visual animate-fade-up">
       <img src="/images/key-feature-markethink-input-output-flow.avif" alt="Markethink system turning inputs into marketing outputs" />
     </div>
-    <div class="feature-copy-grid animate-stagger">
-      <div class="cta-card-overlay light">
-        <h3>Turn better context into better campaigns</h3>
-        <p>
-          Markethink learns your audience, offers, voice, and approval patterns so each campaign starts from what your business already knows instead of a blank prompt.
-        </p>
-        <a href="/#how-it-works" class="button">See the process</a>
-      </div>
-      <div class="cta-card-overlay dark">
-        <h3>Benefit from new AI without chasing it</h3>
-        <p>
-          As new models, image tools, and workflows improve, Markethink keeps evolving in the background so your marketing can keep getting sharper too.
-        </p>
-        <a href="/#workspace" class="button is-secondary">See the workspace</a>
-      </div>
+    <div class="pillar-grid animate-stagger" aria-label="Plan, ship, learn">
+      {pillars.map((pillar) => (
+        <article class="pillar-card">
+          <span class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img">
+              <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M15 25.5h18M15 18.5h18M15 32.5h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+        </article>
+      ))}
     </div>
   </div>
 </section>
@@ -66,61 +81,64 @@
     transform: scale(1.03);
   }
 
-  .feature-copy-grid {
+  .pillar-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 1.5rem;
   }
 
-  .cta-card-overlay {
+  .pillar-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 15rem;
+    padding: 1.75rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
     border-radius: var(--radius-medium);
-    padding: 2rem 2.5rem;
-    margin-top: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.56);
+    transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
   }
 
-  .cta-card-overlay.light {
-    background: var(--tabs-bg);
-    border: 1px solid var(--neutral-200);
+  .pillar-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(105, 210, 84, 0.35);
+    background: rgba(255, 255, 255, 0.82);
   }
 
-  .cta-card-overlay.light h3 {
+  .pillar-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    background: #0f1213;
+    color: #69d254;
+  }
+
+  .pillar-icon svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .pillar-card h3 {
+    font-family: var(--font-body);
+    font-size: 1.45rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.65rem;
     color: var(--text-primary);
   }
 
-  .cta-card-overlay.light p {
-    color: rgba(15, 18, 19, 0.56);
-  }
-
-  .cta-card-overlay.dark {
-    background: var(--bg-primary);
-    border: 1px solid rgba(217, 217, 218, 0.2);
-  }
-
-  .cta-card-overlay.dark h3 {
-    color: var(--text-invert);
-  }
-
-  .cta-card-overlay.dark p {
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .cta-card-overlay h3 {
-    font-family: var(--font-body);
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  .cta-card-overlay p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  .pillar-card p {
+    color: rgba(15, 18, 19, 0.62);
+    font-size: 0.94rem;
+    line-height: 1.65;
   }
 
   @media (max-width: 767px) {
-    .feature-copy-grid {
+    .pillar-grid {
       grid-template-columns: 1fr;
     }
   }
