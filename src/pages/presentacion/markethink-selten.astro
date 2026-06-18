@@ -253,6 +253,7 @@ const slides = [
   }
 ];
 const seltenLogoUrl = "https://cdn.prod.website-files.com/69b5adbcb4990ed13ab6d2cf/69b97ed5adb200b223489f34_Selten_Text_Header_Logo.svg";
+const seltenMarkUrl = "https://cdn.prod.website-files.com/69b5adbcb4990ed13ab6d2cf/69b97ed5edefa7f6bcb4a5a4_logo.svg";
 ---
 
 <Layout
@@ -266,8 +267,11 @@ const seltenLogoUrl = "https://cdn.prod.website-files.com/69b5adbcb4990ed13ab6d2
     <header class="presentation-topbar">
       <a href="/" class="logo-lockup" aria-label="Markethink y Selten">
         <img src="/images/logo.svg" alt="Markethink" class="markethink-logo" />
-        <span class="logo-plus logo-by" aria-hidden="true">by</span>
-        <img src={seltenLogoUrl} alt="Selten" class="selten-logo" loading="eager" decoding="async" />
+        <span class="logo-plus logo-by" aria-hidden="true">&</span>
+        <span class="selten-lockup" aria-label="Selten+">
+          <img src={seltenMarkUrl} alt="" class="selten-mark" loading="eager" decoding="async" />
+          <img src={seltenLogoUrl} alt="Selten" class="selten-logo" loading="eager" decoding="async" />
+        </span>
       </a>
       <span class="deck-label">Presentación privada</span>
     </header>
@@ -414,7 +418,7 @@ const seltenLogoUrl = "https://cdn.prod.website-files.com/69b5adbcb4990ed13ab6d2
   .motion-field span:nth-child(1){ top: 22%; left: 20%; } .motion-field span:nth-child(2){ top: 30%; right: 28%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11);} .motion-field span:nth-child(3){ bottom:24%; left:38%; } .motion-field span:nth-child(4){ bottom:18%; right:17%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11); }
   .presentation-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
   .logo-lockup { pointer-events:auto; display:inline-flex; align-items:center; gap:.85rem; min-height:3.1rem; padding:.7rem 1rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.66); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.28); }
-  .markethink-logo{ height:1.15rem; width:auto; filter:brightness(0) invert(1); } .logo-plus{ display:inline-grid; place-items:center; width:1.25rem; height:1.25rem; border-radius:999px; background:rgba(105,210,84,.14); color:#69d254; font-size:.95rem; font-weight:600; line-height:1; } .selten-logo, .selten-logo :global(svg){ display:inline-flex; align-items:center; height:2.18rem; width:auto; }
+  .markethink-logo{ height:1.42rem; width:auto; filter:brightness(0) invert(1); } .logo-plus{ display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:999px; background:rgba(105,210,84,.14); color:#69d254; font-size:1rem; font-weight:650; line-height:1; } .selten-lockup{ display:inline-flex; align-items:center; gap:.42rem; height:1.42rem; } .selten-mark{ width:1.42rem; height:1.42rem; object-fit:contain; flex:0 0 auto; } .selten-logo{ height:1.42rem; width:auto; object-fit:contain; display:block; }
   .deck-label { pointer-events:none; padding:.75rem 1rem; border:1px solid rgba(245,245,241,.11); border-radius:999px; color:rgba(245,245,241,.58); background:rgba(15,18,19,.44); backdrop-filter:blur(14px); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
   .slide-shell { width:min(1240px, 100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0, .95fr) minmax(340px, .9fr); gap:clamp(2rem,5vw,5.5rem); align-items:center; padding-block:clamp(1.2rem,2.5vh,2rem); }
   .story-content{ max-width:760px; position:relative; z-index:2; }
@@ -478,5 +482,5 @@ const seltenLogoUrl = "https://cdn.prod.website-files.com/69b5adbcb4990ed13ab6d2
   @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
   @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
   @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:7.25rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell, .layout-video .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .video-card{ max-width:420px; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
-  @media (max-width:680px){ .presentation-slide{ padding:6.9rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ gap:.65rem; max-width:calc(100vw - 2.5rem); overflow:hidden; } .markethink-logo{ height:1rem; } .selten-logo, .selten-logo :global(svg){ height:1.55rem; } .slide-shell{ padding-block:0; gap:1.35rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+  @media (max-width:680px){ .presentation-slide{ padding:6.9rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ gap:.65rem; max-width:calc(100vw - 2.5rem); overflow:hidden; } .markethink-logo{ height:1rem; } .selten-lockup{ height:1rem; gap:.32rem; } .selten-mark{ width:1rem; height:1rem; } .selten-logo{ height:1rem; } .slide-shell{ padding-block:0; gap:1.35rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
 </style>
