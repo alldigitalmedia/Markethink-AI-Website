@@ -115,12 +115,12 @@ const slides = [
     "chips": [
       "Starter",
       "Growth",
-      "AI Search & PPC"
+      "PPC Gestionado 24/7"
     ],
     "details": [
       "Starter: 2 campañas + 2 landings.",
       "Growth: 4 campañas + 4 landings.",
-      "AI Search & PPC: 6 campañas + 6 landings + visibilidad en búsquedas con IA."
+      "PPC Gestionado 24/7: 6 campañas + 6 landings + monitoreo continuo, operador dedicado y gestión experta."
     ]
   },
   {
@@ -179,53 +179,53 @@ const slides = [
     "n": "08",
     "id": "premium",
     "nav": "Premium",
-    "kicker": "SLIDE 08 · AI SEARCH & PPC SYSTEM",
-    "title": "AI Search & PPC System: 6 campañas, 6 landings y visibilidad en búsquedas con IA.",
-    "lead": "Para que GTD trabaje búsqueda pagada y también mejore cómo aparece cuando compradores comparan proveedores en nuevos entornos de búsqueda y respuesta.",
+    "kicker": "SLIDE 08 · PPC GESTIONADO 24/7",
+    "title": "PPC Gestionado 24/7: 6 campañas, 6 landings, operador dedicado y expertos optimizando cada semana.",
+    "lead": "Para que GTD no solo active campañas, sino que tenga monitoreo continuo, pruebas de keywords, anuncios, copy y landing pages, con decisiones tomadas por expertos.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/gtd-colombia-ppc/light-08-premium.png",
     "layout": "roadmap",
     "backgroundOnly": true,
-    "next": "ai-search",
+    "next": "continuous-improvement",
     "action": "Siguiente",
     "note": "Base Markethink: USD 850/mes",
     "chips": [
       "6 campañas",
       "6 landings",
-      "AI Search",
+      "Monitoreo 24/7",
       "Reporte estratégico"
     ],
     "details": [
       "Todo lo de Growth, ampliado a seis líneas de servicio.",
       "Servicios sugeridos: Internet, Ciberseguridad, Data Center/Cloud, Backup/DRaaS, Microsoft 365 y Starlink empresarial.",
-      "Auditoría de visibilidad en búsquedas con IA y contenido answer-ready.",
-      "Revisión mensual de oportunidades de posicionamiento y mejora.",
+      "Monitoreo con IA 24/7 para detectar señales, cambios de desempeño y oportunidades antes.",
+      "Operador dedicado para mantener campañas, keywords, anuncios, copy y landings en mejora continua.",
       "Base Markethink para Macula: USD 850/mes. Macula define precio final."
     ]
   },
   {
     "n": "09",
-    "id": "ai-search",
-    "nav": "Búsqueda IA",
+    "id": "continuous-improvement",
+    "nav": "Optimización",
     "kicker": "SLIDE 09 · CAPA PREMIUM",
-    "title": "La búsqueda ya no termina en Google: los compradores también preguntan, comparan y piden recomendaciones.",
-    "lead": "El paquete avanzado ayuda a que GTD sea más fácil de entender, comparar y recomendar en asistentes de IA, motores de respuesta y recorridos de investigación donde el comprador todavía no ha llenado un formulario.",
-    "image": "https://dashboard.markethink.ai/generated/landing/markethink/gtd-colombia-ppc/light-09-ai-search.png",
+    "title": "La campaña no se deja quieta: se monitorea, se prueba y se mejora todo el tiempo.",
+    "lead": "Markethink mantiene una capa de monitoreo con IA 24/7 y un operador dedicado para revisar señales, levantar oportunidades y llevar a los expertos los cambios que deben probarse.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/gtd-colombia-ppc/light-09-continuous-optimization.png",
     "layout": "library",
     "backgroundOnly": true,
     "next": "next-step",
     "action": "Siguiente",
-    "note": "Visibilidad moderna",
+    "note": "Mejora continua",
     "chips": [
-      "FAQ por servicio",
-      "Contenido answer-ready",
-      "Comparación",
-      "Recomendaciones"
+      "Keywords nuevas",
+      "Anuncios nuevos",
+      "Copy y landings",
+      "Decisión experta"
     ],
     "details": [
-      "Auditoría de presencia en búsquedas con IA.",
-      "Bloques de preguntas frecuentes por servicio.",
-      "Recomendaciones para páginas de conectividad, ciberseguridad, cloud, backup y Starlink.",
-      "Mejor estructura para que el contenido sea fácil de entender, citar y recomendar."
+      "Monitoreo 24/7 de cambios en gasto, clics, términos, conversiones y calidad de leads.",
+      "Pruebas constantes de nuevas keywords, negativos, anuncios y ángulos de copy.",
+      "Ajustes y aprendizajes aplicados a landing pages por servicio.",
+      "Expertos revisando las señales y decidiendo qué cambios implementar primero."
     ]
   },
   {
@@ -234,7 +234,7 @@ const slides = [
     "nav": "Siguiente",
     "kicker": "SLIDE 10 · SIGUIENTE PASO",
     "title": "Recomendación inicial: lanzar Search Growth con cuatro líneas de servicio.",
-    "lead": "Permite aprender rápido sin abrir demasiados frentes. Si GTD quiere posicionarse también para búsquedas con IA, el paquete avanzado queda como expansión natural.",
+    "lead": "Permite aprender rápido sin abrir demasiados frentes. Si GTD quiere más velocidad de mejora, el paquete avanzado agrega monitoreo con IA 24/7, operador dedicado y gestión experta más profunda.",
     "image": "https://dashboard.markethink.ai/generated/landing/markethink/gtd-colombia-ppc/light-10-next-step.png",
     "layout": "closing",
     "backgroundOnly": true,
@@ -324,18 +324,6 @@ const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.or
               ) : (
                 <div class="visual-card" aria-hidden="true">
                   <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
-                </div>
-              )}
-              {slide.aiCompanies && (
-                <div class="ai-ecosystem" aria-label="Logos de compañías de IA evaluadas continuamente">
-                  <div class="ai-logo-row">
-                    {slide.aiCompanies.map((company) => (
-                      <span class="ai-logo-card" aria-label={company.name}>
-                        <img src={company.icon} alt="" loading="lazy" decoding="async" />
-                        <strong>{company.name}</strong>
-                      </span>
-                    ))}
-                  </div>
                 </div>
               )}
             </div>
