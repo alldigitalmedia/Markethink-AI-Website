@@ -1,0 +1,524 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const slides = [
+  {
+    "n": "01",
+    "id": "opening",
+    "nav": "Apertura",
+    "kicker": "PRESENTACIÓN PRIVADA · GTD COLOMBIA",
+    "title": "GTD Colombia puede convertir su demanda digital en un sistema de adquisición medible.",
+    "lead": "Markethink by Mácula conecta Google Ads, landing pages, seguimiento y mejora continua para las líneas empresariales de GTD: conectividad, ciberseguridad, data center, cloud y continuidad del negocio.",
+    "image": "/generated/presentations/gtd-colombia-ppc/hero.svg",
+    "layout": "hero",
+    "backgroundOnly": true,
+    "next": "opportunity",
+    "action": "Siguiente",
+    "note": "Propuesta PPC + landings",
+    "chips": [
+      "Google Ads",
+      "Landing pages",
+      "Monitoreo con IA",
+      "Mejora continua"
+    ]
+  },
+  {
+    "n": "02",
+    "id": "opportunity",
+    "nav": "Oportunidad",
+    "kicker": "SLIDE 02 · OPORTUNIDAD COMERCIAL",
+    "title": "GTD no vende un solo producto. Vende líneas de solución con intenciones de búsqueda distintas.",
+    "lead": "Una persona que busca internet corporativo no está decidiendo lo mismo que una empresa que necesita respaldo, ciberseguridad o data center. Por eso la campaña debe separar intención, mensaje y página de conversión.",
+    "image": "/generated/presentations/gtd-colombia-ppc/system-flow.svg",
+    "layout": "library",
+    "backgroundOnly": false,
+    "next": "different",
+    "action": "Siguiente",
+    "note": "Intención por servicio",
+    "chips": [
+      "Conectividad",
+      "Ciberseguridad",
+      "Cloud",
+      "Backup / DRaaS"
+    ],
+    "details": [
+      "Cada servicio necesita keywords, anuncios y landing propios.",
+      "La medición debe mostrar qué línea genera consultas de mejor calidad.",
+      "El aprendizaje de campaña debe volver al mensaje y a la página."
+    ]
+  },
+  {
+    "n": "03",
+    "id": "different",
+    "nav": "Diferencia",
+    "kicker": "SLIDE 03 · CÓMO SOMOS DIFERENTES",
+    "title": "No administramos pauta aislada. Operamos el camino completo: búsqueda, landing, lead y aprendizaje.",
+    "lead": "La mayoría de proveedores optimiza anuncios. Markethink by Mácula mira también la página, la intención, el mensaje, la calidad del lead y el siguiente paso comercial.",
+    "image": "/generated/presentations/gtd-colombia-ppc/ai-monitor.svg",
+    "layout": "product",
+    "backgroundOnly": false,
+    "next": "technology",
+    "action": "Siguiente",
+    "note": "Sistema completo",
+    "chips": [
+      "Campañas",
+      "Landings",
+      "Tracking",
+      "Seguimiento"
+    ],
+    "details": [
+      "Campañas creadas o ajustadas por línea de servicio.",
+      "Landing pages enfocadas en conversión, no páginas genéricas.",
+      "Revisión continua de presupuesto, búsquedas, clics, CTR, CPC, CPM y conversiones.",
+      "Recomendaciones claras para mejorar mensajes, ofertas y seguimiento."
+    ]
+  },
+  {
+    "n": "04",
+    "id": "technology",
+    "nav": "IA aplicada",
+    "kicker": "SLIDE 04 · IA PARA MONITOREAR Y MEJORAR",
+    "title": "Usamos IA para detectar señales antes, pero las decisiones se mantienen con criterio experto.",
+    "lead": "El sistema ayuda a revisar cambios en desempeño, términos de búsqueda, presupuesto, anuncios, landing pages y oportunidades de mejora. El objetivo no es automatizar sin control. Es aprender más rápido y actuar mejor.",
+    "image": "/generated/presentations/gtd-colombia-ppc/ai-monitor.svg",
+    "layout": "roadmap",
+    "backgroundOnly": false,
+    "next": "capabilities",
+    "action": "Siguiente",
+    "note": "Monitoreo inteligente",
+    "chips": [
+      "Alertas de desempeño",
+      "Análisis de términos",
+      "Pruebas de landing",
+      "Recomendaciones"
+    ],
+    "details": [
+      "Seguimiento de gasto, impresiones, clics, CTR, CPC, CPM y conversiones.",
+      "Control de estado, presupuesto y calendario de campañas.",
+      "Segmentación por país, ciudad, región e idioma cuando aplique.",
+      "Campañas Search y Display con capacidad de pausar, editar y reactivar."
+    ]
+  },
+  {
+    "n": "05",
+    "id": "capabilities",
+    "nav": "Capacidades",
+    "kicker": "SLIDE 05 · CAPACIDADES OPERATIVAS",
+    "title": "La operación queda preparada para lanzar, medir y ajustar campañas con menos fricción.",
+    "lead": "Tomamos las capacidades técnicas disponibles —creación de campañas, manejo de presupuesto, segmentación, anuncios responsivos y analítica en tiempo real— y las traducimos en un servicio manejado para GTD.",
+    "image": "/generated/presentations/gtd-colombia-ppc/system-flow.svg",
+    "layout": "gates",
+    "backgroundOnly": false,
+    "next": "ai-search",
+    "action": "Siguiente",
+    "note": "Features convertidas en servicio",
+    "chips": [
+      "Search",
+      "Display",
+      "Keywords",
+      "Analítica"
+    ],
+    "details": [
+      "Campañas de búsqueda con listas de keywords y anuncios responsivos.",
+      "Campañas Display con segmentación de ubicaciones cuando tenga sentido.",
+      "Control de estado, presupuesto y calendario.",
+      "Métricas por campaña, grupo de anuncios y anuncio para reportes claros.",
+      "Estructura lista para futuras extensiones multicanal si GTD decide ampliar."
+    ]
+  },
+  {
+    "n": "06",
+    "id": "ai-search",
+    "nav": "AI Search",
+    "kicker": "SLIDE 06 · PAQUETE PREMIUM",
+    "title": "El paquete avanzado suma visibilidad en búsquedas con IA, no solo pauta en Google.",
+    "lead": "Cada vez más compradores investigan preguntando a asistentes y motores de respuesta antes de contactar proveedores. El paquete avanzado mejora cómo GTD es entendido, comparado y recomendado en ese nuevo recorrido.",
+    "image": "/generated/presentations/gtd-colombia-ppc/ai-search.svg",
+    "layout": "library",
+    "backgroundOnly": false,
+    "next": "packages",
+    "action": "Siguiente",
+    "note": "Búsqueda moderna",
+    "chips": [
+      "FAQ por servicio",
+      "Contenido answer-ready",
+      "Comparación",
+      "Recomendaciones"
+    ],
+    "details": [
+      "Auditoría de presencia en búsquedas con IA.",
+      "Bloques de preguntas frecuentes por servicio.",
+      "Recomendaciones para páginas de conectividad, ciberseguridad, cloud, backup y Starlink.",
+      "Mejor estructura para que el contenido sea fácil de entender, citar y recomendar."
+    ]
+  },
+  {
+    "n": "07",
+    "id": "packages",
+    "nav": "Paquetes",
+    "kicker": "SLIDE 07 · PROPUESTA DE PAQUETES",
+    "title": "Tres niveles según la cantidad de líneas de servicio que GTD quiera mover.",
+    "lead": "Los paquetes se organizan por capacidad operativa: número de campañas, landing pages y profundidad de optimización. La inversión publicitaria se maneja por separado.",
+    "image": "/generated/presentations/gtd-colombia-ppc/packages.svg",
+    "layout": "product",
+    "backgroundOnly": false,
+    "next": "starter",
+    "action": "Siguiente",
+    "note": "2 · 4 · 6 campañas",
+    "chips": [
+      "Starter",
+      "Growth",
+      "AI Search & PPC"
+    ],
+    "details": [
+      "Starter: 2 campañas + 2 landings.",
+      "Growth: 4 campañas + 4 landings.",
+      "AI Search & PPC: 6 campañas + 6 landings + visibilidad en búsquedas con IA."
+    ]
+  },
+  {
+    "n": "08",
+    "id": "starter",
+    "nav": "Starter",
+    "kicker": "SLIDE 08 · SEARCH STARTER",
+    "title": "Search Starter: 2 campañas y 2 landing pages para validar demanda comercial.",
+    "lead": "Recomendado si GTD quiere iniciar con los servicios de intención más inmediata: Internet Corporativo y Ciberseguridad Empresarial.",
+    "image": "/generated/presentations/gtd-colombia-ppc/packages.svg",
+    "layout": "gates",
+    "backgroundOnly": false,
+    "next": "growth",
+    "action": "Siguiente",
+    "note": "Base Markethink: USD 350/mes",
+    "chips": [
+      "2 campañas",
+      "2 landings",
+      "Optimización mensual"
+    ],
+    "details": [
+      "Configuración o limpieza de campañas de Google Ads.",
+      "Investigación de palabras clave y anuncios por servicio.",
+      "Landing pages enfocadas en conversión.",
+      "Tracking básico, limpieza de términos y reporte mensual.",
+      "Base Markethink para Macula: USD 350/mes. Macula define precio final."
+    ]
+  },
+  {
+    "n": "09",
+    "id": "growth",
+    "nav": "Growth",
+    "kicker": "SLIDE 09 · SEARCH GROWTH",
+    "title": "Search Growth: 4 campañas y 4 landing pages para cubrir las líneas principales.",
+    "lead": "Recomendado como paquete principal para GTD: Internet Corporativo, Ciberseguridad, Data Center / Cloud y Continuidad del Negocio / Backup / DRaaS.",
+    "image": "/generated/presentations/gtd-colombia-ppc/packages.svg",
+    "layout": "gates",
+    "backgroundOnly": false,
+    "next": "premium",
+    "action": "Siguiente",
+    "note": "Base Markethink: USD 550/mes",
+    "chips": [
+      "4 campañas",
+      "4 landings",
+      "Optimización quincenal"
+    ],
+    "details": [
+      "Todo lo del paquete Starter, ampliado a cuatro líneas de servicio.",
+      "Optimización quincenal de campañas y landing pages.",
+      "Mejor limpieza de búsquedas, negativos y ajustes de CTA.",
+      "Notas de calidad de leads y reporte por línea de servicio.",
+      "Base Markethink para Macula: USD 550/mes. Macula define precio final."
+    ]
+  },
+  {
+    "n": "10",
+    "id": "premium",
+    "nav": "Premium",
+    "kicker": "SLIDE 10 · AI SEARCH & PPC SYSTEM",
+    "title": "AI Search & PPC System: 6 campañas, 6 landings y visibilidad en búsquedas con IA.",
+    "lead": "Para que GTD trabaje búsqueda pagada y también mejore cómo aparece cuando compradores comparan proveedores en nuevos entornos de búsqueda y respuesta.",
+    "image": "/generated/presentations/gtd-colombia-ppc/ai-search.svg",
+    "layout": "roadmap",
+    "backgroundOnly": false,
+    "next": "next-step",
+    "action": "Siguiente",
+    "note": "Base Markethink: USD 850/mes",
+    "chips": [
+      "6 campañas",
+      "6 landings",
+      "AI Search",
+      "Reporte estratégico"
+    ],
+    "details": [
+      "Todo lo de Growth, ampliado a seis líneas de servicio.",
+      "Servicios sugeridos: Internet, Ciberseguridad, Data Center/Cloud, Backup/DRaaS, Microsoft 365 y Starlink empresarial.",
+      "Auditoría de visibilidad en búsquedas con IA y contenido answer-ready.",
+      "Revisión mensual de oportunidades de posicionamiento y mejora.",
+      "Base Markethink para Macula: USD 850/mes. Macula define precio final."
+    ]
+  },
+  {
+    "n": "11",
+    "id": "next-step",
+    "nav": "Siguiente",
+    "kicker": "SLIDE 11 · SIGUIENTE PASO",
+    "title": "El primer paso recomendado es lanzar Search Growth con cuatro líneas de servicio.",
+    "lead": "Permite aprender rápido sin abrir demasiados frentes. Si GTD quiere posicionarse también para búsquedas con IA, el paquete avanzado queda como expansión natural.",
+    "image": "/generated/presentations/gtd-colombia-ppc/hero.svg",
+    "layout": "closing",
+    "backgroundOnly": true,
+    "next": "opening",
+    "action": "Volver al inicio",
+    "note": "Decidir alcance inicial",
+    "chips": [
+      "Definir servicios",
+      "Aprobar inversión",
+      "Lanzar landings",
+      "Medir calidad"
+    ],
+    "details": [
+      "Confirmar las cuatro líneas iniciales.",
+      "Definir presupuesto publicitario separado.",
+      "Aprobar mensajes y CTAs por servicio.",
+      "Revisar desempeño y calidad de leads después del primer ciclo."
+    ]
+  }
+];
+const gtdLogoUrl = "https://www.gtdcolombia.com/documents/20121/845227/Logo-Gtd-Colombia-blanco.svg";
+const maculaLogoSvg = `<svg version="1.1" id="logo_full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 280.2 86" style="enable-background:new 0 0 280.2 86;" xml:space="preserve"> <style type="text/css"> .l_blanco{fill:#FFFFFF;} .l_amarillo{fill:#F3D832;} </style> <g> <path class="l_blanco" d="M63,76.4c-0.3-0.3-0.4-0.6-0.4-0.9c0-0.4,0.1-0.7,0.4-0.9c0.3-0.3,0.6-0.4,0.9-0.4c0.4,0,0.7,0.1,0.9,0.4 c0.3,0.3,0.4,0.6,0.4,0.9c0,0.4-0.1,0.7-0.4,0.9c-0.3,0.3-0.6,0.4-0.9,0.4C63.6,76.8,63.3,76.7,63,76.4"/> <path class="l_blanco" d="M82.1,70.5h1.3l3.5,8.3h-1.3L84.9,77h-4.3L80,78.8h-1.3L82.1,70.5z M81,76.1h3.5l-1.7-4.2h0L81,76.1z"/> <path class="l_blanco" d="M105.3,80.8c-0.6,0.5-1.4,0.7-2.4,0.7c-0.9,0-1.6-0.2-2.1-0.5c-0.5-0.3-0.8-0.8-0.8-1.3c0-0.5,0.3-0.9,0.8-1.2 v0c-0.6-0.2-0.9-0.6-0.9-1.1c0-0.5,0.3-1,0.8-1.3v0c-0.3-0.3-0.5-0.8-0.4-1.2c0-0.6,0.3-1.1,0.8-1.5c0.5-0.4,1.2-0.6,2-0.6 c0.5,0,1,0.1,1.4,0.3c0.2-0.3,0.5-0.5,0.8-0.6c0.3-0.1,0.6-0.2,0.9-0.2v0.9c-0.4,0-0.7,0.1-1,0.3v0c0.5,0.4,0.7,0.9,0.7,1.4 c0,0.6-0.3,1.1-0.8,1.5c-0.5,0.4-1.2,0.6-2,0.6c-0.7,0-1.3-0.1-1.7-0.4c-0.2,0.2-0.3,0.4-0.3,0.6c0,0.4,0.4,0.6,1.1,0.6h2 c1.4,0,2.1,0.5,2.1,1.5C106.2,79.8,105.9,80.4,105.3,80.8 M101.6,80.3c0.4,0.2,0.8,0.3,1.4,0.3c0.6,0,1.1-0.1,1.5-0.4 c0.4-0.2,0.6-0.5,0.6-0.9c0-0.5-0.4-0.8-1.2-0.8h-2.2c0,0-0.1,0-0.1,0c-0.4,0.2-0.5,0.5-0.5,0.9C101,79.9,101.2,80.2,101.6,80.3 M101.8,73.9c-0.3,0.2-0.5,0.5-0.5,0.9c0,0.4,0.1,0.7,0.5,0.9c0.3,0.2,0.7,0.4,1.2,0.4c0.5,0,0.9-0.1,1.2-0.3 c0.3-0.2,0.5-0.5,0.5-0.9c0-0.4-0.1-0.7-0.5-0.9c-0.3-0.2-0.7-0.4-1.2-0.4C102.6,73.6,102.1,73.7,101.8,73.9"/> <path class="l_blanco" d="M126,76.3H121c0.1,0.5,0.4,0.9,0.8,1.2c0.4,0.3,0.9,0.4,1.6,0.4c0.8,0,1.5-0.2,2-0.6l0.2,1 c-0.6,0.4-1.3,0.6-2.3,0.6c-1.1,0-1.9-0.3-2.6-0.9c-0.6-0.6-1-1.3-1-2.3c0-0.9,0.3-1.7,0.9-2.2c0.6-0.6,1.4-0.9,2.3-0.9 c0.9,0,1.7,0.3,2.2,0.9c0.6,0.6,0.9,1.3,0.9,2.3C126.1,75.8,126,76,126,76.3 M124.9,75.3c0-0.4-0.2-0.8-0.6-1.1 c-0.4-0.3-0.8-0.4-1.4-0.4c-0.5,0-0.9,0.1-1.3,0.4c-0.4,0.3-0.6,0.7-0.7,1.1H124.9z"/> <path class="l_blanco" d="M141.6,74.3c-0.4,0.4-0.5,0.9-0.5,1.4v3H140v-5.9h0.6l0.4,1.3h0c0.2-0.4,0.6-0.8,1-1c0.4-0.2,0.9-0.4,1.4-0.4 c0.8,0,1.4,0.3,1.9,0.8c0.5,0.6,0.8,1.3,0.8,2.2v3.1h-1.1v-3c0-0.6-0.2-1.1-0.6-1.4c-0.4-0.4-0.8-0.6-1.4-0.6 C142.4,73.7,142,73.9,141.6,74.3"/> <path class="l_blanco" d="M165.4,77.4l0.1,1.1c-0.6,0.3-1.2,0.5-1.9,0.5c-1,0-1.8-0.3-2.5-0.9c-0.7-0.6-1-1.3-1-2.3c0-0.9,0.3-1.7,1-2.2 c0.7-0.6,1.5-0.9,2.5-0.9c0.7,0,1.3,0.1,1.8,0.4l-0.3,1c-0.5-0.2-0.9-0.3-1.5-0.3c-0.7,0-1.2,0.2-1.7,0.6c-0.4,0.4-0.7,0.9-0.7,1.5 c0,0.6,0.2,1.1,0.7,1.5c0.5,0.4,1,0.6,1.7,0.6C164.4,77.9,165,77.7,165.4,77.4"/> <path class="l_blanco" d="M179.8,70.1c0.2,0,0.4,0.1,0.5,0.2c0.1,0.1,0.2,0.3,0.2,0.5c0,0.2-0.1,0.4-0.2,0.5c-0.1,0.1-0.3,0.2-0.5,0.2 c-0.2,0-0.4-0.1-0.5-0.2c-0.1-0.2-0.2-0.3-0.2-0.5c0-0.2,0.1-0.4,0.2-0.5C179.5,70.2,179.6,70.1,179.8,70.1 M179.3,72.8h1.1v5.9 h-1.1V72.8z"/> <path class="l_blanco" d="M198.9,75.1L198.9,75.1c0-1-0.6-1.5-1.8-1.5c-0.3,0-0.6,0-0.9,0.1c-0.3,0.1-0.6,0.1-0.7,0.2l-0.3,0.1l-0.3-0.9 c0.7-0.4,1.5-0.5,2.3-0.5c1.9,0,2.9,0.8,2.9,2.5v3.6h-0.6l-0.3-1h0c-0.5,0.8-1.2,1.1-2.3,1.1c-0.7,0-1.3-0.2-1.7-0.5 c-0.4-0.4-0.7-0.8-0.7-1.4c0-0.6,0.2-1.1,0.7-1.5c0.5-0.4,1.2-0.6,2.1-0.6C197.7,74.9,198.3,75,198.9,75.1 M198.8,76 c-0.4-0.1-0.9-0.2-1.5-0.2c-1.2,0-1.9,0.5-1.9,1.1c0,0.7,0.5,1.1,1.5,1.1c0.5,0,1-0.2,1.3-0.6c0.4-0.4,0.5-0.8,0.5-1.3V76z"/> <path class="l_blanco" d="M214.6,76.4c-0.3-0.3-0.4-0.6-0.4-0.9c0-0.4,0.1-0.7,0.4-0.9c0.3-0.3,0.6-0.4,0.9-0.4s0.7,0.1,0.9,0.4 c0.3,0.3,0.4,0.6,0.4,0.9c0,0.4-0.1,0.7-0.4,0.9c-0.3,0.3-0.6,0.4-0.9,0.4C215.1,76.8,214.8,76.7,214.6,76.4"/> <polygon class="l_blanco" points="10.8,7.8 10.8,10.6 5.3,10.6 5.3,43.9 10.8,43.9 10.8,46.8 2.1,46.8 2.1,7.8 "/> <path class="l_blanco" d="M35.2,18.6v3.9h0c0.8-1.3,1.9-2.3,3.2-3.1c1.3-0.7,2.6-1.1,4.1-1.1c1.6,0,3,0.4,4.2,1.2c1.1,0.8,2,1.9,2.6,3.4 h0c0.8-1.5,1.9-2.6,3.3-3.4c1.4-0.8,2.9-1.2,4.6-1.2c2.4,0,4.3,0.8,5.6,2.4c1.3,1.6,1.9,4,1.9,7.1v12.5h-3.6V28.8 c0-2.3-0.4-4.1-1.2-5.4c-0.8-1.2-2.1-1.8-3.7-1.8c-1.1,0-2.2,0.3-3.1,1c-0.9,0.6-1.7,1.6-2.2,2.8c-0.5,1.2-0.8,2.6-0.8,4.2v10.8 h-3.6V28.8c0-2.3-0.4-4.1-1.3-5.3c-0.9-1.2-2.1-1.9-3.7-1.9c-1.8,0-3.3,0.7-4.5,2.2c-1.2,1.4-1.8,3.4-1.8,5.7v10.8h-3.6V18.6H35.2z "/> <polygon class="l_amarillo" points="96.8,10.8 96.8,9.9 93.1,9.9 91.5,14.7 94.4,14.7 "/> <path class="l_amarillo" d="M103.5,37.9c-1.2,0-1.7-0.5-1.7-1.6V24.5c0-1.4-0.3-2.7-1-3.6c-0.7-1-1.8-1.8-3.2-2.3 c-1.4-0.5-2.9-0.8-4.5-0.8c-1.7,0-3.4,0.3-4.8,0.9c-1.5,0.6-2.7,1.5-3.4,2.6l-0.3,0.4l2.7,1.7l0.3-0.4c0.8-1.1,2-1.8,3.8-2.1 c1.1-0.2,2.2-0.2,3.4,0c1.7,0.3,2.8,1,3.5,1.9c0.3,0.4,0.4,0.9,0.4,1.5v2.3c-1.3-0.2-2.7-0.3-4.1-0.3c-3,0-5.5,0.6-7.3,1.8 c-1,0.7-1.8,1.5-2.3,2.6c-0.5,1-0.8,2.2-0.8,3.3c0,1.6,0.5,3,1.5,4.3c1,1.3,2.3,2.2,4.1,2.7c1.2,0.3,2.4,0.5,3.4,0.5 c2.6,0,4.8-0.7,6.4-2.1c0.8,1.1,2.2,1.7,4.2,1.5l0.4,0v-2.9H103.5z M98.6,29.6v5.3c0,1.1-0.5,1.9-1.7,2.4c-1.2,0.6-2.6,0.9-4,0.9 c-1,0-1.8-0.1-2.5-0.3c-1.1-0.3-1.9-0.8-2.4-1.5c-0.5-0.7-0.8-1.5-0.8-2.3c0-0.7,0.2-1.3,0.5-1.9c0.3-0.6,0.8-1.2,1.4-1.6 c1.3-0.9,3.1-1.3,5.4-1.3C95.9,29.1,97.3,29.3,98.6,29.6"/> <path class="l_blanco" d="M127.8,39.2c-1.7-0.9-2.9-2.2-3.9-3.9c-0.9-1.7-1.4-3.6-1.4-5.8s0.5-4.1,1.4-5.8c0.9-1.7,2.2-3,3.9-4 c1.7-1,3.6-1.4,5.7-1.4c1.7,0,3.3,0.3,4.8,1c1.6,0.7,2.9,1.6,3.9,2.9l-2.5,2.2c-0.7-0.8-1.6-1.5-2.7-2c-1.1-0.5-2.2-0.8-3.5-0.8 c-2.2,0-4,0.7-5.4,2.2c-1.4,1.5-2.1,3.3-2.1,5.7c0,2.3,0.7,4.2,2.1,5.6c1.4,1.4,3.2,2.2,5.4,2.2c1.3,0,2.5-0.3,3.5-0.8 c1.1-0.5,2-1.2,2.7-2l2.5,2.3c-1,1.2-2.2,2.1-3.7,2.8c-1.5,0.7-3.2,1-5.3,1C131.4,40.6,129.5,40.1,127.8,39.2"/> <rect x="204.7" y="7.5" class="l_blanco" width="3.6" height="32.9"/> <path class="l_blanco" d="M247.5,30.7c-0.5-1.1-1.3-1.9-2.3-2.6c-1.8-1.2-4.2-1.8-7.3-1.8c-1.4,0-2.8,0.1-4.1,0.3v-2.3 c0-0.6,0.1-1.1,0.4-1.6c0.6-0.9,1.8-1.5,3.4-1.9c0.6-0.1,1.1-0.1,1.6-0.1c0.6,0,1.2,0,1.8,0.1c1.8,0.3,3,1,3.8,2.1l0.3,0.4l2.7-1.7 l-0.3-0.4c-0.7-1.1-1.8-2-3.4-2.6c-1.5-0.6-3.1-0.9-4.8-0.9c-1.6,0-3.1,0.3-4.5,0.8c-1.4,0.5-2.5,1.3-3.2,2.3c-0.7,1-1,2.2-1,3.6 v11.7c0,1.1-0.5,1.6-1.7,1.6h-0.5v2.9l0.4,0c1.9,0.1,3.3-0.4,4.2-1.5c1.6,1.4,3.8,2.1,6.4,2.1c1,0,2.2-0.2,3.4-0.5 c1.7-0.5,3.1-1.4,4.1-2.6c1-1.3,1.5-2.7,1.5-4.3C248.3,32.8,248,31.7,247.5,30.7 M245.1,34c0,0.9-0.3,1.6-0.8,2.3 c-0.5,0.7-1.3,1.2-2.4,1.5c-0.7,0.2-1.5,0.3-2.5,0.3c-1.4,0-2.7-0.3-4-0.9c-1.1-0.5-1.7-1.3-1.7-2.4v-5.3c1.3-0.3,2.7-0.5,4.1-0.5 c2.3,0,4.1,0.5,5.4,1.3c0.6,0.4,1.1,1,1.4,1.6C244.9,32.7,245.1,33.4,245.1,34"/> <polygon class="l_blanco" points="268.6,43.9 274.1,43.9 274.1,10.6 268.6,10.6 268.6,7.8 277.3,7.8 277.3,46.8 268.6,46.8 "/> <path class="l_blanco" d="M183.3,36.7c-1.1,0-1.5-0.4-1.5-1.4l0,0V18h-3.6v10.5c0,1.7-0.3,3.1-0.9,4.4c-0.6,1.2-1.4,2.2-2.3,2.8 c-1,0.7-2.1,1-3.3,1c-1.8,0-3.1-0.5-4-1.6c-0.9-1.1-1.3-2.8-1.3-5.2V18h-3.6v12.9c0,3,0.7,5.3,2.1,6.8c1.4,1.5,3.4,2.3,6,2.3 c1.5,0,2.8-0.3,4.1-1c1.3-0.7,2.3-1.7,3.1-3h0c0.1,0.9,0.2,1.7,0.5,2.1c0.7,1.4,2.1,2.2,4,2.2c0.2,0,0.4,0,0.6,0l0.7-0.1v-3.4 H183.3z"/> </g> </svg>`;
+---
+
+<Layout
+  title="GTD Colombia — PPC + Landing Pages | Markethink by Mácula"
+  description="Propuesta privada para GTD Colombia: PPC, landing pages, monitoreo con IA y mejora continua por Markethink by Mácula."
+  image="https://markethink.ai/generated/presentations/gtd-colombia-ppc/hero.svg"
+  canonical="https://markethink.ai/presentacion/gtd-colombia-ppc/"
+  noindex={true}
+>
+  <main class="presentation-page" aria-label="Presentación GTD Colombia PPC Markethink by Mácula">
+    <header class="presentation-topbar">
+      <a href="/" class="logo-lockup" aria-label="Markethink by Mácula">
+        <img src="/images/logo.svg" alt="Markethink" class="markethink-logo" />
+        <span class="logo-plus logo-by" aria-hidden="true">by</span>
+        <span class="macula-logo" aria-label="Mácula" set:html={maculaLogoSvg} />
+      </a>
+      <div class="client-lockup" aria-label="Propuesta para GTD Colombia">
+        <span>Propuesta para</span>
+        <img src={gtdLogoUrl} alt="GTD Colombia" />
+      </div>
+    </header>
+
+    <aside class="slide-rail" aria-label="Secciones de la presentación">
+      {slides.map((slide, index) => (
+        <a href={`#${slide.id}`} class={`rail-item ${slide.n === '01' ? 'active' : ''}`} data-slide-link={slide.id} aria-current={slide.n === '01' ? 'step' : undefined}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide, index) => (
+      <section id={slide.id} data-slide-id={slide.id} data-slide-index={index} class={`presentation-slide layout-${slide.layout} ${slide.backgroundOnly ? 'background-led' : ''} ${slide.n === '01' ? 'is-active' : ''}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="slide-background" aria-hidden="true">
+          <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+        </div>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="slide-shell">
+          <div class="story-content">
+            <p class="eyebrow">{slide.kicker}</p>
+            <h1 set:html={slide.title}></h1>
+            <p class="lead">{slide.lead}</p>
+            {slide.chips?.length > 0 && (
+              <div class="chip-row" aria-label="Puntos clave">
+                {slide.chips.map((chip) => <span>{chip}</span>)}
+              </div>
+            )}
+            {slide.details && (
+              <ul class="detail-list" aria-label="Detalles de la sección">
+                {slide.details.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            <div class="hero-actions" aria-label="Acciones de presentación">
+              <span class="context-note">Markethink by Mácula · {slide.note}</span>
+            </div>
+          </div>
+
+          {!slide.backgroundOnly && (
+            <div class="visual-stack">
+              {slide.videoPlayer ? (
+                <div class="video-card">
+                  <iframe src={slide.videoPlayer} title="Video de presentación Markethink by Mácula" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              ) : (
+                <div class="visual-card" aria-hidden="true">
+                  <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+                </div>
+              )}
+              {slide.aiCompanies && (
+                <div class="ai-ecosystem" aria-label="Logos de compañías de IA evaluadas continuamente">
+                  <div class="ai-logo-row">
+                    {slide.aiCompanies.map((company) => (
+                      <span class="ai-logo-card" aria-label={company.name}>
+                        <img src={company.icon} alt="" loading="lazy" decoding="async" />
+                        <strong>{company.name}</strong>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div class="slide-footer">
+          <span>{slide.n} / {slide.nav}</span>
+          <span>{slide.note}</span>
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const slides = Array.from(document.querySelectorAll('.presentation-slide[data-slide-id]'));
+    const railItems = Array.from(document.querySelectorAll('.rail-item[data-slide-link]'));
+
+    if (!slides.length || !railItems.length) return;
+
+    const setActiveSlide = (id) => {
+      railItems.forEach((item) => {
+        const isActive = item.dataset.slideLink === id;
+        item.classList.toggle('active', isActive);
+        if (isActive) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+
+      slides.forEach((slide) => {
+        slide.classList.toggle('is-active', slide.dataset.slideId === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.dataset?.slideId) {
+          setActiveSlide(visible.target.dataset.slideId);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.28, 0.42, 0.58, 0.72],
+        rootMargin: '-22% 0px -34% 0px',
+      }
+    );
+
+    slides.forEach((slide) => observer.observe(slide));
+
+    railItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (item.dataset.slideLink) setActiveSlide(item.dataset.slideLink);
+      });
+    });
+  })();
+</script>
+
+<style>
+  :global(html) { background: #0f1213; scroll-behavior: smooth; }
+  .presentation-page { background: #0f1213; color: #f5f5f1; overflow-x: hidden; }
+  .presentation-slide { position: relative; min-height: 100svh; isolation: isolate; display: grid; align-items: center; padding: clamp(6.5rem, 9vh, 8rem) clamp(1.3rem, 5vw, 5rem) clamp(4.8rem, 7vh, 6.4rem); background: #0f1213; overflow: hidden; scroll-margin-top: 0; }
+  .presentation-slide .story-content { opacity: .72; transform: translateY(18px); transition: opacity .72s ease, transform .72s ease; }
+  .presentation-slide .visual-card { opacity: .76; transition: opacity .72s ease, transform .72s ease, box-shadow .72s ease; }
+  .presentation-slide .slide-background img { transition: opacity .9s ease, transform 1.15s ease, filter .9s ease; }
+  .presentation-slide.is-active .story-content { opacity: 1; transform: translateY(0); }
+  .presentation-slide.is-active .visual-card { opacity: 1; box-shadow: 0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(105,210,84,.06); }
+  .presentation-slide.is-active .slide-background img { transform: scale(1.01); }
+  .presentation-slide.is-active .motion-field span { animation: softPulse 3.8s ease-in-out infinite; }
+  .slide-background, .slide-overlay, .motion-field { position: absolute; inset: 0; }
+  .slide-background { z-index: -4; }
+  .slide-background img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.23; filter: saturate(0.82) contrast(1.08); transform: scale(1.04); }
+  .slide-overlay { z-index: -3; background: radial-gradient(circle at var(--hot-x, 72%) var(--hot-y, 48%), rgba(105,210,84,.18), transparent 28%), radial-gradient(circle at 88% 78%, rgba(243,216,50,.10), transparent 22%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.78) 46%, rgba(15,18,19,.42) 100%), linear-gradient(180deg, rgba(15,18,19,.14), rgba(15,18,19,.84)); }
+  .motion-field { z-index: -2; opacity: .58; background-image: linear-gradient(rgba(245,245,241,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,.055) 1px, transparent 1px); background-size: 72px 72px; mask-image: radial-gradient(circle at 62% 50%, black, transparent 76%); }
+  .motion-field span { position: absolute; width: .55rem; height: .55rem; border-radius: 999px; background: #69d254; box-shadow: 0 0 0 .42rem rgba(105,210,84,.13); }
+  .motion-field span:nth-child(1){ top: 22%; left: 20%; } .motion-field span:nth-child(2){ top: 30%; right: 28%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11);} .motion-field span:nth-child(3){ bottom:24%; left:38%; } .motion-field span:nth-child(4){ bottom:18%; right:17%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11); }
+  .presentation-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+  .logo-lockup { pointer-events:auto; display:inline-flex; align-items:center; gap:.85rem; min-height:3.1rem; padding:.7rem 1rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.66); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.28); }
+  .markethink-logo{ height:1.15rem; width:auto; filter:brightness(0) invert(1); } .logo-plus{ display:inline-grid; place-items:center; width:1.25rem; height:1.25rem; border-radius:999px; background:rgba(105,210,84,.14); color:#69d254; font-size:.95rem; font-weight:600; line-height:1; } .macula-logo, .macula-logo :global(svg){ display:inline-flex; align-items:center; height:2.18rem; width:auto; }
+  .deck-label { pointer-events:none; padding:.75rem 1rem; border:1px solid rgba(245,245,241,.11); border-radius:999px; color:rgba(245,245,241,.58); background:rgba(15,18,19,.44); backdrop-filter:blur(14px); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+  .slide-shell { width:min(1240px, 100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0, .95fr) minmax(340px, .9fr); gap:clamp(2rem,5vw,5.5rem); align-items:center; padding-block:clamp(1.2rem,2.5vh,2rem); }
+  .story-content{ max-width:760px; position:relative; z-index:2; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:.65rem; margin:0 0 1.15rem; color:rgba(237,244,234,.72); font-size:.75rem; line-height:1; letter-spacing:.16em; text-transform:uppercase; } .eyebrow::before{ content:""; width:.52rem; height:.52rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .32rem rgba(105,210,84,.12); }
+  h1{ max-width:20ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.25rem,4.2vw,4.72rem); font-weight:400; line-height:1.03; letter-spacing:-.032em; color:#f5f5f1; text-wrap:balance; }
+  .lead{ max-width:46rem; margin-top:clamp(.85rem,1.7vw,1.25rem); color:rgba(245,245,241,.80); font-size:clamp(.98rem,1.12vw,1.12rem); line-height:1.48; text-wrap:balance; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.15rem; } .chip-row span{ padding:.68rem .86rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.55); color:rgba(245,245,241,.74); backdrop-filter:blur(12px); font-size:.8rem; }
+  .detail-list{ max-width:50rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.52rem; margin:1.05rem 0 0; padding:0; list-style:none; }
+  .detail-list li{ position:relative; padding:.72rem .78rem .72rem 1.55rem; border:1px solid rgba(245,245,241,.10); border-radius:1rem; background:rgba(15,18,19,.38); color:rgba(245,245,241,.72); font-size:clamp(.86rem,.98vw,.95rem); line-height:1.34; backdrop-filter:blur(10px); }
+  .detail-list li::before{ content:""; position:absolute; left:.78rem; top:1.05rem; width:.42rem; height:.42rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .18rem rgba(105,210,84,.12); }
+  .hero-actions{ display:flex; align-items:center; gap:1.15rem; flex-wrap:wrap; margin-top:1.35rem; } .primary-action{ display:inline-flex; align-items:center; justify-content:center; min-height:3rem; padding:.9rem 1.25rem; border-radius:999px; background:#69d254; color:#0f1213; font-size:.9rem; font-weight:750; box-shadow:0 18px 45px rgba(105,210,84,.16); } .context-note{ max-width:27rem; color:rgba(245,245,241,.52); font-size:.86rem; line-height:1.45; }
+  .visual-stack{ display:grid; gap:clamp(.85rem,1.4vw,1.15rem); align-items:start; }
+  .visual-card{ position:relative; width:100%; border:1px solid rgba(245,245,241,.13); border-radius:clamp(1.4rem,3vw,2.6rem); overflow:hidden; background:#141718; box-shadow:0 40px 110px rgba(0,0,0,.42); transform:translateY(1rem); }
+  .visual-card::before{ content:""; position:absolute; inset:0; z-index:2; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.20); pointer-events:none; }
+  .visual-card::after{ content:""; position:absolute; width:32%; aspect-ratio:1; right:-10%; top:-12%; border-radius:999px; background:rgba(105,210,84,.16); filter:blur(24px); z-index:1; }
+  .visual-card img{ width:100%; height:auto; object-fit:contain; display:block; transform:none; background:#0f1213; }
+  .video-card{ position:relative; width:min(100%,420px); aspect-ratio:9/16; max-height:min(72vh,760px); justify-self:center; border:1px solid rgba(245,245,241,.16); border-radius:clamp(1.4rem,3vw,2.35rem); overflow:hidden; background:#0f1213; box-shadow:0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(105,210,84,.08); }
+  .video-card::before{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.16); }
+  .video-card iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; background:#0f1213; }
+  .ai-ecosystem{ position:relative; padding:.95rem; border:1px solid rgba(245,245,241,.12); border-radius:1.35rem; background:linear-gradient(135deg, rgba(15,18,19,.74), rgba(15,18,19,.42)); backdrop-filter:blur(16px); box-shadow:0 24px 70px rgba(0,0,0,.22); overflow:hidden; }
+  .ai-ecosystem::before{ content:""; position:absolute; inset:auto -12% -62% 18%; height:150%; border-radius:999px; background:radial-gradient(circle, rgba(105,210,84,.16), transparent 58%); pointer-events:none; }
+  .ai-logo-row{ position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.58rem; }
+  .ai-logo-card{ min-height:3.45rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.38rem; border:1px solid rgba(245,245,241,.13); border-radius:1rem; background:rgba(245,245,241,.07); box-shadow:inset 0 1px 0 rgba(245,245,241,.06); }
+  .ai-logo-card img{ width:1.35rem; height:1.35rem; object-fit:contain; filter:brightness(0) invert(1); opacity:.92; }
+  .ai-logo-card strong{ color:rgba(245,245,241,.86); font-size:.68rem; line-height:1; font-weight:700; letter-spacing:.01em; }
+
+  .background-led .slide-background img { opacity: .78; filter: saturate(.98) contrast(1.08); transform: scale(1.02); }
+  .background-led .slide-overlay { background: radial-gradient(circle at var(--hot-x, 70%) var(--hot-y, 48%), rgba(105,210,84,.12), transparent 30%), radial-gradient(circle at 86% 74%, rgba(243,216,50,.08), transparent 22%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.88) 28%, rgba(15,18,19,.44) 62%, rgba(15,18,19,.20) 100%), linear-gradient(180deg, rgba(15,18,19,.10), rgba(15,18,19,.72)); }
+  .background-led .slide-shell { grid-template-columns: 1fr; }
+  .background-led .story-content { max-width: min(880px, 72vw); padding: clamp(1.4rem, 2vw, 2rem); border-left: 1px solid rgba(105,210,84,.28); background: linear-gradient(90deg, rgba(15,18,19,.50), rgba(15,18,19,.16)); backdrop-filter: blur(2px); }
+  .background-led h1 { max-width: 14.4ch; }
+  .layout-hero .story-content { background: transparent; border-left: 0; padding-left: 0; }
+  .layout-split .slide-background img { object-position: 62% center; }
+  .layout-orbital .slide-background img { object-position: 70% center; }
+  .layout-product .slide-background img { object-position: 68% center; }
+  .layout-library .slide-background img { object-position: 64% center; }
+  .layout-roadmap .slide-background img { object-position: 66% center; }
+  .layout-consulting .slide-background img { object-position: 58% center; }
+  .layout-gates .slide-background img { object-position: 58% center; }
+  .layout-closing .slide-background img { object-position: 72% center; }
+  .layout-hero .slide-shell{ grid-template-columns:1fr; } .layout-hero .visual-card{ display:none; } .layout-hero .story-content{ max-width:1020px; } .layout-hero h1{ max-width:20ch; } .layout-hero .lead{ max-width:54rem; font-size:clamp(1.05rem,1.36vw,1.35rem); }
+  .layout-video .slide-shell{ grid-template-columns:minmax(0,.9fr) minmax(300px,.48fr); } .layout-video .story-content{ max-width:780px; } .layout-video h1{ max-width:13.8ch; } .layout-video .slide-background img{ opacity:.14; }
+  .layout-split .visual-card{ transform:rotate(-1.2deg) translateY(0); }
+  .layout-orbital{ --hot-x:70%; --hot-y:40%; } .layout-orbital .visual-card{ border-radius:999px 2.6rem 999px 2.6rem; transform:rotate(1.6deg); }
+  .layout-product .slide-shell{ grid-template-columns:minmax(0,.82fr) minmax(460px,1.05fr); } .layout-product .visual-card{ transform:perspective(900px) rotateY(-4deg); }
+  .layout-consulting .slide-shell{ grid-template-columns:minmax(430px,.98fr) minmax(0,.9fr); } .layout-consulting .story-content{ order:2; } .layout-consulting .visual-card{ order:1; transform:rotate(-2deg); }
+  .layout-stacked .visual-card{ clip-path:polygon(6% 0,100% 0,94% 100%,0 100%); }
+  .layout-library .slide-shell{ grid-template-columns:minmax(0,.88fr) minmax(470px,1fr); } .layout-library .visual-card{ transform:rotate(1deg) scale(1.02); }
+  .layout-gates .story-content{ order:2; } .layout-gates .visual-card{ order:1; border-radius:2.8rem; }
+  .layout-roadmap .visual-card{ transform:rotate(-.8deg); }
+  .layout-closing .slide-shell{ grid-template-columns:1fr; } .layout-closing .story-content{ max-width:960px; } .layout-closing .visual-card{ position:absolute; right:4vw; bottom:10vh; width:min(42vw,620px); opacity:.50; z-index:0; transform:rotate(2deg); }
+  .slide-footer{ position:absolute; left:clamp(1.25rem,4vw,4rem); right:clamp(1.25rem,4vw,4rem); bottom:clamp(1rem,2vw,2rem); z-index:3; display:flex; justify-content:space-between; gap:1rem; color:rgba(245,245,241,.48); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; pointer-events:none; }
+  .slide-rail{ position:fixed; top:50%; right:clamp(1rem,2vw,2rem); z-index:7; display:grid; gap:.42rem; transform:translateY(-50%); }
+  .rail-item{ width:8.55rem; display:grid; grid-template-columns:1.8rem 1fr; align-items:center; gap:.48rem; padding:.46rem; border:1px solid rgba(245,245,241,.11); border-radius:.9rem; background:rgba(15,18,19,.48); backdrop-filter:blur(16px); color:rgba(245,245,241,.70); text-decoration:none; transform:translateX(.2rem); transition:transform .28s ease, border-color .28s ease, background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item span{ width:1.8rem; height:1.8rem; display:inline-grid; place-items:center; border-radius:.66rem; background:rgba(245,245,241,.08); color:rgba(245,245,241,.62); font-size:.64rem; font-weight:700; transition:background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item strong{ font-family:var(--font-body); font-size:.72rem; font-weight:600; }
+  .rail-item:hover{ transform:translateX(0); border-color:rgba(245,245,241,.22); color:rgba(245,245,241,.92); background:rgba(15,18,19,.66); }
+  .rail-item.active{ transform:translateX(-.18rem); color:#f5f5f1; border-color:rgba(105,210,84,.58); background:linear-gradient(90deg, rgba(105,210,84,.14), rgba(15,18,19,.62)); box-shadow:0 0 0 1px rgba(105,210,84,.14), 0 24px 60px rgba(0,0,0,.28); }
+  .rail-item.active span{ background:rgba(105,210,84,.20); color:#69d254; box-shadow:0 0 0 .26rem rgba(105,210,84,.08); }
+  @keyframes softPulse { 0%, 100% { transform: scale(1); opacity:.72; } 50% { transform: scale(1.36); opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
+  @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
+  @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:7.25rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell, .layout-video .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .video-card{ max-width:420px; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
+  @media (max-width:680px){ .presentation-slide{ padding:6.9rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ gap:.65rem; max-width:calc(100vw - 2.5rem); overflow:hidden; } .markethink-logo{ height:1rem; } .macula-logo, .macula-logo :global(svg){ height:1.55rem; } .slide-shell{ padding-block:0; gap:1.35rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+</style>
+
+<style>
+  .client-lockup { display:flex; align-items:center; gap:.65rem; color:#b4b6b6; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; }
+  .client-lockup img { height: clamp(1.35rem, 2vw, 1.9rem); width:auto; max-width: 9rem; object-fit:contain; filter: drop-shadow(0 8px 22px rgba(0,0,0,.28)); }
+  .deck-label { display:none; }
+  .detail-list li { line-height:1.36; }
+  @media (max-width: 760px) { .client-lockup span { display:none; } .client-lockup img { max-width: 6.5rem; } }
+</style>
