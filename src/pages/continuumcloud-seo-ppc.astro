@@ -1,0 +1,368 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const continuumLogo = "https://continuumcloud.com/wp-content/uploads/2025/07/whitelogo.png";
+const continuumMark = "https://continuumcloud.com/wp-content/uploads/2026/01/CC-Logo_02.png";
+const heroImage = "https://continuumcloud.com/wp-content/uploads/2022/10/HP_Hero.png";
+const welligentIcon = "https://continuumcloud.com/wp-content/uploads/2026/01/Welligent_App.png";
+const datisIcon = "https://continuumcloud.com/wp-content/uploads/2026/01/HCM_icon.png";
+const caredForIcon = "https://continuumcloud.com/wp-content/uploads/2026/01/PE_icon.png";
+
+const sourceLinks = [
+  { label: "ContinuumCloud", href: "https://continuumcloud.com/" },
+  { label: "Software suite", href: "https://continuumcloud.com/behavioral-health-software/" },
+  { label: "Welligent", href: "https://continuumcloud.com/behavioral-health-software/welligent/" },
+  { label: "DATIS", href: "https://continuumcloud.com/behavioral-health-software/datis/" },
+  { label: "CaredFor", href: "https://continuumcloud.com/behavioral-health-software/caredfor/" },
+  { label: "CCBHCs", href: "https://continuumcloud.com/who-we-serve/ccbhcs/" },
+  { label: "Substance use", href: "https://continuumcloud.com/who-we-serve/substance-use-treatment/" },
+  { label: "Clinically AI", href: "https://continuumcloud.com/clinically-ai/" },
+];
+
+const slides = [
+  {
+    n: "01",
+    id: "opening",
+    nav: "Opening",
+    kicker: "PRIVATE STRATEGY PREVIEW · SEO + PPC",
+    title: "ContinuumCloud has multiple demand paths. They should not all land on the same story.",
+    lead: "The fastest growth opportunity is to separate search demand by buyer intent, product line, landing page, and sales follow-up: Welligent, DATIS, CaredFor, CCBHC, substance use, and AI documentation each need a sharper path.",
+    layout: "hero",
+    image: heroImage,
+    chips: ["Behavioral health", "Human services", "EHR", "HCM", "Patient engagement"],
+    note: "Prepared for Friday's conversation",
+    sources: [sourceLinks[0], sourceLinks[1]],
+  },
+  {
+    n: "02",
+    id: "what-we-found",
+    nav: "What we found",
+    kicker: "SLIDE 02 · THE BUSINESS BEHIND THE SEARCHES",
+    title: "This is not one product category. It is a connected operating stack for complex care organizations.",
+    lead: "ContinuumCloud’s site already carries the right ingredients: product pages, vertical pages, webinars, resources, and strong behavioral health expertise. The missed opportunity is cleaner demand routing.",
+    layout: "products",
+    chips: ["Clinical", "Workforce", "Engagement", "Documentation"],
+    note: "Four entry points, one system story",
+    products: [
+      { name: "Welligent", label: "Behavioral health EHR", icon: welligentIcon, href: sourceLinks[2].href },
+      { name: "DATIS", label: "HCM, payroll, workforce", icon: datisIcon, href: sourceLinks[3].href },
+      { name: "CaredFor", label: "Patient + alumni engagement", icon: caredForIcon, href: sourceLinks[4].href },
+      { name: "Clinically AI", label: "Documentation + compliance", icon: continuumMark, href: sourceLinks[7].href },
+    ],
+    sources: [sourceLinks[2], sourceLinks[3], sourceLinks[4], sourceLinks[7]],
+  },
+  {
+    n: "03",
+    id: "demand-map",
+    nav: "Demand map",
+    kicker: "SLIDE 03 · SEARCH INTENT ARCHITECTURE",
+    title: "Searchers are arriving with different problems. The account structure should reflect that.",
+    lead: "A CCBHC leader, an HR director, a clinical director, and a SUD operator are not searching for the same thing. Each path needs its own message, page, conversion event, and follow-up owner.",
+    layout: "map",
+    chips: ["Intent", "Product", "Landing page", "CRM route"],
+    note: "Message match before media spend",
+    rows: [
+      ["Behavioral health EHR", "Welligent", "Clinical + operations"],
+      ["CCBHC readiness", "Suite story", "Executive + compliance"],
+      ["HCM / position control", "DATIS", "HR + finance"],
+      ["Patient engagement", "CaredFor", "Experience + aftercare"],
+      ["AI documentation", "Clinically AI", "Clinical leadership"],
+    ],
+    sources: [sourceLinks[5], sourceLinks[6]],
+  },
+  {
+    n: "04",
+    id: "seo-priorities",
+    nav: "SEO",
+    kicker: "SLIDE 04 · SEO PRIORITIES",
+    title: "The first SEO win is not more content. It is making the commercial pages easier to find, understand, and trust.",
+    lead: "Their resource footprint is already substantial. The sharper move is technical cleanup, stronger money pages, and better internal routing from educational content into product and vertical pages.",
+    layout: "cards",
+    chips: ["Index coverage", "Page hierarchy", "Money pages", "Internal links"],
+    note: "Fix the foundation before scaling content",
+    cards: [
+      { title: "Sitemap + indexation", body: "Validate core product and vertical page coverage. Resource pages appear more visible in XML structure than the highest-value commercial pages." },
+      { title: "H1 hierarchy", body: "Clean repeated or competing H1s on product and vertical pages so the primary topic is unmistakable." },
+      { title: "Commercial clusters", body: "Build search-native pages for behavioral health EHR, CCBHC software, HCM, SUD, patient engagement, and AI documentation." },
+      { title: "Resource routing", body: "Use blogs, webinars, and podcasts to push authority toward Welligent, DATIS, CaredFor, and vertical conversion pages." },
+    ],
+    sources: [sourceLinks[1], sourceLinks[5]],
+  },
+  {
+    n: "05",
+    id: "ppc-build",
+    nav: "PPC",
+    kicker: "SLIDE 05 · PPC STARTING POINT",
+    title: "Start paid search where intent is clearest: Welligent, CCBHC, and DATIS.",
+    lead: "Do not spread budget evenly across every product. Start with the categories most likely to produce qualified demo intent, then expand once lead quality and pipeline movement are proven.",
+    layout: "budget",
+    chips: ["Exact intent", "Vertical pages", "Lead quality", "Offline conversion"],
+    note: "Quality before volume",
+    budget: [
+      { label: "Behavioral health EHR", value: "35%", detail: "Welligent core demand" },
+      { label: "CCBHC software", value: "20%", detail: "requirements-to-platform bridge" },
+      { label: "DATIS / HCM", value: "20%", detail: "workforce and position control" },
+      { label: "SUD + patient engagement", value: "15%", detail: "CaredFor and vertical demand" },
+      { label: "AI documentation test", value: "5%", detail: "controlled learning" },
+      { label: "Brand protection", value: "5%", detail: "ContinuumCloud + product names" },
+    ],
+    sources: [sourceLinks[2], sourceLinks[3], sourceLinks[5]],
+  },
+  {
+    n: "06",
+    id: "landing-pages",
+    nav: "Pages",
+    kicker: "SLIDE 06 · LANDING PAGE GAP",
+    title: "Product pages explain the suite. Paid landing pages should capture one buyer problem at a time.",
+    lead: "The current pages are useful, but paid traffic needs tighter pages: one intent, one promise, one proof set, one demo path, and one CRM source label.",
+    layout: "pages",
+    chips: ["Message match", "Demo path", "Proof", "Tracking"],
+    note: "Dedicated pages reduce wasted clicks",
+    pages: [
+      "Behavioral Health EHR Software",
+      "CCBHC Software Platform",
+      "HCM Software for Behavioral Health",
+      "Substance Use Treatment EHR + Engagement",
+      "Patient Engagement for Behavioral Health",
+      "AI Documentation for Behavioral Health",
+    ],
+    sources: [sourceLinks[2], sourceLinks[3], sourceLinks[4], sourceLinks[7]],
+  },
+  {
+    n: "07",
+    id: "tracking",
+    nav: "Tracking",
+    kicker: "SLIDE 07 · MEASUREMENT + SALES FOLLOW-UP",
+    title: "The scorecard should not stop at form fills. It should measure qualified pipeline by product and segment.",
+    lead: "The forms appear product-specific, which is a good start. The next question is whether demo requests, fact-sheet downloads, meetings, opportunities, and closed revenue are tracked back to search intent and landing page.",
+    layout: "flow",
+    chips: ["UTMs", "Demo request", "MQL", "SQL", "Pipeline"],
+    note: "Optimize to qualified movement, not raw CPL",
+    steps: ["Search intent", "Landing page", "Demo/fact sheet", "CRM source", "Qualified opportunity", "Sales feedback loop"],
+    sources: [sourceLinks[0]],
+  },
+  {
+    n: "08",
+    id: "recommended-move",
+    nav: "Next move",
+    kicker: "SLIDE 08 · RECOMMENDED FIRST MOVE",
+    title: "Build the first demand system around Welligent + CCBHC + DATIS, then scale from what converts.",
+    lead: "Friday’s conversation should focus on priorities: which product needs pipeline first, what qualifies a good lead, which verticals close best, and whether tracking can connect media spend to sales movement.",
+    layout: "close",
+    image: heroImage,
+    chips: ["Audit", "Keyword map", "3 landing pages", "PPC launch", "Learning loop"],
+    note: "A focused first sprint",
+    checklist: [
+      "Validate Search Console and paid conversion tracking",
+      "Map product + vertical keyword clusters",
+      "Build three priority landing pages",
+      "Launch exact-intent PPC with strict negatives",
+      "Review lead quality and pipeline movement weekly",
+    ],
+    sources: sourceLinks,
+  },
+];
+---
+
+<Layout
+  title="ContinuumCloud SEO + PPC Strategy Preview | Markethink"
+  description="A private Markethink presentation for ContinuumCloud: SEO and PPC demand architecture, landing page opportunities, and recommended first moves."
+  image={heroImage}
+  canonical="https://markethink.ai/continuumcloud-seo-ppc/"
+  noindex={true}
+>
+  <main class="deck" aria-label="ContinuumCloud SEO and PPC strategy presentation">
+    <header class="topbar">
+      <a href="/" class="brand-lockup" aria-label="Markethink and ContinuumCloud">
+        <img src="/images/logo.svg" alt="Markethink" class="mt-logo" />
+        <span aria-hidden="true">×</span>
+        <img src={continuumLogo} alt="ContinuumCloud" class="cc-logo" />
+      </a>
+      <span class="private-label">Private SEO + PPC preview</span>
+    </header>
+
+    <aside class="rail" aria-label="Presentation navigation">
+      {slides.map((slide) => (
+        <a href={`#${slide.id}`} class="rail-item">
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide) => (
+      <section id={slide.id} class={`slide layout-${slide.layout}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="bg" aria-hidden="true">
+          {slide.image ? <img src={slide.image} alt="" loading={slide.n === "01" ? "eager" : "lazy"} decoding="async" /> : <img src={heroImage} alt="" loading="lazy" decoding="async" />}
+        </div>
+        <div class="wash" aria-hidden="true"></div>
+        <div class="grid" aria-hidden="true"></div>
+
+        <div class="shell">
+          <div class="copy">
+            <p class="kicker">{slide.kicker}</p>
+            <h1>{slide.title}</h1>
+            <p class="lead">{slide.lead}</p>
+            <div class="chips">
+              {slide.chips.map((chip) => <span>{chip}</span>)}
+            </div>
+          </div>
+
+          <div class="visual">
+            {slide.layout === "hero" && (
+              <div class="hero-panel">
+                <img src={continuumMark} alt="" />
+                <strong>One suite. Multiple demand paths.</strong>
+                <p>SEO and PPC should route each buyer to the product, proof, and next step that matches their intent.</p>
+              </div>
+            )}
+
+            {slide.products && (
+              <div class="product-grid">
+                {slide.products.map((product) => (
+                  <a href={product.href} class="product-card" target="_blank" rel="noreferrer">
+                    <img src={product.icon} alt="" />
+                    <strong>{product.name}</strong>
+                    <span>{product.label}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {slide.rows && (
+              <div class="intent-table">
+                {slide.rows.map((row) => (
+                  <div class="intent-row">
+                    <strong>{row[0]}</strong>
+                    <span>{row[1]}</span>
+                    <em>{row[2]}</em>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {slide.cards && (
+              <div class="card-grid">
+                {slide.cards.map((card) => (
+                  <article>
+                    <strong>{card.title}</strong>
+                    <p>{card.body}</p>
+                  </article>
+                ))}
+              </div>
+            )}
+
+            {slide.budget && (
+              <div class="budget-list">
+                {slide.budget.map((item) => (
+                  <div class="budget-row">
+                    <span>{item.value}</span>
+                    <div><strong>{item.label}</strong><em>{item.detail}</em></div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {slide.pages && (
+              <div class="page-stack">
+                {slide.pages.map((page, index) => (
+                  <div><span>{String(index + 1).padStart(2, "0")}</span><strong>{page}</strong></div>
+                ))}
+              </div>
+            )}
+
+            {slide.steps && (
+              <div class="flow-line">
+                {slide.steps.map((step, index) => (
+                  <div><span>{index + 1}</span><strong>{step}</strong></div>
+                ))}
+              </div>
+            )}
+
+            {slide.checklist && (
+              <div class="next-card">
+                <strong>Recommended first sprint</strong>
+                <ul>
+                  {slide.checklist.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <footer class="slide-footer">
+          <span>{slide.n} / {slide.nav} · {slide.note}</span>
+          <div>
+            {slide.sources?.slice(0, 4).map((source) => (
+              <a href={source.href} target="_blank" rel="noreferrer">{source.label}</a>
+            ))}
+          </div>
+        </footer>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  :global(html) { background: #071f33; scroll-behavior: smooth; }
+  .deck { --navy:#003070; --teal:#00b2b1; --orange:#f39a31; --cream:#f7fbfc; --ink:#071f33; min-height:100vh; color:var(--cream); background:var(--ink); font-family:var(--font-body); overflow-x:hidden; }
+  .topbar { position:fixed; z-index:20; top:clamp(1rem,2vw,1.8rem); left:clamp(1rem,3.5vw,3.5rem); right:clamp(1rem,3.5vw,3.5rem); display:flex; justify-content:space-between; align-items:center; pointer-events:none; }
+  .brand-lockup { pointer-events:auto; display:inline-flex; align-items:center; gap:.75rem; min-height:3rem; padding:.72rem 1rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(7,31,51,.72); backdrop-filter:blur(18px); text-decoration:none; box-shadow:0 18px 70px rgba(0,0,0,.25); }
+  .brand-lockup span { display:grid; place-items:center; width:1.45rem; height:1.45rem; border-radius:999px; background:rgba(0,178,177,.18); color:var(--teal); font-weight:800; }
+  .mt-logo { width:9rem; height:auto; filter:brightness(0) invert(1); }
+  .cc-logo { width:10.5rem; height:auto; object-fit:contain; }
+  .private-label { pointer-events:none; padding:.72rem 1rem; border:1px solid rgba(255,255,255,.12); border-radius:999px; background:rgba(7,31,51,.52); color:rgba(247,251,252,.74); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; backdrop-filter:blur(14px); }
+  .rail { position:fixed; z-index:18; right:clamp(.9rem,2vw,1.8rem); top:50%; transform:translateY(-50%); display:grid; gap:.42rem; }
+  .rail-item { display:grid; grid-template-columns:1.75rem 1fr; gap:.45rem; align-items:center; width:8.25rem; padding:.45rem; border:1px solid rgba(255,255,255,.12); border-radius:.95rem; background:rgba(7,31,51,.58); color:rgba(247,251,252,.75); text-decoration:none; backdrop-filter:blur(14px); transition:.22s ease; }
+  .rail-item:hover { transform:translateX(-.16rem); border-color:rgba(0,178,177,.45); color:#fff; }
+  .rail-item span { display:grid; place-items:center; width:1.75rem; height:1.75rem; border-radius:.65rem; background:rgba(0,178,177,.14); color:var(--teal); font-size:.65rem; font-weight:800; }
+  .rail-item strong { font-size:.72rem; font-weight:650; }
+  .slide { position:relative; min-height:100svh; overflow:hidden; isolation:isolate; display:grid; align-items:center; padding:clamp(7rem,10vh,8.5rem) clamp(1.3rem,5vw,5rem) clamp(4.8rem,7vh,6rem); }
+  .bg, .wash, .grid { position:absolute; inset:0; }
+  .bg { z-index:-4; background:linear-gradient(135deg,#003070,#071f33); }
+  .bg img { width:100%; height:100%; object-fit:cover; object-position:center; opacity:.18; filter:saturate(.95) contrast(1.08); transform:scale(1.03); }
+  .wash { z-index:-3; background: radial-gradient(circle at 78% 30%, rgba(0,178,177,.33), transparent 28%), radial-gradient(circle at 88% 80%, rgba(243,154,49,.18), transparent 24%), linear-gradient(90deg, rgba(7,31,51,.98) 0%, rgba(7,31,51,.86) 47%, rgba(7,31,51,.50) 100%), linear-gradient(180deg, rgba(0,48,112,.18), rgba(7,31,51,.90)); }
+  .grid { z-index:-2; opacity:.42; background-image:linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size:72px 72px; mask-image:radial-gradient(circle at 66% 45%, black, transparent 76%); }
+  .shell { width:min(1240px,100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0,.88fr) minmax(420px,1fr); align-items:center; gap:clamp(2rem,5vw,5rem); }
+  .copy { position:relative; z-index:2; max-width:770px; }
+  .kicker { display:inline-flex; gap:.65rem; align-items:center; margin:0 0 1.05rem; color:rgba(247,251,252,.72); font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; }
+  .kicker::before { content:""; width:.55rem; height:.55rem; border-radius:999px; background:var(--teal); box-shadow:0 0 0 .32rem rgba(0,178,177,.14); }
+  h1 { max-width:14.8ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.65rem,5.2vw,5.75rem); line-height:.98; font-weight:400; letter-spacing:-.04em; text-wrap:balance; }
+  .lead { max-width:47rem; margin:1.15rem 0 0; color:rgba(247,251,252,.82); font-size:clamp(1rem,1.15vw,1.16rem); line-height:1.52; text-wrap:balance; }
+  .chips { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.2rem; }
+  .chips span { padding:.64rem .82rem; border:1px solid rgba(255,255,255,.13); border-radius:999px; background:rgba(255,255,255,.06); color:rgba(247,251,252,.80); font-size:.8rem; backdrop-filter:blur(12px); }
+  .visual { position:relative; z-index:3; }
+  .hero-panel, .next-card { padding:clamp(1.4rem,2.4vw,2rem); border:1px solid rgba(255,255,255,.14); border-radius:2rem; background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.055)); backdrop-filter:blur(20px); box-shadow:0 40px 130px rgba(0,0,0,.32); }
+  .hero-panel img { width:7rem; margin-bottom:1.5rem; filter:drop-shadow(0 18px 40px rgba(0,0,0,.32)); }
+  .hero-panel strong, .next-card strong { display:block; font-size:clamp(1.5rem,2.6vw,2.45rem); line-height:1.05; font-family:"Instrument Serif", Georgia, serif; font-weight:400; }
+  .hero-panel p { color:rgba(247,251,252,.76); line-height:1.5; margin:.85rem 0 0; }
+  .product-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.85rem; }
+  .product-card { min-height:11rem; display:flex; flex-direction:column; justify-content:flex-end; gap:.45rem; padding:1.15rem; border:1px solid rgba(255,255,255,.13); border-radius:1.35rem; background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.055)); color:#fff; text-decoration:none; backdrop-filter:blur(18px); box-shadow:0 24px 80px rgba(0,0,0,.22); }
+  .product-card img { width:3rem; height:3rem; object-fit:contain; margin-bottom:auto; }
+  .product-card strong { font-size:1.15rem; }
+  .product-card span { color:rgba(247,251,252,.68); font-size:.9rem; }
+  .intent-table, .budget-list, .page-stack { display:grid; gap:.62rem; }
+  .intent-row, .budget-row, .page-stack div { display:grid; grid-template-columns:1.35fr .9fr 1.1fr; gap:.8rem; align-items:center; padding:.88rem 1rem; border:1px solid rgba(255,255,255,.12); border-radius:1rem; background:rgba(255,255,255,.07); backdrop-filter:blur(16px); }
+  .intent-row strong { color:#fff; } .intent-row span { color:var(--teal); font-weight:750; } .intent-row em { color:rgba(247,251,252,.70); font-style:normal; }
+  .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+  .card-grid article { min-height:10.5rem; padding:1.05rem; border:1px solid rgba(255,255,255,.12); border-radius:1.2rem; background:rgba(255,255,255,.075); backdrop-filter:blur(16px); }
+  .card-grid strong { color:#fff; font-size:1.02rem; } .card-grid p { margin:.55rem 0 0; color:rgba(247,251,252,.70); font-size:.9rem; line-height:1.42; }
+  .budget-row { grid-template-columns:4.25rem 1fr; }
+  .budget-row > span { display:grid; place-items:center; width:4rem; height:4rem; border-radius:1rem; background:rgba(0,178,177,.18); color:var(--teal); font-size:1.2rem; font-weight:850; }
+  .budget-row strong { display:block; color:#fff; } .budget-row em { display:block; margin-top:.18rem; color:rgba(247,251,252,.65); font-style:normal; font-size:.88rem; }
+  .page-stack div { grid-template-columns:2.2rem 1fr; }
+  .page-stack span { color:var(--orange); font-weight:850; } .page-stack strong { font-size:1.02rem; }
+  .flow-line { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+  .flow-line div { position:relative; min-height:6.5rem; padding:1rem; border:1px solid rgba(255,255,255,.12); border-radius:1.15rem; background:rgba(255,255,255,.075); }
+  .flow-line span { display:grid; place-items:center; width:2rem; height:2rem; border-radius:999px; background:var(--orange); color:var(--ink); font-weight:900; margin-bottom:.75rem; }
+  .flow-line strong { color:#fff; }
+  .next-card ul { margin:1rem 0 0; padding:0; list-style:none; display:grid; gap:.55rem; }
+  .next-card li { position:relative; padding:.78rem .8rem .78rem 2rem; border:1px solid rgba(255,255,255,.11); border-radius:.95rem; background:rgba(255,255,255,.06); color:rgba(247,251,252,.76); }
+  .next-card li::before { content:""; position:absolute; left:.85rem; top:1.13rem; width:.48rem; height:.48rem; border-radius:999px; background:var(--teal); }
+  .slide-footer { position:absolute; z-index:8; left:clamp(1.2rem,4vw,4rem); right:clamp(10rem,13vw,13.5rem); bottom:clamp(1rem,2vw,1.7rem); display:flex; justify-content:space-between; align-items:center; gap:1rem; color:rgba(247,251,252,.56); font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; }
+  .slide-footer div { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.45rem; }
+  .slide-footer a { color:rgba(247,251,252,.64); text-decoration:none; border-bottom:1px solid rgba(0,178,177,.35); }
+  .layout-close .bg img, .layout-hero .bg img { opacity:.32; object-position:right center; }
+  .layout-close .shell, .layout-hero .shell { grid-template-columns:minmax(0,.95fr) minmax(420px,.75fr); }
+  @media (max-width:1080px){ .rail,.private-label{display:none;} .slide{min-height:auto;padding-top:7.25rem;padding-bottom:4.5rem;} .shell,.layout-close .shell,.layout-hero .shell{grid-template-columns:1fr;gap:1.8rem;} .slide-footer{position:relative;left:auto;right:auto;bottom:auto;width:100%;margin-top:2rem;align-items:flex-start;flex-direction:column;} .visual{max-width:760px;} }
+  @media (max-width:680px){ .topbar{position:absolute;} .brand-lockup{max-width:calc(100vw - 2rem);gap:.55rem;padding:.62rem .75rem;} .mt-logo{width:7rem;} .cc-logo{width:8rem;} .brand-lockup span{width:1.2rem;height:1.2rem;} .slide{padding:6.7rem 1.1rem 2rem;} h1{font-size:clamp(2.35rem,11vw,4.2rem);max-width:12ch;} .lead{font-size:.98rem;} .product-grid,.card-grid,.flow-line{grid-template-columns:1fr;} .intent-row{grid-template-columns:1fr;gap:.28rem;} .budget-row{grid-template-columns:3.5rem 1fr;} .budget-row > span{width:3.25rem;height:3.25rem;font-size:1rem;} .slide-footer{font-size:.66rem;} }
+</style>
