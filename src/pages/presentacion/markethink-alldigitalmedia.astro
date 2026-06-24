@@ -1,0 +1,482 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const slides = [
+  {
+    "n": "01",
+    "id": "opening",
+    "nav": "Apertura",
+    "kicker": "PRESENTACIÓN PRIVADA · SLIDE 01",
+    "title": "Markethink convierte campañas, contenido, aprobaciones y seguimiento en una operación continua.",
+    "lead": "Con IA, criterio experto y control humano, para que tu marketing avance todos los días, alineado con tu marca y tu audiencia.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-hero.jpg?v=ipad-dashboard-1",
+    "layout": "hero",
+    "backgroundOnly": true,
+    "next": "problem",
+    "action": "Siguiente",
+    "note": "La promesa central",
+    "chips": [
+      "Marketing en movimiento",
+      "Marca y audiencia",
+      "Revisión humana",
+      "Aprende cada ciclo"
+    ]
+  },
+  {
+    "n": "02",
+    "id": "problem",
+    "nav": "Problema",
+    "kicker": "SLIDE 02 · DOLOR OPERATIVO",
+    "title": "El problema no es falta de ideas. Es que el trabajo se parte en demasiados lugares.",
+    "lead": "La campaña se piensa en una reunión, pero después se dispersa entre documentos, chats, diseños, landings, CRM y aprobaciones. Markethink conecta ese flujo para que el trabajo avance.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-slide-2.png",
+    "videoPlayer": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia/video-player.html",
+    "layout": "video",
+    "backgroundOnly": false,
+    "next": "system",
+    "action": "Siguiente",
+    "note": "Del desorden al flujo",
+    "chips": [
+      "Copy",
+      "Diseño",
+      "Landing",
+      "CRM",
+      "Aprobación"
+    ],
+    "details": [
+      "Posts sin continuidad",
+      "Landing pages atrasadas",
+      "Seguimiento comercial incompleto",
+      "Aprendizajes que se pierden"
+    ]
+  },
+  {
+    "n": "03",
+    "id": "system",
+    "nav": "Qué es",
+    "kicker": "SLIDE 03 · QUÉ ES MARKETHINK",
+    "title": "Markethink es el sistema operativo de marketing que convierte estrategia en entregables reales.",
+    "lead": "Creado y operado por expertos, potenciado por IA y diseñado para producir trabajo listo para revisar: campañas, contenido, aprobaciones y seguimiento alineados con marca, audiencia y objetivos comerciales.",
+    "image": "https://markethink.ai/images/process-markethink-ai-improves.avif?v=system-full-1",
+    "layout": "product",
+    "backgroundOnly": false,
+    "next": "actual-work",
+    "action": "Siguiente",
+    "note": "Sistema de trabajo",
+    "chips": [
+      "Aprende",
+      "Organiza",
+      "Produce",
+      "Recuerda"
+    ],
+    "details": [
+      "Define mensajes por objetivo y audiencia",
+      "Mantiene tono, visuales y límites de marca",
+      "Coordina cambios y aprobaciones",
+      "Conserva memoria para el siguiente ciclo"
+    ]
+  },
+  {
+    "n": "04",
+    "id": "actual-work",
+    "nav": "Qué produce",
+    "kicker": "SLIDE 04 · TRABAJO REAL",
+    "title": "Markethink produce el marketing que tu empresa necesita cada semana.",
+    "lead": "No entrega solo ideas. Convierte objetivos y feedback en activos claros, revisables y alineados con marca, audiencia y datos reales.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-weekly-deliverables-system.png?v=weekly-production-1",
+    "layout": "library",
+    "backgroundOnly": false,
+    "next": "workflow",
+    "action": "Siguiente",
+    "note": "Activos listos para revisar",
+    "chips": [
+      "Landings",
+      "Social",
+      "Email",
+      "Ventas",
+      "Leads"
+    ],
+    "details": [
+      "Gráficos, posts y carruseles on brand",
+      "Landing pages para campañas, servicios y audiencias específicas",
+      "Emails y secuencias de seguimiento comercial",
+      "Material de ventas con mensajes adaptados por audiencia",
+      "Mejoras continuas usando feedback, aprobaciones y datos de desempeño"
+    ]
+  },
+  {
+    "n": "05",
+    "id": "workflow",
+    "nav": "Flujo",
+    "kicker": "SLIDE 05 · CÓMO TRABAJA",
+    "title": "De objetivo comercial a trabajo listo para aprobar.",
+    "lead": "Un flujo claro para tomar una prioridad real —una campaña, una audiencia, una línea de negocio o una oportunidad comercial— y convertirla en piezas listas para revisar, publicar y aprender.",
+    "image": "https://markethink.ai/images/product-continuous-improvement.png?v=workflow-full-1",
+    "layout": "library",
+    "backgroundOnly": false,
+    "next": "ai-brand",
+    "action": "Siguiente",
+    "note": "Un flujo completo",
+    "chips": [
+      "Objetivo comercial",
+      "ICP y estrategia",
+      "Producción",
+      "Revisión",
+      "Aprendizaje"
+    ],
+    "details": [
+      "1. Objetivo comercial: definir qué se quiere mover y por qué importa ahora",
+      "2. ICP y estrategia: identificar el ICP, definir mensaje, ángulo, canal y siguiente paso",
+      "3. Producción: crear landing, posts, emails, visuales y material de seguimiento",
+      "4. Revisión: aprobar, ajustar o corregir antes de publicar o enviar",
+      "5. Aprendizaje: usar feedback y datos para mejorar el siguiente ciclo"
+    ]
+  },
+  {
+    "n": "06",
+    "id": "ai-brand",
+    "nav": "IA aplicada",
+    "kicker": "SLIDE 06 · IA + CRITERIO + MARCA",
+    "title": "Markethink mantiene tu marketing al día con la IA que realmente sirve.",
+    "lead": "La tecnología cambia rápido. Markethink revisa continuamente las mejores capacidades de IA y las incorpora con criterio cuando ayudan a investigar, crear, adaptar, revisar, analizar o aprender mejor dentro de la operación de marketing.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-dynamic-slide-9.png?v=rawfix2",
+    "layout": "roadmap",
+    "backgroundOnly": false,
+    "next": "before-after",
+    "action": "Siguiente",
+    "note": "Tecnología en mejora continua",
+    "chips": [
+      "Se revisa lo último",
+      "Se filtra el ruido",
+      "Se aplica al flujo real",
+      "Marca y audiencia primero"
+    ],
+    "aiCompanies": [
+      {
+        "name": "OpenAI",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg"
+      },
+      {
+        "name": "Claude",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg"
+      },
+      {
+        "name": "Grok",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/x.svg"
+      },
+      {
+        "name": "Gemini",
+        "icon": "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg"
+      }
+    ],
+    "details": [
+      "Tu equipo no tiene que perseguir cada herramienta nueva",
+      "Markethink evalúa qué capacidades ayudan a campañas, contenido y seguimiento",
+      "Cada mejora entra con criterio experto, control humano y límites de marca"
+    ]
+  },
+  {
+    "n": "07",
+    "id": "before-after",
+    "nav": "Cambio",
+    "kicker": "SLIDE 07 · ANTES Y DESPUÉS",
+    "title": "De piezas sueltas a marketing que avanza todos los días.",
+    "lead": "Antes: landings atrasadas y CRM desconectado. Después: campañas organizadas, activos producidos, revisión clara e integración con CRM para seguimiento comercial.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-dynamic-slide-10.png?v=rawfix2",
+    "layout": "gates",
+    "backgroundOnly": false,
+    "next": "alldigitalmedia",
+    "action": "Siguiente",
+    "note": "El cambio operativo visible",
+    "chips": [
+      "Antes: desorden",
+      "Después: sistema"
+    ],
+    "details": [
+      "Landings y posts alineados con marca",
+      "Aprobaciones claras",
+      "Seguimiento comercial e integración con CRM",
+      "Memoria de decisiones",
+      "Cada ciclo mejora el siguiente"
+    ]
+  },
+  {
+    "n": "08",
+    "id": "alldigitalmedia",
+    "nav": "ADM",
+    "kicker": "SLIDE 08 · ACOMPAÑAMIENTO, INTEGRACIÓN Y CONTROL",
+    "title": "Acompañamiento, integración y control.",
+    "lead": "Markethink aporta la operación de marketing. AllDigitalMedia aporta dirección, operación, acompañamiento consultivo y contexto estratégico para que la adopción sea clara, controlada y útil para cada empresa.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-dynamic-slide-6.png?v=rawfix2",
+    "layout": "consulting",
+    "backgroundOnly": true,
+    "next": "next-step",
+    "action": "Siguiente",
+    "note": "Sistema + criterio + adopción",
+    "chips": [
+      "Procesos",
+      "Integración",
+      "Gobierno",
+      "Aprobación"
+    ],
+    "details": [
+      "Evaluación de flujos con mayor fricción",
+      "Adaptación al contexto del cliente",
+      "Integración con sistemas existentes",
+      "Revisión humana y cambios trazables"
+    ]
+  },
+  {
+    "n": "09",
+    "id": "next-step",
+    "nav": "Siguiente",
+    "kicker": "SLIDE 09 · SIGUIENTE PASO",
+    "title": "El siguiente paso no es probar otra herramienta. Es elegir un objetivo real donde IA, estrategia y ejecución trabajen juntas.",
+    "lead": "Una campaña, una línea de negocio o un proceso comercial donde Markethink y AllDigitalMedia puedan convertir marketing pendiente en trabajo listo para revisar, medir y mejorar.",
+    "image": "https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-hero.jpg?v=ipad-dashboard-1",
+    "layout": "closing",
+    "backgroundOnly": true,
+    "next": "opening",
+    "action": "Volver al inicio",
+    "note": "Definir el primer flujo",
+    "chips": [
+      "Campaña",
+      "Landing + social",
+      "CRM/seguimiento",
+      "Ventas"
+    ],
+    "details": [
+      "Elegir un flujo con fricción real",
+      "Definir revisión y responsables",
+      "Medir velocidad, claridad y aprendizaje del ciclo"
+    ]
+  }
+];
+const allDigitalMediaLogoUrl = "https://alldigitalmedia.com/adm-logo.png";
+---
+
+<Layout
+  title="Markethink + AllDigitalMedia — Marketing con memoria"
+  description="Una presentación privada sobre cómo Markethink y AllDigitalMedia ayudan a convertir campañas, activos, revisión y seguimiento en una operación de marketing continua."
+  image="https://dashboard.markethink.ai/generated/landing/markethink/markethink-alldigitalmedia-hero.jpg?v=ipad-dashboard-1"
+  canonical="https://markethink.ai/presentacion/markethink-alldigitalmedia/"
+  noindex={true}
+>
+  <main class="presentation-page" aria-label="Presentación Markethink + AllDigitalMedia">
+    <header class="presentation-topbar">
+      <a href="/" class="logo-lockup" aria-label="Markethink y AllDigitalMedia">
+        <img src="/images/logo.svg" alt="Markethink" class="markethink-logo" />
+        <span class="logo-plus logo-by" aria-hidden="true">&</span>
+        <img src={allDigitalMediaLogoUrl} alt="AllDigitalMedia" class="alldigitalmedia-logo" loading="eager" decoding="async" />
+      </a>
+      <span class="deck-label">Presentación privada</span>
+    </header>
+
+    <aside class="slide-rail" aria-label="Secciones de la presentación">
+      {slides.map((slide, index) => (
+        <a href={`#${slide.id}`} class={`rail-item ${slide.n === '01' ? 'active' : ''}`} data-slide-link={slide.id} aria-current={slide.n === '01' ? 'step' : undefined}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide, index) => (
+      <section id={slide.id} data-slide-id={slide.id} data-slide-index={index} class={`presentation-slide layout-${slide.layout} ${slide.backgroundOnly ? 'background-led' : ''} ${slide.n === '01' ? 'is-active' : ''}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="slide-background" aria-hidden="true">
+          <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+        </div>
+        <div class="slide-overlay" aria-hidden="true"></div>
+        <div class="motion-field" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <div class="slide-shell">
+          <div class="story-content">
+            <p class="eyebrow">{slide.kicker}</p>
+            <h1 set:html={slide.title}></h1>
+            <p class="lead">{slide.lead}</p>
+            {slide.chips?.length > 0 && (
+              <div class="chip-row" aria-label="Puntos clave">
+                {slide.chips.map((chip) => <span>{chip}</span>)}
+              </div>
+            )}
+            {slide.details && (
+              <ul class="detail-list" aria-label="Detalles de la sección">
+                {slide.details.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            <div class="hero-actions" aria-label="Acciones de presentación">
+              <span class="context-note">Markethink & AllDigitalMedia · {slide.note}</span>
+            </div>
+          </div>
+
+          {!slide.backgroundOnly && (
+            <div class="visual-stack">
+              {slide.videoPlayer ? (
+                <div class="video-card">
+                  <iframe src={slide.videoPlayer} title="Video de presentación Markethink & AllDigitalMedia" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              ) : (
+                <div class="visual-card" aria-hidden="true">
+                  <img src={slide.image} alt="" loading={slide.n === '01' ? 'eager' : 'lazy'} decoding="async" />
+                </div>
+              )}
+              {slide.aiCompanies && (
+                <div class="ai-ecosystem" aria-label="Logos de compañías de IA evaluadas continuamente">
+                  <div class="ai-logo-row">
+                    {slide.aiCompanies.map((company) => (
+                      <span class="ai-logo-card" aria-label={company.name}>
+                        <img src={company.icon} alt="" loading="lazy" decoding="async" />
+                        <strong>{company.name}</strong>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div class="slide-footer">
+          <span>{slide.n} / {slide.nav}</span>
+          <span>{slide.note}</span>
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<script is:inline>
+  (() => {
+    const slides = Array.from(document.querySelectorAll('.presentation-slide[data-slide-id]'));
+    const railItems = Array.from(document.querySelectorAll('.rail-item[data-slide-link]'));
+
+    if (!slides.length || !railItems.length) return;
+
+    const setActiveSlide = (id) => {
+      railItems.forEach((item) => {
+        const isActive = item.dataset.slideLink === id;
+        item.classList.toggle('active', isActive);
+        if (isActive) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+
+      slides.forEach((slide) => {
+        slide.classList.toggle('is-active', slide.dataset.slideId === id);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.dataset?.slideId) {
+          setActiveSlide(visible.target.dataset.slideId);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.28, 0.42, 0.58, 0.72],
+        rootMargin: '-22% 0px -34% 0px',
+      }
+    );
+
+    slides.forEach((slide) => observer.observe(slide));
+
+    railItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (item.dataset.slideLink) setActiveSlide(item.dataset.slideLink);
+      });
+    });
+  })();
+</script>
+
+<style>
+  :global(html) { background: #0f1213; scroll-behavior: smooth; }
+  .presentation-page { background: #0f1213; color: #f5f5f1; overflow-x: hidden; }
+  .presentation-slide { position: relative; min-height: 100svh; isolation: isolate; display: grid; align-items: center; padding: clamp(6.5rem, 9vh, 8rem) clamp(1.3rem, 5vw, 5rem) clamp(4.8rem, 7vh, 6.4rem); background: #0f1213; overflow: hidden; scroll-margin-top: 0; }
+  .presentation-slide .story-content { opacity: .72; transform: translateY(18px); transition: opacity .72s ease, transform .72s ease; }
+  .presentation-slide .visual-card { opacity: .76; transition: opacity .72s ease, transform .72s ease, box-shadow .72s ease; }
+  .presentation-slide .slide-background img { transition: opacity .9s ease, transform 1.15s ease, filter .9s ease; }
+  .presentation-slide.is-active .story-content { opacity: 1; transform: translateY(0); }
+  .presentation-slide.is-active .visual-card { opacity: 1; box-shadow: 0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(105,210,84,.06); }
+  .presentation-slide.is-active .slide-background img { transform: scale(1.01); }
+  .presentation-slide.is-active .motion-field span { animation: softPulse 3.8s ease-in-out infinite; }
+  .slide-background, .slide-overlay, .motion-field { position: absolute; inset: 0; }
+  .slide-background { z-index: -4; }
+  .slide-background img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.23; filter: saturate(0.82) contrast(1.08); transform: scale(1.04); }
+  .slide-overlay { z-index: -3; background: radial-gradient(circle at var(--hot-x, 72%) var(--hot-y, 48%), rgba(105,210,84,.18), transparent 28%), radial-gradient(circle at 88% 78%, rgba(243,216,50,.10), transparent 22%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.78) 46%, rgba(15,18,19,.42) 100%), linear-gradient(180deg, rgba(15,18,19,.14), rgba(15,18,19,.84)); }
+  .motion-field { z-index: -2; opacity: .58; background-image: linear-gradient(rgba(245,245,241,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(245,245,241,.055) 1px, transparent 1px); background-size: 72px 72px; mask-image: radial-gradient(circle at 62% 50%, black, transparent 76%); }
+  .motion-field span { position: absolute; width: .55rem; height: .55rem; border-radius: 999px; background: #69d254; box-shadow: 0 0 0 .42rem rgba(105,210,84,.13); }
+  .motion-field span:nth-child(1){ top: 22%; left: 20%; } .motion-field span:nth-child(2){ top: 30%; right: 28%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11);} .motion-field span:nth-child(3){ bottom:24%; left:38%; } .motion-field span:nth-child(4){ bottom:18%; right:17%; background:#f3d832; box-shadow:0 0 0 .42rem rgba(243,216,50,.11); }
+  .presentation-topbar { position: fixed; top: clamp(1rem, 2vw, 2rem); left: clamp(1.25rem, 4vw, 4rem); right: clamp(1.25rem, 4vw, 4rem); z-index: 8; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+  .logo-lockup { pointer-events:auto; display:inline-flex; align-items:center; gap:.85rem; min-height:3.1rem; padding:.7rem 1rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.66); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.28); }
+  .markethink-logo{ height:1.15rem; width:auto; filter:brightness(0) invert(1); } .logo-plus{ display:inline-grid; place-items:center; width:1.25rem; height:1.25rem; border-radius:999px; background:rgba(105,210,84,.14); color:#69d254; font-size:.95rem; font-weight:600; line-height:1; } .alldigitalmedia-logo{ display:inline-flex; align-items:center; height:2.18rem; width:auto; max-width:10rem; object-fit:contain; filter:brightness(0) invert(1); }
+  .deck-label { pointer-events:none; padding:.75rem 1rem; border:1px solid rgba(245,245,241,.11); border-radius:999px; color:rgba(245,245,241,.58); background:rgba(15,18,19,.44); backdrop-filter:blur(14px); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+  .slide-shell { width:min(1240px, 100%); margin-inline:auto; display:grid; grid-template-columns:minmax(0, .95fr) minmax(340px, .9fr); gap:clamp(2rem,5vw,5.5rem); align-items:center; padding-block:clamp(1.2rem,2.5vh,2rem); }
+  .story-content{ max-width:760px; position:relative; z-index:2; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:.65rem; margin:0 0 1.15rem; color:rgba(237,244,234,.72); font-size:.75rem; line-height:1; letter-spacing:.16em; text-transform:uppercase; } .eyebrow::before{ content:""; width:.52rem; height:.52rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .32rem rgba(105,210,84,.12); }
+  h1{ max-width:20ch; margin:0; font-family:"Instrument Serif", Georgia, serif; font-size:clamp(2.25rem,4.2vw,4.72rem); font-weight:400; line-height:1.03; letter-spacing:-.032em; color:#f5f5f1; text-wrap:balance; }
+  .lead{ max-width:46rem; margin-top:clamp(.85rem,1.7vw,1.25rem); color:rgba(245,245,241,.80); font-size:clamp(.98rem,1.12vw,1.12rem); line-height:1.48; text-wrap:balance; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.15rem; } .chip-row span{ padding:.68rem .86rem; border:1px solid rgba(245,245,241,.13); border-radius:999px; background:rgba(15,18,19,.55); color:rgba(245,245,241,.74); backdrop-filter:blur(12px); font-size:.8rem; }
+  .detail-list{ max-width:50rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.52rem; margin:1.05rem 0 0; padding:0; list-style:none; }
+  .detail-list li{ position:relative; padding:.72rem .78rem .72rem 1.55rem; border:1px solid rgba(245,245,241,.10); border-radius:1rem; background:rgba(15,18,19,.38); color:rgba(245,245,241,.72); font-size:clamp(.86rem,.98vw,.95rem); line-height:1.34; backdrop-filter:blur(10px); }
+  .detail-list li::before{ content:""; position:absolute; left:.78rem; top:1.05rem; width:.42rem; height:.42rem; border-radius:999px; background:#69d254; box-shadow:0 0 0 .18rem rgba(105,210,84,.12); }
+  .hero-actions{ display:flex; align-items:center; gap:1.15rem; flex-wrap:wrap; margin-top:1.35rem; } .primary-action{ display:inline-flex; align-items:center; justify-content:center; min-height:3rem; padding:.9rem 1.25rem; border-radius:999px; background:#69d254; color:#0f1213; font-size:.9rem; font-weight:750; box-shadow:0 18px 45px rgba(105,210,84,.16); } .context-note{ max-width:27rem; color:rgba(245,245,241,.52); font-size:.86rem; line-height:1.45; }
+  .visual-stack{ display:grid; gap:clamp(.85rem,1.4vw,1.15rem); align-items:start; }
+  .visual-card{ position:relative; width:100%; border:1px solid rgba(245,245,241,.13); border-radius:clamp(1.4rem,3vw,2.6rem); overflow:hidden; background:#141718; box-shadow:0 40px 110px rgba(0,0,0,.42); transform:translateY(1rem); }
+  .visual-card::before{ content:""; position:absolute; inset:0; z-index:2; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.20); pointer-events:none; }
+  .visual-card::after{ content:""; position:absolute; width:32%; aspect-ratio:1; right:-10%; top:-12%; border-radius:999px; background:rgba(105,210,84,.16); filter:blur(24px); z-index:1; }
+  .visual-card img{ width:100%; height:auto; object-fit:contain; display:block; transform:none; background:#0f1213; }
+  .video-card{ position:relative; width:min(100%,420px); aspect-ratio:9/16; max-height:min(72vh,760px); justify-self:center; border:1px solid rgba(245,245,241,.16); border-radius:clamp(1.4rem,3vw,2.35rem); overflow:hidden; background:#0f1213; box-shadow:0 44px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(105,210,84,.08); }
+  .video-card::before{ content:""; position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(245,245,241,.06), inset 0 -90px 120px rgba(15,18,19,.16); }
+  .video-card iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; background:#0f1213; }
+  .ai-ecosystem{ position:relative; padding:.95rem; border:1px solid rgba(245,245,241,.12); border-radius:1.35rem; background:linear-gradient(135deg, rgba(15,18,19,.74), rgba(15,18,19,.42)); backdrop-filter:blur(16px); box-shadow:0 24px 70px rgba(0,0,0,.22); overflow:hidden; }
+  .ai-ecosystem::before{ content:""; position:absolute; inset:auto -12% -62% 18%; height:150%; border-radius:999px; background:radial-gradient(circle, rgba(105,210,84,.16), transparent 58%); pointer-events:none; }
+  .ai-logo-row{ position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.58rem; }
+  .ai-logo-card{ min-height:3.45rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.38rem; border:1px solid rgba(245,245,241,.13); border-radius:1rem; background:rgba(245,245,241,.07); box-shadow:inset 0 1px 0 rgba(245,245,241,.06); }
+  .ai-logo-card img{ width:1.35rem; height:1.35rem; object-fit:contain; filter:brightness(0) invert(1); opacity:.92; }
+  .ai-logo-card strong{ color:rgba(245,245,241,.86); font-size:.68rem; line-height:1; font-weight:700; letter-spacing:.01em; }
+
+  .background-led .slide-background img { opacity: .78; filter: saturate(.98) contrast(1.08); transform: scale(1.02); }
+  .background-led .slide-overlay { background: radial-gradient(circle at var(--hot-x, 70%) var(--hot-y, 48%), rgba(105,210,84,.12), transparent 30%), radial-gradient(circle at 86% 74%, rgba(243,216,50,.08), transparent 22%), linear-gradient(90deg, rgba(15,18,19,.98) 0%, rgba(15,18,19,.88) 28%, rgba(15,18,19,.44) 62%, rgba(15,18,19,.20) 100%), linear-gradient(180deg, rgba(15,18,19,.10), rgba(15,18,19,.72)); }
+  .background-led .slide-shell { grid-template-columns: 1fr; }
+  .background-led .story-content { max-width: min(880px, 72vw); padding: clamp(1.4rem, 2vw, 2rem); border-left: 1px solid rgba(105,210,84,.28); background: linear-gradient(90deg, rgba(15,18,19,.50), rgba(15,18,19,.16)); backdrop-filter: blur(2px); }
+  .background-led h1 { max-width: 14.4ch; }
+  .layout-hero .story-content { background: transparent; border-left: 0; padding-left: 0; }
+  .layout-split .slide-background img { object-position: 62% center; }
+  .layout-orbital .slide-background img { object-position: 70% center; }
+  .layout-product .slide-background img { object-position: 68% center; }
+  .layout-library .slide-background img { object-position: 64% center; }
+  .layout-roadmap .slide-background img { object-position: 66% center; }
+  .layout-consulting .slide-background img { object-position: 58% center; }
+  .layout-gates .slide-background img { object-position: 58% center; }
+  .layout-closing .slide-background img { object-position: 72% center; }
+  .layout-hero .slide-shell{ grid-template-columns:1fr; } .layout-hero .visual-card{ display:none; } .layout-hero .story-content{ max-width:1020px; } .layout-hero h1{ max-width:20ch; } .layout-hero .lead{ max-width:54rem; font-size:clamp(1.05rem,1.36vw,1.35rem); }
+  .layout-video .slide-shell{ grid-template-columns:minmax(0,.9fr) minmax(300px,.48fr); } .layout-video .story-content{ max-width:780px; } .layout-video h1{ max-width:13.8ch; } .layout-video .slide-background img{ opacity:.14; }
+  .layout-split .visual-card{ transform:rotate(-1.2deg) translateY(0); }
+  .layout-orbital{ --hot-x:70%; --hot-y:40%; } .layout-orbital .visual-card{ border-radius:999px 2.6rem 999px 2.6rem; transform:rotate(1.6deg); }
+  .layout-product .slide-shell{ grid-template-columns:minmax(0,.82fr) minmax(460px,1.05fr); } .layout-product .visual-card{ transform:perspective(900px) rotateY(-4deg); }
+  .layout-consulting .slide-shell{ grid-template-columns:minmax(430px,.98fr) minmax(0,.9fr); } .layout-consulting .story-content{ order:2; } .layout-consulting .visual-card{ order:1; transform:rotate(-2deg); }
+  .layout-stacked .visual-card{ clip-path:polygon(6% 0,100% 0,94% 100%,0 100%); }
+  .layout-library .slide-shell{ grid-template-columns:minmax(0,.88fr) minmax(470px,1fr); } .layout-library .visual-card{ transform:rotate(1deg) scale(1.02); }
+  .layout-gates .story-content{ order:2; } .layout-gates .visual-card{ order:1; border-radius:2.8rem; }
+  .layout-roadmap .visual-card{ transform:rotate(-.8deg); }
+  .layout-closing .slide-shell{ grid-template-columns:1fr; } .layout-closing .story-content{ max-width:960px; } .layout-closing .visual-card{ position:absolute; right:4vw; bottom:10vh; width:min(42vw,620px); opacity:.50; z-index:0; transform:rotate(2deg); }
+  .slide-footer{ position:absolute; left:clamp(1.25rem,4vw,4rem); right:clamp(1.25rem,4vw,4rem); bottom:clamp(1rem,2vw,2rem); z-index:3; display:flex; justify-content:space-between; gap:1rem; color:rgba(245,245,241,.48); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; pointer-events:none; }
+  .slide-rail{ position:fixed; top:50%; right:clamp(1rem,2vw,2rem); z-index:7; display:grid; gap:.42rem; transform:translateY(-50%); }
+  .rail-item{ width:8.55rem; display:grid; grid-template-columns:1.8rem 1fr; align-items:center; gap:.48rem; padding:.46rem; border:1px solid rgba(245,245,241,.11); border-radius:.9rem; background:rgba(15,18,19,.48); backdrop-filter:blur(16px); color:rgba(245,245,241,.70); text-decoration:none; transform:translateX(.2rem); transition:transform .28s ease, border-color .28s ease, background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item span{ width:1.8rem; height:1.8rem; display:inline-grid; place-items:center; border-radius:.66rem; background:rgba(245,245,241,.08); color:rgba(245,245,241,.62); font-size:.64rem; font-weight:700; transition:background .28s ease, color .28s ease, box-shadow .28s ease; }
+  .rail-item strong{ font-family:var(--font-body); font-size:.72rem; font-weight:600; }
+  .rail-item:hover{ transform:translateX(0); border-color:rgba(245,245,241,.22); color:rgba(245,245,241,.92); background:rgba(15,18,19,.66); }
+  .rail-item.active{ transform:translateX(-.18rem); color:#f5f5f1; border-color:rgba(105,210,84,.58); background:linear-gradient(90deg, rgba(105,210,84,.14), rgba(15,18,19,.62)); box-shadow:0 0 0 1px rgba(105,210,84,.14), 0 24px 60px rgba(0,0,0,.28); }
+  .rail-item.active span{ background:rgba(105,210,84,.20); color:#69d254; box-shadow:0 0 0 .26rem rgba(105,210,84,.08); }
+  @keyframes softPulse { 0%, 100% { transform: scale(1); opacity:.72; } 50% { transform: scale(1.36); opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ :global(html){ scroll-behavior:auto; } .presentation-slide .story-content, .presentation-slide .visual-card, .presentation-slide .slide-background img, .rail-item, .rail-item span{ transition:none; } .presentation-slide.is-active .motion-field span{ animation:none; } }
+  @media (min-width:1081px){ .presentation-slide{ padding-right:clamp(10.5rem,13vw,14rem); } .slide-footer{ right:clamp(10.5rem,13vw,14rem); } }
+  @media (max-width:1080px){ .presentation-slide{ align-items:start; padding-top:7.25rem; padding-bottom:2rem; } .slide-rail{ display:none; } .deck-label{ display:none; } .slide-shell, .layout-product .slide-shell, .layout-consulting .slide-shell, .layout-library .slide-shell, .layout-video .slide-shell{ grid-template-columns:1fr; gap:1.85rem; padding-block:1.25rem; } .layout-consulting .story-content, .layout-gates .story-content{ order:0; } .layout-consulting .visual-card, .layout-gates .visual-card{ order:0; } .visual-card{ max-width:720px; width:100%; } .layout-closing .visual-card{ position:relative; right:auto; bottom:auto; width:100%; opacity:1; } .video-card{ max-width:420px; } .slide-footer{ position:relative; left:auto; right:auto; bottom:auto; width:100%; margin:1rem auto 0; padding-inline:1.25rem; } }
+  @media (max-width:680px){ .presentation-slide{ padding:6.9rem 1.25rem 1.4rem; min-height:auto; } .detail-list{ grid-template-columns:1fr; } .presentation-topbar{ position:absolute; } .logo-lockup{ gap:.65rem; max-width:calc(100vw - 2.5rem); overflow:hidden; } .markethink-logo{ height:1rem; } .alldigitalmedia-logo{ height:1.55rem; max-width:8rem; } .slide-shell{ padding-block:0; gap:1.35rem; } h1{ max-width:12.4ch; font-size:clamp(2.35rem,10.2vw,4.15rem); line-height:1.04; letter-spacing:-.026em; } .lead{ margin-top:1rem; font-size:.98rem; line-height:1.5; } .chip-row{ margin-top:1rem; } .chip-row span{ padding:.56rem .72rem; font-size:.76rem; } .detail-list{ gap:.38rem; margin-top:.85rem; } .detail-list li{ font-size:.9rem; line-height:1.36; } .visual-card{ border-radius:1.45rem; } .hero-actions{ align-items:flex-start; flex-direction:column; margin-top:1rem; } .slide-footer{ display:none; } .background-led .story-content{ max-width:100%; padding:1rem; } .background-led .slide-background img{ opacity:.42; } .slide-background img{ opacity:.18; } }
+</style>
