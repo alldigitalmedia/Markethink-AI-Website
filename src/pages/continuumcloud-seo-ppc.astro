@@ -27,7 +27,7 @@ const slides = [
     nav: "Opening",
     kicker: "PRIVATE STRATEGY PREVIEW · SEO + PPC",
     title: "ContinuumCloud has multiple demand paths. They should not all land on the same story.",
-    lead: "The fastest growth opportunity is to separate search demand by buyer intent, product line, landing page, and sales follow-up: Welligent, DATIS, CaredFor, CCBHC, substance use, and AI documentation each need a sharper path.",
+    lead: "ContinuumCloud serves several different search journeys. The first step is to understand which buyers are looking for which product, where they land today, and what the sales team needs to see from each lead.",
     layout: "hero",
     image: heroImage,
     chips: ["Behavioral health", "Human services", "EHR", "HCM", "Patient engagement"],
@@ -39,8 +39,8 @@ const slides = [
     id: "what-we-found",
     nav: "What we found",
     kicker: "SLIDE 02 · THE BUSINESS BEHIND THE SEARCHES",
-    title: "This is not one product category. It is a connected operating stack for complex care organizations.",
-    lead: "ContinuumCloud’s site already carries the right ingredients: product pages, vertical pages, webinars, resources, and strong behavioral health expertise. The missed opportunity is cleaner demand routing.",
+    title: "ContinuumCloud is selling more than one software category. That matters for search.",
+    lead: "The site already has useful product pages, vertical pages, webinars, and resources. The opportunity is to make the path from search intent to the right next step easier to follow.",
     layout: "products",
     chips: ["Clinical", "Workforce", "Engagement", "Documentation"],
     note: "Four entry points, one system story",
@@ -57,8 +57,8 @@ const slides = [
     id: "demand-map",
     nav: "Demand map",
     kicker: "SLIDE 03 · SEARCH INTENT ARCHITECTURE",
-    title: "Searchers are arriving with different problems. The account structure should reflect that.",
-    lead: "A CCBHC leader, an HR director, a clinical director, and a SUD operator are not searching for the same thing. Each path needs its own message, page, conversion event, and follow-up owner.",
+    title: "Different buyers are arriving with different problems. The website should make those paths clear.",
+    lead: "A CCBHC leader, an HR director, a clinical director, and a substance use operator are not trying to solve the same problem. That should show up in the page structure and in the follow-up process.",
     layout: "map",
     chips: ["Intent", "Product", "Landing page", "CRM route"],
     note: "Message match before media spend",
@@ -76,8 +76,8 @@ const slides = [
     id: "seo-priorities",
     nav: "SEO",
     kicker: "SLIDE 04 · SEO PRIORITIES",
-    title: "The first SEO win is not more content. It is making the commercial pages easier to find, understand, and trust.",
-    lead: "Their resource footprint is already substantial. The sharper move is technical cleanup, stronger money pages, and better internal routing from educational content into product and vertical pages.",
+    title: "The first SEO win may be making the important pages easier to find, understand, and trust.",
+    lead: "They already have a large resource footprint. A practical first conversation can focus on technical cleanup, stronger commercial pages, and clearer links from educational content to product and vertical pages.",
     layout: "cards",
     chips: ["Index coverage", "Page hierarchy", "Money pages", "Internal links"],
     note: "Fix the foundation before scaling content",
@@ -100,10 +100,30 @@ const slides = [
     chips: ["Duplicate H1s", "Sitemap coverage", "Page structure", "Tracking questions"],
     note: "Concrete audit findings",
     cards: [
-      { title: "Duplicate H1s on money pages", body: "The behavioral health software, Welligent, and DATIS pages each render the same primary H1 twice in the page HTML." },
-      { title: "CCBHC page has competing H1s", body: "The CCBHC page renders eight H1s, including section labels like Staffing, Accessibility, Care coordination, and Quality and reporting." },
-      { title: "Core pages not found in XML sitemap set", body: "The sitemap set inspected did not include the homepage, behavioral health software page, Welligent page, or contact page." },
-      { title: "Commercial pages need clearer technical hierarchy", body: "The fix is not more volume first. It is cleaner hierarchy, indexation validation, schema review, and source-to-CRM tracking clarity." },
+      {
+        title: "Duplicate H1s on money pages",
+        body: "Example: these pages render the same primary H1 twice in the page HTML.",
+        examples: [
+          { label: "Behavioral health software", href: "https://continuumcloud.com/behavioral-health-software/", detail: "H1 repeated: Cloud-Based Behavioral Health Software" },
+          { label: "Welligent", href: "https://continuumcloud.com/behavioral-health-software/welligent/", detail: "H1 repeated: Welligent: The #1 Cloud-Based Behavioral Health EHR" },
+          { label: "DATIS", href: "https://continuumcloud.com/behavioral-health-software/datis/", detail: "H1 repeated: Human Capital Management" },
+        ],
+      },
+      {
+        title: "CCBHC page has competing H1s",
+        body: "Example: the CCBHC page renders eight H1s, including section labels like Staffing, Accessibility, Care coordination, and Quality and reporting.",
+        examples: [
+          { label: "CCBHC page", href: "https://continuumcloud.com/who-we-serve/ccbhcs/", detail: "Multiple H1s compete with the main page topic" },
+        ],
+      },
+      {
+        title: "Core pages were not found in the XML sitemap set inspected",
+        body: "Example: the sitemap set inspected did not include the homepage, behavioral health software page, Welligent page, or contact page. We should validate this inside Search Console before making a larger claim.",
+        examples: [
+          { label: "Sitemap", href: "https://continuumcloud.com/sitemap.xml", detail: "Public XML sitemap set reviewed" },
+        ],
+      },
+      { title: "Commercial pages need cleaner hierarchy", body: "This is a practical first conversation: page hierarchy, indexation validation, schema review, and source-to-CRM tracking clarity." },
     ],
     sources: [sourceLinks[1], sourceLinks[2], sourceLinks[3], sourceLinks[5], sourceLinks[8]],
   },
@@ -113,7 +133,7 @@ const slides = [
     nav: "PPC",
     kicker: "SLIDE 06 · PPC DISCOVERY QUESTIONS",
     title: "Before recommending campaigns, confirm where qualified demand already exists.",
-    lead: "The meeting should not start with a media plan. It should clarify which product lines matter most, which buyer segments are good fit, what counts as qualified pipeline, and what tracking is already in place.",
+    lead: "The meeting should not start with a media plan. It should clarify which product lines matter most, which buyer segments are the best fit, what counts as a qualified opportunity, and what tracking is already in place.",
     layout: "budget",
     chips: ["Priority products", "Lead quality", "Tracking", "Sales feedback"],
     note: "Clarify before scaling",
@@ -133,7 +153,7 @@ const slides = [
     nav: "Pages",
     kicker: "SLIDE 07 · LANDING PAGE GAP",
     title: "Product pages explain the suite. Paid landing pages should capture one buyer problem at a time.",
-    lead: "The current pages are useful, but paid traffic needs tighter pages: one intent, one promise, one proof set, one demo path, and one CRM source label.",
+    lead: "The current pages are useful. If paid traffic becomes part of the plan, each page should match one buyer problem, one proof set, one demo path, and one source label.",
     layout: "pages",
     chips: ["Message match", "Demo path", "Proof", "Tracking"],
     note: "Dedicated pages reduce wasted clicks",
@@ -152,8 +172,8 @@ const slides = [
     id: "tracking",
     nav: "Tracking",
     kicker: "SLIDE 08 · MEASUREMENT + SALES FOLLOW-UP",
-    title: "The scorecard should not stop at form fills. It should measure qualified pipeline by product and segment.",
-    lead: "The forms appear product-specific, which is a good start. The next question is whether demo requests, fact-sheet downloads, meetings, opportunities, and closed revenue are tracked back to search intent and landing page.",
+    title: "The scorecard should not stop at form fills. It should show which searches become qualified conversations.",
+    lead: "The forms appear product-specific, which is a good start. The next question is whether demo requests, fact-sheet downloads, meetings, and opportunities can be traced back to search intent and landing page.",
     layout: "flow",
     chips: ["UTMs", "Demo request", "MQL", "SQL", "Pipeline"],
     note: "Optimize to qualified movement, not raw CPL",
@@ -165,8 +185,8 @@ const slides = [
     id: "recommended-move",
     nav: "Next move",
     kicker: "SLIDE 09 · RECOMMENDED FIRST MOVE",
-    title: "Use the first conversation to validate the demand map, then choose the smallest smart next move.",
-    lead: "The goal is not to prescribe a full plan before seeing their data. The goal is to align on priorities, confirm what is already working, and identify the first focused audit or test that can create useful learning quickly.",
+    title: "Use the first conversation to validate the demand map and choose one useful next move.",
+    lead: "The goal is not to walk in with a full plan before seeing their data. The goal is to align on priorities, confirm what is already working, and choose one focused next step.",
     layout: "close",
     image: heroImage,
     chips: ["Data review", "Demand map", "Page gaps", "Test design", "Learning loop"],
@@ -265,6 +285,16 @@ const slides = [
                   <article>
                     <strong>{card.title}</strong>
                     <p>{card.body}</p>
+                    {card.examples && (
+                      <div class="card-examples">
+                        {card.examples.map((example) => (
+                          <a href={example.href} target="_blank" rel="noreferrer">
+                            <span>{example.label}</span>
+                            <em>{example.detail}</em>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
@@ -364,7 +394,7 @@ const slides = [
   .intent-row strong { color:#fff; } .intent-row span { color:var(--teal); font-weight:750; } .intent-row em { color:rgba(247,251,252,.70); font-style:normal; }
   .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
   .card-grid article { min-height:10.5rem; padding:1.05rem; border:1px solid rgba(255,255,255,.12); border-radius:1.2rem; background:rgba(255,255,255,.075); backdrop-filter:blur(16px); }
-  .card-grid strong { color:#fff; font-size:1.02rem; } .card-grid p { margin:.55rem 0 0; color:rgba(247,251,252,.70); font-size:.9rem; line-height:1.42; }
+  .card-grid strong { color:#fff; font-size:1.02rem; } .card-grid p { margin:.55rem 0 0; color:rgba(247,251,252,.70); font-size:.9rem; line-height:1.42; } .card-examples { display:grid; gap:.42rem; margin-top:.8rem; } .card-examples a { display:grid; gap:.12rem; padding:.58rem .65rem; border:1px solid rgba(0,178,177,.22); border-radius:.72rem; background:rgba(0,178,177,.08); color:#fff; text-decoration:none; } .card-examples span { color:var(--teal); font-size:.82rem; font-weight:800; } .card-examples em { color:rgba(247,251,252,.66); font-size:.76rem; font-style:normal; line-height:1.32; }
   .budget-row { grid-template-columns:4.25rem 1fr; }
   .budget-row > span { display:grid; place-items:center; width:4rem; height:4rem; border-radius:1rem; background:rgba(0,178,177,.18); color:var(--teal); font-size:1.2rem; font-weight:850; }
   .budget-row strong { display:block; color:#fff; } .budget-row em { display:block; margin-top:.18rem; color:rgba(247,251,252,.65); font-style:normal; font-size:.88rem; }
