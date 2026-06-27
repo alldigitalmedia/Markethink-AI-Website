@@ -95,7 +95,7 @@ const railItems = [
             <div class="card-core">
               <div class="rolling-number" aria-label={`${lane.digits.join("")} ${lane.unit}`}>
                 {lane.digits.map((digit, digitIndex) => (
-                  <span class="digit-window" style={`--delay: ${digitIndex * -0.42}s`}>
+                  <span class="digit-window" style={`--delay: ${digitIndex * -1.15}s`}>
                     <span class="digit-strip">
                       {digitSequence.map((item) => <span>{item}</span>)}
                     </span>
@@ -108,7 +108,7 @@ const railItems = [
 
             <div class="sparkline" aria-hidden="true">
               {lane.bars.map((bar, barIndex) => (
-                <span style={`--bar: ${bar}%; --bar-delay: ${barIndex * -0.32}s`}></span>
+                <span style={`--bar: ${bar}%; --bar-delay: ${barIndex * -0.85}s`}></span>
               ))}
             </div>
 
@@ -122,7 +122,7 @@ const railItems = [
 
             <div class="chip-row" aria-label={`${lane.name} work types`}>
               {lane.chips.map((chip, chipIndex) => (
-                <span style={`--chip-delay: ${chipIndex * -0.55}s`}>{chip}</span>
+                <span style={`--chip-delay: ${chipIndex * -1.2}s`}>{chip}</span>
               ))}
             </div>
 
@@ -284,7 +284,7 @@ const railItems = [
     height: 0.44rem;
     border-radius: 999px;
     background: rgba(245, 245, 241, 0.34);
-    animation: pulse-soft 1.8s ease-in-out infinite;
+    animation: pulse-soft 3.8s ease-in-out infinite;
   }
 
   .console-pulse i:nth-child(2) { animation-delay: 0.2s; }
@@ -304,7 +304,7 @@ const railItems = [
     width: max-content;
     gap: 0.55rem;
     padding: 0.55rem;
-    animation: rail-move 24s linear infinite;
+    animation: rail-move 52s linear infinite;
   }
 
   .rail-track span {
@@ -329,7 +329,7 @@ const railItems = [
     border-radius: 50%;
     background: #69d254;
     box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.46);
-    animation: pulse-dot 2.2s ease-out infinite;
+    animation: pulse-dot 4.6s ease-out infinite;
   }
 
   .shipping-panel {
@@ -360,7 +360,7 @@ const railItems = [
   .shipping-card.active {
     border-color: rgba(105, 210, 84, 0.68);
     box-shadow: 0 28px 78px rgba(0, 0, 0, 0.28);
-    transform: translateY(-0.35rem);
+    transform: translateY(-0.22rem);
   }
 
   .shipping-card::after {
@@ -463,7 +463,7 @@ const railItems = [
   .digit-strip {
     display: flex;
     flex-direction: column;
-    animation: digit-cycle 2.8s steps(10) infinite;
+    animation: digit-cycle 8.5s steps(10) infinite;
     animation-delay: var(--delay);
   }
 
@@ -506,7 +506,7 @@ const railItems = [
     border-radius: 999px 999px 0 0;
     background: linear-gradient(180deg, rgba(105, 210, 84, 0.92), rgba(105, 210, 84, 0.18));
     transform-origin: bottom;
-    animation: bar-breathe 2.7s ease-in-out infinite;
+    animation: bar-breathe 6.8s ease-in-out infinite;
     animation-delay: var(--bar-delay);
   }
 
@@ -520,7 +520,7 @@ const railItems = [
 
   .feed-track {
     display: grid;
-    animation: feed-move 7.8s ease-in-out infinite;
+    animation: feed-move 18s ease-in-out infinite;
   }
 
   .feed-track span {
@@ -551,7 +551,7 @@ const railItems = [
     color: rgba(15, 18, 19, 0.62);
     font-size: 0.68rem;
     font-weight: 780;
-    animation: chip-shift 4.4s ease-in-out infinite;
+    animation: chip-shift 8.8s ease-in-out infinite;
     animation-delay: var(--chip-delay);
   }
 
@@ -573,7 +573,7 @@ const railItems = [
     height: 0.5rem;
     border-radius: 999px;
     background: linear-gradient(90deg, rgba(105, 210, 84, 0.2), #69d254);
-    animation: status-scan 2.4s ease-in-out infinite;
+    animation: status-scan 6.2s ease-in-out infinite;
   }
 
   @keyframes rail-move {
@@ -587,10 +587,10 @@ const railItems = [
   }
 
   @keyframes feed-move {
-    0%, 16% { transform: translateY(0); }
-    28%, 44% { transform: translateY(-2.12rem); }
-    56%, 72% { transform: translateY(-4.24rem); }
-    84%, 100% { transform: translateY(-6.36rem); }
+    0%, 24% { transform: translateY(0); }
+    34%, 52% { transform: translateY(-2.12rem); }
+    62%, 80% { transform: translateY(-4.24rem); }
+    90%, 100% { transform: translateY(-6.36rem); }
   }
 
   @keyframes bar-breathe {
@@ -610,7 +610,7 @@ const railItems = [
 
   @keyframes chip-shift {
     0%, 100% { transform: translateY(0); }
-    45% { transform: translateY(-0.22rem); }
+    45% { transform: translateY(-0.12rem); }
   }
 
   @keyframes status-scan {
