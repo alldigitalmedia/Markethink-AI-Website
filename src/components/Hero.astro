@@ -20,18 +20,18 @@ const capabilities = [
   </div>
   <div class="container hero-content">
     <div class="hero-text">
-      <h1 class="hero-heading animate-fade-up" aria-label="The marketing system that ships the work.">
-        <span class="hero-heading-line">The marketing system that</span>
+      <h1 class="hero-heading animate-fade-up" aria-label="The AI marketing system that ships the work.">
+        <span class="hero-heading-line">The AI marketing system that</span>
         <span class="hero-heading-rotator" aria-hidden="true">
           <span class="hero-heading-accent">ships the work.</span>
-          <span class="hero-heading-accent">learns your brand.</span>
+          <span class="hero-heading-accent">learns your business.</span>
           <span class="hero-heading-accent">keeps campaigns moving.</span>
           <span class="hero-heading-accent">remembers what worked.</span>
           <span class="hero-heading-accent">finds the next opportunity.</span>
         </span>
       </h1>
       <p class="hero-description animate-fade-up">
-        Markethink gives your business a dedicated marketing system: expert marketers, a trained operator, and one place to plan campaigns, create content, manage approvals, find opportunities, and keep the work moving. So your team can focus on the business instead of managing marketing every day.
+        Your trained AI marketing agent, backed by expert human marketers, so campaigns, content, web updates, and follow-up keep moving every week.
       </p>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
@@ -66,8 +66,8 @@ const capabilities = [
     inset: 0;
     z-index: -1;
     background:
-      linear-gradient(90deg, rgba(4, 6, 6, 0.94) 0%, rgba(4, 6, 6, 0.78) 24%, rgba(4, 6, 6, 0.34) 48%, rgba(4, 6, 6, 0.04) 78%),
-      linear-gradient(180deg, rgba(15, 18, 19, 0.1) 0%, rgba(15, 18, 19, 0.14) 58%, #0f1213 100%);
+      radial-gradient(circle at 50% 43%, rgba(4, 6, 6, 0.3) 0%, rgba(4, 6, 6, 0.62) 44%, rgba(4, 6, 6, 0.88) 100%),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.2) 0%, rgba(15, 18, 19, 0.5) 58%, #0f1213 100%);
     pointer-events: none;
   }
 
@@ -76,7 +76,7 @@ const capabilities = [
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: radial-gradient(circle at 23% 50%, rgba(105, 210, 84, 0.12), transparent 32rem);
+    background: radial-gradient(circle at 50% 46%, rgba(105, 210, 84, 0.14), transparent 34rem);
     pointer-events: none;
   }
 
@@ -108,18 +108,19 @@ const capabilities = [
   .hero-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.45rem;
-    max-width: min(48rem, 52vw);
-    text-align: left;
+    max-width: min(72rem, 94vw);
+    margin: 0 auto;
+    text-align: center;
   }
 
   .hero-heading {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    max-width: min(46rem, 52vw);
-    font-size: clamp(4.4rem, 6.35vw, 7.4rem);
+    align-items: center;
+    max-width: min(72rem, 94vw);
+    font-size: clamp(4.85rem, 8vw, 9.4rem);
     line-height: 0.88;
     letter-spacing: -0.065em;
     text-wrap: balance;
@@ -146,7 +147,7 @@ const capabilities = [
     min-height: 1.14em;
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     color: #69D254;
     line-height: 1;
     opacity: 0;
@@ -205,13 +206,13 @@ const capabilities = [
   .hero-description {
     font-size: clamp(1.03rem, 1.35vw, 1.35rem);
     color: rgba(255, 255, 255, 0.82);
-    max-width: 43rem;
+    max-width: 58rem;
     line-height: 1.62;
   }
 
   .button-group {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
     padding-top: 0.5rem;
@@ -236,7 +237,7 @@ const capabilities = [
   .capability-strip {
     position: relative;
     width: min(100%, 64rem);
-    margin-top: 3rem;
+    margin: 3rem auto 0;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-button);
@@ -286,18 +287,18 @@ const capabilities = [
 
   @media (max-width: 1180px) {
     .hero-text {
-      max-width: 54rem;
+      max-width: min(64rem, 94vw);
     }
 
     .hero-heading {
-      max-width: min(56rem, 94vw);
-      font-size: clamp(3.1rem, 6.6vw, 5.4rem);
+      max-width: min(64rem, 94vw);
+      font-size: clamp(3.35rem, 7.2vw, 6.2rem);
     }
 
     .section-hero::before {
       background:
-        linear-gradient(90deg, rgba(4, 6, 6, 0.92) 0%, rgba(4, 6, 6, 0.74) 38%, rgba(4, 6, 6, 0.22) 72%),
-        linear-gradient(180deg, rgba(15, 18, 19, 0.1) 0%, rgba(15, 18, 19, 0.18) 58%, #0f1213 100%);
+        radial-gradient(circle at 50% 42%, rgba(4, 6, 6, 0.34) 0%, rgba(4, 6, 6, 0.7) 52%, rgba(4, 6, 6, 0.9) 100%),
+        linear-gradient(180deg, rgba(15, 18, 19, 0.14) 0%, rgba(15, 18, 19, 0.24) 58%, #0f1213 100%);
     }
   }
 
