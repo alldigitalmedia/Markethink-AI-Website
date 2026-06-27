@@ -25,7 +25,10 @@ const capabilities = [
         <span class="hero-heading-rotator" aria-hidden="true">
           <span class="hero-heading-accent">ships the work.</span>
           <span class="hero-heading-accent">learns your business.</span>
+          <span class="hero-heading-accent">manages your website.</span>
+          <span class="hero-heading-accent">keeps social up to date.</span>
           <span class="hero-heading-accent">keeps campaigns moving.</span>
+          <span class="hero-heading-accent">follows up with leads.</span>
           <span class="hero-heading-accent">remembers what worked.</span>
           <span class="hero-heading-accent">finds the next opportunity.</span>
         </span>
@@ -138,7 +141,7 @@ const capabilities = [
     padding-bottom: 0.22em;
     margin-bottom: -0.2em;
     overflow: hidden;
-    font-size: 0.86em;
+    font-size: 0.82em;
   }
 
   .hero-heading-accent {
@@ -152,7 +155,7 @@ const capabilities = [
     line-height: 1;
     opacity: 0;
     transform: translateY(0.24em);
-    animation: hero-rotate 20s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: hero-rotate 32s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     white-space: nowrap;
     will-change: opacity, transform;
   }
@@ -173,18 +176,30 @@ const capabilities = [
     animation-delay: 16s;
   }
 
+  .hero-heading-accent:nth-child(6) {
+    animation-delay: 20s;
+  }
+
+  .hero-heading-accent:nth-child(7) {
+    animation-delay: 24s;
+  }
+
+  .hero-heading-accent:nth-child(8) {
+    animation-delay: 28s;
+  }
+
   @keyframes hero-rotate {
     0% {
       opacity: 0;
       transform: translateY(0.24em);
     }
 
-    4%, 18% {
+    3%, 10.5% {
       opacity: 1;
       transform: translateY(0);
     }
 
-    22%, 100% {
+    12.5%, 100% {
       opacity: 0;
       transform: translateY(-0.22em);
     }
@@ -334,7 +349,7 @@ const capabilities = [
     }
 
     .hero-heading-rotator {
-      font-size: 0.82em;
+      font-size: 0.76em;
     }
 
     .hero-description {
@@ -362,8 +377,8 @@ const capabilities = [
     }
 
     .hero-heading-rotator {
-      font-size: 0.78em;
-      min-height: 1.36em;
+      font-size: 0.68em;
+      min-height: 1.42em;
     }
 
     .button-group,
