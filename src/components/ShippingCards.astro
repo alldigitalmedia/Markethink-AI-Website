@@ -1,124 +1,138 @@
 ---
-const digitSequence = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const digitSequence = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "1", "2", "3", "4"];
 
 const lanes = [
   {
     name: "Web",
-    value: ["0", "8"],
+    label: "Pages moving",
+    icon: "M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v7A2.5 2.5 0 0 1 16.5 17h-9A2.5 2.5 0 0 1 5 14.5v-7Zm2.2 1.2h9.6M8 12h3.5m1.5 0h3",
+    digits: ["0", "8"],
     unit: "pages prepared",
-    note: "New website request received → drafting section, SEO checks, and approval notes",
-    metrics: [
-      { label: "SEO fixes", value: ["1", "2"] },
-      { label: "Content blocks", value: ["0", "9"] },
-      { label: "QA checks", value: ["2", "4"] },
-    ],
-    activity: ["Brief captured", "Section drafted", "Review ready"],
+    live: "Website update moving",
+    activity: ["Brief captured", "Section drafted", "SEO pass", "Review package"],
+    chips: ["Landing", "Copy", "SEO", "QA"],
+    bars: [36, 62, 78, 44, 90],
   },
   {
     name: "Grow",
-    value: ["1", "2", "6"],
-    unit: "opportunities organized",
-    note: "Matched new prospects to ICP → enriched notes, queued follow-up, updated CRM context",
-    metrics: [
-      { label: "ICP matches", value: ["3", "4"] },
-      { label: "Outreach drafts", value: ["1", "8"] },
-      { label: "Follow-ups", value: ["2", "7"] },
-    ],
-    activity: ["Signals reviewed", "Profiles enriched", "Next step queued"],
+    label: "Prospects organized",
+    icon: "M12 4.5v15M5.5 12h13M7 7.2c2.8 2.2 7.2 2.2 10 0M7 16.8c2.8-2.2 7.2-2.2 10 0",
+    digits: ["1", "2", "6"],
+    unit: "opportunities sorted",
+    live: "Lead follow-up queued",
+    activity: ["Signals reviewed", "ICP matched", "Profiles enriched", "Next step set"],
+    chips: ["ICP", "CRM", "Email", "Follow-up"],
+    bars: [58, 44, 82, 68, 96],
   },
   {
     name: "Ads",
-    value: ["4", "2"],
-    unit: "campaign assets traced",
-    note: "Creative angle flagged → tightening offer message and routing stronger assets into review",
-    metrics: [
-      { label: "Creatives made", value: ["1", "6"] },
-      { label: "Deals noted", value: ["0", "7"] },
-      { label: "Ads flagged", value: ["1", "1"] },
-    ],
-    activity: ["Tracking impression", "Reading intent", "Moving to review"],
+    label: "Assets traced",
+    icon: "M6 16.5 10 7l3.2 6.2L18 5.5l-3 13-3.4-6.1-5.6 4.1Z",
+    digits: ["4", "2"],
+    unit: "campaign assets",
+    live: "Creative angle in review",
+    activity: ["Angle flagged", "Asset mapped", "Spend note added", "Decision ready"],
+    chips: ["Creative", "Offer", "Audience", "Tracking"],
+    bars: [46, 76, 52, 88, 64],
   },
+];
+
+const railItems = [
+  "Landing page draft moved to review",
+  "Lead follow-up queued",
+  "Creative angle ready for approval",
+  "Website update prepared",
+  "Campaign message tightened",
+  "CRM context updated",
 ];
 ---
 
 <section class="shipping-cards-section" id="shipping-now" aria-label="What Markethink is shipping">
   <div class="container shipping-container">
     <div class="shipping-header animate-fade-up">
-      <p class="subtitle">Live production view</p>
-      <h2>What moves after you text the operator.</h2>
+      <div>
+        <p class="subtitle">Live production view</p>
+        <h2>What moves after you text the operator.</h2>
+      </div>
       <p>
-        A working view of campaigns, web, growth, and ads moving from request to review. The cards are examples of the kind of work Markethink keeps organized and in motion.
+        A compact view of the work Markethink keeps in motion: website changes, growth follow-up, campaign assets, and the decisions ready for review.
       </p>
     </div>
 
-    <div class="live-rail" aria-hidden="true">
-      <div class="rail-track">
-        <span>Campaign request received</span>
-        <span>Landing page draft moving to review</span>
-        <span>Lead follow-up queued</span>
-        <span>Creative angle ready for approval</span>
-        <span>Website update prepared</span>
-        <span>Campaign request received</span>
-        <span>Landing page draft moving to review</span>
-        <span>Lead follow-up queued</span>
-        <span>Creative angle ready for approval</span>
-        <span>Website update prepared</span>
+    <div class="production-console animate-scale-in">
+      <div class="console-topbar" aria-hidden="true">
+        <span></span>
+        <strong>Work moving now</strong>
+        <div class="console-pulse"><i></i><i></i><i></i></div>
       </div>
-    </div>
 
-    <div class="shipping-panel animate-stagger" data-shipping-panel>
-      {lanes.map((lane, index) => (
-        <article class={`shipping-card ${index === 0 ? "active" : ""}`} data-shipping-card={index} tabindex="0">
-          <div class="card-topline">
-            <p class="card-eyebrow">{lane.name}</p>
-            <span class="card-live">Live lane</span>
-          </div>
+      <div class="live-rail" aria-hidden="true">
+        <div class="rail-track">
+          {[...railItems, ...railItems].map((item) => (
+            <span><i></i>{item}</span>
+          ))}
+        </div>
+      </div>
 
-          <div class="card-main">
-            <div class="rolling-number" aria-label={`${lane.value.join("")} ${lane.unit}`}>
-              {lane.value.map((digit, digitIndex) => (
-                <span class="digit-window" style={`--target: ${digit}; --digit-delay: ${digitIndex * 0.16}s`}>
-                  <span class="digit-strip">
-                    {digitSequence.map((item) => <span>{item}</span>)}
-                  </span>
+      <div class="shipping-panel" data-shipping-panel>
+        {lanes.map((lane, index) => (
+          <article class="shipping-card" data-shipping-card={index} tabindex="0">
+            <div class="card-topline">
+              <div class="lane-mark">
+                <span class="icon-bubble" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d={lane.icon} stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </span>
+                <div>
+                  <p class="card-eyebrow">{lane.name}</p>
+                  <strong>{lane.label}</strong>
+                </div>
+              </div>
+              <span class="card-live"><i></i>Live</span>
+            </div>
+
+            <div class="card-core">
+              <div class="rolling-number" aria-label={`${lane.digits.join("")} ${lane.unit}`}>
+                {lane.digits.map((digit, digitIndex) => (
+                  <span class="digit-window" style={`--delay: ${digitIndex * -0.42}s`}>
+                    <span class="digit-strip">
+                      {digitSequence.map((item) => <span>{item}</span>)}
+                    </span>
+                    <em>{digit}</em>
+                  </span>
+                ))}
+              </div>
+              <span>{lane.unit}</span>
+            </div>
+
+            <div class="sparkline" aria-hidden="true">
+              {lane.bars.map((bar, barIndex) => (
+                <span style={`--bar: ${bar}%; --bar-delay: ${barIndex * -0.32}s`}></span>
               ))}
             </div>
-            <span>{lane.unit}</span>
-          </div>
 
-          <div class="activity-message">
-            <span class="message-dot"></span>
-            <p>{lane.note}</p>
-          </div>
-
-          <div class="metric-grid" aria-label={`${lane.name} activity metrics`}>
-            {lane.metrics.map((metric, metricIndex) => (
-              <div class="metric-pill" style={`--metric-delay: ${metricIndex * 0.18}s`}>
-                <span>{metric.label}</span>
-                <strong class="mini-number" aria-label={`${metric.value.join("")} ${metric.label}`}>
-                  {metric.value.map((digit, digitIndex) => (
-                    <span class="mini-digit-window" style={`--target: ${digit}; --digit-delay: ${digitIndex * 0.12}s`}>
-                      <span class="digit-strip">
-                        {digitSequence.map((item) => <span>{item}</span>)}
-                      </span>
-                    </span>
-                  ))}
-                </strong>
+            <div class="activity-feed" aria-label={`${lane.name} activity feed`}>
+              <div class="feed-track">
+                {[...lane.activity, ...lane.activity].map((item) => (
+                  <span><i></i>{item}</span>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div class="movement-stack" aria-hidden="true">
-            {lane.activity.map((item, itemIndex) => (
-              <span style={`--move-delay: ${itemIndex * -1.4}s`}>
-                <i></i>
-                {item}
-              </span>
-            ))}
-          </div>
-        </article>
-      ))}
+            <div class="chip-row" aria-label={`${lane.name} work types`}>
+              {lane.chips.map((chip, chipIndex) => (
+                <span style={`--chip-delay: ${chipIndex * -0.55}s`}>{chip}</span>
+              ))}
+            </div>
+
+            <div class="card-status">
+              <span>{lane.live}</span>
+              <i></i>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -149,11 +163,11 @@ const lanes = [
   .shipping-cards-section {
     position: relative;
     overflow: hidden;
-    padding: 6rem 0 7rem;
+    padding: 6.6rem 0 7.4rem;
     background:
-      radial-gradient(circle at 18% 15%, rgba(105, 210, 84, 0.14), transparent 26rem),
-      radial-gradient(circle at 82% 20%, rgba(237, 244, 234, 0.08), transparent 24rem),
-      #0f1213;
+      radial-gradient(circle at 18% 10%, rgba(105, 210, 84, 0.18), transparent 25rem),
+      radial-gradient(circle at 92% 18%, rgba(237, 244, 234, 0.1), transparent 27rem),
+      linear-gradient(180deg, #0f1213 0%, #121617 100%);
     color: #f5f5f1;
   }
 
@@ -162,10 +176,19 @@ const lanes = [
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(245, 245, 241, 0.055) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(245, 245, 241, 0.04) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(245, 245, 241, 0.05) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(245, 245, 241, 0.035) 1px, transparent 1px);
     background-size: 5rem 5rem;
-    mask-image: linear-gradient(180deg, black 0%, transparent 72%);
+    mask-image: linear-gradient(180deg, black 0%, transparent 76%);
+    pointer-events: none;
+  }
+
+  .shipping-cards-section::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 12rem;
+    background: linear-gradient(180deg, transparent, rgba(105, 210, 84, 0.04));
     pointer-events: none;
   }
 
@@ -176,198 +199,263 @@ const lanes = [
 
   .shipping-header {
     display: grid;
-    grid-template-columns: minmax(0, 0.86fr) minmax(18rem, 0.72fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(19rem, 0.62fr);
     gap: 2rem;
     align-items: end;
-    margin-bottom: 1.35rem;
+    margin-bottom: 1.45rem;
   }
 
   .shipping-header .subtitle {
-    grid-column: 1 / -1;
-    color: rgba(245, 245, 241, 0.58);
+    margin-bottom: 0.8rem;
+    color: rgba(245, 245, 241, 0.56);
   }
 
   .shipping-header h2 {
-    max-width: 50rem;
+    max-width: 54rem;
     color: #f5f5f1;
-    font-size: clamp(2.5rem, 5vw, 5.8rem);
+    font-size: clamp(2.6rem, 5.2vw, 5.9rem);
     line-height: 0.95;
     letter-spacing: -0.055em;
   }
 
-  .shipping-header p:last-child {
+  .shipping-header p {
     color: rgba(245, 245, 241, 0.7);
-    font-size: clamp(1rem, 1.25vw, 1.15rem);
-    line-height: 1.65;
+    font-size: clamp(1rem, 1.18vw, 1.12rem);
+    line-height: 1.68;
   }
 
-  .live-rail {
+  .production-console {
     position: relative;
     overflow: hidden;
-    margin: 0 0 1.35rem;
-    border: 1px solid rgba(245, 245, 241, 0.1);
+    padding: 1rem;
+    border: 1px solid rgba(245, 245, 241, 0.12);
+    border-radius: 2.15rem;
+    background:
+      linear-gradient(180deg, rgba(245, 245, 241, 0.09), rgba(245, 245, 241, 0.035)),
+      rgba(15, 18, 19, 0.82);
+    box-shadow: 0 32px 110px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .production-console::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 73% 0%, rgba(105, 210, 84, 0.16), transparent 22rem);
+    pointer-events: none;
+  }
+
+  .console-topbar,
+  .live-rail,
+  .shipping-panel {
+    position: relative;
+    z-index: 1;
+  }
+
+  .console-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 2.55rem;
+    padding: 0 0.35rem 0.8rem;
+    color: rgba(245, 245, 241, 0.68);
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .console-topbar > span {
+    width: 4.5rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #69d254, rgba(105, 210, 84, 0.2));
+  }
+
+  .console-pulse {
+    display: flex;
+    gap: 0.34rem;
+  }
+
+  .console-pulse i {
+    width: 0.44rem;
+    height: 0.44rem;
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.34);
+    animation: pulse-soft 1.8s ease-in-out infinite;
+  }
+
+  .console-pulse i:nth-child(2) { animation-delay: 0.2s; }
+  .console-pulse i:nth-child(3) { animation-delay: 0.4s; }
+
+  .live-rail {
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(245, 245, 241, 0.09);
     border-radius: var(--radius-button);
-    background: rgba(245, 245, 241, 0.06);
-    mask-image: linear-gradient(90deg, transparent 0, black 9%, black 91%, transparent 100%);
+    background: rgba(245, 245, 241, 0.055);
+    mask-image: linear-gradient(90deg, transparent 0, black 8%, black 92%, transparent 100%);
   }
 
   .rail-track {
     display: flex;
     width: max-content;
-    gap: 0.65rem;
-    padding: 0.65rem;
-    animation: rail-move 34s linear infinite;
+    gap: 0.55rem;
+    padding: 0.55rem;
+    animation: rail-move 24s linear infinite;
   }
 
   .rail-track span {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    min-height: 2.35rem;
-    padding: 0 1rem;
+    gap: 0.46rem;
+    min-height: 2.25rem;
+    padding: 0 0.92rem;
     border-radius: var(--radius-button);
-    background: rgba(245, 245, 241, 0.09);
+    background: rgba(245, 245, 241, 0.085);
     color: rgba(245, 245, 241, 0.78);
-    font-size: 0.82rem;
-    font-weight: 650;
+    font-size: 0.78rem;
+    font-weight: 680;
     white-space: nowrap;
   }
 
-  .rail-track span::before {
-    content: "";
-    width: 0.44rem;
-    height: 0.44rem;
+  .rail-track i,
+  .card-live i,
+  .feed-track i {
+    width: 0.42rem;
+    height: 0.42rem;
     border-radius: 50%;
     background: #69d254;
+    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.46);
+    animation: pulse-dot 2.2s ease-out infinite;
   }
 
   .shipping-panel {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.15rem;
-    align-items: stretch;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
   }
 
   .shipping-card {
     position: relative;
     overflow: hidden;
-    display: flex;
-    min-height: 34rem;
-    flex-direction: column;
-    padding: 1.35rem;
-    border: 1px solid rgba(245, 245, 241, 0.12);
-    border-radius: 1.8rem;
-    background: linear-gradient(180deg, rgba(245, 245, 241, 0.98), rgba(237, 244, 234, 0.92));
+    min-height: 23.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(245, 245, 241, 0.22);
+    border-radius: 1.45rem;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(105, 210, 84, 0.18), transparent 11rem),
+      linear-gradient(180deg, rgba(245, 245, 241, 0.97), rgba(237, 244, 234, 0.92));
     color: #0f1213;
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 22px 62px rgba(0, 0, 0, 0.22);
     outline: none;
-    transform: translateY(0) scale(1);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  }
-
-  .shipping-card::before {
-    content: "";
-    position: absolute;
-    inset: -45% -30% auto auto;
-    width: 18rem;
-    height: 18rem;
-    border-radius: 999px;
-    background: rgba(105, 210, 84, 0.16);
-    filter: blur(4px);
-    transition: transform 0.45s ease, opacity 0.45s ease;
-  }
-
-  .shipping-card::after {
-    content: "";
-    position: absolute;
-    inset: auto 1.35rem 1.35rem 1.35rem;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(15, 18, 19, 0.16), transparent);
-    opacity: 0.8;
+    transform: translateY(0);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
   .shipping-card:hover,
   .shipping-card:focus,
   .shipping-card.active {
-    border-color: rgba(105, 210, 84, 0.55);
-    box-shadow: 0 34px 98px rgba(0, 0, 0, 0.28);
-    transform: translateY(-0.45rem) scale(1.012);
+    border-color: rgba(105, 210, 84, 0.68);
+    box-shadow: 0 28px 78px rgba(0, 0, 0, 0.28);
+    transform: translateY(-0.35rem);
   }
 
-  .shipping-card:hover::before,
-  .shipping-card:focus::before,
-  .shipping-card.active::before {
-    opacity: 1;
-    transform: translate3d(-1.2rem, 1.2rem, 0) scale(1.18);
-  }
-
-  .card-topline,
-  .card-main,
-  .activity-message,
-  .metric-grid,
-  .movement-stack {
-    position: relative;
-    z-index: 1;
+  .shipping-card::after {
+    content: "";
+    position: absolute;
+    inset: auto 1rem 0.9rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(15, 18, 19, 0.15), transparent);
   }
 
   .card-topline {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .lane-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 0;
+  }
+
+  .icon-bubble {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 2.45rem;
+    height: 2.45rem;
+    border-radius: 0.9rem;
+    background: #0f1213;
+    color: #69d254;
+    box-shadow: 0 10px 24px rgba(15, 18, 19, 0.16);
+  }
+
+  .icon-bubble svg {
+    width: 1.28rem;
+    height: 1.28rem;
   }
 
   .card-eyebrow {
-    color: rgba(15, 18, 19, 0.58);
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
+    color: rgba(15, 18, 19, 0.48);
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .lane-mark strong {
+    display: block;
+    margin-top: 0.15rem;
+    color: #0f1213;
+    font-size: 0.9rem;
+    letter-spacing: -0.015em;
   }
 
   .card-live {
     display: inline-flex;
     align-items: center;
     gap: 0.38rem;
-    padding: 0.36rem 0.64rem;
+    min-height: 1.85rem;
+    padding: 0 0.58rem;
     border-radius: var(--radius-button);
     background: #0f1213;
     color: #f5f5f1;
-    font-size: 0.68rem;
-    font-weight: 750;
+    font-size: 0.66rem;
+    font-weight: 800;
   }
 
-  .card-live::before {
-    content: "";
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: #69d254;
-    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.48);
-    animation: pulse-dot 2.3s ease-out infinite;
-  }
-
-  .card-main {
-    margin-top: 0.4rem;
+  .card-core {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: end;
+    margin: 0.8rem 0 0.9rem;
   }
 
   .rolling-number {
     display: flex;
-    align-items: flex-start;
-    gap: 0.08em;
-    height: 0.96em;
+    gap: 0.04em;
+    height: 1em;
     overflow: hidden;
-    font-size: clamp(4.8rem, 8vw, 7.6rem);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.095em;
     color: #0f1213;
+    font-size: clamp(3.2rem, 5.6vw, 4.75rem);
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: -0.08em;
   }
 
-  .digit-window,
-  .mini-digit-window {
+  .digit-window {
+    position: relative;
     display: inline-block;
+    width: 0.58em;
     height: 1em;
     overflow: hidden;
   }
@@ -375,112 +463,117 @@ const lanes = [
   .digit-strip {
     display: flex;
     flex-direction: column;
-    animation: roll-digit 3.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: var(--digit-delay);
+    animation: digit-cycle 2.8s steps(10) infinite;
+    animation-delay: var(--delay);
   }
 
-  .digit-strip span {
+  .digit-strip span,
+  .digit-window em {
     display: block;
     height: 1em;
+    font-style: normal;
     line-height: 1;
   }
 
-  .card-main > span {
-    display: block;
-    margin-top: 0.85rem;
-    color: rgba(15, 18, 19, 0.74);
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: -0.01em;
+  .digit-window em {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
   }
 
-  .activity-message {
+  .card-core > span {
+    padding-bottom: 0.42rem;
+    color: rgba(15, 18, 19, 0.64);
+    font-size: 0.8rem;
+    font-weight: 820;
+    line-height: 1.15;
+  }
+
+  .sparkline {
     display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    margin-top: 1.25rem;
-    padding: 1rem;
-    border: 1px solid rgba(15, 18, 19, 0.07);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.58);
-    color: rgba(15, 18, 19, 0.68);
-    font-size: 0.86rem;
-    line-height: 1.58;
+    align-items: end;
+    gap: 0.26rem;
+    height: 3.2rem;
+    margin-bottom: 0.9rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 0.95rem;
+    background: rgba(255, 255, 255, 0.5);
   }
 
-  .message-dot {
-    flex: 0 0 auto;
-    width: 0.7rem;
-    height: 0.7rem;
-    margin-top: 0.32rem;
-    border-radius: 50%;
-    background: #69d254;
-    box-shadow: 0 0 0 0.38rem rgba(105, 210, 84, 0.14);
+  .sparkline span {
+    flex: 1;
+    height: var(--bar);
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(180deg, rgba(105, 210, 84, 0.92), rgba(105, 210, 84, 0.18));
+    transform-origin: bottom;
+    animation: bar-breathe 2.7s ease-in-out infinite;
+    animation-delay: var(--bar-delay);
   }
 
-  .metric-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.65rem;
-    margin-top: 1.15rem;
-  }
-
-  .metric-pill {
-    min-width: 0;
-    padding: 0.78rem 0.72rem;
-    border: 1px solid rgba(15, 18, 19, 0.07);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.52);
-    animation: metric-float 5.8s ease-in-out infinite;
-    animation-delay: var(--metric-delay);
-  }
-
-  .metric-pill span {
-    display: block;
-    min-height: 2.1em;
-    color: rgba(15, 18, 19, 0.46);
-    font-size: 0.68rem;
-    line-height: 1.2;
-  }
-
-  .mini-number {
-    display: flex;
-    gap: 0.03em;
-    height: 1em;
+  .activity-feed {
+    height: 4.25rem;
     overflow: hidden;
-    margin-top: 0.38rem;
-    color: #0f1213;
-    font-size: 1.25rem;
-    line-height: 1;
-    letter-spacing: -0.04em;
+    border: 1px solid rgba(15, 18, 19, 0.07);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.55);
   }
 
-  .movement-stack {
+  .feed-track {
     display: grid;
-    gap: 0.55rem;
-    margin-top: auto;
-    padding-top: 1.3rem;
+    animation: feed-move 7.8s ease-in-out infinite;
   }
 
-  .movement-stack span {
+  .feed-track span {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.68rem 0.78rem;
-    border-radius: 0.95rem;
-    background: rgba(15, 18, 19, 0.055);
-    color: rgba(15, 18, 19, 0.68);
-    font-size: 0.76rem;
-    font-weight: 700;
-    animation: move-live 6.5s ease-in-out infinite;
-    animation-delay: var(--move-delay);
+    gap: 0.52rem;
+    min-height: 2.12rem;
+    padding: 0 0.82rem;
+    color: rgba(15, 18, 19, 0.72);
+    font-size: 0.78rem;
+    font-weight: 760;
   }
 
-  .movement-stack i {
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: #69d254;
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.82rem;
+  }
+
+  .chip-row span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.85rem;
+    padding: 0 0.62rem;
+    border-radius: var(--radius-button);
+    background: rgba(15, 18, 19, 0.055);
+    color: rgba(15, 18, 19, 0.62);
+    font-size: 0.68rem;
+    font-weight: 780;
+    animation: chip-shift 4.4s ease-in-out infinite;
+    animation-delay: var(--chip-delay);
+  }
+
+  .card-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.92rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(15, 18, 19, 0.08);
+    color: rgba(15, 18, 19, 0.78);
+    font-size: 0.76rem;
+    font-weight: 820;
+  }
+
+  .card-status i {
+    width: 2.3rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(105, 210, 84, 0.2), #69d254);
+    animation: status-scan 2.4s ease-in-out infinite;
   }
 
   @keyframes rail-move {
@@ -488,52 +581,81 @@ const lanes = [
     to { transform: translateX(-50%); }
   }
 
-  @keyframes roll-digit {
-    0% { transform: translateY(0); }
-    38% { transform: translateY(-9em); }
-    72%, 100% { transform: translateY(calc(var(--target) * -1em)); }
+  @keyframes digit-cycle {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10em); }
+  }
+
+  @keyframes feed-move {
+    0%, 16% { transform: translateY(0); }
+    28%, 44% { transform: translateY(-2.12rem); }
+    56%, 72% { transform: translateY(-4.24rem); }
+    84%, 100% { transform: translateY(-6.36rem); }
+  }
+
+  @keyframes bar-breathe {
+    0%, 100% { transform: scaleY(0.72); opacity: 0.68; }
+    46% { transform: scaleY(1); opacity: 1; }
   }
 
   @keyframes pulse-dot {
-    0% { box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.48); }
-    72%, 100% { box-shadow: 0 0 0 0.6rem rgba(105, 210, 84, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.46); }
+    72%, 100% { box-shadow: 0 0 0 0.55rem rgba(105, 210, 84, 0); }
   }
 
-  @keyframes metric-float {
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.28; transform: translateY(0); }
+    48% { opacity: 1; transform: translateY(-0.1rem); }
+  }
+
+  @keyframes chip-shift {
     0%, 100% { transform: translateY(0); }
-    48% { transform: translateY(-0.35rem); }
+    45% { transform: translateY(-0.22rem); }
   }
 
-  @keyframes move-live {
-    0%, 100% { transform: translateX(0); opacity: 0.68; }
-    44% { transform: translateX(0.55rem); opacity: 1; }
+  @keyframes status-scan {
+    0%, 100% { transform: scaleX(0.68); opacity: 0.62; }
+    45% { transform: scaleX(1); opacity: 1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .rail-track,
+    .console-pulse i,
+    .rail-track i,
+    .card-live i,
+    .feed-track i,
     .digit-strip,
-    .card-live::before,
-    .metric-pill,
-    .movement-stack span {
+    .sparkline span,
+    .feed-track,
+    .chip-row span,
+    .card-status i {
       animation: none;
+    }
+
+    .digit-strip {
+      display: none;
+    }
+
+    .digit-window em {
+      opacity: 1;
     }
   }
 
   @media (max-width: 1060px) {
     .shipping-panel {
       grid-template-columns: 1fr;
-      max-width: 43rem;
+      max-width: 34rem;
       margin: 0 auto;
     }
 
     .shipping-card {
-      min-height: auto;
+      min-height: 22rem;
     }
   }
 
   @media (max-width: 767px) {
     .shipping-cards-section {
-      padding: 4.5rem 0;
+      padding: 4.7rem 0 5.6rem;
     }
 
     .shipping-header {
@@ -541,23 +663,27 @@ const lanes = [
       gap: 1rem;
     }
 
-    .shipping-header .subtitle {
-      grid-column: auto;
+    .production-console {
+      padding: 0.72rem;
+      border-radius: 1.5rem;
+    }
+
+    .console-topbar {
+      padding-inline: 0.15rem;
     }
 
     .shipping-card {
-      padding: 1.1rem;
-      border-radius: 1.35rem;
+      padding: 0.9rem;
+      border-radius: 1.2rem;
     }
 
-    .metric-grid {
+    .card-core {
       grid-template-columns: 1fr;
+      gap: 0.35rem;
     }
-  }
 
-  @media (max-width: 479px) {
-    .rolling-number {
-      font-size: clamp(3.8rem, 18vw, 5rem);
+    .card-core > span {
+      padding-bottom: 0;
     }
   }
 </style>
