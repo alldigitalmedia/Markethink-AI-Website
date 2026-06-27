@@ -1,0 +1,463 @@
+---
+const cards = [
+  {
+    eyebrow: "Campaign studio",
+    badge: "Now moving",
+    stat: "LIVE",
+    label: "campaign work in motion",
+    note: "Offer ideas, post angles, landing sections, emails, and next decisions stay organized instead of scattered.",
+    metrics: [
+      { label: "Briefs", value: "shaping" },
+      { label: "Assets", value: "drafting" },
+      { label: "Approvals", value: "queued" },
+    ],
+    status: "Building the next campaign package",
+    accent: "green",
+  },
+  {
+    eyebrow: "Website lane",
+    badge: "Expert review",
+    stat: "READY",
+    label: "web updates prepared for review",
+    note: "Pages, sections, SEO fixes, conversion copy, and product explanations move through the same operating rhythm.",
+    metrics: [
+      { label: "Pages", value: "planned" },
+      { label: "Copy", value: "sharpened" },
+      { label: "UX", value: "checked" },
+    ],
+    status: "Turning website ideas into review-ready changes",
+    accent: "wash",
+  },
+  {
+    eyebrow: "Lead motion",
+    badge: "Follow-up",
+    stat: "NEXT",
+    label: "opportunities organized for action",
+    note: "Lead research, CRM notes, outreach angles, and follow-up tasks connect back to the campaign instead of living alone.",
+    metrics: [
+      { label: "ICP", value: "matched" },
+      { label: "CRM", value: "organized" },
+      { label: "Next step", value: "clear" },
+    ],
+    status: "Keeping prospect work tied to marketing",
+    accent: "charcoal",
+  },
+];
+---
+
+<section class="shipping-cards-section" id="shipping-now" aria-label="What Markethink is shipping">
+  <div class="container shipping-container">
+    <div class="shipping-header animate-fade-up">
+      <p class="subtitle">AI operator + expert team</p>
+      <h2>What the system is shipping.</h2>
+      <p>
+        Markethink turns requests into visible work: campaigns, web updates, social assets, lead follow-up, and the decisions that need approval.
+      </p>
+    </div>
+
+    <div class="shipping-panel animate-stagger" data-shipping-panel>
+      {cards.map((card, index) => (
+        <article class={`shipping-card shipping-card-${card.accent} ${index === 0 ? "active" : ""}`} data-shipping-card={index} tabindex="0">
+          <div class="card-topline">
+            <div>
+              <p class="card-eyebrow">{card.eyebrow}</p>
+              <span class="card-badge">{card.badge}</span>
+            </div>
+            <div class="mini-chart" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="card-main">
+            <strong>{card.stat}</strong>
+            <span>{card.label}</span>
+          </div>
+
+          <p class="card-note">{card.note}</p>
+
+          <div class="metric-row" aria-label={`${card.eyebrow} activity`}>
+            {card.metrics.map((metric) => (
+              <div>
+                <span>{metric.label}</span>
+                <strong>{metric.value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div class="card-status">
+            <span class="status-dot"></span>
+            <span>{card.status}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initShippingCards() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-shipping-card]"));
+    if (!cards.length) return;
+
+    const activate = (activeCard: HTMLElement) => {
+      cards.forEach((card) => card.classList.toggle("active", card === activeCard));
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => activate(card));
+      card.addEventListener("focus", () => activate(card));
+      card.addEventListener("click", () => activate(card));
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initShippingCards);
+  if (document.readyState !== "loading") {
+    initShippingCards();
+  }
+</script>
+
+<style>
+  .shipping-cards-section {
+    position: relative;
+    overflow: hidden;
+    padding: 5.5rem 0 6rem;
+    margin-top: -1px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(105, 210, 84, 0.16), transparent 28rem),
+      linear-gradient(180deg, #0f1213 0%, #171b1c 42%, #f5f5f1 42%, #f5f5f1 100%);
+    color: #f5f5f1;
+  }
+
+  .shipping-cards-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(245, 245, 241, 0.055) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(245, 245, 241, 0.04) 1px, transparent 1px);
+    background-size: 5.25rem 5.25rem;
+    mask-image: linear-gradient(180deg, black 0%, transparent 58%);
+    pointer-events: none;
+  }
+
+  .shipping-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .shipping-header {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 0.78fr);
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 2rem;
+  }
+
+  .shipping-header .subtitle {
+    grid-column: 1 / -1;
+    color: rgba(245, 245, 241, 0.58);
+  }
+
+  .shipping-header h2 {
+    max-width: 48rem;
+    color: #f5f5f1;
+    font-size: clamp(2.5rem, 5vw, 5.7rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+  }
+
+  .shipping-header p:last-child {
+    color: rgba(245, 245, 241, 0.7);
+    font-size: clamp(1rem, 1.3vw, 1.18rem);
+    line-height: 1.65;
+  }
+
+  .shipping-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
+    align-items: stretch;
+  }
+
+  .shipping-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    min-height: 31rem;
+    flex-direction: column;
+    padding: 1.55rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    border-radius: 1.7rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0f1213;
+    box-shadow: 0 24px 70px rgba(15, 18, 19, 0.16);
+    outline: none;
+    transform: translateY(0) scale(1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .shipping-card::before {
+    content: "";
+    position: absolute;
+    inset: -38% -28% auto auto;
+    width: 17rem;
+    height: 17rem;
+    border-radius: 999px;
+    background: rgba(105, 210, 84, 0.16);
+    filter: blur(8px);
+    transition: transform 0.45s ease, opacity 0.45s ease;
+  }
+
+  .shipping-card-wash::before {
+    background: rgba(237, 244, 234, 0.95);
+  }
+
+  .shipping-card-charcoal::before {
+    background: rgba(15, 18, 19, 0.12);
+  }
+
+  .shipping-card:hover,
+  .shipping-card:focus,
+  .shipping-card.active {
+    border-color: rgba(105, 210, 84, 0.42);
+    box-shadow: 0 30px 80px rgba(15, 18, 19, 0.24);
+    transform: translateY(-0.45rem) scale(1.012);
+  }
+
+  .shipping-card:hover::before,
+  .shipping-card:focus::before,
+  .shipping-card.active::before {
+    opacity: 1;
+    transform: translate3d(-1.2rem, 1.2rem, 0) scale(1.18);
+  }
+
+  .card-topline,
+  .card-main,
+  .card-note,
+  .metric-row,
+  .card-status {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+    align-items: flex-start;
+    min-height: 5rem;
+  }
+
+  .card-eyebrow {
+    margin-bottom: 0.55rem;
+    color: rgba(15, 18, 19, 0.48);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.58rem;
+    border-radius: var(--radius-button);
+    background: #0f1213;
+    color: #f5f5f1;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .card-badge::before {
+    content: "";
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: #69d254;
+    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.45);
+    animation: shipping-pulse 2.5s ease-out infinite;
+  }
+
+  .mini-chart {
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
+    width: 7.25rem;
+    height: 3.8rem;
+    padding: 0.55rem;
+    border-radius: 1rem;
+    background: linear-gradient(180deg, rgba(237, 244, 234, 0.9), rgba(237, 244, 234, 0.28));
+  }
+
+  .mini-chart span {
+    flex: 1;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(180deg, rgba(105, 210, 84, 0.82), rgba(105, 210, 84, 0.18));
+    transform-origin: bottom;
+    animation: chart-rise 4.8s ease-in-out infinite;
+  }
+
+  .mini-chart span:nth-child(1) { height: 28%; animation-delay: -0.2s; }
+  .mini-chart span:nth-child(2) { height: 36%; animation-delay: -0.6s; }
+  .mini-chart span:nth-child(3) { height: 54%; animation-delay: -1s; }
+  .mini-chart span:nth-child(4) { height: 66%; animation-delay: -1.4s; }
+  .mini-chart span:nth-child(5) { height: 88%; animation-delay: -1.8s; }
+
+  .card-main {
+    margin-top: 1.25rem;
+  }
+
+  .card-main strong {
+    display: block;
+    font-size: clamp(3.55rem, 6vw, 5.7rem);
+    line-height: 0.86;
+    letter-spacing: -0.075em;
+  }
+
+  .card-main span {
+    display: block;
+    margin-top: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  .card-note {
+    margin-top: 1.25rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(15, 18, 19, 0.045);
+    color: rgba(15, 18, 19, 0.66);
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .metric-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.45rem;
+  }
+
+  .metric-row div {
+    min-width: 0;
+  }
+
+  .metric-row span {
+    display: block;
+    margin-bottom: 0.24rem;
+    color: rgba(15, 18, 19, 0.46);
+    font-size: 0.72rem;
+  }
+
+  .metric-row strong {
+    display: block;
+    color: #0f1213;
+    font-size: clamp(0.86rem, 1.1vw, 1rem);
+    line-height: 1.15;
+  }
+
+  .card-status {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.45rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(15, 18, 19, 0.08);
+    color: rgba(15, 18, 19, 0.78);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .status-dot {
+    width: 0.74rem;
+    height: 0.74rem;
+    border-radius: 50%;
+    background: #69d254;
+    box-shadow: 0 0 0 0.35rem rgba(105, 210, 84, 0.14);
+  }
+
+  @keyframes chart-rise {
+    0%, 100% { transform: scaleY(0.82); opacity: 0.72; }
+    45% { transform: scaleY(1); opacity: 1; }
+  }
+
+  @keyframes shipping-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.45); }
+    70%, 100% { box-shadow: 0 0 0 0.55rem rgba(105, 210, 84, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shipping-card,
+    .shipping-card::before,
+    .mini-chart span,
+    .card-badge::before {
+      animation: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1060px) {
+    .shipping-panel {
+      grid-template-columns: 1fr;
+      max-width: 43rem;
+      margin: 0 auto;
+    }
+
+    .shipping-card {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .shipping-cards-section {
+      padding: 4.5rem 0;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(105, 210, 84, 0.16), transparent 22rem),
+        linear-gradient(180deg, #0f1213 0%, #171b1c 34%, #f5f5f1 34%, #f5f5f1 100%);
+    }
+
+    .shipping-header {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .shipping-header .subtitle {
+      grid-column: auto;
+    }
+
+    .shipping-card {
+      padding: 1.15rem;
+      border-radius: 1.35rem;
+    }
+
+    .card-topline {
+      min-height: 4.5rem;
+    }
+
+    .mini-chart {
+      width: 5.9rem;
+    }
+
+    .metric-row {
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .card-main strong {
+      font-size: clamp(2.75rem, 15vw, 3.65rem);
+    }
+
+    .metric-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
