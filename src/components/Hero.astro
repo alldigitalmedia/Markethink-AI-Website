@@ -2,16 +2,6 @@
 const trialHref = "/trial/";
 const walkthroughHref = "/schedule-a-walkthrough/";
 
-const capabilities = [
-  "Campaigns",
-  "Social",
-  "Landing pages",
-  "Lead lists",
-  "CRM follow-up",
-  "Approvals",
-  "Brand memory",
-  "Reporting",
-];
 ---
 
 <section class="section-hero" id="hero">
@@ -40,13 +30,6 @@ const capabilities = [
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
         <a href={trialHref} class="button is-secondary">Apply for a 30-Day Trial</a>
-      </div>
-    </div>
-    <div class="capability-strip animate-fade-up" aria-label="Markethink capabilities">
-      <div class="capability-track">
-        {[...capabilities, ...capabilities].map((item) => (
-          <span>{item}</span>
-        ))}
       </div>
     </div>
   </div>
@@ -264,56 +247,6 @@ const capabilities = [
     -webkit-backdrop-filter: blur(8px);
   }
 
-  .capability-strip {
-    position: relative;
-    width: min(100%, 64rem);
-    margin: 3rem auto 0;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-button);
-    background: rgba(15, 18, 19, 0.34);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    mask-image: linear-gradient(90deg, transparent 0, black 9%, black 91%, transparent 100%);
-  }
-
-  .capability-track {
-    display: flex;
-    width: max-content;
-    gap: 0.65rem;
-    padding: 0.72rem;
-    animation: capability-scroll 32s linear infinite;
-  }
-
-  .capability-track span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.35rem;
-    padding: 0 1rem;
-    border-radius: var(--radius-button);
-    background: rgba(245, 245, 241, 0.08);
-    color: rgba(245, 245, 241, 0.84);
-    font-size: 0.82rem;
-    font-weight: 650;
-    white-space: nowrap;
-  }
-
-  @keyframes capability-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .capability-track {
-      animation: none;
-    }
-  }
 
   @media (max-width: 1180px) {
     .hero-text {
@@ -373,10 +306,6 @@ const capabilities = [
 
     .hero-heading-support {
       font-size: clamp(1.55rem, 7.2vw, 2.45rem);
-    }
-
-    .capability-strip {
-      margin-top: 2.25rem;
     }
   }
 
