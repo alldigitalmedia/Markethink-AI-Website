@@ -33,8 +33,9 @@ const capabilities = [
           <span class="hero-heading-accent">finds the next opportunity.</span>
         </span>
       </h1>
-      <p class="hero-description animate-fade-up">
-        Run by your trained AI marketing agent. Managed by expert human marketers for you. Markethink plans campaigns, updates your website, keeps social moving, prepares content, follows up with leads, and remembers what worked so your marketing does not restart from zero every week.
+      <p class="hero-description hero-heading-support animate-fade-up">
+        <span>Run by your trained AI marketing agent.</span>
+        <span>Managed by expert human marketers for you.</span>
       </p>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Book a Walkthrough</a>
@@ -219,11 +220,24 @@ const capabilities = [
   }
 
   .hero-description {
-    font-size: clamp(1.18rem, 1.6vw, 1.55rem);
     color: rgba(255, 255, 255, 0.86);
     max-width: 64rem;
-    line-height: 1.55;
-    font-weight: 500;
+  }
+
+  .hero-heading-support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.08em;
+    font-family: var(--font-display);
+    font-size: clamp(2.05rem, 3.2vw, 4.1rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .hero-heading-support span {
+    display: block;
   }
 
   .button-group {
@@ -354,8 +368,11 @@ const capabilities = [
     }
 
     .hero-description {
-      font-size: 1.05rem;
       max-width: 34rem;
+    }
+
+    .hero-heading-support {
+      font-size: clamp(1.55rem, 7.2vw, 2.45rem);
     }
 
     .capability-strip {
@@ -380,6 +397,11 @@ const capabilities = [
     .hero-heading-rotator {
       font-size: 0.68em;
       min-height: 1.42em;
+    }
+
+    .hero-heading-support {
+      font-size: clamp(1.35rem, 7.8vw, 2rem);
+      letter-spacing: -0.04em;
     }
 
     .button-group,
