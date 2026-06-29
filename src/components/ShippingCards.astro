@@ -1,13 +1,15 @@
 ---
-const digitSequence = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "1", "2", "3", "4"];
-
 const lanes = [
   {
     name: "Web",
     label: "Website work in motion",
     icon: "M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v7A2.5 2.5 0 0 1 16.5 17h-9A2.5 2.5 0 0 1 5 14.5v-7Zm2.2 1.2h9.6M8 12h3.5m1.5 0h3",
-    digits: ["2", "3"],
-    unit: "updates prepared",
+    moments: [
+      { value: "23", label: "updates prepared" },
+      { value: "2", label: "new landing pages created" },
+      { value: "1", label: "new blog post written" },
+      { value: "6", label: "page sections moved to review" },
+    ],
     live: "Website work no longer stuck in the queue",
     activity: ["Request captured", "Draft ready for review", "SEO pass", "Approval package"],
     chips: ["Landing", "Copy", "SEO", "QA"],
@@ -17,8 +19,12 @@ const lanes = [
     name: "Grow",
     label: "Opportunities sorted",
     icon: "M12 4.5v15M5.5 12h13M7 7.2c2.8 2.2 7.2 2.2 10 0M7 16.8c2.8-2.2 7.2-2.2 10 0",
-    digits: ["2", "3", "4"],
-    unit: "prospects reviewed",
+    moments: [
+      { value: "234", label: "prospects reviewed" },
+      { value: "18", label: "fit signals checked" },
+      { value: "9", label: "follow-ups queued" },
+      { value: "4", label: "warm opportunities flagged" },
+    ],
     live: "Good-fit leads move before they go cold",
     activity: ["Fit signals checked", "Next follow-up queued", "Profiles enriched", "Owner assigned"],
     chips: ["ICP", "CRM", "Email", "Follow-up"],
@@ -28,8 +34,12 @@ const lanes = [
     name: "Ads",
     label: "Campaign assets aligned",
     icon: "M6 16.5 10 7l3.2 6.2L18 5.5l-3 13-3.4-6.1-5.6 4.1Z",
-    digits: ["2", "3"],
-    unit: "assets mapped",
+    moments: [
+      { value: "23", label: "assets mapped" },
+      { value: "5", label: "campaign angles tightened" },
+      { value: "3", label: "ad variants prepared" },
+      { value: "1", label: "approval package ready" },
+    ],
     live: "Campaign pieces stay connected",
     activity: ["Message angle tightened", "Audience matched", "Asset mapped", "Decision ready"],
     chips: ["Creative", "Offer", "Audience", "Tracking"],
@@ -91,18 +101,15 @@ const railItems = [
               <span class="card-live"><i></i>Live</span>
             </div>
 
-            <div class="card-core">
-              <div class="rolling-number" aria-label={`${lane.digits.join("")} ${lane.unit}`}>
-                {lane.digits.map((digit, digitIndex) => (
-                  <span class="digit-window" style={`--delay: ${digitIndex * -3.2}s`}>
-                    <span class="digit-strip">
-                      {digitSequence.map((item) => <span>{item}</span>)}
-                    </span>
-                    <em>{digit}</em>
-                  </span>
+            <div class="card-core" aria-label={`${lane.name} work moments`}>
+              <div class="metric-rotator">
+                {lane.moments.map((moment, momentIndex) => (
+                  <div class="metric-moment" style={`--moment-index: ${momentIndex}`}>
+                    <strong>{moment.value}</strong>
+                    <span>{moment.label}</span>
+                  </div>
                 ))}
               </div>
-              <span>{lane.unit}</span>
             </div>
 
             <div class="sparkline" aria-hidden="true">
@@ -354,8 +361,8 @@ const railItems = [
   .shipping-card:focus,
   .shipping-card.active {
     border-color: rgba(105, 210, 84, 0.68);
-    box-shadow: 0 28px 78px rgba(0, 0, 0, 0.28);
-    transform: translateY(-0.22rem);
+    box-shadow: 0 28px 78px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    transform: none;
   }
 
   .shipping-card::before {
@@ -449,56 +456,50 @@ const railItems = [
   }
 
   .card-core {
+    position: relative;
+    min-height: 5.2rem;
+    margin: 0.5rem 0 0.9rem;
+    overflow: hidden;
+  }
+
+  .metric-rotator {
+    position: relative;
+    min-height: 5.2rem;
+  }
+
+  .metric-moment {
+    position: absolute;
+    inset: 0;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.8rem;
     align-items: end;
-    margin: 0.45rem 0 0.85rem;
+    column-gap: 0.72rem;
+    opacity: 0;
+    transform: translateY(0.75rem);
+    animation: metric-moment 20s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation-delay: calc(var(--moment-index) * 5s);
+    will-change: opacity, transform;
   }
 
-  .rolling-number {
-    display: flex;
-    gap: 0.035em;
-    min-height: 1.16em;
-    overflow: visible;
-    color: #0f1213;
-    font-size: clamp(2.35rem, 3.6vw, 3.35rem);
-    font-weight: 780;
-    line-height: 1.08;
-    letter-spacing: -0.052em;
-  }
-
-  .digit-window {
-    position: relative;
-    display: inline-block;
-    width: 0.58em;
-    min-height: 1.12em;
-    overflow: visible;
-  }
-
-  .digit-strip {
-    display: none;
-  }
-
-  .digit-strip span,
-  .digit-window em {
+  .metric-moment strong {
     display: block;
-    min-height: 1.12em;
-    font-style: normal;
+    color: #0f1213;
+    font-size: clamp(2.55rem, 3.85vw, 3.65rem);
+    font-weight: 790;
     line-height: 1.08;
+    letter-spacing: -0.055em;
+    font-variant-numeric: tabular-nums;
   }
 
-  .digit-window em {
-    position: static;
-    opacity: 1;
-  }
-
-  .card-core > span {
-    padding-bottom: 0.42rem;
+  .metric-moment span {
+    display: block;
+    max-width: 11rem;
+    padding-bottom: 0.45rem;
     color: rgba(15, 18, 19, 0.64);
-    font-size: 0.8rem;
+    font-size: clamp(0.78rem, 0.82vw, 0.88rem);
     font-weight: 820;
-    line-height: 1.15;
+    line-height: 1.16;
+    text-wrap: balance;
   }
 
   .sparkline {
@@ -596,9 +597,10 @@ const railItems = [
     to { transform: translateX(-50%); }
   }
 
-  @keyframes digit-cycle {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10em); }
+  @keyframes metric-moment {
+    0% { opacity: 0; transform: translateY(0.75rem); }
+    6%, 22% { opacity: 1; transform: translateY(0); }
+    28%, 100% { opacity: 0; transform: translateY(-0.55rem); }
   }
 
   @keyframes feed-move {
@@ -639,7 +641,7 @@ const railItems = [
     .rail-track i,
     .card-live i,
     .feed-track i,
-    .digit-strip,
+    .metric-moment,
     .sparkline span,
     .feed-track,
     .chip-row span,
@@ -647,12 +649,15 @@ const railItems = [
       animation: none;
     }
 
-    .digit-strip {
+    .metric-moment {
+      position: static;
       display: none;
+      opacity: 1;
+      transform: none;
     }
 
-    .digit-window em {
-      opacity: 1;
+    .metric-moment:first-child {
+      display: grid;
     }
   }
 
@@ -692,12 +697,19 @@ const railItems = [
       border-radius: 1.2rem;
     }
 
-    .card-core {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
+    .card-core,
+    .metric-rotator {
+      min-height: 5.6rem;
     }
 
-    .card-core > span {
+    .metric-moment {
+      grid-template-columns: 1fr;
+      align-items: start;
+      row-gap: 0.1rem;
+    }
+
+    .metric-moment span {
+      max-width: 100%;
       padding-bottom: 0;
     }
   }
