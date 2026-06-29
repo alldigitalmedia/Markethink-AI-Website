@@ -4,46 +4,46 @@ const digitSequence = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "1
 const lanes = [
   {
     name: "Web",
-    label: "Pages moving",
+    label: "Website work in motion",
     icon: "M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v7A2.5 2.5 0 0 1 16.5 17h-9A2.5 2.5 0 0 1 5 14.5v-7Zm2.2 1.2h9.6M8 12h3.5m1.5 0h3",
-    digits: ["0", "8"],
-    unit: "pages prepared",
-    live: "Website update moving",
-    activity: ["Brief captured", "Section drafted", "SEO pass", "Review package"],
+    digits: ["2", "3"],
+    unit: "updates prepared",
+    live: "Website work no longer stuck in the queue",
+    activity: ["Request captured", "Draft ready for review", "SEO pass", "Approval package"],
     chips: ["Landing", "Copy", "SEO", "QA"],
     bars: [36, 62, 78, 44, 90],
   },
   {
     name: "Grow",
-    label: "Prospects organized",
+    label: "Opportunities sorted",
     icon: "M12 4.5v15M5.5 12h13M7 7.2c2.8 2.2 7.2 2.2 10 0M7 16.8c2.8-2.2 7.2-2.2 10 0",
-    digits: ["1", "2", "6"],
-    unit: "opportunities sorted",
-    live: "Lead follow-up queued",
-    activity: ["Signals reviewed", "ICP matched", "Profiles enriched", "Next step set"],
+    digits: ["2", "3", "4"],
+    unit: "prospects reviewed",
+    live: "Good-fit leads move before they go cold",
+    activity: ["Fit signals checked", "Next follow-up queued", "Profiles enriched", "Owner assigned"],
     chips: ["ICP", "CRM", "Email", "Follow-up"],
     bars: [58, 44, 82, 68, 96],
   },
   {
     name: "Ads",
-    label: "Assets traced",
+    label: "Campaign assets aligned",
     icon: "M6 16.5 10 7l3.2 6.2L18 5.5l-3 13-3.4-6.1-5.6 4.1Z",
-    digits: ["4", "2"],
-    unit: "campaign assets",
-    live: "Creative angle in review",
-    activity: ["Angle flagged", "Asset mapped", "Spend note added", "Decision ready"],
+    digits: ["2", "3"],
+    unit: "assets mapped",
+    live: "Campaign pieces stay connected",
+    activity: ["Message angle tightened", "Audience matched", "Asset mapped", "Decision ready"],
     chips: ["Creative", "Offer", "Audience", "Tracking"],
     bars: [46, 76, 52, 88, 64],
   },
 ];
 
 const railItems = [
-  "Landing page draft moved to review",
-  "Lead follow-up queued",
-  "Creative angle ready for approval",
   "Website update prepared",
-  "Campaign message tightened",
-  "CRM context updated",
+  "Campaign angle tightened",
+  "Lead follow-up queued",
+  "Approval ready",
+  "Landing page moved to review",
+  "Follow-up context updated",
 ];
 ---
 
@@ -51,11 +51,10 @@ const railItems = [
   <div class="container shipping-container">
     <div class="shipping-header animate-fade-up">
       <div>
-        <p class="subtitle">Live production view</p>
-        <h2>What moves after you text the operator.</h2>
+        <h2>Your marketing should not wait for another meeting.</h2>
       </div>
       <p>
-        A compact view of the work Markethink keeps in motion: website changes, growth follow-up, campaign assets, and the decisions ready for review.
+        Text Markethink once. Website updates, campaign assets, lead follow-up, and approvals move into one organized production flow, so the work keeps moving without your team restarting from zero.
       </p>
     </div>
 
@@ -199,41 +198,37 @@ const railItems = [
 
   .shipping-header {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(19rem, 0.62fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(21rem, 0.66fr);
+    gap: clamp(2rem, 5vw, 4.25rem);
     align-items: end;
-    margin-bottom: 1.45rem;
-  }
-
-  .shipping-header .subtitle {
-    margin-bottom: 0.8rem;
-    color: rgba(245, 245, 241, 0.56);
+    margin-bottom: 1.8rem;
   }
 
   .shipping-header h2 {
-    max-width: 54rem;
+    max-width: 55rem;
     color: #f5f5f1;
-    font-size: clamp(2.6rem, 5.2vw, 5.9rem);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
+    font-size: clamp(2.75rem, 5.45vw, 6.15rem);
+    line-height: 0.94;
+    letter-spacing: -0.058em;
   }
 
   .shipping-header p {
-    color: rgba(245, 245, 241, 0.7);
-    font-size: clamp(1rem, 1.18vw, 1.12rem);
-    line-height: 1.68;
+    max-width: 34rem;
+    color: rgba(245, 245, 241, 0.76);
+    font-size: clamp(1.02rem, 1.16vw, 1.14rem);
+    line-height: 1.72;
   }
 
   .production-console {
     position: relative;
     overflow: hidden;
-    padding: 1rem;
-    border: 1px solid rgba(245, 245, 241, 0.12);
-    border-radius: 2.15rem;
+    padding: clamp(1rem, 1.7vw, 1.25rem);
+    border: 1px solid rgba(245, 245, 241, 0.14);
+    border-radius: 2.25rem;
     background:
-      linear-gradient(180deg, rgba(245, 245, 241, 0.09), rgba(245, 245, 241, 0.035)),
-      rgba(15, 18, 19, 0.82);
-    box-shadow: 0 32px 110px rgba(0, 0, 0, 0.3);
+      linear-gradient(180deg, rgba(245, 245, 241, 0.105), rgba(245, 245, 241, 0.035)),
+      rgba(15, 18, 19, 0.84);
+    box-shadow: 0 36px 120px rgba(0, 0, 0, 0.34);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
   }
@@ -335,21 +330,21 @@ const railItems = [
   .shipping-panel {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.9rem;
+    gap: clamp(0.95rem, 1.4vw, 1.15rem);
   }
 
   .shipping-card {
     position: relative;
     overflow: hidden;
-    min-height: 20.8rem;
-    padding: 1rem;
-    border: 1px solid rgba(245, 245, 241, 0.22);
-    border-radius: 1.45rem;
+    min-height: 21.4rem;
+    padding: clamp(1rem, 1.35vw, 1.18rem);
+    border: 1px solid rgba(245, 245, 241, 0.32);
+    border-radius: 1.6rem;
     background:
-      radial-gradient(circle at 100% 0%, rgba(105, 210, 84, 0.18), transparent 11rem),
-      linear-gradient(180deg, rgba(245, 245, 241, 0.97), rgba(237, 244, 234, 0.92));
+      linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(237, 244, 234, 0.82) 52%, rgba(105, 210, 84, 0.13)),
+      #f5f5f1;
     color: #0f1213;
-    box-shadow: 0 22px 62px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.72);
     outline: none;
     transform: translateY(0);
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
@@ -363,12 +358,32 @@ const railItems = [
     transform: translateY(-0.22rem);
   }
 
+  .shipping-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 16% 0%, rgba(105, 210, 84, 0.22), transparent 9rem),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent 38%);
+    pointer-events: none;
+  }
+
   .shipping-card::after {
     content: "";
     position: absolute;
     inset: auto 1rem 0.9rem;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(15, 18, 19, 0.15), transparent);
+  }
+
+  .card-topline,
+  .card-core,
+  .sparkline,
+  .activity-feed,
+  .chip-row,
+  .card-status {
+    position: relative;
+    z-index: 1;
   }
 
   .card-topline {
@@ -390,12 +405,12 @@ const railItems = [
     display: grid;
     place-items: center;
     flex: 0 0 auto;
-    width: 2.45rem;
-    height: 2.45rem;
-    border-radius: 0.9rem;
+    width: 2.55rem;
+    height: 2.55rem;
+    border-radius: 0.95rem;
     background: #0f1213;
     color: #69d254;
-    box-shadow: 0 10px 24px rgba(15, 18, 19, 0.16);
+    box-shadow: 0 12px 26px rgba(15, 18, 19, 0.18), inset 0 0 0 1px rgba(105, 210, 84, 0.24);
   }
 
   .icon-bubble svg {
@@ -415,8 +430,9 @@ const railItems = [
     display: block;
     margin-top: 0.15rem;
     color: #0f1213;
-    font-size: 0.9rem;
-    letter-spacing: -0.015em;
+    font-size: clamp(0.92rem, 1vw, 1.02rem);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
   }
 
   .card-live {
@@ -437,48 +453,44 @@ const railItems = [
     grid-template-columns: auto minmax(0, 1fr);
     gap: 0.8rem;
     align-items: end;
-    margin: 0.6rem 0 0.78rem;
+    margin: 0.45rem 0 0.85rem;
   }
 
   .rolling-number {
     display: flex;
-    gap: 0.04em;
-    height: 1em;
-    overflow: hidden;
+    gap: 0.035em;
+    min-height: 1.16em;
+    overflow: visible;
     color: #0f1213;
-    font-size: clamp(2.15rem, 3.45vw, 3.05rem);
+    font-size: clamp(2.35rem, 3.6vw, 3.35rem);
     font-weight: 780;
-    line-height: 1;
-    letter-spacing: -0.055em;
+    line-height: 1.08;
+    letter-spacing: -0.052em;
   }
 
   .digit-window {
     position: relative;
     display: inline-block;
     width: 0.58em;
-    height: 1em;
-    overflow: hidden;
+    min-height: 1.12em;
+    overflow: visible;
   }
 
   .digit-strip {
-    display: flex;
-    flex-direction: column;
-    animation: digit-cycle 24s steps(10) infinite;
-    animation-delay: var(--delay);
+    display: none;
   }
 
   .digit-strip span,
   .digit-window em {
     display: block;
-    height: 1em;
+    min-height: 1.12em;
     font-style: normal;
-    line-height: 1;
+    line-height: 1.08;
   }
 
   .digit-window em {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
+    position: static;
+    opacity: 1;
   }
 
   .card-core > span {
@@ -495,9 +507,10 @@ const railItems = [
     gap: 0.26rem;
     height: 2.65rem;
     margin-bottom: 0.85rem;
-    padding: 0.55rem 0.6rem;
-    border-radius: 0.95rem;
-    background: rgba(255, 255, 255, 0.5);
+    padding: 0.58rem 0.64rem;
+    border-radius: 1.05rem;
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
   }
 
   .sparkline span {
@@ -513,9 +526,10 @@ const railItems = [
   .activity-feed {
     height: 4.25rem;
     overflow: hidden;
-    border: 1px solid rgba(15, 18, 19, 0.07);
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(15, 18, 19, 0.075);
+    border-radius: 1.05rem;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
 
   .feed-track {
@@ -547,8 +561,8 @@ const railItems = [
     min-height: 1.85rem;
     padding: 0 0.62rem;
     border-radius: var(--radius-button);
-    background: rgba(15, 18, 19, 0.055);
-    color: rgba(15, 18, 19, 0.62);
+    background: rgba(15, 18, 19, 0.06);
+    color: rgba(15, 18, 19, 0.66);
     font-size: 0.68rem;
     font-weight: 780;
     animation: chip-shift 8.8s ease-in-out infinite;
@@ -566,6 +580,7 @@ const railItems = [
     color: rgba(15, 18, 19, 0.78);
     font-size: 0.76rem;
     font-weight: 820;
+    line-height: 1.25;
   }
 
   .card-status i {
