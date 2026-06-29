@@ -1,0 +1,605 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const pageUrl = "https://markethink.ai/kriz-valentino-marketing-system/";
+const assetBase = "https://dashboard.markethink.ai/generated/landing/markethink/kriz-valentino-marketing-system";
+
+const images = {
+  opening: `${assetBase}/01-opening.png`,
+  opportunity: `${assetBase}/02-opportunity.png`,
+  foundation: `${assetBase}/03-foundation.png`,
+  menu: `${assetBase}/04-menu.png`,
+  recommended: `${assetBase}/05-recommended.png`,
+  next: `${assetBase}/06-next.png`,
+};
+
+const addOns = [
+  { name: "Social Lite", price: "+$200/mo", detail: "Monthly content direction, hooks, captions, and post ideas for Instagram." },
+  { name: "Leads Lite", price: "+$200/mo", detail: "Local partner and prospect ideas, outreach angles, and simple follow-up tracking." },
+  { name: "SEO Lite", price: "+$200/mo", detail: "Keyword direction, page improvements, and local search structure." },
+  { name: "Email / DM Lite", price: "+$200/mo", detail: "Inquiry follow-up, reactivation messages, and simple nurture copy." },
+  { name: "Campaign Lite", price: "+$200/mo", detail: "One monthly offer or campaign angle with the key assets mapped for review." },
+];
+
+const examples = [
+  ["Foundation only", "$249/mo"],
+  ["Foundation + 1 lane", "$449/mo"],
+  ["Foundation + 2 lanes", "$649/mo"],
+  ["Foundation + 3 lanes", "$849/mo"],
+  ["Foundation + 4 lanes", "$1,049/mo"],
+];
+
+const slides = [
+  {
+    n: "01",
+    id: "opening",
+    nav: "Opening",
+    kicker: "PRIVATE PROPOSAL · KRIZ VALENTINO",
+    title: "A website and marketing foundation for a performance coach ready to turn attention into inquiries.",
+    lead: "Kriz already has a clear coaching lane: private 1-on-1 performance work, kettlebell training, movement flows, and physical resilience for ambitious clients. The next step is a simple system that makes the offer easier to understand, trust, and book.",
+    image: images.opening,
+    layout: "hero",
+    note: "Month-to-month",
+    chips: ["Website foundation", "Booking path", "Monthly content", "Add-on lanes"],
+  },
+  {
+    n: "02",
+    id: "opportunity",
+    nav: "Opportunity",
+    kicker: "THE OPPORTUNITY",
+    title: "Instagram can create trust. The website needs to turn that trust into a clear next step.",
+    lead: "Her profile already points to a specific audience: high-performers who want physical resilience to match their ambitions. A stronger web foundation gives those people a place to understand the method, see the coaching offer, and inquire without guessing what to do next.",
+    image: images.opportunity,
+    layout: "split",
+    note: "Attention → inquiry",
+    chips: ["Miami private coaching", "Kettlebell flows", "High-performers", "Clear booking path"],
+    details: [
+      "Make the private coaching offer easier to understand from one page",
+      "Give Instagram traffic a cleaner destination than a generic link list",
+      "Build a basic search and content foundation around the training style",
+      "Keep updates, content ideas, and next steps organized inside Markethink",
+    ],
+  },
+  {
+    n: "03",
+    id: "foundation",
+    nav: "Foundation",
+    kicker: "START HERE",
+    title: "Website + Marketing Foundation",
+    lead: "A low-risk monthly starting point that gives Kriz a professional conversion page, a monthly content asset, and a Markethink workspace that keeps the business organized as it grows.",
+    image: images.foundation,
+    layout: "pricing",
+    note: "Required base",
+    chips: ["$249/month", "No long contract", "One monthly blog", "Dashboard included"],
+    price: "$249/mo",
+    priceLabel: "Foundation",
+    details: [
+      "One-page coaching website or booking landing page",
+      "Private coaching offer structure and booking/contact CTA",
+      "Instagram link-in-bio structure",
+      "Basic SEO setup for the page",
+      "One monthly blog or content article included",
+      "One monthly website update or content improvement",
+      "Markethink dashboard for review, approvals, and next steps",
+      "Trained marketing operator for brand, offer, and content memory",
+    ],
+  },
+  {
+    n: "04",
+    id: "menu",
+    nav: "Menu",
+    kicker: "ADD WHEN READY",
+    title: "One foundation. Simple monthly add-on lanes.",
+    lead: "Instead of forcing a big agency package, Kriz can start with the foundation and add lanes only when the business is ready. Each add-on is small enough to test, but useful enough to move one part of the business forward.",
+    image: images.menu,
+    layout: "menu",
+    note: "+$200/month per lane",
+    chips: ["Social", "Leads", "SEO", "Email/DM", "Campaigns"],
+  },
+  {
+    n: "05",
+    id: "recommended",
+    nav: "Recommended",
+    kicker: "RECOMMENDED FIRST BUILD",
+    title: "Start at $249/month. Add the first growth lane when the website is ready.",
+    lead: "The clean first move is Foundation only for the first month, so the page, offer, and content base are right. From there, the first add-on should be Social Lite or Leads Lite depending on whether she wants stronger content consistency or more direct local opportunity work.",
+    image: images.recommended,
+    layout: "recommended",
+    note: "Built to grow to $1,000/mo without pressure",
+    chips: ["Month 1: Foundation", "Next: Social or Leads", "Then: SEO / Email / Campaigns"],
+    details: [
+      "Foundation only: $249/month",
+      "Foundation + one lane: $449/month",
+      "Foundation + two lanes: $649/month",
+      "Foundation + three lanes: $849/month",
+      "Foundation + four lanes: $1,049/month",
+    ],
+  },
+  {
+    n: "06",
+    id: "next-step",
+    nav: "Next",
+    kicker: "NEXT STEP",
+    title: "Build the foundation first, then let the monthly system expand with the business.",
+    lead: "This keeps the offer accessible while still making Markethink different from a DIY website builder. The page gets built, the content rhythm starts, the dashboard keeps decisions organized, and new lanes can be added only when they make sense.",
+    image: images.next,
+    layout: "closing",
+    note: "Recommended start: $249/mo",
+    chips: ["Build website", "Set booking path", "Publish first content", "Choose next lane"],
+  },
+];
+---
+
+<Layout
+  title="Kriz Valentino · Website + Marketing Foundation"
+  description="A private Markethink proposal for a month-to-month website and marketing foundation for Kriz Valentino."
+  image={images.opening}
+  canonical={pageUrl}
+  noindex={true}
+>
+  <main class="kriz-deck" aria-label="Kriz Valentino website and marketing proposal">
+    <header class="topbar">
+      <a href="/" class="markethink-lockup" aria-label="Markethink">
+        <img src="/images/logo-white.svg" alt="Markethink" />
+      </a>
+      <div class="client-lockup" aria-label="Proposal for Kriz Valentino">
+        <strong>KRIZ VALENTINO</strong>
+        <span>Performance Coach</span>
+      </div>
+      <span class="deck-pill">Private proposal</span>
+    </header>
+
+    <aside class="slide-rail" aria-label="Proposal sections">
+      {slides.map((slide) => (
+        <a href={`#${slide.id}`} class="rail-item" data-slide-link={slide.id}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide) => (
+      <section id={slide.id} data-slide-id={slide.id} class={`proposal-slide layout-${slide.layout}`} aria-label={`Slide ${slide.n}: ${slide.nav}`}>
+        <div class="slide-bg" aria-hidden="true">
+          <img src={slide.image} alt="" loading={slide.n === "01" ? "eager" : "lazy"} decoding="async" />
+        </div>
+        <div class="slide-vignette" aria-hidden="true"></div>
+        <div class="slide-shell">
+          <div class="copy-panel">
+            <p class="eyebrow">{slide.kicker}</p>
+            {slide.n === "01" && (
+              <div class="brand-row">
+                <span class="brand-mark kriz-wordmark">KRIZ</span>
+                <span class="brand-separator">×</span>
+                <span class="brand-mark markethink-wordmark">Markethink</span>
+              </div>
+            )}
+            <h1>{slide.title}</h1>
+            <p class="lead">{slide.lead}</p>
+            <div class="chip-row">
+              {slide.chips.map((chip) => <span>{chip}</span>)}
+            </div>
+          </div>
+
+          <div class="visual-panel">
+            {slide.layout !== "hero" && (
+              <figure class="image-card">
+                <img src={slide.image} alt="" loading="lazy" decoding="async" />
+              </figure>
+            )}
+
+            {slide.layout === "pricing" && (
+              <div class="price-card">
+                <span>{slide.priceLabel}</span>
+                <strong>{slide.price}</strong>
+                <em>month-to-month</em>
+                <ul>
+                  {slide.details.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            )}
+
+            {slide.layout === "menu" && (
+              <div class="menu-card">
+                <div class="menu-head">
+                  <span>Base</span>
+                  <strong>$249/mo</strong>
+                </div>
+                <div class="addon-list">
+                  {addOns.map((item) => (
+                    <article>
+                      <div><strong>{item.name}</strong><p>{item.detail}</p></div>
+                      <span>{item.price}</span>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {slide.layout === "recommended" && (
+              <div class="example-card">
+                <span>How it grows</span>
+                {examples.map(([label, price]) => (
+                  <div><p>{label}</p><strong>{price}</strong></div>
+                ))}
+              </div>
+            )}
+
+            {slide.details && slide.layout !== "pricing" && slide.layout !== "recommended" && (
+              <div class="detail-card">
+                <span>{slide.note}</span>
+                <ul>
+                  {slide.details.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+        <div class="slide-footer"><span>{slide.n}</span><p>{slide.note}</p></div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<script>
+  const links = Array.from(document.querySelectorAll("[data-slide-link]"));
+  const slides = Array.from(document.querySelectorAll("[data-slide-id]"));
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    const id = visible.target.getAttribute("data-slide-id");
+    links.forEach((link) => {
+      const active = link.getAttribute("data-slide-link") === id;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "step");
+      else link.removeAttribute("aria-current");
+    });
+  }, { threshold: [0.42, 0.6, 0.78] });
+  slides.forEach((slide) => observer.observe(slide));
+</script>
+
+<style>
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { background: #0f1213; }
+
+  .kriz-deck {
+    min-height: 100vh;
+    background: #0f1213;
+    color: #f5f5f1;
+    font-family: var(--font-body);
+  }
+
+  .topbar {
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem clamp(1rem, 3vw, 2.2rem);
+    background: linear-gradient(180deg, rgba(15, 18, 19, 0.88), rgba(15, 18, 19, 0));
+    pointer-events: none;
+  }
+
+  .topbar > * { pointer-events: auto; }
+  .markethink-lockup img { width: 8.8rem; height: auto; display: block; }
+
+  .client-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(245, 245, 241, 0.14);
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.34);
+    backdrop-filter: blur(18px);
+    color: #f5f5f1;
+  }
+
+  .client-lockup strong { font-size: 0.76rem; letter-spacing: 0.16em; }
+  .client-lockup span { color: #b4b6b6; font-size: 0.78rem; }
+
+  .deck-pill {
+    padding: 0.58rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(105, 210, 84, 0.15);
+    color: #d8ffd1;
+    font-size: 0.72rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .slide-rail {
+    position: fixed;
+    z-index: 18;
+    top: 50%;
+    right: clamp(0.7rem, 2vw, 1.4rem);
+    transform: translateY(-50%);
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .rail-item {
+    display: grid;
+    grid-template-columns: 1.55rem minmax(0, 5.7rem);
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.52rem;
+    border: 1px solid rgba(245, 245, 241, 0.12);
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.48);
+    color: rgba(245, 245, 241, 0.7);
+    text-decoration: none;
+    backdrop-filter: blur(18px);
+    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  }
+
+  .rail-item span {
+    display: grid;
+    place-items: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.08);
+    font-size: 0.64rem;
+    font-weight: 820;
+  }
+
+  .rail-item strong { font-size: 0.68rem; font-weight: 760; }
+  .rail-item.active { border-color: rgba(105, 210, 84, 0.66); color: #f5f5f1; background: rgba(15, 18, 19, 0.72); }
+  .rail-item.active span { background: #69d254; color: #0f1213; }
+
+  .proposal-slide {
+    position: relative;
+    min-height: 100svh;
+    isolation: isolate;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .slide-bg,
+  .slide-bg img,
+  .slide-vignette {
+    position: absolute;
+    inset: 0;
+  }
+
+  .slide-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.36;
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  .slide-vignette {
+    z-index: 1;
+    background:
+      radial-gradient(circle at 76% 42%, rgba(105, 210, 84, 0.12), transparent 24rem),
+      linear-gradient(90deg, rgba(15, 18, 19, 0.98) 0%, rgba(15, 18, 19, 0.9) 34%, rgba(15, 18, 19, 0.5) 70%, rgba(15, 18, 19, 0.84) 100%),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.72), rgba(15, 18, 19, 0.98));
+  }
+
+  .slide-shell {
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(26rem, 0.78fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(6rem, 10vh, 8rem) 5.5rem clamp(3rem, 7vh, 5rem) 0;
+  }
+
+  .copy-panel { max-width: 45rem; }
+  .eyebrow {
+    color: #69d254;
+    font-size: 0.78rem;
+    font-weight: 860;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .brand-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.72rem;
+    margin-bottom: 1.35rem;
+    color: #f5f5f1;
+  }
+
+  .brand-mark {
+    padding: 0.58rem 0.82rem;
+    border-radius: 999px;
+    border: 1px solid rgba(245, 245, 241, 0.14);
+    background: rgba(245, 245, 241, 0.08);
+    font-size: 0.78rem;
+    font-weight: 820;
+    letter-spacing: 0.12em;
+  }
+
+  .markethink-wordmark { color: #d9ffd5; }
+  .brand-separator { color: rgba(245, 245, 241, 0.46); }
+
+  h1 {
+    max-width: 46rem;
+    font-family: var(--font-display);
+    font-size: clamp(3.8rem, 7.1vw, 7.8rem);
+    line-height: 0.88;
+    letter-spacing: -0.062em;
+    margin: 0;
+  }
+
+  .lead {
+    max-width: 41rem;
+    margin-top: 1.35rem;
+    color: rgba(245, 245, 241, 0.78);
+    font-size: clamp(1.02rem, 1.24vw, 1.22rem);
+    line-height: 1.62;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.52rem;
+    margin-top: 1.45rem;
+  }
+
+  .chip-row span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0 0.72rem;
+    border: 1px solid rgba(245, 245, 241, 0.12);
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.07);
+    color: rgba(245, 245, 241, 0.74);
+    font-size: 0.75rem;
+    font-weight: 720;
+  }
+
+  .visual-panel {
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+  }
+
+  .image-card {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(245, 245, 241, 0.13);
+    border-radius: 1.65rem;
+    background: rgba(245, 245, 241, 0.06);
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.38);
+  }
+
+  .image-card img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+  .detail-card,
+  .price-card,
+  .menu-card,
+  .example-card {
+    border: 1px solid rgba(245, 245, 241, 0.13);
+    border-radius: 1.45rem;
+    background: rgba(15, 18, 19, 0.66);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+  }
+
+  .detail-card { padding: 1.2rem; }
+  .detail-card span,
+  .example-card > span {
+    color: #69d254;
+    font-size: 0.76rem;
+    font-weight: 820;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  ul { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.72rem; }
+  li { position: relative; padding-left: 1rem; color: rgba(245, 245, 241, 0.74); line-height: 1.45; font-size: 0.9rem; }
+  li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 0.36rem; height: 0.36rem; border-radius: 50%; background: #69d254; }
+
+  .price-card { padding: 1.45rem; }
+  .price-card > span { color: rgba(245, 245, 241, 0.58); font-size: 0.8rem; font-weight: 820; text-transform: uppercase; letter-spacing: 0.12em; }
+  .price-card > strong { display: block; margin-top: 0.4rem; color: #69d254; font-family: var(--font-display); font-size: clamp(4rem, 8vw, 7.5rem); line-height: 0.86; letter-spacing: -0.06em; }
+  .price-card > em { display: block; color: #f5f5f1; font-style: normal; font-weight: 760; margin-top: 0.4rem; }
+
+  .menu-card { padding: 1rem; }
+  .menu-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #69d254;
+    color: #0f1213;
+  }
+  .menu-head span { font-weight: 820; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.76rem; }
+  .menu-head strong { font-family: var(--font-display); font-size: 2.6rem; letter-spacing: -0.05em; }
+  .addon-list { display: grid; gap: 0.55rem; margin-top: 0.75rem; }
+  .addon-list article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.95rem;
+    border-radius: 0.95rem;
+    background: rgba(245, 245, 241, 0.06);
+  }
+  .addon-list strong { color: #f5f5f1; }
+  .addon-list p { margin: 0.25rem 0 0; color: rgba(245, 245, 241, 0.62); font-size: 0.82rem; line-height: 1.35; }
+  .addon-list span { color: #d8ffd1; font-weight: 840; }
+
+  .example-card { padding: 1.2rem; display: grid; gap: 0.62rem; }
+  .example-card div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.86rem 0.95rem;
+    border-radius: 0.92rem;
+    background: rgba(245, 245, 241, 0.07);
+  }
+  .example-card p { margin: 0; color: rgba(245, 245, 241, 0.72); }
+  .example-card strong { color: #f5f5f1; font-size: 1.15rem; }
+
+  .layout-hero .slide-bg img { opacity: 0.58; }
+  .layout-hero .slide-shell { grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 0.5fr); }
+  .layout-hero .visual-panel { display: none; }
+  .layout-hero .copy-panel { max-width: 55rem; }
+
+  .layout-pricing .slide-shell,
+  .layout-menu .slide-shell,
+  .layout-recommended .slide-shell { grid-template-columns: minmax(0, 0.78fr) minmax(30rem, 0.85fr); }
+
+  .slide-footer {
+    position: absolute;
+    z-index: 3;
+    left: clamp(1rem, 3vw, 2.2rem);
+    bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: rgba(245, 245, 241, 0.58);
+    font-size: 0.75rem;
+  }
+  .slide-footer span { color: #69d254; font-weight: 840; }
+  .slide-footer p { margin: 0; }
+
+  @media (max-width: 980px) {
+    .topbar { position: absolute; }
+    .client-lockup { display: none; }
+    .slide-rail { display: none; }
+    .slide-shell,
+    .layout-pricing .slide-shell,
+    .layout-menu .slide-shell,
+    .layout-recommended .slide-shell,
+    .layout-hero .slide-shell {
+      grid-template-columns: 1fr;
+      padding: 6rem 0 4rem;
+      width: min(92vw, 42rem);
+    }
+    .layout-hero .visual-panel { display: grid; }
+    .visual-panel { gap: 0.85rem; }
+    h1 { font-size: clamp(3.1rem, 14vw, 5rem); }
+    .slide-bg img { opacity: 0.28; }
+  }
+
+  @media (max-width: 640px) {
+    .markethink-lockup img { width: 7.2rem; }
+    .deck-pill { font-size: 0.62rem; padding: 0.5rem 0.65rem; }
+    .proposal-slide { min-height: auto; }
+    .slide-shell { min-height: auto; }
+    .price-card > strong { font-size: 4rem; }
+    .addon-list article { grid-template-columns: 1fr; }
+    .slide-footer { position: relative; left: auto; bottom: auto; padding: 0 1rem 1rem; }
+  }
+</style>
