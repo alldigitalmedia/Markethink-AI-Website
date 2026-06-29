@@ -66,7 +66,7 @@ const cards = [
   .system-overview {
     position: relative;
     overflow: visible;
-    padding: 0 0 8rem;
+    padding: clamp(3.25rem, 7vh, 4.75rem) 0 clamp(3rem, 6vh, 4.25rem);
     background: #f5f5f1;
     color: var(--text-primary);
     z-index: 2;
@@ -89,7 +89,7 @@ const cards = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-top: -3.75rem;
+    margin-top: 0;
   }
 
   .system-card {
@@ -314,17 +314,17 @@ const cards = [
     .system-cards {
       grid-template-columns: 1fr;
       max-width: 400px;
-      margin: -2.8rem auto 0;
+      margin: 0 auto;
     }
   }
 
   @media (max-width: 767px) {
     .system-overview {
-      padding: 0 0 4.5rem;
+      padding: 2.75rem 0 3.25rem;
     }
 
     .system-cards {
-      margin-top: -2.6rem;
+      margin-top: 0;
     }
   }
 
