@@ -1,95 +1,120 @@
 ---
 const trialHref = "/trial/";
 const walkthroughHref = "/schedule-a-walkthrough/";
-
 ---
 
 <section class="section-hero" id="hero">
-  <div class="hero-background" aria-hidden="true">
-    <img src="/images/hero-office-background.svg" alt="" class="hero-background-image" />
-  </div>
+  <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
   <div class="container hero-content">
-    <div class="hero-text">
+    <div class="hero-copy">
+      <p class="hero-kicker">AI marketing system · human reviewed</p>
       <h1 class="hero-heading" aria-label="Your marketing should work as hard as you do.">
-        <span class="hero-heading-line">Your marketing should work</span>
-        <span class="hero-heading-line">as hard as you do.</span>
+        <span>Your marketing should work</span>
+        <span>as hard as you do.</span>
       </h1>
-      <div class="hero-phone-chat" aria-label="A Markethink phone chat showing an AI operator, customer lead, and dedicated marketer coordinating the work.">
-        <div class="phone-frame">
-          <div class="phone-topbar">
-            <span class="phone-camera" aria-hidden="true"></span>
-            <div>
-              <strong>Markethink</strong>
-              <span>Live marketing desk</span>
-            </div>
-            <span class="phone-status">Online</span>
-          </div>
-          <div class="chat-thread" aria-hidden="true">
-            <div class="chat-scene scene-campaign">
-              <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">You</span>
-                <p>Launch a campaign for our new service.</p>
-              </div>
-              <div class="chat-bubble ai-bubble">
-                <span class="bubble-label">AI operator</span>
-                <p>Campaign map ready: landing page, posts, email, and lead follow-up.</p>
-              </div>
-              <div class="chat-bubble marketer-bubble">
-                <span class="bubble-label">Dedicated marketer</span>
-                <p>Good direction. I’ll polish the first assets for approval.</p>
-              </div>
-            </div>
-            <div class="chat-scene scene-landing">
-              <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">You</span>
-                <p>We need Friday’s landing page ready.</p>
-              </div>
-              <div class="chat-bubble ai-bubble">
-                <span class="bubble-label">AI operator</span>
-                <p>Hero, sections, CTA, and form copy are drafted.</p>
-              </div>
-              <div class="chat-bubble marketer-bubble">
-                <span class="bubble-label">Dedicated marketer</span>
-                <p>Polished. Sending the page for approval.</p>
-              </div>
-            </div>
-            <div class="chat-scene scene-social">
-              <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">You</span>
-                <p>Turn this idea into social posts.</p>
-              </div>
-              <div class="chat-bubble ai-bubble">
-                <span class="bubble-label">AI operator</span>
-                <p>3 on-brand posts are ready with captions.</p>
-              </div>
-              <div class="chat-bubble marketer-bubble">
-                <span class="bubble-label">Dedicated marketer</span>
-                <p>Ready to post now. Queue the next two.</p>
-              </div>
-            </div>
-            <div class="chat-scene scene-lead">
-              <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">Customer lead</span>
-                <p>Can someone send details tonight?</p>
-              </div>
-              <div class="chat-bubble ai-bubble">
-                <span class="bubble-label">AI operator</span>
-                <p>Reply ready with the offer, tone, and next step.</p>
-              </div>
-              <div class="chat-bubble marketer-bubble">
-                <span class="bubble-label">Dedicated marketer</span>
-                <p>Approved. Send it and schedule the follow-up.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-description hero-heading-support">
-        <p>An AI marketing operator does the work around the clock. A real marketer dedicated to your business reviews what ships. You approve from your phone.</p>
-      </div>
+      <p class="hero-description">
+        An AI marketing operator keeps campaigns, posts, landing pages, and follow-up moving around the clock. A real marketer reviews what ships. You approve from your phone.
+      </p>
       <div class="button-group">
         <a href={walkthroughHref} class="button">Watch it work on your business →</a>
         <a href={trialHref} class="button is-secondary">Apply for a 30-Day Trial</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Animated Markethink phone chat showing campaign, landing page, social, and lead follow-up work.">
+      <div class="floating-card card-top-left">
+        <span class="card-label">Campaign</span>
+        <strong>Organized</strong>
+      </div>
+      <div class="floating-card card-top-right">
+        <span class="card-label">Approval</span>
+        <strong>Ready</strong>
+      </div>
+      <div class="floating-card card-bottom-left">
+        <span class="card-label">Follow-up</span>
+        <strong>Drafted</strong>
+      </div>
+
+      <div class="phone-shell">
+        <div class="phone-glass">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-topbar">
+            <div>
+              <span class="phone-eyebrow">Markethink</span>
+              <strong>Live marketing desk</strong>
+            </div>
+            <span class="phone-live"><span></span>Live</span>
+          </div>
+
+          <div class="phone-screen" aria-hidden="true">
+            <div class="chat-scene scene-campaign">
+              <div class="chat-bubble user-bubble">
+                <span>You</span>
+                <p>Launch a campaign for the new service.</p>
+              </div>
+              <div class="chat-bubble ai-bubble">
+                <span>AI operator</span>
+                <p>Campaign map ready: landing page, posts, email, and lead follow-up.</p>
+              </div>
+              <div class="chat-bubble marketer-bubble">
+                <span>Dedicated marketer</span>
+                <p>Reviewed. Sending the first assets for approval.</p>
+              </div>
+            </div>
+
+            <div class="chat-scene scene-landing">
+              <div class="chat-bubble user-bubble">
+                <span>You</span>
+                <p>We need Friday’s landing page ready.</p>
+              </div>
+              <div class="chat-bubble ai-bubble">
+                <span>AI operator</span>
+                <p>Hero, CTA, form copy, and sections are drafted.</p>
+              </div>
+              <div class="chat-bubble marketer-bubble">
+                <span>Dedicated marketer</span>
+                <p>Polished. Ready for phone approval.</p>
+              </div>
+            </div>
+
+            <div class="chat-scene scene-social">
+              <div class="chat-bubble user-bubble">
+                <span>You</span>
+                <p>Turn this idea into social posts.</p>
+              </div>
+              <div class="chat-bubble ai-bubble">
+                <span>AI operator</span>
+                <p>3 branded posts and captions are ready.</p>
+              </div>
+              <div class="chat-bubble marketer-bubble">
+                <span>Dedicated marketer</span>
+                <p>Post one today. Queue the next two.</p>
+              </div>
+            </div>
+
+            <div class="chat-scene scene-lead">
+              <div class="chat-bubble user-bubble">
+                <span>Customer lead</span>
+                <p>Can someone send details tonight?</p>
+              </div>
+              <div class="chat-bubble ai-bubble">
+                <span>AI operator</span>
+                <p>Reply drafted with the right offer and next step.</p>
+              </div>
+              <div class="chat-bubble marketer-bubble">
+                <span>Dedicated marketer</span>
+                <p>Approved. Follow-up is scheduled.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-dock">
+            <span>Campaign</span>
+            <span>Posts</span>
+            <span>Leads</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -104,286 +129,309 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    padding: clamp(7.4rem, 14vh, 8.7rem) 0 clamp(6.8rem, 13vh, 8.6rem);
-    background: #0f1213;
+    padding: clamp(8.4rem, 15vh, 9.8rem) 0 clamp(4.8rem, 8vh, 6.2rem);
+    background:
+      radial-gradient(circle at 82% 24%, rgba(105, 210, 84, 0.18), transparent 24rem),
+      radial-gradient(circle at 12% 86%, rgba(15, 18, 19, 0.08), transparent 24rem),
+      linear-gradient(135deg, #f5f5f1 0%, #edf4ea 54%, #f8f8f3 100%);
+    color: #0f1213;
   }
 
   .section-hero::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 1.25rem;
     z-index: -1;
-    background:
-      radial-gradient(circle at 50% 46%, rgba(4, 6, 6, 0.24) 0%, rgba(4, 6, 6, 0.6) 48%, rgba(4, 6, 6, 0.88) 100%),
-      linear-gradient(180deg, rgba(15, 18, 19, 0.12) 0%, rgba(15, 18, 19, 0.44) 62%, #0f1213 100%);
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    border-radius: clamp(1.6rem, 3vw, 3rem);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.18));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
     pointer-events: none;
   }
 
-  .section-hero::after {
-    content: "";
+  .hero-orb {
     position: absolute;
-    inset: 0;
     z-index: -1;
-    background: radial-gradient(circle at 50% 50%, rgba(105, 210, 84, 0.13), transparent 35rem);
+    border-radius: 999px;
+    filter: blur(14px);
     pointer-events: none;
   }
 
-  .hero-background {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
+  .hero-orb-one {
+    width: 24rem;
+    height: 24rem;
+    right: 6vw;
+    top: 18vh;
+    background: rgba(105, 210, 84, 0.18);
   }
 
-  .hero-background-image {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center top;
-    filter: saturate(0.96) contrast(1.04);
-    transform: translateY(1.4rem) scale(1.015);
+  .hero-orb-two {
+    width: 16rem;
+    height: 16rem;
+    left: 8vw;
+    bottom: 12vh;
+    background: rgba(15, 18, 19, 0.08);
   }
 
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100svh - clamp(14.2rem, 27vh, 17.3rem));
-    padding-top: clamp(0.35rem, 1.8vh, 1rem);
-    padding-bottom: clamp(0.5rem, 2vh, 1.25rem);
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.88fr);
+    align-items: center;
+    gap: clamp(2.2rem, 5vw, 5rem);
+    width: min(1120px, calc(100% - 2rem));
   }
 
-  .hero-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(1.15rem, 2.2vh, 1.45rem);
-    max-width: min(66rem, 92vw);
-    margin: 0 auto;
-    text-align: center;
+  .hero-copy {
+    max-width: 38rem;
+    text-align: left;
+  }
+
+  .hero-kicker {
+    margin: 0 0 1.05rem;
+    color: rgba(15, 18, 19, 0.58);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   .hero-heading {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: min(58rem, 94vw);
-    font-size: clamp(3.55rem, 5.6vw, 6.35rem);
-    line-height: 0.94;
-    letter-spacing: -0.058em;
+    gap: 0.02em;
+    margin: 0;
+    max-width: 44rem;
+    font-size: clamp(3.4rem, 6.6vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.062em;
+    color: #0f1213;
     text-wrap: balance;
   }
 
-  .hero-heading-line {
-    color: #fff;
+  .hero-description {
+    max-width: 35rem;
+    margin: clamp(1.3rem, 2.2vw, 1.8rem) 0 0;
+    color: rgba(15, 18, 19, 0.72);
+    font-size: clamp(1rem, 1.12vw, 1.18rem);
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: -0.018em;
   }
 
-  .hero-phone-chat {
-    width: min(100%, 34rem);
-    perspective: 1200px;
+  .button-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin-top: clamp(1.45rem, 2.4vw, 2rem);
   }
 
-  .phone-frame {
+  .button-group .button {
+    min-height: 3.35rem;
+    padding-inline: 1.45rem;
+    border-radius: 999px;
+    font-size: clamp(0.9rem, 0.95vw, 1rem);
+    font-weight: 750;
+  }
+
+  .button-group .button.is-secondary {
+    color: #0f1213;
+    border-color: rgba(15, 18, 19, 0.2);
+    background: rgba(255, 255, 255, 0.36);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hero-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(29rem, 62vh, 42rem);
+  }
+
+  .phone-shell {
+    position: relative;
+    width: min(100%, 22.5rem);
+    transform: rotate(-3deg);
+    filter: drop-shadow(0 34px 70px rgba(15, 18, 19, 0.24));
+  }
+
+  .phone-shell::before {
+    content: "";
+    position: absolute;
+    inset: 8% -10% -4% 10%;
+    z-index: -1;
+    border-radius: 3.2rem;
+    background: rgba(105, 210, 84, 0.2);
+    filter: blur(28px);
+  }
+
+  .phone-glass {
     position: relative;
     overflow: hidden;
-    border-radius: 2rem;
-    padding: 0.82rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 35rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    border-radius: 3rem;
     background:
-      linear-gradient(135deg, rgba(245, 245, 241, 0.2), rgba(245, 245, 241, 0.06) 42%, rgba(105, 210, 84, 0.12)),
-      rgba(15, 18, 19, 0.48);
+      linear-gradient(145deg, rgba(15, 18, 19, 0.96), rgba(15, 18, 19, 0.78)),
+      #0f1213;
     box-shadow:
-      0 28px 90px rgba(0, 0, 0, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
-      inset 0 -24px 54px rgba(105, 210, 84, 0.06);
-    backdrop-filter: blur(24px) saturate(1.22);
-    -webkit-backdrop-filter: blur(24px) saturate(1.22);
+      inset 0 1px 0 rgba(255, 255, 255, 0.32),
+      inset 0 -28px 70px rgba(105, 210, 84, 0.08),
+      0 22px 52px rgba(15, 18, 19, 0.24);
+    color: #f5f5f1;
   }
 
-  .phone-frame::before {
+  .phone-glass::before {
     content: "";
     position: absolute;
-    inset: -40% -18% auto auto;
-    width: 18rem;
-    height: 18rem;
+    inset: -18% -30% auto auto;
+    width: 15rem;
+    height: 15rem;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(105, 210, 84, 0.26), transparent 66%);
-    filter: blur(4px);
+    background: radial-gradient(circle, rgba(105, 210, 84, 0.34), transparent 64%);
     pointer-events: none;
   }
 
-  .phone-frame::after {
-    content: "";
+  .phone-notch {
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(115deg, rgba(255, 255, 255, 0.24), transparent 24%, transparent 62%, rgba(255, 255, 255, 0.08));
-    mix-blend-mode: screen;
-    pointer-events: none;
+    top: 0.72rem;
+    left: 50%;
+    z-index: 4;
+    width: 5.4rem;
+    height: 1.25rem;
+    border-radius: 999px;
+    background: #050606;
+    transform: translateX(-50%);
   }
 
   .phone-topbar {
     position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.72rem;
-    padding: 0.28rem 0.38rem 0.72rem;
-    color: rgba(255, 255, 255, 0.92);
-    font-family: var(--font-body);
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 2.1rem 0.55rem 0.8rem;
     text-align: left;
   }
 
-  .phone-camera {
-    width: 0.68rem;
-    height: 0.68rem;
-    border-radius: 999px;
-    background: #69D254;
-    box-shadow: 0 0 0 0.32rem rgba(105, 210, 84, 0.14), 0 0 24px rgba(105, 210, 84, 0.5);
-  }
-
-  .phone-topbar strong,
-  .phone-topbar span {
+  .phone-eyebrow {
     display: block;
+    color: rgba(245, 245, 241, 0.52);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   .phone-topbar strong {
-    font-size: 0.92rem;
+    display: block;
+    margin-top: 0.18rem;
+    color: #f5f5f1;
+    font-family: var(--font-body);
+    font-size: 1rem;
     line-height: 1.1;
   }
 
-  .phone-topbar div span {
-    margin-top: 0.1rem;
-    color: rgba(255, 255, 255, 0.56);
-    font-size: 0.72rem;
-    font-weight: 600;
-  }
-
-  .phone-status {
-    padding: 0.36rem 0.62rem;
+  .phone-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.42rem 0.62rem;
+    border: 1px solid rgba(105, 210, 84, 0.26);
     border-radius: 999px;
-    background: rgba(105, 210, 84, 0.14);
+    background: rgba(105, 210, 84, 0.1);
     color: #69D254;
     font-size: 0.72rem;
     font-weight: 800;
   }
 
-  .chat-thread {
+  .phone-live span {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: #69D254;
+    box-shadow: 0 0 0 0.22rem rgba(105, 210, 84, 0.16);
+  }
+
+  .phone-screen {
     position: relative;
-    z-index: 1;
-    min-height: 12.9rem;
-    padding: 0.15rem;
+    min-height: 24.6rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2.05rem;
+    background:
+      radial-gradient(circle at 86% 8%, rgba(105, 210, 84, 0.22), transparent 12rem),
+      linear-gradient(180deg, rgba(245, 245, 241, 0.08), rgba(245, 245, 241, 0.03));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   .chat-scene {
     position: absolute;
-    inset: 0.15rem;
+    inset: 1rem;
     display: grid;
-    gap: 0.62rem;
     align-content: start;
+    gap: 0.7rem;
     opacity: 0;
-    transform: translateY(0.35rem) scale(0.992);
+    transform: translateY(0.5rem) scale(0.992);
     animation: scene-cycle 40s cubic-bezier(0.22, 1, 0.36, 1) infinite;
   }
 
-  .scene-landing {
-    animation-delay: 10s;
-  }
-
-  .scene-social {
-    animation-delay: 20s;
-  }
-
-  .scene-lead {
-    animation-delay: 30s;
-  }
+  .scene-landing { animation-delay: 10s; }
+  .scene-social { animation-delay: 20s; }
+  .scene-lead { animation-delay: 30s; }
 
   .chat-bubble {
     width: fit-content;
-    max-width: 84%;
-    padding: 0.72rem 0.86rem;
-    border-radius: 1.12rem;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    max-width: 86%;
+    padding: 0.76rem 0.88rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.18rem;
     background: rgba(245, 245, 241, 0.1);
-    color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    color: rgba(245, 245, 241, 0.92);
     text-align: left;
     opacity: 0;
     transform: translateY(0.58rem) scale(0.985);
     animation: message-pop 40s cubic-bezier(0.22, 1, 0.36, 1) infinite;
   }
 
-  .chat-bubble:nth-child(2) {
-    animation-delay: 1.55s;
-  }
+  .chat-bubble:nth-child(2) { animation-delay: 1.55s; }
+  .chat-bubble:nth-child(3) { animation-delay: 3.1s; }
+  .scene-landing .chat-bubble:nth-child(1) { animation-delay: 10s; }
+  .scene-landing .chat-bubble:nth-child(2) { animation-delay: 11.55s; }
+  .scene-landing .chat-bubble:nth-child(3) { animation-delay: 13.1s; }
+  .scene-social .chat-bubble:nth-child(1) { animation-delay: 20s; }
+  .scene-social .chat-bubble:nth-child(2) { animation-delay: 21.55s; }
+  .scene-social .chat-bubble:nth-child(3) { animation-delay: 23.1s; }
+  .scene-lead .chat-bubble:nth-child(1) { animation-delay: 30s; }
+  .scene-lead .chat-bubble:nth-child(2) { animation-delay: 31.55s; }
+  .scene-lead .chat-bubble:nth-child(3) { animation-delay: 33.1s; }
 
-  .chat-bubble:nth-child(3) {
-    animation-delay: 3.1s;
-  }
-
-  .scene-landing .chat-bubble:nth-child(1) {
-    animation-delay: 10s;
-  }
-
-  .scene-landing .chat-bubble:nth-child(2) {
-    animation-delay: 11.55s;
-  }
-
-  .scene-landing .chat-bubble:nth-child(3) {
-    animation-delay: 13.1s;
-  }
-
-  .scene-social .chat-bubble:nth-child(1) {
-    animation-delay: 20s;
-  }
-
-  .scene-social .chat-bubble:nth-child(2) {
-    animation-delay: 21.55s;
-  }
-
-  .scene-social .chat-bubble:nth-child(3) {
-    animation-delay: 23.1s;
-  }
-
-  .scene-lead .chat-bubble:nth-child(1) {
-    animation-delay: 30s;
-  }
-
-  .scene-lead .chat-bubble:nth-child(2) {
-    animation-delay: 31.55s;
-  }
-
-  .scene-lead .chat-bubble:nth-child(3) {
-    animation-delay: 33.1s;
-  }
-
-  .customer-bubble {
+  .user-bubble,
+  .marketer-bubble {
     justify-self: start;
-    border-bottom-left-radius: 0.38rem;
+    border-bottom-left-radius: 0.42rem;
   }
 
   .ai-bubble {
     justify-self: end;
-    border-color: rgba(105, 210, 84, 0.28);
-    background: linear-gradient(135deg, rgba(105, 210, 84, 0.2), rgba(105, 210, 84, 0.08));
-    border-bottom-right-radius: 0.38rem;
+    border-color: rgba(105, 210, 84, 0.34);
+    border-bottom-right-radius: 0.42rem;
+    background: linear-gradient(135deg, rgba(105, 210, 84, 0.24), rgba(105, 210, 84, 0.08));
   }
 
-  .marketer-bubble {
-    justify-self: start;
-    background: rgba(245, 245, 241, 0.15);
-    border-bottom-left-radius: 0.38rem;
-  }
-
-  .bubble-label {
+  .chat-bubble span {
     display: block;
-    margin-bottom: 0.24rem;
-    color: rgba(255, 255, 255, 0.52);
-    font-size: 0.66rem;
-    font-weight: 800;
+    margin-bottom: 0.28rem;
+    color: rgba(245, 245, 241, 0.52);
+    font-size: 0.64rem;
+    font-weight: 850;
     letter-spacing: 0.08em;
     line-height: 1;
     text-transform: uppercase;
@@ -392,41 +440,126 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   .chat-bubble p {
     margin: 0;
     font-family: var(--font-body);
-    font-size: clamp(0.82rem, 1vw, 0.96rem);
+    font-size: clamp(0.82rem, 1vw, 0.95rem);
     font-weight: 650;
-    line-height: 1.32;
+    line-height: 1.33;
     letter-spacing: -0.02em;
+  }
+
+  .phone-dock {
+    display: flex;
+    gap: 0.46rem;
+    padding: 0.75rem 0.2rem 0;
+  }
+
+  .phone-dock span {
+    flex: 1;
+    padding: 0.56rem 0.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(245, 245, 241, 0.06);
+    color: rgba(245, 245, 241, 0.66);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .floating-card {
+    position: absolute;
+    z-index: 3;
+    width: 9.6rem;
+    padding: 0.86rem 0.92rem;
+    border: 1px solid rgba(15, 18, 19, 0.1);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 18px 45px rgba(15, 18, 19, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px) saturate(1.12);
+    -webkit-backdrop-filter: blur(16px) saturate(1.12);
+    color: #0f1213;
+    text-align: left;
+    animation: float-card 8s ease-in-out infinite;
+  }
+
+  .card-label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: rgba(15, 18, 19, 0.52);
+    font-size: 0.66rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .floating-card strong {
+    display: block;
+    color: #0f1213;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    line-height: 1.05;
+  }
+
+  .floating-card::after {
+    content: "";
+    position: absolute;
+    top: 0.78rem;
+    right: 0.78rem;
+    width: 0.46rem;
+    height: 0.46rem;
+    border-radius: 999px;
+    background: #69D254;
+    box-shadow: 0 0 0 0.22rem rgba(105, 210, 84, 0.16);
+  }
+
+  .card-top-left {
+    top: 10%;
+    left: 0;
+    transform: rotate(-4deg);
+  }
+
+  .card-top-right {
+    top: 18%;
+    right: -0.8rem;
+    animation-delay: -2s;
+    transform: rotate(4deg);
+  }
+
+  .card-bottom-left {
+    bottom: 13%;
+    left: -1rem;
+    animation-delay: -4s;
+    transform: rotate(3deg);
+  }
+
+  @keyframes float-card {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -0.75rem; }
   }
 
   @keyframes scene-cycle {
     0%, 4% {
       opacity: 0;
-      transform: translateY(0.35rem) scale(0.992);
+      transform: translateY(0.5rem) scale(0.992);
     }
-
     5%, 23% {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-
     25%, 100% {
       opacity: 0;
       transform: translateY(-0.28rem) scale(0.996);
     }
   }
 
-
   @keyframes message-pop {
     0%, 2% {
       opacity: 0;
       transform: translateY(0.58rem) scale(0.985);
     }
-
     4%, 23% {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-
     25%, 100% {
       opacity: 0;
       transform: translateY(-0.18rem) scale(0.995);
@@ -435,9 +568,11 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
   @media (prefers-reduced-motion: reduce) {
     .chat-scene,
-    .chat-bubble {
+    .chat-bubble,
+    .floating-card {
       animation: none;
       transform: none;
+      translate: none;
     }
 
     .chat-scene {
@@ -450,157 +585,51 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
   }
 
-  .hero-description {
-    color: rgba(255, 255, 255, 0.86);
-    max-width: 46rem;
-  }
-
-  .hero-heading-support {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1em;
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 1.12vw, 1.16rem);
-    font-weight: 500;
-    line-height: 1.48;
-    letter-spacing: -0.018em;
-    text-wrap: balance;
-  }
-
-  .hero-heading-support p {
-    margin: 0;
-  }
-
-
-  .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-    padding-top: clamp(0.35rem, 1vh, 0.75rem);
-  }
-
-  .button-group .button {
-    min-height: 3.45rem;
-    padding-inline: 1.55rem;
-    border-radius: 999px;
-    font-size: clamp(0.9rem, 0.95vw, 1rem);
-    font-weight: 750;
-  }
-
-  .button-group .button.is-secondary {
-    color: #ffffff;
-    border-color: rgba(105, 210, 84, 0.82);
-    background: rgba(15, 18, 19, 0.18);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-
-  @media (max-width: 1180px) {
-    .hero-text {
-      max-width: min(64rem, 94vw);
-    }
-
-    .hero-heading {
-      max-width: min(62rem, 94vw);
-      font-size: clamp(3.05rem, 6vw, 5.75rem);
-    }
-
-    .section-hero::before {
-      background:
-        radial-gradient(circle at 50% 42%, rgba(4, 6, 6, 0.34) 0%, rgba(4, 6, 6, 0.7) 52%, rgba(4, 6, 6, 0.9) 100%),
-        linear-gradient(180deg, rgba(15, 18, 19, 0.14) 0%, rgba(15, 18, 19, 0.24) 58%, #0f1213 100%);
-    }
-  }
-
-  @media (max-width: 767px) {
+  @media (max-width: 980px) {
     .section-hero {
-      min-height: 100svh;
-      padding: 7.2rem 0 5.7rem;
+      padding-top: 8.25rem;
     }
 
     .hero-content {
-      min-height: calc(100svh - 12.9rem);
+      grid-template-columns: 1fr;
+      gap: 2.6rem;
     }
 
-    .hero-background-image {
-      object-position: 62% top;
-      transform: translateY(1rem) scale(1.02);
-    }
-
-    .section-hero::before {
-      background:
-        linear-gradient(180deg, rgba(4, 6, 6, 0.78) 0%, rgba(4, 6, 6, 0.7) 46%, #0f1213 100%),
-        linear-gradient(90deg, rgba(4, 6, 6, 0.78) 0%, rgba(4, 6, 6, 0.3) 100%);
-    }
-
-    .hero-text {
-      max-width: 100%;
-      gap: 1.05rem;
-    }
-
-    .hero-heading {
-      max-width: 100%;
-      font-size: clamp(2.45rem, 10vw, 3.55rem);
-    }
-
-    .hero-phone-chat {
-      width: min(100%, 31rem);
-    }
-
-    .phone-frame {
-      border-radius: 1.55rem;
-      padding: 0.72rem;
-    }
-
-    .chat-bubble {
-      max-width: 88%;
+    .hero-copy {
+      max-width: 44rem;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .hero-description {
-      max-width: 34rem;
+      margin-inline: auto;
     }
 
-    .hero-heading-support {
-      font-size: clamp(1rem, 4.2vw, 1.25rem);
+    .button-group {
+      justify-content: center;
+    }
+
+    .hero-visual {
+      min-height: 34rem;
     }
   }
 
-  @media (max-width: 479px) {
+  @media (max-width: 640px) {
     .section-hero {
-      padding-bottom: 5rem;
+      padding: 7.6rem 0 4.2rem;
     }
 
-    .hero-content {
-      min-height: calc(100svh - 12.2rem);
+    .section-hero::before {
+      inset: 0.65rem;
+      border-radius: 1.5rem;
     }
 
     .hero-heading {
-      font-size: clamp(2.08rem, 10.6vw, 2.9rem);
-      letter-spacing: -0.055em;
+      font-size: clamp(2.45rem, 12vw, 4.1rem);
     }
 
-    .hero-phone-chat {
-      width: 100%;
-    }
-
-    .phone-topbar {
-      gap: 0.56rem;
-    }
-
-    .phone-status {
-      display: none;
-    }
-
-    .chat-bubble p {
-      font-size: 0.8rem;
-    }
-
-    .hero-heading-support {
-      font-size: clamp(0.98rem, 4.6vw, 1.16rem);
-      letter-spacing: -0.018em;
+    .hero-description {
+      font-size: 0.98rem;
     }
 
     .button-group,
@@ -609,7 +638,56 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .button-group .button {
-      justify-content: flex-start;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      min-height: 31rem;
+    }
+
+    .phone-shell {
+      width: min(100%, 19rem);
+      transform: rotate(-2deg);
+    }
+
+    .phone-glass {
+      min-height: 31rem;
+      border-radius: 2.4rem;
+      padding: 0.78rem;
+    }
+
+    .phone-screen {
+      min-height: 21.5rem;
+      border-radius: 1.65rem;
+    }
+
+    .chat-bubble {
+      max-width: 90%;
+      padding: 0.66rem 0.72rem;
+    }
+
+    .chat-bubble p {
+      font-size: 0.78rem;
+    }
+
+    .floating-card {
+      width: 8.2rem;
+      padding: 0.72rem 0.78rem;
+    }
+
+    .card-top-left {
+      left: -0.25rem;
+      top: 6%;
+    }
+
+    .card-top-right {
+      right: -0.45rem;
+      top: 14%;
+    }
+
+    .card-bottom-left {
+      left: 0;
+      bottom: 6%;
     }
   }
 </style>
