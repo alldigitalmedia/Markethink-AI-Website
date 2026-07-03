@@ -22,85 +22,14 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       </div>
     </div>
 
-    <div class="hero-visual" aria-label="Static phone mockup showing Markethink's AI operator and dedicated marketer workflow.">
-      <div class="phone-hand" aria-hidden="true"></div>
-      <div class="phone-shell">
-        <div class="phone-frame">
-          <div class="phone-statusbar">
-            <span>9:41</span>
-            <span>●●●</span>
-          </div>
-          <div class="phone-header">
-            <div class="brand-dot">M</div>
-            <div>
-              <strong>Markethink</strong>
-              <span>AI Marketing Operator</span>
-            </div>
-            <span class="online">Online</span>
-          </div>
-
-          <div class="phone-thread">
-            <article class="phone-message you-message">
-              <header><span>You</span><time>9:41 AM</time></header>
-              <p>We need Friday’s landing page ready for the product launch.</p>
-            </article>
-
-            <article class="phone-message ai-message">
-              <header><span>AI Operator</span><time>9:42 AM</time></header>
-              <p>Hero, sections, CTA, and form copy are drafted.</p>
-              <div class="mini-asset">
-                <span aria-hidden="true">▣</span>
-                <div>
-                  <strong>Landing Page v1</strong>
-                  <small>Ready for review</small>
-                </div>
-              </div>
-            </article>
-
-            <article class="phone-message marketer-message">
-              <header><span>Dedicated Marketer</span><time>9:46 AM</time></header>
-              <p>Polished. Sending the page for approval.</p>
-            </article>
-
-            <article class="phone-message approved-message">
-              <header><span>Approved</span><time>9:51 AM</time></header>
-              <div class="mini-asset approved-asset">
-                <span aria-hidden="true">✓</span>
-                <div>
-                  <strong>Landing Page v1</strong>
-                  <small>Approved for launch</small>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <div class="phone-nav" aria-hidden="true">
-            <span>Home</span>
-            <span>Projects</span>
-            <strong>＋</strong>
-            <span>Campaigns</span>
-            <span>Approvals</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="workflow-rail" aria-hidden="true">
-        <div class="workflow-step">
-          <span class="step-icon">◎</span>
-          <div><strong>You</strong><p>Make a request</p></div>
-        </div>
-        <div class="workflow-step is-active">
-          <span class="step-icon">✦</span>
-          <div><strong>AI Operator</strong><p>Gets to work instantly</p></div>
-        </div>
-        <div class="workflow-step">
-          <span class="step-icon">◎</span>
-          <div><strong>Dedicated Marketer</strong><p>Polishes for approval</p></div>
-        </div>
-        <div class="workflow-step approved-step">
-          <span class="step-icon">✓</span>
-          <div><strong>Approved</strong><p>You approve from your phone</p></div>
-        </div>
+    <div class="hero-visual" aria-label="Markethink phone workflow preview">
+      <div class="phone-video-card">
+        <img
+          src="https://dashboard.markethink.ai/generated/social/markethink/mt-home-hero-phone-video-20260703234443.webp"
+          alt="A phone mockup showing Markethink coordinating a request between the business owner, AI operator, dedicated marketer, and approval step."
+          loading="eager"
+          decoding="async"
+        />
       </div>
     </div>
   </div>
@@ -244,301 +173,38 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   .hero-visual {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(20rem, 25rem) minmax(10.5rem, 13rem);
-    align-items: center;
-    justify-content: end;
-    gap: clamp(1.3rem, 2.2vw, 2.2rem);
+    place-items: center;
     min-height: clamp(34rem, 66vh, 42rem);
   }
 
-  .phone-hand {
-    position: absolute;
-    left: 10%;
-    bottom: -4%;
-    z-index: 0;
-    width: 16rem;
-    height: 18rem;
-    border-radius: 56% 44% 42% 58% / 34% 42% 58% 66%;
-    background: linear-gradient(135deg, #f1c8ad, #f7dcc8 46%, #d9a887);
-    filter: blur(0.2px);
-    opacity: 0.72;
-    transform: rotate(-18deg);
-  }
-
-  .phone-shell {
+  .phone-video-card {
     position: relative;
-    z-index: 2;
-    width: min(100%, 23.5rem);
-    transform: rotate(5deg);
-    filter: drop-shadow(0 30px 50px rgba(15, 18, 19, 0.22));
+    width: min(100%, 39rem);
+    padding: 0.75rem;
+    border: 1px solid rgba(15, 18, 19, 0.08);
+    border-radius: 2.25rem;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 28px 70px rgba(15, 18, 19, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(18px) saturate(1.08);
+    -webkit-backdrop-filter: blur(18px) saturate(1.08);
   }
 
-  .phone-frame {
-    position: relative;
-    overflow: hidden;
-    min-height: 35.5rem;
-    padding: 0.74rem 0.74rem 0.82rem;
-    border: 0.55rem solid #121413;
-    border-radius: 3.2rem;
-    background: #ffffff;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
-  }
-
-  .phone-statusbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.36rem 0.7rem 0.42rem;
-    color: #0f1213;
-    font-size: 0.72rem;
-    font-weight: 800;
-  }
-
-  .phone-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.62rem;
-    padding: 0.72rem 0.72rem 0.9rem;
-    border-bottom: 1px solid rgba(15,18,19,0.08);
-    text-align: left;
-  }
-
-  .brand-dot {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 999px;
-    background: #0f1213;
-    color: #69D254;
-    font-size: 0.82rem;
-    font-weight: 900;
-  }
-
-  .phone-header strong,
-  .phone-header span {
-    display: block;
-    font-family: var(--font-body);
-  }
-
-  .phone-header strong {
-    color: #0f1213;
-    font-size: 0.9rem;
-    line-height: 1.1;
-  }
-
-  .phone-header div span {
-    margin-top: 0.12rem;
-    color: rgba(15,18,19,0.46);
-    font-size: 0.68rem;
-    font-weight: 700;
-  }
-
-  .online {
-    color: #43b83d;
-    font-size: 0.68rem;
-    font-weight: 850;
-  }
-
-  .phone-thread {
-    display: grid;
-    gap: 0.72rem;
-    padding: 0.92rem 0.64rem 0.8rem;
-  }
-
-  .phone-message {
-    padding: 0.82rem 0.9rem;
-    border: 1px solid rgba(15,18,19,0.08);
-    border-radius: 1rem;
-    background: #ffffff;
-    box-shadow: 0 8px 22px rgba(15,18,19,0.05);
-    text-align: left;
-  }
-
-  .phone-message header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.44rem;
-    color: rgba(15,18,19,0.38);
-    font-size: 0.64rem;
-    font-weight: 850;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
-
-  .phone-message time {
-    color: rgba(15,18,19,0.28);
-    font-size: 0.58rem;
-    white-space: nowrap;
-  }
-
-  .phone-message p {
-    margin: 0;
-    color: #0f1213;
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    font-weight: 750;
-    line-height: 1.35;
-    letter-spacing: -0.018em;
-  }
-
-  .ai-message,
-  .approved-message {
-    background: #f2faef;
-    border-color: rgba(105,210,84,0.2);
-  }
-
-  .ai-message header,
-  .approved-message header {
-    color: #43b83d;
-  }
-
-  .mini-asset {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 0.55rem;
-    margin-top: 0.62rem;
-    padding: 0.62rem;
-    border: 1px solid rgba(15,18,19,0.06);
-    border-radius: 0.72rem;
-    background: rgba(255,255,255,0.78);
-  }
-
-  .mini-asset > span {
-    display: grid;
-    place-items: center;
-    width: 1.55rem;
-    height: 1.55rem;
-    border-radius: 0.45rem;
-    background: #f5f5f1;
-    color: #0f1213;
-    font-weight: 900;
-  }
-
-  .approved-asset > span {
-    background: rgba(105,210,84,0.15);
-    color: #43b83d;
-  }
-
-  .mini-asset strong,
-  .mini-asset small {
-    display: block;
-    font-family: var(--font-body);
-  }
-
-  .mini-asset strong {
-    color: #0f1213;
-    font-size: 0.7rem;
-    line-height: 1.05;
-  }
-
-  .mini-asset small {
-    margin-top: 0.12rem;
-    color: rgba(15,18,19,0.45);
-    font-size: 0.62rem;
-    font-weight: 700;
-  }
-
-  .phone-nav {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    gap: 0.2rem;
-    padding: 0.45rem 0.25rem 0;
-    color: rgba(15,18,19,0.62);
-    font-size: 0.56rem;
-    font-weight: 800;
-    text-align: center;
-  }
-
-  .phone-nav strong {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    margin: 0 auto;
-    border-radius: 999px;
-    background: #0f1213;
-    color: #f5f5f1;
-    font-size: 1.1rem;
-  }
-
-  .workflow-rail {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    gap: 1.2rem;
-  }
-
-  .workflow-rail::before {
+  .phone-video-card::before {
     content: "";
     position: absolute;
-    top: 2rem;
-    bottom: 2rem;
-    left: 1.2rem;
-    width: 1px;
-    border-left: 1px dashed rgba(105,210,84,0.38);
-  }
-
-  .workflow-step {
-    position: relative;
-    display: grid;
-    grid-template-columns: 2.4rem 1fr;
-    align-items: center;
-    gap: 0.78rem;
-    text-align: left;
-  }
-
-  .step-icon {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    width: 2.4rem;
-    height: 2.4rem;
-    border: 1px solid rgba(15,18,19,0.08);
+    inset: 8% -8% -8% 22%;
+    z-index: -1;
     border-radius: 999px;
-    background: rgba(255,255,255,0.74);
-    color: rgba(15,18,19,0.62);
-    box-shadow: 0 12px 24px rgba(15,18,19,0.06);
-    font-weight: 900;
+    background: rgba(105, 210, 84, 0.18);
+    filter: blur(34px);
+    pointer-events: none;
   }
 
-  .is-active .step-icon,
-  .approved-step .step-icon {
-    border-color: rgba(105,210,84,0.2);
-    background: #ffffff;
-    color: #43b83d;
-  }
-
-  .workflow-step strong,
-  .workflow-step p {
+  .phone-video-card img {
+    width: 100%;
     display: block;
-    margin: 0;
-    font-family: var(--font-body);
-  }
-
-  .workflow-step strong {
-    color: #0f1213;
-    font-size: 0.9rem;
-    line-height: 1.15;
-  }
-
-  .is-active strong,
-  .approved-step strong {
-    color: #43b83d;
-  }
-
-  .workflow-step p {
-    margin-top: 0.22rem;
-    color: rgba(15,18,19,0.56);
-    font-size: 0.78rem;
-    font-weight: 600;
-    line-height: 1.35;
+    border-radius: 1.7rem;
+    box-shadow: 0 18px 48px rgba(15, 18, 19, 0.12);
   }
 
   @media (max-width: 1100px) {
@@ -557,9 +223,6 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       justify-content: center;
     }
 
-    .hero-visual {
-      justify-content: center;
-    }
   }
 
   @media (max-width: 760px) {
@@ -585,29 +248,17 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-visual {
-      grid-template-columns: 1fr;
       min-height: auto;
     }
 
-    .phone-shell {
-      width: min(100%, 21rem);
-      margin: 0 auto;
+    .phone-video-card {
+      width: min(100%, 34rem);
+      border-radius: 1.8rem;
+      padding: 0.52rem;
     }
 
-    .phone-frame {
-      min-height: 32rem;
-      border-radius: 2.7rem;
-    }
-
-    .workflow-rail {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      max-width: 24rem;
-      margin: 1.2rem auto 0;
-    }
-
-    .workflow-rail::before {
-      display: none;
+    .phone-video-card img {
+      border-radius: 1.35rem;
     }
   }
 
@@ -616,16 +267,5 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       font-size: 0.62rem;
     }
 
-    .phone-shell {
-      transform: rotate(2deg);
-    }
-
-    .phone-hand {
-      display: none;
-    }
-
-    .workflow-rail {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
