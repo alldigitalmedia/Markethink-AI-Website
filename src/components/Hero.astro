@@ -25,18 +25,18 @@ const walkthroughHref = "/schedule-a-walkthrough/";
             <span class="phone-status">Online</span>
           </div>
           <div class="chat-thread" aria-hidden="true">
-            <div class="chat-scene scene-lead">
+            <div class="chat-scene scene-campaign">
               <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">Customer lead</span>
-                <p>Can someone send details tonight?</p>
+                <span class="bubble-label">You</span>
+                <p>Launch a campaign for our new service.</p>
               </div>
               <div class="chat-bubble ai-bubble">
                 <span class="bubble-label">AI operator</span>
-                <p>Reply ready with the offer, tone, and next step.</p>
+                <p>Campaign map ready: landing page, posts, email, and lead follow-up.</p>
               </div>
               <div class="chat-bubble marketer-bubble">
                 <span class="bubble-label">Dedicated marketer</span>
-                <p>Approved. Send it and schedule the follow-up.</p>
+                <p>Good direction. I’ll polish the first assets for approval.</p>
               </div>
             </div>
             <div class="chat-scene scene-landing">
@@ -67,18 +67,18 @@ const walkthroughHref = "/schedule-a-walkthrough/";
                 <p>Ready to post now. Queue the next two.</p>
               </div>
             </div>
-            <div class="chat-scene scene-campaign">
+            <div class="chat-scene scene-lead">
               <div class="chat-bubble customer-bubble">
-                <span class="bubble-label">You</span>
-                <p>Start a campaign for the new service.</p>
+                <span class="bubble-label">Customer lead</span>
+                <p>Can someone send details tonight?</p>
               </div>
               <div class="chat-bubble ai-bubble">
                 <span class="bubble-label">AI operator</span>
-                <p>Campaign, landing, email, and leads are organized.</p>
+                <p>Reply ready with the offer, tone, and next step.</p>
               </div>
               <div class="chat-bubble marketer-bubble">
                 <span class="bubble-label">Dedicated marketer</span>
-                <p>Good structure. Bring the first assets for review.</p>
+                <p>Approved. Send it and schedule the follow-up.</p>
               </div>
             </div>
           </div>
@@ -286,19 +286,19 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     align-content: start;
     opacity: 0;
     transform: translateY(0.35rem) scale(0.992);
-    animation: scene-cycle 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: scene-cycle 40s cubic-bezier(0.22, 1, 0.36, 1) infinite;
   }
 
   .scene-landing {
-    animation-delay: 6s;
+    animation-delay: 10s;
   }
 
   .scene-social {
-    animation-delay: 12s;
+    animation-delay: 20s;
   }
 
-  .scene-campaign {
-    animation-delay: 18s;
+  .scene-lead {
+    animation-delay: 30s;
   }
 
   .chat-bubble {
@@ -311,6 +311,53 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     text-align: left;
+    opacity: 0;
+    transform: translateY(0.58rem) scale(0.985);
+    animation: message-pop 40s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .chat-bubble:nth-child(2) {
+    animation-delay: 1.55s;
+  }
+
+  .chat-bubble:nth-child(3) {
+    animation-delay: 3.1s;
+  }
+
+  .scene-landing .chat-bubble:nth-child(1) {
+    animation-delay: 10s;
+  }
+
+  .scene-landing .chat-bubble:nth-child(2) {
+    animation-delay: 11.55s;
+  }
+
+  .scene-landing .chat-bubble:nth-child(3) {
+    animation-delay: 13.1s;
+  }
+
+  .scene-social .chat-bubble:nth-child(1) {
+    animation-delay: 20s;
+  }
+
+  .scene-social .chat-bubble:nth-child(2) {
+    animation-delay: 21.55s;
+  }
+
+  .scene-social .chat-bubble:nth-child(3) {
+    animation-delay: 23.1s;
+  }
+
+  .scene-lead .chat-bubble:nth-child(1) {
+    animation-delay: 30s;
+  }
+
+  .scene-lead .chat-bubble:nth-child(2) {
+    animation-delay: 31.55s;
+  }
+
+  .scene-lead .chat-bubble:nth-child(3) {
+    animation-delay: 33.1s;
   }
 
   .customer-bubble {
@@ -357,7 +404,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       transform: translateY(0.35rem) scale(0.992);
     }
 
-    9%, 22% {
+    5%, 23% {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
@@ -368,14 +415,37 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .chat-scene {
-      animation: none;
+
+  @keyframes message-pop {
+    0%, 2% {
       opacity: 0;
+      transform: translateY(0.58rem) scale(0.985);
+    }
+
+    4%, 23% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    25%, 100% {
+      opacity: 0;
+      transform: translateY(-0.18rem) scale(0.995);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chat-scene,
+    .chat-bubble {
+      animation: none;
       transform: none;
     }
 
-    .chat-scene:first-child {
+    .chat-scene {
+      opacity: 0;
+    }
+
+    .chat-scene:first-child,
+    .chat-scene:first-child .chat-bubble {
       opacity: 1;
     }
   }
