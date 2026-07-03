@@ -10,25 +10,25 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   </div>
   <div class="container hero-content">
     <div class="hero-text">
-      <h1 class="hero-heading animate-fade-up" aria-label="The AI marketing system that ships the work.">
-        <span class="hero-heading-line">The AI marketing system that</span>
+      <p class="hero-eyebrow animate-fade-up">You’ve tried the AI tools. You’ve paid the agencies.</p>
+      <h1 class="hero-heading animate-fade-up" aria-label="While you run your business, your marketing system keeps campaigns moving.">
+        <span class="hero-heading-line">While you run your business,</span>
+        <span class="hero-heading-line">your marketing system</span>
         <span class="hero-heading-rotator" aria-hidden="true">
-          <span class="hero-heading-accent">ships the work.</span>
-          <span class="hero-heading-accent">learns your business.</span>
-          <span class="hero-heading-accent">manages your website.</span>
-          <span class="hero-heading-accent">keeps social up to date.</span>
           <span class="hero-heading-accent">keeps campaigns moving.</span>
-          <span class="hero-heading-accent">follows up with leads.</span>
-          <span class="hero-heading-accent">remembers what worked.</span>
-          <span class="hero-heading-accent">finds the next opportunity.</span>
+          <span class="hero-heading-accent">answers the 11:48pm lead.</span>
+          <span class="hero-heading-accent">designs 3 branded posts.</span>
+          <span class="hero-heading-accent">builds the Friday landing page.</span>
+          <span class="hero-heading-accent">follows up with quiet leads.</span>
+          <span class="hero-heading-accent">drafts Monday’s email.</span>
         </span>
       </h1>
       <p class="hero-description hero-heading-support animate-fade-up">
-        <span>Run by your trained AI marketing agent.</span>
-        <span>Managed by expert human marketers for you.</span>
+        <span>Markethink learns your business, prepares the work, and keeps marketing moving every week.</span>
+        <span>Your trained AI marketing operator handles the heavy lift. A dedicated human marketer reviews what ships. You approve from your phone.</span>
       </p>
       <div class="button-group animate-fade-up">
-        <a href={walkthroughHref} class="button">Book a Walkthrough</a>
+        <a href={walkthroughHref} class="button">Watch it work on your business →</a>
         <a href={trialHref} class="button is-secondary">Apply for a 30-Day Trial</a>
       </div>
     </div>
@@ -105,12 +105,21 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     text-align: center;
   }
 
+  .hero-eyebrow {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
   .hero-heading {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: min(66rem, 92vw);
-    font-size: clamp(4.1rem, 6.55vw, 7.65rem);
+    max-width: min(70rem, 94vw);
+    font-size: clamp(3.65rem, 5.85vw, 6.65rem);
     line-height: 0.92;
     letter-spacing: -0.058em;
     text-wrap: balance;
@@ -123,7 +132,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   .hero-heading-rotator {
     position: relative;
     display: block;
-    width: min(100%, 52rem);
+    width: min(100%, 62rem);
     min-height: 1.34em;
     padding-bottom: 0.24em;
     margin-bottom: -0.12em;
@@ -142,7 +151,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     line-height: 1;
     opacity: 0;
     transform: translateY(0.24em);
-    animation: hero-rotate 32s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: hero-rotate 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     white-space: nowrap;
     will-change: opacity, transform;
   }
@@ -167,26 +176,18 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     animation-delay: 20s;
   }
 
-  .hero-heading-accent:nth-child(7) {
-    animation-delay: 24s;
-  }
-
-  .hero-heading-accent:nth-child(8) {
-    animation-delay: 28s;
-  }
-
   @keyframes hero-rotate {
     0% {
       opacity: 0;
       transform: translateY(0.24em);
     }
 
-    3%, 10.5% {
+    4.16%, 14.58% {
       opacity: 1;
       transform: translateY(0);
     }
 
-    12.5%, 100% {
+    16.66%, 100% {
       opacity: 0;
       transform: translateY(-0.22em);
     }
@@ -215,10 +216,11 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     flex-direction: column;
     align-items: center;
     gap: 0.1em;
-    font-family: "Instrument Serif", Georgia, serif;
-    font-size: clamp(1.7rem, 2.55vw, 3.15rem);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    font-family: var(--font-body);
+    font-size: clamp(1.02rem, 1.28vw, 1.34rem);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.018em;
     text-wrap: balance;
   }
 
@@ -257,8 +259,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading {
-      max-width: min(64rem, 94vw);
-      font-size: clamp(3.1rem, 6.6vw, 5.65rem);
+      max-width: min(68rem, 94vw);
+      font-size: clamp(3rem, 5.8vw, 5.45rem);
     }
 
     .section-hero::before {
@@ -296,7 +298,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
     .hero-heading {
       max-width: 100%;
-      font-size: clamp(2.35rem, 9.8vw, 3.45rem);
+      font-size: clamp(2.28rem, 9.2vw, 3.25rem);
     }
 
     .hero-heading-rotator {
@@ -308,7 +310,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading-support {
-      font-size: clamp(1.38rem, 6.6vw, 2.1rem);
+      font-size: clamp(1rem, 4.2vw, 1.25rem);
     }
   }
 
@@ -322,7 +324,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading {
-      font-size: clamp(2.05rem, 10.4vw, 2.85rem);
+      font-size: clamp(1.94rem, 9.8vw, 2.65rem);
       letter-spacing: -0.055em;
     }
 
@@ -332,8 +334,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading-support {
-      font-size: clamp(1.35rem, 7.8vw, 2rem);
-      letter-spacing: -0.04em;
+      font-size: clamp(0.98rem, 4.6vw, 1.16rem);
+      letter-spacing: -0.018em;
     }
 
     .button-group,
