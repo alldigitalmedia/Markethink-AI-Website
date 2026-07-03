@@ -26,7 +26,6 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       </p>
       <div class="hero-description hero-heading-support animate-fade-up">
         <p>An AI marketing operator does the work around the clock. A real marketer dedicated to your business reviews what ships. You approve from your phone.</p>
-        <p class="hero-price-line">From $500 a month. Cancel anytime.</p>
       </div>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Watch it work on your business →</a>
@@ -90,7 +89,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   .hero-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: calc(100svh - clamp(14.2rem, 27vh, 17.3rem));
     padding-top: clamp(0.35rem, 1.8vh, 1rem);
     padding-bottom: clamp(0.5rem, 2vh, 1.25rem);
@@ -122,11 +121,11 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   }
 
   .hero-live-line {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.3em;
-    width: min(100%, 58rem);
+    justify-content: flex-start;
+    gap: 0.22em;
+    max-width: min(100%, 58rem);
     color: rgba(255, 255, 255, 0.9);
     font-family: "Instrument Serif", Georgia, serif;
     font-size: clamp(1.85rem, 3vw, 3.5rem);
@@ -142,7 +141,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   .hero-heading-rotator {
     position: relative;
     display: inline-block;
-    width: min(100%, 35rem);
+    width: clamp(18.5rem, 42vw, 34rem);
     min-height: 1.22em;
     padding-bottom: 0.14em;
     margin-bottom: -0.08em;
@@ -156,7 +155,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     min-height: 1.14em;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     color: #69D254;
     line-height: 1;
     opacity: 0;
@@ -234,10 +233,6 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     margin: 0;
   }
 
-  .hero-price-line {
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.86em;
-  }
 
   .button-group {
     display: flex;
@@ -364,7 +359,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .button-group .button {
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 </style>
