@@ -10,23 +10,24 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   </div>
   <div class="container hero-content">
     <div class="hero-text">
-      <p class="hero-eyebrow animate-fade-up">You’ve tried the AI tools. You’ve paid the agencies.</p>
-      <h1 class="hero-heading animate-fade-up" aria-label="While you run your business, your marketing system keeps campaigns moving.">
-        <span class="hero-heading-line">While you run your business,</span>
-        <span class="hero-heading-line">your marketing system</span>
-        <span class="hero-heading-rotator" aria-hidden="true">
-          <span class="hero-heading-accent">keeps campaigns moving.</span>
-          <span class="hero-heading-accent">answers the 11:48pm lead.</span>
-          <span class="hero-heading-accent">designs 3 branded posts.</span>
-          <span class="hero-heading-accent">builds the Friday landing page.</span>
-          <span class="hero-heading-accent">follows up with quiet leads.</span>
-          <span class="hero-heading-accent">drafts Monday’s email.</span>
-        </span>
+      <h1 class="hero-heading animate-fade-up" aria-label="Your marketing should work as hard as you do.">
+        <span class="hero-heading-line">Your marketing should work</span>
+        <span class="hero-heading-line">as hard as you do.</span>
       </h1>
-      <p class="hero-description hero-heading-support animate-fade-up">
-        <span>Markethink learns your business, prepares the work, and keeps marketing moving every week.</span>
-        <span>Your trained AI marketing operator handles the heavy lift. A dedicated human marketer reviews what ships. You approve from your phone.</span>
+      <p class="hero-live-line animate-fade-up" aria-label="Right now, it is answering the 11:48pm lead.">
+        <span class="hero-live-prefix">Right now, it’s</span>
+        <span class="hero-heading-rotator" aria-hidden="true">
+          <span class="hero-heading-accent">answering the 11:48pm lead.</span>
+          <span class="hero-heading-accent">designing 3 posts in your brand.</span>
+          <span class="hero-heading-accent">building Friday’s landing page.</span>
+          <span class="hero-heading-accent">following up with quiet leads.</span>
+          <span class="hero-heading-accent">drafting Monday’s email.</span>
+        </span>
       </p>
+      <div class="hero-description hero-heading-support animate-fade-up">
+        <p>An AI marketing operator does the work around the clock. A real marketer dedicated to your business reviews what ships. You approve from your phone.</p>
+        <p class="hero-price-line">From $500 a month. Cancel anytime.</p>
+      </div>
       <div class="button-group animate-fade-up">
         <a href={walkthroughHref} class="button">Watch it work on your business →</a>
         <a href={trialHref} class="button is-secondary">Apply for a 30-Day Trial</a>
@@ -105,21 +106,12 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     text-align: center;
   }
 
-  .hero-eyebrow {
-    color: rgba(255, 255, 255, 0.72);
-    font-size: clamp(0.78rem, 0.9vw, 0.95rem);
-    font-weight: 700;
-    letter-spacing: 0.11em;
-    line-height: 1.25;
-    text-transform: uppercase;
-  }
-
   .hero-heading {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: min(70rem, 94vw);
-    font-size: clamp(3.65rem, 5.85vw, 6.65rem);
+    max-width: min(62rem, 94vw);
+    font-size: clamp(4rem, 6.2vw, 7.1rem);
     line-height: 0.92;
     letter-spacing: -0.058em;
     text-wrap: balance;
@@ -129,15 +121,33 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     color: #fff;
   }
 
+  .hero-live-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3em;
+    width: min(100%, 58rem);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(1.85rem, 3vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .hero-live-prefix {
+    flex: 0 0 auto;
+  }
+
   .hero-heading-rotator {
     position: relative;
-    display: block;
-    width: min(100%, 62rem);
-    min-height: 1.34em;
-    padding-bottom: 0.24em;
-    margin-bottom: -0.12em;
+    display: inline-block;
+    width: min(100%, 35rem);
+    min-height: 1.22em;
+    padding-bottom: 0.14em;
+    margin-bottom: -0.08em;
     overflow: hidden;
-    font-size: 0.82em;
+    vertical-align: bottom;
   }
 
   .hero-heading-accent {
@@ -151,7 +161,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     line-height: 1;
     opacity: 0;
     transform: translateY(0.24em);
-    animation: hero-rotate 24s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    animation: hero-rotate 20s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     white-space: nowrap;
     will-change: opacity, transform;
   }
@@ -172,22 +182,18 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     animation-delay: 16s;
   }
 
-  .hero-heading-accent:nth-child(6) {
-    animation-delay: 20s;
-  }
-
   @keyframes hero-rotate {
     0% {
       opacity: 0;
       transform: translateY(0.24em);
     }
 
-    4.16%, 14.58% {
+    5%, 17.5% {
       opacity: 1;
       transform: translateY(0);
     }
 
-    16.66%, 100% {
+    20%, 100% {
       opacity: 0;
       transform: translateY(-0.22em);
     }
@@ -224,8 +230,13 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     text-wrap: balance;
   }
 
-  .hero-heading-support span {
-    display: block;
+  .hero-heading-support p {
+    margin: 0;
+  }
+
+  .hero-price-line {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.86em;
   }
 
   .button-group {
@@ -259,8 +270,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading {
-      max-width: min(68rem, 94vw);
-      font-size: clamp(3rem, 5.8vw, 5.45rem);
+      max-width: min(62rem, 94vw);
+      font-size: clamp(3.05rem, 6vw, 5.75rem);
     }
 
     .section-hero::before {
@@ -298,11 +309,17 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
     .hero-heading {
       max-width: 100%;
-      font-size: clamp(2.28rem, 9.2vw, 3.25rem);
+      font-size: clamp(2.45rem, 10vw, 3.55rem);
+    }
+
+    .hero-live-line {
+      flex-direction: column;
+      gap: 0.08em;
+      font-size: clamp(1.55rem, 6.4vw, 2.25rem);
     }
 
     .hero-heading-rotator {
-      font-size: 0.76em;
+      width: min(100%, 30rem);
     }
 
     .hero-description {
@@ -324,13 +341,16 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-heading {
-      font-size: clamp(1.94rem, 9.8vw, 2.65rem);
+      font-size: clamp(2.08rem, 10.6vw, 2.9rem);
       letter-spacing: -0.055em;
     }
 
+    .hero-live-line {
+      font-size: clamp(1.35rem, 7vw, 1.85rem);
+    }
+
     .hero-heading-rotator {
-      font-size: 0.68em;
-      min-height: 1.42em;
+      min-height: 1.34em;
     }
 
     .hero-heading-support {
