@@ -227,19 +227,17 @@ const slides = [
 ---
 
 <Layout
-  title="ContinuumCloud SEO + PPC Strategy Preview | Markethink"
-  description="A private Markethink presentation for ContinuumCloud: SEO and PPC demand architecture, landing page opportunities, and recommended first moves."
+  title="ContinuumCloud SEO + PPC Strategy Preview"
+  description="A private ContinuumCloud strategy preview: SEO and PPC demand architecture, landing page opportunities, and recommended first moves."
   image={heroImage}
   canonical="https://markethink.ai/continuumcloud-seo-ppc/"
   noindex={true}
 >
   <main class="deck" aria-label="ContinuumCloud SEO and PPC strategy presentation">
     <header class="topbar">
-      <a href="/" class="brand-lockup" aria-label="Markethink and ContinuumCloud">
-        <img src="/images/logo.svg" alt="Markethink" class="mt-logo" />
-        <span aria-hidden="true">×</span>
+      <div class="brand-lockup" aria-label="ContinuumCloud">
         <img src={continuumLogo} alt="ContinuumCloud" class="cc-logo" />
-      </a>
+      </div>
       <span class="private-label">Private SEO + PPC preview</span>
     </header>
 
@@ -378,10 +376,8 @@ const slides = [
   :global(html) { background: #071f33; scroll-behavior: smooth; }
   .deck { --navy:#003070; --teal:#00b2b1; --orange:#f39a31; --cream:#f7fbfc; --ink:#071f33; min-height:100vh; color:var(--cream); background:var(--ink); font-family:var(--font-body); overflow-x:hidden; }
   .topbar { position:fixed; z-index:20; top:clamp(1rem,2vw,1.8rem); left:clamp(1rem,3.5vw,3.5rem); right:clamp(1rem,3.5vw,3.5rem); display:flex; justify-content:space-between; align-items:center; pointer-events:none; }
-  .brand-lockup { pointer-events:auto; display:inline-flex; align-items:center; gap:.75rem; min-height:3rem; padding:.72rem 1rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(7,31,51,.72); backdrop-filter:blur(18px); text-decoration:none; box-shadow:0 18px 70px rgba(0,0,0,.25); }
-  .brand-lockup span { display:grid; place-items:center; width:1.45rem; height:1.45rem; border-radius:999px; background:rgba(0,178,177,.18); color:var(--teal); font-weight:800; }
-  .mt-logo { width:9rem; height:auto; filter:brightness(0) invert(1); }
-  .cc-logo { width:10.5rem; height:auto; object-fit:contain; }
+  .brand-lockup { pointer-events:none; display:inline-flex; align-items:center; min-height:3rem; padding:.78rem 1.1rem; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(7,31,51,.72); backdrop-filter:blur(18px); box-shadow:0 18px 70px rgba(0,0,0,.25); }
+  .cc-logo { width:13.5rem; height:auto; object-fit:contain; }
   .private-label { pointer-events:none; padding:.72rem 1rem; border:1px solid rgba(255,255,255,.12); border-radius:999px; background:rgba(7,31,51,.52); color:rgba(247,251,252,.74); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; backdrop-filter:blur(14px); }
   .rail { position:fixed; z-index:18; right:clamp(.9rem,2vw,1.8rem); top:50%; transform:translateY(-50%); display:grid; gap:.42rem; }
   .rail-item { display:grid; grid-template-columns:1.75rem 1fr; gap:.45rem; align-items:center; width:8.25rem; padding:.45rem; border:1px solid rgba(255,255,255,.12); border-radius:.95rem; background:rgba(7,31,51,.58); color:rgba(247,251,252,.75); text-decoration:none; backdrop-filter:blur(14px); transition:.22s ease; }
@@ -436,5 +432,5 @@ const slides = [
   .layout-close .bg img, .layout-hero .bg img { opacity:.32; object-position:right center; }
   .layout-close .shell, .layout-hero .shell { grid-template-columns:minmax(0,.95fr) minmax(420px,.75fr); }
   @media (max-width:1080px){ .rail,.private-label{display:none;} .slide{min-height:auto;padding-top:7.25rem;padding-bottom:4.5rem;} .shell,.layout-close .shell,.layout-hero .shell{grid-template-columns:1fr;gap:1.8rem;} .slide-footer{position:relative;left:auto;right:auto;bottom:auto;width:100%;margin-top:2rem;align-items:flex-start;flex-direction:column;} .visual{max-width:760px;} }
-  @media (max-width:680px){ .topbar{position:absolute;} .brand-lockup{max-width:calc(100vw - 2rem);gap:.55rem;padding:.62rem .75rem;} .mt-logo{width:7rem;} .cc-logo{width:8rem;} .brand-lockup span{width:1.2rem;height:1.2rem;} .slide{padding:6.7rem 1.1rem 2rem;} h1{font-size:clamp(2.35rem,11vw,4.2rem);max-width:12ch;} .lead{font-size:.98rem;} .product-grid,.card-grid,.flow-line{grid-template-columns:1fr;} .intent-row{grid-template-columns:1fr;gap:.28rem;} .budget-row{grid-template-columns:3.5rem 1fr;} .budget-row > span{width:3.25rem;height:3.25rem;font-size:1rem;} .slide-footer{font-size:.66rem;} }
+  @media (max-width:680px){ .topbar{position:absolute;} .brand-lockup{max-width:calc(100vw - 2rem);padding:.62rem .75rem;} .cc-logo{width:10rem;} .slide{padding:6.7rem 1.1rem 2rem;} h1{font-size:clamp(2.35rem,11vw,4.2rem);max-width:12ch;} .lead{font-size:.98rem;} .product-grid,.card-grid,.flow-line{grid-template-columns:1fr;} .intent-row{grid-template-columns:1fr;gap:.28rem;} .budget-row{grid-template-columns:3.5rem 1fr;} .budget-row > span{width:3.25rem;height:3.25rem;font-size:1rem;} .slide-footer{font-size:.66rem;} }
 </style>
