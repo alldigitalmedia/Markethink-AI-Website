@@ -7,6 +7,8 @@ interface Props {
   type?: "website" | "article";
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  siteName?: string;
+  favicon?: string;
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   type = "website",
   structuredData,
   noindex = false,
+  siteName = "Markethink",
+  favicon = "/images/logo.svg",
 } = Astro.props;
 
 const siteUrl = "https://markethink.ai";
@@ -28,7 +32,7 @@ const imageUrl = new URL(image, siteUrl).toString();
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+    <link rel="icon" href={favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -39,7 +43,7 @@ const imageUrl = new URL(image, siteUrl).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
-    <meta property="og:site_name" content="Markethink" />
+    <meta property="og:site_name" content={siteName} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
