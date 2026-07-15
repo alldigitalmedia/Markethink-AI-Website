@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Markethink law firm workflow</title>
+  <desc id="desc">A workflow map for law firm SEO, content creation, approvals, campaigns, and follow-up.</desc>
+  <rect width="1200" height="800" rx="36" fill="#F5F5F1"/>
+  <rect x="70" y="70" width="1060" height="660" rx="34" fill="#EDF4EA"/>
+  <text x="110" y="140" font-family="Instrument Serif, Georgia, serif" font-size="64" fill="#0F1213">From legal knowledge to approved marketing.</text>
+  <text x="112" y="182" font-family="Inter, Arial" font-size="20" fill="#686B6C">A managed AI marketing system for practice areas, search visibility, intake, and follow-up.</text>
+  <g font-family="Inter, Arial" font-size="18" font-weight="700">
+    <g transform="translate(110 260)"><rect width="180" height="120" rx="22" fill="#0F1213"/><text x="24" y="50" fill="#69D254">Firm context</text><text x="24" y="82" font-size="14" font-weight="400" fill="#F5F5F1" opacity=".7">Practice areas</text></g>
+    <g transform="translate(360 260)"><rect width="180" height="120" rx="22" fill="#FFFFFF" stroke="#D8E5D4"/><text x="24" y="50" fill="#0F1213">SEO plan</text><text x="24" y="82" font-size="14" font-weight="400" fill="#686B6C">Pages + FAQs</text></g>
+    <g transform="translate(610 260)"><rect width="180" height="120" rx="22" fill="#FFFFFF" stroke="#D8E5D4"/><text x="24" y="50" fill="#0F1213">Draft assets</text><text x="24" y="82" font-size="14" font-weight="400" fill="#686B6C">Web, email, social</text></g>
+    <g transform="translate(860 260)"><rect width="180" height="120" rx="22" fill="#0F1213"/><text x="24" y="50" fill="#69D254">Firm review</text><text x="24" y="82" font-size="14" font-weight="400" fill="#F5F5F1" opacity=".7">Accuracy + approval</text></g>
+    <g transform="translate(235 505)"><rect width="250" height="120" rx="22" fill="#FFFFFF" stroke="#D8E5D4"/><text x="24" y="50" fill="#0F1213">Campaign live</text><text x="24" y="82" font-size="14" font-weight="400" fill="#686B6C">Search, PPC, referrals</text></g>
+    <g transform="translate(715 505)"><rect width="250" height="120" rx="22" fill="#0F1213"/><text x="24" y="50" fill="#69D254">Intake follow-up</text><text x="24" y="82" font-size="14" font-weight="400" fill="#F5F5F1" opacity=".7">Source, next step, CRM</text></g>
+  </g>
+  <g fill="none" stroke="#69D254" stroke-width="6" stroke-linecap="round">
+    <path d="M300 320 H345"/><path d="M550 320 H595"/><path d="M800 320 H845"/>
+    <path d="M950 392 C950 455 865 474 840 495"/><path d="M360 495 C335 474 250 455 250 392"/>
+    <path d="M500 565 H700"/>
+  </g>
+</svg>
