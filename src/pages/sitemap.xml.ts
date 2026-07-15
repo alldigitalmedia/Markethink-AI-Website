@@ -24,6 +24,11 @@ const staticPages = [
     changefreq: "monthly",
   },
   {
+    path: "/ai-marketing-for-law-firms/",
+    priority: "0.9",
+    changefreq: "monthly",
+  },
+  {
     path: "/ai-marketing-for-interior-designers/",
     priority: "0.9",
     changefreq: "monthly",
