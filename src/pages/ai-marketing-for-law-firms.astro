@@ -1,0 +1,344 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "AI Marketing for Law Firms and Lawyers | Markethink";
+const pageDescription = "AI marketing for law firms and lawyers: a managed marketing system for law firm content, campaigns, local visibility, lead intake, approvals, and follow-up.";
+const canonicalUrl = "https://markethink.ai/ai-marketing-for-law-firms/";
+const walkthroughHref = "/schedule-a-walkthrough/";
+
+const keywords = [
+  "AI marketing for law firms",
+  "AI marketing for lawyers",
+  "law firm marketing system",
+  "legal marketing automation",
+  "law firm lead generation",
+];
+
+const painPoints = [
+  ["Searchers choose the firm that looks clear first", "A potential client may compare three firms in one sitting. If your website, services, reviews, FAQs, and next step are hard to understand, another firm becomes the easier choice."],
+  ["Good legal knowledge does not automatically become marketing", "Attorneys answer the same questions every week, but those answers rarely become useful pages, email follow-up, local content, or campaign assets."],
+  ["Intake and follow-up lose context", "A form fill, phone call, or consultation request should connect to the page, practice area, campaign, and next message. Too often it becomes a disconnected note."],
+];
+
+const systemPieces = [
+  ["Practice-area context", "Your services, locations, audience, tone, compliance preferences, review rules, and common client questions stay organized before new content is created."],
+  ["Website and SEO direction", "Markethink helps plan and improve practice-area pages, local landing pages, FAQs, attorney bios, and conversion paths around real search intent."],
+  ["Campaign workflow", "One marketing priority can become a page update, social posts, email copy, ad landing direction, intake notes, and follow-up language."],
+  ["Approval memory", "Partner edits, disclaimer preferences, tone corrections, and wording rules are captured so future drafts start closer to approval."],
+  ["Lead intake support", "Inquiry notes, source context, reply drafts, and next-step reminders stay connected to the campaign or page that created the conversation."],
+  ["Weekly execution", "The firm gets a consistent marketing rhythm without treating every blog post, landing page, or follow-up sequence as a new one-off project."],
+];
+
+const useCases = [
+  ["Law firm SEO content", "Plan useful pages around practice areas, locations, FAQs, service comparisons, attorney expertise, and client decision questions."],
+  ["Website conversion improvements", "Clarify the first screen, calls to action, consultation paths, attorney bios, trust signals, and page order for search visitors."],
+  ["Local marketing campaigns", "Connect city, neighborhood, practice-area, and referral campaigns to the pages and follow-up messages they need."],
+  ["Social and email content", "Turn legal insights, case-type education, event updates, and common questions into review-ready posts and email drafts."],
+  ["PPC landing support", "Create focused landing-page direction for high-intent search ads without making unsupported promises or generic claims."],
+  ["Intake and follow-up", "Support faster, clearer replies after a form submission, consultation request, referral, or warm lead conversation."],
+];
+
+const comparisonRows = [
+  ["AI writing tool", "Creates drafts when someone prompts it.", "Connects the draft to the firm's practice areas, approval rules, page goal, intake path, and follow-up."],
+  ["SEO checklist", "Suggests keywords and technical tasks.", "Turns keyword intent into pages, sections, FAQs, internal links, and conversion paths."],
+  ["Social scheduler", "Publishes posts after they are written.", "Plans the campaign, creates the assets, captures approvals, and keeps the message consistent."],
+  ["CRM alone", "Stores contacts after they arrive.", "Keeps the marketing source, inquiry context, reply direction, and next step connected."],
+];
+
+const implementationSteps = [
+  ["1", "Audit the firm marketing system", "Review the website, practice-area pages, local visibility, lead paths, content gaps, approvals, and intake follow-up."],
+  ["2", "Choose one practice-area priority", "Start with one service line, location, or referral motion instead of trying to rebuild every channel at once."],
+  ["3", "Build the page and campaign assets", "Create the landing direction, supporting content, social posts, email or PPC copy, FAQs, and follow-up notes together."],
+  ["4", "Review with firm judgment", "Attorneys or firm leadership approve sensitive language, disclaimers, tone, and claims before anything becomes public."],
+  ["5", "Repeat with memory", "Each correction improves the next page, campaign, intake message, and content brief instead of restarting the process."],
+];
+
+const faqs = [
+  { question: "What is AI marketing for law firms?", answer: "AI marketing for law firms means using AI-supported planning, content, website, campaign, and follow-up workflows with the right firm context and human review. The strongest setup is not a generic tool. It is a managed marketing system that understands the firm's practice areas, audience, approval rules, and intake path." },
+  { question: "Is Markethink an AI marketing tool for lawyers?", answer: "Markethink is more than an AI marketing tool for lawyers. It is an AI marketing system managed by expert marketers. It helps law firms organize campaigns, create review-ready marketing assets, improve website clarity, support lead intake, and remember approvals over time." },
+  { question: "Can AI help with law firm SEO?", answer: "Yes, when it is guided by strategy and review. AI can help research topics, structure practice-area pages, draft FAQs, improve internal links, and identify content gaps. Attorneys or approved firm reviewers should still review public legal content before publication." },
+  { question: "Can Markethink help with law firm lead generation?", answer: "Markethink can support the marketing system around lead generation: clearer pages, better calls to action, campaign assets, intake context, CRM-style follow-up, and reply drafts. We do not promise a specific number of cases, clients, leads, or revenue." },
+  { question: "Does this replace a law firm marketing agency?", answer: "No. Markethink is positioned as a managed marketing operation: AI helps with speed and consistency, while expert marketers guide strategy and review quality. Some firms may use it instead of scattered tools. Others may use it alongside an internal team or agency." },
+  { question: "What law firms are a good fit?", answer: "The best fit is a firm with real expertise, clear practice areas, and a desire to market more consistently. It is especially useful when the firm needs website updates, SEO content, campaigns, intake follow-up, and approval memory connected in one place." },
+  { question: "What should a law firm review before publishing AI-assisted marketing?", answer: "A qualified firm reviewer should check accuracy, jurisdictional language, disclaimers, claims, examples, attorney advertising rules, confidentiality concerns, and whether the content creates any unintended expectation. Markethink keeps human review central." },
+  { question: "How do we start?", answer: "Start with a marketing system audit. We look at your website, practice-area pages, content gaps, campaign rhythm, intake path, and follow-up process, then recommend the first workflow to improve." },
+];
+
+const structuredData = [
+  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Law Firms", description: pageDescription, url: canonicalUrl, inLanguage: "en", publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
+  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Law Firms", serviceType: "Managed marketing system for law firm campaigns, website content, lead intake, approvals, and follow-up", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, audience: { "@type": "Audience", audienceType: "Law firms, attorneys, and legal service practices" }, description: "Markethink helps law firms organize marketing campaigns, improve website and SEO workflows, create review-ready content, manage approvals, and support lead intake follow-up." },
+  { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" }, { "@type": "ListItem", position: 2, name: "AI Marketing for Law Firms", item: canonicalUrl }] },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} image="/images/ai-marketing-law-firms-hero.svg" canonical={canonicalUrl} structuredData={structuredData}>
+  <Navbar />
+  <main class="law-page">
+    <section class="law-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="subtitle animate-fade-up">AI MARKETING FOR LAW FIRMS</p>
+          <h1 class="animate-fade-up">AI marketing for law firms works when it becomes a system for trust, intake, and follow-up.</h1>
+          <p class="hero-description animate-fade-up">
+            Markethink helps law firms turn practice-area knowledge, website pages, campaigns, approvals, and lead follow-up into one managed marketing rhythm. Powered by AI, managed by expert marketers, and reviewed with firm judgment.
+          </p>
+          <div class="button-group animate-fade-up">
+            <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+            <a href="#system" class="button is-secondary">See the system</a>
+          </div>
+          <div class="keyword-row animate-fade-up" aria-label="SEO topic coverage">
+            {keywords.map((keyword) => <span>{keyword}</span>)}
+          </div>
+        </div>
+        <div class="hero-visual animate-scale-in">
+          <img src="/images/ai-marketing-law-firms-hero.svg" alt="Law firm marketing system connecting practice-area pages, content approvals, intake, CRM follow-up, and campaigns" width="1200" height="800" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green intent-section">
+      <div class="container two-column">
+        <div>
+          <p class="subtitle">THE REAL SEARCH INTENT</p>
+          <h2>Law firms search for AI marketing because consistent client acquisition is hard to maintain.</h2>
+        </div>
+        <div class="rich-copy">
+          <p>A managing partner may search for <strong>AI marketing for lawyers</strong>, <strong>legal marketing automation</strong>, or <strong>law firm lead generation</strong>. The underlying problem is usually the same: the firm needs clearer pages, better content, faster review, stronger intake, and follow-up that does not disappear after the first inquiry.</p>
+          <p>AI can help produce and organize the work faster. But a law firm still needs strategy, judgment, accuracy checks, attorney advertising awareness, and a system that connects marketing to real consultations.</p>
+          <p>That is the Markethink role: learn the firm, organize the campaign, create review-ready assets, capture approvals, support intake, and improve with every correction and result.</p>
+        </div>
+      </div>
+      <div class="container pain-grid animate-stagger">
+        {painPoints.map(([title, copy]) => (
+          <article>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section dark" id="system">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="subtitle">LAW FIRM MARKETING SYSTEM</p>
+          <h2>A connected system for SEO, content, campaigns, approvals, and intake.</h2>
+          <p class="section-description dark-copy">Most law firm marketing breaks because the pieces are separated. The website says one thing, the ads say another, intake has no context, and every approval starts from scratch.</p>
+        </div>
+        <div class="system-grid animate-stagger">
+          {systemPieces.map(([title, copy]) => (
+            <article class="system-card">
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section visual-section">
+      <div class="container visual-grid">
+        <div class="workflow-visual">
+          <img src="/images/ai-marketing-law-firms-system.svg" alt="Markethink workflow for law firm SEO, content, campaigns, approvals, intake, and follow-up" width="1200" height="800" loading="lazy" />
+        </div>
+        <div class="workflow-copy">
+          <p class="subtitle">WHAT AI CAN HELP WITH</p>
+          <h2>Useful AI marketing for law firms starts with the work clients actually judge.</h2>
+          <p>Search visitors judge clarity, relevance, trust, and next steps before they ever speak to the firm. A marketing system should improve those moments, not just generate more posts.</p>
+          <ul>
+            <li>Practice-area pages that answer real decision questions.</li>
+            <li>Attorney bios, FAQs, and service pages that build trust without overclaiming.</li>
+            <li>Campaign assets for SEO, PPC, email, social, and referrals.</li>
+            <li>Follow-up messages that connect back to the inquiry source and next step.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green use-case-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="subtitle">PRACTICAL USE CASES</p>
+          <h2>How law firms can use AI marketing without creating compliance risk or generic content.</h2>
+          <p class="section-description">The goal is not more volume. The goal is clearer marketing, faster review, better search coverage, and a stronger path from visitor to consultation request.</p>
+        </div>
+        <div class="use-case-grid animate-stagger">
+          {useCases.map(([title, copy]) => (
+            <article>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark comparison-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="subtitle">TOOLS VS. SYSTEM</p>
+          <h2>AI tools can draft. A law firm marketing system keeps the whole motion connected.</h2>
+          <p class="section-description dark-copy">This is where Markethink separates from one-off AI marketing tools for lawyers, content generators, SEO checklists, and disconnected CRMs.</p>
+        </div>
+        <div class="comparison-table">
+          <div class="table-head"><span>Category</span><span>What it does alone</span><span>What Markethink connects</span></div>
+          {comparisonRows.map(([category, alone, connected]) => (
+            <div class="table-row"><span>{category}</span><span>{alone}</span><span>{connected}</span></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green seo-section">
+      <div class="container two-column">
+        <div>
+          <p class="subtitle">SEO FOR LAW FIRMS</p>
+          <h2>Rank for the questions your best clients ask before they call.</h2>
+        </div>
+        <div class="rich-copy">
+          <p>A strong <strong>law firm SEO</strong> program needs more than keyword lists. It needs pages that match search intent, explain the practice area plainly, make the attorney or firm credible, and guide the visitor toward the right next step.</p>
+          <p>Markethink can support topic planning, page outlines, FAQ sections, internal links, local landing-page direction, attorney bio improvements, and campaign briefs. The firm keeps final review where legal accuracy and attorney advertising standards matter.</p>
+          <div class="supporting-link">
+            <p>Related Markethink pages and guides:</p>
+            <ul>
+              <li><a href="/ai-marketing-for-small-business/">AI marketing for small business</a></li>
+              <li><a href="/blog/consistent-marketing-beats-chasing-ai-tools/">Why consistent marketing beats chasing every new AI tool</a></li>
+              <li><a href="/blog/brand-memory-feedback-approved-campaigns/">How brand memory turns feedback into faster approved campaigns</a></li>
+              <li><a href="/blog/scattered-ideas-to-client-opportunities/">From scattered ideas to campaigns that create real client opportunities</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark process-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <p class="subtitle">IMPLEMENTATION PLAN</p>
+          <h2>How to start using AI marketing without turning the firm into a content factory.</h2>
+          <p class="section-description dark-copy">Start with the business outcome and review process. Then use AI to make the work faster, more organized, and easier to approve.</p>
+        </div>
+        <div class="process-grid animate-stagger">
+          {implementationSteps.map(([number, title, copy]) => (
+            <article>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-green fit-section">
+      <div class="container fit-grid">
+        <div class="fit-card">
+          <p class="subtitle">GOOD FIT</p>
+          <h2>Built for firms that want steady marketing execution with real review.</h2>
+          <ul>
+            <li>You have clear practice areas and want better website, content, and campaign consistency.</li>
+            <li>You need marketing connected to intake, consultations, CRM notes, and follow-up.</li>
+            <li>You want AI speed, but still need expert marketers and firm approval before public claims go live.</li>
+          </ul>
+        </div>
+        <div class="fit-card muted">
+          <p class="subtitle">NOT THE RIGHT FIT</p>
+          <h2>Not for risky legal claims or cheap content volume.</h2>
+          <ul>
+            <li>You want to publish legal content without attorney or firm review.</li>
+            <li>You need guaranteed rankings, cases, leads, revenue, or specific outcomes.</li>
+            <li>You only want a self-serve AI caption generator with no strategy or approval rhythm.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="container faq-grid">
+        <div>
+          <p class="subtitle">FAQ</p>
+          <h2>Questions law firms ask before using AI in marketing.</h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="law-final-cta">
+      <div class="container final-panel">
+        <p class="subtitle">START WITH THE SYSTEM</p>
+        <h2>Find the gaps in your law firm marketing before adding another AI tool.</h2>
+        <p>Book a focused walkthrough. We will look at your website, practice-area pages, campaigns, intake path, follow-up, and approval flow, then map where Markethink should help first.</p>
+        <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .law-page { background: var(--bg-primary); color: var(--text-invert); }
+  .law-hero { min-height: 100vh; display: flex; align-items: center; padding: 8.5rem 0 5rem; overflow: hidden; background: radial-gradient(circle at 10% 20%, rgba(105, 210, 84, 0.14), transparent 28rem), linear-gradient(135deg, #0f1213 0%, #171b1c 100%); }
+  .hero-grid, .two-column, .visual-grid, .fit-grid, .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 4.5rem); align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 1.35rem; max-width: 50rem; }
+  .hero-copy h1, .section-header h2, .workflow-copy h2, .fit-card h2, .faq-grid h2, .intent-section h2, .seo-section h2, .final-panel h2 { font-size: clamp(2.55rem, 5.55vw, 5.5rem); line-height: 0.96; letter-spacing: -0.052em; }
+  .hero-description { max-width: 43rem; color: rgba(255,255,255,.74); font-size: 1.08rem; line-height: 1.78; }
+  .button-group, .keyword-row { display: flex; flex-wrap: wrap; gap: .85rem; }
+  .keyword-row span { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .55rem .85rem; color: rgba(255,255,255,.74); background: rgba(255,255,255,.045); font-size: .8rem; }
+  .hero-visual img, .workflow-visual img { width: 100%; height: auto; border-radius: 1.6rem; box-shadow: 0 34px 110px rgba(0,0,0,.38); }
+  .section-header { max-width: 880px; margin-bottom: 2.8rem; }
+  .text-center { text-align: center; margin-left: auto; margin-right: auto; }
+  .dark-copy { color: rgba(255,255,255,.66); }
+  .section-description, .rich-copy, .workflow-copy { color: rgba(15,18,19,.7); line-height: 1.78; font-size: 1rem; }
+  .section.dark .section-description { color: rgba(255,255,255,.66); }
+  .rich-copy p + p, .workflow-copy p + ul { margin-top: 1rem; }
+  .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .pain-grid article, .use-case-grid article { border: 1px solid rgba(15,18,19,.1); border-radius: 1.25rem; background: #f5f5f1; padding: 1.35rem; }
+  .pain-grid h3, .system-card h3, .use-case-grid h3, .process-grid h3 { font-family: var(--font-body); font-size: 1.08rem; margin-bottom: .7rem; }
+  .pain-grid p, .use-case-grid p { color: rgba(15,18,19,.68); line-height: 1.68; }
+  .system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .system-card, .process-grid article { border: 1px solid rgba(255,255,255,.11); border-radius: 1.35rem; background: rgba(255,255,255,.045); padding: 1.45rem; }
+  .system-card p, .process-grid p { color: rgba(255,255,255,.66); line-height: 1.65; font-size: .94rem; }
+  .visual-section, .faq-section, .law-final-cta { background: #f5f5f1; color: var(--text-primary); }
+  .workflow-copy ul, .fit-card ul { list-style: none; display: flex; flex-direction: column; gap: .75rem; margin-top: 1.25rem; }
+  .workflow-copy li, .fit-card li { position: relative; padding-left: 1.35rem; color: rgba(15,18,19,.72); line-height: 1.66; }
+  .workflow-copy li::before, .fit-card li::before { content: ""; position: absolute; left: 0; top: .7em; width: .45rem; height: .45rem; border-radius: 999px; background: #69d254; }
+  .use-case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .comparison-table { border: 1px solid rgba(255,255,255,.12); border-radius: 1.5rem; overflow: hidden; background: rgba(255,255,255,.035); }
+  .table-head, .table-row { display: grid; grid-template-columns: .9fr 1.1fr 1.4fr; gap: 1rem; padding: 1rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .table-head { color: #69d254; font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
+  .table-row:last-child { border-bottom: 0; }
+  .table-row span:first-child { font-weight: 700; color: #f5f5f1; }
+  .table-row span { color: rgba(255,255,255,.68); line-height: 1.6; }
+  .supporting-link { margin-top: 1.2rem; border: 1px solid rgba(15,18,19,.1); border-radius: 1.2rem; background: #f5f5f1; padding: 1.1rem; }
+  .supporting-link p { margin: 0 0 .6rem; font-weight: 700; color: #0f1213; }
+  .supporting-link ul { display: grid; gap: .45rem; padding-left: 1rem; }
+  .supporting-link a { color: #0f1213; text-decoration: underline; text-decoration-color: rgba(105,210,84,.8); text-underline-offset: .18em; }
+  .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .process-grid span { display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; border-radius: 999px; background: #69d254; color: #0f1213; font-weight: 800; margin-bottom: 1rem; }
+  .fit-card { border: 1px solid rgba(15,18,19,.1); border-radius: 1.5rem; padding: clamp(1.4rem, 4vw, 2rem); background: #fff; min-height: 100%; }
+  .fit-card.muted { background: #171b1c; color: #f5f5f1; border-color: rgba(255,255,255,.1); }
+  .fit-card h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); }
+  .fit-card.muted li { color: rgba(255,255,255,.66); }
+  .fit-card.muted li::before { background: rgba(255,255,255,.28); }
+  .faq-list { display: grid; gap: .85rem; }
+  details { border: 1px solid rgba(15,18,19,.1); border-radius: 1.1rem; background: #fff; padding: 1rem 1.15rem; }
+  summary { cursor: pointer; font-weight: 700; color: #0f1213; }
+  details p { color: rgba(15,18,19,.68); line-height: 1.7; margin-top: .8rem; }
+  .law-final-cta { padding: 7rem 0; }
+  .final-panel { border-radius: 2rem; background: #0f1213; color: #f5f5f1; padding: clamp(2rem, 6vw, 4rem); text-align: center; box-shadow: 0 28px 90px rgba(15,18,19,.18); }
+  .final-panel p { max-width: 48rem; margin: 1rem auto 1.5rem; color: rgba(255,255,255,.72); line-height: 1.75; }
+  .final-panel .subtitle { color: rgba(255,255,255,.55); }
+  @media (max-width: 1080px) { .process-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 980px) { .hero-grid, .two-column, .visual-grid, .fit-grid, .faq-grid { grid-template-columns: 1fr; } .system-grid, .pain-grid, .use-case-grid, .process-grid { grid-template-columns: 1fr 1fr; } .law-hero { padding-top: 7rem; } .table-head { display: none; } .table-row { grid-template-columns: 1fr; } .table-row span:first-child { color: #69d254; } }
+  @media (max-width: 640px) { .system-grid, .pain-grid, .use-case-grid, .process-grid { grid-template-columns: 1fr; } .hero-copy h1, .section-header h2, .workflow-copy h2, .fit-card h2, .faq-grid h2, .intent-section h2, .seo-section h2, .final-panel h2 { font-size: clamp(2.25rem, 12.5vw, 3.5rem); } .law-hero { min-height: auto; } }
+</style>
