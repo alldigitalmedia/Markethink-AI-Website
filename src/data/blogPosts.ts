@@ -52,102 +52,80 @@ export const insightPosts: BlogPost[] = [
   {
     slug: "how-to-show-up-in-ai-search",
     title: "How to Get Your Business to Show Up in AI Search",
-    seoTitle: "How to Show Up in AI Search: A Small-Business Guide | Markethink",
+    seoTitle: "How to Show Up in AI Search: Practical Guide | Markethink",
     description:
-      "Learn how to improve your business's visibility in AI search using strong SEO, clear answers, credible signals, structured data, and a consistent content system.",
+      "Learn how to show up in AI search with a readiness audit, answer-ready content framework, evidence matrix, measurement guide, and practical 30-day plan.",
     excerpt:
-      "AI-search visibility does not require a secret trick. It requires useful answers, clear business signals, credible sources, and a website that search systems can understand.",
-    label: "GUIDE",
+      "A practical, source-backed guide to improving AI-search visibility, auditing readiness, strengthening evidence, and connecting visibility to pipeline outcomes.",
+    label: "INTERACTIVE GUIDE",
     image: "/images/blog-how-to-show-up-in-ai-search.svg",
     imageAlt:
       "A small-business owner and expert marketer organizing answer-ready content for AI search",
     publishedDate: "2026-07-17",
     updatedDate: "2026-07-17",
-    readingTime: "9 min read",
+    readingTime: "16 min read",
     category: "AI Search",
     keywords: [
       "how to get your business to show up in AI search",
+      "how to show up in AI search",
       "AEO for small business",
-      "what is AEO marketing",
+      "answer engine optimization",
+      "generative engine optimization",
       "AI search optimization",
       "Google AI Overviews",
+      "ChatGPT search visibility",
     ],
     author: {
       name: "Markethink Editorial Team",
       title: "AI marketing systems and search strategy",
     },
     intro: [
-      "Customers are no longer using one search box in one way. They ask detailed questions, compare options inside AI-assisted results, and expect a useful answer before they visit a website.",
-      "That creates a practical question for small businesses: how do you become one of the sources that search systems understand, trust, and surface?",
-      "The answer is less mysterious than the trend language makes it sound. Google Search Central says the same SEO practices that help a website perform in traditional search remain relevant for AI Overviews and AI Mode. There is no separate technical requirement or hidden AEO switch. The opportunity is to make your business clearer, your content more useful, and your evidence easier to verify.",
+      "To improve your chance of showing up in AI search, make your website easy to crawl, answer specific customer questions clearly, keep business facts consistent, publish verifiable evidence, earn trusted mentions, and measure citations and referral visits.",
+      "No platform guarantees that a business will be cited, mentioned, or ranked first. The practical goal is to make your company easier to find, understand, verify, and choose across search and answer surfaces.",
+      "This interactive guide shows what to control, what to influence, how to find the weakest signal, and what to improve during the next 30 days.",
     ],
     seoHubLink: {
-      copy: "AI-search visibility works best when it is connected to the rest of the marketing operation. Our",
+      copy: "AI-search visibility works best when it connects to the rest of the marketing operation. Our",
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
     },
     sections: [
       {
-        heading: "What it means to show up in AI search",
+        heading: "What it means to appear in AI search",
         body: [
-          "AI-search visibility means your pages can be discovered, understood, and considered when an AI-assisted search experience builds an answer. The result may be a linked source, a supporting citation, a local-business reference, or a page that helps the user continue researching.",
-          "You cannot force a model or search feature to mention your company. You can improve the conditions that make your website useful as a source: clear subject matter, direct answers, accurate business information, strong internal structure, and credible signals beyond your own claims.",
-          "For a local service business, that could mean a useful page answering how a consultation works, a location page with consistent business details, a service page that explains who the service is for, and independent reviews that confirm the experience. For a B2B company, it could mean deep service pages, expert articles, comparison content, implementation guidance, and clear proof of who the business serves.",
+          "Understand the path from a customer question to sources, an answer, and a potential business visit.",
         ],
       },
       {
-        heading: "SEO and AEO: what changes and what does not",
+        heading: "SEO, AEO, and GEO: what actually changes",
         body: [
-          "Answer engine optimization, often shortened to AEO, is the practice of making information easier for answer systems to find and use. It overlaps heavily with good SEO. The fundamentals do not disappear just because an answer is generated by AI.",
-          "Your pages still need to be crawlable. The site still needs clear navigation. The content still needs to match real search intent. Titles and headings still need to describe the page accurately. Original expertise and reliable sources still matter.",
-          "What changes is the shape of the query. People can ask longer, more specific questions and continue the conversation with follow-up questions. That makes complete topic coverage, clear explanations, and connected supporting pages more valuable than a collection of isolated keyword posts.",
+          "Keep SEO as the foundation and improve answer and evidence quality.",
         ],
       },
       {
-        heading: "Seven practical steps to improve AI-search visibility",
+        heading: "Check your AI-search readiness",
+        body: ["Score eight practical signals and find the first constraint."],
+      },
+      {
+        heading: "Build pages that are easy to answer from",
         body: [
-          "Start with the pages closest to revenue, then build the supporting information around them. A small business does not need hundreds of articles. It needs a clear, connected source of truth about what it does and how it helps.",
-        ],
-        bullets: [
-          "Define the business clearly. Keep your company name, services, locations, audience, and contact information consistent across the website and trusted external profiles.",
-          "Answer real buying questions. Use sales calls, inquiry forms, support conversations, and search suggestions to identify the questions customers ask before choosing.",
-          "Strengthen service pages. Explain the problem, approach, deliverables, fit, process, and next step instead of publishing a thin list of features.",
-          "Build topic clusters. Connect one strong commercial page to useful supporting articles that answer related questions without competing for the same keyword.",
-          "Use descriptive structure. Clear titles, headings, internal links, image alt text, and relevant structured data help search systems understand the page.",
-          "Add verifiable evidence. Use accurate examples, named expertise, process detail, references, reviews, and proof that you are authorized to publish. Never invent a testimonial or result.",
-          "Keep important pages current. Update facts, links, screenshots, service details, and outdated guidance when the business or search environment changes.",
+          "Structure direct answers with context, evidence, and a useful next step.",
         ],
       },
       {
-        heading: "Write answers that deserve to be used",
+        heading: "Strengthen the evidence beyond your website",
+        body: ["Connect first-party facts to credible external corroboration."],
+      },
+      {
+        heading: "Measure citations, visits, and business outcomes",
         body: [
-          "A page should do more than repeat the question. It should help someone make a better decision. Give a direct answer early, then add the context, tradeoffs, steps, and evidence the reader needs.",
-          "Originality does not require a dramatic new theory. It can come from a clear operating framework, an expert explanation, a useful checklist, a comparison based on real delivery experience, or a strong point of view about what not to automate.",
-          "Google's people-first content guidance asks whether a page adds original information, provides a complete explanation, uses trustworthy sourcing, and gives readers substantial value. Those are useful editorial standards for both traditional search and AI-assisted results.",
+          "Track discoverability, citations, referrals, inquiries, and pipeline outcomes.",
         ],
       },
       {
-        heading: "What not to do",
+        heading: "A practical 30-day AI-search plan",
         body: [
-          "Do not create dozens of near-identical pages for every variation of the same phrase. Do not add FAQ schema to weak answers and expect it to create authority. Do not publish machine-written articles without checking sources, accuracy, relevance, and brand voice.",
-          "Avoid writing for an imagined algorithm instead of a buyer. A page can mention AEO, GEO, AI search, and every related acronym while still failing to answer the customer's question. Clear, useful language wins over trend vocabulary.",
-          "Most importantly, do not make claims you cannot support. Visibility built on fabricated proof, invented experience, or copied content is fragile and damages trust even if the page earns short-term attention.",
-        ],
-      },
-      {
-        heading: "A focused 30-day starting plan",
-        body: [
-          "In week one, audit your homepage, top service pages, contact information, titles, internal navigation, and indexability. In week two, collect the ten questions buyers ask most often and map each question to the best existing or missing page.",
-          "In week three, improve one commercial page and publish one genuinely useful supporting article. In week four, connect the two with internal links, verify the structured data, update relevant external profiles, and record a baseline in Search Console or your existing reporting system.",
-          "That is a small enough plan to finish and a strong enough foundation to repeat. The goal is not to chase every AI-search mention. The goal is to build a business knowledge system that keeps becoming easier to find and trust.",
-        ],
-      },
-      {
-        heading: "How Markethink supports the work",
-        body: [
-          "Markethink connects search strategy to the rest of the marketing operation. It learns the business, helps plan useful topic clusters, creates and updates website content, and connects approvals to the next round of work.",
-          "AI provides research speed, production capacity, and consistency. Expert marketers direct the strategy, review the claims, judge the quality, and stay accountable. That pairing matters because search visibility is not a one-time prompt. It is an operating discipline across the website, content, campaigns, leads, and follow-up.",
-          "If you want to see where your current website is clear, thin, disconnected, or difficult for customers to evaluate, a Markethink walkthrough can start with that audit and turn it into a prioritized content plan.",
+          "Build one complete operating loop from foundation through measurement.",
         ],
       },
     ],
@@ -155,29 +133,40 @@ export const insightPosts: BlogPost[] = [
       {
         question: "What is AEO in marketing?",
         answer:
-          "Answer engine optimization is the practice of making content easier for search and AI answer systems to find, understand, and use. It builds on SEO fundamentals such as crawlability, useful content, clear structure, credible signals, and strong topic coverage.",
+          "Answer engine optimization is the practice of making content easier for search and AI answer systems to find, understand, and use. It builds on SEO fundamentals such as crawlability, clear answers, reliable evidence, and connected topic coverage.",
       },
       {
         question: "Do I need special markup to appear in Google AI Overviews?",
         answer:
-          "Google says there are no additional technical requirements or special optimizations required for AI Overviews or AI Mode. Standard SEO best practices still apply. Relevant structured data can help Google understand eligible page content, but markup does not guarantee inclusion.",
+          "Google says there are no additional technical requirements or special schema types required for its AI features. Standard SEO practices still apply. Structured data should accurately match visible content, but it does not guarantee inclusion.",
       },
       {
         question: "Can a small business show up in AI search?",
         answer:
-          "Yes, a small business can improve its chances by maintaining accurate business information, publishing useful answers, building strong service pages, earning credible external signals, and connecting related content clearly. No business can guarantee that an AI system will cite or mention it.",
+          "Yes. A small business can improve its chances with accurate business information, useful service pages, clear answers, original evidence, consistent profiles, and credible external signals. No business can guarantee that an AI system will cite or mention it.",
       },
       {
         question: "How long does AI-search optimization take?",
         answer:
-          "There is no universal timeline. Search systems need to discover and reassess updated pages, and visibility depends on competition, site quality, relevance, authority, and query demand. Focus first on measurable improvements such as indexability, content coverage, qualified organic visits, and conversions.",
+          "There is no universal timeline. Search systems must discover and reassess updated sources, while visibility also depends on relevance, competition, evidence, and the question being asked. Track measurable improvements instead of promising a fixed result date.",
+      },
+      {
+        question: "How can I track whether my business appears in AI search?",
+        answer:
+          "Use Search Console for overall Google Web performance, Bing Webmaster Tools AI Performance for Bing citations and grounding queries, analytics for referral visits, CRM source notes for inquiries, and a stable sample of real customer questions for directional citation checks.",
+      },
+      {
+        question: "Do I need a special AI file such as llms.txt?",
+        answer:
+          "Google says no new machine-readable file is required for its AI features. Use standard crawl and preview controls, accurate sitemaps, useful visible content, and the crawler guidance published by each platform. A special file alone does not create visibility or authority.",
       },
     ],
   },
   {
     slug: "consistent-marketing-beats-chasing-ai-tools",
     title: "Why consistent marketing beats chasing every new AI tool",
-    seoTitle: "Why Consistent Marketing Beats Chasing Every New AI Tool | Markethink",
+    seoTitle:
+      "Why Consistent Marketing Beats Chasing Every New AI Tool | Markethink",
     description:
       "A practical guide for growing businesses on why consistent marketing, clear offers, and a repeatable campaign rhythm matter more than collecting more AI tools.",
     excerpt:
@@ -266,7 +255,8 @@ export const insightPosts: BlogPost[] = [
     ],
     faq: [
       {
-        question: "Is consistent marketing more important than trying new AI tools?",
+        question:
+          "Is consistent marketing more important than trying new AI tools?",
         answer:
           "For most growing businesses, yes. AI tools can help with speed, but consistency creates trust, clarity, and repeatable output. The strongest setup is a consistent marketing system that can use AI tools with the right brand and campaign context.",
       },
@@ -276,7 +266,8 @@ export const insightPosts: BlogPost[] = [
           "The right cadence depends on the team and market, but a useful starting point is a monthly campaign focus supported by weekly content. The goal is not volume alone. The goal is consistent, connected marketing that moves buyers closer to action.",
       },
       {
-        question: "What makes Markethink different from a standalone AI content tool?",
+        question:
+          "What makes Markethink different from a standalone AI content tool?",
         answer:
           "Markethink is designed to learn the brand and organize the workflow around campaigns, approvals, web updates, blog content, social content, and feedback. A standalone tool may create a draft, but Markethink helps the marketing operation improve over time.",
       },
@@ -385,7 +376,8 @@ export const insightPosts: BlogPost[] = [
   {
     slug: "hidden-cost-disconnected-marketing-apps-prompts-docs",
     title: "The hidden cost of disconnected apps, prompts, and marketing docs",
-    seoTitle: "The Hidden Cost of Disconnected Marketing Apps and Prompts | Markethink",
+    seoTitle:
+      "The Hidden Cost of Disconnected Marketing Apps and Prompts | Markethink",
     description:
       "Disconnected marketing tools, prompts, docs, and approval threads create hidden costs. Learn how a marketing operating system reduces context switching and lost learning.",
     excerpt:
@@ -483,8 +475,10 @@ export const insightPosts: BlogPost[] = [
   },
   {
     slug: "scattered-ideas-to-client-opportunities",
-    title: "From scattered ideas to campaigns that create real client opportunities",
-    seoTitle: "Turn Scattered Marketing Ideas Into Client Opportunities | Markethink",
+    title:
+      "From scattered ideas to campaigns that create real client opportunities",
+    seoTitle:
+      "Turn Scattered Marketing Ideas Into Client Opportunities | Markethink",
     description:
       "Learn how to turn scattered marketing ideas into connected campaigns that support website updates, blog posts, social content, landing pages, leads, and partnerships.",
     excerpt:
@@ -548,7 +542,8 @@ export const insightPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Lead and partnership opportunities should feed the content plan",
+        heading:
+          "Lead and partnership opportunities should feed the content plan",
         body: [
           "A modern marketing system should not only publish content. It should also help the business notice new opportunities.",
           "If the system is watching for buyers, owners, referral partners, local opportunities, or partnership angles, that intelligence can shape the next campaign. Content gets more useful when it is connected to real market signals.",
@@ -583,12 +578,15 @@ export const insightPosts: BlogPost[] = [
   },
 ];
 
-export const allBlogCards = [...journeyPosts, ...insightPosts.map((post) => ({
-  title: post.title,
-  label: post.label,
-  image: post.image,
-  href: `/blog/${post.slug}/`,
-}))];
+export const allBlogCards = [
+  ...journeyPosts,
+  ...insightPosts.map((post) => ({
+    title: post.title,
+    label: post.label,
+    image: post.image,
+    href: `/blog/${post.slug}/`,
+  })),
+];
 
 export function getPostBySlug(slug: string) {
   return insightPosts.find((post) => post.slug === slug);
