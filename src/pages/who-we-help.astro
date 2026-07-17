@@ -1,0 +1,232 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Who We Help | AI Marketing by Business Type | Markethink";
+const pageDescription = "Explore Markethink AI marketing systems for small businesses, law firms, and interior design studios. Powered by AI and managed by expert marketers.";
+const canonicalUrl = "https://markethink.ai/who-we-help/";
+const walkthroughHref = "/schedule-a-walkthrough/";
+
+const audiences = [
+  {
+    number: "01",
+    group: "Growing businesses",
+    title: "AI marketing for small business",
+    description: "A practical marketing system for businesses that need campaigns, website updates, content, approvals, leads, and follow-up to move every week.",
+    href: "/ai-marketing-for-small-business/",
+    image: "/images/ai-marketing-small-business-hero.svg",
+    alt: "A Markethink AI marketing system connecting small-business campaigns, approvals, content, and client opportunities",
+    capabilities: ["Campaign planning", "Website + content", "Approvals + follow-up"],
+    featured: true,
+  },
+  {
+    number: "02",
+    group: "Professional services",
+    title: "AI marketing for law firms",
+    description: "An expert-managed AI marketing operation for law firm SEO, AEO, content, advertising, intake, CRM follow-up, and firm review.",
+    href: "/ai-marketing-for-law-firms/",
+    image: "/images/ai-marketing-law-firms-hero-v3.svg",
+    alt: "Law firm leaders using an AI marketing system for search, campaigns, approvals, intake, and follow-up",
+    capabilities: ["SEO + AEO", "PPC + intake", "Expert review"],
+    featured: false,
+  },
+  {
+    number: "03",
+    group: "Creative services",
+    title: "AI marketing for interior designers",
+    description: "A marketing system that turns studio projects, visual assets, inquiries, approvals, and follow-up into campaigns that keep moving.",
+    href: "/ai-marketing-for-interior-designers/",
+    image: "/images/ai-marketing-interior-designers-hero.svg",
+    alt: "Interior design project assets connected to a Markethink AI marketing system",
+    capabilities: ["Project campaigns", "Visual content", "Inquiry follow-up"],
+    featured: false,
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Who Markethink Helps",
+    description: pageDescription,
+    url: canonicalUrl,
+    inLanguage: "en",
+    publisher: {
+      "@type": "Organization",
+      name: "Markethink",
+      url: "https://markethink.ai/",
+      logo: "https://markethink.ai/images/logo.svg",
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: audiences.length,
+      itemListElement: audiences.map((audience, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: audience.title,
+        url: new URL(audience.href, canonicalUrl).toString(),
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+      { "@type": "ListItem", position: 2, name: "Who We Help", item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} structuredData={structuredData}>
+  <Navbar />
+  <main class="who-page">
+    <section class="who-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="subtitle animate-fade-up">WHO WE HELP</p>
+          <h1 class="animate-fade-up">AI marketing built around how your business actually works.</h1>
+        </div>
+        <div class="hero-copy animate-fade-up">
+          <p>Markethink learns the business, organizes the campaign, creates the work, keeps approvals moving, and connects marketing to leads and follow-up.</p>
+          <p>AI provides the speed and consistency. A real marketing team directs the strategy, reviews the work, and stays accountable.</p>
+          <a href="#business-types" class="button">Find your path</a>
+        </div>
+      </div>
+      <div class="container operation-line" aria-label="Connected Markethink marketing operation">
+        <span>Business context</span><i></i><span>Campaign</span><i></i><span>Creative</span><i></i><span>Approval</span><i></i><span>Lead + follow-up</span>
+      </div>
+    </section>
+
+    <section class="directory-section" id="business-types">
+      <div class="container">
+        <div class="section-header">
+          <p class="subtitle">BUSINESS AND INDUSTRY PATHS</p>
+          <h2>Start with the page that speaks your language.</h2>
+          <p>Every path explains the same Markethink system through the work, buyer journey, approvals, and growth priorities that matter in that business.</p>
+        </div>
+
+        <div class="audience-grid">
+          {audiences.map((audience) => (
+            <a href={audience.href} class:list={["audience-card", audience.featured && "is-featured"]}>
+              <div class="audience-image">
+                <img src={audience.image} alt={audience.alt} width="1200" height="800" loading={audience.featured ? "eager" : "lazy"} />
+              </div>
+              <div class="audience-content">
+                <div class="audience-meta"><span>{audience.number}</span><span>{audience.group}</span></div>
+                <h2>{audience.title}</h2>
+                <p>{audience.description}</p>
+                <div class="capability-row">
+                  {audience.capabilities.map((capability) => <span>{capability}</span>)}
+                </div>
+                <div class="explore-link">Explore this marketing system <span aria-hidden="true">→</span></div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="principles-section">
+      <div class="container principles-grid">
+        <div>
+          <p class="subtitle">WHAT STAYS CONSISTENT</p>
+          <h2>Different business. Same operating standard.</h2>
+        </div>
+        <div class="principles-list">
+          <article><span>01</span><div><h3>Learns the business</h3><p>Services, audience, voice, visuals, approvals, and performance context stay connected.</p></div></article>
+          <article><span>02</span><div><h3>Ships across the operation</h3><p>Website, content, campaigns, advertising, leads, and follow-up move from one strategy.</p></div></article>
+          <article><span>03</span><div><h3>Managed by experts</h3><p>A real marketing team directs priorities, reviews quality, and remains accountable.</p></div></article>
+          <article><span>04</span><div><h3>Gets sharper over time</h3><p>Every approval, correction, and result improves what the system does next.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-industry-section">
+      <div class="container next-panel">
+        <div>
+          <p class="subtitle">DON'T SEE YOUR BUSINESS YET?</p>
+          <h2>The system can still start with your marketing operation.</h2>
+          <p>We are adding focused industry pages as the library grows. Until then, a walkthrough can map Markethink to your website, campaigns, approvals, leads, and follow-up.</p>
+        </div>
+        <a href={walkthroughHref} class="button">Book a Walkthrough</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .who-page { background: #0f1213; color: #f5f5f1; overflow: clip; }
+  .who-hero { padding: 10rem 0 5rem; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .who-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 78% 20%, rgba(105,210,84,.12), transparent 30%), linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: auto, 72px 72px, 72px 72px; mask-image: linear-gradient(to bottom, #000 0%, transparent 88%); }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(3rem,8vw,8rem); align-items: end; }
+  .who-hero h1 { max-width: 54rem; margin-top: 1rem; font-size: clamp(4rem,7vw,7.4rem); line-height: .9; letter-spacing: -.055em; text-wrap: balance; }
+  .hero-copy { max-width: 34rem; display: flex; flex-direction: column; gap: 1rem; color: rgba(245,245,241,.7); line-height: 1.72; }
+  .hero-copy .button { align-self: flex-start; margin-top: .4rem; }
+  .operation-line { position: relative; display: grid; grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto; gap: .85rem; align-items: center; margin-top: clamp(4rem,7vw,7rem); padding: 1rem 1.15rem; border: 1px solid rgba(255,255,255,.11); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(245,245,241,.62); font-size: .76rem; letter-spacing: .04em; }
+  .operation-line i { display: block; height: 1px; background: linear-gradient(90deg, rgba(105,210,84,.2), #69d254, rgba(105,210,84,.2)); }
+
+  .directory-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0; }
+  .section-header { max-width: 61rem; margin-bottom: 3rem; }
+  .section-header .subtitle, .principles-section .subtitle { color: rgba(15,18,19,.48); }
+  .section-header h2, .principles-section h2, .next-panel h2 { font-size: clamp(3rem,5.7vw,6rem); line-height: .94; letter-spacing: -.052em; text-wrap: balance; }
+  .section-header > p:last-child { max-width: 48rem; margin-top: 1rem; color: rgba(15,18,19,.65); line-height: 1.72; }
+  .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .audience-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; border: 1px solid rgba(15,18,19,.11); border-radius: 1.75rem; background: #fff; color: #0f1213; transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+  .audience-card:hover { transform: translateY(-5px); border-color: rgba(105,210,84,.7); box-shadow: 0 28px 80px rgba(15,18,19,.12); }
+  .audience-card.is-featured { grid-column: 1 / -1; grid-template-columns: 1.15fr .85fr; grid-template-rows: 1fr; }
+  .audience-image { min-height: 23rem; overflow: hidden; background: #151a1b; }
+  .audience-card:not(.is-featured) .audience-image { min-height: 20rem; }
+  .audience-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .55s ease; }
+  .audience-card:hover .audience-image img { transform: scale(1.025); }
+  .audience-content { padding: clamp(1.5rem,3vw,2.4rem); display: flex; flex-direction: column; }
+  .audience-meta { display: flex; justify-content: space-between; gap: 1rem; color: #4aa63c; font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+  .audience-content h2 { margin-top: 1.6rem; font-size: clamp(2.2rem,4vw,4.2rem); line-height: .96; letter-spacing: -.045em; }
+  .audience-content > p { margin-top: 1rem; color: rgba(15,18,19,.65); line-height: 1.68; }
+  .capability-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+  .capability-row span { padding: .52rem .7rem; border-radius: 999px; background: #edf4ea; color: rgba(15,18,19,.72); font-size: .74rem; }
+  .explore-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1.8rem; font-weight: 750; }
+  .explore-link span { color: #4aa63c; font-size: 1.35rem; transition: transform .25s ease; }
+  .audience-card:hover .explore-link span { transform: translateX(5px); }
+
+  .principles-section { background: #edf4ea; color: #0f1213; padding: clamp(6rem,9vw,9rem) 0; }
+  .principles-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem,8vw,8rem); align-items: start; }
+  .principles-list { border-top: 1px solid rgba(15,18,19,.12); }
+  .principles-list article { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid rgba(15,18,19,.12); }
+  .principles-list article > span { color: #4aa63c; font-size: .75rem; font-weight: 800; letter-spacing: .08em; }
+  .principles-list h3 { font-family: var(--font-body); font-size: 1.08rem; margin-bottom: .4rem; }
+  .principles-list p { color: rgba(15,18,19,.64); line-height: 1.65; }
+
+  .next-industry-section { background: #f5f5f1; color: #0f1213; padding: 0 0 clamp(6rem,9vw,9rem); }
+  .next-panel { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; border-radius: 2rem; background: #0f1213; color: #f5f5f1; padding: clamp(2rem,5vw,4rem); }
+  .next-panel > div { max-width: 52rem; }
+  .next-panel .subtitle { color: #aee8a0; }
+  .next-panel h2 { margin-top: 1rem; }
+  .next-panel p:last-child { max-width: 45rem; margin-top: 1rem; color: rgba(245,245,241,.68); line-height: 1.7; }
+  .next-panel .button { flex: 0 0 auto; }
+
+  @media (max-width: 980px) {
+    .hero-grid, .principles-grid { grid-template-columns: 1fr; }
+    .who-hero { min-height: auto; }
+    .operation-line { grid-template-columns: 1fr; border-radius: 1.4rem; }
+    .operation-line i { width: 1px; height: 1rem; margin-left: .4rem; background: #69d254; }
+    .audience-card.is-featured { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .who-hero { padding: 8rem 0 4rem; }
+    .who-hero h1 { font-size: clamp(3.4rem,15vw,4.8rem); }
+    .audience-grid { grid-template-columns: 1fr; }
+    .audience-card.is-featured { grid-column: auto; }
+    .audience-image, .audience-card:not(.is-featured) .audience-image { min-height: 17rem; }
+    .audience-content h2 { font-size: 2.65rem; }
+    .next-panel { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .audience-card, .audience-image img, .explore-link span { transition: none; }
+  }
+</style>
