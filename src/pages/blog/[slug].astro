@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
+import AiSearchInteractiveGuide from "../../components/blog/AiSearchInteractiveGuide.astro";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
 
 export function getStaticPaths() {
@@ -13,10 +14,13 @@ export function getStaticPaths() {
 }
 
 const { post } = Astro.props as { post: BlogPost };
+const isAiSearchInteractiveGuide = post.slug === "how-to-show-up-in-ai-search";
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const imageUrl = new URL(post.image, siteUrl).toString();
-const relatedPosts = insightPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
+const relatedPosts = insightPosts
+  .filter((item) => item.slug !== post.slug)
+  .slice(0, 3);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -103,7 +107,15 @@ const breadcrumbSchema = {
             <div class="article-meta" aria-label="Article details">
               <span>By {post.author.name}</span>
               <span>{post.readingTime}</span>
-              <span>Updated {new Date(post.updatedDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+              <span
+                >Updated {
+                  new Date(post.updatedDate).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })
+                }</span
+              >
             </div>
           </div>
           <div class="article-hero-image animate-scale-in">
@@ -112,16 +124,24 @@ const breadcrumbSchema = {
         </div>
       </header>
 
-      <div class="container article-layout">
+      <div
+        class:list={[
+          "container",
+          "article-layout",
+          { "article-layout--wide": isAiSearchInteractiveGuide },
+        ]}
+      >
         <aside class="article-sidebar">
           <div class="sidebar-panel">
             <p class="sidebar-label">In this guide</p>
             <ol>
-              {post.sections.map((section, index) => (
-                <li>
-                  <a href={`#section-${index + 1}`}>{section.heading}</a>
-                </li>
-              ))}
+              {
+                post.sections.map((section, index) => (
+                  <li>
+                    <a href={`#section-${index + 1}`}>{section.heading}</a>
+                  </li>
+                ))
+              }
             </ol>
           </div>
         </aside>
@@ -129,43 +149,72 @@ const breadcrumbSchema = {
         <div class="article-content">
           <section class="article-intro">
             {post.intro.map((paragraph) => <p>{paragraph}</p>)}
-            {post.seoHubLink && (
-              <p class="article-hub-link">
-                {post.seoHubLink.copy} <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a> guide explains how to turn tools, content, approvals, and follow-up into one repeatable marketing system.
-              </p>
-            )}
+            {
+              post.seoHubLink && (
+                <p class="article-hub-link">
+                  {post.seoHubLink.copy}{" "}
+                  <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a>{" "}
+                  guide explains how to turn tools, content, approvals, and
+                  follow-up into one repeatable marketing system.
+                </p>
+              )
+            }
           </section>
 
-          {post.sections.map((section, index) => (
-            <section id={`section-${index + 1}`} class="article-section">
-              <h2>{section.heading}</h2>
-              {section.body.map((paragraph) => <p>{paragraph}</p>)}
-              {section.bullets && (
-                <ul>
-                  {section.bullets.map((item) => <li>{item}</li>)}
-                </ul>
-              )}
-            </section>
-          ))}
+          {
+            isAiSearchInteractiveGuide ? (
+              <AiSearchInteractiveGuide />
+            ) : (
+              post.sections.map((section, index) => (
+                <section id={`section-${index + 1}`} class="article-section">
+                  <h2>{section.heading}</h2>
+                  {section.body.map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                  {section.bullets && (
+                    <ul>
+                      {section.bullets.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))
+            )
+          }
 
           <section class="article-cta">
             <p class="article-cta-label">Markethink perspective</p>
-            <h2>Marketing improves faster when the system remembers the work.</h2>
+            <h2>
+              {
+                isAiSearchInteractiveGuide
+                  ? "Turn AI-search visibility into an operating plan."
+                  : "Marketing improves faster when the system remembers the work."
+              }
+            </h2>
             <p>
-              Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system.
+              {
+                isAiSearchInteractiveGuide
+                  ? "Markethink is an AI marketing system managed by expert marketers. It connects website improvements, answer-ready content, approvals, measurement, leads, CRM, and follow-up so search visibility supports the pipeline instead of becoming another isolated SEO project."
+                  : "Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system."
+              }
             </p>
-            <a href="/schedule-a-walkthrough/" class="button">Book a Walkthrough</a>
+            <a href="/schedule-a-walkthrough/" class="button"
+              >Book a Walkthrough</a
+            >
           </section>
 
           <section class="article-faq">
             <p class="article-cta-label">FAQ</p>
             <h2>Common questions</h2>
-            {post.faq.map((item) => (
-              <details>
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
+            {
+              post.faq.map((item) => (
+                <details>
+                  <summary>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))
+            }
           </section>
         </div>
       </div>
@@ -178,15 +227,21 @@ const breadcrumbSchema = {
           <h2>More Markethink insights</h2>
         </div>
         <div class="related-grid">
-          {relatedPosts.map((related) => (
-            <a href={`/blog/${related.slug}/`} class="related-card">
-              <img src={related.image} alt={related.imageAlt} loading="lazy" />
-              <div>
-                <span>{related.category}</span>
-                <h3>{related.title}</h3>
-              </div>
-            </a>
-          ))}
+          {
+            relatedPosts.map((related) => (
+              <a href={`/blog/${related.slug}/`} class="related-card">
+                <img
+                  src={related.image}
+                  alt={related.imageAlt}
+                  loading="lazy"
+                />
+                <div>
+                  <span>{related.category}</span>
+                  <h3>{related.title}</h3>
+                </div>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -276,6 +331,10 @@ const breadcrumbSchema = {
     gap: 4rem;
     align-items: start;
     padding-bottom: 5rem;
+  }
+
+  .article-layout--wide {
+    grid-template-columns: 16rem minmax(0, 52rem);
   }
 
   .article-sidebar {
@@ -441,7 +500,9 @@ const breadcrumbSchema = {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-medium);
     background: rgba(255, 255, 255, 0.03);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .related-card:hover {
