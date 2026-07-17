@@ -14,6 +14,11 @@ const staticPages = [
     changefreq: "weekly",
   },
   {
+    path: "/who-we-help/",
+    priority: "0.8",
+    changefreq: "monthly",
+  },
+  {
     path: "/schedule-a-walkthrough/",
     priority: "0.9",
     changefreq: "monthly",
