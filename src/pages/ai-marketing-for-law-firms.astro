@@ -3,8 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-const pageTitle = "AI Marketing for Law Firms and Lawyers | Markethink";
-const pageDescription = "AI marketing for law firms and lawyers: a managed marketing system for law firm content, campaigns, local visibility, lead intake, approvals, and follow-up.";
+const pageTitle = "AI Marketing for Law Firms | SEO, Content, PPC & Intake";
+const pageDescription = "AI marketing for law firms, managed by experts. Connect SEO, AEO, content, PPC, website updates, intake, CRM follow-up, and approvals in one system.";
+const lastUpdated = "July 2026";
 const canonicalUrl = "https://markethink.ai/ai-marketing-for-law-firms/";
 const walkthroughHref = "/schedule-a-walkthrough/";
 
@@ -32,12 +33,32 @@ const systemPieces = [
 ];
 
 const useCases = [
-  ["Law firm SEO content", "Plan useful pages around practice areas, locations, FAQs, service comparisons, attorney expertise, and client decision questions."],
-  ["Website conversion improvements", "Clarify the first screen, calls to action, consultation paths, attorney bios, trust signals, and page order for search visitors."],
-  ["Local marketing campaigns", "Connect city, neighborhood, practice-area, and referral campaigns to the pages and follow-up messages they need."],
-  ["Social and email content", "Turn legal insights, case-type education, event updates, and common questions into review-ready posts and email drafts."],
-  ["PPC landing support", "Create focused landing-page direction for high-intent search ads without making unsupported promises or generic claims."],
-  ["Intake and follow-up", "Support faster, clearer replies after a form submission, consultation request, referral, or warm lead conversation."],
+  ["Law firm website marketing", "Use AI to identify unclear practice-area pages, weak calls to action, missing FAQs, thin attorney bios, and broken consultation paths. Expert marketers turn those findings into review-ready website updates."],
+  ["SEO and AEO for law firms", "Plan pages around the questions prospective clients ask in search and AI-assisted discovery. Build clear answers, internal links, local relevance, and structured content without publishing unreviewed legal guidance."],
+  ["Legal content, social, and email", "Turn attorney knowledge, recurring client questions, firm updates, and educational themes into coordinated articles, posts, email drafts, and campaign assets that stay consistent with firm review rules."],
+  ["Law firm PPC and landing pages", "Connect paid-search intent to focused landing pages, approved ad angles, clear consultation steps, and source-aware follow-up. Markethink supports the campaign system without promising cases, rankings, or revenue."],
+  ["Local visibility and trust", "Coordinate location pages, Google Business Profile content direction, attorney profiles, review-request messaging, and trust signals so the firm presents a clearer and more consistent presence across local discovery."],
+  ["Intake, CRM, and follow-up", "Carry the inquiry source, practice-area context, campaign history, reply direction, owner, and next step into the lead record so the first response is faster and the follow-up stays connected."],
+];
+
+const practiceAreas = [
+  "Family law",
+  "Business and corporate law",
+  "Estate planning",
+  "Employment law",
+  "Immigration",
+  "Real estate law",
+  "Criminal defense",
+  "Personal injury",
+];
+
+const auditItems = [
+  ["Search visibility", "How the firm appears for priority practice-area, local, and question-based searches."],
+  ["Website clarity", "Where service pages, attorney bios, proof, FAQs, and calls to action lose potential clients."],
+  ["AI and content opportunities", "Questions and topics the firm can turn into useful pages, campaigns, email, and social content."],
+  ["Paid campaign readiness", "Whether PPC intent, landing pages, approved messaging, and consultation paths are aligned."],
+  ["Trust and reputation", "How profiles, reviews, local signals, and firm messaging support credibility without overclaiming."],
+  ["Intake and follow-up", "Where lead source, practice-area context, ownership, reply direction, and next steps become disconnected."],
 ];
 
 const comparisonRows = [
@@ -67,8 +88,8 @@ const faqs = [
 ];
 
 const structuredData = [
-  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Law Firms", description: pageDescription, url: canonicalUrl, inLanguage: "en", publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
-  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Law Firms", serviceType: "Managed marketing system for law firm campaigns, website content, lead intake, approvals, and follow-up", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, audience: { "@type": "Audience", audienceType: "Law firms, attorneys, and legal service practices" }, description: "Markethink helps law firms organize marketing campaigns, improve website and SEO workflows, create review-ready content, manage approvals, and support lead intake follow-up." },
+  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Law Firms", description: pageDescription, url: canonicalUrl, inLanguage: "en", dateModified: "2026-07-17", reviewedBy: { "@type": "Organization", name: "Markethink marketing team" }, publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
+  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Law Firms", serviceType: "Expert-managed AI marketing system for law firm SEO, AEO, content, PPC, websites, intake, approvals, and follow-up", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, audience: { "@type": "Audience", audienceType: "Law firms, attorneys, and legal service practices" }, description: "Markethink helps law firms organize marketing campaigns, improve website and SEO workflows, create review-ready content, manage approvals, and support lead intake follow-up." },
   { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
   { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" }, { "@type": "ListItem", position: 2, name: "AI Marketing for Law Firms", item: canonicalUrl }] },
 ];
@@ -81,19 +102,20 @@ const structuredData = [
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="subtitle animate-fade-up">AI MARKETING FOR LAW FIRMS</p>
-          <h1 class="animate-fade-up">AI marketing for law firms works when it becomes a system for trust, intake, and follow-up.</h1>
+          <h1 class="animate-fade-up">AI marketing for law firms, managed by experts.</h1>
           <p class="hero-description animate-fade-up">
-            Markethink helps law firms turn practice-area knowledge, website pages, campaigns, approvals, and lead follow-up into one managed marketing rhythm. Powered by AI, managed by expert marketers, and reviewed with firm judgment.
+            Connect website updates, SEO, AEO, content, advertising, intake, CRM follow-up, and approvals in one marketing operation. Powered by AI, directed by expert marketers, and reviewed with firm judgment.
           </p>
           <div class="button-group animate-fade-up">
             <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
             <a href="#system" class="button is-secondary">See the system</a>
           </div>
           <div class="outcome-row animate-fade-up" aria-label="Connected marketing capabilities">
-            <span>Website + SEO</span>
-            <span>Intake + CRM</span>
-            <span>Expert review</span>
+            <span>SEO + AEO</span>
+            <span>PPC + intake</span>
+            <span>Expert-managed AI</span>
           </div>
+          <p class="review-line">Updated {lastUpdated} · Reviewed by the Markethink marketing team</p>
         </div>
         <div class="hero-visual">
           <img src="/images/ai-marketing-law-firms-hero-v3.svg" alt="Law firm leaders and expert marketers working with an AI-powered system connecting search, campaigns, approvals, intake, CRM follow-up, and email" width="1536" height="1024" />
@@ -171,17 +193,35 @@ const structuredData = [
     <section class="section light-green use-case-section">
       <div class="container">
         <div class="section-header">
-          <p class="subtitle">PRACTICAL USE CASES</p>
-          <h2>How law firms can use AI marketing without creating compliance risk or generic content.</h2>
-          <p class="section-description">The goal is not more volume. The goal is clearer marketing, faster review, better search coverage, and a stronger path from visitor to consultation request.</p>
+          <p class="subtitle">AI MARKETING CAPABILITIES</p>
+          <h2>One AI marketing system for the work a law firm needs to keep moving.</h2>
+          <p class="section-description">The AI angle matters when it improves the whole operation: search visibility, content, websites, campaigns, advertising, intake, approvals, and follow-up. A real marketing team directs the priorities and reviews the work.</p>
         </div>
         <div class="use-case-grid">
-          {useCases.map(([title, copy]) => (
+          {useCases.map(([title, copy], index) => (
             <article>
+              <span class="service-keyword">0{index + 1}</span>
               <h3>{title}</h3>
               <p>{copy}</p>
             </article>
           ))}
+        </div>
+        <div class="mid-page-cta">
+          <p>Not sure which part of the operation is holding the firm back?</p>
+          <a href="#audit" class="button">See what the audit covers</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section practice-section">
+      <div class="container two-column">
+        <div>
+          <p class="subtitle">PRACTICE-AREA CONTEXT</p>
+          <h2>AI works better when it understands how your firm actually practices.</h2>
+          <p class="section-description">Markethink configures the marketing system around the firm's real services, locations, client questions, intake requirements, tone, and approval rules. The examples below are starting points, not claims of legal specialization.</p>
+        </div>
+        <div class="practice-grid" aria-label="Example law firm practice areas">
+          {practiceAreas.map((area) => <span>{area}</span>)}
         </div>
       </div>
     </section>
@@ -280,6 +320,25 @@ const structuredData = [
       </div>
     </section>
 
+    <section class="section audit-section" id="audit">
+      <div class="container">
+        <div class="section-header">
+          <p class="subtitle">LAW FIRM MARKETING AUDIT</p>
+          <h2>See where AI can make the marketing operation clearer, faster, and more connected.</h2>
+          <p class="section-description dark-copy">The audit is a focused review of the firm's current marketing system. It identifies the first priority to improve before recommending more tools, content, or ad spend.</p>
+        </div>
+        <div class="audit-grid">
+          {auditItems.map(([title, copy]) => (
+            <article><h3>{title}</h3><p>{copy}</p></article>
+          ))}
+        </div>
+        <div class="audit-action">
+          <p>You leave with a prioritized view of what is working, what is disconnected, and where Markethink should help first.</p>
+          <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section faq-section">
       <div class="container faq-grid">
         <div>
@@ -300,8 +359,8 @@ const structuredData = [
     <section class="law-final-cta">
       <div class="container final-panel">
         <p class="subtitle">START WITH THE SYSTEM</p>
-        <h2>Find the gaps in your law firm marketing before adding another AI tool.</h2>
-        <p>Book a focused walkthrough. We will look at your website, practice-area pages, campaigns, intake path, follow-up, and approval flow, then map where Markethink should help first.</p>
+        <h2>Build the AI marketing system around the way your firm actually works.</h2>
+        <p>Start with a focused audit of your website, search visibility, practice-area pages, campaigns, intake, follow-up, and approval process. Then map the first workflow Markethink should improve.</p>
         <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
       </div>
     </section>
@@ -324,6 +383,7 @@ const structuredData = [
   .outcome-row { margin-top: .5rem; }
   .outcome-row span { border: 1px solid rgba(245,245,241,.2); border-radius: 999px; padding: .65rem .9rem; color: rgba(245,245,241,.82); background: rgba(7,14,23,.42); backdrop-filter: blur(12px); font-size: .78rem; letter-spacing: .04em; }
   .hero-copy .subtitle { color: #aee8a0; }
+  .review-line { color: rgba(245,245,241,.48); font-size: .76rem; letter-spacing: .02em; }
 
   .hero-grid, .two-column, .visual-grid, .fit-grid, .faq-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
   .section-header { max-width: 960px; margin-bottom: 3.2rem; }
@@ -366,6 +426,14 @@ const structuredData = [
   .use-case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
   .use-case-grid article { min-height: 12rem; transition: transform .25s ease, box-shadow .25s ease; }
   .use-case-grid article:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(15,18,19,.08); }
+  .service-keyword { display: block; color: #4aa63c; font-size: .72rem; font-weight: 800; letter-spacing: .1em; margin-bottom: 1rem; }
+  .mid-page-cta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding: 1.1rem 1.25rem; border-radius: 1.25rem; background: #0f1213; color: #f5f5f1; }
+  .mid-page-cta p { margin: 0; font-weight: 650; }
+  .practice-section { background: #f5f5f1; }
+  .practice-section .subtitle { color: rgba(15,18,19,.48); }
+  .practice-section .section-description { margin-top: 1rem; }
+  .practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .practice-grid span { border: 1px solid rgba(15,18,19,.1); border-radius: 1rem; background: #fff; padding: 1rem 1.1rem; font-weight: 650; color: rgba(15,18,19,.78); }
 
   .pipeline-section { min-height: 760px; position: relative; display: flex; align-items: flex-end; overflow: hidden; background: #0f1213; color: #f5f5f1; }
   .pipeline-image { position: absolute; inset: 0; }
@@ -399,6 +467,14 @@ const structuredData = [
   .fit-card h2 { font-size: clamp(2.1rem,4vw,3.4rem); }
   .fit-card.muted li { color: rgba(255,255,255,.66); }
   .fit-card.muted li::before { background: rgba(255,255,255,.28); }
+
+  .audit-section { background: #0f1213; color: #f5f5f1; }
+  .audit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+  .audit-grid article { border: 1px solid rgba(255,255,255,.12); border-radius: 1.25rem; background: rgba(255,255,255,.045); padding: 1.3rem; }
+  .audit-grid h3 { font-family: var(--font-body); font-size: 1.05rem; margin-bottom: .65rem; }
+  .audit-grid p { color: rgba(245,245,241,.66); line-height: 1.65; font-size: .92rem; }
+  .audit-action { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.5rem; padding: 1.25rem; border-radius: 1.25rem; background: #edf4ea; color: #0f1213; }
+  .audit-action p { max-width: 44rem; margin: 0; line-height: 1.65; }
 
   .faq-section, .law-final-cta { background: #f5f5f1; color: #0f1213; }
   .faq-list { display: grid; gap: .75rem; }
@@ -438,7 +514,9 @@ const structuredData = [
     .hero-copy h1, .section-header h2, .workflow-copy h2, .fit-card h2, .faq-grid h2, .intent-section h2, .seo-section h2, .final-panel h2, .pipeline-copy h2 { font-size: clamp(2.35rem,12.2vw,3.5rem); }
     .hero-description { font-size: .98rem; line-height: 1.65; }
     .outcome-row { display: none; }
-    .system-grid, .pain-grid, .use-case-grid, .process-grid { grid-template-columns: 1fr; padding-left: 0; padding-right: 0; }
+    .system-grid, .pain-grid, .use-case-grid, .process-grid, .audit-grid { grid-template-columns: 1fr; padding-left: 0; padding-right: 0; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .mid-page-cta, .audit-action { align-items: flex-start; flex-direction: column; }
     .system-stage { border-radius: 1.35rem; }
     .system-stage img { aspect-ratio: 4/5; object-position: 68% center; }
     .system-caption strong { max-width: 16rem; }
