@@ -20,7 +20,7 @@ const {
   structuredData,
   noindex = false,
   siteName = "Markethink",
-  favicon = "/images/logo.svg",
+  favicon = "/favicon.svg",
 } = Astro.props;
 
 const siteUrl = "https://markethink.ai";
@@ -32,7 +32,7 @@ const imageUrl = new URL(image, siteUrl).toString();
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href={favicon} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
