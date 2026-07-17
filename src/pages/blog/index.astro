@@ -59,13 +59,22 @@ const structuredData = [
 
     <section class="section dark">
       <div class="container">
-        <a class="featured-guide animate-fade-up" href="/ai-marketing-for-small-business/">
-          <span>Start here</span>
-          <div>
-            <h2>AI marketing for small business</h2>
-            <p>How to turn scattered tools, prompts, approvals, and follow-up into a marketing system that ships every week.</p>
-          </div>
-        </a>
+        <div class="featured-guides animate-fade-up">
+          <a class="featured-guide" href="/ai-marketing-for-small-business/">
+            <span>Start here</span>
+            <div>
+              <h2>AI marketing for small business</h2>
+              <p>How to turn scattered tools, prompts, approvals, and follow-up into a marketing system that ships every week.</p>
+            </div>
+          </a>
+          <a class="featured-guide" href="/ai-marketing-for-law-firms/">
+            <span>For law firms</span>
+            <div>
+              <h2>AI marketing for law firms</h2>
+              <p>Connect SEO, AEO, content, advertising, intake, approvals, and follow-up with expert review.</p>
+            </div>
+          </a>
+        </div>
         <div class="insight-grid animate-stagger">
           {insightPosts.map((post) => (
             <article class="insight-card">
@@ -117,12 +126,18 @@ const structuredData = [
     font-size: 1.05rem;
   }
 
+  .featured-guides {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
   .featured-guide {
     display: grid;
     grid-template-columns: 10rem 1fr;
     gap: 1.5rem;
     align-items: center;
-    margin-bottom: 2rem;
     padding: 1.5rem;
     border: 1px solid rgba(105, 210, 84, 0.28);
     border-radius: var(--radius-medium);
@@ -223,8 +238,9 @@ const structuredData = [
     text-transform: none;
   }
 
-  @media (max-width: 767px) {
-    .blog-hero {
+  @media (max-width: 991px) {
+    .featured-guides { grid-template-columns: 1fr; }
+    .blog-small-grid {
       padding-top: 8rem;
     }
 

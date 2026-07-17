@@ -15,7 +15,10 @@ const smallPosts = insightPosts.map((post) => ({
     <div class="section-header text-center animate-fade-up">
       <h2>Marketing that gets easier to run and harder to ignore.</h2>
       <p class="blog-desc">Success is not having the most AI subscriptions. It is having a marketing system that helps your business show up consistently, communicate clearly, and create more opportunities to win clients.</p>
-      <a href="/blog/" class="blog-index-link">Read all insights</a>
+      <div class="blog-index-links">
+        <a href="/blog/" class="blog-index-link">Read all insights</a>
+        <a href="/ai-marketing-for-law-firms/" class="blog-index-link">AI marketing for law firms</a>
+      </div>
     </div>
 
     <div class="blog-grid animate-stagger">
@@ -58,6 +61,8 @@ const smallPosts = insightPosts.map((post) => ({
     margin-left: auto;
     margin-right: auto;
   }
+
+  .blog-index-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
 
   .blog-index-link {
     display: inline-flex;
