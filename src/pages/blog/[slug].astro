@@ -540,6 +540,14 @@ const breadcrumbSchema = {
       grid-template-columns: 1fr;
     }
 
+    .article-layout.article-layout--wide {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .article-content {
+      min-width: 0;
+    }
+
     .article-sidebar {
       position: static;
       order: 2;
