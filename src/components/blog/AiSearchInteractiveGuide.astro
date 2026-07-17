@@ -1,0 +1,1372 @@
+---
+const imageBase = "/images/ai-search-guide";
+---
+
+<div class="ai-guide" data-ai-search-guide>
+  <section class="guide-section" id="section-1">
+    <div class="section-kicker">01 · The outcome</div>
+    <h2>What it means to appear in AI search</h2>
+    <p>
+      Showing up in AI search does not mean winning one permanent ranking. It
+      means an answer system can find, understand, and trust enough information
+      about your business to cite it, mention it, recommend it, or send a
+      qualified visitor to it.
+    </p>
+    <p>
+      The result can change with the question, location, available sources, and
+      platform. That is why the practical goal is not to “optimize for one
+      chatbot.” It is to make the facts, expertise, and evidence around your
+      business easier to retrieve and verify across the web.
+    </p>
+
+    <div
+      class="flow-strip"
+      aria-label="How a business becomes part of an AI answer"
+    >
+      <div class="flow-step">
+        <span>1</span><strong>A person asks</strong><small
+          >A specific problem, comparison, or local question.</small
+        >
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step">
+        <span>2</span><strong>Sources are found</strong><small
+          >Pages, profiles, reviews, documents, and trusted mentions.</small
+        >
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step">
+        <span>3</span><strong>An answer is formed</strong><small
+          >The system synthesizes information it considers useful.</small
+        >
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step">
+        <span>4</span><strong>A next step happens</strong><small
+          >A citation, branded search, visit, call, or inquiry.</small
+        >
+      </div>
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-1-search-flow.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A human-led visual showing a question moving through multiple business sources into one useful AI answer and a qualified website visit"
+      />
+      <figcaption>
+        AI visibility is a source and evidence problem before it is a platform
+        problem.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section" id="section-2">
+    <div class="section-kicker">02 · The foundation</div>
+    <h2>SEO, AEO, and GEO: what actually changes</h2>
+    <p>
+      Traditional SEO, answer engine optimization, and generative engine
+      optimization are not three separate marketing systems. They are different
+      ways of describing how discoverable content gets found, understood,
+      selected, and presented.
+    </p>
+    <p>
+      Google’s current guidance is direct: there are no additional technical
+      requirements, special AI schema types, or new machine-readable files
+      required to appear in its AI features. The same fundamentals still matter:
+      crawlable pages, indexable content, clear internal links, useful text,
+      good page experience, and structured data that matches what visitors can
+      see.
+    </p>
+
+    <div
+      class="table-wrap"
+      role="region"
+      aria-label="SEO, AEO, and GEO comparison"
+      tabindex="0"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th>Discipline</th><th>Primary question</th><th
+              >What good execution looks like</th
+            ><th>Useful measurement</th></tr
+          ></thead
+        >
+        <tbody>
+          <tr
+            ><th scope="row">SEO</th><td
+              >Can search systems discover and rank this page?</td
+            ><td
+              >Strong intent match, crawlability, internal links, useful
+              content, and authority.</td
+            ><td
+              >Impressions, clicks, rankings, qualified organic visits, and
+              conversions.</td
+            ></tr
+          >
+          <tr
+            ><th scope="row">AEO</th><td
+              >Can the page answer a specific question clearly?</td
+            ><td
+              >A direct answer supported by context, evidence, definitions, and
+              a useful next step.</td
+            ><td
+              >Featured visibility, cited answers, referral visits, branded
+              follow-up searches.</td
+            ></tr
+          >
+          <tr
+            ><th scope="row">GEO</th><td
+              >Can generative systems understand and reuse the information
+              confidently?</td
+            ><td
+              >Consistent entities, source-ready facts, original evidence, and
+              corroboration beyond one page.</td
+            ><td
+              >Citation sampling, AI referrals, source mentions, assisted
+              inquiries, and conversions.</td
+            ></tr
+          >
+        </tbody>
+      </table>
+    </div>
+
+    <div class="truth-note">
+      <strong>The practical rule:</strong> keep SEO as the foundation. Improve the
+      shape of the answers and the quality of the supporting evidence. Do not chase
+      an acronym as if it were a separate channel.
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-2-seo-aeo-geo.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="An editorial system diagram showing a strong SEO foundation branching into answer-ready content and citation-ready evidence"
+      />
+      <figcaption>
+        AI-search optimization extends good search work. It does not replace it.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section audit-section" id="section-3">
+    <div class="section-kicker">03 · Interactive audit</div>
+    <h2>Check your AI-search readiness</h2>
+    <p>
+      Use this quick audit to find what to fix first. It runs entirely in your
+      browser. Markethink does not collect or store the answers.
+    </p>
+
+    <div class="audit-shell">
+      <fieldset class="audit-list">
+        <legend>Which statements are true today?</legend>
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Fix crawlability and indexation before creating more content."
+          />
+          <span
+            ><strong>Search systems can access the site.</strong><small
+              >Important pages are indexable, internally linked, and included in
+              a current sitemap.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Clarify your core service pages before expanding into supporting articles."
+          />
+          <span
+            ><strong>Core service pages answer buying questions.</strong><small
+              >Each page clearly explains the service, audience, process, fit,
+              and next step.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Add direct answer blocks to the pages that already attract relevant questions."
+          />
+          <span
+            ><strong>Important questions receive direct answers.</strong><small
+              >Answers appear early, then expand with context and evidence.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Standardize your business name, category, services, and locations across the web."
+          />
+          <span
+            ><strong>Business facts are consistent.</strong><small
+              >Name, services, expertise, location, and contact details match
+              across key profiles.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Publish first-party evidence instead of repeating general advice."
+          />
+          <span
+            ><strong>The site contains original evidence.</strong><small
+              >Process detail, examples, research, expert commentary, or
+              approved proof supports the claims.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Strengthen trusted mentions, reviews, and profiles outside your own domain."
+          />
+          <span
+            ><strong>Other sources corroborate the business.</strong><small
+              >Relevant profiles, reviews, publications, and expert mentions
+              support the same entity.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Use only supported structured data that accurately matches visible page content."
+          />
+          <span
+            ><strong>Structured data matches visible content.</strong><small
+              >Organization, LocalBusiness, Article, or other supported markup
+              accurately describes the visible page.</small
+            ></span
+          ></label
+        >
+        <label
+          ><input
+            type="checkbox"
+            data-audit-item
+            data-recommendation="Create a simple baseline for organic visibility, AI citations, referrals, and conversions."
+          />
+          <span
+            ><strong>Visibility and outcomes are measured.</strong><small
+              >Search Console, Bing Webmaster Tools, analytics, CRM, and inquiry
+              sources are connected.</small
+            ></span
+          ></label
+        >
+      </fieldset>
+
+      <aside class="audit-result" aria-live="polite">
+        <span class="score-label">Readiness score</span>
+        <div class="score-row">
+          <strong data-audit-score>0</strong><span>/ 8</span>
+        </div>
+        <progress data-audit-progress max="8" value="0">0 of 8</progress>
+        <h3 data-audit-band>Build the foundation first</h3>
+        <p data-audit-advice>
+          Start by making the site crawlable, indexable, and clear about what
+          the business does.
+        </p>
+        <button class="copy-score" type="button" data-copy-audit
+          >Copy my first action</button
+        >
+        <small data-copy-status aria-live="polite"></small>
+      </aside>
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-3-readiness-audit.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A marketing operator sorting eight business evidence tiles into one organized AI-search readiness system"
+      />
+      <figcaption>
+        The lowest-scoring layer usually matters more than publishing another
+        generic article.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section" id="section-4">
+    <div class="section-kicker">04 · Content structure</div>
+    <h2>Build pages that are easy to answer from</h2>
+    <p>
+      An answer-ready page does not reduce everything to a short paragraph. It
+      gives the reader a direct answer, then earns trust with useful detail. The
+      best structure depends on the question, but four layers work across many
+      service and educational pages.
+    </p>
+
+    <div class="answer-demo" data-answer-demo>
+      <div class="answer-demo-head">
+        <div>
+          <span class="eyebrow">Example question</span>
+          <h3>How can a small business show up in AI search?</h3>
+        </div>
+        <div
+          class="answer-toggle"
+          role="group"
+          aria-label="Compare weak and useful answers"
+        >
+          <button type="button" data-answer-view="weak" aria-pressed="false"
+            >Weak</button
+          >
+          <button type="button" data-answer-view="useful" aria-pressed="true"
+            >Useful</button
+          >
+        </div>
+      </div>
+      <div class="answer-panel is-hidden" data-answer-panel="weak">
+        <span class="panel-tag">Too vague</span>
+        <p>
+          Businesses should create high-quality content, use AI-search best
+          practices, and build authority online.
+        </p>
+        <small
+          >This repeats advice without defining the work, evidence, or next
+          step.</small
+        >
+      </div>
+      <div class="answer-panel" data-answer-panel="useful">
+        <span class="panel-tag good">Answer-ready</span>
+        <p>
+          A small business improves its chance of appearing in AI search by
+          making its site crawlable, answering specific customer questions
+          clearly, keeping business facts consistent, publishing verifiable
+          evidence, earning trusted mentions, and measuring citations and
+          referral visits.
+        </p>
+        <ol>
+          <li>
+            <strong>Direct answer:</strong> state the conclusion in plain language.
+          </li>
+          <li>
+            <strong>Context:</strong> define when the answer applies and what changes
+            it.
+          </li>
+          <li>
+            <strong>Evidence:</strong> support it with accurate facts, examples,
+            sources, or expert detail.
+          </li>
+          <li>
+            <strong>Next step:</strong> help the reader act without forcing a sales
+            pitch.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div
+      class="table-wrap"
+      role="region"
+      aria-label="Question to page mapping"
+      tabindex="0"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th>Customer question</th><th>Best page type</th><th
+              >Evidence to include</th
+            ></tr
+          ></thead
+        >
+        <tbody>
+          <tr
+            ><td>What do you do?</td><td>Focused service page</td><td
+              >Scope, audience, process, boundaries, and clear next step.</td
+            ></tr
+          >
+          <tr
+            ><td>Which option fits me?</td><td>Comparison or selection guide</td
+            ><td>Decision criteria, trade-offs, use cases, and exclusions.</td
+            ></tr
+          >
+          <tr
+            ><td>How does it work?</td><td>Process or methodology page</td><td
+              >Ordered steps, owners, inputs, approvals, and expected outputs.</td
+            ></tr
+          >
+          <tr
+            ><td>Can I trust this?</td><td>Proof or expertise page</td><td
+              >Approved examples, credentials, sources, process detail, and
+              transparent limitations.</td
+            ></tr
+          >
+          <tr
+            ><td>Do you serve my area?</td><td>Useful local page</td><td
+              >Real service-area detail, consistent business facts, and local
+              relevance.</td
+            ></tr
+          >
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-4-answer-ready.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A useful answer card being assembled from direct answer, context, evidence, and a clear next step"
+      />
+      <figcaption>
+        Concise answers work best when deeper evidence sits directly behind
+        them.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section" id="section-5">
+    <div class="section-kicker">05 · Corroboration</div>
+    <h2>Strengthen the evidence beyond your website</h2>
+    <p>
+      Your website is the source you control most directly, but it is not the
+      only source an answer system can encounter. Profiles, reviews, expert
+      references, industry publications, directories, and local records can help
+      corroborate who the business is and what it is known for.
+    </p>
+    <p>
+      Consistency matters more than occupying every platform. Start with the
+      places customers and search systems already use in your category. Keep
+      facts aligned. Earn mentions by contributing something useful, not by
+      manufacturing low-quality citations.
+    </p>
+
+    <div class="evidence-grid">
+      <article>
+        <span>Control</span><h3>First-party facts</h3><p>
+          Service pages, about information, locations, authors, policies,
+          processes, and structured data.
+        </p>
+      </article>
+      <article>
+        <span>Control</span><h3>Original evidence</h3><p>
+          Approved examples, research, expert commentary, process detail, tools,
+          and useful documentation.
+        </p>
+      </article>
+      <article>
+        <span>Influence</span><h3>Customer signals</h3><p>
+          Authentic reviews, relevant discussion, branded searches, and accurate
+          responses.
+        </p>
+      </article>
+      <article>
+        <span>Influence</span><h3>Trusted mentions</h3><p>
+          Industry profiles, expert citations, local organizations,
+          publications, podcasts, and partnerships.
+        </p>
+      </article>
+    </div>
+
+    <div
+      class="table-wrap"
+      role="region"
+      aria-label="Evidence coverage matrix"
+      tabindex="0"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th>Signal</th><th>Where it lives</th><th>What good looks like</th
+            ><th>How to verify</th></tr
+          ></thead
+        >
+        <tbody>
+          <tr
+            ><td>Core business identity</td><td>Website and major profiles</td
+            ><td
+              >Consistent name, category, services, location, and contact
+              details.</td
+            ><td>Quarterly entity review.</td></tr
+          >
+          <tr
+            ><td>Expertise</td><td
+              >Author pages, articles, profiles, interviews</td
+            ><td>Named experts connected to useful, accurate contributions.</td
+            ><td>Review author and source coverage.</td></tr
+          >
+          <tr
+            ><td>Customer experience</td><td>Relevant review platforms</td><td
+              >Authentic, specific feedback and responsible responses.</td
+            ><td>Monitor quality and recurring themes.</td></tr
+          >
+          <tr
+            ><td>Independent recognition</td><td
+              >Trusted category or local sources</td
+            ><td
+              >Relevant mentions that add context instead of repeating a
+              listing.</td
+            ><td>Track source quality and accuracy.</td></tr
+          >
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-5-evidence-network.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A small business connected to its website, trusted profiles, customer reviews, experts, and independent publications"
+      />
+      <figcaption>
+        Strong entity signals are consistent enough to verify and specific
+        enough to be useful.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section" id="section-6">
+    <div class="section-kicker">06 · Measurement</div>
+    <h2>Measure citations, visits, and business outcomes</h2>
+    <p>
+      There is no universal AI-search ranking report. Measurement works best as
+      a set of connected signals: whether your pages are discoverable, whether
+      answer systems cite or mention them, whether people visit, and whether
+      those visits contribute to inquiries or revenue conversations.
+    </p>
+
+    <div
+      class="table-wrap"
+      role="region"
+      aria-label="AI-search measurement by platform"
+      tabindex="0"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th>Surface</th><th>What you can control</th><th
+              >What you can observe</th
+            ><th>Important limit</th></tr
+          ></thead
+        >
+        <tbody>
+          <tr
+            ><th scope="row">Google AI features</th><td
+              >Standard crawl, index, content, preview, and snippet controls.</td
+            ><td
+              >Overall Web search performance in Search Console, plus
+              landing-page conversions.</td
+            ><td
+              >AI-feature traffic is included in overall Web reporting, not
+              broken out in a separate Search Console report.</td
+            ></tr
+          >
+          <tr
+            ><th scope="row">Bing and Copilot</th><td
+              >Bing crawl access, sitemaps, indexation, and page quality.</td
+            ><td
+              >AI citations, cited pages, and grounding queries through Bing
+              Webmaster Tools AI Performance.</td
+            ><td
+              >The report measures citation activity, not ranking, authority, or
+              placement within an answer.</td
+            ></tr
+          >
+          <tr
+            ><th scope="row">ChatGPT search</th><td
+              >Whether OAI-SearchBot may access content, plus the quality and
+              clarity of the sources.</td
+            ><td
+              >Referral visits, landing pages, conversions, and sampled
+              citations.</td
+            ><td
+              >Allowing the crawler does not guarantee selection or citation.</td
+            ></tr
+          >
+          <tr
+            ><th scope="row">Cross-platform sample</th><td
+              >A stable set of real customer questions and accurate source
+              pages.</td
+            ><td
+              >Mentions, citations, answer accuracy, source diversity, and
+              changes over time.</td
+            ><td
+              >Prompt sampling is directional, not a universal rank tracker.</td
+            ></tr
+          >
+        </tbody>
+      </table>
+    </div>
+
+    <div class="measurement-panels">
+      <details open>
+        <summary>Weekly: watch discovery and technical health</summary><p>
+          Review indexation, crawl issues, important page impressions, and
+          sudden losses. Fix access and accuracy problems before changing
+          content strategy.
+        </p>
+      </details>
+      <details>
+        <summary>Monthly: sample real customer questions</summary><p>
+          Use a stable, documented set of high-value questions. Record whether
+          the business is mentioned, which sources are cited, and whether the
+          answer is accurate. Do not treat one prompt result as a market-wide
+          ranking.
+        </p>
+      </details>
+      <details>
+        <summary>Quarterly: connect visibility to pipeline</summary><p>
+          Review AI and organic referrals, assisted conversions, inquiry
+          quality, CRM source notes, and the pages involved. Keep the measures
+          that help decisions. Drop vanity reporting.
+        </p>
+      </details>
+    </div>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-6-measurement.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A marketing operator reviewing AI citations, referral paths, landing pages, and conversions in one measurement workspace"
+      />
+      <figcaption>
+        A citation matters most when it supports accurate discovery and a useful
+        next step.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="guide-section" id="section-7">
+    <div class="section-kicker">07 · Execution plan</div>
+    <h2>A practical 30-day AI-search plan</h2>
+    <p>
+      Start with one priority service or topic. The goal is not to rebuild the
+      entire site in a month. It is to create one complete, measurable path from
+      customer question to trusted answer to business action.
+    </p>
+
+    <div class="plan-toolbar">
+      <p>
+        <strong>Use the checkboxes as a working plan.</strong> Your selections remain
+        in this browser session.
+      </p>
+      <button type="button" data-print-plan>Print or save the plan</button>
+    </div>
+
+    <div class="week-grid">
+      <details open>
+        <summary><span>Week 1</span>Fix access and define the entity</summary
+        ><div>
+          <label
+            ><input type="checkbox" /> Check indexation, sitemap, canonical tags,
+            robots controls, and internal links.</label
+          ><label
+            ><input type="checkbox" /> Choose one priority service, audience, and
+            search intent.</label
+          ><label
+            ><input type="checkbox" /> Standardize the business facts used on the
+            site and major profiles.</label
+          ><label
+            ><input type="checkbox" /> Record a baseline for impressions, visits,
+            inquiries, and current citations.</label
+          >
+        </div>
+      </details>
+      <details>
+        <summary><span>Week 2</span>Build the answer path</summary><div>
+          <label
+            ><input type="checkbox" /> Improve the core service page around real
+            buying questions.</label
+          ><label
+            ><input type="checkbox" /> Publish one supporting guide that answers
+            a specific problem in depth.</label
+          ><label
+            ><input type="checkbox" /> Add concise answer blocks, useful headings,
+            and accurate internal links.</label
+          ><label
+            ><input type="checkbox" /> Add appropriate structured data that matches
+            visible content.</label
+          >
+        </div>
+      </details>
+      <details>
+        <summary><span>Week 3</span>Add evidence and corroboration</summary><div
+        >
+          <label
+            ><input type="checkbox" /> Add approved process detail, expert input,
+            examples, or original evidence.</label
+          ><label
+            ><input type="checkbox" /> Correct inconsistent profiles and important
+            local or category listings.</label
+          ><label
+            ><input type="checkbox" /> Identify two credible contribution or mention
+            opportunities.</label
+          ><label
+            ><input type="checkbox" /> Review authentic customer feedback for recurring
+            language and questions.</label
+          >
+        </div>
+      </details>
+      <details>
+        <summary><span>Week 4</span>Measure and improve</summary><div>
+          <label
+            ><input type="checkbox" /> Review Google Search Console and Bing Webmaster
+            Tools performance.</label
+          ><label
+            ><input type="checkbox" /> Sample the same high-value questions across
+            relevant answer surfaces.</label
+          ><label
+            ><input type="checkbox" /> Check citation accuracy, referral landing
+            pages, and inquiry quality.</label
+          ><label
+            ><input type="checkbox" /> Choose the next update from the weakest verified
+            signal.</label
+          >
+        </div>
+      </details>
+    </div>
+
+    <div class="source-box">
+      <h3>Official documentation used for this guide</h3>
+      <ul>
+        <li>
+          <a
+            href="https://developers.google.com/search/docs/appearance/ai-features"
+            target="_blank"
+            rel="noopener"
+            >Google Search Central: AI features and your website</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies"
+            target="_blank"
+            rel="noopener">Google Search Central: structured-data guidelines</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://developers.openai.com/api/docs/bots"
+            target="_blank"
+            rel="noopener">OpenAI: crawler controls and OAI-SearchBot</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview"
+            target="_blank"
+            rel="noopener">Bing Webmaster Tools: AI Performance</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://schema.org/LocalBusiness"
+            target="_blank"
+            rel="noopener">Schema.org: LocalBusiness</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <p>
+      Markethink is an AI marketing system managed by expert marketers. See how
+      our <a href="/ai-marketing-for-small-business/"
+        >AI marketing for small business</a
+      > approach connects website updates, content, campaigns, leads, and follow-up.
+      Review <a href="/who-we-help/"
+        >how Markethink supports different business models</a
+      > or <a href="/schedule-a-walkthrough/">schedule a walkthrough</a> to discuss
+      what your business needs.
+    </p>
+
+    <figure class="section-visual">
+      <img
+        src={`${imageBase}/section-7-thirty-day-plan.svg`}
+        width="1536"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+        alt="A four-week marketing calendar moving from technical foundation to answer-ready content, trusted evidence, and measurement"
+      />
+      <figcaption>
+        One complete operating loop is more useful than thirty disconnected
+        optimization tasks.
+      </figcaption>
+    </figure>
+  </section>
+</div>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-ai-search-guide]");
+    if (!root) return;
+    root.classList.add("is-enhanced");
+
+    const auditItems = [...root.querySelectorAll("[data-audit-item]")];
+    const score = root.querySelector("[data-audit-score]");
+    const progress = root.querySelector("[data-audit-progress]");
+    const band = root.querySelector("[data-audit-band]");
+    const advice = root.querySelector("[data-audit-advice]");
+    const copyButton = root.querySelector("[data-copy-audit]");
+    const copyStatus = root.querySelector("[data-copy-status]");
+
+    const updateAudit = () => {
+      const checked = auditItems.filter((item) => item.checked).length;
+      const firstMissing = auditItems.find((item) => !item.checked);
+      score.textContent = String(checked);
+      progress.value = checked;
+      if (checked <= 2) {
+        band.textContent = "Build the foundation first";
+      } else if (checked <= 5) {
+        band.textContent = "Good signals, fragmented system";
+      } else {
+        band.textContent = "Ready to compound the work";
+      }
+      advice.textContent =
+        firstMissing?.dataset.recommendation ||
+        "Keep the facts current, strengthen evidence, and connect visibility to qualified business outcomes.";
+      window.dataLayer?.push({
+        event: "ai_search_audit_update",
+        score: checked,
+      });
+    };
+    auditItems.forEach((item) => item.addEventListener("change", updateAudit));
+
+    copyButton?.addEventListener("click", async () => {
+      const text = `AI-search readiness: ${score.textContent}/8. First action: ${advice.textContent}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        copyStatus.textContent = "Copied.";
+      } catch {
+        copyStatus.textContent = "Select the recommendation above to copy it.";
+      }
+      window.dataLayer?.push({ event: "ai_search_audit_copy" });
+    });
+
+    const answerButtons = [...root.querySelectorAll("[data-answer-view]")];
+    const answerPanels = [...root.querySelectorAll("[data-answer-panel]")];
+    answerButtons.forEach((button) =>
+      button.addEventListener("click", () => {
+        const view = button.dataset.answerView;
+        answerButtons.forEach((item) =>
+          item.setAttribute("aria-pressed", String(item === button)),
+        );
+        answerPanels.forEach((panel) =>
+          panel.classList.toggle(
+            "is-hidden",
+            panel.dataset.answerPanel !== view,
+          ),
+        );
+        window.dataLayer?.push({ event: "ai_search_answer_example", view });
+      }),
+    );
+
+    root.querySelector("[data-print-plan]")?.addEventListener("click", () => {
+      window.dataLayer?.push({ event: "ai_search_plan_print" });
+      window.print();
+    });
+  })();
+</script>
+
+<style>
+  .ai-guide {
+    display: grid;
+    gap: 5rem;
+    margin-top: 3rem;
+    color: #0f1213;
+  }
+  .guide-section {
+    scroll-margin-top: 6rem;
+  }
+  .section-kicker {
+    margin-bottom: 0.7rem;
+    color: #467a39;
+    font-size: 0.77rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  h2 {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+  h3 {
+    font-family: var(--font-body);
+  }
+  p {
+    font-size: 1.05rem;
+    line-height: 1.78;
+    color: #3f4445;
+  }
+  a {
+    color: #2f6c26;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+  .flow-strip {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 0.6rem;
+    align-items: stretch;
+    margin: 2rem 0;
+  }
+  .flow-step {
+    display: grid;
+    align-content: start;
+    gap: 0.45rem;
+    min-height: 10rem;
+    padding: 1.15rem;
+    border: 1px solid #d9dfd6;
+    border-radius: 1.1rem;
+    background: #f5f5f1;
+  }
+  .flow-step span {
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: #69d254;
+    color: #0f1213;
+    font-weight: 900;
+  }
+  .flow-step strong {
+    font-size: 0.95rem;
+  }
+  .flow-step small {
+    color: #686b6c;
+    line-height: 1.45;
+  }
+  .flow-arrow {
+    align-self: center;
+    color: #467a39;
+    font-weight: 800;
+  }
+  .section-visual {
+    margin: 2.25rem 0 0;
+  }
+  .section-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1.4rem;
+    border: 1px solid #d7ddd4;
+    background: #edf4ea;
+    box-shadow: 0 18px 50px rgba(15, 18, 19, 0.08);
+  }
+  .section-visual figcaption {
+    margin-top: 0.7rem;
+    color: #686b6c;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .table-wrap {
+    margin: 2rem 0;
+    overflow-x: auto;
+    border: 1px solid #d9dfd6;
+    border-radius: 1rem;
+  }
+  table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    background: #fff;
+  }
+  th,
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e9e2;
+    text-align: left;
+    vertical-align: top;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  thead th {
+    background: #0f1213;
+    color: #f5f5f1;
+    font-size: 0.74rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  tbody th {
+    color: #244b1e;
+  }
+  tbody tr:last-child th,
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .truth-note,
+  .source-box {
+    padding: 1.3rem 1.4rem;
+    border-left: 4px solid #69d254;
+    border-radius: 0 1rem 1rem 0;
+    background: #edf4ea;
+    color: #303536;
+    line-height: 1.65;
+  }
+  .audit-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(15rem, 0.75fr);
+    gap: 1.4rem;
+    align-items: start;
+    margin: 2rem 0;
+  }
+  .audit-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .audit-list legend {
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+  .audit-list label {
+    display: flex;
+    gap: 0.85rem;
+    padding: 1rem;
+    border: 1px solid #dfe4dc;
+    border-radius: 0.9rem;
+    background: #fff;
+    cursor: pointer;
+  }
+  .audit-list input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.15rem;
+    accent-color: #467a39;
+    flex: 0 0 auto;
+  }
+  .audit-list span {
+    display: grid;
+    gap: 0.25rem;
+  }
+  .audit-list small {
+    color: #686b6c;
+    line-height: 1.45;
+  }
+  .audit-result {
+    position: sticky;
+    top: 6rem;
+    padding: 1.4rem;
+    border-radius: 1.1rem;
+    background: #0f1213;
+    color: #f5f5f1;
+  }
+  .score-label {
+    color: #b4b6b6;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .score-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin: 0.5rem 0;
+  }
+  .score-row strong {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69d254;
+  }
+  .score-row span {
+    color: #b4b6b6;
+  }
+  progress {
+    width: 100%;
+    height: 0.65rem;
+    accent-color: #69d254;
+  }
+  .audit-result h3 {
+    margin: 1.2rem 0 0.5rem;
+    font-size: 1rem;
+  }
+  .audit-result p {
+    color: #d4d6d6;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  button {
+    font: inherit;
+  }
+  .copy-score,
+  .plan-toolbar button {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.72rem 1rem;
+    background: #69d254;
+    color: #0f1213;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .copy-score:focus-visible,
+  .plan-toolbar button:focus-visible,
+  .answer-toggle button:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+  }
+  [data-copy-status] {
+    display: block;
+    min-height: 1.3rem;
+    margin-top: 0.5rem;
+    color: #b4b6b6;
+  }
+  .answer-demo {
+    margin: 2rem 0;
+    border: 1px solid #d9dfd6;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    background: #f5f5f1;
+  }
+  .answer-demo-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.2rem;
+    border-bottom: 1px solid #d9dfd6;
+  }
+  .answer-demo-head h3 {
+    margin: 0.25rem 0 0;
+    font-size: 1rem;
+  }
+  .eyebrow {
+    color: #686b6c;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .answer-toggle {
+    display: inline-flex;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: #dfe6dc;
+  }
+  .answer-toggle button {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    background: transparent;
+    color: #3f4445;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .answer-toggle button[aria-pressed="true"] {
+    background: #0f1213;
+    color: #f5f5f1;
+  }
+  .answer-panel {
+    padding: 1.35rem;
+  }
+  .ai-guide.is-enhanced .answer-panel.is-hidden {
+    display: none;
+  }
+  .panel-tag {
+    display: inline-block;
+    margin-bottom: 0.6rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 999px;
+    background: #e6dfdc;
+    color: #714739;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .panel-tag.good {
+    background: #d8efcf;
+    color: #244b1e;
+  }
+  .answer-panel ol {
+    margin: 1rem 0 0;
+    padding-left: 1.2rem;
+  }
+  .answer-panel li {
+    margin: 0.55rem 0;
+    color: #4c5152;
+    line-height: 1.55;
+  }
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin: 2rem 0;
+  }
+  .evidence-grid article {
+    padding: 1.2rem;
+    border: 1px solid #d9dfd6;
+    border-radius: 1rem;
+    background: #fff;
+  }
+  .evidence-grid span {
+    color: #467a39;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .evidence-grid h3 {
+    margin: 0.45rem 0;
+    font-size: 1rem;
+  }
+  .evidence-grid p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .measurement-panels,
+  .week-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  details {
+    border: 1px solid #d9dfd6;
+    border-radius: 0.9rem;
+    background: #fff;
+  }
+  summary {
+    padding: 1rem 1.1rem;
+    cursor: pointer;
+    font-weight: 800;
+  }
+  details > p,
+  details > div {
+    margin: 0;
+    padding: 0 1.1rem 1.1rem;
+  }
+  .plan-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.1rem;
+    border-radius: 1rem;
+    background: #0f1213;
+  }
+  .plan-toolbar p {
+    margin: 0;
+    color: #d4d6d6;
+    font-size: 0.9rem;
+  }
+  .week-grid summary {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .week-grid summary span {
+    min-width: 4rem;
+    color: #467a39;
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .week-grid details div {
+    display: grid;
+    gap: 0.65rem;
+  }
+  .week-grid label {
+    display: flex;
+    gap: 0.65rem;
+    color: #4c5152;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .week-grid input {
+    margin-top: 0.2rem;
+    accent-color: #467a39;
+  }
+  .source-box {
+    margin: 2rem 0;
+  }
+  .source-box h3 {
+    margin: 0 0 0.7rem;
+    font-size: 1rem;
+  }
+  .source-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .source-box li {
+    margin: 0.35rem 0;
+  }
+  @media (max-width: 820px) {
+    .ai-guide {
+      gap: 4rem;
+    }
+    .flow-strip {
+      grid-template-columns: 1fr;
+    }
+    .flow-arrow {
+      transform: rotate(90deg);
+      justify-self: center;
+    }
+    .audit-shell {
+      grid-template-columns: 1fr;
+    }
+    .audit-result {
+      position: static;
+    }
+    .answer-demo-head,
+    .plan-toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .evidence-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media print {
+    :global(nav),
+    :global(footer),
+    :global(.article-sidebar),
+    :global(.article-hero),
+    :global(.article-cta),
+    :global(.article-faq),
+    :global(.related-section),
+    .copy-score,
+    .answer-toggle,
+    .section-visual,
+    .source-box {
+      display: none !important;
+    }
+    .ai-guide {
+      gap: 2rem;
+    }
+    .guide-section:not(#section-7) {
+      display: none;
+    }
+    .week-grid details {
+      break-inside: avoid;
+    }
+  }
+</style>
