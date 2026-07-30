@@ -39,6 +39,11 @@ const staticPages = [
     changefreq: "monthly",
   },
   {
+    path: "/trial/",
+    priority: "0.8",
+    changefreq: "monthly",
+  },
+  {
     path: "/privacy/",
     priority: "0.3",
     changefreq: "yearly",
@@ -56,12 +61,13 @@ export function GET() {
   const urls = [...staticPages, ...articlePages]
     .map((page) => {
       const loc = `${siteUrl}${page.path}`;
-      const lastmod = "lastmod" in page ? page.lastmod : new Date().toISOString().slice(0, 10);
+      const lastmod = "lastmod" in page && page.lastmod
+        ? `\n    <lastmod>${page.lastmod}</lastmod>`
+        : "";
 
       return `
   <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <loc>${loc}</loc>${lastmod}
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`;
