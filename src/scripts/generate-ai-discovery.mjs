@@ -29,12 +29,12 @@ function absoluteUrl(value, canonicalUrl) {
 
 function htmlToMarkdown(html, canonicalUrl) {
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]
-    ?? html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]
     ?? html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1]
+    ?? html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1]
     ?? html;
   let content = main
     .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/<(script|style|svg|noscript)\b[^>]*>[\s\S]*?<\/\1>/gi, "")
+    .replace(/<(script|style|svg|noscript|nav|footer)\b[^>]*>[\s\S]*?<\/\1>/gi, "")
     .replace(/<img\b[^>]*>/gi, (tag) => {
       const src = absoluteUrl(attribute(tag, "src"), canonicalUrl);
       const alt = decodeEntities(attribute(tag, "alt"));
@@ -112,6 +112,9 @@ async function main() {
     const description = metaContent(html, "description");
     const body = htmlToMarkdown(html, canonicalUrl);
     if (!body) continue;
+    if (body.length < 500) {
+      throw new Error(`Markdown mirror is unexpectedly thin for ${canonicalUrl} (${body.length} characters).`);
+    }
     const relativePath = mirrorPathFor(canonicalUrl);
     const markdownUrl = new URL(`/${relativePath}`, SITE_URL).toString();
     const markdown = [`# ${title}`, "", description ? `> ${description}` : "", description ? "" : "", `Canonical page: ${canonicalUrl}`, "", body, ""].filter((line, index, all) => line || all[index - 1]).join("\n");
