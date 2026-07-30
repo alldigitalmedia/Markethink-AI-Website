@@ -16,3 +16,9 @@
   from = "/start/*"
   to = "/start/"
   status = 200
+
+[[headers]]
+  for = "/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    X-Robots-Tag = "noindex, follow"
