@@ -26,6 +26,68 @@ const {
 const siteUrl = "https://markethink.ai";
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
+
+function markdownPathFor(pathname: string) {
+  const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
+  return cleanPath ? `/${cleanPath}.md` : "/index.md";
+}
+
+const markdownUrl = new URL(markdownPathFor(new URL(canonicalUrl).pathname), siteUrl).toString();
+const suppliedNodes = structuredData
+  ? (Array.isArray(structuredData) ? structuredData : [structuredData])
+  : [];
+
+const normalizedSuppliedNodes = suppliedNodes
+  .filter((node) => node["@type"] !== "WebPage")
+  .map((node) => {
+    const { ["@context"]: _context, ...rest } = node;
+    return rest;
+  });
+
+const schemaGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Markethink",
+      url: `${siteUrl}/`,
+      description: "An AI marketing system managed by expert marketers that learns each business, runs marketing day to day, connects it to the pipeline, and improves with every approval, correction, and result.",
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${siteUrl}/#logo`,
+        url: `${siteUrl}/images/logo.svg`,
+        contentUrl: `${siteUrl}/images/logo.svg`,
+        caption: "Markethink",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: "Markethink",
+      description: "Your marketing operation, powered by AI and managed by experts.",
+      inLanguage: "en",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description,
+      inLanguage: "en",
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      about: { "@id": `${siteUrl}/#organization` },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: imageUrl,
+        contentUrl: imageUrl,
+      },
+    },
+    ...normalizedSuppliedNodes,
+  ],
+};
 ---
 
 <!doctype html>
@@ -48,9 +110,8 @@ const imageUrl = new URL(image, siteUrl).toString();
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    {structuredData && (
-      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    )}
+    {!noindex && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
