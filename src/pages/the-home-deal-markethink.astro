@@ -1,0 +1,954 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const deckUrl = "https://markethink.ai/the-home-deal-markethink/";
+const assetBase = "https://dashboard.markethink.ai/generated/landing/markethink/the-home-deal-markethink";
+const theHomeDealLogo = `${assetBase}/the-home-deal-logo.png`;
+const markethinkLogo = `${assetBase}/markethink-logo-white.svg`;
+const slideImages = {
+  opening: `${assetBase}/custom-01-opening.png`,
+  opportunity: `${assetBase}/custom-02-opportunity.png`,
+  operator: `${assetBase}/custom-03-operator.png`,
+  outreach: `${assetBase}/custom-04-outreach.png`,
+  capture: `${assetBase}/custom-05-capture.png`,
+  foundation: `${assetBase}/custom-06-foundation.png`,
+  growth: `${assetBase}/custom-07-growth.png`,
+  scale: `${assetBase}/custom-08-scale.png`,
+  close: `${assetBase}/custom-09-close.png`,
+};
+const slides = [
+  {
+    "n":"01","id":"opening","nav":"Opening","kicker":"THE HOME DEAL × MARKETHINK","title":"Turn more Realtor relationships into organized deal flow.","lead":"A dedicated sales and marketing operation for The Home Deal. Markethink researches the right partners, manages outreach and follow-up, captures property opportunities, and keeps the pipeline moving.","image":"opening","tone":"hero","chips":["24/7 trained operator","Expert management","Verified prospecting","Connected follow-up"]
+  },
+  {
+    "n":"02","id":"opportunity","nav":"Opportunity","kicker":"THE OPPORTUNITY","title":"Finding more Realtors is only the start. The real advantage is being ready when one has a deal.","lead":"Raw email volume does not create a reliable pipeline. The Home Deal needs continuity from first contact to relationship nurture, property submission, and the next follow-up.","image":"opportunity","tone":"light","chips":["Right relationships","Consistent follow-up","Faster response","Clear ownership"],"details":["Reach Realtors and potential business partners with audience-specific campaigns","Keep interested contacts warm without treating every lead the same","Capture property details and route the opportunity immediately","Preserve the full conversation and next step inside the pipeline"]
+  },
+  {
+    "n":"03","id":"operator","nav":"Operator","kicker":"POWERED BY AI · MANAGED BY EXPERTS","title":"One trained operator behind every campaign, reply, and next step.","lead":"The Home Deal receives a custom Markethink AI sales and marketing operator, available 24/7. It learns the business and runs the daily workflow while expert marketers direct the strategy, review the work, and remain accountable.","image":"operator","tone":"system","chips":["Learns the business","Runs day to day","Experts direct and review","Improves with results"],"details":["Learns acquisition criteria, priority markets, audiences, outreach language, and follow-up preferences","Organizes campaign activity, replies, property opportunities, and next actions in one place","Keeps approved messaging and campaign history from disappearing between vendors or team changes","Gets more useful with every approval, correction, reply, and campaign result"]
+  },
+  {
+    "n":"04","id":"outreach-engine","nav":"Outreach","kicker":"MANAGED OUTREACH ENGINE","title":"From verified prospect research to replies that reach the right person.","lead":"Markethink manages the infrastructure and the campaign operation. The value is not access to another sending tool. It is a controlled system that protects deliverability and keeps outreach connected to follow-up.","image":"outreach","tone":"warm","chips":["Verified prospects","Dedicated domains","Warmed inboxes","Managed sequences"],"details":["Research, curate, validate, deduplicate, and segment Realtor and partner contacts","Build dedicated sending domains and inboxes so the primary company domain stays protected","Write the initial email and two follow-ups around each audience and offer","Monitor inbox health, bounces, replies, unsubscribes, and campaign performance"]
+  },
+  {
+    "n":"05","id":"deal-capture","nav":"Deal capture","kicker":"RELATIONSHIP NURTURE + INSTANT CAPTURE","title":"A reply should become a relationship. A property address should become an owned next step.","lead":"Interested Realtors and partners move into an organized nurture rhythm. When someone shares a property opportunity, the response, details, notification, and follow-up stay connected.","image":"capture","tone":"cinema","chips":["Reply classification","Relationship nurture","Property alerts","CRM follow-up"],"details":["Classify positive, future, referral, and not-now replies so each conversation gets the right treatment","Use approved market insights, acquisition criteria, and partner messaging to stay relevant over time","Capture the contact, property address, asking price, timing, and phone number when provided","Confirm receipt, alert The Home Deal, assign the opportunity, and preserve the next step"]
+  },
+  {
+    "n":"06","id":"foundation","nav":"Foundation","kicker":"PACKAGE 01","title":"Outreach Foundation","lead":"A focused launch for building Realtor and partner relationships with controlled infrastructure and a fully managed campaign rhythm.","image":"foundation","tone":"package light","package":{"setupPrice":"$1,000 once","monthlyPrice":"$750/mo","note":"Launch and infrastructure setup","feeNote":"Ongoing campaign operation and expert management","scopeLabel":"Includes","intro":"A complete managed launch with safe starting volume and a clear path to scale.","groups":[{"title":"Infrastructure","items":["5 dedicated secondary domains","15 warmed and monitored sending inboxes"]},{"title":"Prospecting","items":["Up to 2,000 new verified prospects per month","Realtor and business-partner segmentation"]},{"title":"Campaigns","items":["Up to 6,000 total monthly sends","2 active campaigns with an initial email plus 2 follow-ups"]},{"title":"Deal capture","items":["Reply classification, opportunity alerts, and CRM organization","Nurture and follow-up for engaged contacts"]},{"title":"Management","items":["24/7 business-trained Markethink operator","Expert strategy, review, deliverability monitoring, and monthly optimization"]}]}
+  },
+  {
+    "n":"07","id":"growth","nav":"Growth","kicker":"PACKAGE 02 · RECOMMENDED","title":"Deal Flow Engine","lead":"The recommended path for running Realtor and business-partner acquisition at the same time with more reach, more segmentation, and a stronger optimization rhythm.","image":"growth","tone":"package system","package":{"setupPrice":"$1,500 once","monthlyPrice":"$1,000/mo","note":"Launch and infrastructure setup","feeNote":"Recommended ongoing operation","scopeLabel":"Everything in Foundation, expanded","intro":"Built for a larger verified prospect pool and multiple campaigns moving simultaneously.","groups":[{"title":"Infrastructure","items":["10 dedicated secondary domains","30 warmed and monitored sending inboxes"]},{"title":"Prospecting","items":["Up to 4,000 new verified prospects per month","Deeper geographic, brokerage, Realtor, and partner segmentation"]},{"title":"Campaigns","items":["Up to 12,000 total monthly sends","Up to 4 active campaigns with an initial email plus 2 follow-ups"]},{"title":"Deal capture","items":["Expanded reply routing, opportunity scoring, alerts, and CRM follow-up","Ongoing relationship nurture across audience segments"]},{"title":"Management","items":["24/7 business-trained Markethink operator","Expert direction, review, weekly optimization, and monthly pipeline review"]}]}
+  },
+  {
+    "n":"08","id":"scale","nav":"Scale","kicker":"CONTROLLED LAUNCH · EASY EXPANSION","title":"Start at a healthy volume. Scale after replies show what is working.","lead":"The initial limits protect deliverability while the accounts establish a healthy reputation. Once the inboxes are warm and reply performance demonstrates traction, Markethink can easily add inboxes and increase monthly outreach without rebuilding the operation.","image":"scale","tone":"light","chips":["Warm first","Launch controlled","Read the replies","Increase volume"],"details":["Configure dedicated domains, inboxes, authentication, forwarding, and campaign tracking","Warm the accounts before asking them to carry full production volume","Monitor deliverability, bounces, spam complaints, reply quality, and audience response","Expand prospect volume, inbox capacity, and active campaigns when the evidence supports it"]
+  },
+  {
+    "n":"09","id":"next-step","nav":"Next step","kicker":"CHOOSE THE LAUNCH PATH","title":"Build the relationship engine now. Let the volume grow with the results.","lead":"Choose Foundation for a focused launch or the recommended Deal Flow Engine for simultaneous Realtor and partner acquisition. In both paths, The Home Deal gets a 24/7 Markethink operator with a real marketing team directing, reviewing, and staying accountable.","image":"close","tone":"closing","chips":["Foundation · $750/mo","Deal Flow Engine · $1,000/mo","Expert-managed","Built to scale"],"details":["Confirm the package and target markets","Train Markethink on acquisition criteria, audiences, offers, and follow-up preferences","Configure the infrastructure and begin the warm-up period","Approve the first campaigns, launch at controlled volume, and optimize from real replies"]
+  }
+];
+---
+<Layout
+  title="The Home Deal × Markethink · Private Proposal"
+  description="A private Markethink proposal for The Home Deal's managed Realtor and business-partner outreach operation."
+  image={slideImages.opening}
+  canonical={deckUrl}
+  noindex={true}
+>
+  <main class="thd-deck" aria-label="The Home Deal and Markethink private proposal presentation">
+    <header class="deck-topbar">
+      <a href="#opening" class="brand-pair" aria-label="The Home Deal and Markethink presentation home">
+        <img class="brand-logo brand-logo-thd" src={theHomeDealLogo} alt="The Home Deal" loading="eager" decoding="async" />
+        <span class="pair-x" aria-hidden="true">×</span>
+        <img class="brand-logo brand-logo-mt" src={markethinkLogo} alt="Markethink" loading="eager" decoding="async" />
+      </a>
+      <span class="deck-label">Private proposal · managed deal-flow operation</span>
+    </header>
+
+    <aside class="slide-rail" aria-label="Presentation sections">
+      {slides.map((slide) => (
+        <a href={`#${slide.id}`} data-slide-link={slide.id}>
+          <span>{slide.n}</span><strong>{slide.nav}</strong>
+        </a>
+      ))}
+    </aside>
+
+    {slides.map((slide) => (
+      <section id={slide.id} class:list={["deck-slide", slide.tone]} style={`--slide-image: url('${slideImages[slide.image]}')`}>
+        <div class="slide-bg" aria-hidden="true"></div>
+        <div class="slide-vignette" aria-hidden="true"></div>
+        <div class="slide-inner">
+          {slide.kicker && <p class="slide-kicker">{slide.kicker}</p>}
+          <h1>{slide.title}</h1>
+          <p class="slide-lead">{slide.lead}</p>
+          {slide.package && (
+            <div class="package-offer" aria-label={`${slide.title} pricing and included value`}>
+              <div class="price-panel">
+                <span class="standard-label">{slide.package.note}</span>
+                <span class="rate-value standard-price">{slide.package.setupPrice}</span>
+                <span class="launch-label">Ongoing management</span>
+                <strong class="rate-value launch-price">{slide.package.monthlyPrice}</strong>
+                <small>{slide.package.feeNote}</small>
+              </div>
+              <div class="value-panel">
+                <p class="package-intro">{slide.package.intro}</p>
+                <span class="value-label">{slide.package.scopeLabel}</span>
+                <div class="package-group-list">
+                  {slide.package.groups.map((group) => (
+                    <section class="package-group">
+                      <strong>{group.title}</strong>
+                      <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+                    </section>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          {!slide.package && <div class="chip-row">{slide.chips.map((chip) => <span>{chip}</span>)}</div>}
+          {slide.details && (
+            <div class="detail-grid">{slide.details.map((detail) => <article>{detail}</article>)}</div>
+          )}
+        </div>
+        <footer class="slide-footer">
+          <span>{slide.n} / {slides.length.toString().padStart(2, "0")}</span>
+          <span>The Home Deal × Markethink</span>
+        </footer>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    background: #0f1213;
+  }
+
+  .thd-deck {
+    --charcoal: #0f1213;
+    --ink: #142238;
+    --cream: #f7f9fc;
+    --warm: #e8eef7;
+    --stone: #a8bdd8;
+    --taupe: #5e7fa9;
+    --light-brown: #a8bdd8;
+    --light-brown-soft: #e8eef7;
+    --panel: rgba(245, 241, 233, 0.9);
+    color: var(--cream);
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+
+  .deck-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 34px;
+    color: var(--cream);
+    pointer-events: none;
+  }
+
+  .brand-pair {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border: 1px solid rgba(245, 241, 233, 0.2);
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.58);
+    backdrop-filter: blur(18px);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  }
+
+  .brand-logo {
+    display: block;
+    object-fit: contain;
+    height: auto;
+    filter: none;
+  }
+
+  .brand-logo-thd {
+    width: 184px;
+    max-height: 38px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .brand-logo-mt {
+    width: 138px;
+    max-height: 18px;
+  }
+
+  .pair-x {
+    color: rgba(245, 241, 233, 0.56);
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 1;
+    transform: translateY(-1px);
+  }
+
+  .deck-label {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.45);
+    border: 1px solid rgba(245, 241, 233, 0.18);
+    color: rgba(245, 241, 233, 0.72);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    backdrop-filter: blur(18px);
+  }
+
+  .slide-rail {
+    position: fixed;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 42;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .slide-rail a {
+    width: 118px;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: rgba(245, 241, 233, 0.62);
+    text-decoration: none;
+    font-size: 10px;
+    background: rgba(15, 18, 19, 0.34);
+    border: 1px solid rgba(245, 241, 233, 0.14);
+    backdrop-filter: blur(16px);
+    transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .slide-rail a:hover,
+  .slide-rail a.is-active {
+    color: var(--cream);
+    border-color: rgba(201, 183, 162, 0.72);
+    background: rgba(15, 18, 19, 0.7);
+    transform: translateX(-5px);
+  }
+
+  .slide-rail span {
+    color: var(--light-brown);
+    font-weight: 750;
+  }
+
+  .slide-rail strong {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .deck-slide {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: center;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 120px 160px 86px 88px;
+  }
+
+  .slide-bg,
+  .slide-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .slide-bg {
+    z-index: -3;
+    background-image: var(--slide-image);
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.04);
+    filter: saturate(0.92) contrast(1.02);
+  }
+
+  .slide-vignette {
+    z-index: -2;
+    background:
+      linear-gradient(90deg, rgba(15, 18, 19, 0.9) 0%, rgba(15, 18, 19, 0.72) 38%, rgba(15, 18, 19, 0.28) 68%, rgba(15, 18, 19, 0.5) 100%),
+      linear-gradient(180deg, rgba(15, 18, 19, 0.36), rgba(15, 18, 19, 0.5));
+  }
+
+  .light .slide-vignette,
+  .package.light .slide-vignette {
+    background:
+      linear-gradient(90deg, rgba(245, 241, 233, 0.96) 0%, rgba(245, 241, 233, 0.84) 39%, rgba(245, 241, 233, 0.34) 70%, rgba(35, 31, 29, 0.26) 100%),
+      linear-gradient(180deg, rgba(245, 241, 233, 0.18), rgba(15, 18, 19, 0.18));
+  }
+
+  .warm .slide-vignette {
+    background:
+      linear-gradient(90deg, rgba(15, 30, 52, 0.88) 0%, rgba(15, 30, 52, 0.66) 42%, rgba(15, 30, 52, 0.24) 72%, rgba(15, 18, 19, 0.45) 100%);
+  }
+
+  .cinema .slide-vignette,
+  .closing .slide-vignette,
+  .package.dark .slide-vignette {
+    background:
+      linear-gradient(90deg, rgba(15, 18, 19, 0.94) 0%, rgba(15, 18, 19, 0.75) 42%, rgba(15, 18, 19, 0.3) 72%, rgba(15, 18, 19, 0.62) 100%);
+  }
+
+  .slide-inner {
+    width: min(840px, 86vw);
+    position: relative;
+    z-index: 2;
+  }
+
+  .system .slide-inner,
+  .package .slide-inner,
+  .package.system .slide-inner {
+    width: min(1040px, 88vw);
+  }
+
+  .slide-kicker {
+    margin: 0 0 18px;
+    color: var(--light-brown);
+    font-size: 12px;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: clamp(36px, 5.2vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    max-width: 940px;
+    color: var(--cream);
+    text-wrap: balance;
+  }
+
+  .light h1,
+  .package.light h1 {
+    color: var(--ink);
+  }
+
+  .slide-lead {
+    margin: 26px 0 0;
+    max-width: 760px;
+    color: rgba(245, 241, 233, 0.82);
+    font-size: clamp(18px, 2vw, 25px);
+    line-height: 1.42;
+    text-wrap: pretty;
+  }
+
+  .light .slide-lead,
+  .package.light .slide-lead {
+    color: rgba(35, 31, 29, 0.74);
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+    max-width: 860px;
+  }
+
+  .chip-row span {
+    padding: 10px 13px;
+    border-radius: 999px;
+    background: rgba(245, 241, 233, 0.12);
+    border: 1px solid rgba(245, 241, 233, 0.2);
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 12px;
+    font-weight: 680;
+  }
+
+  .light .chip-row span,
+  .package.light .chip-row span {
+    background: rgba(15, 18, 19, 0.06);
+    border-color: rgba(35, 31, 29, 0.12);
+    color: rgba(35, 31, 29, 0.74);
+  }
+
+  .chip-row span:first-child {
+    background: rgba(201, 183, 162, 0.22);
+    border-color: rgba(201, 183, 162, 0.5);
+    color: var(--cream);
+  }
+
+  .light .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    color: #315f9d;
+  }
+
+  .package-offer {
+    --package-accent: #4f86f7;
+    display: grid;
+    grid-template-columns: minmax(230px, 0.42fr) minmax(620px, 1.58fr);
+    gap: 0;
+    align-items: stretch;
+    max-width: 1160px;
+    margin-top: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 241, 233, 0.24);
+    background: rgba(19, 18, 16, 0.58);
+    box-shadow: 0 26px 80px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+  }
+
+  .light .package-offer,
+  .package.light .package-offer {
+    background: rgba(250, 247, 240, 0.82);
+    border-color: rgba(20, 34, 56, 0.14);
+    box-shadow: 0 26px 80px rgba(20, 34, 56, 0.1);
+  }
+
+  .price-panel,
+  .value-panel {
+    background: transparent;
+  }
+
+  .price-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px;
+    border-right: 1px solid rgba(245, 241, 233, 0.18);
+  }
+
+  .light .price-panel,
+  .package.light .price-panel {
+    border-right-color: rgba(20, 34, 56, 0.12);
+  }
+
+  .standard-label,
+  .launch-label,
+  .value-label {
+    color: var(--package-accent);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .rate-value,
+  .price-panel strong.rate-value {
+    width: fit-content;
+    margin-top: 8px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(26px, 2.15vw, 36px);
+    font-weight: 720;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+
+  .standard-price {
+    color: rgba(245, 241, 233, 0.54);
+    text-decoration: none;
+  }
+
+  .launch-price {
+    color: #4f86f7;
+  }
+
+  .light .standard-price,
+  .package.light .standard-price {
+    color: rgba(35, 31, 29, 0.42);
+  }
+
+  .launch-label {
+    margin-top: 18px;
+    color: rgba(245, 241, 233, 0.7);
+  }
+
+  .light .launch-label,
+  .package.light .launch-label {
+    color: rgba(35, 31, 29, 0.58);
+  }
+
+  .price-panel small {
+    max-width: 290px;
+    margin-top: 12px;
+    color: rgba(245, 241, 233, 0.68);
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .light .price-panel small,
+  .package.light .price-panel small {
+    color: rgba(35, 31, 29, 0.64);
+  }
+
+  .value-panel {
+    padding: 24px 28px 22px;
+  }
+
+  .package-intro {
+    max-width: 760px;
+    margin: 0 0 16px;
+    color: rgba(245, 241, 233, 0.8);
+    font-size: 15px;
+    line-height: 1.42;
+  }
+
+  .light .package-intro,
+  .package.light .package-intro {
+    color: rgba(35, 31, 29, 0.72);
+  }
+
+  .package-item-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 26px;
+    row-gap: 0;
+    margin: 14px 0 0;
+    padding: 0;
+    counter-reset: package-items;
+  }
+
+  .package-item-list li {
+    counter-increment: package-items;
+    position: relative;
+    padding: 10px 10px 10px 48px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 12.9px;
+    line-height: 1.32;
+  }
+
+  .package-item-list li::before {
+    content: counter(package-items, decimal-leading-zero);
+    position: absolute;
+    left: 12px;
+    top: 11px;
+    color: var(--package-accent);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .light .package-item-list li,
+  .package.light .package-item-list li {
+    border-top-color: rgba(20, 34, 56, 0.12);
+    color: rgba(35, 31, 29, 0.74);
+  }
+
+
+
+  .package-group-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 13px;
+    margin-top: 13px;
+  }
+
+  .package-group {
+    padding: 12px 13px 13px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+    background: rgba(245, 241, 233, 0.045);
+    border-radius: 16px;
+  }
+
+  .package-group strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--package-accent);
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .package-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+  }
+
+  .package-group li {
+    position: relative;
+    padding-left: 13px;
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 12.7px;
+    line-height: 1.33;
+  }
+
+  .package-group li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--package-accent);
+  }
+
+  .light .package-group,
+  .package.light .package-group {
+    background: rgba(255, 255, 255, 0.24);
+    border-top-color: rgba(20, 34, 56, 0.12);
+  }
+
+  .light .package-group li,
+  .package.light .package-group li {
+    color: rgba(35, 31, 29, 0.74);
+  }
+  .learning-block {
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+  }
+
+  .learning-block span,
+  .service-icon-strip b {
+    color: var(--package-accent);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .learning-block p {
+    margin: 7px 0 0;
+    color: rgba(245, 241, 233, 0.72);
+    font-size: 12.6px;
+    line-height: 1.42;
+  }
+
+  .light .learning-block,
+  .package.light .learning-block {
+    border-top-color: rgba(20, 34, 56, 0.12);
+  }
+
+  .light .learning-block p,
+  .package.light .learning-block p {
+    color: rgba(35, 31, 29, 0.66);
+  }
+
+  .service-icon-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(245, 241, 233, 0.14);
+  }
+
+  .service-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .service-icons span {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(245, 241, 233, 0.14);
+    border: 1px solid rgba(245, 241, 233, 0.26);
+    color: var(--cream);
+  }
+
+  .service-icons svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .light .service-icon-strip,
+  .package.light .service-icon-strip {
+    border-top-color: rgba(20, 34, 56, 0.12);
+  }
+
+  .light .service-icons span,
+  .package.light .service-icons span {
+    background: rgba(255, 255, 255, 0.42);
+    border-color: rgba(20, 34, 56, 0.18);
+    color: #315f9d;
+  }
+
+  .package-detail-grid {
+    max-width: 1120px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+    margin-top: 18px;
+  }
+
+  .package-detail-grid article {
+    min-height: 94px;
+    padding: 16px 16px 17px;
+    font-size: 13.8px;
+    line-height: 1.36;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 920px;
+    margin-top: 30px;
+  }
+
+  .detail-grid article {
+    padding: 17px 18px;
+    border-radius: 22px;
+    background: rgba(245, 241, 233, 0.13);
+    border: 1px solid rgba(245, 241, 233, 0.18);
+    color: rgba(245, 241, 233, 0.82);
+    font-size: 15px;
+    line-height: 1.45;
+    backdrop-filter: blur(16px);
+  }
+
+  .light .detail-grid article,
+  .package.light .detail-grid article {
+    background: rgba(255, 255, 255, 0.34);
+    border-color: rgba(35, 31, 29, 0.12);
+    color: rgba(35, 31, 29, 0.76);
+  }
+
+  .package.dark .detail-grid article,
+  .package.system .detail-grid article {
+    border-color: rgba(79, 134, 247, 0.28);
+  }
+
+
+
+  .package .slide-kicker,
+  .package .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    color: #4f86f7;
+  }
+
+  .package .chip-row span:first-child,
+  .package.light .chip-row span:first-child {
+    background: rgba(79, 134, 247, 0.14);
+    border-color: rgba(79, 134, 247, 0.28);
+  }
+
+  .package .slide-lead {
+    max-width: 980px;
+    font-size: clamp(17px, 1.65vw, 22px);
+  }
+
+  .package .price-panel {
+    overflow: hidden;
+  }
+
+  .package .price-panel strong {
+    white-space: nowrap;
+  }
+
+  .package .detail-grid article::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin-bottom: 12px;
+    background: rgba(79, 134, 247, 0.55);
+  }
+
+  .slide-footer {
+    position: absolute;
+    left: 88px;
+    right: 160px;
+    bottom: 28px;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(245, 241, 233, 0.56);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .light .slide-footer,
+  .package.light .slide-footer {
+    color: rgba(35, 31, 29, 0.44);
+  }
+
+  @media (max-width: 980px) {
+    .deck-topbar {
+      padding: 16px;
+    }
+
+    .deck-label {
+      display: none;
+    }
+
+    .brand-pair {
+      gap: 8px;
+      padding: 8px 10px;
+    }
+
+    .brand-logo-thd {
+      width: 140px;
+      max-height: 32px;
+    }
+
+    .brand-logo-mt {
+      width: 100px;
+    }
+
+    .slide-rail {
+      display: none;
+    }
+
+    .deck-slide {
+      min-height: auto;
+      display: block;
+      padding: 0;
+      background: #0f1213;
+      overflow: visible;
+    }
+
+    .slide-bg {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: 44vh;
+      min-height: 310px;
+      transform: none;
+      background-position: center;
+    }
+
+    .slide-vignette {
+      display: none;
+    }
+
+    .slide-inner,
+    .system .slide-inner,
+    .package .slide-inner,
+    .package.system .slide-inner {
+      width: 100%;
+      padding: 30px 22px 82px;
+    }
+
+    .light h1,
+    .package.light h1,
+    h1 {
+      color: var(--cream);
+      font-size: clamp(34px, 10vw, 50px);
+    }
+
+    .light .slide-lead,
+    .package.light .slide-lead,
+    .slide-lead {
+      color: rgba(245, 241, 233, 0.82);
+      font-size: 17px;
+    }
+
+    .package-offer {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .price-panel,
+    .value-panel {
+      padding: 18px;
+      border-radius: 24px;
+    }
+
+    .price-panel strong {
+      font-size: clamp(34px, 10vw, 48px);
+    }
+
+    .package-group-list,
+    .detail-grid,
+    .package-detail-grid {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .detail-grid article,
+    .light .detail-grid article,
+    .package.light .detail-grid article {
+      background: rgba(245, 241, 233, 0.12);
+      color: rgba(245, 241, 233, 0.82);
+      border-color: rgba(245, 241, 233, 0.18);
+      font-size: 14px;
+      padding: 14px 15px;
+    }
+
+    .slide-footer {
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+    }
+
+    .light .slide-footer,
+    .package.light .slide-footer {
+      color: rgba(247, 249, 252, 0.56);
+    }
+
+    .slide-footer span:last-child {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+    .slide-rail a {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const links = Array.from(document.querySelectorAll('[data-slide-link]'));
+  const sections = links
+    .map((link) => document.getElementById(link.getAttribute('data-slide-link')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      const isActive = link.getAttribute('data-slide-link') === id;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible?.target?.id) setActive(visible.target.id);
+  }, { threshold: [0.35, 0.55, 0.75] });
+
+  sections.forEach((section) => observer.observe(section));
+  links.forEach((link) => link.addEventListener('click', () => {
+    const id = link.getAttribute('data-slide-link');
+    if (id) setActive(id);
+  }));
+  if (sections[0]) setActive(sections[0].id);
+</script>
