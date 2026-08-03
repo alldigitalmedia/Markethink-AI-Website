@@ -28,7 +28,7 @@ const slides = [
     "n":"03","id":"operator","nav":"Operator","kicker":"POWERED BY AI · MANAGED BY EXPERTS","title":"One trained operator behind every campaign, reply, and next step.","lead":"The Home Deal receives a custom Markethink AI sales and marketing operator, available 24/7. It learns the business and runs the daily workflow while expert marketers direct the strategy, review the work, and remain accountable.","image":"operator","tone":"system","chips":["Learns the business","Runs day to day","Experts direct and review","Improves with results"],"details":["Learns acquisition criteria, priority markets, audiences, outreach language, and follow-up preferences","Organizes campaign activity, replies, property opportunities, and next actions in one place","Keeps approved messaging and campaign history from disappearing between vendors or team changes","Gets more useful with every approval, correction, reply, and campaign result"]
   },
   {
-    "n":"04","id":"outreach-engine","nav":"Outreach","kicker":"MANAGED OUTREACH ENGINE","title":"From verified prospect research to replies that reach the right person.","lead":"Markethink manages the infrastructure and the campaign operation. The value is not access to another sending tool. It is a controlled system that protects deliverability and keeps outreach connected to follow-up.","image":"outreach","tone":"warm","chips":["Verified prospects","Dedicated domains","Warmed inboxes","Managed sequences"],"details":["Research, curate, validate, deduplicate, and segment Realtor and partner contacts","Build dedicated sending domains and inboxes so the primary company domain stays protected","Write the initial email and two follow-ups around each audience and offer","Monitor inbox health, bounces, replies, unsubscribes, and campaign performance"]
+    "n":"04","id":"outreach-engine","nav":"Outreach","kicker":"MANAGED OUTREACH ENGINE","title":"From verified prospect research to replies that reach the right person.","lead":"Markethink manages the infrastructure and the campaign operation. The value is not access to another sending tool. It is a controlled system that protects deliverability and keeps outreach connected to follow-up.","image":"outreach","tone":"warm","infrastructure":{"eyebrow":"TRUSTED EMAIL INFRASTRUCTURE","title":"Dedicated sending accounts across the platforms businesses already trust.","body":"Every inbox is configured, warmed, monitored, and managed as part of the campaign operation.","providers":[{"name":"Gmail","detail":"Google Workspace","icon":"gmail"},{"name":"Microsoft 365","detail":"Outlook","icon":"microsoft"},{"name":"Zoho Mail","detail":"Business email","icon":"zoho"}]},"details":["Research, curate, validate, deduplicate, and segment Realtor and partner contacts","Build dedicated sending domains and inboxes so the primary company domain stays protected","Write the initial email and two follow-ups around each audience and offer","Monitor inbox health, bounces, replies, unsubscribes, and campaign performance"]
   },
   {
     "n":"05","id":"active-market-discovery","nav":"Active agents","kicker":"ACTIVE-MARKET LEAD DISCOVERY","title":"Find the agents already listing the homes The Home Deal wants.","lead":"Each research cycle starts with live market relevance. The Markethink operator reviews public listing and brokerage sources, where permitted, to identify active agents whose current inventory, markets, and property types align with The Home Deal's acquisition criteria.","image":"activeMarket","tone":"cinema","chips":["Active listings","Priority markets","Prominent brokerages","Verified contacts"],"details":["Start with The Home Deal's target markets, property types, price ranges, and acquisition criteria","Identify agents currently listing relevant homes and active teams inside established brokerages","Cross-check recent public activity and business information before contact research and verification","Add the strongest prospects to the right campaign with the listing, market, brokerage, and source context preserved"]
@@ -106,7 +106,41 @@ const slides = [
               </div>
             </div>
           )}
-          {!slide.package && <div class="chip-row">{slide.chips.map((chip) => <span>{chip}</span>)}</div>}
+          {slide.infrastructure && (
+            <div class="infrastructure-box" aria-label="Email infrastructure">
+              <div class="infrastructure-copy">
+                <span>{slide.infrastructure.eyebrow}</span>
+                <strong>{slide.infrastructure.title}</strong>
+                <p>{slide.infrastructure.body}</p>
+              </div>
+              <div class="provider-row">
+                {slide.infrastructure.providers.map((provider) => (
+                  <div class="provider-card">
+                    <span class:list={["provider-mark", provider.icon]} aria-hidden="true">
+                      {provider.icon === "gmail" && (
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Gmail logo">
+                          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                        </svg>
+                      )}
+                      {provider.icon === "microsoft" && (
+                        <svg viewBox="0 0 24 24" role="img" aria-label="Microsoft logo">
+                          <path fill="#f25022" d="M1 1h10v10H1z" />
+                          <path fill="#7fba00" d="M13 1h10v10H13z" />
+                          <path fill="#00a4ef" d="M1 13h10v10H1z" />
+                          <path fill="#ffb900" d="M13 13h10v10H13z" />
+                        </svg>
+                      )}
+                      {provider.icon === "zoho" && (
+                        <span class="zoho-wordmark" aria-label="Zoho logo"><i>Z</i><i>O</i><i>H</i><i>O</i></span>
+                      )}
+                    </span>
+                    <span class="provider-name"><strong>{provider.name}</strong><small>{provider.detail}</small></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {!slide.package && !slide.infrastructure && <div class="chip-row">{slide.chips.map((chip) => <span>{chip}</span>)}</div>}
           {slide.details && (
             <div class="detail-grid">{slide.details.map((detail) => <article>{detail}</article>)}</div>
           )}
@@ -364,6 +398,132 @@ const slides = [
   .package.light .slide-lead {
     color: rgba(35, 31, 29, 0.74);
   }
+
+  .infrastructure-box {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.85fr) minmax(460px, 1.15fr);
+    gap: 20px;
+    align-items: center;
+    max-width: 980px;
+    margin-top: 24px;
+    padding: 18px;
+    border: 1px solid rgba(245, 241, 233, 0.24);
+    border-radius: 22px;
+    background: rgba(15, 18, 19, 0.58);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+  }
+
+  .infrastructure-copy {
+    padding: 2px 4px;
+  }
+
+  .infrastructure-copy > span {
+    display: block;
+    margin-bottom: 7px;
+    color: #a8bdd8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+
+  .infrastructure-copy > strong {
+    display: block;
+    color: var(--cream);
+    font-family: "Instrument Serif", Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  .infrastructure-copy p {
+    margin: 8px 0 0;
+    max-width: 410px;
+    color: rgba(245, 241, 233, 0.67);
+    font-size: 12px;
+    line-height: 1.42;
+  }
+
+  .provider-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .provider-card {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border-radius: 15px;
+    background: rgba(247, 249, 252, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .provider-mark {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+  }
+
+  .provider-mark svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .provider-mark.gmail svg {
+    fill: #ea4335;
+  }
+
+  .provider-name {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #142238;
+  }
+
+  .provider-name strong {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .provider-name small {
+    color: rgba(20, 34, 56, 0.62);
+    font-size: 9px;
+    white-space: nowrap;
+  }
+
+  .zoho-wordmark {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: -0.06em;
+  }
+
+  .zoho-wordmark i {
+    display: grid;
+    width: 8px;
+    height: 15px;
+    place-items: center;
+    border-radius: 2px;
+    color: #fff;
+    font-style: normal;
+  }
+
+  .zoho-wordmark i:nth-child(1) { background: #e42527; }
+  .zoho-wordmark i:nth-child(2) { background: #f4b400; }
+  .zoho-wordmark i:nth-child(3) { background: #4285f4; }
+  .zoho-wordmark i:nth-child(4) { background: #34a853; }
 
   .chip-row {
     display: flex;
@@ -866,6 +1026,21 @@ const slides = [
     .slide-lead {
       color: rgba(245, 241, 233, 0.82);
       font-size: 17px;
+    }
+
+    .infrastructure-box {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+      padding: 16px;
+    }
+
+    .provider-row {
+      grid-template-columns: 1fr;
+    }
+
+    .provider-card {
+      padding: 10px 12px;
     }
 
     .package-offer {
