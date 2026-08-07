@@ -4,6 +4,18 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 ---
 
 <section class="section-hero" id="hero">
+  <figure class="hero-background" aria-hidden="true">
+    <img
+      src="/images/hero-phone-workspace.svg"
+      width="1536"
+      height="1024"
+      alt=""
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </figure>
+
   <div class="container hero-content">
     <div class="hero-copy">
       <p class="hero-kicker"><span aria-hidden="true">✦</span> AI marketing system managed by expert marketers</p>
@@ -87,18 +99,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
         </a>
       </div>
     </div>
-
-    <figure class="hero-visual">
-      <img
-        src="/images/hero-phone-workspace.svg"
-        width="766"
-        height="1024"
-        alt="A realistic phone in a premium workspace showing a landing page moving from request to expert review, approval, and launch readiness."
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
-    </figure>
+    <div class="hero-mobile-visual-spacer" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -111,36 +112,56 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     position: relative;
     overflow: hidden;
     padding: clamp(8.2rem, 13vh, 9.4rem) 0 clamp(3.5rem, 6vh, 5rem);
-    background:
-      radial-gradient(circle at 82% 22%, rgba(105, 210, 84, 0.09), transparent 25rem),
-      linear-gradient(90deg, #ffffff 0%, #fbfbf7 54%, #edf4ea 100%);
+    background: #f5f5f1;
     color: #0f1213;
   }
 
-  .section-hero::after {
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-background::after {
     content: "";
     position: absolute;
-    inset: auto -10rem -14rem auto;
-    width: 40rem;
-    height: 40rem;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(105, 210, 84, 0.12), transparent 68%);
-    pointer-events: none;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 252, 0.98) 0%,
+      rgba(255, 255, 252, 0.92) 31%,
+      rgba(255, 255, 252, 0.58) 45%,
+      rgba(255, 255, 252, 0.08) 61%,
+      rgba(255, 255, 252, 0) 76%
+    );
+  }
+
+  .hero-background img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-content {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1.04fr) minmax(31rem, 0.96fr);
-    align-items: center;
-    gap: clamp(1.5rem, 3.2vw, 3.25rem);
     width: min(1260px, calc(100% - 2rem));
   }
 
   .hero-copy {
-    max-width: 45rem;
+    max-width: min(48rem, 56%);
     text-align: left;
+  }
+
+  .hero-mobile-visual-spacer {
+    display: none;
   }
 
   .hero-kicker {
@@ -271,48 +292,42 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     line-height: 1;
   }
 
-  .hero-visual {
-    position: relative;
-    width: 100%;
-    max-width: 42rem;
-    margin: 0;
-    justify-self: end;
-  }
-
-  .hero-visual::before {
-    content: "";
-    position: absolute;
-    inset: 7% 2% 3% 12%;
-    z-index: -1;
-    border-radius: 3rem;
-    background: rgba(105, 210, 84, 0.13);
-    filter: blur(2.2rem);
-  }
-
-  .hero-visual img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: min(76vh, 50rem);
-    object-fit: contain;
-    object-position: center;
-    filter: drop-shadow(0 30px 52px rgba(15, 18, 19, 0.12));
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 100%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 100%);
-  }
-
   @media (max-width: 1120px) {
     .section-hero {
       align-items: flex-start;
     }
 
+    .hero-copy {
+      max-width: 42rem;
+    }
+
+    .hero-background img {
+      object-position: 58% center;
+    }
+
+    .hero-background::after {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 252, 0.99) 0%,
+        rgba(255, 255, 252, 0.94) 42%,
+        rgba(255, 255, 252, 0.62) 58%,
+        rgba(255, 255, 252, 0.08) 78%
+      );
+    }
+  }
+
+  @media (max-width: 860px) {
+    .section-hero {
+      min-height: auto;
+      padding: 7.3rem 0 0;
+    }
+
     .hero-content {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
+      width: min(100% - 1.35rem, 1260px);
     }
 
     .hero-copy {
-      max-width: 50rem;
+      max-width: 42rem;
       margin: 0 auto;
       text-align: center;
     }
@@ -321,31 +336,40 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       margin-inline: auto;
     }
 
-    .hero-scope {
-      justify-content: center;
-    }
-
+    .hero-scope,
     .button-group {
       justify-content: center;
     }
 
-    .hero-visual {
-      width: min(100%, 40rem);
-      margin: 0 auto;
-      justify-self: center;
+    .hero-mobile-visual-spacer {
+      display: block;
+      height: clamp(23rem, 88vw, 34rem);
+    }
+
+    .hero-background img {
+      top: auto;
+      bottom: 0;
+      height: auto;
+      min-height: 0;
+      object-fit: contain;
+      object-position: center bottom;
+      transform: scale(1.18);
+      transform-origin: 66% bottom;
+    }
+
+    .hero-background::after {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 252, 1) 0%,
+        rgba(255, 255, 252, 0.98) 47%,
+        rgba(255, 255, 252, 0.74) 56%,
+        rgba(255, 255, 252, 0.12) 68%,
+        rgba(255, 255, 252, 0) 80%
+      );
     }
   }
 
   @media (max-width: 760px) {
-    .section-hero {
-      padding: 7.2rem 0 3.5rem;
-    }
-
-    .hero-content {
-      gap: 2.1rem;
-      width: min(100% - 1.35rem, 1260px);
-    }
-
     .hero-kicker {
       max-width: 100%;
       margin-bottom: 1.05rem;
@@ -395,16 +419,21 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     .button-group .button {
       justify-content: center;
     }
+  }
 
-    .hero-visual {
-      width: min(100%, 32rem);
+  @media (max-width: 480px) {
+    .hero-mobile-visual-spacer {
+      height: 24rem;
     }
 
-    .hero-visual img {
-      max-height: none;
-      -webkit-mask-image: none;
-      mask-image: none;
-      border-radius: 1.4rem;
+    .hero-background img {
+      width: auto;
+      height: 26rem;
+      max-width: none;
+      left: 50%;
+      right: auto;
+      transform: translateX(-62%);
+      transform-origin: center bottom;
     }
   }
 
