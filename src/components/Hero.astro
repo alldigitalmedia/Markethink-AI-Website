@@ -7,14 +7,15 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   <div class="hero-plant-blur" aria-hidden="true"></div>
   <div class="container hero-content">
     <div class="hero-copy">
-      <p class="hero-kicker"><span aria-hidden="true">✦</span> AI-powered marketing operations</p>
-      <h1 class="hero-heading" aria-label="Your marketing should work as hard as you do.">
-        Your marketing should<br />work <em>as hard</em> as you do.
+      <p class="hero-kicker"><span aria-hidden="true">✦</span> AI marketing system managed by expert marketers</p>
+      <h1 class="hero-heading" aria-label="Grow your business with Markethink.">
+        Grow your business<br />with <em>Markethink.</em>
       </h1>
       <p class="hero-description">
-        An AI marketing operator does the work around the clock.<br />
-        A real marketer dedicated to your business reviews what ships.<br />
-        You approve from your phone.
+        <strong>An AI marketing system managed by expert marketers.</strong> It learns and remembers your business, runs your marketing day to day, connects campaigns to leads, CRM, follow-up, and conversion, and improves with every approval, correction, and result.
+      </p>
+      <p class="hero-scope" aria-label="Website, Social, Content, Campaigns, Advertising, Leads, CRM">
+        Website <span aria-hidden="true">·</span> Social <span aria-hidden="true">·</span> Content <span aria-hidden="true">·</span> Campaigns <span aria-hidden="true">·</span> Advertising <span aria-hidden="true">·</span> Leads <span aria-hidden="true">·</span> CRM
       </p>
       <div class="button-group">
         <a href={walkthroughHref} class="button">Book a Walkthrough →</a>
@@ -203,6 +204,28 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     font-weight: 500;
     line-height: 1.55;
     letter-spacing: -0.016em;
+  }
+
+  .hero-description strong {
+    color: #0f1213;
+    font-weight: 750;
+  }
+
+  .hero-scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem 0.58rem;
+    margin: 1rem 0 0;
+    color: rgba(15, 18, 19, 0.62);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 750;
+    letter-spacing: 0.015em;
+    line-height: 1.4;
+  }
+
+  .hero-scope span {
+    color: #43b83d;
   }
 
   .button-group {
@@ -553,7 +576,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       text-align: center;
     }
 
-    .button-group {
+    .button-group,
+    .hero-scope {
       justify-content: center;
     }
 
