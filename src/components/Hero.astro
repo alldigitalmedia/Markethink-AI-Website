@@ -7,8 +7,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   <figure class="hero-background" aria-hidden="true">
     <img
       src="/images/hero-phone-workspace.svg"
-      width="1536"
-      height="1024"
+      width="1280"
+      height="720"
       alt=""
       loading="eager"
       decoding="async"
@@ -21,7 +21,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       <p class="hero-kicker"><span aria-hidden="true">✦</span> AI marketing system managed by expert marketers</p>
 
       <h1 class="hero-heading" aria-label="Grow your business with Markethink.">
-        Grow your business<br />with <em>Markethink.</em>
+        <span class="hero-heading-line">Grow your business</span><br />with <em>Markethink.</em>
       </h1>
 
       <p class="hero-description">
@@ -101,65 +101,12 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     </div>
     <div class="hero-mobile-visual-spacer" aria-hidden="true"></div>
 
-    <aside class="hero-callouts" aria-label="Markethink workflow outcomes">
-      <svg class="callout-connectors" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <marker id="callout-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z"></path>
-          </marker>
-        </defs>
-        <path d="M 675 205 C 735 190, 760 155, 820 145"></path>
-        <path d="M 705 365 C 760 365, 780 345, 830 340"></path>
-        <path d="M 690 535 C 745 550, 760 585, 815 595"></path>
-      </svg>
-
-      <article class="hero-callout callout-page">
-        <header>
-          <span class="callout-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6Z"></path><path d="M15 3v5h4M9 12h7M9 16h5"></path></svg>
-          </span>
-          <div><strong>Landing page</strong><small>Ready to launch</small></div>
-          <span class="callout-status">Approved</span>
-        </header>
-        <div class="page-preview" aria-hidden="true">
-          <span class="preview-kicker"></span>
-          <span class="preview-title"></span>
-          <span class="preview-title is-short"></span>
-          <span class="preview-copy"></span>
-          <span class="preview-button"></span>
-          <span class="preview-image"></span>
-        </div>
-      </article>
-
-      <article class="hero-callout callout-pipeline">
-        <header>
-          <span class="callout-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.5"></circle><circle cx="19" cy="6" r="2.5"></circle><circle cx="19" cy="18" r="2.5"></circle><path d="M7.5 12h3.5c3 0 3-6 5.5-6M11 12c3 0 3 6 5.5 6"></path></svg>
-          </span>
-          <div><strong>Campaign connected</strong><small>Tracking conversion</small></div>
-        </header>
-        <div class="pipeline-flow" aria-label="Campaign to leads to CRM to follow-up">
-          <span>Campaign</span><i>→</i><span>Leads</span><i>→</i><span>CRM</span><i>→</i><span>Follow-up</span>
-        </div>
-      </article>
-
-      <article class="hero-callout callout-lead">
-        <header>
-          <span class="callout-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20v-2c0-3 2.2-5 6-5s6 2 6 5v2M18 5v6M15 8h6"></path></svg>
-          </span>
-          <div><strong>New inquiry</strong><small>Added to CRM</small></div>
-          <span class="callout-status">Follow-up ready</span>
-        </header>
-      </article>
-    </aside>
   </div>
 </section>
 
 <style>
   .section-hero {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: min(100svh, 54rem);
     display: flex;
     align-items: center;
     position: relative;
@@ -184,11 +131,11 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 252, 0.98) 0%,
-      rgba(255, 255, 252, 0.92) 31%,
-      rgba(255, 255, 252, 0.58) 45%,
-      rgba(255, 255, 252, 0.08) 61%,
-      rgba(255, 255, 252, 0) 76%
+      rgba(255, 255, 252, 0.96) 0%,
+      rgba(255, 255, 252, 0.9) 27%,
+      rgba(255, 255, 252, 0.55) 42%,
+      rgba(255, 255, 252, 0.08) 56%,
+      rgba(255, 255, 252, 0) 68%
     );
   }
 
@@ -209,215 +156,13 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   }
 
   .hero-copy {
-    max-width: min(48rem, 56%);
+    max-width: min(32rem, 40%);
+    transform: translateY(-0.75rem);
     text-align: left;
   }
 
   .hero-mobile-visual-spacer {
     display: none;
-  }
-
-  .hero-callouts {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .callout-connectors {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-
-  .callout-connectors path {
-    fill: none;
-    stroke: rgba(53, 170, 53, 0.8);
-    stroke-width: 1.4;
-    stroke-dasharray: 5 7;
-    stroke-linecap: round;
-    marker-end: url(#callout-arrow);
-  }
-
-  .callout-connectors marker path {
-    fill: #35aa35;
-    stroke: none;
-  }
-
-  .hero-callout {
-    position: absolute;
-    width: 17rem;
-    padding: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 1.05rem;
-    background: rgba(255, 255, 252, 0.9);
-    box-shadow: 0 18px 42px rgba(15, 18, 19, 0.13);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    color: #0f1213;
-    font-family: var(--font-body);
-  }
-
-  .hero-callout header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.62rem;
-  }
-
-  .hero-callout header > div {
-    min-width: 0;
-  }
-
-  .hero-callout strong,
-  .hero-callout small {
-    display: block;
-    margin: 0;
-  }
-
-  .hero-callout strong {
-    font-size: 0.78rem;
-    font-weight: 800;
-    line-height: 1.15;
-  }
-
-  .hero-callout small {
-    margin-top: 0.18rem;
-    color: rgba(15, 18, 19, 0.55);
-    font-size: 0.65rem;
-    font-weight: 650;
-    line-height: 1.2;
-  }
-
-  .callout-icon {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.65rem;
-    background: #edf4ea;
-    color: #299b2c;
-  }
-
-  .callout-icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .callout-status {
-    padding: 0.3rem 0.46rem;
-    border-radius: 999px;
-    background: rgba(105, 210, 84, 0.14);
-    color: #299b2c;
-    font-size: 0.57rem;
-    font-weight: 820;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .callout-page {
-    top: 14%;
-    right: 0;
-  }
-
-  .callout-pipeline {
-    top: 44%;
-    right: -1%;
-    width: 16rem;
-  }
-
-  .callout-lead {
-    right: 4%;
-    bottom: 7%;
-    width: 15.5rem;
-  }
-
-  .page-preview {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 42%;
-    grid-template-rows: repeat(5, auto);
-    gap: 0.25rem 0.55rem;
-    min-height: 5.1rem;
-    margin-top: 0.72rem;
-    padding: 0.7rem;
-    overflow: hidden;
-    border: 1px solid rgba(15, 18, 19, 0.06);
-    border-radius: 0.75rem;
-    background: #f7f8f4;
-  }
-
-  .page-preview span {
-    display: block;
-    border-radius: 999px;
-  }
-
-  .preview-kicker {
-    width: 45%;
-    height: 0.24rem;
-    background: #69d254;
-  }
-
-  .preview-title {
-    width: 92%;
-    height: 0.42rem;
-    background: #0f1213;
-  }
-
-  .preview-title.is-short {
-    width: 68%;
-  }
-
-  .preview-copy {
-    width: 82%;
-    height: 0.22rem;
-    background: rgba(15, 18, 19, 0.22);
-  }
-
-  .preview-button {
-    width: 46%;
-    height: 0.7rem;
-    margin-top: 0.18rem;
-    background: #69d254;
-  }
-
-  .preview-image {
-    grid-column: 2;
-    grid-row: 1 / 6;
-    width: 100%;
-    height: 100%;
-    min-height: 3.5rem;
-    border-radius: 0.55rem !important;
-    background:
-      linear-gradient(135deg, rgba(237, 244, 234, 0.5), rgba(105, 210, 84, 0.18)),
-      linear-gradient(45deg, #d7d9d3, #f5f5f1);
-  }
-
-  .pipeline-flow {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    margin-top: 0.72rem;
-    padding: 0.58rem;
-    border-radius: 0.72rem;
-    background: #edf4ea;
-    color: #0f1213;
-    font-size: 0.58rem;
-    font-weight: 760;
-    white-space: nowrap;
-  }
-
-  .pipeline-flow i {
-    color: #35aa35;
-    font-style: normal;
-    font-weight: 900;
   }
 
   .hero-kicker {
@@ -439,12 +184,16 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
   .hero-heading {
     margin: 0;
-    max-width: 47rem;
+    max-width: 38rem;
     color: #0a0d0e;
-    font-size: clamp(3.85rem, 6.15vw, 6.65rem);
+    font-size: clamp(3.5rem, 5.25vw, 5.65rem);
     line-height: 0.94;
     letter-spacing: -0.057em;
     text-wrap: balance;
+  }
+
+  .hero-heading-line {
+    white-space: nowrap;
   }
 
   .hero-heading em {
@@ -454,7 +203,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
   }
 
   .hero-description {
-    max-width: 42rem;
+    max-width: 31.5rem;
     margin: clamp(1.4rem, 2.1vw, 1.8rem) 0 0;
     color: rgba(15, 18, 19, 0.68);
     font-size: clamp(1rem, 1.08vw, 1.15rem);
@@ -554,7 +303,8 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     }
 
     .hero-copy {
-      max-width: 42rem;
+      max-width: min(33rem, 49%);
+      transform: none;
     }
 
     .hero-background img {
@@ -605,12 +355,11 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     .hero-background img {
       top: auto;
       bottom: 0;
-      height: auto;
+      height: clamp(18rem, 68vw, 26rem);
       min-height: 0;
-      object-fit: contain;
-      object-position: center bottom;
-      transform: scale(1.18);
-      transform-origin: 66% bottom;
+      object-fit: cover;
+      object-position: 64% center;
+      transform: none;
     }
 
     .hero-background::after {
@@ -624,37 +373,6 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       );
     }
 
-    .hero-callouts {
-      position: relative;
-      inset: auto;
-      display: grid;
-      gap: 0.8rem;
-      width: min(100%, 28rem);
-      margin: -11rem auto 2rem;
-      padding: 0 0.35rem;
-    }
-
-    .callout-connectors {
-      display: none;
-    }
-
-    .hero-callout,
-    .callout-page,
-    .callout-pipeline,
-    .callout-lead {
-      position: relative;
-      inset: auto;
-      width: min(100%, 21rem);
-    }
-
-    .callout-page,
-    .callout-lead {
-      justify-self: start;
-    }
-
-    .callout-pipeline {
-      justify-self: end;
-    }
   }
 
   @media (max-width: 760px) {
@@ -711,17 +429,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
 
   @media (max-width: 480px) {
     .hero-mobile-visual-spacer {
-      height: 24rem;
-    }
-
-    .hero-background img {
-      width: auto;
-      height: 26rem;
-      max-width: none;
-      left: 50%;
-      right: auto;
-      transform: translateX(-62%);
-      transform-origin: center bottom;
+      height: 19rem;
     }
   }
 
