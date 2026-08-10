@@ -1,0 +1,302 @@
+---
+const useCases = [
+  {
+    task: "Customer and market research",
+    aiRole: "Organize reviews, call notes, questions, and competitor themes into patterns.",
+    humanCheck: "Confirm the sources, choose the real customer problem, and reject invented conclusions.",
+    measure: "Useful insights added to the brief",
+  },
+  {
+    task: "Campaign planning",
+    aiRole: "Turn one goal into a channel plan, asset list, timeline, and first-draft brief.",
+    humanCheck: "Set the audience, offer, proof, budget, risk, and final campaign priority.",
+    measure: "Approved brief and assets shipped",
+  },
+  {
+    task: "Content production",
+    aiRole: "Draft landing copy, emails, social concepts, blog outlines, FAQs, and variants.",
+    humanCheck: "Direct the angle, fact-check claims, protect the voice, and approve the final work.",
+    measure: "Qualified visits, replies, and conversions",
+  },
+  {
+    task: "Lead capture and follow-up",
+    aiRole: "Classify inquiries, prepare response drafts, summarize context, and remind the team about next steps.",
+    humanCheck: "Qualify the opportunity, own the relationship, approve sensitive messages, and close the loop.",
+    measure: "Response time and qualified conversations",
+  },
+  {
+    task: "Reporting and learning",
+    aiRole: "Collect results, compare them with the goal, and surface patterns worth testing next.",
+    humanCheck: "Interpret causality, choose the next move, and decide which learning becomes part of the system.",
+    measure: "Decisions made from real results",
+  },
+];
+
+const workflowSteps = [
+  ["Goal", "Choose one business outcome."],
+  ["Brief", "Define the audience, offer, proof, and CTA."],
+  ["Create", "Produce the connected asset set."],
+  ["Review", "Experts check strategy, quality, and claims."],
+  ["Approve", "The business makes the final decision."],
+  ["Launch", "Publish across the selected channels."],
+  ["Capture", "Route responses and leads into one place."],
+  ["Follow up", "Respond with context and a clear next step."],
+  ["Learn", "Use approvals and results to improve the next cycle."],
+];
+
+const ownershipRows = [
+  ["Business goal and offer", "Support", "Direct", "Approve"],
+  ["Research and synthesis", "Produce", "Validate", "Inform"],
+  ["Campaign strategy", "Support", "Own", "Approve"],
+  ["Copy and creative drafts", "Produce", "Direct and review", "Approve"],
+  ["Claims, pricing, and risk", "Flag", "Review", "Own"],
+  ["Publishing and workflow", "Execute approved work", "Supervise", "Authorize"],
+  ["Lead response drafts", "Prepare", "Review when needed", "Own relationship"],
+  ["Performance analysis", "Organize", "Interpret", "Choose next priority"],
+];
+
+const monthPlan = [
+  ["Week 1", "Choose the outcome and build context", "Pick one offer, audience, CTA, and result to improve. Gather approved brand, customer, proof, channel, and risk inputs."],
+  ["Week 2", "Build one connected campaign", "Create the minimum useful asset set: landing update, primary content, email or follow-up, lead route, and measurement plan."],
+  ["Week 3", "Review, approve, and launch", "Check facts and brand fit. Capture every correction. Publish only the approved version and confirm the response path works."],
+  ["Week 4", "Follow up and learn", "Review inquiries, response time, conversion steps, and asset performance. Choose one change for the next cycle."],
+];
+---
+
+<div class="practical-guide">
+  <section id="section-1" class="guide-section">
+    <p class="eyebrow">THE PRACTICAL START</p>
+    <h2>Start with one business outcome, not an AI tool.</h2>
+    <p>Small businesses often begin by asking which AI marketing tools they should use. That is the wrong first question. A tool can produce more activity without improving the business. The useful starting point is a result: more qualified consultations, more repeat purchases, better lead response, a stronger launch, or a website that converts more of the demand you already have.</p>
+    <p>Write the outcome in plain language and connect it to one measurable action. “Get more leads” is too broad. “Generate qualified walkthrough requests for our highest-value service” gives the campaign a buyer, an offer, and a next step.</p>
+    <div class="answer-card">
+      <strong>Quick answer: How should a small business use AI for marketing?</strong>
+      <p>Use AI to accelerate research, organize information, draft connected campaign assets, support repetitive execution, and surface results. Keep expert marketers responsible for strategy, creative direction, review, and accountability. Keep the business responsible for offers, claims, brand decisions, risk, and final approval.</p>
+    </div>
+    <div class="goal-grid" aria-label="Three-part campaign goal">
+      <article><span>01</span><h3>Business result</h3><p>What should change for the business?</p></article>
+      <article><span>02</span><h3>Buyer action</h3><p>What should the right person do next?</p></article>
+      <article><span>03</span><h3>Success signal</h3><p>What evidence will show useful movement?</p></article>
+    </div>
+  </section>
+
+  <section id="section-2" class="guide-section">
+    <p class="eyebrow">THE CONTEXT PACK</p>
+    <h2>Build the business context AI needs before you ask it to create.</h2>
+    <p>AI output becomes generic when the input is generic. Before drafting a campaign, collect the information a capable marketer would ask for. This is more valuable than a clever one-off prompt because the same approved context can support the website, social content, email, advertising, lead follow-up, and future campaigns.</p>
+    <div class="checklist-panel">
+      <div>
+        <h3>Business</h3>
+        <ul><li>Offer and price posture</li><li>Ideal customer and buying situation</li><li>Geography and service constraints</li><li>Primary business goal</li></ul>
+      </div>
+      <div>
+        <h3>Brand</h3>
+        <ul><li>Approved voice and visual references</li><li>Claims the business can prove</li><li>Words, promises, and visuals to avoid</li><li>Examples the team has approved</li></ul>
+      </div>
+      <div>
+        <h3>Campaign</h3>
+        <ul><li>Audience, offer, and objection</li><li>Primary CTA and follow-up path</li><li>Channels and asset requirements</li><li>Owner, reviewer, and approval deadline</li></ul>
+      </div>
+    </div>
+    <h3 class="subhead">Use evidence the business already has.</h3>
+    <p>The strongest context usually comes from ordinary operating material: sales-call notes, customer emails, search queries, form submissions, support questions, approved proposals, product details, and the edits leaders make repeatedly. AI can help sort this material into themes, but it should preserve the source so a reviewer can distinguish a real customer pattern from a plausible-sounding invention.</p>
+    <p>Separate the pack into three levels. <strong>Approved facts</strong> can appear in public work. <strong>Working hypotheses</strong> can guide research and testing but should not be stated as facts. <strong>Restricted information</strong> should not enter a marketing workflow unless the business has explicitly approved how it will be handled. This simple distinction makes research faster and review safer.</p>
+    <p>A simple rule helps: if a fact would matter to a customer, do not let AI guess it. Supply it, verify it, or leave it out.</p>
+  </section>
+
+  <section id="section-3" class="guide-section">
+    <p class="eyebrow">THE OPERATING LOOP</p>
+    <h2>Follow one workflow from goal to result.</h2>
+    <p>The biggest weakness in many AI marketing guides is that they stop after content creation. Small businesses need the full path. A useful campaign must reach the buyer, capture the response, support follow-up, and teach the team what to do next.</p>
+    <div class="workflow-loop" aria-label="Nine-step AI marketing workflow">
+      {workflowSteps.map(([title, copy], index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>
+      ))}
+    </div>
+    <figure class="guide-image">
+      <img src="/images/ai-marketing-guide/ai-marketing-guide-campaign.svg" alt="A small-business founder and expert marketer planning a connected campaign from brief through approval" width="1536" height="1024" loading="lazy" />
+      <figcaption>AI can accelerate the work. The campaign still needs a clear goal, expert direction, business approval, and a real path to follow-up.</figcaption>
+    </figure>
+  </section>
+
+  <section id="section-4" class="guide-section">
+    <p class="eyebrow">USE-CASE PRIORITY</p>
+    <h2>Use AI where it removes friction without removing judgment.</h2>
+    <p>The best AI marketing use cases are repetitive enough to benefit from speed and important enough to stay connected to strategy. Start where work repeatedly stalls: research synthesis, campaign briefs, first drafts, website updates, content adaptation, lead routing, follow-up preparation, or reporting.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Practical AI marketing use cases for small businesses</caption>
+        <thead><tr><th>Marketing task</th><th>Useful AI role</th><th>Human check</th><th>Measure</th></tr></thead>
+        <tbody>{useCases.map((row) => (<tr><th scope="row">{row.task}</th><td>{row.aiRole}</td><td>{row.humanCheck}</td><td>{row.measure}</td></tr>))}</tbody>
+      </table>
+    </div>
+    <h3 class="subhead">Prioritize tasks by repetition, context, and risk.</h3>
+    <p>A good first task happens often, uses information you can supply, and has a clear review point. Summarizing ten customer interviews is a better starting use case than asking AI to invent a new market position. Turning an approved campaign brief into channel-specific first drafts is safer than asking separate tools to decide the strategy independently.</p>
+    <p>Use a three-level rule. <strong>Assist</strong> means AI prepares material while a person does the task. <strong>Execute after approval</strong> means AI can move a repetitive step once the inputs and final version are approved. <strong>Human only</strong> covers decisions where trust, negotiation, privacy, reputation, or business risk outweigh the benefit of automation. Most small businesses should begin with Assist, document what works, and expand only when the review standard is reliable.</p>
+    <div class="priority-note"><strong>Recommended first use case:</strong> build one campaign brief and its connected asset list. It forces the business to clarify the goal before AI creates more material.</div>
+  </section>
+
+  <section id="section-5" class="guide-section">
+    <p class="eyebrow">INTERACTIVE TOOL</p>
+    <h2>Build your first AI marketing workflow.</h2>
+    <p>Choose the situation that best matches your business. This tool produces a practical first workflow, not a generic list of apps.</p>
+    <form class="workflow-builder" id="workflow-builder">
+      <div class="builder-fields">
+        <label>Primary goal<select name="goal"><option value="qualified leads">Generate qualified leads</option><option value="more consultations">Book more consultations</option><option value="repeat purchases">Increase repeat purchases</option><option value="launch demand">Support a launch</option><option value="consistent visibility">Build consistent visibility</option></select></label>
+        <label>Business type<select name="business"><option value="service business">Service business</option><option value="local business">Local business</option><option value="B2B company">B2B company</option><option value="ecommerce brand">Ecommerce brand</option><option value="agency">Agency</option></select></label>
+        <label>Primary channel<select name="channel"><option value="website and search">Website and search</option><option value="social media">Social media</option><option value="email">Email</option><option value="paid advertising">Paid advertising</option><option value="outreach">Targeted outreach</option></select></label>
+        <label>Current bottleneck<select name="bottleneck"><option value="unclear offer">The offer is unclear</option><option value="inconsistent production">Content is inconsistent</option><option value="slow approvals">Approvals are slow</option><option value="weak follow-up">Lead follow-up is weak</option><option value="scattered measurement">Results are scattered</option></select></label>
+      </div>
+      <button class="builder-button" type="submit">Build my workflow</button>
+    </form>
+    <div class="builder-output" id="builder-output" aria-live="polite">
+      <p class="output-label">YOUR STARTING WORKFLOW</p>
+      <h3>Choose your inputs, then build the plan.</h3>
+      <p>The result will include a campaign focus, minimum asset set, review checkpoint, lead path, and first measurement.</p>
+    </div>
+
+    <div class="brief-template">
+      <div class="template-heading"><div><p class="eyebrow">COPYABLE TEMPLATE</p><h3>Small-business AI campaign brief</h3></div><button type="button" id="copy-brief">Copy template</button></div>
+      <pre id="campaign-brief">BUSINESS OUTCOME:
+BUYER ACTION:
+AUDIENCE:
+OFFER:
+CUSTOMER PROBLEM:
+PROOF WE CAN USE:
+PRIMARY MESSAGE:
+CHANNELS:
+ASSETS REQUIRED:
+CALL TO ACTION:
+LEAD CAPTURE PATH:
+FOLLOW-UP OWNER AND TIMING:
+CLAIMS OR RISKS TO REVIEW:
+SUCCESS SIGNALS:
+FINAL APPROVER:</pre>
+    </div>
+  </section>
+
+  <section id="section-6" class="guide-section">
+    <p class="eyebrow">PIPELINE CONNECTION</p>
+    <h2>Connect the campaign to leads, CRM, and follow-up.</h2>
+    <p>Marketing is not complete when a post is published or an ad begins running. Decide where the response goes before launch. Every form, message, call, or reply should have an owner, enough source context, and a clear next action.</p>
+    <div class="pipeline-strip">
+      <article><span>1</span><h3>Capture</h3><p>Collect the inquiry with source, campaign, offer, and consent context.</p></article>
+      <article><span>2</span><h3>Qualify</h3><p>Separate real opportunities from spam, poor fit, and requests needing more information.</p></article>
+      <article><span>3</span><h3>Respond</h3><p>Use context to prepare a useful, human reply and a specific next step.</p></article>
+      <article><span>4</span><h3>Learn</h3><p>Feed objections, questions, wins, and losses back into the next campaign.</p></article>
+    </div>
+    <h3 class="subhead">Example: from a campaign click to a useful conversation.</h3>
+    <p>Imagine a local service business runs a campaign for a high-value consultation. The landing form records the service, location, campaign source, timing, and the question the prospect wants answered. AI summarizes the inquiry and prepares a response using the approved offer and scheduling rules. A person checks fit, personalizes the message, and owns the conversation. If the same objection appears repeatedly, the marketing team updates the landing page and next campaign brief. The workflow does more than move a lead. It improves the marketing that created the lead.</p>
+    <figure class="guide-image">
+      <img src="/images/ai-marketing-guide/ai-marketing-guide-followup.svg" alt="A business owner and expert marketer organizing a lead, CRM next step, and follow-up" width="1536" height="1024" loading="lazy" />
+      <figcaption>The system should preserve campaign context so follow-up feels informed, not automated for its own sake.</figcaption>
+    </figure>
+    <p>AI can summarize the inquiry, suggest a reply, route a task, or flag an overdue next step. The business still owns the relationship. Sensitive, high-value, unusual, or unhappy-customer conversations should receive direct human judgment.</p>
+  </section>
+
+  <section id="section-7" class="guide-section">
+    <p class="eyebrow">RESPONSIBILITY MATRIX</p>
+    <h2>Decide what AI does, what experts own, and what the business approves.</h2>
+    <p>Clear ownership prevents two common failures: people trusting unreviewed output, or people reviewing every tiny task because the system has no rules. The right boundary depends on risk, but this matrix is a practical default.</p>
+    <div class="table-wrap ownership-table">
+      <table>
+        <caption>AI marketing responsibility matrix</caption>
+        <thead><tr><th>Decision or task</th><th>AI system</th><th>Expert marketers</th><th>Business</th></tr></thead>
+        <tbody>{ownershipRows.map((row) => (<tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>)}</tr>))}</tbody>
+      </table>
+    </div>
+    <div class="risk-rule"><strong>Increase human review when the risk increases.</strong> Pricing, customer promises, regulated topics, reputation-sensitive messages, personal data, major budget decisions, and public claims should never move on generic automation.</div>
+  </section>
+
+  <section id="section-8" class="guide-section">
+    <p class="eyebrow">MEASUREMENT</p>
+    <h2>Measure movement through the system, not AI output volume.</h2>
+    <p>More drafts, posts, and prompts are production metrics. They do not prove the marketing worked. Choose one primary business signal and a small set of diagnostic signals that explain what happened.</p>
+    <div class="measure-grid">
+      <article><p>Primary outcome</p><h3>Qualified actions</h3><span>Consultations, purchases, demos, replies, or other real next steps.</span></article>
+      <article><p>Conversion signal</p><h3>Buyer movement</h3><span>Landing conversion, form completion, reply rate, or sales-stage progress.</span></article>
+      <article><p>Operating signal</p><h3>Workflow health</h3><span>Approval time, response time, publishing consistency, and overdue follow-up.</span></article>
+      <article><p>Learning signal</p><h3>Better next decisions</h3><span>Which message, offer, objection, or channel should change next?</span></article>
+    </div>
+    <h3 class="subhead">Use a simple review cadence.</h3>
+    <p>Check operating signals weekly: what shipped, what is waiting for approval, which inquiries need a response, and whether tracking is intact. Review business outcomes on a cadence that matches the buying cycle. A local appointment campaign may show useful signals quickly; a complex B2B service may need a longer window before qualified opportunities mature.</p>
+    <p>Compare results with the original brief, not with a vague expectation that AI should make everything better. Ask four questions: Did the right audience see the campaign? Did the message create the intended action? Did the follow-up happen with enough context? What single change has the best evidence behind it? Keep the answer with the campaign record so the next brief starts from reality.</p>
+    <p>Do not change everything at once. Record the goal, the approved campaign, the result, and the next hypothesis. That is how AI marketing becomes a learning loop instead of a content machine.</p>
+  </section>
+
+  <section id="section-9" class="guide-section">
+    <p class="eyebrow">30-DAY PLAN</p>
+    <h2>Use the first month to prove one repeatable workflow.</h2>
+    <p>The first month should not be a race to automate every channel. It should show that one campaign can move from business context to approved execution, lead response, and a better next decision.</p>
+    <div class="month-plan">{monthPlan.map(([week, title, copy]) => (<article><span>{week}</span><div><h3>{title}</h3><p>{copy}</p></div></article>))}</div>
+    <div class="definition-card">
+      <strong>Definition of done after 30 days</strong>
+      <ul><li>One clear business outcome and campaign brief</li><li>One connected set of approved marketing assets</li><li>One working lead capture and follow-up path</li><li>One results review with a documented next move</li><li>Captured corrections that make the next cycle sharper</li></ul>
+    </div>
+    <h3 class="subhead">Expand only after the first loop is dependable.</h3>
+    <p>Add another channel when the team can explain why it belongs in the campaign, who will review the work, where responses will go, and how success will be judged. Add more automation when exceptions are understood and a person can intervene. Add more content volume only when the existing work is accurate, differentiated, and connected to a buyer action. This keeps growth from multiplying confusion.</p>
+  </section>
+
+  <section id="section-10" class="guide-section">
+    <p class="eyebrow">COMMON MISTAKES</p>
+    <h2>Avoid the shortcuts that create more marketing noise.</h2>
+    <div class="mistake-grid">
+      <article><h3>Starting with tools</h3><p>Fix: start with the business result, then choose the smallest useful workflow.</p></article>
+      <article><h3>Publishing first drafts</h3><p>Fix: require review for facts, claims, offer clarity, brand fit, and customer risk.</p></article>
+      <article><h3>Generating isolated assets</h3><p>Fix: build landing, content, email, ad, capture, and follow-up around one campaign brief.</p></article>
+      <article><h3>Automating the relationship</h3><p>Fix: use AI for preparation and routing while people own important conversations.</p></article>
+      <article><h3>Ignoring approved feedback</h3><p>Fix: record corrections so the next campaign starts with better context.</p></article>
+      <article><h3>Measuring content volume</h3><p>Fix: measure qualified actions, buyer movement, workflow health, and learning.</p></article>
+    </div>
+    <p>The practical advantage is not that AI can make more marketing. It is that a well-managed system can help a small business plan, ship, follow up, and learn more consistently without lowering the standard.</p>
+  </section>
+</div>
+
+<script>
+  const builder = document.querySelector<HTMLFormElement>("#workflow-builder");
+  const output = document.querySelector<HTMLElement>("#builder-output");
+  const bottleneckMoves: Record<string, string> = {
+    "unclear offer": "Begin with a 60-minute offer and customer-message review before producing assets.",
+    "inconsistent production": "Create one reusable campaign brief and a minimum weekly asset rhythm.",
+    "slow approvals": "Name one final approver, one review deadline, and the exact claims requiring business sign-off.",
+    "weak follow-up": "Define lead source fields, response ownership, and a same-business-day next-step standard.",
+    "scattered measurement": "Create one campaign record with a primary outcome and three diagnostic signals.",
+  };
+  const channelAssets: Record<string, string> = {
+    "website and search": "one intent-matched landing update, one supporting article or FAQ block, and one conversion path",
+    "social media": "one campaign concept, three connected posts, one landing destination, and one reply path",
+    email: "one audience segment, a short email sequence, one landing destination, and a reply workflow",
+    "paid advertising": "one offer, one landing page, a small creative set, lead tracking, and follow-up ownership",
+    outreach: "one focused prospect segment, a short human message sequence, qualification notes, and CRM next steps",
+  };
+  builder?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!output) return;
+    const data = new FormData(builder);
+    const goal = String(data.get("goal"));
+    const business = String(data.get("business"));
+    const channel = String(data.get("channel"));
+    const bottleneck = String(data.get("bottleneck"));
+    output.innerHTML = `<p class="output-label">YOUR STARTING WORKFLOW</p><h3>Build one ${channel} campaign to achieve ${goal}.</h3><ol><li><strong>Clarify:</strong> For this ${business}, define one audience, one offer, one proof point, and one buyer action.</li><li><strong>Correct the bottleneck:</strong> ${bottleneckMoves[bottleneck]}</li><li><strong>Create:</strong> Build ${channelAssets[channel]}.</li><li><strong>Review:</strong> An expert checks strategy, facts, creative quality, and the connection between every asset.</li><li><strong>Approve and launch:</strong> The business approves the offer, claims, brand decisions, and final version.</li><li><strong>Capture and follow up:</strong> Route every response with campaign context and a named owner.</li><li><strong>Measure:</strong> Track ${goal}, conversion into the next step, response time, and one learning for the next campaign.</li></ol>`;
+  });
+  const copyButton = document.querySelector<HTMLButtonElement>("#copy-brief");
+  const brief = document.querySelector<HTMLElement>("#campaign-brief");
+  copyButton?.addEventListener("click", async () => {
+    if (!brief) return;
+    try {
+      await navigator.clipboard.writeText(brief.textContent || "");
+      copyButton.textContent = "Copied";
+      window.setTimeout(() => (copyButton.textContent = "Copy template"), 1800);
+    } catch {
+      copyButton.textContent = "Select and copy";
+    }
+  });
+</script>
+
+<style>
+  .practical-guide{display:flex;flex-direction:column;gap:0}.guide-section{padding:1rem 0 4.5rem;scroll-margin-top:7rem}.guide-section+ .guide-section{border-top:1px solid rgba(15,18,19,.1);padding-top:4.5rem}.guide-section h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.5rem}.subhead{font-family:var(--font-body);font-size:1.3rem;line-height:1.3;margin:2rem 0 .75rem}.guide-section>p{font-size:1.08rem;line-height:1.85;color:rgba(15,18,19,.76);margin:0 0 1.25rem}.eyebrow,.output-label{font-size:.72rem!important;letter-spacing:.14em;font-weight:700;color:#477a3b!important;margin-bottom:1rem!important}.answer-card,.definition-card,.risk-rule,.priority-note{border:1px solid rgba(15,18,19,.12);border-radius:22px;padding:1.5rem;background:#edf4ea;margin:2rem 0}.answer-card strong,.definition-card strong{display:block;font-size:1.1rem;margin-bottom:.55rem}.answer-card p,.risk-rule,.priority-note{line-height:1.7;color:rgba(15,18,19,.78)}.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}.goal-grid article,.measure-grid article,.mistake-grid article{background:#0f1213;color:#f5f5f1;border-radius:20px;padding:1.35rem}.goal-grid span{color:#69d254;font-weight:700;font-size:.75rem}.goal-grid h3,.measure-grid h3,.mistake-grid h3{font-family:var(--font-body);font-size:1.08rem;margin:.55rem 0}.goal-grid p,.measure-grid span,.mistake-grid p{font-size:.9rem;line-height:1.6;color:#b4b6b6}.checklist-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}.checklist-panel>div{background:#f5f5f1;border:1px solid rgba(15,18,19,.12);border-radius:20px;padding:1.35rem}.checklist-panel h3{font-family:var(--font-body);font-size:1.05rem;margin-bottom:.8rem}.checklist-panel ul,.definition-card ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.55rem;color:rgba(15,18,19,.72);line-height:1.5}.workflow-loop{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(15,18,19,.16);border:1px solid rgba(15,18,19,.16);border-radius:24px;overflow:hidden;margin:2rem 0}.workflow-loop article{background:#0f1213;color:#f5f5f1;padding:1.35rem;min-height:160px}.workflow-loop span{color:#69d254;font-size:.72rem;font-weight:700}.workflow-loop h3{font-family:var(--font-body);font-size:1.05rem;margin:.8rem 0 .4rem}.workflow-loop p{font-size:.88rem;line-height:1.55;color:#b4b6b6}.guide-image{margin:2.5rem 0}.guide-image img{display:block;width:100%;height:auto;border-radius:24px;background:#edf4ea}.guide-image figcaption{font-size:.82rem;line-height:1.55;color:#686b6c;margin-top:.75rem}.table-wrap{overflow-x:auto;margin:2rem 0;border:1px solid rgba(15,18,19,.12);border-radius:22px}.table-wrap table{border-collapse:collapse;width:100%;min-width:760px;background:#f5f5f1}.table-wrap caption{text-align:left;padding:1.2rem 1.25rem;font-weight:700;background:#0f1213;color:#f5f5f1}.table-wrap th,.table-wrap td{text-align:left;vertical-align:top;padding:1rem;border-bottom:1px solid rgba(15,18,19,.1);font-size:.88rem;line-height:1.55}.table-wrap thead th{background:#edf4ea;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}.table-wrap tbody th{width:18%;color:#0f1213}.workflow-builder{background:#0f1213;border-radius:24px;padding:1.5rem;margin:2rem 0 1rem;color:#f5f5f1}.builder-fields{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.builder-fields label{display:flex;flex-direction:column;gap:.5rem;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:#b4b6b6}.builder-fields select{width:100%;border:1px solid rgba(245,245,241,.18);border-radius:12px;background:#1a1e1f;color:#f5f5f1;padding:.85rem;font:inherit;text-transform:none;letter-spacing:0}.builder-button,.template-heading button{border:0;border-radius:999px;background:#69d254;color:#0f1213;font-weight:700;padding:.8rem 1.1rem;cursor:pointer}.builder-button{margin-top:1.25rem}.builder-output{background:#edf4ea;border-radius:22px;padding:1.5rem;margin-bottom:2rem}.builder-output h3{font-family:var(--font-body);font-size:1.25rem;margin-bottom:.65rem}.builder-output p,.builder-output li{line-height:1.65;color:rgba(15,18,19,.76)}.builder-output ol{padding-left:1.3rem;display:flex;flex-direction:column;gap:.65rem}.brief-template{border:1px solid rgba(15,18,19,.14);border-radius:22px;padding:1.4rem;margin:2rem 0}.template-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem}.template-heading h3{font-family:var(--font-body);font-size:1.2rem}.template-heading button{background:#0f1213;color:#f5f5f1}.brief-template pre{white-space:pre-wrap;background:#0f1213;color:#edf4ea;border-radius:16px;padding:1.25rem;line-height:1.75;font-size:.82rem;margin-top:1.2rem}.pipeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0}.pipeline-strip article{border-top:3px solid #69d254;background:#f5f5f1;border-radius:0 0 18px 18px;padding:1.2rem}.pipeline-strip span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#0f1213;color:#69d254;font-size:.75rem}.pipeline-strip h3{font-family:var(--font-body);font-size:1rem;margin:.8rem 0 .45rem}.pipeline-strip p{font-size:.86rem;line-height:1.55;color:#686b6c}.measure-grid,.mistake-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}.measure-grid article>p{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#69d254}.measure-grid h3{font-size:1.15rem}.month-plan{display:flex;flex-direction:column;gap:1rem;margin:2rem 0}.month-plan article{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;background:#f5f5f1;border:1px solid rgba(15,18,19,.1);border-radius:18px;padding:1.25rem}.month-plan span{color:#477a3b;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.month-plan h3{font-family:var(--font-body);font-size:1.05rem;margin-bottom:.35rem}.month-plan p{font-size:.9rem;line-height:1.6;color:#686b6c}.mistake-grid article{background:#f5f5f1;color:#0f1213;border:1px solid rgba(15,18,19,.1)}.mistake-grid p{color:#686b6c}.risk-rule{background:#0f1213;color:#f5f5f1}.risk-rule strong{color:#69d254}.ownership-table td:nth-child(2){background:rgba(105,210,84,.08)}@media(max-width:900px){.goal-grid,.checklist-panel,.workflow-loop,.pipeline-strip{grid-template-columns:1fr 1fr}.builder-fields,.measure-grid,.mistake-grid{grid-template-columns:1fr}}@media(max-width:600px){.guide-section{padding-bottom:3.5rem}.guide-section+ .guide-section{padding-top:3.5rem}.guide-section h2{font-size:2.35rem}.goal-grid,.checklist-panel,.workflow-loop,.pipeline-strip{grid-template-columns:1fr}.builder-fields{grid-template-columns:1fr}.workflow-builder,.builder-output,.brief-template{padding:1.15rem}.template-heading{align-items:flex-start;flex-direction:column}.month-plan article{grid-template-columns:1fr;gap:.5rem}.guide-image img{border-radius:16px}}
+</style>
