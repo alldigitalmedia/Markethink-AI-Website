@@ -1,41 +1,48 @@
 ---
 const steps = [
   {
-    eyebrow: "DAY 1",
+    eyebrow: "Day 1",
     title: "It learns your business",
-    description: "We ingest your website, socials, offers, positioning, voice, visual references, and approval rules. The context becomes a usable foundation for the work ahead.",
-    bullets: ["Business context", "Offers and audience", "Voice and visual rules"],
+    description: "We ingest your website, socials, and offers. Short intake in chat. Channels connected.",
+    bullets: [],
     image: "/images/process-markethink-learns-business.avif",
     alt: "Markethink organizing business context into a marketing foundation",
   },
   {
-    eyebrow: "WEEK 1",
+    eyebrow: "Week 1",
     title: "First work arrives",
-    description: "Reply in plain words or a voice note. Markethink revises the work, remembers why, and follows the approval rules you set.",
-    bullets: ["Campaign brief", "Priority deliverables", "Approvals from your phone"],
+    description: "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set.",
+    bullets: [],
     image: "/images/process-markethink-organized.avif",
     alt: "Campaign work organized in one connected Markethink workspace",
   },
   {
-    eyebrow: "EVERY WEEK",
+    eyebrow: "Every week",
     title: "The operation runs",
-    description: "The calendar moves, pages ship, campaigns launch, and follow-up runs through the channels connected to your plan.",
-    bullets: ["Work moves on schedule", "Expert direction", "Connected follow-up"],
+    description: "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone.",
+    bullets: [],
     image: "/images/process-markethink-learns-what-works.avif",
     alt: "Marketing work moving through review, approval, and follow-up",
   },
   {
-    eyebrow: "AS THE WORK CONTINUES",
+    eyebrow: "As the work continues",
     title: "Its context compounds",
-    description: "Every approval, correction, and result adds context. The work keeps getting sharper instead of restarting from zero.",
-    bullets: ["Approval memory", "Corrections carried forward", "Sharper next campaigns"],
+    description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.",
+    bullets: [],
     image: "/images/process-markethink-ai-improves.avif",
     alt: "Markethink applying accumulated business context to future campaigns",
   },
 ];
 ---
 
-<section class="story" id="how-it-works" data-scroll-story>
+<section class="story-intro" id="how-it-works" aria-labelledby="first-month-title">
+  <div class="story-intro-inner">
+    <p>How it works</p>
+    <h2 id="first-month-title">Your first 30 days</h2>
+  </div>
+</section>
+
+<section class="story" data-scroll-story>
   <div class="story-pin">
     <div class="story-shell">
       <div class="story-copy" aria-live="polite">
@@ -61,7 +68,6 @@ const steps = [
             <figcaption>
               <span class="visual-status"><i></i>{step.eyebrow}</span>
               <strong>{step.title}</strong>
-              <small>{index === 3 ? "Business context updated" : "Work moving through one operation"}</small>
             </figcaption>
           </figure>
         ))}
@@ -84,6 +90,13 @@ const steps = [
     const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-story-panel]"));
     const visuals = Array.from(root.querySelectorAll<HTMLElement>("[data-story-visual]"));
     const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-story-dot]"));
+
+    if (window.matchMedia("(max-width: 860px)").matches) {
+      panels.forEach((panel) => panel.removeAttribute("style"));
+      visuals.forEach((visual) => visual.removeAttribute("style"));
+      return;
+    }
+
     let active = -1;
 
     const show = (next: number) => {
@@ -124,6 +137,37 @@ const steps = [
 </script>
 
 <style>
+  .story-intro {
+    padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(2.5rem, 4vw, 4rem);
+    background: #0f1213;
+    color: #f5f5f1;
+  }
+
+  .story-intro-inner {
+    width: min(1180px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .story-intro p {
+    margin: 0 0 1rem;
+    color: #69d254;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .story-intro h2 {
+    max-width: 48rem;
+    margin: 0;
+    color: #f5f5f1;
+    font-family: var(--font-display);
+    font-size: clamp(3.6rem, 7vw, 7rem);
+    font-weight: 400;
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+  }
+
   .story {
     min-height: 400vh;
     background: #0f1213;
