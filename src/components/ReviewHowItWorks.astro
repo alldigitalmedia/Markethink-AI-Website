@@ -111,8 +111,14 @@ const steps = [
         if (index !== next) gsap.set(visual, { opacity: 0, scale: 1 });
       });
       dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
-      if (panels[next]) gsap.fromTo(panels[next], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
-      if (visuals[next]) gsap.fromTo(visuals[next], { opacity: 0, scale: 1.025 }, { opacity: 1, scale: 1, duration: 0.65, ease: "power2.out" });
+      if (panels[next]) {
+        gsap.set(panels[next], { opacity: 1 });
+        gsap.fromTo(panels[next], { y: 14 }, { y: 0, duration: 0.35, ease: "power2.out" });
+      }
+      if (visuals[next]) {
+        gsap.set(visuals[next], { opacity: 1 });
+        gsap.fromTo(visuals[next], { scale: 1.012 }, { scale: 1, duration: 0.45, ease: "power2.out" });
+      }
       active = next;
     };
 
