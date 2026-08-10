@@ -59,7 +59,7 @@ export const insightPosts: BlogPost[] = [
     title: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
     seoTitle: "How to Use AI for Marketing: Small Business Guide | Markethink",
     description:
-      "Learn how to use AI for marketing with a practical small-business workflow, responsibility matrix, campaign brief, interactive planner, and 30-day plan.",
+      "Learn how to use AI for marketing with a practical workflow, responsibility matrix, copy-and-send campaign brief, and complete 30-day plan.",
     excerpt:
       "A step-by-step guide to using AI across research, campaigns, content, approvals, lead capture, follow-up, measurement, and continuous improvement.",
     label: "INTERACTIVE GUIDE",
@@ -90,7 +90,7 @@ export const insightPosts: BlogPost[] = [
     intro: [
       "AI can help a small business research customers, plan campaigns, draft content, improve its website, organize leads, prepare follow-up, and learn from results. The advantage does not come from generating more material. It comes from connecting those tasks to one clear business outcome.",
       "This guide shows how to use AI for marketing without handing strategy, brand judgment, or customer relationships to a machine. AI handles speed, organization, and repetitive execution. Expert marketers direct and review the work. The business approves the offer, claims, risk, and final publishing decisions.",
-      "Use the workflow, tables, responsibility matrix, campaign brief, and interactive planner below to build one complete campaign loop: goal, brief, production, expert review, approval, launch, lead capture, follow-up, results, and the next improved campaign.",
+      "Use the workflow, complete tables, responsibility matrix, and copy-and-send campaign brief below to build one complete campaign loop: goal, brief, production, expert review, approval, launch, lead capture, follow-up, results, and the next improved campaign.",
     ],
     seoHubLink: {
       copy: "For the system and service behind this operating approach, see our",
