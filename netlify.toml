@@ -22,3 +22,8 @@
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
     X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/homepage-v6-review/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

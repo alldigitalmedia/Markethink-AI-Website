@@ -1,4 +1,11 @@
 ---
+interface Props {
+  sectionId?: string;
+  includeInstagram?: boolean;
+}
+
+const { sectionId = "how-it-works", includeInstagram = true } = Astro.props;
+
 const stages = [
   {
     number: "01",
@@ -36,10 +43,10 @@ const channelLogos = [
   { name: "YouTube", src: "/brand-logos/youtube.svg" },
   { name: "Meta", src: "/brand-logos/meta.svg" },
   { name: "Google Ads", src: "/brand-logos/google-ads.svg" },
-];
+].filter((logo) => includeInstagram || logo.name !== "Instagram");
 ---
 
-<section class="operating-flow" id="how-it-works">
+<section class="operating-flow" id={sectionId}>
   <div class="flow-glow flow-glow-one" aria-hidden="true"></div>
   <div class="flow-glow flow-glow-two" aria-hidden="true"></div>
 
