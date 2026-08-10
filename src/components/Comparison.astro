@@ -1,189 +1,194 @@
 ---
-const rows = [
+const options = [
   {
-    scattered: "Campaigns live across chats, docs, and meetings",
-    system: "Campaigns live in one organized system",
+    label: "SELF-SERVE AI TOOLS",
+    title: "You still manage the work.",
+    points: [
+      "You supply the prompts and context",
+      "Outputs stay disconnected from execution",
+      "Strategy and quality control remain on your plate",
+      "Lead follow-up happens somewhere else",
+    ],
   },
   {
-    scattered: "Every asset starts from scratch",
-    system: "The system remembers the business before the next draft starts",
+    label: "DISCONNECTED SERVICES",
+    title: "The work moves in separate lanes.",
+    points: [
+      "Strategy, content, web, and leads live apart",
+      "Approvals get repeated across people and tools",
+      "Business knowledge stays fragmented",
+      "Commercial follow-up is easy to lose",
+    ],
   },
   {
-    scattered: "Approvals get buried and repeated",
-    system: "Decisions become approval memory for future work",
-  },
-  {
-    scattered: "Lead lists get researched once, then forgotten",
-    system: "Opportunities connect to follow-up and next steps",
-  },
-  {
-    scattered: "Content quality depends on who has time that week",
-    system: "Campaigns keep moving with a clear weekly rhythm",
-  },
-  {
-    scattered: "The team keeps asking what comes next",
-    system: "Markethink brings the next move back for review",
+    label: "MARKETHINK",
+    title: "One connected marketing operation.",
+    points: [
+      "The system learns and remembers the business",
+      "AI supports production volume and consistency",
+      "Expert marketers direct, review, and stay accountable",
+      "Campaigns connect to leads, CRM, and follow-up",
+    ],
+    featured: true,
   },
 ];
 ---
 
 <section class="comparison-section" id="comparison">
   <div class="container">
-    <div class="comparison-shell animate-fade-up">
-      <div class="comparison-header">
-        <p class="subtitle">WHY IT MATTERS</p>
-        <h2>Most teams do not need another app. They need the work to connect.</h2>
-        <p>
-          Markethink is the operating layer between strategy, content, approvals, leads, web updates, and follow-up. The value is not one more place to log in. The value is marketing that keeps moving because the system remembers the business.
-        </p>
-      </div>
-      <div class="comparison-table" role="table" aria-label="Scattered marketing compared with Markethink">
-        <div class="comparison-row comparison-row-head" role="row">
-          <div role="columnheader">Scattered marketing</div>
-          <div role="columnheader">Markethink system</div>
-        </div>
-        {rows.map((row) => (
-          <div class="comparison-row" role="row">
-            <div role="cell">
-              <span class="status-dot status-dot-muted" aria-hidden="true"></span>
-              {row.scattered}
-            </div>
-            <div role="cell">
-              <span class="status-dot status-dot-active" aria-hidden="true"></span>
-              {row.system}
-            </div>
-          </div>
-        ))}
-      </div>
+    <div class="comparison-heading animate-fade-up">
+      <p class="subtitle">WHY MARKETHINK</p>
+      <h2>You do not need another disconnected marketing tool.</h2>
+      <p>
+        You need the strategy, production, approvals, pipeline, and business memory to work as one operation.
+      </p>
+    </div>
+
+    <div class="option-grid animate-stagger">
+      {options.map((option) => (
+        <article class={`option-card ${option.featured ? "featured" : ""}`}>
+          <p class="option-label">{option.label}</p>
+          <h3>{option.title}</h3>
+          <ul>
+            {option.points.map((point) => (
+              <li><span aria-hidden="true">{option.featured ? "✓" : "·"}</span>{point}</li>
+            ))}
+          </ul>
+          {option.featured && <a href="#audit" class="button">Request an Audit</a>}
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
   .comparison-section {
-    padding: 7rem 0;
-    background: #f5f5f1;
-    color: var(--text-primary);
+    padding: clamp(5rem, 9vw, 7.5rem) 0;
+    background: #edf4ea;
+    color: #0f1213;
   }
 
-  .comparison-shell {
-    display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 3rem;
-    align-items: start;
+  .comparison-heading {
+    max-width: 50rem;
+    margin-bottom: 2.5rem;
   }
 
-  .comparison-header {
-    position: sticky;
-    top: 7.5rem;
-  }
-
-  .comparison-header .subtitle {
+  .comparison-heading .subtitle {
     margin-bottom: 0.85rem;
     color: rgba(15, 18, 19, 0.5);
   }
 
-  .comparison-header h2 {
-    max-width: 32rem;
-    margin-bottom: 1rem;
+  .comparison-heading h2 {
+    font-size: clamp(2.7rem, 5vw, 4.65rem);
+    line-height: 0.98;
   }
 
-  .comparison-header p {
-    max-width: 31rem;
-    color: rgba(15, 18, 19, 0.62);
+  .comparison-heading > p:last-child {
+    max-width: 41rem;
+    margin-top: 1rem;
+    color: rgba(15, 18, 19, 0.64);
     line-height: 1.7;
   }
 
-  .comparison-table {
-    overflow: hidden;
-    border: 1px solid rgba(15, 18, 19, 0.08);
-    border-radius: var(--radius-medium);
-    background: rgba(255, 255, 255, 0.56);
-  }
-
-  .comparison-row {
+  .option-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid rgba(15, 18, 19, 0.08);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
   }
 
-  .comparison-row:first-child {
-    border-top: 0;
-  }
-
-  .comparison-row > div {
+  .option-card {
     display: flex;
-    align-items: flex-start;
-    gap: 0.65rem;
-    min-height: 4.75rem;
-    padding: 1.15rem 1.25rem;
-    color: rgba(15, 18, 19, 0.64);
-    font-size: 0.92rem;
-    line-height: 1.55;
+    flex-direction: column;
+    min-height: 27rem;
+    padding: 1.45rem;
+    border: 1px solid rgba(15, 18, 19, 0.09);
+    border-radius: 1.4rem;
+    background: rgba(245, 245, 241, 0.8);
   }
 
-  .comparison-row > div + div {
-    border-left: 1px solid rgba(15, 18, 19, 0.08);
-    background: rgba(237, 244, 234, 0.78);
-    color: rgba(15, 18, 19, 0.84);
-    font-weight: 600;
-  }
-
-  .comparison-row-head > div {
-    min-height: auto;
+  .option-card.featured {
     background: #0f1213;
     color: #f5f5f1;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
+    border-color: #0f1213;
+    transform: translateY(-0.8rem);
+    box-shadow: 0 26px 64px rgba(15, 18, 19, 0.16);
   }
 
-  .comparison-row-head > div + div {
-    background: #0f1213;
+  .option-label {
+    color: rgba(15, 18, 19, 0.48);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .featured .option-label {
     color: #69d254;
   }
 
-  .status-dot {
+  .option-card h3 {
+    margin-top: 1rem;
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .option-card ul {
+    display: grid;
+    gap: 0.9rem;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .option-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: rgba(15, 18, 19, 0.64);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .featured li {
+    color: rgba(245, 245, 241, 0.72);
+  }
+
+  .option-card li span {
+    color: #299b2c;
+    font-weight: 800;
+  }
+
+  .featured li span {
+    display: grid;
+    place-items: center;
     flex: 0 0 auto;
-    width: 0.62rem;
-    height: 0.62rem;
-    margin-top: 0.42rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.08rem;
     border-radius: 50%;
-  }
-
-  .status-dot-muted {
-    background: rgba(15, 18, 19, 0.18);
-  }
-
-  .status-dot-active {
     background: #69d254;
-    box-shadow: 0 0 0 0.35rem rgba(105, 210, 84, 0.14);
+    color: #0f1213;
+    font-size: 0.62rem;
+  }
+
+  .option-card .button {
+    align-self: flex-start;
+    margin-top: auto;
   }
 
   @media (max-width: 860px) {
-    .comparison-shell {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .comparison-header {
-      position: static;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .comparison-section {
-      padding: 4.5rem 0;
-    }
-
-    .comparison-row {
+    .option-grid {
       grid-template-columns: 1fr;
     }
 
-    .comparison-row > div + div {
-      border-left: 0;
-      border-top: 1px solid rgba(15, 18, 19, 0.08);
+    .option-card {
+      min-height: auto;
+    }
+
+    .option-card.featured {
+      transform: none;
     }
   }
 </style>
