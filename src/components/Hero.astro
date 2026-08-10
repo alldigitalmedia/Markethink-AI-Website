@@ -1,6 +1,6 @@
 ---
-const trialHref = "/trial/";
 const walkthroughHref = "/schedule-a-walkthrough/";
+const auditHref = "#audit";
 ---
 
 <section class="section-hero" id="hero">
@@ -25,7 +25,7 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       </h1>
 
       <p class="hero-description">
-        <strong>An AI marketing system managed by expert marketers.</strong> It learns and remembers your business, runs your marketing day to day, connects campaigns to leads, CRM, follow-up, and conversion, and improves with every approval, correction, and result.
+        <strong>An AI marketing system managed by expert marketers.</strong> It learns your business, runs your marketing day to day, connects campaigns to leads and follow-up, and gets sharper with every approval, correction, and result.
       </p>
 
       <ul class="hero-scope" aria-label="Marketing services and pipeline capabilities">
@@ -89,13 +89,12 @@ const walkthroughHref = "/schedule-a-walkthrough/";
       </ul>
 
       <div class="button-group">
-        <a href={walkthroughHref} class="button">
-          Book a Walkthrough
+        <a href={auditHref} class="button">
+          Request a Marketing System Audit
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
         </a>
-        <a href={trialHref} class="button is-secondary">
-          <span class="play-icon" aria-hidden="true">▶</span>
-          Watch it work on your business
+        <a href={walkthroughHref} class="button is-secondary">
+          Book a Walkthrough
         </a>
       </div>
     </div>
@@ -284,18 +283,6 @@ const walkthroughHref = "/schedule-a-walkthrough/";
     box-shadow: 0 12px 28px rgba(15, 18, 19, 0.05);
   }
 
-  .play-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    padding-left: 0.08rem;
-    border-radius: 999px;
-    background: #35aa35;
-    color: #ffffff;
-    font-size: 0.62rem;
-    line-height: 1;
-  }
 
   @media (max-width: 1120px) {
     .section-hero {

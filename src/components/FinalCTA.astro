@@ -1,94 +1,294 @@
 ---
-const trialHref = "/trial/";
-const walkthroughHref = "/schedule-a-walkthrough/";
+const auditOutputs = [
+  "Where your marketing is getting stuck",
+  "What is disconnected from leads and follow-up",
+  "What Markethink would build first",
+];
 ---
 
-<section class="section dark final-cta" id="early-access">
-  <div class="container">
-    <div class="cta-main animate-fade-up">
-      <div class="cta-content-holder">
-        <div class="cta-content">
-          <p class="subtitle">READY FOR MARKETING THAT MOVES?</p>
-          <h2>See what Markethink would build around your business.</h2>
-          <p class="cta-description">
-            Book a walkthrough and we will map the campaigns, approvals, lead flow, follow-up, and weekly marketing rhythm your business actually needs.
-          </p>
-          <div class="button-group">
-            <a href={trialHref} class="button">Apply for a 30-Day Trial</a>
-            <a href={walkthroughHref} class="button is-secondary">Book a Walkthrough</a>
-          </div>
-        </div>
+<section class="audit-section" id="audit">
+  <div class="container audit-grid">
+    <div class="audit-copy animate-fade-up">
+      <p class="subtitle">MARKETING SYSTEM AUDIT</p>
+      <h2>See what your marketing operation needs next.</h2>
+      <p class="audit-intro">
+        Tell us where the business is trying to grow and what keeps slowing the work down. We will review the current operation and reply with the strongest place to start.
+      </p>
+      <div class="audit-output-list">
+        <p>THE AUDIT WILL MAP</p>
+        <ul>
+          {auditOutputs.map((item) => (
+            <li><span aria-hidden="true">✓</span>{item}</li>
+          ))}
+        </ul>
       </div>
-      <div class="cta-image-holder animate-scale-in">
-        <img src="/images/cta-stone.avif" alt="Markethink guided system preview" class="cta-image animate-parallax" />
-      </div>
+      <p class="audit-note">Packages depend on scope. The audit is designed to make the right first move clear before we recommend an engagement.</p>
     </div>
+
+    <form
+      name="markethink-marketing-system-audit"
+      method="POST"
+      action="/thank-you/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="audit-form animate-fade-up"
+    >
+      <input type="hidden" name="form-name" value="markethink-marketing-system-audit" />
+      <input type="hidden" name="source" value="homepage-marketing-system-audit" />
+      <p class="hidden-field">
+        <label>Do not fill this out <input name="bot-field" /></label>
+      </p>
+
+      <div class="form-header">
+        <p>Request your audit</p>
+        <h3>Tell us where marketing is stuck.</h3>
+      </div>
+
+      <div class="field-grid">
+        <label>
+          <span>Full name</span>
+          <input type="text" name="full_name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Work email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+      </div>
+
+      <label>
+        <span>Company or website</span>
+        <input type="text" name="company_or_website" autocomplete="organization" required />
+      </label>
+
+      <label>
+        <span>Which path best describes you?</span>
+        <select name="buyer_path" required>
+          <option value="">Select one</option>
+          <option>Growing brand</option>
+          <option>Agency or referral partner</option>
+          <option>Not sure yet</option>
+        </select>
+      </label>
+
+      <label>
+        <span>What is the biggest bottleneck in your marketing right now?</span>
+        <textarea name="marketing_bottleneck" rows="4" required></textarea>
+      </label>
+
+      <button type="submit" class="button form-button">Request My Marketing System Audit</button>
+      <p class="form-note">Prefer a conversation? <a href="/schedule-a-walkthrough/">Book a focused walkthrough.</a> By submitting, you agree to our <a href="/privacy/">privacy policy</a>.</p>
+    </form>
   </div>
 </section>
 
 <style>
-  .final-cta {
-    padding: 8rem 0;
-    overflow: hidden;
+  .audit-section {
+    padding: clamp(5rem, 9vw, 8rem) 0;
+    background: #0f1213;
+    color: #f5f5f1;
   }
 
-  .cta-main {
+  .audit-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    grid-template-columns: minmax(0, 0.88fr) minmax(24rem, 0.72fr);
+    gap: clamp(2rem, 7vw, 5rem);
+    align-items: start;
   }
 
-  .cta-content {
+  .audit-copy {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .audit-copy .subtitle {
+    margin-bottom: 0.9rem;
+    color: #69d254;
+  }
+
+  .audit-copy h2 {
+    max-width: 42rem;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 0.97;
+  }
+
+  .audit-intro {
+    max-width: 36rem;
+    margin-top: 1.25rem;
+    color: rgba(245, 245, 241, 0.68);
+    line-height: 1.75;
+  }
+
+  .audit-output-list {
+    max-width: 36rem;
+    margin-top: 2.2rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.15rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .audit-output-list > p {
+    color: rgba(245, 245, 241, 0.5);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .audit-output-list ul {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .audit-output-list li {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    color: rgba(245, 245, 241, 0.78);
+  }
+
+  .audit-output-list li span {
+    display: grid;
+    place-items: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: #69d254;
+    color: #0f1213;
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .audit-note {
+    max-width: 36rem;
+    margin-top: 1rem;
+    color: rgba(245, 245, 241, 0.45);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .audit-form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .cta-description {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.68);
-    line-height: 1.7;
-    max-width: 34rem;
-  }
-
-  .button-group {
-    display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    padding: clamp(1.2rem, 3vw, 1.6rem);
+    border-radius: 1.5rem;
+    background: #f5f5f1;
+    color: #0f1213;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
   }
 
-  .cta-image-holder {
+  .hidden-field {
+    display: none;
+  }
+
+  .form-header {
+    margin-bottom: 0.2rem;
+  }
+
+  .form-header p {
+    color: #299b2c;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .form-header h3 {
+    margin-top: 0.45rem;
+    font-size: 2.35rem;
+    line-height: 1;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .audit-form label {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.42rem;
   }
 
-  .cta-image {
-    max-width: 100%;
-    border-radius: var(--radius-medium);
+  .audit-form label > span {
+    color: rgba(15, 18, 19, 0.72);
+    font-size: 0.76rem;
+    font-weight: 700;
   }
 
-  @media (max-width: 767px) {
-    .final-cta {
-      padding: 4rem 0;
-    }
+  .audit-form input,
+  .audit-form select,
+  .audit-form textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 18, 19, 0.12);
+    border-radius: 0.7rem;
+    background: #ffffff;
+    color: #0f1213;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 0.86rem 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
 
-    .cta-main {
+  .audit-form textarea {
+    min-height: 7rem;
+    resize: vertical;
+  }
+
+  .audit-form input:focus,
+  .audit-form select:focus,
+  .audit-form textarea:focus {
+    border-color: #69d254;
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
+  }
+
+  .form-button {
+    width: 100%;
+    min-height: 3.4rem;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .form-note {
+    color: rgba(15, 18, 19, 0.55);
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .form-note a {
+    color: #299b2c;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18rem;
+  }
+
+  @media (max-width: 860px) {
+    .audit-grid {
       grid-template-columns: 1fr;
-      text-align: center;
     }
 
-    .cta-content {
-      align-items: center;
+    .audit-copy {
+      position: static;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .field-grid {
+      grid-template-columns: 1fr;
     }
 
-    .button-group {
-      justify-content: center;
+    .audit-copy h2 {
+      font-size: 3rem;
     }
 
-    .cta-image-holder {
-      order: -1;
+    .form-header h3 {
+      font-size: 2rem;
     }
   }
 </style>
