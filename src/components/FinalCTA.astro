@@ -1,4 +1,6 @@
 ---
+const { animate = true } = Astro.props as { animate?: boolean };
+
 const auditOutputs = [
   "Where your marketing is getting stuck",
   "What is disconnected from leads and follow-up",
@@ -8,7 +10,7 @@ const auditOutputs = [
 
 <section class="audit-section" id="audit">
   <div class="container audit-grid">
-    <div class="audit-copy animate-fade-up">
+    <div class:list={["audit-copy", { "animate-fade-up": animate }]}>
       <p class="subtitle">MARKETING SYSTEM AUDIT</p>
       <h2>See what your marketing operation needs next.</h2>
       <p class="audit-intro">
@@ -32,7 +34,7 @@ const auditOutputs = [
       netlify
       data-netlify="true"
       netlify-honeypot="bot-field"
-      class="audit-form animate-fade-up"
+      class:list={["audit-form", { "animate-fade-up": animate }]}
     >
       <input type="hidden" name="form-name" value="markethink-marketing-system-audit" />
       <input type="hidden" name="source" value="homepage-marketing-system-audit" />
