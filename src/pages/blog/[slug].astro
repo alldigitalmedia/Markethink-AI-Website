@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import AiSearchInteractiveGuide from "../../components/blog/AiSearchInteractiveGuide.astro";
+import AiMarketingPracticalGuide from "../../components/blog/AiMarketingPracticalGuide.astro";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
 
 export function getStaticPaths() {
@@ -15,6 +16,9 @@ export function getStaticPaths() {
 
 const { post } = Astro.props as { post: BlogPost };
 const isAiSearchInteractiveGuide = post.slug === "how-to-show-up-in-ai-search";
+const isAiMarketingPracticalGuide =
+  post.slug === "how-to-use-ai-for-marketing-small-business";
+const isWideGuide = isAiSearchInteractiveGuide || isAiMarketingPracticalGuide;
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const imageUrl = new URL(post.image, siteUrl).toString();
@@ -128,7 +132,7 @@ const breadcrumbSchema = {
         class:list={[
           "container",
           "article-layout",
-          { "article-layout--wide": isAiSearchInteractiveGuide },
+          { "article-layout--wide": isWideGuide },
         ]}
       >
         <aside class="article-sidebar">
@@ -159,10 +163,23 @@ const breadcrumbSchema = {
                 </p>
               )
             }
+            {
+              post.recommendedGuide && (
+                <p class="article-hub-link article-hub-link--guide">
+                  {post.recommendedGuide.copy}{" "}
+                  <a href={post.recommendedGuide.href}>
+                    {post.recommendedGuide.anchor}
+                  </a>
+                  .
+                </p>
+              )
+            }
           </section>
 
           {
-            isAiSearchInteractiveGuide ? (
+            isAiMarketingPracticalGuide ? (
+              <AiMarketingPracticalGuide />
+            ) : isAiSearchInteractiveGuide ? (
               <AiSearchInteractiveGuide />
             ) : (
               post.sections.map((section, index) => (
@@ -187,16 +204,20 @@ const breadcrumbSchema = {
             <p class="article-cta-label">Markethink perspective</p>
             <h2>
               {
-                isAiSearchInteractiveGuide
-                  ? "Turn AI-search visibility into an operating plan."
-                  : "Marketing improves faster when the system remembers the work."
+                isAiMarketingPracticalGuide
+                  ? "Build a marketing operation that ships and keeps getting sharper."
+                  : isAiSearchInteractiveGuide
+                    ? "Turn AI-search visibility into an operating plan."
+                    : "Marketing improves faster when the system remembers the work."
               }
             </h2>
             <p>
               {
-                isAiSearchInteractiveGuide
-                  ? "Markethink is an AI marketing system managed by expert marketers. It connects website improvements, answer-ready content, approvals, measurement, leads, CRM, and follow-up so search visibility supports the pipeline instead of becoming another isolated SEO project."
-                  : "Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system."
+                isAiMarketingPracticalGuide
+                  ? "Markethink is an AI marketing system managed by expert marketers. It learns your business, runs the day-to-day marketing work, connects campaigns to leads and follow-up, and improves with every approval, correction, and result."
+                  : isAiSearchInteractiveGuide
+                    ? "Markethink is an AI marketing system managed by expert marketers. It connects website improvements, answer-ready content, approvals, measurement, leads, CRM, and follow-up so search visibility supports the pipeline instead of becoming another isolated SEO project."
+                    : "Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system."
               }
             </p>
             <a href="/schedule-a-walkthrough/" class="button"

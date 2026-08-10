@@ -27,6 +27,11 @@ export type BlogPost = {
     anchor: string;
     href: string;
   };
+  recommendedGuide?: {
+    copy: string;
+    anchor: string;
+    href: string;
+  };
   faq: {
     question: string;
     answer: string;
@@ -49,6 +54,104 @@ export const journeyPosts = [
 ];
 
 export const insightPosts: BlogPost[] = [
+  {
+    slug: "how-to-use-ai-for-marketing-small-business",
+    title: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
+    seoTitle: "How to Use AI for Marketing: Small Business Guide | Markethink",
+    description:
+      "Learn how to use AI for marketing with a practical small-business workflow, responsibility matrix, campaign brief, interactive planner, and 30-day plan.",
+    excerpt:
+      "A step-by-step guide to using AI across research, campaigns, content, approvals, lead capture, follow-up, measurement, and continuous improvement.",
+    label: "INTERACTIVE GUIDE",
+    image: "/images/ai-marketing-guide/ai-marketing-guide-hero.svg",
+    imageAlt:
+      "A small-business owner and expert marketer reviewing an AI-supported marketing campaign workflow",
+    publishedDate: "2026-08-10",
+    updatedDate: "2026-08-10",
+    readingTime: "18 min read",
+    category: "AI Marketing",
+    keywords: [
+      "how to use AI for marketing",
+      "how to use AI for small business marketing",
+      "AI marketing for small business",
+      "AI marketing workflow",
+      "AI marketing automation",
+      "marketing automation workflow",
+      "marketing campaign workflow",
+      "AI marketing plan",
+      "AI lead follow up",
+      "AI lead nurturing",
+      "CRM workflow examples",
+    ],
+    author: {
+      name: "Markethink Editorial Team",
+      title: "AI marketing systems managed by expert marketers",
+    },
+    intro: [
+      "AI can help a small business research customers, plan campaigns, draft content, improve its website, organize leads, prepare follow-up, and learn from results. The advantage does not come from generating more material. It comes from connecting those tasks to one clear business outcome.",
+      "This guide shows how to use AI for marketing without handing strategy, brand judgment, or customer relationships to a machine. AI handles speed, organization, and repetitive execution. Expert marketers direct and review the work. The business approves the offer, claims, risk, and final publishing decisions.",
+      "Use the workflow, tables, responsibility matrix, campaign brief, and interactive planner below to build one complete campaign loop: goal, brief, production, expert review, approval, launch, lead capture, follow-up, results, and the next improved campaign.",
+    ],
+    seoHubLink: {
+      copy: "For the system and service behind this operating approach, see our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
+    sections: [
+      { heading: "Start with one outcome", body: [] },
+      { heading: "Build context AI can use", body: [] },
+      { heading: "Follow the nine-step workflow", body: [] },
+      { heading: "Choose useful AI marketing tasks", body: [] },
+      { heading: "Build your first campaign", body: [] },
+      { heading: "Connect leads and follow-up", body: [] },
+      { heading: "Decide who owns what", body: [] },
+      { heading: "Measure what matters", body: [] },
+      { heading: "Use the 30-day plan", body: [] },
+      { heading: "Avoid common mistakes", body: [] },
+    ],
+    faq: [
+      {
+        question: "How can a small business use AI for marketing?",
+        answer:
+          "A small business can use AI to organize customer research, prepare campaign briefs, create first drafts, adapt content across channels, support website updates, summarize inquiries, prepare follow-up, and organize results. Strategy, claims, creative direction, approvals, and important customer conversations should stay under human ownership.",
+      },
+      {
+        question: "What is the best first AI marketing use case?",
+        answer:
+          "Start with one campaign brief tied to a measurable business outcome. Use it to create a minimum connected asset set, define the approval path, route leads, and record results. This is more useful than starting with a large collection of disconnected tools.",
+      },
+      {
+        question: "Can AI create a complete marketing strategy?",
+        answer:
+          "AI can support research, organize inputs, identify options, and draft a plan. An expert marketer should still choose the audience, positioning, offer, channel mix, budget, creative direction, and measurement approach. The business must approve claims, risk, and final priorities.",
+      },
+      {
+        question: "What marketing tasks should not be fully automated?",
+        answer:
+          "Do not fully automate pricing decisions, customer promises, sensitive replies, major budget changes, regulated or reputation-sensitive claims, final creative approval, or high-value relationship conversations. Increase human review as the risk increases.",
+      },
+      {
+        question: "How does AI marketing automation differ from a marketing workflow?",
+        answer:
+          "Automation moves a task when a rule is met. A marketing workflow defines the full responsibility path: goal, input, production, review, approval, launch, lead handling, measurement, and learning. A good workflow can include automation without giving up human judgment.",
+      },
+      {
+        question: "How should a small business measure AI marketing?",
+        answer:
+          "Measure qualified buyer actions, conversion into the next step, lead response time, workflow health, and what the business learned. The number of prompts, drafts, or posts is not proof of marketing impact.",
+      },
+      {
+        question: "How long does it take to start using AI for marketing?",
+        answer:
+          "A small business can build and test one focused workflow in about 30 days: define the goal and context, create one connected campaign, review and launch it, then evaluate follow-up and results. Expanding to more channels should happen only after the first loop works.",
+      },
+      {
+        question: "Does using AI mean replacing a marketing team?",
+        answer:
+          "No. The strongest model pairs AI speed and consistency with expert strategy, review, judgment, and accountability. AI supports the marketing operation; it does not remove the need for experienced people or final business approval.",
+      },
+    ],
+  },
   {
     slug: "how-to-show-up-in-ai-search",
     title: "How to Get Your Business to Show Up in AI Search",
@@ -88,6 +191,11 @@ export const insightPosts: BlogPost[] = [
       copy: "AI-search visibility works best when it connects to the rest of the marketing operation. Our",
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "For the complete operating workflow, use",
+      anchor: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
     sections: [
       {
@@ -200,6 +308,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
     },
+    recommendedGuide: {
+      copy: "Put that rhythm into practice with",
+      anchor: "our step-by-step AI marketing guide for small businesses",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
     sections: [
       {
         heading: "More tools do not automatically create more demand",
@@ -310,6 +423,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
     },
+    recommendedGuide: {
+      copy: "See where approvals fit inside",
+      anchor: "the complete AI marketing workflow",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
     sections: [
       {
         heading: "Why approvals slow down",
@@ -411,6 +529,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
     },
+    recommendedGuide: {
+      copy: "Replace the disconnected path with",
+      anchor: "a practical AI marketing workflow for small businesses",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
     sections: [
       {
         heading: "The real cost is repeated context",
@@ -511,6 +634,11 @@ export const insightPosts: BlogPost[] = [
       copy: "For small businesses using AI to move faster, the missing piece is usually the campaign system around the draft. Our",
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "Build that campaign system with",
+      anchor: "our practical guide to using AI for marketing",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
     sections: [
       {
