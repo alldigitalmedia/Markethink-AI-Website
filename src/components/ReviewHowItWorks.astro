@@ -1,0 +1,386 @@
+---
+const steps = [
+  {
+    eyebrow: "DAY 1",
+    title: "It learns your business",
+    description: "We ingest your website, socials, offers, positioning, voice, visual references, and approval rules. The context becomes a usable foundation for the work ahead.",
+    bullets: ["Business context", "Offers and audience", "Voice and visual rules"],
+    image: "/images/process-markethink-learns-business.avif",
+    alt: "Markethink organizing business context into a marketing foundation",
+  },
+  {
+    eyebrow: "WEEK 1",
+    title: "First work arrives",
+    description: "Reply in plain words or a voice note. Markethink revises the work, remembers why, and follows the approval rules you set.",
+    bullets: ["Campaign brief", "Priority deliverables", "Approvals from your phone"],
+    image: "/images/process-markethink-organized.avif",
+    alt: "Campaign work organized in one connected Markethink workspace",
+  },
+  {
+    eyebrow: "EVERY WEEK",
+    title: "The operation runs",
+    description: "The calendar moves, pages ship, campaigns launch, and follow-up runs through the channels connected to your plan.",
+    bullets: ["Work moves on schedule", "Expert direction", "Connected follow-up"],
+    image: "/images/process-markethink-learns-what-works.avif",
+    alt: "Marketing work moving through review, approval, and follow-up",
+  },
+  {
+    eyebrow: "AS THE WORK CONTINUES",
+    title: "Its context compounds",
+    description: "Every approval, correction, and result adds context. The work keeps getting sharper instead of restarting from zero.",
+    bullets: ["Approval memory", "Corrections carried forward", "Sharper next campaigns"],
+    image: "/images/process-markethink-ai-improves.avif",
+    alt: "Markethink applying accumulated business context to future campaigns",
+  },
+];
+---
+
+<section class="story" id="how-it-works" data-scroll-story>
+  <div class="story-pin">
+    <div class="story-shell">
+      <div class="story-copy" aria-live="polite">
+        {steps.map((step, index) => (
+          <article class={`story-panel ${index === 0 ? "is-active" : ""}`} data-story-panel={index}>
+            <p class="story-eyebrow"><span>{String(index + 1).padStart(2, "0")}</span>{step.eyebrow}</p>
+            <h2>{step.title}</h2>
+            <p class="story-description">{step.description}</p>
+            <ul>
+              {step.bullets.map((bullet) => <li><i aria-hidden="true"></i>{bullet}</li>)}
+            </ul>
+          </article>
+        ))}
+        <div class="story-progress" aria-hidden="true">
+          {steps.map((_, index) => <span class={index === 0 ? "is-active" : ""} data-story-dot={index}></span>)}
+        </div>
+      </div>
+
+      <div class="story-stage">
+        {steps.map((step, index) => (
+          <figure class={`story-visual ${index === 0 ? "is-active" : ""}`} data-story-visual={index}>
+            <img src={step.image} alt={step.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
+            <figcaption>
+              <span class="visual-status"><i></i>{step.eyebrow}</span>
+              <strong>{step.title}</strong>
+              <small>{index === 3 ? "Business context updated" : "Work moving through one operation"}</small>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initReviewStory() {
+    const root = document.querySelector<HTMLElement>("[data-scroll-story]");
+    if (!root || root.dataset.ready === "true") return;
+    root.dataset.ready = "true";
+
+    const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-story-panel]"));
+    const visuals = Array.from(root.querySelectorAll<HTMLElement>("[data-story-visual]"));
+    const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-story-dot]"));
+    let active = -1;
+
+    const show = (next: number) => {
+      if (next === active) return;
+      gsap.killTweensOf([...panels, ...visuals]);
+      panels.forEach((panel, index) => {
+        panel.classList.toggle("is-active", index === next);
+        if (index !== next) gsap.set(panel, { opacity: 0, y: 0 });
+      });
+      visuals.forEach((visual, index) => {
+        visual.classList.toggle("is-active", index === next);
+        if (index !== next) gsap.set(visual, { opacity: 0, scale: 1 });
+      });
+      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
+      if (panels[next]) gsap.fromTo(panels[next], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+      if (visuals[next]) gsap.fromTo(visuals[next], { opacity: 0, scale: 1.025 }, { opacity: 1, scale: 1, duration: 0.65, ease: "power2.out" });
+      active = next;
+    };
+
+    const indexFromProgress = (progress: number) => Math.min(Math.floor(progress * panels.length), panels.length - 1);
+    show(0);
+
+    const trigger = ScrollTrigger.create({
+      trigger: root,
+      start: "top top",
+      end: "bottom bottom",
+      invalidateOnRefresh: true,
+      onUpdate: (self) => show(indexFromProgress(self.progress)),
+      onRefresh: (self) => show(indexFromProgress(self.progress)),
+    });
+
+    show(indexFromProgress(trigger.progress));
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  }
+
+  document.addEventListener("DOMContentLoaded", initReviewStory);
+  if (document.readyState !== "loading") initReviewStory();
+</script>
+
+<style>
+  .story {
+    min-height: 400vh;
+    background: #0f1213;
+    color: #f5f5f1;
+  }
+
+  .story-pin {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: clamp(5rem, 8vw, 7rem) 0;
+    overflow: hidden;
+  }
+
+  .story-pin::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 18%, rgba(105, 210, 84, 0.08), transparent 30rem);
+    pointer-events: none;
+  }
+
+  .story-shell {
+    position: relative;
+    width: min(1180px, calc(100% - 2rem));
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(28rem, 1.14fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .story-copy {
+    position: relative;
+    min-height: 31rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .story-panel {
+    position: absolute;
+    inset-inline: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .story-panel.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .story-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(245, 245, 241, 0.54);
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+  }
+
+  .story-eyebrow span {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #69d254;
+    color: #0f1213;
+    letter-spacing: 0;
+  }
+
+  .story-panel h2 {
+    max-width: 34rem;
+    margin-top: 1.25rem;
+    font-size: clamp(3rem, 5vw, 5.3rem);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  .story-description {
+    max-width: 34rem;
+    margin-top: 1.35rem;
+    color: rgba(245, 245, 241, 0.65);
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.72;
+  }
+
+  .story-panel ul {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+    list-style: none;
+  }
+
+  .story-panel li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(245, 245, 241, 0.78);
+    font-size: 0.88rem;
+  }
+
+  .story-panel li i {
+    width: 2.7rem;
+    height: 1px;
+    background: rgba(105, 210, 84, 0.58);
+  }
+
+  .story-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .story-progress span {
+    width: 2.3rem;
+    height: 2px;
+    background: rgba(245, 245, 241, 0.14);
+    transition: background 0.3s ease, width 0.3s ease;
+  }
+
+  .story-progress span.is-active {
+    width: 4.5rem;
+    background: #69d254;
+  }
+
+  .story-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.04;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 1.9rem;
+    background: #171b1c;
+    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36);
+  }
+
+  .story-visual {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .story-visual.is-active {
+    opacity: 1;
+  }
+
+  .story-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(10, 13, 14, 0.9) 100%);
+  }
+
+  .story-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .story-visual figcaption {
+    position: absolute;
+    z-index: 2;
+    inset: auto 1.35rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+    align-items: end;
+    padding: 1rem 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 1rem;
+    background: rgba(15, 18, 19, 0.68);
+    backdrop-filter: blur(18px);
+  }
+
+  .visual-status {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #69d254;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .visual-status i {
+    width: 0.48rem;
+    height: 0.48rem;
+    border-radius: 50%;
+    background: #69d254;
+    box-shadow: 0 0 0 0.25rem rgba(105, 210, 84, 0.12);
+  }
+
+  .story-visual figcaption strong {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+
+  .story-visual figcaption small {
+    color: rgba(245, 245, 241, 0.52);
+    font-size: 0.68rem;
+  }
+
+  @media (max-width: 860px) {
+    .story {
+      min-height: auto;
+    }
+
+    .story-pin {
+      position: static;
+      display: block;
+      padding: 5rem 0;
+      overflow: visible;
+    }
+
+    .story-shell {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .story-copy {
+      display: grid;
+      gap: 1rem;
+      min-height: auto;
+    }
+
+    .story-panel {
+      position: relative;
+      opacity: 1;
+      pointer-events: auto;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.2rem;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .story-panel h2 {
+      font-size: clamp(2.4rem, 9vw, 3.5rem);
+    }
+
+    .story-progress,
+    .story-stage {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story-panel,
+    .story-visual,
+    .story-progress span {
+      transition: none;
+    }
+  }
+</style>
