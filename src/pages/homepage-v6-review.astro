@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import OperatingFlow from "../components/OperatingFlow.astro";
+import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
 
 const heroImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-hero.png";
 const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-work.png";
@@ -12,13 +14,6 @@ const services = [
   ["Advertising", "Managed inside budget limits you approve up front."],
   ["Leads and follow-up", "Capture, CRM, and follow-up running through the channels you connect."],
   ["Reporting with receipts", "Work, approvals, and results, tracked in your dashboard."],
-];
-
-const timeline = [
-  ["Day 1", "It learns your business", "We ingest your website, socials, and offers. Short intake in chat. Channels connected."],
-  ["Week 1", "First work arrives", "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set."],
-  ["Every week", "The operation runs", "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone."],
-  ["As the work continues", "Its context compounds", "Every approval, correction, and result compounds. Month 6 output is sharper than month 1."],
 ];
 
 const faq = [
@@ -139,6 +134,8 @@ const faq = [
         </div>
       </section>
 
+      <OperatingFlow sectionId="request-to-result" includeInstagram={false} />
+
       <section class="difference section-light" aria-labelledby="difference-title">
         <div class="wrap">
           <div class="difference-hero">
@@ -184,21 +181,7 @@ const faq = [
         </div>
       </section>
 
-      <section class="first-month" id="how-it-works" aria-labelledby="month-title">
-        <div class="wrap">
-          <p class="eyebrow">How it works</p>
-          <h2 id="month-title">Your first 30 days</h2>
-          <div class="timeline">
-            {timeline.map(([time, title, body], index) => (
-              <article>
-                <div class="timeline-number">{String(index + 1).padStart(2, "0")}</div>
-                <div><small>{time}</small><h3>{title}</h3><p>{body}</p></div>
-                <div class={`timeline-art art-${index + 1}`} aria-hidden="true"><span></span><i></i><b></b></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ReviewHowItWorks />
 
       <section class="engagement section-light" aria-labelledby="engagement-title">
         <div class="wrap">
