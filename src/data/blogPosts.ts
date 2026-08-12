@@ -404,10 +404,10 @@ export const insightPosts: BlogPost[] = [
   },
   {
     slug: "brand-memory-feedback-approved-campaigns",
-    title: "How brand memory turns feedback into faster approved campaigns",
-    seoTitle: "Brand Intelligence for Better Campaigns | Markethink",
+    title: "How a content approval workflow builds stronger brand memory",
+    seoTitle: "Content Approval Workflow and Brand Intelligence | Markethink",
     description:
-      "Learn how brand intelligence turns feedback, approvals, voice, offers, and campaign direction into more aligned marketing output.",
+      "Learn how a content approval workflow turns feedback, brand intelligence, voice, and campaign direction into more aligned marketing output.",
     excerpt:
       "Brand memory helps your business stop repeating the same edits and start using feedback as a compounding advantage.",
     label: "INSIGHT",
@@ -419,9 +419,10 @@ export const insightPosts: BlogPost[] = [
     readingTime: "7 min read",
     category: "Brand Intelligence",
     keywords: [
+      "content approval workflow",
       "brand memory",
       "brand intelligence",
-      "marketing approvals",
+      "marketing approval process",
       "campaign feedback",
       "AI brand voice",
     ],
