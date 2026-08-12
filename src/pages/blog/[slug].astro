@@ -22,9 +22,11 @@ const isWideGuide = isAiSearchInteractiveGuide || isAiMarketingPracticalGuide;
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const imageUrl = new URL(post.image, siteUrl).toString();
-const relatedPosts = insightPosts
-  .filter((item) => item.slug !== post.slug)
-  .slice(0, 3);
+const relatedPosts = post.relatedSlugs?.length
+  ? post.relatedSlugs
+      .map((slug) => insightPosts.find((item) => item.slug === slug))
+      .filter((item): item is BlogPost => Boolean(item))
+  : insightPosts.filter((item) => item.slug !== post.slug).slice(0, 3);
 
 const articleSchema = {
   "@context": "https://schema.org",

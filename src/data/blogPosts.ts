@@ -32,6 +32,7 @@ export type BlogPost = {
     anchor: string;
     href: string;
   };
+  relatedSlugs?: string[];
   faq: {
     question: string;
     answer: string;
@@ -67,7 +68,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A small-business owner and expert marketer reviewing an AI-supported marketing campaign workflow",
     publishedDate: "2026-08-10",
-    updatedDate: "2026-08-10",
+    updatedDate: "2026-08-12",
     readingTime: "18 min read",
     category: "AI Marketing",
     keywords: [
@@ -97,6 +98,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
     },
+    relatedSlugs: [
+      "how-to-show-up-in-ai-search",
+      "consistent-marketing-beats-chasing-ai-tools",
+      "brand-memory-feedback-approved-campaigns",
+    ],
     sections: [
       { heading: "Start with one outcome", body: [] },
       { heading: "Build context AI can use", body: [] },
@@ -155,9 +161,9 @@ export const insightPosts: BlogPost[] = [
   {
     slug: "how-to-show-up-in-ai-search",
     title: "How to Get Your Business to Show Up in AI Search",
-    seoTitle: "How to Show Up in AI Search: Practical Guide | Markethink",
+    seoTitle: "AI Search Optimization: How to Show Up in AI Search | Markethink",
     description:
-      "Learn how to show up in AI search with a readiness audit, answer-ready content framework, evidence matrix, measurement guide, and practical 30-day plan.",
+      "Learn AI search optimization with a practical guide to answer-ready content, credible evidence, measurement, and a focused 30-day plan.",
     excerpt:
       "A practical, source-backed guide to improving AI-search visibility, auditing readiness, strengthening evidence, and connecting visibility to pipeline outcomes.",
     label: "INTERACTIVE GUIDE",
@@ -165,7 +171,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A small-business owner and expert marketer organizing answer-ready content for AI search",
     publishedDate: "2026-07-17",
-    updatedDate: "2026-07-17",
+    updatedDate: "2026-08-12",
     readingTime: "16 min read",
     category: "AI Search",
     keywords: [
@@ -197,6 +203,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
       href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
+    relatedSlugs: [
+      "how-to-use-ai-for-marketing-small-business",
+      "brand-memory-feedback-approved-campaigns",
+      "hidden-cost-disconnected-marketing-apps-prompts-docs",
+    ],
     sections: [
       {
         heading: "What it means to appear in AI search",
@@ -274,9 +285,9 @@ export const insightPosts: BlogPost[] = [
     slug: "consistent-marketing-beats-chasing-ai-tools",
     title: "Why consistent marketing beats chasing every new AI tool",
     seoTitle:
-      "Why Consistent Marketing Beats Chasing Every New AI Tool | Markethink",
+      "Marketing Consistency: A Better System Than More AI Tools | Markethink",
     description:
-      "A practical guide for growing businesses on why consistent marketing, clear offers, and a repeatable campaign rhythm matter more than collecting more AI tools.",
+      "Learn how marketing consistency, clear offers, and a repeatable campaign rhythm create a stronger system than collecting more disconnected AI tools.",
     excerpt:
       "More AI tools do not automatically create more demand. A consistent marketing rhythm helps your business show up, learn, and improve every week.",
     label: "INSIGHT",
@@ -284,7 +295,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A Markethink marketing rhythm workspace showing campaign planning, approvals, and weekly output",
     publishedDate: "2026-05-15",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-08-12",
     readingTime: "6 min read",
     category: "Marketing Systems",
     keywords: [
@@ -313,6 +324,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "our step-by-step AI marketing guide for small businesses",
       href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
+    relatedSlugs: [
+      "hidden-cost-disconnected-marketing-apps-prompts-docs",
+      "scattered-ideas-to-client-opportunities",
+      "brand-memory-feedback-approved-campaigns",
+    ],
     sections: [
       {
         heading: "More tools do not automatically create more demand",
@@ -389,9 +405,9 @@ export const insightPosts: BlogPost[] = [
   {
     slug: "brand-memory-feedback-approved-campaigns",
     title: "How brand memory turns feedback into faster approved campaigns",
-    seoTitle: "How Brand Memory Creates Faster Approved Campaigns | Markethink",
+    seoTitle: "Brand Intelligence: Turn Feedback Into Better Campaigns | Markethink",
     description:
-      "Learn how brand memory helps teams turn feedback, approvals, voice, offers, and campaign direction into faster, more aligned marketing output.",
+      "Learn how brand intelligence turns feedback, approvals, voice, offers, and campaign direction into more aligned marketing output.",
     excerpt:
       "Brand memory helps your business stop repeating the same edits and start using feedback as a compounding advantage.",
     label: "INSIGHT",
@@ -399,7 +415,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A Markethink brand memory workspace showing feedback, approvals, and campaign learning",
     publishedDate: "2026-05-15",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-08-12",
     readingTime: "7 min read",
     category: "Brand Intelligence",
     keywords: [
@@ -428,6 +444,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "the complete AI marketing workflow",
       href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
+    relatedSlugs: [
+      "consistent-marketing-beats-chasing-ai-tools",
+      "hidden-cost-disconnected-marketing-apps-prompts-docs",
+      "scattered-ideas-to-client-opportunities",
+    ],
     sections: [
       {
         heading: "Why approvals slow down",
@@ -495,9 +516,9 @@ export const insightPosts: BlogPost[] = [
     slug: "hidden-cost-disconnected-marketing-apps-prompts-docs",
     title: "The hidden cost of disconnected apps, prompts, and marketing docs",
     seoTitle:
-      "The Hidden Cost of Disconnected Marketing Apps and Prompts | Markethink",
+      "Marketing Technology Stack: The Cost of Disconnected Tools | Markethink",
     description:
-      "Disconnected marketing tools, prompts, docs, and approval threads create hidden costs. Learn how a marketing operating system reduces context switching and lost learning.",
+      "Learn how a disconnected marketing technology stack creates repeated context, lost approvals, and weak learning, and how a connected workflow reduces the drag.",
     excerpt:
       "Disconnected marketing tools create invisible drag: context switching, repeated explanations, lost approvals, and campaigns that never fully connect.",
     label: "INSIGHT",
@@ -505,7 +526,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A Markethink workspace showing disconnected marketing apps being organized into one workflow",
     publishedDate: "2026-05-15",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-08-12",
     readingTime: "7 min read",
     category: "Marketing Operations",
     keywords: [
@@ -534,6 +555,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "a practical AI marketing workflow for small businesses",
       href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
+    relatedSlugs: [
+      "consistent-marketing-beats-chasing-ai-tools",
+      "brand-memory-feedback-approved-campaigns",
+      "scattered-ideas-to-client-opportunities",
+    ],
     sections: [
       {
         heading: "The real cost is repeated context",
@@ -601,9 +627,9 @@ export const insightPosts: BlogPost[] = [
     title:
       "From scattered ideas to campaigns that create real client opportunities",
     seoTitle:
-      "Turn Scattered Marketing Ideas Into Client Opportunities | Markethink",
+      "Marketing Workflow: Turn Ideas Into Client Opportunities | Markethink",
     description:
-      "Learn how to turn scattered marketing ideas into connected campaigns that support website updates, blog posts, social content, landing pages, leads, and partnerships.",
+      "Build a marketing workflow that turns scattered ideas into connected campaigns, landing pages, content, leads, follow-up, and client opportunities.",
     excerpt:
       "Ideas only create growth when they become campaigns with a clear audience, offer, message, destination, and follow-up path.",
     label: "INSIGHT",
@@ -611,7 +637,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A Markethink workflow turning ideas into campaign assets and client opportunities",
     publishedDate: "2026-05-15",
-    updatedDate: "2026-05-15",
+    updatedDate: "2026-08-12",
     readingTime: "8 min read",
     category: "Campaign Strategy",
     keywords: [
@@ -640,6 +666,11 @@ export const insightPosts: BlogPost[] = [
       anchor: "our practical guide to using AI for marketing",
       href: "/blog/how-to-use-ai-for-marketing-small-business/",
     },
+    relatedSlugs: [
+      "hidden-cost-disconnected-marketing-apps-prompts-docs",
+      "consistent-marketing-beats-chasing-ai-tools",
+      "brand-memory-feedback-approved-campaigns",
+    ],
     sections: [
       {
         heading: "An idea is not a campaign yet",
