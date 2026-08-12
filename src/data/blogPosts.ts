@@ -285,7 +285,7 @@ export const insightPosts: BlogPost[] = [
     slug: "consistent-marketing-beats-chasing-ai-tools",
     title: "Why consistent marketing beats chasing every new AI tool",
     seoTitle:
-      "Marketing Consistency: A Better System Than More AI Tools | Markethink",
+      "Marketing Consistency vs. More AI Tools | Markethink",
     description:
       "Learn how marketing consistency, clear offers, and a repeatable campaign rhythm create a stronger system than collecting more disconnected AI tools.",
     excerpt:
@@ -405,7 +405,7 @@ export const insightPosts: BlogPost[] = [
   {
     slug: "brand-memory-feedback-approved-campaigns",
     title: "How brand memory turns feedback into faster approved campaigns",
-    seoTitle: "Brand Intelligence: Turn Feedback Into Better Campaigns | Markethink",
+    seoTitle: "Brand Intelligence for Better Campaigns | Markethink",
     description:
       "Learn how brand intelligence turns feedback, approvals, voice, offers, and campaign direction into more aligned marketing output.",
     excerpt:
@@ -516,7 +516,7 @@ export const insightPosts: BlogPost[] = [
     slug: "hidden-cost-disconnected-marketing-apps-prompts-docs",
     title: "The hidden cost of disconnected apps, prompts, and marketing docs",
     seoTitle:
-      "Marketing Technology Stack: The Cost of Disconnected Tools | Markethink",
+      "Marketing Technology Stack: Disconnected Tool Costs | Markethink",
     description:
       "Learn how a disconnected marketing technology stack creates repeated context, lost approvals, and weak learning, and how a connected workflow reduces the drag.",
     excerpt:
@@ -627,7 +627,7 @@ export const insightPosts: BlogPost[] = [
     title:
       "From scattered ideas to campaigns that create real client opportunities",
     seoTitle:
-      "Marketing Workflow: Turn Ideas Into Client Opportunities | Markethink",
+      "Marketing Workflow: Ideas to Client Opportunities | Markethink",
     description:
       "Build a marketing workflow that turns scattered ideas into connected campaigns, landing pages, content, leads, follow-up, and client opportunities.",
     excerpt:
