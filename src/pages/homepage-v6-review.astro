@@ -1,309 +1,312 @@
----
-import Layout from "../layouts/Layout.astro";
-import OperatingFlow from "../components/OperatingFlow.astro";
-import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
-
-const heroImage = "/images/hero-v6-reference-phone.svg";
-const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-work.png";
-const expertsImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-experts.png";
-
-const services = [
-  ["Social content", "Written, designed, and published in your brand voice."],
-  ["Landing pages and website updates", "Built to convert, shipped to your connected site."],
-  ["Email campaigns", "Written, designed, and sent when email is in your plan."],
-  ["Advertising", "Managed inside budget limits you approve up front."],
-  ["Leads and follow-up", "Capture, CRM, and follow-up running through the channels you connect."],
-  ["Reporting with receipts", "Work, approvals, and results, tracked in your dashboard."],
-];
-
-const heroCapabilities = [
-  ["web", "Websites & landing pages"],
-  ["campaign", "Campaign concepts"],
-  ["social", "Social content"],
-  ["email", "Email campaigns"],
-  ["ads", "Paid advertising"],
-  ["leads", "Lead lists"],
-  ["crm", "CRM & follow-up"],
-  ["seo", "SEO & content"],
-  ["reporting", "Reporting & learnings"],
-];
-
-const heroCapabilityRail = [...heroCapabilities, ...heroCapabilities];
-
-const faq = [
-  ["Who actually does the work?", "AI grounded in your business context and memory handles production. Senior marketing, design, web, and advertising specialists direct the work and review what ships; nothing goes out as raw AI output. You control what ships and set the approval rules. The preview shows you how it sounds before you pay anything."],
-  ["Will it sound like my brand?", "That is the first thing the preview proves. When something is off, say so in plain words, in chat. It revises, and it remembers why."],
-  ["Do I have to learn new software or replace my tools?", "No. Approvals happen in your connected chat channel, the dashboard is there when you want receipts, and Markethink connects to what you already run. No platform migration is required to get started."],
-  ["What does it cost?", "A monthly plan scoped to your business. You get your exact number after one 30-minute walkthrough, before any commitment. For comparison, agencies delivering this work typically charge $3,000 to $15,000 a month."],
-  ["What if the work is not good?", "Reject it in one tap and say why. The system revises and learns your standard. [First-month commitment terms, once finalized.]"],
-  ["How is this different from an agency or a freelancer?", "Good ones exist. The difference is structural: with Markethink the strategy, production, publishing, and follow-up run as one operation, the knowledge compounds in a business memory instead of leaving with a person or an account team, and every deliverable is timestamped in your dashboard."],
-  ["Is my business information safe?", "Each client's agent workspace and data access are tenant-isolated. Your data, voice, and strategy are never shared across clients."],
-  ["What happens when new AI models come out?", "That is our job, not yours. We continuously evaluate the best AI systems across reasoning, creative, image, and video, and integrate what wins into Markethink. Your business memory stays, the work gets sharper, and you are already on whatever wins."],
-  ["Do you work in Spanish?", "Sí. English, Spanish, or both, native in each."],
-  ["What do you not do?", "Large rebuilds, migrations, and custom development are scoped separately. Day to day, we ship consistent marketing that compounds, and we are honest about scope."],
-];
----
-
-<Layout
-  title="Markethink homepage v6 - private review"
-  description="Private review of the approved Markethink conversion rewrite."
-  canonical="https://markethink.ai/homepage-v6-review/"
-  image={heroImage}
-  noindex={true}
->
-  <div class="review-page">
-    <header class="site-header">
-      <a class="logo" href="#top" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-      <nav aria-label="Primary navigation">
-        <a href="#how-it-works">How it works</a>
-        <a href="#real-work">Real work</a>
-        <a href="/blog/">Insights</a>
-        <a href="#spanish">ES</a>
-        <a href="https://dashboard.markethink.ai/">Log in</a>
-      </nav>
-      <a class="button button-small" href="#preview-form">Send me my campaign preview</a>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <picture class="hero-picture">
-          <source media="(max-width: 680px)" srcset="/images/hero-v6-reference-phone-mobile.svg" />
-          <img class="hero-image" src={heroImage} alt="A marketing specialist holding a phone with a Markethink landing-page workflow and expert review" fetchpriority="high" />
-        </picture>
-        <div class="hero-shade"></div>
-        <div class="hero-content wrap">
-          <p class="eyebrow">For businesses that need marketing done. En español también.</p>
-          <h1>Your marketing operation, running and getting sharper every week.</h1>
-          <p class="hero-copy">Markethink is an AI marketing system managed by expert marketers. It learns your business and keeps the work moving across your website, social, email, advertising, and follow-up. You control what ships.</p>
-          <div class="hero-actions">
-            <a class="button" href="#preview-form">Send me my campaign preview</a>
-            <a class="button button-ghost" href="/schedule-a-walkthrough/">Book a 30-minute walkthrough →</a>
-          </div>
-          <p class="microcopy">A private preview built from your public brand, free. Nothing is published.</p>
-        </div>
-        <div class="hero-capabilities" aria-label="What Markethink can build">
-          <div class="capability-track">
-            {heroCapabilityRail.map(([icon, title], index) => (
-              <div class="capability-card" aria-hidden={index >= heroCapabilities.length ? "true" : undefined}>
-                <span class={`capability-icon icon-${icon}`} aria-hidden="true"><i></i><b></b></span>
-                <span>{title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="proof-strip section-light" aria-labelledby="proof-title">
-        <div class="wrap">
-          <p class="eyebrow dark">Proof strip</p>
-          <h2 id="proof-title">Trusted by growing businesses</h2>
-          <div class="proof-placeholder">[Approved client logo strip] · real estate, hospitality, interior design, logistics, and professional services · English + Español</div>
-          <p class="proof-outcome">[One concrete, time-bounded OUTCOME, chosen in this order of strength: 1) qualified leads, booked calls, conversions, or revenue where attribution is defensible; 2) an improved campaign or website conversion rate; 3) a concrete operational transformation backed by a client quote. Production volume ("shipped N deliverables") appears only as supporting evidence, never as the headline proof: it proves activity, not value.]</p>
-          <p class="commitment">Our commitment: your first campaign-ready package within [N business days] of completed intake and access, or [refund / credit].</p>
-        </div>
-      </section>
-
-      <section class="real-work" id="real-work" aria-labelledby="work-title">
-        <div class="wrap">
-          <div class="section-intro split-intro">
-            <div>
-              <p class="eyebrow">Real work</p>
-              <h2 id="work-title">Real work, shipped for real clients.</h2>
-            </div>
-            <p>With permission, straight from the dashboard that produced it.</p>
-          </div>
-          <div class="work-visual">
-            <img src={workImage} alt="A campaign system expressed through coordinated social, landing page, and follow-up deliverables" loading="lazy" />
-          </div>
-          <div class="work-grid">
-            <article>[Work example 1: a social content set in a client's brand voice]</article>
-            <article>[Work example 2: a landing page or website update, live]</article>
-            <article>[Work example 3: an email or campaign piece]</article>
-            <article class="wide">[Two short client testimonials, one or two sentences, named, with photo where permitted]</article>
-          </div>
-          <a class="button" href="#preview-form">Send me my campaign preview</a>
-        </div>
-      </section>
-
-      <section class="founder section-light" aria-labelledby="founder-title">
-        <div class="wrap founder-grid">
-          <div class="founder-photo" role="img" aria-label="Professional photograph placeholder"><span>SS</span><small>[Professional photograph]</small></div>
-          <div>
-            <p class="eyebrow dark">Founder</p>
-            <h2 id="founder-title">Who answers for the work</h2>
-            <p>Santiago Sosa, founder. Santiago built Markethink after seeing growing businesses forced to choose between software they had to operate and service teams that often restarted context when people changed. Markethink was designed to keep marketing moving across markets, channels, and time zones without making the owner manage every task.</p>
-            <p>Behind every account: an expert marketing team directing strategy and reviewing priority work, and dedicated client management for the day to day. [LinkedIn link]</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="manages" aria-labelledby="manages-title">
-        <div class="wrap">
-          <p class="eyebrow">What Markethink manages</p>
-          <h2 id="manages-title">We do not sell you a tool. We run your marketing.</h2>
-          <p class="lead">Finished, published work through the channels you connect.</p>
-          <div class="service-grid">
-            {services.map(([title, body], index) => (
-              <article>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </article>
-            ))}
-          </div>
-          <div class="integration-band">
-            <p>Keep the tools you already use. No platform migration is required to get started.</p>
-            <div class="chips" aria-label="Connected channels">
-              {['WordPress','Shopify','Google Ads','Meta','Mailchimp','Microsoft 365','WhatsApp','Telegram','and more'].map((item) => <span>{item}</span>)}
-            </div>
-            <small>Availability depends on your plan and connected accounts.</small>
-          </div>
-        </div>
-      </section>
-
-      <OperatingFlow sectionId="request-to-result" includeInstagram={false} />
-
-      <section class="difference section-light" aria-labelledby="difference-title">
-        <div class="wrap">
-          <div class="difference-hero">
-            <div>
-              <p class="eyebrow dark">Why it is different</p>
-              <h2 id="difference-title">Powered by AI. Managed by experts. Directed by you.</h2>
-            </div>
-            <img src={expertsImage} alt="A marketing specialist directing and reviewing campaign work" loading="lazy" />
-          </div>
-          <div class="triad">
-            <article><strong>AI supports</strong><p>Research, drafts, production, organization, and consistency.</p></article>
-            <article><strong>Expert marketers own</strong><p>Direction, review, judgment, and accountability: senior marketing, design, web, and advertising specialists.</p></article>
-            <article><strong>You control</strong><p>What ships, the approval rules, and every commercial decision.</p></article>
-          </div>
-          <div class="memory-copy">
-            <p>Underneath sits one business memory: your positioning, voice, offers, and every approval, correction, and result. The correction you make in week 2 shapes the campaign it plans in month 6, and it compounds for as long as you work with Markethink. Work, approvals, and results are tracked in your dashboard: receipts, not reports.</p>
-            <p class="ai-emphasis">Whatever the best AI is this month, you are already on it. New systems ship constantly across reasoning, creative, image, and video. We evaluate them as they land and integrate what wins underneath Markethink. Your business memory stays, the engines upgrade, and the work keeps getting sharper.</p>
-            <p>And nothing ships as raw AI output. Senior marketing, design, web, and advertising specialists direct the work and review what ships. No AI slop.</p>
-          </div>
-          <div class="memory-flow" aria-label="Business memory example">
-            <article><small>Client note in chat</small><p>“We never discount. Drop the percent framing.”</p></article>
-            <span aria-hidden="true">→</span>
-            <article><small>Business memory</small><p>Durable rule captured</p></article>
-            <span aria-hidden="true">→</span>
-            <article><small>Next campaign brief</small><p>Rule visibly applied</p></article>
-          </div>
-          <p class="comparison-intro">Good freelancers and agencies exist. The difference is structural: who carries the work, and where the knowledge lives.</p>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th></th><th>AI tools</th><th>Freelancer</th><th>Agency</th><th>Markethink</th></tr></thead>
-              <tbody>
-                <tr><th>Owner time required</th><td>High: you run the tool</td><td>Medium: you manage them</td><td>Meetings and reviews</td><td>Approvals from your phone</td></tr>
-                <tr><th>Strategy included</th><td>No</td><td>Sometimes</td><td>Yes</td><td>Yes, expert-directed</td></tr>
-                <tr><th>Production and publishing</th><td>Drafts only</td><td>Varies by workload</td><td>Yes, on agency cycles</td><td>Weekly cadence, per your plan</td></tr>
-                <tr><th>Channel coordination</th><td>No</td><td>Rarely</td><td>Within their scope</td><td>One connected operation</td></tr>
-                <tr><th>Business knowledge retained</th><td>Limited, tied to the tool</td><td>Goes with the person</td><td>Held by the account team</td><td>Compounds in your business memory</td></tr>
-                <tr><th>Lead follow-up</th><td>No</td><td>Rarely</td><td>Often separate scope</td><td>Built in, when connected</td></tr>
-                <tr><th>Accountability</th><td>You</td><td>Informal</td><td>Account manager</td><td>Expert team, plus dashboard receipts</td></tr>
-                <tr><th>Typical monthly cost</th><td>$20 to $199</td><td>$500 to $1,500</td><td>$3,000 to $15,000</td><td>Scoped monthly plan</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <ReviewHowItWorks />
-
-      <section class="engagement section-light" aria-labelledby="engagement-title">
-        <div class="wrap">
-          <p class="eyebrow dark">How engagements work</p>
-          <h2 id="engagement-title">A complete marketing operation, without building one in-house.</h2>
-          <div class="engagement-grid">
-            <article><h3>Scoped to your business</h3><p>A monthly plan around the channels and volume you need, agreed before anything starts.</p></article>
-            <article><h3>One connected scope</h3><p>Strategy, production, publishing, leads, and follow-up as one operation, defined by your plan.</p></article>
-            <article><h3>Straightforward terms</h3><p>[No setup fee. No long contract. Pause and cancellation policy. Every term here publishes only once confirmed against actual operating terms.]</p></article>
-          </div>
-          <p class="investment">Markethink is built for businesses ready to invest consistently in their growth. For comparison, agencies delivering this work typically charge $3,000 to $15,000 a month.</p>
-          <p>Plans are scoped per business, so a generic number would mislead in both directions. You will have your exact number after one 30-minute walkthrough, before any commitment. One conversation, one quote.</p>
-        </div>
-      </section>
-
-      <section class="faq" aria-labelledby="faq-title">
-        <div class="wrap faq-grid">
-          <div class="faq-heading">
-            <p class="eyebrow">FAQ</p>
-            <h2 id="faq-title">The questions owners actually ask</h2>
-          </div>
-          <div class="accordions">
-            {faq.map(([question, answer], index) => (
-              <details open={index === 0}>
-                <summary>{question}<span aria-hidden="true">+</span></summary>
-                <p>{answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="final-cta section-light" id="preview-form" aria-labelledby="cta-title">
-        <div class="wrap">
-          <div class="cta-grid">
-            <div>
-              <p class="eyebrow dark">Campaign preview</p>
-              <h2 id="cta-title">See what Markethink would ship for you.</h2>
-              <p>Send us your website or Instagram. You get a private campaign preview: one campaign angle, one finished creative in your voice, one landing-page concept, and three prioritized opportunities. Nothing is published. Keep it either way.</p>
-              <div class="preview-form" role="group" aria-label="Campaign preview request fields">
-                <label>Website or Instagram<input type="url" placeholder="https://" /></label>
-                <label>Email or WhatsApp<input type="text" /></label>
-                <label>What does your business sell, in one sentence?<textarea rows="3"></textarea></label>
-                <fieldset><legend>What monthly investment range are you considering for a managed marketing operation?</legend><label><input type="radio" name="budget" /> $500 to $1,000</label><label><input type="radio" name="budget" /> $1,000 to $2,000</label><label><input type="radio" name="budget" /> $2,000+</label></fieldset>
-                <button class="button" type="button">Send me my campaign preview</button>
-                <small>Built from your public brand only. Delivered privately by email or WhatsApp. Nothing is published.[Deletion promise only once a real retention and deletion process exists.]</small>
-              </div>
-            </div>
-            <aside class="founder-call">
-              <h3>Or talk to the founder directly.</h3>
-              <p>A 30-minute call with Santiago Sosa. We bring your campaign preview, and you leave with your exact number.</p>
-              <a class="button" href="/schedule-a-walkthrough/">Book a call with the founder</a>
-              <div class="calendar-placeholder">
-                <p>[COMPONENT] The booking calendar embeds inline right here, real availability visible, next to Santiago's photo. The qualifying questions (name, website, priority) are asked as booking fields, so booking is one step. This is the page's only inline calendar; everywhere else the walkthrough is a button.</p>
-              </div>
-            </aside>
-          </div>
-          <p class="proof-echo">[Proof echo beside the final CTA: the logo row repeated small, or the named result as one line.] Trust signals belong next to the moment of commitment, not only at the top.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="wrap footer-grid">
-        <div><img src="/images/logo-white.svg" alt="Markethink" /><p>Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.</p><strong>Your marketing operation, powered by AI and managed by experts.</strong></div>
-        <nav aria-label="Footer navigation"><a href="#how-it-works">How it works</a><a href="#real-work">Real work</a><a href="/blog/">Insights</a><a href="#spanish" id="spanish">ES</a><a href="/privacy/">Privacy</a><a href="mailto:hello@markethink.ai">hello@markethink.ai</a></nav>
-      </div>
-    </footer>
-  </div>
-</Layout>
-
-<style>
-  :global(html){scroll-behavior:smooth;background:#0F1213}
-  :global(body){margin:0;background:#0F1213;color:#F5F5F1;font-family:Inter,system-ui,sans-serif}
-  :global(*){box-sizing:border-box}
-  .review-page{overflow-x:clip;background:#0F1213}
-  .wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
-  .site-header{height:54px;padding:0 15px 0 19px;display:flex;align-items:center;gap:22px;position:absolute;top:10px;left:max(18px,calc((100vw - 1280px)/2));right:max(18px,calc((100vw - 1280px)/2));z-index:20;border:1px solid rgba(245,245,241,.2);border-radius:999px;background:rgba(15,18,19,.42);backdrop-filter:blur(18px) saturate(120%);box-shadow:0 16px 50px rgba(0,0,0,.16)}
-  .site-header .logo{width:124px;display:flex}.site-header img{width:100%}.site-header nav{display:flex;gap:22px;margin-left:auto}.site-header a{color:#F5F5F1;text-decoration:none;font-size:13px}.site-header nav a{opacity:.8}.site-header nav a:hover{opacity:1}
-  .button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#69D254;color:#0F1213;text-decoration:none;font-weight:700;border:1px solid #69D254;font-size:14px;cursor:pointer}.button:hover{background:#82df6f}.button-small{min-height:38px;padding:0 17px}.button-ghost{background:rgba(15,18,19,.34);color:#F5F5F1;border-color:rgba(245,245,241,.45);backdrop-filter:blur(12px)}
-  .hero{position:relative;min-height:680px;padding:0;display:flex;align-items:center;overflow:hidden}.hero-picture{position:absolute;inset:0}.hero-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,18,19,.96) 0%,rgba(15,18,19,.82) 35%,rgba(15,18,19,.24) 58%,rgba(15,18,19,.02) 84%)}.hero-content{position:relative;z-index:3;padding:72px 0 68px}.hero-content>*{max-width:540px}.eyebrow{font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.16em;color:#69D254;font-weight:700;margin:0 0 18px}.eyebrow.dark{color:#315b28}.hero h1,.review-page h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:.94;margin:0}.hero h1{font-size:clamp(46px,4.15vw,60px);max-width:560px}.hero-copy{font-size:16px;line-height:1.48;margin:17px 0 19px;color:#e5e6e2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.microcopy{font-size:12px;color:#c5c8c5;margin-top:13px}
-
-  .hero-capabilities{position:absolute;z-index:6;left:0;right:0;bottom:12px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}.capability-track{display:flex;gap:10px;width:max-content;animation:capabilityDrift 50s linear infinite}.hero-capabilities:hover .capability-track{animation-play-state:paused}.capability-card{width:218px;height:52px;padding:6px 11px 6px 8px;display:flex;align-items:center;gap:10px;border:1px solid rgba(245,245,241,.38);border-radius:13px;background:rgba(245,245,241,.17);backdrop-filter:blur(18px) saturate(120%);color:#F5F5F1;font-size:12px;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,.12)}.capability-icon{position:relative;width:40px;height:38px;flex:0 0 40px;border-radius:10px;overflow:hidden;background:rgba(15,18,19,.72);border:1px solid rgba(245,245,241,.12)}.capability-icon:before,.capability-icon:after,.capability-icon i,.capability-icon b{content:"";position:absolute;display:block}.capability-icon:before{left:8px;right:8px;top:9px;height:4px;border-radius:4px;background:#69D254}.capability-icon:after{left:8px;right:15px;top:19px;height:3px;border-radius:3px;background:rgba(245,245,241,.8);box-shadow:0 8px 0 rgba(245,245,241,.35)}.capability-icon i{width:10px;height:10px;border-radius:3px;right:7px;bottom:6px;background:#EDF4EA}.capability-icon b{width:15px;height:3px;border-radius:3px;left:8px;bottom:8px;background:#69D254}.icon-social:before,.icon-email:before{border-radius:50%;width:9px;height:9px;left:8px;right:auto;top:8px}.icon-leads i,.icon-crm i{border-radius:50%}.icon-ads b{width:27px;transform:rotate(-18deg);transform-origin:left}.icon-reporting:after{height:16px;top:22px;background:linear-gradient(90deg,#69D254 0 18%,transparent 18% 32%,#EDF4EA 32% 58%,transparent 58% 70%,#69D254 70%)}@keyframes capabilityDrift{to{transform:translateX(calc(-50% - 6px))}}
-  section{padding:120px 0}.section-light{background:#F5F5F1;color:#0F1213}.review-page h2{font-size:clamp(48px,5.4vw,78px);max-width:900px}.section-intro{margin-bottom:46px}.split-intro{display:grid;grid-template-columns:1.4fr .6fr;gap:48px;align-items:end}.split-intro p:last-child{font-size:20px;color:#B4B6B6;line-height:1.55}.lead{font-size:20px;color:#B4B6B6;max-width:700px;margin:22px 0 50px}
-  .proof-strip{text-align:center}.proof-strip h2{margin:0 auto 42px}.proof-placeholder{border:1px dashed #9aa195;padding:28px;border-radius:18px;background:#EDF4EA;font-weight:700}.proof-outcome{font-family:"Instrument Serif",Georgia,serif;font-size:30px;line-height:1.25;max-width:1000px;margin:42px auto}.commitment{display:inline-block;background:#0F1213;color:#F5F5F1;padding:18px 26px;border-radius:14px}
-  .work-visual{position:relative;margin:0 0 24px;border-radius:28px;overflow:hidden;border:1px solid rgba(245,245,241,.12)}.work-visual img{display:block;width:100%;aspect-ratio:3/1.55;object-fit:cover}.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 30px}.work-grid article{min-height:150px;padding:26px;border:1px dashed rgba(245,245,241,.3);border-radius:18px;color:#B4B6B6;line-height:1.5}.work-grid .wide{grid-column:1/-1;min-height:auto}
-  .founder-grid{display:grid;grid-template-columns:360px 1fr;gap:80px;align-items:center}.founder-photo{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(145deg,#0F1213,#26302a);display:grid;place-items:center;position:relative;color:#F5F5F1}.founder-photo span{font-family:"Instrument Serif",Georgia,serif;font-size:110px}.founder-photo small{position:absolute;bottom:20px;padding:8px 12px;background:#EDF4EA;color:#0F1213;border-radius:999px}.founder-grid h2{margin-bottom:28px}.founder-grid p{font-size:18px;line-height:1.7;color:#4c504d}
-  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service-grid article{min-height:260px;padding:30px;border-radius:22px;background:#171b1c;border:1px solid rgba(245,245,241,.12);position:relative}.service-grid span{font-size:11px;color:#69D254;letter-spacing:.15em}.service-grid h3{font-family:"Instrument Serif",Georgia,serif;font-size:34px;font-weight:400;line-height:1.05;margin:52px 0 18px}.service-grid p{color:#B4B6B6;line-height:1.6}.integration-band{margin-top:50px;border-radius:24px;padding:34px;background:#EDF4EA;color:#0F1213}.integration-band>p{font-size:22px;font-weight:700}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.chips span{border:1px solid #c9d3c5;border-radius:999px;padding:10px 14px;font-size:13px;background:#F5F5F1}.integration-band small{color:#686B6C}
-  .difference-hero{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.difference-hero img{width:100%;border-radius:26px;aspect-ratio:1.18/1;object-fit:cover}.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:44px 0}.triad article,.engagement-grid article{padding:28px;border:1px solid #d7ddd3;border-radius:20px;background:white}.triad strong{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400}.triad p{color:#686B6C;line-height:1.55}.memory-copy{font-size:20px;line-height:1.7;max-width:950px;margin:70px auto}.ai-emphasis{font-family:"Instrument Serif",Georgia,serif;font-size:36px;line-height:1.25}.memory-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:15px;align-items:center}.memory-flow article{min-height:150px;padding:24px;border-radius:18px;background:#0F1213;color:#F5F5F1}.memory-flow small{color:#69D254;text-transform:uppercase;letter-spacing:.12em}.memory-flow>span{font-size:28px}.comparison-intro{font-size:22px;line-height:1.55;max-width:850px;margin:80px 0 30px}.table-wrap{overflow-x:auto;border-radius:20px;border:1px solid #d7ddd3}table{width:100%;border-collapse:collapse;min-width:880px;background:white}th,td{text-align:left;padding:17px 15px;border-bottom:1px solid #e2e6df;font-size:13px;line-height:1.4}thead th{background:#0F1213;color:#F5F5F1}tbody th{font-weight:700}td:last-child{background:#EDF4EA;font-weight:700}
-  .timeline{margin-top:60px}.timeline article{display:grid;grid-template-columns:70px 1fr 280px;gap:32px;align-items:center;padding:38px 0;border-top:1px solid rgba(245,245,241,.14)}.timeline-number{font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:#69D254}.timeline small{text-transform:uppercase;letter-spacing:.15em;color:#69D254}.timeline h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin:8px 0}.timeline p{color:#B4B6B6;line-height:1.6;max-width:610px}.timeline-art{height:160px;border-radius:20px;background:#171b1c;border:1px solid rgba(245,245,241,.12);position:relative;overflow:hidden}.timeline-art span,.timeline-art i,.timeline-art b{position:absolute;display:block;border-radius:10px}.timeline-art span{width:58%;height:20px;background:#F5F5F1;left:20%;top:28px}.timeline-art i{width:40%;height:64px;background:#EDF4EA;left:12%;top:63px}.timeline-art b{width:30%;height:64px;background:#69D254;right:12%;top:63px}.art-2{transform:rotate(-1deg)}.art-3 span{width:18px;height:100px;background:#69D254;left:50%;top:28px}.art-4{background:radial-gradient(circle at center,#69D254 0 6px,transparent 7px),#171b1c}
-  .engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0}.engagement-grid h3{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400;margin-top:0}.engagement-grid p{color:#686B6C;line-height:1.6}.investment{font-size:24px;line-height:1.5;max-width:900px;font-weight:700}
-  .faq-grid{display:grid;grid-template-columns:.65fr 1fr;gap:80px}.faq-heading{position:sticky;top:40px;align-self:start}.accordions details{border-top:1px solid rgba(245,245,241,.18)}.accordions details:last-child{border-bottom:1px solid rgba(245,245,241,.18)}summary{list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-size:20px;font-weight:700;cursor:pointer}summary::-webkit-details-marker{display:none}summary span{color:#69D254;font-size:28px}.accordions details[open] summary span{transform:rotate(45deg)}.accordions details p{color:#B4B6B6;line-height:1.7;margin:0;padding:0 44px 26px 0}
-  .cta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px}.cta-grid>div,.founder-call{padding:42px;border-radius:26px;background:white;border:1px solid #d7ddd3}.cta-grid h2{font-size:60px}.cta-grid p{font-size:18px;line-height:1.6;color:#525854}.preview-form{display:grid;gap:16px;margin-top:30px}.preview-form label,.preview-form legend{font-size:13px;font-weight:700}.preview-form input,.preview-form textarea{display:block;width:100%;margin-top:7px;border:1px solid #cfd5cc;background:#F5F5F1;border-radius:12px;padding:14px;font:inherit}.preview-form fieldset{border:1px solid #cfd5cc;border-radius:14px;padding:18px}.preview-form fieldset label{display:flex;align-items:center;gap:8px;margin-top:12px}.preview-form fieldset input{display:inline;width:auto;margin:0}.preview-form small{color:#686B6C;line-height:1.5}.founder-call{background:#0F1213;color:#F5F5F1}.founder-call h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin-top:0}.founder-call p{color:#B4B6B6}.calendar-placeholder{margin-top:28px;padding:24px;border:1px dashed rgba(245,245,241,.35);border-radius:18px;min-height:330px;background:linear-gradient(180deg,rgba(105,210,84,.12),transparent)}.calendar-placeholder p{font-size:14px}.proof-echo{margin:28px auto 0;padding:22px;border:1px dashed #9aa195;border-radius:16px;color:#525854}
-  footer{padding:70px 0;background:#090b0c}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}.footer-grid>div img{width:150px}.footer-grid p{color:#B4B6B6;max-width:600px;line-height:1.6}.footer-grid strong{color:#69D254}.footer-grid nav{display:flex;flex-wrap:wrap;gap:18px;align-content:flex-start;justify-content:flex-end}.footer-grid a{color:#F5F5F1;text-decoration:none;font-size:13px}
-  @media(max-width:980px){.site-header nav{display:none}.site-header .button-small{margin-left:auto}.hero{min-height:680px}.hero-content>*{max-width:440px}.hero h1{font-size:52px}.hero-shade{background:linear-gradient(90deg,rgba(15,18,19,.98),rgba(15,18,19,.84) 55%,rgba(15,18,19,.18))}.service-grid{grid-template-columns:repeat(2,1fr)}.difference-hero,.founder-grid,.faq-grid,.cta-grid{grid-template-columns:1fr}.founder-grid{gap:40px}.founder-photo{max-width:360px}.faq-heading{position:static}.timeline article{grid-template-columns:54px 1fr}.timeline-art{grid-column:2}.work-grid,.triad,.engagement-grid{grid-template-columns:1fr}.work-grid .wide{grid-column:auto}}
-  @media(max-width:680px){.wrap{width:min(100% - 28px,1200px)}.site-header{height:56px;top:10px;left:10px;right:10px;padding:0 10px 0 14px}.site-header .logo{width:102px}.site-header .button-small{font-size:10px;padding:0 11px;min-height:36px}.hero{min-height:1020px;align-items:flex-start;background:#0F1213}.hero-picture{inset:430px 0 0;height:680px}.hero-image{object-position:center}.hero-shade{background:linear-gradient(180deg,#0F1213 0%,rgba(15,18,19,.97) 37%,rgba(15,18,19,.42) 60%,rgba(15,18,19,.24) 78%,rgba(15,18,19,.6) 100%)}.hero-content{padding:82px 0 0}.hero-content>*{max-width:none}.hero h1{font-size:40px;line-height:.96}.hero-copy{font-size:14px;line-height:1.45;margin:16px 0 17px}.hero-actions{display:grid}.microcopy{font-size:11px}.button{width:100%}.hero-capabilities{bottom:12px}.capability-card{width:206px;height:52px;font-size:11px}.capability-icon{width:40px;height:38px;flex-basis:40px}section{padding:84px 0}.review-page h2{font-size:47px}.split-intro{grid-template-columns:1fr;gap:8px}.work-visual img{aspect-ratio:4/3}.work-grid{grid-template-columns:1fr}.founder-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr}.service-grid article{min-height:220px}.difference-hero{grid-template-columns:1fr}.triad{grid-template-columns:1fr}.memory-copy{font-size:18px}.ai-emphasis{font-size:30px}.memory-flow{grid-template-columns:1fr}.memory-flow>span{transform:rotate(90deg);justify-self:center}.timeline article{grid-template-columns:1fr;gap:12px}.timeline-art{grid-column:auto}.timeline h3{font-size:34px}.engagement-grid{grid-template-columns:1fr}.cta-grid>div,.founder-call{padding:26px}.cta-grid h2{font-size:46px}.footer-grid{grid-template-columns:1fr}.footer-grid nav{justify-content:flex-start}.proof-outcome{font-size:25px}}
-  @media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}.button{transition:none}.capability-track{animation:none;transform:none}}
-</style>
+1|---
+2|import Layout from "../layouts/Layout.astro";
+3|import OperatingFlow from "../components/OperatingFlow.astro";
+4|import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
+5|
+6|const heroImage = "/images/hero-v6-reference-phone.svg";
+7|const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-work.png";
+8|const expertsImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-verbatim-experts.png";
+9|
+10|const services = [
+11|  ["Social content", "Written, designed, and published in your brand voice."],
+12|  ["Landing pages and website updates", "Built to convert, shipped to your connected site."],
+13|  ["Email campaigns", "Written, designed, and sent when email is in your plan."],
+14|  ["Advertising", "Managed inside budget limits you approve up front."],
+15|  ["Leads and follow-up", "Capture, CRM, and follow-up running through the channels you connect."],
+16|  ["Reporting with receipts", "Work, approvals, and results, tracked in your dashboard."],
+17|];
+18|
+19|const heroCapabilities = [
+20|  { icon: "web", title: "Websites & landing pages", note: "Conversion-ready pages" },
+21|  { icon: "campaign", title: "Campaign concepts", note: "One connected idea" },
+22|  { icon: "social", title: "Social content", note: "Designed in your voice" },
+23|  { icon: "email", title: "Email campaigns", note: "From subject to send" },
+24|  { icon: "ads", title: "Paid advertising", note: "Creative built to perform" },
+25|  { icon: "leads", title: "Lead lists", note: "Organized opportunities" },
+26|  { icon: "crm", title: "CRM & follow-up", note: "Every next step visible" },
+27|  { icon: "seo", title: "SEO & content", note: "Built around real intent" },
+28|  { icon: "reporting", title: "Reporting & learnings", note: "Results sharpen the work" },
+29|];
+30|
+31|const heroCapabilityRail = [...heroCapabilities, ...heroCapabilities];
+32|
+33|const faq = [
+34|  ["Who actually does the work?", "AI grounded in your business context and memory handles production. Senior marketing, design, web, and advertising specialists direct the work and review what ships; nothing goes out as raw AI output. You control what ships and set the approval rules. The preview shows you how it sounds before you pay anything."],
+35|  ["Will it sound like my brand?", "That is the first thing the preview proves. When something is off, say so in plain words, in chat. It revises, and it remembers why."],
+36|  ["Do I have to learn new software or replace my tools?", "No. Approvals happen in your connected chat channel, the dashboard is there when you want receipts, and Markethink connects to what you already run. No platform migration is required to get started."],
+37|  ["What does it cost?", "A monthly plan scoped to your business. You get your exact number after one 30-minute walkthrough, before any commitment. For comparison, agencies delivering this work typically charge $3,000 to $15,000 a month."],
+38|  ["What if the work is not good?", "Reject it in one tap and say why. The system revises and learns your standard. [First-month commitment terms, once finalized.]"],
+39|  ["How is this different from an agency or a freelancer?", "Good ones exist. The difference is structural: with Markethink the strategy, production, publishing, and follow-up run as one operation, the knowledge compounds in a business memory instead of leaving with a person or an account team, and every deliverable is timestamped in your dashboard."],
+40|  ["Is my business information safe?", "Each client's agent workspace and data access are tenant-isolated. Your data, voice, and strategy are never shared across clients."],
+41|  ["What happens when new AI models come out?", "That is our job, not yours. We continuously evaluate the best AI systems across reasoning, creative, image, and video, and integrate what wins into Markethink. Your business memory stays, the work gets sharper, and you are already on whatever wins."],
+42|  ["Do you work in Spanish?", "Sí. English, Spanish, or both, native in each."],
+43|  ["What do you not do?", "Large rebuilds, migrations, and custom development are scoped separately. Day to day, we ship consistent marketing that compounds, and we are honest about scope."],
+44|];
+45|---
+46|
+47|<Layout
+48|  title="Markethink homepage v6 - private review"
+49|  description="Private review of the approved Markethink conversion rewrite."
+50|  canonical="https://markethink.ai/homepage-v6-review/"
+51|  image={heroImage}
+52|  noindex={true}
+53|>
+54|  <div class="review-page">
+55|    <header class="site-header">
+56|      <a class="logo" href="#top" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
+57|      <nav aria-label="Primary navigation">
+58|        <a href="#how-it-works">How it works</a>
+59|        <a href="#real-work">Real work</a>
+60|        <a href="/blog/">Insights</a>
+61|        <a href="#spanish">ES</a>
+62|        <a href="https://dashboard.markethink.ai/">Log in</a>
+63|      </nav>
+64|      <a class="button button-small" href="#preview-form">Send me my campaign preview</a>
+65|    </header>
+66|
+67|    <main id="top">
+68|      <section class="hero">
+69|        <picture class="hero-picture">
+70|          <source media="(max-width: 680px)" srcset="/images/hero-v6-reference-phone-mobile.svg" />
+71|          <img class="hero-image" src={heroImage} alt="A marketing specialist holding a phone with a Markethink landing-page workflow and expert review" fetchpriority="high" />
+72|        </picture>
+73|        <div class="hero-shade"></div>
+74|        <div class="hero-content wrap">
+75|          <p class="eyebrow">For businesses that need marketing done. En español también.</p>
+76|          <h1>Your marketing operation, running and getting sharper every week.</h1>
+77|          <p class="hero-copy">Markethink is an AI marketing system managed by expert marketers. It learns your business and keeps the work moving across your website, social, email, advertising, and follow-up. You control what ships.</p>
+78|          <div class="hero-actions">
+79|            <a class="button" href="#preview-form">Send me my campaign preview</a>
+80|            <a class="button button-ghost" href="/schedule-a-walkthrough/">Book a 30-minute walkthrough →</a>
+81|          </div>
+82|          <p class="microcopy">A private preview built from your public brand, free. Nothing is published.</p>
+83|        </div>
+84|        <div class="hero-capabilities" aria-label="What Markethink can build">
+85|          <div class="capability-track">
+86|            {heroCapabilityRail.map(({ icon, title, note }, index) => (
+87|              <div class="capability-card" aria-hidden={index >= heroCapabilities.length ? "true" : undefined}>
+88|                <span class={`capability-preview preview-${icon}`} aria-hidden="true">
+89|                  <i class="preview-top"></i><i class="preview-main"></i><i class="preview-side"></i><i class="preview-detail"></i>
+90|                </span>
+91|                <span class="capability-copy"><strong>{title}</strong><small>{note}</small></span>
+92|              </div>
+93|            ))}
+94|          </div>
+95|        </div>
+96|      </section>
+97|
+98|      <section class="proof-strip section-light" aria-labelledby="proof-title">
+99|        <div class="wrap">
+100|          <p class="eyebrow dark">Proof strip</p>
+101|          <h2 id="proof-title">Trusted by growing businesses</h2>
+102|          <div class="proof-placeholder">[Approved client logo strip] · real estate, hospitality, interior design, logistics, and professional services · English + Español</div>
+103|          <p class="proof-outcome">[One concrete, time-bounded OUTCOME, chosen in this order of strength: 1) qualified leads, booked calls, conversions, or revenue where attribution is defensible; 2) an improved campaign or website conversion rate; 3) a concrete operational transformation backed by a client quote. Production volume ("shipped N deliverables") appears only as supporting evidence, never as the headline proof: it proves activity, not value.]</p>
+104|          <p class="commitment">Our commitment: your first campaign-ready package within [N business days] of completed intake and access, or [refund / credit].</p>
+105|        </div>
+106|      </section>
+107|
+108|      <section class="real-work" id="real-work" aria-labelledby="work-title">
+109|        <div class="wrap">
+110|          <div class="section-intro split-intro">
+111|            <div>
+112|              <p class="eyebrow">Real work</p>
+113|              <h2 id="work-title">Real work, shipped for real clients.</h2>
+114|            </div>
+115|            <p>With permission, straight from the dashboard that produced it.</p>
+116|          </div>
+117|          <div class="work-visual">
+118|            <img src={workImage} alt="A campaign system expressed through coordinated social, landing page, and follow-up deliverables" loading="lazy" />
+119|          </div>
+120|          <div class="work-grid">
+121|            <article>[Work example 1: a social content set in a client's brand voice]</article>
+122|            <article>[Work example 2: a landing page or website update, live]</article>
+123|            <article>[Work example 3: an email or campaign piece]</article>
+124|            <article class="wide">[Two short client testimonials, one or two sentences, named, with photo where permitted]</article>
+125|          </div>
+126|          <a class="button" href="#preview-form">Send me my campaign preview</a>
+127|        </div>
+128|      </section>
+129|
+130|      <section class="founder section-light" aria-labelledby="founder-title">
+131|        <div class="wrap founder-grid">
+132|          <div class="founder-photo" role="img" aria-label="Professional photograph placeholder"><span>SS</span><small>[Professional photograph]</small></div>
+133|          <div>
+134|            <p class="eyebrow dark">Founder</p>
+135|            <h2 id="founder-title">Who answers for the work</h2>
+136|            <p>Santiago Sosa, founder. Santiago built Markethink after seeing growing businesses forced to choose between software they had to operate and service teams that often restarted context when people changed. Markethink was designed to keep marketing moving across markets, channels, and time zones without making the owner manage every task.</p>
+137|            <p>Behind every account: an expert marketing team directing strategy and reviewing priority work, and dedicated client management for the day to day. [LinkedIn link]</p>
+138|          </div>
+139|        </div>
+140|      </section>
+141|
+142|      <section class="manages" aria-labelledby="manages-title">
+143|        <div class="wrap">
+144|          <p class="eyebrow">What Markethink manages</p>
+145|          <h2 id="manages-title">We do not sell you a tool. We run your marketing.</h2>
+146|          <p class="lead">Finished, published work through the channels you connect.</p>
+147|          <div class="service-grid">
+148|            {services.map(([title, body], index) => (
+149|              <article>
+150|                <span>{String(index + 1).padStart(2, "0")}</span>
+151|                <h3>{title}</h3>
+152|                <p>{body}</p>
+153|              </article>
+154|            ))}
+155|          </div>
+156|          <div class="integration-band">
+157|            <p>Keep the tools you already use. No platform migration is required to get started.</p>
+158|            <div class="chips" aria-label="Connected channels">
+159|              {['WordPress','Shopify','Google Ads','Meta','Mailchimp','Microsoft 365','WhatsApp','Telegram','and more'].map((item) => <span>{item}</span>)}
+160|            </div>
+161|            <small>Availability depends on your plan and connected accounts.</small>
+162|          </div>
+163|        </div>
+164|      </section>
+165|
+166|      <OperatingFlow sectionId="request-to-result" includeInstagram={false} />
+167|
+168|      <section class="difference section-light" aria-labelledby="difference-title">
+169|        <div class="wrap">
+170|          <div class="difference-hero">
+171|            <div>
+172|              <p class="eyebrow dark">Why it is different</p>
+173|              <h2 id="difference-title">Powered by AI. Managed by experts. Directed by you.</h2>
+174|            </div>
+175|            <img src={expertsImage} alt="A marketing specialist directing and reviewing campaign work" loading="lazy" />
+176|          </div>
+177|          <div class="triad">
+178|            <article><strong>AI supports</strong><p>Research, drafts, production, organization, and consistency.</p></article>
+179|            <article><strong>Expert marketers own</strong><p>Direction, review, judgment, and accountability: senior marketing, design, web, and advertising specialists.</p></article>
+180|            <article><strong>You control</strong><p>What ships, the approval rules, and every commercial decision.</p></article>
+181|          </div>
+182|          <div class="memory-copy">
+183|            <p>Underneath sits one business memory: your positioning, voice, offers, and every approval, correction, and result. The correction you make in week 2 shapes the campaign it plans in month 6, and it compounds for as long as you work with Markethink. Work, approvals, and results are tracked in your dashboard: receipts, not reports.</p>
+184|            <p class="ai-emphasis">Whatever the best AI is this month, you are already on it. New systems ship constantly across reasoning, creative, image, and video. We evaluate them as they land and integrate what wins underneath Markethink. Your business memory stays, the engines upgrade, and the work keeps getting sharper.</p>
+185|            <p>And nothing ships as raw AI output. Senior marketing, design, web, and advertising specialists direct the work and review what ships. No AI slop.</p>
+186|          </div>
+187|          <div class="memory-flow" aria-label="Business memory example">
+188|            <article><small>Client note in chat</small><p>“We never discount. Drop the percent framing.”</p></article>
+189|            <span aria-hidden="true">→</span>
+190|            <article><small>Business memory</small><p>Durable rule captured</p></article>
+191|            <span aria-hidden="true">→</span>
+192|            <article><small>Next campaign brief</small><p>Rule visibly applied</p></article>
+193|          </div>
+194|          <p class="comparison-intro">Good freelancers and agencies exist. The difference is structural: who carries the work, and where the knowledge lives.</p>
+195|          <div class="table-wrap">
+196|            <table>
+197|              <thead><tr><th></th><th>AI tools</th><th>Freelancer</th><th>Agency</th><th>Markethink</th></tr></thead>
+198|              <tbody>
+199|                <tr><th>Owner time required</th><td>High: you run the tool</td><td>Medium: you manage them</td><td>Meetings and reviews</td><td>Approvals from your phone</td></tr>
+200|                <tr><th>Strategy included</th><td>No</td><td>Sometimes</td><td>Yes</td><td>Yes, expert-directed</td></tr>
+201|                <tr><th>Production and publishing</th><td>Drafts only</td><td>Varies by workload</td><td>Yes, on agency cycles</td><td>Weekly cadence, per your plan</td></tr>
+202|                <tr><th>Channel coordination</th><td>No</td><td>Rarely</td><td>Within their scope</td><td>One connected operation</td></tr>
+203|                <tr><th>Business knowledge retained</th><td>Limited, tied to the tool</td><td>Goes with the person</td><td>Held by the account team</td><td>Compounds in your business memory</td></tr>
+204|                <tr><th>Lead follow-up</th><td>No</td><td>Rarely</td><td>Often separate scope</td><td>Built in, when connected</td></tr>
+205|                <tr><th>Accountability</th><td>You</td><td>Informal</td><td>Account manager</td><td>Expert team, plus dashboard receipts</td></tr>
+206|                <tr><th>Typical monthly cost</th><td>$20 to $199</td><td>$500 to $1,500</td><td>$3,000 to $15,000</td><td>Scoped monthly plan</td></tr>
+207|              </tbody>
+208|            </table>
+209|          </div>
+210|        </div>
+211|      </section>
+212|
+213|      <ReviewHowItWorks />
+214|
+215|      <section class="engagement section-light" aria-labelledby="engagement-title">
+216|        <div class="wrap">
+217|          <p class="eyebrow dark">How engagements work</p>
+218|          <h2 id="engagement-title">A complete marketing operation, without building one in-house.</h2>
+219|          <div class="engagement-grid">
+220|            <article><h3>Scoped to your business</h3><p>A monthly plan around the channels and volume you need, agreed before anything starts.</p></article>
+221|            <article><h3>One connected scope</h3><p>Strategy, production, publishing, leads, and follow-up as one operation, defined by your plan.</p></article>
+222|            <article><h3>Straightforward terms</h3><p>[No setup fee. No long contract. Pause and cancellation policy. Every term here publishes only once confirmed against actual operating terms.]</p></article>
+223|          </div>
+224|          <p class="investment">Markethink is built for businesses ready to invest consistently in their growth. For comparison, agencies delivering this work typically charge $3,000 to $15,000 a month.</p>
+225|          <p>Plans are scoped per business, so a generic number would mislead in both directions. You will have your exact number after one 30-minute walkthrough, before any commitment. One conversation, one quote.</p>
+226|        </div>
+227|      </section>
+228|
+229|      <section class="faq" aria-labelledby="faq-title">
+230|        <div class="wrap faq-grid">
+231|          <div class="faq-heading">
+232|            <p class="eyebrow">FAQ</p>
+233|            <h2 id="faq-title">The questions owners actually ask</h2>
+234|          </div>
+235|          <div class="accordions">
+236|            {faq.map(([question, answer], index) => (
+237|              <details open={index === 0}>
+238|                <summary>{question}<span aria-hidden="true">+</span></summary>
+239|                <p>{answer}</p>
+240|              </details>
+241|            ))}
+242|          </div>
+243|        </div>
+244|      </section>
+245|
+246|      <section class="final-cta section-light" id="preview-form" aria-labelledby="cta-title">
+247|        <div class="wrap">
+248|          <div class="cta-grid">
+249|            <div>
+250|              <p class="eyebrow dark">Campaign preview</p>
+251|              <h2 id="cta-title">See what Markethink would ship for you.</h2>
+252|              <p>Send us your website or Instagram. You get a private campaign preview: one campaign angle, one finished creative in your voice, one landing-page concept, and three prioritized opportunities. Nothing is published. Keep it either way.</p>
+253|              <div class="preview-form" role="group" aria-label="Campaign preview request fields">
+254|                <label>Website or Instagram<input type="url" placeholder="https://" /></label>
+255|                <label>Email or WhatsApp<input type="text" /></label>
+256|                <label>What does your business sell, in one sentence?<textarea rows="3"></textarea></label>
+257|                <fieldset><legend>What monthly investment range are you considering for a managed marketing operation?</legend><label><input type="radio" name="budget" /> $500 to $1,000</label><label><input type="radio" name="budget" /> $1,000 to $2,000</label><label><input type="radio" name="budget" /> $2,000+</label></fieldset>
+258|                <button class="button" type="button">Send me my campaign preview</button>
+259|                <small>Built from your public brand only. Delivered privately by email or WhatsApp. Nothing is published.[Deletion promise only once a real retention and deletion process exists.]</small>
+260|              </div>
+261|            </div>
+262|            <aside class="founder-call">
+263|              <h3>Or talk to the founder directly.</h3>
+264|              <p>A 30-minute call with Santiago Sosa. We bring your campaign preview, and you leave with your exact number.</p>
+265|              <a class="button" href="/schedule-a-walkthrough/">Book a call with the founder</a>
+266|              <div class="calendar-placeholder">
+267|                <p>[COMPONENT] The booking calendar embeds inline right here, real availability visible, next to Santiago's photo. The qualifying questions (name, website, priority) are asked as booking fields, so booking is one step. This is the page's only inline calendar; everywhere else the walkthrough is a button.</p>
+268|              </div>
+269|            </aside>
+270|          </div>
+271|          <p class="proof-echo">[Proof echo beside the final CTA: the logo row repeated small, or the named result as one line.] Trust signals belong next to the moment of commitment, not only at the top.</p>
+272|        </div>
+273|      </section>
+274|    </main>
+275|
+276|    <footer>
+277|      <div class="wrap footer-grid">
+278|        <div><img src="/images/logo-white.svg" alt="Markethink" /><p>Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.</p><strong>Your marketing operation, powered by AI and managed by experts.</strong></div>
+279|        <nav aria-label="Footer navigation"><a href="#how-it-works">How it works</a><a href="#real-work">Real work</a><a href="/blog/">Insights</a><a href="#spanish" id="spanish">ES</a><a href="/privacy/">Privacy</a><a href="mailto:hello@markethink.ai">hello@markethink.ai</a></nav>
+280|      </div>
+281|    </footer>
+282|  </div>
+283|</Layout>
+284|
+285|<style>
+286|  :global(html){scroll-behavior:smooth;background:#0F1213}
+287|  :global(body){margin:0;background:#0F1213;color:#F5F5F1;font-family:Inter,system-ui,sans-serif}
+288|  :global(*){box-sizing:border-box}
+289|  .review-page{overflow-x:clip;background:#0F1213}
+290|  .wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
+291|  .site-header{height:54px;padding:0 15px 0 19px;display:flex;align-items:center;gap:22px;position:absolute;top:10px;left:max(18px,calc((100vw - 1280px)/2));right:max(18px,calc((100vw - 1280px)/2));z-index:20;border:1px solid rgba(245,245,241,.2);border-radius:999px;background:rgba(15,18,19,.42);backdrop-filter:blur(18px) saturate(120%);box-shadow:0 16px 50px rgba(0,0,0,.16)}
+292|  .site-header .logo{width:124px;display:flex}.site-header img{width:100%}.site-header nav{display:flex;gap:22px;margin-left:auto}.site-header a{color:#F5F5F1;text-decoration:none;font-size:13px}.site-header nav a{opacity:.8}.site-header nav a:hover{opacity:1}
+293|  .button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#69D254;color:#0F1213;text-decoration:none;font-weight:700;border:1px solid #69D254;font-size:14px;cursor:pointer}.button:hover{background:#82df6f}.button-small{min-height:38px;padding:0 17px}.button-ghost{background:rgba(15,18,19,.34);color:#F5F5F1;border-color:rgba(245,245,241,.45);backdrop-filter:blur(12px)}
+294|  .hero{position:relative;min-height:680px;padding:0;display:flex;align-items:center;overflow:hidden}.hero-picture{position:absolute;inset:0}.hero-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,18,19,.96) 0%,rgba(15,18,19,.82) 35%,rgba(15,18,19,.24) 58%,rgba(15,18,19,.02) 84%)}.hero-content{position:relative;z-index:3;padding:72px 0 68px}.hero-content>*{max-width:540px}.eyebrow{font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.16em;color:#69D254;font-weight:700;margin:0 0 18px}.eyebrow.dark{color:#315b28}.hero h1,.review-page h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:.94;margin:0}.hero h1{font-size:clamp(46px,4.15vw,60px);max-width:560px}.hero-copy{font-size:16px;line-height:1.48;margin:17px 0 19px;color:#e5e6e2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.microcopy{font-size:12px;color:#c5c8c5;margin-top:13px}
+295|
+296|  .hero-capabilities{position:absolute;z-index:6;left:0;right:0;bottom:12px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}.capability-track{display:flex;gap:12px;width:max-content;animation:capabilityDrift 68s linear infinite}.hero-capabilities:hover .capability-track,.hero-capabilities:focus-within .capability-track{animation-play-state:paused}.capability-card{width:286px;height:82px;padding:7px;display:flex;align-items:center;gap:12px;border:1px solid rgba(245,245,241,.38);border-radius:16px;background:rgba(15,18,19,.64);backdrop-filter:blur(20px) saturate(125%);color:#F5F5F1;box-shadow:0 16px 36px rgba(0,0,0,.2)}.capability-copy{display:grid;gap:3px;min-width:0}.capability-copy strong{font-size:12px;line-height:1.25}.capability-copy small{font-size:10px;line-height:1.2;color:#B4B6B6}.capability-preview{position:relative;width:104px;height:66px;flex:0 0 104px;border-radius:11px;overflow:hidden;background:#F5F5F1;border:1px solid rgba(245,245,241,.18);box-shadow:0 8px 20px rgba(0,0,0,.24)}.capability-preview i{position:absolute;display:block}.preview-top{left:0;right:0;top:0;height:11px;background:#0F1213}.preview-top:before{content:"";position:absolute;left:7px;top:4px;width:3px;height:3px;border-radius:50%;background:#69D254;box-shadow:6px 0 0 rgba(245,245,241,.48),12px 0 0 rgba(245,245,241,.28)}.preview-main{left:7px;top:18px;width:56px;height:40px;border-radius:6px;background:linear-gradient(145deg,#202627,#0F1213)}.preview-side{right:7px;top:18px;width:27px;height:40px;border-radius:5px;background:#EDF4EA}.preview-detail{left:13px;top:25px;width:31px;height:4px;border-radius:4px;background:#F5F5F1;box-shadow:0 8px 0 rgba(245,245,241,.48),0 20px 0 #69D254}.preview-web .preview-main{background:linear-gradient(135deg,rgba(15,18,19,.28),rgba(15,18,19,.76)),linear-gradient(45deg,#55705a,#d8c7a8)}.preview-web .preview-side{background:linear-gradient(#EDF4EA 0 46%,#69D254 46% 60%,#F5F5F1 60%)}.preview-campaign{background:#... [truncated]
+297|  section{padding:120px 0}.section-light{background:#F5F5F1;color:#0F1213}.review-page h2{font-size:clamp(48px,5.4vw,78px);max-width:900px}.section-intro{margin-bottom:46px}.split-intro{display:grid;grid-template-columns:1.4fr .6fr;gap:48px;align-items:end}.split-intro p:last-child{font-size:20px;color:#B4B6B6;line-height:1.55}.lead{font-size:20px;color:#B4B6B6;max-width:700px;margin:22px 0 50px}
+298|  .proof-strip{text-align:center}.proof-strip h2{margin:0 auto 42px}.proof-placeholder{border:1px dashed #9aa195;padding:28px;border-radius:18px;background:#EDF4EA;font-weight:700}.proof-outcome{font-family:"Instrument Serif",Georgia,serif;font-size:30px;line-height:1.25;max-width:1000px;margin:42px auto}.commitment{display:inline-block;background:#0F1213;color:#F5F5F1;padding:18px 26px;border-radius:14px}
+299|  .work-visual{position:relative;margin:0 0 24px;border-radius:28px;overflow:hidden;border:1px solid rgba(245,245,241,.12)}.work-visual img{display:block;width:100%;aspect-ratio:3/1.55;object-fit:cover}.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 30px}.work-grid article{min-height:150px;padding:26px;border:1px dashed rgba(245,245,241,.3);border-radius:18px;color:#B4B6B6;line-height:1.5}.work-grid .wide{grid-column:1/-1;min-height:auto}
+300|  .founder-grid{display:grid;grid-template-columns:360px 1fr;gap:80px;align-items:center}.founder-photo{aspect-ratio:4/5;border-radius:28px;background:linear-gradient(145deg,#0F1213,#26302a);display:grid;place-items:center;position:relative;color:#F5F5F1}.founder-photo span{font-family:"Instrument Serif",Georgia,serif;font-size:110px}.founder-photo small{position:absolute;bottom:20px;padding:8px 12px;background:#EDF4EA;color:#0F1213;border-radius:999px}.founder-grid h2{margin-bottom:28px}.founder-grid p{font-size:18px;line-height:1.7;color:#4c504d}
+301|  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service-grid article{min-height:260px;padding:30px;border-radius:22px;background:#171b1c;border:1px solid rgba(245,245,241,.12);position:relative}.service-grid span{font-size:11px;color:#69D254;letter-spacing:.15em}.service-grid h3{font-family:"Instrument Serif",Georgia,serif;font-size:34px;font-weight:400;line-height:1.05;margin:52px 0 18px}.service-grid p{color:#B4B6B6;line-height:1.6}.integration-band{margin-top:50px;border-radius:24px;padding:34px;background:#EDF4EA;color:#0F1213}.integration-band>p{font-size:22px;font-weight:700}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.chips span{border:1px solid #c9d3c5;border-radius:999px;padding:10px 14px;font-size:13px;background:#F5F5F1}.integration-band small{color:#686B6C}
+302|  .difference-hero{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.difference-hero img{width:100%;border-radius:26px;aspect-ratio:1.18/1;object-fit:cover}.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:44px 0}.triad article,.engagement-grid article{padding:28px;border:1px solid #d7ddd3;border-radius:20px;background:white}.triad strong{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400}.triad p{color:#686B6C;line-height:1.55}.memory-copy{font-size:20px;line-height:1.7;max-width:950px;margin:70px auto}.ai-emphasis{font-family:"Instrument Serif",Georgia,serif;font-size:36px;line-height:1.25}.memory-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:15px;align-items:center}.memory-flow article{min-height:150px;padding:24px;border-radius:18px;background:#0F1213;color:#F5F5F1}.memory-flow small{color:#69D254;text-transform:uppercase;letter-spacing:.12em}.memory-flow>span{font-size:28px}.comparison-intro{font-size:22px;line-height:1.55;max-width:850px;margin:80px 0 30px}.table-wrap{overflow-x:auto;border-radius:20px;border:1px solid #d7ddd3}table{width:100%;border-collapse:collapse;min-width:880px;background:white}th,td{text-align:left;padding:17px 15px;border-bottom:1px solid #e2e6df;font-size:13px;line-height:1.4}thead th{background:#0F1213;color:#F5F5F1}tbody th{font-weight:700}td:last-child{background:#EDF4EA;font-weight:700}
+303|  .timeline{margin-top:60px}.timeline article{display:grid;grid-template-columns:70px 1fr 280px;gap:32px;align-items:center;padding:38px 0;border-top:1px solid rgba(245,245,241,.14)}.timeline-number{font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:#69D254}.timeline small{text-transform:uppercase;letter-spacing:.15em;color:#69D254}.timeline h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin:8px 0}.timeline p{color:#B4B6B6;line-height:1.6;max-width:610px}.timeline-art{height:160px;border-radius:20px;background:#171b1c;border:1px solid rgba(245,245,241,.12);position:relative;overflow:hidden}.timeline-art span,.timeline-art i,.timeline-art b{position:absolute;display:block;border-radius:10px}.timeline-art span{width:58%;height:20px;background:#F5F5F1;left:20%;top:28px}.timeline-art i{width:40%;height:64px;background:#EDF4EA;left:12%;top:63px}.timeline-art b{width:30%;height:64px;background:#69D254;right:12%;top:63px}.art-2{transform:rotate(-1deg)}.art-3 span{width:18px;height:100px;background:#69D254;left:50%;top:28px}.art-4{background:radial-gradient(circle at center,#69D254 0 6px,transparent 7px),#171b1c}
+304|  .engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0}.engagement-grid h3{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400;margin-top:0}.engagement-grid p{color:#686B6C;line-height:1.6}.investment{font-size:24px;line-height:1.5;max-width:900px;font-weight:700}
+305|  .faq-grid{display:grid;grid-template-columns:.65fr 1fr;gap:80px}.faq-heading{position:sticky;top:40px;align-self:start}.accordions details{border-top:1px solid rgba(245,245,241,.18)}.accordions details:last-child{border-bottom:1px solid rgba(245,245,241,.18)}summary{list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-size:20px;font-weight:700;cursor:pointer}summary::-webkit-details-marker{display:none}summary span{color:#69D254;font-size:28px}.accordions details[open] summary span{transform:rotate(45deg)}.accordions details p{color:#B4B6B6;line-height:1.7;margin:0;padding:0 44px 26px 0}
+306|  .cta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px}.cta-grid>div,.founder-call{padding:42px;border-radius:26px;background:white;border:1px solid #d7ddd3}.cta-grid h2{font-size:60px}.cta-grid p{font-size:18px;line-height:1.6;color:#525854}.preview-form{display:grid;gap:16px;margin-top:30px}.preview-form label,.preview-form legend{font-size:13px;font-weight:700}.preview-form input,.preview-form textarea{display:block;width:100%;margin-top:7px;border:1px solid #cfd5cc;background:#F5F5F1;border-radius:12px;padding:14px;font:inherit}.preview-form fieldset{border:1px solid #cfd5cc;border-radius:14px;padding:18px}.preview-form fieldset label{display:flex;align-items:center;gap:8px;margin-top:12px}.preview-form fieldset input{display:inline;width:auto;margin:0}.preview-form small{color:#686B6C;line-height:1.5}.founder-call{background:#0F1213;color:#F5F5F1}.founder-call h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin-top:0}.founder-call p{color:#B4B6B6}.calendar-placeholder{margin-top:28px;padding:24px;border:1px dashed rgba(245,245,241,.35);border-radius:18px;min-height:330px;background:linear-gradient(180deg,rgba(105,210,84,.12),transparent)}.calendar-placeholder p{font-size:14px}.proof-echo{margin:28px auto 0;padding:22px;border:1px dashed #9aa195;border-radius:16px;color:#525854}
+307|  footer{padding:70px 0;background:#090b0c}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}.footer-grid>div img{width:150px}.footer-grid p{color:#B4B6B6;max-width:600px;line-height:1.6}.footer-grid strong{color:#69D254}.footer-grid nav{display:flex;flex-wrap:wrap;gap:18px;align-content:flex-start;justify-content:flex-end}.footer-grid a{color:#F5F5F1;text-decoration:none;font-size:13px}
+308|  @media(max-width:980px){.site-header nav{display:none}.site-header .button-small{margin-left:auto}.hero{min-height:680px}.hero-content>*{max-width:440px}.hero h1{font-size:52px}.hero-shade{background:linear-gradient(90deg,rgba(15,18,19,.98),rgba(15,18,19,.84) 55%,rgba(15,18,19,.18))}.service-grid{grid-template-columns:repeat(2,1fr)}.difference-hero,.founder-grid,.faq-grid,.cta-grid{grid-template-columns:1fr}.founder-grid{gap:40px}.founder-photo{max-width:360px}.faq-heading{position:static}.timeline article{grid-template-columns:54px 1fr}.timeline-art{grid-column:2}.work-grid,.triad,.engagement-grid{grid-template-columns:1fr}.work-grid .wide{grid-column:auto}}
+309|  @media(max-width:680px){.wrap{width:min(100% - 28px,1200px)}.site-header{height:56px;top:10px;left:10px;right:10px;padding:0 10px 0 14px}.site-header .logo{width:102px}.site-header .button-small{font-size:10px;padding:0 11px;min-height:36px}.hero{min-height:1060px;align-items:flex-start;background:#0F1213}.hero-picture{inset:430px 0 0;height:720px}.hero-image{object-position:center}.hero-shade{background:linear-gradient(180deg,#0F1213 0%,rgba(15,18,19,.97) 37%,rgba(15,18,19,.36) 60%,rgba(15,18,19,.18) 78%,rgba(15,18,19,.64) 100%)}.hero-content{padding:82px 0 0}.hero-content>*{max-width:none}.hero h1{font-size:40px;line-height:.96}.hero-copy{font-size:14px;line-height:1.45;margin:16px 0 17px}.hero-actions{display:grid}.microcopy{font-size:11px}.button{width:100%}.hero-capabilities{bottom:12px}.capability-card{width:270px;height:78px}.capability-preview{width:98px;height:62px;flex-basis:98px}section{padding:84px 0}.review-page h2{font-size:47px}.split-intro{grid-template-columns:1fr;gap:8px}.work-visual img{aspect-ratio:4/3}.work-grid{grid-template-columns:1fr}.founder-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:1fr}.service-grid article{min-height:220px}.difference-hero{grid-template-columns:1fr}.triad{grid-template-columns:1fr}.memory-copy{font-size:18px}.ai-emphasis{font-size:30px}.memory-flow{grid-template-columns:1fr}.memory-flow>span{transform:rotate(90deg);justify-self:center}.timeline article{grid-template-columns:1fr;gap:12px}.timeline-art{grid-column:auto}.timeline h3{font-size:34px}.engagement-grid{grid-template-columns:1fr}.cta-grid>div,.founder-call{padding:26px}.cta-grid h2{font-size:46px}.footer-grid{grid-template-columns:1fr}.footer-grid nav{justify-content:flex-start}.proof-outcome{font-size:25px}}
+310|  @media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}.button{transition:none}.capability-track{animation:none;transform:none}}
+311|</style>
+312|
