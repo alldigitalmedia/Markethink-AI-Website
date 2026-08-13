@@ -100,34 +100,64 @@ const faq = [
     </header>
 
     <main id="top">
-      <section class="hero">
-        <picture class="hero-picture">
-          <source media="(max-width: 680px)" srcset="/images/hero-v6-reference-phone-mobile.svg" />
-          <img class="hero-image" src={heroImage} alt="A marketing specialist holding a phone with a Markethink landing-page workflow and expert review" fetchpriority="high" />
-        </picture>
-        <div class="hero-shade"></div>
-        <div class="hero-content wrap">
-          <p class="eyebrow">For businesses that need marketing done. En español también.</p>
-          <h1>Your marketing operation, running and getting sharper every week.</h1>
-          <p class="hero-copy">Markethink is an AI marketing system managed by expert marketers. It learns your business and keeps the work moving across your website, social, email, advertising, and follow-up. You control what ships.</p>
-          <div class="hero-actions">
-            <a class="button button-roll" href="#preview-form"><span class="button-label"><span>Get a campaign preview</span><span aria-hidden="true">Get a campaign preview</span></span></a>
-            <a class="button button-ghost arrow-link" href="/schedule-a-walkthrough/"><span>Book a 30-minute walkthrough</span><i aria-hidden="true"><b>↗</b><b>↗</b></i></a>
+      <section class="hero" data-scroll-hero>
+        <div class="hero-sticky">
+          <div class="hero-atmosphere" aria-hidden="true">
+            <span class="hero-aurora hero-aurora-one"></span>
+            <span class="hero-aurora hero-aurora-two"></span>
+            <span class="hero-grid"></span>
+            <span class="hero-horizon"></span>
           </div>
-          <p class="microcopy">A private preview built from your public brand, free. Nothing is published.</p>
-        </div>
-        <div class="hero-capabilities" aria-label="What Markethink can build">
-          <div class="capability-track">
-            {heroCapabilityRail.map(({ icon, title, note }, index) => (
-              <button class="capability-card" type="button" data-hero-capability={icon} aria-pressed={index === 0 ? "true" : "false"} aria-hidden={index >= heroCapabilities.length ? "true" : undefined} tabindex={index >= heroCapabilities.length ? "-1" : undefined}>
-                <span class={`capability-preview preview-${icon}`} aria-hidden="true">
-                  <i class="preview-top"></i><i class="preview-main"></i><i class="preview-side"></i><i class="preview-detail"></i>
-                </span>
-                <span class="capability-copy"><strong>{title}</strong><small>{note}</small></span>
-              </button>
-            ))}
+          <div class="hero-content wrap">
+            <p class="eyebrow">Powered by AI. Managed by expert marketers.</p>
+            <h1>Your marketing operation,<br /><em>moving every day.</em></h1>
+            <p class="hero-copy">Markethink learns your business, ships the work across your channels, and connects every campaign to the pipeline. A real marketing team directs, reviews, and stays accountable.</p>
+            <div class="hero-actions">
+              <a class="button button-roll" href="#preview-form"><span class="button-label"><span>Get a campaign preview</span><span aria-hidden="true">Get a campaign preview</span></span></a>
+              <a class="button button-ghost arrow-link" href="/schedule-a-walkthrough/"><span>Book a walkthrough</span><i aria-hidden="true"><b>↗</b><b>↗</b></i></a>
+            </div>
+            <p class="microcopy">See the system on your business. Nothing moves without approval.</p>
           </div>
-          <div class="hero-response" aria-live="polite"><span>Active lane</span><strong data-hero-response>Websites & landing pages</strong><i></i></div>
+
+          <div class="hero-dashboard-stage" aria-label="Illustrative Markethink marketing dashboard">
+            <div class="hero-dashboard-glow" aria-hidden="true"></div>
+            <div class="hero-dashboard-frame">
+              <div class="dashboard-topbar">
+                <div class="dashboard-brand"><img src="/images/logo-white.svg" alt="" /><span>Marketing operation</span></div>
+                <div class="dashboard-status"><i></i> Work moving now</div>
+                <div class="dashboard-avatar" aria-hidden="true">MT</div>
+              </div>
+              <div class="dashboard-body">
+                <aside class="dashboard-sidebar" aria-hidden="true">
+                  <span class="is-active">Overview</span><span>Campaigns</span><span>Website</span><span>Social</span><span>Leads</span><span>Approvals</span>
+                  <b>Expert team online</b>
+                </aside>
+                <div class="dashboard-main">
+                  <div class="dashboard-heading"><div><small>Thursday overview</small><h2>Good morning. Here is what is moving.</h2></div><button type="button" tabindex="-1">Request new work <span>↗</span></button></div>
+                  <div class="dashboard-kpis">
+                    <article><small>In production</small><strong>Campaign work</strong><span><i></i> Moving</span></article>
+                    <article><small>Needs your decision</small><strong>Approvals</strong><span class="is-warm"><i></i> Ready</span></article>
+                    <article><small>Pipeline</small><strong>Lead follow-up</strong><span><i></i> Connected</span></article>
+                  </div>
+                  <div class="dashboard-grid">
+                    <section class="dashboard-work">
+                      <div class="panel-title"><div><small>Live production</small><strong>Work moving now</strong></div><span>This week</span></div>
+                      <div class="work-row"><i class="work-thumb thumb-web"></i><div><small>Website</small><strong>Campaign landing page</strong><span>Conversion review</span></div><b>In review</b></div>
+                      <div class="work-row"><i class="work-thumb thumb-social"></i><div><small>Social</small><strong>Launch content set</strong><span>Creative production</span></div><b>In progress</b></div>
+                      <div class="work-row"><i class="work-thumb thumb-email"></i><div><small>Email</small><strong>Follow-up sequence</strong><span>Copy and delivery</span></div><b>Ready</b></div>
+                    </section>
+                    <section class="dashboard-pipeline">
+                      <div class="panel-title"><div><small>Connected pipeline</small><strong>From campaign to next step</strong></div><span>Live</span></div>
+                      <div class="pipeline-flow" aria-hidden="true"><span><i></i><b>Campaign</b></span><em></em><span><i></i><b>Lead</b></span><em></em><span><i></i><b>Follow-up</b></span></div>
+                      <div class="decision-card"><small>Latest decision applied</small><strong>Lead with the product. Use less copy.</strong><span>Carried into the next deliverable</span></div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="dashboard-note"><span></span> Illustrative Markethink workspace</p>
+          </div>
+          <div class="scroll-cue" aria-hidden="true"><span></span> Scroll to enter the operation</div>
         </div>
       </section>
 
@@ -284,6 +314,23 @@ const faq = [
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.documentElement.classList.add('v6-interactions-ready');
 
+    const scrollHero = document.querySelector('[data-scroll-hero]');
+    if (scrollHero) {
+      const updateHero = () => {
+        if (reduce || window.innerWidth <= 760) {
+          scrollHero.style.setProperty('--hero-progress', '1');
+          return;
+        }
+        const rect = scrollHero.getBoundingClientRect();
+        const distance = Math.max(1, rect.height - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, -rect.top / distance));
+        scrollHero.style.setProperty('--hero-progress', progress.toFixed(4));
+      };
+      updateHero();
+      window.addEventListener('scroll', updateHero, { passive: true });
+      window.addEventListener('resize', updateHero, { passive: true });
+    }
+
     const heroResponse = document.querySelector('[data-hero-response]');
     document.querySelectorAll('[data-hero-capability]:not([aria-hidden="true"])').forEach((card) => {
       const activate = () => {
@@ -396,5 +443,30 @@ const faq = [
   @media(max-width:980px){.change-heading{grid-template-columns:1fr;gap:.6rem}.change-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.change-card:last-child{grid-column:1/-1;min-height:520px}}
   @media(max-width:680px){.change-heading{margin-bottom:2rem}.change-heading h2{font-size:44px}.change-cards{grid-template-columns:1fr;gap:1rem}.change-card,.change-card:last-child{grid-column:auto;min-height:540px;opacity:1;filter:none;transform:none}.change-card-media{inset:0 0 215px}.change-card-copy,.change-card:hover .change-card-copy,.change-card:focus-visible .change-card-copy{height:216px;padding:1.35rem}.change-card-copy h3{font-size:2rem}.change-card-copy p{opacity:1!important;transform:none!important;margin-top:.65rem}.change-card:hover,.change-card:focus-visible{transform:none}.change-card:hover .change-card-media,.change-card:focus-visible .change-card-media{transform:none}.change-card:hover .change-card-media img,.change-card:focus-visible .change-card-media img{transform:none;filter:none}}
   @media(prefers-reduced-motion:reduce){.change-card,.proof-strip.is-visible .change-card{opacity:1;filter:none;transform:none;transition:none}.change-card-media,.change-card-media img,.change-card-copy,.change-card-copy p{transition:none}}
+
+  /* Scroll-led premium hero */
+  .hero{--hero-progress:0;position:relative;height:190vh;min-height:1180px;padding:0;background:#090c0d;overflow:clip;isolation:isolate}
+  .hero-sticky{position:sticky;top:0;height:100vh;min-height:720px;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;background:radial-gradient(circle at 50% 120%,rgba(105,210,84,.12),transparent 38%),#090c0d}
+  .hero-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+  .hero-atmosphere:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,12,13,.06),rgba(9,12,13,.12) 46%,rgba(9,12,13,.78) 100%);pointer-events:none}
+  .hero-aurora{position:absolute;border-radius:50%;filter:blur(92px);opacity:calc(.42 - var(--hero-progress)*.18);will-change:transform,opacity}
+  .hero-aurora-one{width:62vw;height:46vw;left:-15vw;top:-24vw;background:rgba(105,210,84,.21);transform:translate3d(calc(var(--hero-progress)*8vw),calc(var(--hero-progress)*6vw),0)}
+  .hero-aurora-two{width:56vw;height:38vw;right:-18vw;top:4vw;background:rgba(237,244,234,.1);transform:translate3d(calc(var(--hero-progress)*-7vw),calc(var(--hero-progress)*8vw),0)}
+  .hero-grid{position:absolute;left:-10%;right:-10%;bottom:-42%;height:74%;opacity:calc(.16 + var(--hero-progress)*.08);background-image:linear-gradient(rgba(105,210,84,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(105,210,84,.22) 1px,transparent 1px);background-size:74px 74px;transform:perspective(700px) rotateX(67deg) translateY(calc(var(--hero-progress)*-7vh));mask-image:linear-gradient(180deg,transparent,#000 40%,transparent 92%)}
+  .hero-horizon{position:absolute;left:10%;right:10%;bottom:25%;height:1px;background:linear-gradient(90deg,transparent,rgba(105,210,84,.35),transparent);box-shadow:0 0 50px rgba(105,210,84,.25)}
+  .hero-content{position:absolute;z-index:4;top:clamp(110px,13vh,150px);left:50%;transform:translateX(-50%) translateY(calc(var(--hero-progress)*-9vh));padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;opacity:calc(1 - var(--hero-progress)*1.7);pointer-events:auto;will-change:transform,opacity}
+  .hero-content>*{max-width:760px}.hero-content .eyebrow{margin-bottom:18px}.hero h1{font-size:clamp(58px,6.3vw,102px);max-width:980px;line-height:.87;letter-spacing:-.055em;text-wrap:balance}.hero h1 em{color:#69D254;font-weight:400}.hero-copy{max-width:720px;font-size:clamp(15px,1.2vw,19px);line-height:1.55;margin:23px auto 22px;color:rgba(245,245,241,.78)}.hero-actions{justify-content:center}.microcopy{color:rgba(245,245,241,.55)}
+  .hero-dashboard-stage{position:absolute;z-index:5;left:50%;top:45%;width:min(1240px,88vw);height:min(720px,60vw);transform:translate3d(-50%,calc(31vh - var(--hero-progress)*34vh),0) perspective(1500px) rotateX(calc(11deg - var(--hero-progress)*11deg)) scale(calc(.69 + var(--hero-progress)*.31));transform-origin:center top;will-change:transform;filter:drop-shadow(0 38px 70px rgba(0,0,0,.55))}
+  .hero-dashboard-glow{position:absolute;inset:-18%;background:radial-gradient(ellipse at center,rgba(105,210,84,.2),rgba(105,210,84,.04) 40%,transparent 70%);filter:blur(35px);opacity:calc(.45 + var(--hero-progress)*.35)}
+  .hero-dashboard-frame{position:absolute;inset:0;border:1px solid rgba(245,245,241,.16);border-radius:24px;background:rgba(15,18,19,.96);overflow:hidden;box-shadow:inset 0 1px rgba(255,255,255,.08),0 50px 120px rgba(0,0,0,.58);backdrop-filter:blur(24px)}
+  .dashboard-topbar{height:58px;padding:0 18px;display:flex;align-items:center;border-bottom:1px solid rgba(245,245,241,.1);background:rgba(23,27,28,.92)}
+  .dashboard-brand{display:flex;align-items:center;gap:13px}.dashboard-brand img{width:112px}.dashboard-brand span{padding-left:13px;border-left:1px solid rgba(245,245,241,.16);color:#B4B6B6;font-size:11px}.dashboard-status{margin-left:auto;display:flex;align-items:center;gap:8px;color:#B4B6B6;font-size:11px}.dashboard-status i,.dashboard-note span,.dashboard-kpis span i{width:7px;height:7px;border-radius:50%;background:#69D254;box-shadow:0 0 0 5px rgba(105,210,84,.1)}.dashboard-avatar{display:grid;place-items:center;width:30px;height:30px;margin-left:18px;border:1px solid rgba(245,245,241,.13);border-radius:50%;font-size:9px;color:#69D254;background:#0F1213}
+  .dashboard-body{height:calc(100% - 58px);display:grid;grid-template-columns:160px 1fr}.dashboard-sidebar{padding:22px 12px;border-right:1px solid rgba(245,245,241,.09);display:flex;flex-direction:column;gap:6px;background:#0c0f10}.dashboard-sidebar span{padding:10px 12px;border-radius:8px;color:#838887;font-size:11px}.dashboard-sidebar span.is-active{background:#1b211d;color:#F5F5F1}.dashboard-sidebar span.is-active:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:9px;background:#69D254}.dashboard-sidebar b{margin-top:auto;padding:12px;color:#69D254;font-size:9px;font-weight:600;border:1px solid rgba(105,210,84,.14);border-radius:10px;background:rgba(105,210,84,.05)}
+  .dashboard-main{padding:24px;min-width:0}.dashboard-heading{display:flex;align-items:end;justify-content:space-between;gap:20px}.dashboard-heading small,.panel-title small,.dashboard-kpis small,.work-row small,.decision-card small{display:block;color:#7f8583;text-transform:uppercase;letter-spacing:.1em;font-size:8px}.dashboard-heading h2{font-family:"Instrument Serif",Georgia,serif;font-size:31px;line-height:1;margin-top:7px;letter-spacing:-.025em}.dashboard-heading button{padding:10px 13px;border:1px solid rgba(245,245,241,.16);border-radius:999px;background:#171b1c;color:#F5F5F1;font:600 9px Inter,sans-serif}.dashboard-heading button span{color:#69D254;margin-left:6px}.dashboard-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 12px}.dashboard-kpis article,.dashboard-work,.dashboard-pipeline{border:1px solid rgba(245,245,241,.1);border-radius:14px;background:#141819}.dashboard-kpis article{position:relative;padding:14px 15px;min-height:76px}.dashboard-kpis strong{display:block;margin-top:9px;font:400 18px/1 "Instrument Serif",Georgia,serif}.dashboard-kpis span{position:absolute;right:12px;top:12px;color:#9ee391;font-size:8px}.dashboard-kpis span.is-warm{color:#EDF4EA}.dashboard-kpis span i{display:inline-block;width:5px;height:5px;margin-right:4px;box-shadow:none}
+  .dashboard-grid{display:grid;grid-template-columns:1.14fr .86fr;gap:12px}.dashboard-work,.dashboard-pipeline{padding:15px;min-height:360px}.dashboard-work,.dashboard-pipeline{padding-top:15px!important;padding-bottom:15px!important}.panel-title{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(245,245,241,.08)}.panel-title strong{display:block;margin-top:4px;font-size:11px}.panel-title>span{padding:5px 8px;border:1px solid rgba(245,245,241,.1);border-radius:999px;color:#B4B6B6;font-size:8px}.work-row{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(245,245,241,.07)}.work-thumb{width:56px;height:44px;border-radius:8px;background:#202526;position:relative;overflow:hidden}.work-thumb:before,.work-thumb:after{content:"";position:absolute;border-radius:3px}.work-thumb:before{inset:8px;background:#EDF4EA}.work-thumb:after{left:13px;right:13px;bottom:12px;height:4px;background:#69D254}.thumb-social:before{background:linear-gradient(145deg,#202627,#546c58)}.thumb-email:before{background:#F5F5F1;box-shadow:inset 0 -10px #EDF4EA}.work-row strong{display:block;margin:3px 0;font-size:10px}.work-row div>span{color:#787e7c;font-size:8px}.work-row>b{padding:5px 7px;border-radius:999px;background:rgba(105,210,84,.1);color:#9ee391;font-size:7px}.pipeline-flow{display:flex;align-items:center;justify-content:center;margin:48px 0 35px}.pipeline-flow span{display:grid;place-items:center;gap:6px}.pipeline-flow span i{width:34px;height:34px;border:1px solid rgba(105,210,84,.28);border-radius:10px;background:rgba(105,210,84,.08);position:relative}.pipeline-flow span i:after{content:"";position:absolute;inset:11px;border-radius:50%;background:#69D254}.pipeline-flow span b{font-size:7px;color:#B4B6B6}.pipeline-flow em{width:38px;height:1px;margin:0 7px;background:linear-gradient(90deg,rgba(105,210,84,.2),#69D254,rgba(105,210,84,.2))}.decision-card{padding:15px;border:1px solid rgba(105,210,84,.18);border-radius:12px;background:linear-gradient(135deg,rgba(105,210,84,.11),rgba(237,244,234,.03))}.decision-card strong{display:block;margin:10px 0;font:400 17px/1.1 "Instrument Serif",Georgia,serif}.decision-card>span{color:#8c928f;font-size:8px}.dashboard-note{position:absolute;right:14px;bottom:-30px;display:flex;align-items:center;gap:8px;margin:0;color:rgba(245,245,241,.45);font-size:8px;text-transform:uppercase;letter-spacing:.1em}.dashboard-note span{width:5px;height:5px;box-shadow:none}.scroll-cue{position:absolute;z-index:7;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;color:rgba(245,245,241,calc(.58 - var(--hero-progress)*.8));font-size:9px;text-transform:uppercase;letter-spacing:.15em}.scroll-cue span{width:18px;height:28px;border:1px solid rgba(245,245,241,.28);border-radius:999px;position:relative}.scroll-cue span:after{content:"";position:absolute;width:3px;height:5px;border-radius:3px;left:7px;top:6px;background:#69D254;animation:heroScrollCue 1.8s ease-in-out infinite}@keyframes heroScrollCue{50%{transform:translateY(8px);opacity:.25}}
+  @media(max-width:980px){.hero{height:165vh}.hero-dashboard-stage{width:94vw}.dashboard-body{grid-template-columns:120px 1fr}.dashboard-grid{grid-template-columns:1fr}.dashboard-pipeline{display:none}.hero h1{font-size:clamp(54px,8vw,78px)}}
+  @media(max-width:760px){.hero{height:auto;min-height:0;overflow:hidden}.hero-sticky{position:relative;height:auto;min-height:980px;display:block}.hero-content{position:relative;top:auto;left:auto;transform:none;opacity:1;padding:105px 0 0;text-align:left;align-items:flex-start}.hero-content .eyebrow{font-size:9px}.hero h1{font-size:47px;line-height:.91}.hero-copy{font-size:14px;margin:18px 0}.hero-actions{display:grid;width:100%}.hero-dashboard-stage{top:530px;width:640px;height:390px;left:50%;transform:translateX(-50%) rotateX(0) scale(.9);transform-origin:center top}.dashboard-body{grid-template-columns:105px 1fr}.dashboard-main{padding:17px}.dashboard-heading h2{font-size:22px}.dashboard-heading button{display:none}.dashboard-kpis{grid-template-columns:repeat(3,1fr)}.dashboard-kpis article{padding:10px;min-height:62px}.dashboard-kpis strong{font-size:14px}.dashboard-kpis span{display:none}.dashboard-work{min-height:240px}.work-row{padding:7px 0}.dashboard-note{display:none}.scroll-cue{display:none}.hero-grid{bottom:-16%;height:58%}.hero-aurora-one{width:130vw;height:90vw}.hero-aurora-two{width:100vw;height:100vw}.site-header{position:absolute}}
+  @media(max-width:420px){.hero-sticky{min-height:940px}.hero h1{font-size:42px}.hero-dashboard-stage{top:555px;transform:translateX(-50%) scale(.78)}}
+  @media(prefers-reduced-motion:reduce){.hero-dashboard-stage,.hero-content,.hero-aurora{will-change:auto}.scroll-cue span:after{animation:none}.hero-dashboard-stage{transform:translate3d(-50%,-3vh,0) scale(1)}.hero-content{opacity:1;transform:translateX(-50%)}}
 
 </style>
