@@ -35,7 +35,7 @@ const steps = [
 ];
 ---
 
-<section class="story-intro" id="how-it-works" aria-labelledby="first-month-title">
+<section class="story-intro" id="how-it-works" aria-labelledby="first-month-title" data-story-intro>
   <div class="story-intro-inner">
     <p>How it works</p>
     <h2 id="first-month-title">Your first 30 days</h2>
@@ -90,10 +90,33 @@ const steps = [
     const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-story-panel]"));
     const visuals = Array.from(root.querySelectorAll<HTMLElement>("[data-story-visual]"));
     const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-story-dot]"));
+    const intro = document.querySelector<HTMLElement>("[data-story-intro]");
+
+    if (intro) {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const setIntroTheme = (isLight: boolean) => {
+        intro.classList.toggle("is-light", isLight);
+      };
+
+      ScrollTrigger.create({
+        trigger: intro,
+        start: "center center",
+        end: "bottom top",
+        invalidateOnRefresh: true,
+        onEnter: () => setIntroTheme(true),
+        onLeaveBack: () => setIntroTheme(false),
+        onRefresh: (self) => setIntroTheme(self.progress > 0 || self.isActive),
+      });
+
+      if (prefersReducedMotion) {
+        intro.style.setProperty("--story-theme-duration", "0.01ms");
+      }
+    }
 
     if (window.matchMedia("(max-width: 860px)").matches) {
       panels.forEach((panel) => panel.removeAttribute("style"));
       visuals.forEach((visual) => visual.removeAttribute("style"));
+      requestAnimationFrame(() => ScrollTrigger.refresh());
       return;
     }
 
@@ -144,7 +167,16 @@ const steps = [
 
 <style>
   .story-intro {
+    --story-theme-duration: 0.75s;
     padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(2.5rem, 4vw, 4rem);
+    background: #0f1213;
+    color: #f5f5f1;
+    transition:
+      background-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story-intro.is-light {
     background: #f5f5f1;
     color: #0f1213;
   }
@@ -156,22 +188,32 @@ const steps = [
 
   .story-intro p {
     margin: 0 0 1rem;
-    color: #315b28;
+    color: #69d254;
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story-intro.is-light p {
+    color: #315b28;
   }
 
   .story-intro h2 {
     max-width: 48rem;
     margin: 0;
-    color: #0f1213;
+    color: #f5f5f1;
     font-family: "Instrument Serif", Georgia, serif;
     font-size: clamp(3.6rem, 7vw, 7rem);
     font-weight: 400;
     line-height: 0.94;
     letter-spacing: -0.045em;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story-intro.is-light h2 {
+    color: #0f1213;
   }
 
   .story {
