@@ -872,7 +872,7 @@ const channelLogos = [
   .stage-card.is-active{opacity:1}
   .stage-card::before,.stage-card::after,.flow-active-segment,.stage-shine,.stage-visual,.stage-tags{display:none!important}
   .stage-number{position:absolute;left:calc(var(--rail-x) - 4.25rem - 1.5rem);top:50%;display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(245,245,241,.3);border-radius:50%;background:#0f1213;color:#b4b6b6;font-size:.7rem;font-weight:800;letter-spacing:.08em;transform:translateY(-50%);z-index:3;transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
-  .stage-copy{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:1.15rem;align-items:start;width:100%}
+  .stage-copy{display:grid;grid-template-columns:3.25rem minmax(0,1fr);gap:1.65rem;align-items:start;width:100%}
   .stage-icon{display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:#b4b6b6;font-size:1.55rem;line-height:1;box-shadow:none;transition:color .3s ease,transform .3s ease}
   .stage-copy h3{margin:0 0 .55rem;color:#f5f5f1;font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:.95}
   .stage-copy p{max-width:34rem;min-height:0;margin:0;color:#b4b6b6;font-size:clamp(.9rem,1.25vw,1.02rem);line-height:1.55}
@@ -887,7 +887,7 @@ const channelLogos = [
     .phone-caption{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:1rem}
     .flow-bridge{position:sticky;top:50vh;align-self:start;grid-row:1 / -1;height:1px;transform:translateY(-50%);z-index:5}
     .stage-grid{grid-row:1}
-    .expert-band{position:relative;top:20px;margin-top:clamp(1rem,2vw,1.5rem);margin-bottom:20px;transform:none!important}
+    .expert-band{position:relative;top:48px;margin-top:clamp(1rem,2vw,1.5rem);margin-bottom:48px;transform:none!important}
     .flow-bridge::before,.flow-bridge::after{top:0}
     .flow-bridge span{top:0}
     .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{flex-direction:row;justify-content:flex-start}
@@ -898,6 +898,7 @@ const channelLogos = [
   .stage-copy p{transition:color .32s ease,opacity .32s ease,transform .34s cubic-bezier(.2,.8,.2,1)}
   .stage-number{transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .34s cubic-bezier(.2,.8,.2,1)}
   .stage-card:hover .stage-number,.stage-card:focus-visible .stage-number{border-color:rgba(105,210,84,.7);color:#69d254;box-shadow:0 0 0 .28rem rgba(105,210,84,.07),0 0 18px rgba(105,210,84,.22);transform:translateY(-50%) scale(1.07)}
+  .stage-card.is-active:hover .stage-number,.stage-card.is-active:focus-visible .stage-number{color:#0f1213;background:#69d254;border-color:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62)}
   .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon{color:#69d254;border-color:rgba(105,210,84,.5);background:rgba(105,210,84,.09);box-shadow:0 10px 28px rgba(0,0,0,.18),0 0 18px rgba(105,210,84,.09);transform:translateY(-.22rem) rotate(-3deg)}
   .stage-card:hover .stage-copy h3,.stage-card:focus-visible .stage-copy h3{color:#fff;transform:translateX(.32rem);letter-spacing:.01em}
   .stage-card:hover .stage-copy p,.stage-card:focus-visible .stage-copy p{color:#d1d3d0;opacity:1;transform:translateX(.18rem)}
