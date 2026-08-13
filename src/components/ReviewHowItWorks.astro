@@ -1,436 +1,437 @@
----
-const steps = [
-  {
-    eyebrow: "Day 1",
-    title: "It learns your business",
-    description: "We ingest your website, socials, and offers. Short intake in chat. Channels connected.",
-    bullets: [],
-    image: "/images/process-markethink-learns-business.avif",
-    alt: "Markethink organizing business context into a marketing foundation",
-  },
-  {
-    eyebrow: "Week 1",
-    title: "First work arrives",
-    description: "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set.",
-    bullets: [],
-    image: "/images/process-markethink-organized.avif",
-    alt: "Campaign work organized in one connected Markethink workspace",
-  },
-  {
-    eyebrow: "Every week",
-    title: "The operation runs",
-    description: "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone.",
-    bullets: [],
-    image: "/images/process-markethink-learns-what-works.avif",
-    alt: "Marketing work moving through review, approval, and follow-up",
-  },
-  {
-    eyebrow: "As the work continues",
-    title: "Its context compounds",
-    description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.",
-    bullets: [],
-    image: "/images/process-markethink-ai-improves.avif",
-    alt: "Markethink applying accumulated business context to future campaigns",
-  },
-];
----
-
-<section class="story-intro" id="how-it-works" aria-labelledby="first-month-title">
-  <div class="story-intro-inner">
-    <p>How it works</p>
-    <h2 id="first-month-title">Your first 30 days</h2>
-  </div>
-</section>
-
-<section class="story" data-scroll-story>
-  <div class="story-pin">
-    <div class="story-shell">
-      <div class="story-copy" aria-live="polite">
-        {steps.map((step, index) => (
-          <article class={`story-panel ${index === 0 ? "is-active" : ""}`} data-story-panel={index}>
-            <p class="story-eyebrow"><span>{String(index + 1).padStart(2, "0")}</span>{step.eyebrow}</p>
-            <h2>{step.title}</h2>
-            <p class="story-description">{step.description}</p>
-            <ul>
-              {step.bullets.map((bullet) => <li><i aria-hidden="true"></i>{bullet}</li>)}
-            </ul>
-          </article>
-        ))}
-        <div class="story-progress" aria-hidden="true">
-          {steps.map((_, index) => <span class={index === 0 ? "is-active" : ""} data-story-dot={index}></span>)}
-        </div>
-      </div>
-
-      <div class="story-stage">
-        {steps.map((step, index) => (
-          <figure class={`story-visual ${index === 0 ? "is-active" : ""}`} data-story-visual={index}>
-            <img src={step.image} alt={step.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
-            <figcaption>
-              <span class="visual-status"><i></i>{step.eyebrow}</span>
-              <strong>{step.title}</strong>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  function initReviewStory() {
-    const root = document.querySelector<HTMLElement>("[data-scroll-story]");
-    if (!root || root.dataset.ready === "true") return;
-    root.dataset.ready = "true";
-
-    const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-story-panel]"));
-    const visuals = Array.from(root.querySelectorAll<HTMLElement>("[data-story-visual]"));
-    const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-story-dot]"));
-
-    if (window.matchMedia("(max-width: 860px)").matches) {
-      panels.forEach((panel) => panel.removeAttribute("style"));
-      visuals.forEach((visual) => visual.removeAttribute("style"));
-      return;
-    }
-
-    let active = -1;
-
-    const show = (next: number) => {
-      if (next === active) return;
-      gsap.killTweensOf([...panels, ...visuals]);
-      panels.forEach((panel, index) => {
-        panel.classList.toggle("is-active", index === next);
-        if (index !== next) gsap.set(panel, { opacity: 0, y: 0 });
-      });
-      visuals.forEach((visual, index) => {
-        visual.classList.toggle("is-active", index === next);
-        if (index !== next) gsap.set(visual, { opacity: 0, scale: 1 });
-      });
-      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
-      if (panels[next]) {
-        gsap.set(panels[next], { opacity: 1 });
-        gsap.fromTo(panels[next], { y: 14 }, { y: 0, duration: 0.35, ease: "power2.out" });
-      }
-      if (visuals[next]) {
-        gsap.set(visuals[next], { opacity: 1 });
-        gsap.fromTo(visuals[next], { scale: 1.012 }, { scale: 1, duration: 0.45, ease: "power2.out" });
-      }
-      active = next;
-    };
-
-    const indexFromProgress = (progress: number) => Math.min(Math.floor(progress * panels.length), panels.length - 1);
-    show(0);
-
-    const trigger = ScrollTrigger.create({
-      trigger: root,
-      start: "top top",
-      end: "bottom bottom",
-      invalidateOnRefresh: true,
-      onUpdate: (self) => show(indexFromProgress(self.progress)),
-      onRefresh: (self) => show(indexFromProgress(self.progress)),
-    });
-
-    show(indexFromProgress(trigger.progress));
-    requestAnimationFrame(() => ScrollTrigger.refresh());
-  }
-
-  document.addEventListener("DOMContentLoaded", initReviewStory);
-  if (document.readyState !== "loading") initReviewStory();
-</script>
-
-<style>
-  .story-intro {
-    padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(2.5rem, 4vw, 4rem);
-    background: #0f1213;
-    color: #f5f5f1;
-  }
-
-  .story-intro-inner {
-    width: min(1180px, calc(100% - 2rem));
-    margin-inline: auto;
-  }
-
-  .story-intro p {
-    margin: 0 0 1rem;
-    color: #69d254;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  .story-intro h2 {
-    max-width: 48rem;
-    margin: 0;
-    color: #f5f5f1;
-    font-family: var(--font-display);
-    font-size: clamp(3.6rem, 7vw, 7rem);
-    font-weight: 400;
-    line-height: 0.94;
-    letter-spacing: -0.045em;
-  }
-
-  .story {
-    min-height: 400vh;
-    background: #0f1213;
-    color: #f5f5f1;
-  }
-
-  .story-pin {
-    position: sticky;
-    top: 0;
-    min-height: 100svh;
-    display: grid;
-    place-items: center;
-    padding: clamp(5rem, 8vw, 7rem) 0;
-    overflow: hidden;
-  }
-
-  .story-pin::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 85% 18%, rgba(105, 210, 84, 0.08), transparent 30rem);
-    pointer-events: none;
-  }
-
-  .story-shell {
-    position: relative;
-    width: min(1180px, calc(100% - 2rem));
-    display: grid;
-    grid-template-columns: minmax(0, 0.86fr) minmax(28rem, 1.14fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
-    align-items: center;
-  }
-
-  .story-copy {
-    position: relative;
-    min-height: 31rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .story-panel {
-    position: absolute;
-    inset-inline: 0;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .story-panel.is-active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .story-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: rgba(245, 245, 241, 0.54);
-    font-size: 0.68rem;
-    font-weight: 750;
-    letter-spacing: 0.14em;
-  }
-
-  .story-eyebrow span {
-    display: grid;
-    place-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: #69d254;
-    color: #0f1213;
-    letter-spacing: 0;
-  }
-
-  .story-panel h2 {
-    max-width: 34rem;
-    margin-top: 1.25rem;
-    font-size: clamp(3rem, 5vw, 5.3rem);
-    line-height: 0.96;
-    letter-spacing: -0.045em;
-  }
-
-  .story-description {
-    max-width: 34rem;
-    margin-top: 1.35rem;
-    color: rgba(245, 245, 241, 0.65);
-    font-size: clamp(1rem, 1.25vw, 1.12rem);
-    line-height: 1.72;
-  }
-
-  .story-panel ul {
-    display: grid;
-    gap: 0.85rem;
-    margin-top: 1.6rem;
-    list-style: none;
-  }
-
-  .story-panel li {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: rgba(245, 245, 241, 0.78);
-    font-size: 0.88rem;
-  }
-
-  .story-panel li i {
-    width: 2.7rem;
-    height: 1px;
-    background: rgba(105, 210, 84, 0.58);
-  }
-
-  .story-progress {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    gap: 0.45rem;
-  }
-
-  .story-progress span {
-    width: 2.3rem;
-    height: 2px;
-    background: rgba(245, 245, 241, 0.14);
-    transition: background 0.3s ease, width 0.3s ease;
-  }
-
-  .story-progress span.is-active {
-    width: 4.5rem;
-    background: #69d254;
-  }
-
-  .story-stage {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1.04;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    border-radius: 1.9rem;
-    background: #171b1c;
-    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36);
-  }
-
-  .story-visual {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .story-visual.is-active {
-    opacity: 1;
-  }
-
-  .story-visual::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 48%, rgba(10, 13, 14, 0.9) 100%);
-  }
-
-  .story-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .story-visual figcaption {
-    position: absolute;
-    z-index: 2;
-    inset: auto 1.35rem 1.25rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.2rem 1rem;
-    align-items: end;
-    padding: 1rem 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 1rem;
-    background: rgba(15, 18, 19, 0.68);
-    backdrop-filter: blur(18px);
-  }
-
-  .visual-status {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    color: #69d254;
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-  }
-
-  .visual-status i {
-    width: 0.48rem;
-    height: 0.48rem;
-    border-radius: 50%;
-    background: #69d254;
-    box-shadow: 0 0 0 0.25rem rgba(105, 210, 84, 0.12);
-  }
-
-  .story-visual figcaption strong {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-  }
-
-  .story-visual figcaption small {
-    color: rgba(245, 245, 241, 0.52);
-    font-size: 0.68rem;
-  }
-
-  @media (max-width: 860px) {
-    .story {
-      min-height: auto;
-    }
-
-    .story-pin {
-      position: static;
-      display: block;
-      padding: 5rem 0;
-      overflow: visible;
-    }
-
-    .story-shell {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .story-copy {
-      display: grid;
-      gap: 1rem;
-      min-height: auto;
-    }
-
-    .story-panel {
-      position: relative;
-      opacity: 1;
-      pointer-events: auto;
-      padding: 1.25rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1.2rem;
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .story-panel h2 {
-      font-size: clamp(2.4rem, 9vw, 3.5rem);
-    }
-
-    .story-progress,
-    .story-stage {
-      display: none;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .story-panel,
-    .story-visual,
-    .story-progress span {
-      transition: none;
-    }
-  }
-</style>
+1|---
+2|const steps = [
+3|  {
+4|    eyebrow: "Day 1",
+5|    title: "It learns your business",
+6|    description: "We ingest your website, socials, and offers. Short intake in chat. Channels connected.",
+7|    bullets: [],
+8|    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-day1-v1.webp",
+9|    alt: "Markethink organizing business context into a marketing foundation",
+10|  },
+11|  {
+12|    eyebrow: "Week 1",
+13|    title: "First work arrives",
+14|    description: "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set.",
+15|    bullets: [],
+16|    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-week1-v1.webp",
+17|    alt: "Campaign work organized in one connected Markethink workspace",
+18|  },
+19|  {
+20|    eyebrow: "Every week",
+21|    title: "The operation runs",
+22|    description: "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone.",
+23|    bullets: [],
+24|    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-weekly-v1.webp",
+25|    alt: "Marketing work moving through review, approval, and follow-up",
+26|  },
+27|  {
+28|    eyebrow: "As the work continues",
+29|    title: "Its context compounds",
+30|    description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.",
+31|    bullets: [],
+32|    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-compounds-v1.webp",
+33|    alt: "Markethink applying accumulated business context to future campaigns",
+34|  },
+35|];
+36|---
+37|
+38|<section class="story-intro" id="how-it-works" aria-labelledby="first-month-title">
+39|  <div class="story-intro-inner">
+40|    <p>How it works</p>
+41|    <h2 id="first-month-title">Your first 30 days</h2>
+42|  </div>
+43|</section>
+44|
+45|<section class="story" data-scroll-story>
+46|  <div class="story-pin">
+47|    <div class="story-shell">
+48|      <div class="story-copy" aria-live="polite">
+49|        {steps.map((step, index) => (
+50|          <article class={`story-panel ${index === 0 ? "is-active" : ""}`} data-story-panel={index}>
+51|            <p class="story-eyebrow"><span>{String(index + 1).padStart(2, "0")}</span>{step.eyebrow}</p>
+52|            <h2>{step.title}</h2>
+53|            <p class="story-description">{step.description}</p>
+54|            <ul>
+55|              {step.bullets.map((bullet) => <li><i aria-hidden="true"></i>{bullet}</li>)}
+56|            </ul>
+57|          </article>
+58|        ))}
+59|        <div class="story-progress" aria-hidden="true">
+60|          {steps.map((_, index) => <span class={index === 0 ? "is-active" : ""} data-story-dot={index}></span>)}
+61|        </div>
+62|      </div>
+63|
+64|      <div class="story-stage">
+65|        {steps.map((step, index) => (
+66|          <figure class={`story-visual ${index === 0 ? "is-active" : ""}`} data-story-visual={index}>
+67|            <img src={step.image} alt={step.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
+68|            <figcaption>
+69|              <span class="visual-status"><i></i>{step.eyebrow}</span>
+70|              <strong>{step.title}</strong>
+71|            </figcaption>
+72|          </figure>
+73|        ))}
+74|      </div>
+75|    </div>
+76|  </div>
+77|</section>
+78|
+79|<script>
+80|  import { gsap } from "gsap";
+81|  import { ScrollTrigger } from "gsap/ScrollTrigger";
+82|
+83|  gsap.registerPlugin(ScrollTrigger);
+84|
+85|  function initReviewStory() {
+86|    const root = document.querySelector<HTMLElement>("[data-scroll-story]");
+87|    if (!root || root.dataset.ready === "true") return;
+88|    root.dataset.ready = "true";
+89|
+90|    const panels = Array.from(root.querySelectorAll<HTMLElement>("[data-story-panel]"));
+91|    const visuals = Array.from(root.querySelectorAll<HTMLElement>("[data-story-visual]"));
+92|    const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-story-dot]"));
+93|
+94|    if (window.matchMedia("(max-width: 860px)").matches) {
+95|      panels.forEach((panel) => panel.removeAttribute("style"));
+96|      visuals.forEach((visual) => visual.removeAttribute("style"));
+97|      return;
+98|    }
+99|
+100|    let active = -1;
+101|
+102|    const show = (next: number) => {
+103|      if (next === active) return;
+104|      gsap.killTweensOf([...panels, ...visuals]);
+105|      panels.forEach((panel, index) => {
+106|        panel.classList.toggle("is-active", index === next);
+107|        if (index !== next) gsap.set(panel, { opacity: 0, y: 0 });
+108|      });
+109|      visuals.forEach((visual, index) => {
+110|        visual.classList.toggle("is-active", index === next);
+111|        if (index !== next) gsap.set(visual, { opacity: 0, scale: 1 });
+112|      });
+113|      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
+114|      if (panels[next]) {
+115|        gsap.set(panels[next], { opacity: 1 });
+116|        gsap.fromTo(panels[next], { y: 14 }, { y: 0, duration: 0.35, ease: "power2.out" });
+117|      }
+118|      if (visuals[next]) {
+119|        gsap.set(visuals[next], { opacity: 1 });
+120|        gsap.fromTo(visuals[next], { scale: 1.012 }, { scale: 1, duration: 0.45, ease: "power2.out" });
+121|      }
+122|      active = next;
+123|    };
+124|
+125|    const indexFromProgress = (progress: number) => Math.min(Math.floor(progress * panels.length), panels.length - 1);
+126|    show(0);
+127|
+128|    const trigger = ScrollTrigger.create({
+129|      trigger: root,
+130|      start: "top top",
+131|      end: "bottom bottom",
+132|      invalidateOnRefresh: true,
+133|      onUpdate: (self) => show(indexFromProgress(self.progress)),
+134|      onRefresh: (self) => show(indexFromProgress(self.progress)),
+135|    });
+136|
+137|    show(indexFromProgress(trigger.progress));
+138|    requestAnimationFrame(() => ScrollTrigger.refresh());
+139|  }
+140|
+141|  document.addEventListener("DOMContentLoaded", initReviewStory);
+142|  if (document.readyState !== "loading") initReviewStory();
+143|</script>
+144|
+145|<style>
+146|  .story-intro {
+147|    padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(2.5rem, 4vw, 4rem);
+148|    background: #0f1213;
+149|    color: #f5f5f1;
+150|  }
+151|
+152|  .story-intro-inner {
+153|    width: min(1180px, calc(100% - 2rem));
+154|    margin-inline: auto;
+155|  }
+156|
+157|  .story-intro p {
+158|    margin: 0 0 1rem;
+159|    color: #69d254;
+160|    font-size: 0.72rem;
+161|    font-weight: 800;
+162|    letter-spacing: 0.16em;
+163|    text-transform: uppercase;
+164|  }
+165|
+166|  .story-intro h2 {
+167|    max-width: 48rem;
+168|    margin: 0;
+169|    color: #f5f5f1;
+170|    font-family: var(--font-display);
+171|    font-size: clamp(3.6rem, 7vw, 7rem);
+172|    font-weight: 400;
+173|    line-height: 0.94;
+174|    letter-spacing: -0.045em;
+175|  }
+176|
+177|  .story {
+178|    min-height: 400vh;
+179|    background: #0f1213;
+180|    color: #f5f5f1;
+181|  }
+182|
+183|  .story-pin {
+184|    position: sticky;
+185|    top: 0;
+186|    min-height: 100svh;
+187|    display: grid;
+188|    place-items: center;
+189|    padding: clamp(5rem, 8vw, 7rem) 0;
+190|    overflow: hidden;
+191|  }
+192|
+193|  .story-pin::before {
+194|    content: "";
+195|    position: absolute;
+196|    inset: 0;
+197|    background: radial-gradient(circle at 85% 18%, rgba(105, 210, 84, 0.08), transparent 30rem);
+198|    pointer-events: none;
+199|  }
+200|
+201|  .story-shell {
+202|    position: relative;
+203|    width: min(1180px, calc(100% - 2rem));
+204|    display: grid;
+205|    grid-template-columns: minmax(0, 0.86fr) minmax(28rem, 1.14fr);
+206|    gap: clamp(2.5rem, 6vw, 6rem);
+207|    align-items: center;
+208|  }
+209|
+210|  .story-copy {
+211|    position: relative;
+212|    min-height: 31rem;
+213|    display: flex;
+214|    align-items: center;
+215|  }
+216|
+217|  .story-panel {
+218|    position: absolute;
+219|    inset-inline: 0;
+220|    opacity: 0;
+221|    pointer-events: none;
+222|  }
+223|
+224|  .story-panel.is-active {
+225|    opacity: 1;
+226|    pointer-events: auto;
+227|  }
+228|
+229|  .story-eyebrow {
+230|    display: flex;
+231|    align-items: center;
+232|    gap: 0.75rem;
+233|    color: rgba(245, 245, 241, 0.54);
+234|    font-size: 0.68rem;
+235|    font-weight: 750;
+236|    letter-spacing: 0.14em;
+237|  }
+238|
+239|  .story-eyebrow span {
+240|    display: grid;
+241|    place-items: center;
+242|    width: 2rem;
+243|    height: 2rem;
+244|    border-radius: 50%;
+245|    background: #69d254;
+246|    color: #0f1213;
+247|    letter-spacing: 0;
+248|  }
+249|
+250|  .story-panel h2 {
+251|    max-width: 34rem;
+252|    margin-top: 1.25rem;
+253|    font-size: clamp(3rem, 5vw, 5.3rem);
+254|    line-height: 0.96;
+255|    letter-spacing: -0.045em;
+256|  }
+257|
+258|  .story-description {
+259|    max-width: 34rem;
+260|    margin-top: 1.35rem;
+261|    color: rgba(245, 245, 241, 0.65);
+262|    font-size: clamp(1rem, 1.25vw, 1.12rem);
+263|    line-height: 1.72;
+264|  }
+265|
+266|  .story-panel ul {
+267|    display: grid;
+268|    gap: 0.85rem;
+269|    margin-top: 1.6rem;
+270|    list-style: none;
+271|  }
+272|
+273|  .story-panel li {
+274|    display: flex;
+275|    align-items: center;
+276|    gap: 0.8rem;
+277|    color: rgba(245, 245, 241, 0.78);
+278|    font-size: 0.88rem;
+279|  }
+280|
+281|  .story-panel li i {
+282|    width: 2.7rem;
+283|    height: 1px;
+284|    background: rgba(105, 210, 84, 0.58);
+285|  }
+286|
+287|  .story-progress {
+288|    position: absolute;
+289|    left: 0;
+290|    bottom: 0;
+291|    display: flex;
+292|    gap: 0.45rem;
+293|  }
+294|
+295|  .story-progress span {
+296|    width: 2.3rem;
+297|    height: 2px;
+298|    background: rgba(245, 245, 241, 0.14);
+299|    transition: background 0.3s ease, width 0.3s ease;
+300|  }
+301|
+302|  .story-progress span.is-active {
+303|    width: 4.5rem;
+304|    background: #69d254;
+305|  }
+306|
+307|  .story-stage {
+308|    position: relative;
+309|    width: 100%;
+310|    aspect-ratio: 1.04;
+311|    overflow: hidden;
+312|    border: 1px solid rgba(255, 255, 255, 0.11);
+313|    border-radius: 1.9rem;
+314|    background: #171b1c;
+315|    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36);
+316|  }
+317|
+318|  .story-visual {
+319|    position: absolute;
+320|    inset: 0;
+321|    opacity: 0;
+322|    pointer-events: none;
+323|  }
+324|
+325|  .story-visual.is-active {
+326|    opacity: 1;
+327|  }
+328|
+329|  .story-visual::after {
+330|    content: "";
+331|    position: absolute;
+332|    inset: 0;
+333|    background: linear-gradient(180deg, transparent 48%, rgba(10, 13, 14, 0.9) 100%);
+334|  }
+335|
+336|  .story-visual img {
+337|    width: 100%;
+338|    height: 100%;
+339|    object-fit: cover;
+340|  }
+341|
+342|  .story-visual figcaption {
+343|    position: absolute;
+344|    z-index: 2;
+345|    inset: auto 1.35rem 1.25rem;
+346|    display: grid;
+347|    grid-template-columns: 1fr auto;
+348|    gap: 0.2rem 1rem;
+349|    align-items: end;
+350|    padding: 1rem 1.05rem;
+351|    border: 1px solid rgba(255, 255, 255, 0.13);
+352|    border-radius: 1rem;
+353|    background: rgba(15, 18, 19, 0.68);
+354|    backdrop-filter: blur(18px);
+355|  }
+356|
+357|  .visual-status {
+358|    grid-column: 1 / -1;
+359|    display: flex;
+360|    align-items: center;
+361|    gap: 0.45rem;
+362|    color: #69d254;
+363|    font-size: 0.62rem;
+364|    font-weight: 800;
+365|    letter-spacing: 0.1em;
+366|  }
+367|
+368|  .visual-status i {
+369|    width: 0.48rem;
+370|    height: 0.48rem;
+371|    border-radius: 50%;
+372|    background: #69d254;
+373|    box-shadow: 0 0 0 0.25rem rgba(105, 210, 84, 0.12);
+374|  }
+375|
+376|  .story-visual figcaption strong {
+377|    font-family: var(--font-body);
+378|    font-size: 0.95rem;
+379|  }
+380|
+381|  .story-visual figcaption small {
+382|    color: rgba(245, 245, 241, 0.52);
+383|    font-size: 0.68rem;
+384|  }
+385|
+386|  @media (max-width: 860px) {
+387|    .story {
+388|      min-height: auto;
+389|    }
+390|
+391|    .story-pin {
+392|      position: static;
+393|      display: block;
+394|      padding: 5rem 0;
+395|      overflow: visible;
+396|    }
+397|
+398|    .story-shell {
+399|      grid-template-columns: 1fr;
+400|      gap: 1rem;
+401|    }
+402|
+403|    .story-copy {
+404|      display: grid;
+405|      gap: 1rem;
+406|      min-height: auto;
+407|    }
+408|
+409|    .story-panel {
+410|      position: relative;
+411|      opacity: 1;
+412|      pointer-events: auto;
+413|      padding: 1.25rem;
+414|      border: 1px solid rgba(255, 255, 255, 0.1);
+415|      border-radius: 1.2rem;
+416|      background: rgba(255, 255, 255, 0.035);
+417|    }
+418|
+419|    .story-panel h2 {
+420|      font-size: clamp(2.4rem, 9vw, 3.5rem);
+421|    }
+422|
+423|    .story-progress,
+424|    .story-stage {
+425|      display: none;
+426|    }
+427|  }
+428|
+429|  @media (prefers-reduced-motion: reduce) {
+430|    .story-panel,
+431|    .story-visual,
+432|    .story-progress span {
+433|      transition: none;
+434|    }
+435|  }
+436|</style>
+437|
