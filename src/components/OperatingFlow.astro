@@ -13,6 +13,7 @@ const stages = [
     description: "We ingest your website, socials, and offers. Short intake in chat. Channels connected.",
     items: ["Website", "Socials", "Offers"],
     kind: "plan",
+    icon: "✦",
   },
   {
     number: "02",
@@ -20,6 +21,7 @@ const stages = [
     description: "Written, designed, and published in your brand voice.",
     items: ["Social content", "Landing pages", "Email campaigns"],
     kind: "ship",
+    icon: "↗",
   },
   {
     number: "03",
@@ -27,6 +29,7 @@ const stages = [
     description: "Capture, CRM, and follow-up running through the channels you connect.",
     items: ["Lead capture", "CRM", "Follow-up"],
     kind: "convert",
+    icon: "◎",
   },
   {
     number: "04",
@@ -34,6 +37,7 @@ const stages = [
     description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.",
     items: ["Approvals", "Corrections", "Results"],
     kind: "learn",
+    icon: "↻",
   },
 ];
 
@@ -162,80 +166,17 @@ const channelLogos = [
         <span></span>
       </div>
 
-      <div class="stage-grid animate-stagger" style="--flow-progress:0">
+      <div class="stage-grid animate-stagger" aria-label="How Markethink runs the work">
         {stages.map((stage) => (
           <article class={`stage-card stage-${stage.kind}${stage.kind === "plan" ? " is-active" : ""}`} tabindex="0" data-flow-step={stage.kind} aria-current={stage.kind === "plan" ? "step" : undefined}>
-            <span class="flow-active-segment" aria-hidden="true"></span>
-            <div class="stage-shine" aria-hidden="true"></div>
-            <div class="stage-head">
-              <span>{stage.number}</span>
-              <h3>{stage.title}</h3>
+            <span class="stage-number" aria-hidden="true">{stage.number}</span>
+            <div class="stage-copy">
+              <span class="stage-icon" aria-hidden="true">{stage.icon}</span>
+              <div>
+                <h3>{stage.title}</h3>
+                <p>{stage.description}</p>
+              </div>
             </div>
-            <p>{stage.description}</p>
-
-            {stage.kind === "plan" && (
-              <div class="stage-visual brief-card" aria-label="Illustrative campaign brief">
-                <div class="brief-title">
-                  <span>Campaign brief</span>
-                  <i aria-hidden="true">✓</i>
-                </div>
-                <dl>
-                  <div><dt>Offer</dt><dd>New service</dd></div>
-                  <div><dt>Audience</dt><dd>Priority buyers</dd></div>
-                  <div><dt>Channels</dt><dd>Web, social, email</dd></div>
-                  <div><dt>Approval</dt><dd>Expert review, then you</dd></div>
-                </dl>
-              </div>
-            )}
-
-            {stage.kind === "ship" && (
-              <div class="stage-visual ship-visual">
-                <div class="mini-landing" aria-label="Illustrative landing page preview">
-                  <span class="mini-nav"><b>m</b><i></i><i></i></span>
-                  <strong>A clearer way<br />to grow.</strong>
-                  <span class="mini-cta">Get started</span>
-                </div>
-                <div class="channel-logos" aria-label="Example marketing channels">
-                  {channelLogos.map((logo) => (
-                    <span class="logo-tile" title={logo.name}>
-                      <img src={logo.src} alt={logo.name} loading="lazy" decoding="async" />
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {stage.kind === "convert" && (
-              <div class="stage-visual convert-visual" aria-label="Illustrative lead routing workflow">
-                <div class="lead-card">
-                  <span class="lead-icon" aria-hidden="true">↗</span>
-                  <div><strong>New inquiry</strong><span>Captured from campaign</span></div>
-                  <b>Ready</b>
-                </div>
-                <div class="routing-row">
-                  <span><i>01</i> Lead capture</span>
-                  <b aria-hidden="true">→</b>
-                  <span><i>02</i> CRM</span>
-                  <b aria-hidden="true">→</b>
-                  <span><i>03</i> Follow-up</span>
-                </div>
-              </div>
-            )}
-
-            {stage.kind === "learn" && (
-              <div class="stage-visual learn-visual" aria-label="Illustrative approval memory">
-                <div class="memory-head"><span>Approval memory</span><b>Active</b></div>
-                <ul>
-                  <li><span>✓</span><p><strong>Headline approved</strong><small>Saved for the next campaign</small></p></li>
-                  <li><span>↗</span><p><strong>Audience refined</strong><small>Correction carried forward</small></p></li>
-                  <li><span>+</span><p><strong>Result added</strong><small>Next plan starts sharper</small></p></li>
-                </ul>
-              </div>
-            )}
-
-            <ul class="stage-tags">
-              {stage.items.map((item) => <li>{item}</li>)}
-            </ul>
           </article>
         ))}
       </div>
@@ -917,4 +858,24 @@ const channelLogos = [
   @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr);gap:1.5rem}.phone-column{grid-column:1}.stage-grid{grid-column:2}.flow-bridge{display:none}.phone-wrap{width:min(100%,18rem)}.stage-card{min-height:64vh}}
   @media(max-width:820px){.flow-workspace{grid-template-columns:1fr}.phone-column{display:none}.flow-bridge{display:none}.stage-grid{padding-left:2.25rem}.stage-grid::before{left:.62rem;top:2rem;bottom:3rem}.stage-grid::after{display:none}.stage-card{min-height:auto;opacity:1!important;filter:none!important;transform:none!important;margin-bottom:1rem}.stage-card::before{left:-2rem}.flow-active-segment{display:none}.stage-card .stage-visual{min-height:8.2rem}.expert-band{margin-top:2rem}}
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-card::before,.phone-stage-indicator>div{transition:none!important}.phone-wrap{animation:none!important}}
+
+  /* Minimal timeline: the phone owns the visual story */
+  .flow-workspace{grid-template-columns:minmax(18rem,.82fr) 3.8rem minmax(0,1.18fr)}
+  .stage-grid{padding-left:4.25rem;gap:1rem}
+  .stage-grid::before{left:1.5rem;top:2rem;bottom:2rem;width:1px;background:rgba(245,245,241,.16)}
+  .stage-card{display:flex;align-items:center;min-height:48vh;margin:0;padding:clamp(1.25rem,2.8vw,2.25rem);border:1px solid rgba(245,245,241,.11);border-radius:1.25rem;background:rgba(245,245,241,.025);opacity:.52;filter:none;transform:none;cursor:pointer;transition:opacity .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
+  .stage-card::before,.stage-card::after,.flow-active-segment,.stage-shine,.stage-visual,.stage-tags{display:none!important}
+  .stage-number{position:absolute;left:-4.25rem;top:50%;display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(245,245,241,.25);border-radius:50%;background:#0f1213;color:#b4b6b6;font-size:.7rem;font-weight:800;letter-spacing:.08em;transform:translateY(-50%);z-index:2;transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
+  .stage-copy{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:1.15rem;align-items:start;width:100%}
+  .stage-icon{display:grid;place-items:center;width:3.5rem;height:3.5rem;border:1px solid rgba(245,245,241,.14);border-radius:1rem;background:rgba(245,245,241,.035);color:#b4b6b6;font-size:1.45rem;transition:color .3s ease,border-color .3s ease,background .3s ease,transform .3s ease}
+  .stage-copy h3{margin:0 0 .55rem;color:#f5f5f1;font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:.95}
+  .stage-copy p{max-width:34rem;min-height:0;margin:0;color:#b4b6b6;font-size:clamp(.9rem,1.25vw,1.02rem);line-height:1.55}
+  .stage-card:hover,.stage-card:focus-visible{opacity:.86;border-color:rgba(105,210,84,.34);background:rgba(105,210,84,.035);transform:translateX(.25rem);outline:none}
+  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon{color:#69d254;border-color:rgba(105,210,84,.38);background:rgba(105,210,84,.08);transform:translateY(-.12rem)}
+  .stage-card.is-active{opacity:1;border-color:rgba(105,210,84,.52);background:linear-gradient(135deg,rgba(105,210,84,.08),rgba(245,245,241,.025));box-shadow:0 22px 60px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.05);transform:none}
+  .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.58);transform:translateY(-50%) scale(1.04)}
+  .stage-card.is-active .stage-icon{color:#69d254;border-color:rgba(105,210,84,.48);background:rgba(105,210,84,.1);box-shadow:0 0 24px rgba(105,210,84,.08)}
+  .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.55)}
+  @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{padding-left:3.7rem}.stage-card{min-height:46vh}.stage-number{left:-3.7rem;width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:3rem minmax(0,1fr)}.stage-icon{width:3rem;height:3rem}}
+  @media(max-width:820px){.stage-grid{padding-left:3.35rem;gap:.9rem}.stage-grid::before{display:block;left:1.25rem;top:1.5rem;bottom:1.5rem}.stage-card{min-height:auto;padding:1.15rem;opacity:1!important}.stage-number{left:-3.35rem;width:2.55rem;height:2.55rem}.stage-copy{grid-template-columns:2.75rem minmax(0,1fr);gap:.85rem}.stage-icon{width:2.75rem;height:2.75rem;font-size:1.15rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{transform:none}.stage-card.is-active{background:rgba(245,245,241,.035);border-color:rgba(245,245,241,.14);box-shadow:none}.stage-card.is-active .stage-number{color:#f5f5f1;border-color:rgba(245,245,241,.28);background:#0f1213;box-shadow:none;transform:translateY(-50%)}}
 </style>
