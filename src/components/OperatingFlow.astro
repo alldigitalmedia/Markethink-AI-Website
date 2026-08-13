@@ -914,7 +914,10 @@ const channelLogos = [
 
   @media(min-width:1061px){
     .stage-card:first-child.is-active .stage-number{transform:translateY(calc(-50% + var(--first-node-shift-y,0px))) scale(1.04);transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+    .stage-card:first-child.is-active .stage-copy{transform:translateY(var(--first-node-shift-y,0px))}
     .stage-card:last-child.is-active .stage-number{transform:translateY(calc(-50% + var(--last-node-shift-y,0px))) scale(1.04);transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+    .stage-card:last-child.is-active .stage-copy{transform:translateY(var(--last-node-shift-y,0px))}
+    .stage-card:first-child.is-active .stage-copy,.stage-card:last-child.is-active .stage-copy{transition:none}
   }
 
   /* Keep the connector locked to the rendered center of the sticky phone frame */
