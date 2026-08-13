@@ -862,10 +862,10 @@ const channelLogos = [
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-card::before,.phone-stage-indicator>div{transition:none!important}.phone-wrap{animation:none!important}}
 
   /* Borderless scroll-progress timeline */
-  .stage-grid{--rail-x:1.5rem;--step-height:38vh;position:relative;padding-left:4.25rem;gap:.25rem}
-  .stage-grid::before,.stage-grid::after{content:"";display:block;position:absolute;left:var(--rail-x);top:calc(var(--step-height)/2);width:1px;border-radius:999px;pointer-events:none}
+  .stage-grid{--rail-x:1.5rem;--step-height:38vh;--entry-offset:14vh;position:relative;padding:var(--entry-offset) 0 0 4.25rem;gap:.25rem}
+  .stage-grid::before,.stage-grid::after{content:"";display:block;position:absolute;left:var(--rail-x);top:calc(var(--entry-offset) + var(--step-height)/2);width:1px;border-radius:999px;pointer-events:none}
   .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18)}
-  .stage-grid::after{height:calc((100% - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:1}
+  .stage-grid::after{height:calc((100% - var(--entry-offset) - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:1}
   .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
   .stage-card{opacity:.42}
   .stage-card:hover,.stage-card:focus-visible{opacity:.8}
@@ -882,7 +882,7 @@ const channelLogos = [
 
   /* One shared viewport-center axis: phone, connector, active node and copy */
   @media(min-width:1061px){
-    .flow-workspace{grid-template-rows:auto 16vh;padding-bottom:0}
+    .flow-workspace{grid-template-rows:auto 4vh;padding-bottom:0}
     .phone-column{position:sticky;top:max(5.5rem,calc(50vh - 21rem));align-self:start;grid-row:1 / -1;transform:none}
     .phone-caption{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:1rem}
     .flow-bridge{position:sticky;top:50vh;align-self:start;grid-row:1 / -1;height:1px;transform:translateY(-50%);z-index:5}
