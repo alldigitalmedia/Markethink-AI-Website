@@ -876,10 +876,31 @@ const channelLogos = [
   .stage-icon{display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:#b4b6b6;font-size:1.55rem;line-height:1;box-shadow:none;transition:color .3s ease,transform .3s ease}
   .stage-copy h3{margin:0 0 .55rem;color:#f5f5f1;font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:.95}
   .stage-copy p{max-width:34rem;min-height:0;margin:0;color:#b4b6b6;font-size:clamp(.9rem,1.25vw,1.02rem);line-height:1.55}
-  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card.is-active .stage-icon{color:#69d254;transform:translateY(-.08rem)}
+  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card.is-active .stage-icon{color:#69d254}
   .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
   .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
-  @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{--step-height:46vh;padding-left:4.25rem}.stage-card{min-height:var(--step-height)}.stage-number{left:calc(var(--rail-x) - 4.25rem - 1.35rem);width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:2.1rem minmax(0,1fr)}}
-  @media(max-width:820px){.stage-grid{--rail-x:1.25rem;--step-height:auto;padding-left:4rem;gap:1.5rem}.stage-grid::before{display:block;top:1.4rem;bottom:1.4rem;left:var(--rail-x)}.stage-grid::after{display:none}.stage-card,.stage-card.is-active{min-height:auto;padding:1rem 0;opacity:1!important}.stage-number{left:calc(var(--rail-x) - 4rem - 1.275rem);width:2.55rem;height:2.55rem;color:#b4b6b6!important;border-color:rgba(245,245,241,.28)!important;background:#0f1213!important;box-shadow:none!important;transform:translateY(-50%)!important}.stage-copy{grid-template-columns:2rem minmax(0,1fr);gap:.8rem}.stage-icon{font-size:1.25rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{opacity:1;transform:none}.stage-card.is-active .stage-icon{color:#69d254}}
-  @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-number,.stage-icon{transition:none!important}}
+
+  /* One shared viewport-center axis: phone, connector, active node and copy */
+  @media(min-width:1061px){
+    .phone-column{position:sticky;top:50vh;align-self:start;transform:translateY(-50%)}
+    .flow-bridge{position:sticky;top:50vh;align-self:start;height:1px;transform:translateY(-50%);z-index:5}
+    .flow-bridge::before,.flow-bridge::after{top:0}
+    .flow-bridge span{top:0}
+  }
+  .stage-copy{align-items:center}
+  .stage-icon{display:grid;place-items:center;width:3.25rem;height:3.25rem;border:1px solid rgba(245,245,241,.14);border-radius:.9rem;background:rgba(245,245,241,.045);color:#b4b6b6;font-size:1.35rem;line-height:1;box-shadow:inset 0 1px rgba(255,255,255,.035);transform:none;transition:color .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease,transform .28s cubic-bezier(.2,.8,.2,1)}
+  .stage-copy h3{transition:color .28s ease,transform .3s cubic-bezier(.2,.8,.2,1),letter-spacing .3s ease}
+  .stage-copy p{transition:color .32s ease,opacity .32s ease,transform .34s cubic-bezier(.2,.8,.2,1)}
+  .stage-number{transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .34s cubic-bezier(.2,.8,.2,1)}
+  .stage-card:hover .stage-number,.stage-card:focus-visible .stage-number{border-color:rgba(105,210,84,.7);color:#69d254;box-shadow:0 0 0 .28rem rgba(105,210,84,.07),0 0 18px rgba(105,210,84,.22);transform:translateY(-50%) scale(1.07)}
+  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon{color:#69d254;border-color:rgba(105,210,84,.5);background:rgba(105,210,84,.09);box-shadow:0 10px 28px rgba(0,0,0,.18),0 0 18px rgba(105,210,84,.09);transform:translateY(-.22rem) rotate(-3deg)}
+  .stage-card:hover .stage-copy h3,.stage-card:focus-visible .stage-copy h3{color:#fff;transform:translateX(.32rem);letter-spacing:.01em}
+  .stage-card:hover .stage-copy p,.stage-card:focus-visible .stage-copy p{color:#d1d3d0;opacity:1;transform:translateX(.18rem)}
+  .stage-card.is-active .stage-icon{color:#69d254;border-color:rgba(105,210,84,.42);background:rgba(105,210,84,.075);box-shadow:0 0 18px rgba(105,210,84,.07)}
+  .stage-card.is-active .stage-copy h3{color:#f5f5f1}
+  .stage-card.is-active .stage-copy p{color:#c1c3c0}
+
+  @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{--step-height:46vh;padding-left:4.25rem}.stage-card{min-height:var(--step-height)}.stage-number{left:calc(var(--rail-x) - 4.25rem - 1.35rem);width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:3.1rem minmax(0,1fr)}.stage-icon{width:3rem;height:3rem}}
+  @media(max-width:820px){.stage-grid{--rail-x:1.25rem;--step-height:auto;padding-left:4rem;gap:1.5rem}.stage-grid::before{display:block;top:1.4rem;bottom:1.4rem;left:var(--rail-x)}.stage-grid::after{display:none}.stage-card,.stage-card.is-active{min-height:auto;padding:1rem 0;opacity:1!important}.stage-number{left:calc(var(--rail-x) - 4rem - 1.275rem);width:2.55rem;height:2.55rem;color:#b4b6b6!important;border-color:rgba(245,245,241,.28)!important;background:#0f1213!important;box-shadow:none!important;transform:translateY(-50%)!important}.stage-copy{grid-template-columns:2.75rem minmax(0,1fr);gap:.8rem}.stage-icon{width:2.75rem;height:2.75rem;font-size:1.15rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{opacity:1;transform:none}.stage-card.is-active .stage-icon{color:#69d254}}
+  @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-number,.stage-icon,.stage-copy h3,.stage-copy p{transition:none!important}.stage-card:hover .stage-number,.stage-card:focus-visible .stage-number{transform:translateY(-50%)!important}.stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card:hover .stage-copy h3,.stage-card:focus-visible .stage-copy h3,.stage-card:hover .stage-copy p,.stage-card:focus-visible .stage-copy p{transform:none!important}}
 </style>
