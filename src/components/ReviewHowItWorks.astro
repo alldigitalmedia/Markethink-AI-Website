@@ -104,9 +104,11 @@ const steps = [
       root.classList.toggle("is-light", isLight);
     };
 
-    const cardsThemeTrigger = window.matchMedia("(max-width: 860px)").matches
-      ? panels[0]
-      : stage;
+    const introParts = intro
+      ? Array.from(intro.querySelectorAll<HTMLElement>(".story-intro-inner > *"))
+      : [];
+    const mobile = window.matchMedia("(max-width: 860px)").matches;
+    const cardsThemeTrigger = mobile ? panels[0] : stage;
 
     if (cardsThemeTrigger) ScrollTrigger.create({
       trigger: cardsThemeTrigger,
@@ -119,34 +121,130 @@ const steps = [
       onRefresh: (self) => setSectionTheme(self.progress > 0 || self.isActive),
     });
 
-    if (window.matchMedia("(max-width: 860px)").matches) {
-      panels.forEach((panel) => panel.removeAttribute("style"));
+    if (!prefersReducedMotion && intro && introParts.length) {
+      const introTimeline = gsap.timeline({ paused: true })
+        .fromTo(introParts[0], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" })
+        .fromTo(introParts[1], { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 0.72, ease: "power3.out" }, "-=0.34");
+
+      ScrollTrigger.create({
+        trigger: intro,
+        start: "top 82%",
+        end: "bottom 12%",
+        invalidateOnRefresh: true,
+        onEnter: () => introTimeline.play(),
+        onLeave: () => introTimeline.reverse(),
+        onEnterBack: () => introTimeline.play(),
+        onLeaveBack: () => introTimeline.reverse(),
+        onRefresh: (self) => self.isActive ? introTimeline.progress(1) : undefined,
+      });
+    }
+
+    const panelParts = (panel: HTMLElement) => Array.from(panel.querySelectorAll<HTMLElement>(
+      ".story-eyebrow, h2, .story-description, li"
+    ));
+    const visualParts = (visual: HTMLElement) => ({
+      image: visual.querySelector<HTMLElement>("img"),
+      caption: visual.querySelector<HTMLElement>("figcaption"),
+      status: visual.querySelector<HTMLElement>(".visual-status"),
+      title: visual.querySelector<HTMLElement>("figcaption strong"),
+    });
+
+    if (mobile) {
+      panels.forEach((panel) => {
+        panel.removeAttribute("style");
+        if (prefersReducedMotion) return;
+        const parts = panelParts(panel);
+        const timeline = gsap.timeline({ paused: true })
+          .fromTo(panel, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.42, ease: "power2.out" })
+          .fromTo(parts, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.42, stagger: 0.08, ease: "power2.out" }, "-=0.22");
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "top 88%",
+          end: "bottom 12%",
+          onEnter: () => timeline.play(),
+          onLeave: () => timeline.reverse(),
+          onEnterBack: () => timeline.play(),
+          onLeaveBack: () => timeline.reverse(),
+        });
+      });
       visuals.forEach((visual) => visual.removeAttribute("style"));
       requestAnimationFrame(() => ScrollTrigger.refresh());
       return;
     }
 
     let active = -1;
+    let transition: gsap.core.Timeline | null = null;
 
     const show = (next: number) => {
       if (next === active) return;
-      gsap.killTweensOf([...panels, ...visuals]);
+      transition?.kill();
+
+      const previous = active;
       panels.forEach((panel, index) => {
-        panel.classList.toggle("is-active", index === next);
-        if (index !== next) gsap.set(panel, { opacity: 0, y: 0 });
+        if (index === previous) return;
+        panel.classList.remove("is-active");
+        gsap.set(panel, { autoAlpha: 0 });
       });
       visuals.forEach((visual, index) => {
-        visual.classList.toggle("is-active", index === next);
-        if (index !== next) gsap.set(visual, { opacity: 0, scale: 1 });
+        if (index === previous) return;
+        visual.classList.remove("is-active");
+        gsap.set(visual, { autoAlpha: 0 });
       });
-      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
-      if (panels[next]) {
-        gsap.set(panels[next], { opacity: 1 });
-        gsap.fromTo(panels[next], { y: 14 }, { y: 0, duration: 0.35, ease: "power2.out" });
+
+      const incomingPanel = panels[next];
+      const incomingVisual = visuals[next];
+      const incomingParts = incomingPanel ? panelParts(incomingPanel) : [];
+      const incomingVisualParts = incomingVisual ? visualParts(incomingVisual) : null;
+      const outgoingPanel = previous >= 0 ? panels[previous] : null;
+      const outgoingVisual = previous >= 0 ? visuals[previous] : null;
+      const outgoingParts = outgoingPanel ? panelParts(outgoingPanel) : [];
+      const outgoingVisualParts = outgoingVisual ? visualParts(outgoingVisual) : null;
+
+      transition = gsap.timeline({ defaults: { overwrite: true } });
+
+      if (outgoingPanel && outgoingVisual && !prefersReducedMotion) {
+        transition
+          .to([...outgoingParts].reverse(), { autoAlpha: 0, y: -14, duration: 0.2, stagger: 0.035, ease: "power2.in" }, 0)
+          .to(outgoingVisualParts?.title || [], { autoAlpha: 0, y: -8, duration: 0.16 }, 0)
+          .to(outgoingVisualParts?.status || [], { autoAlpha: 0, y: -8, duration: 0.16 }, 0.04)
+          .to(outgoingVisualParts?.caption || [], { autoAlpha: 0, y: 14, duration: 0.2 }, 0.08)
+          .to(outgoingVisualParts?.image || [], { autoAlpha: 0, scale: 0.985, duration: 0.28, ease: "power2.in" }, 0)
+          .add(() => {
+            outgoingPanel.classList.remove("is-active");
+            outgoingVisual.classList.remove("is-active");
+            gsap.set([outgoingPanel, outgoingVisual], { autoAlpha: 0 });
+          }, 0.28);
+      } else if (outgoingPanel && outgoingVisual) {
+        outgoingPanel.classList.remove("is-active");
+        outgoingVisual.classList.remove("is-active");
+        gsap.set([outgoingPanel, outgoingVisual], { autoAlpha: 0 });
       }
-      if (visuals[next]) {
-        gsap.set(visuals[next], { opacity: 1 });
-        gsap.fromTo(visuals[next], { scale: 1.012 }, { scale: 1, duration: 0.45, ease: "power2.out" });
+
+      if (incomingPanel && incomingVisual) {
+        const enterAt = previous >= 0 && !prefersReducedMotion ? 0.2 : 0;
+        incomingPanel.classList.add("is-active");
+        incomingVisual.classList.add("is-active");
+        gsap.set([incomingPanel, incomingVisual], { autoAlpha: 1 });
+
+        if (!prefersReducedMotion) {
+          gsap.set(incomingParts, { autoAlpha: 0, y: 18 });
+          gsap.set(incomingVisualParts?.image || [], { autoAlpha: 0, scale: 1.025 });
+          gsap.set(incomingVisualParts?.caption || [], { autoAlpha: 0, y: 18 });
+          gsap.set([incomingVisualParts?.status, incomingVisualParts?.title].filter(Boolean), { autoAlpha: 0, y: 10 });
+          transition
+            .to(incomingVisualParts?.image || [], { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out" }, enterAt)
+            .to(incomingParts, { autoAlpha: 1, y: 0, duration: 0.46, stagger: 0.08, ease: "power3.out" }, enterAt + 0.04)
+            .to(incomingVisualParts?.caption || [], { autoAlpha: 1, y: 0, duration: 0.42, ease: "power3.out" }, enterAt + 0.18)
+            .to(incomingVisualParts?.status || [], { autoAlpha: 1, y: 0, duration: 0.32 }, enterAt + 0.3)
+            .to(incomingVisualParts?.title || [], { autoAlpha: 1, y: 0, duration: 0.36 }, enterAt + 0.38);
+        } else {
+          gsap.set([...incomingParts, incomingVisualParts?.image, incomingVisualParts?.caption, incomingVisualParts?.status, incomingVisualParts?.title].filter(Boolean), { clearProps: "all" });
+        }
+      }
+
+      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === next));
+      if (!prefersReducedMotion) {
+        transition.fromTo(dots, { autoAlpha: 0.3, scaleX: 0.72 }, { autoAlpha: 1, scaleX: 1, duration: 0.28, stagger: 0.045, ease: "power2.out" }, previous >= 0 ? 0.28 : 0.22);
       }
       active = next;
     };
@@ -455,9 +553,11 @@ const steps = [
     gap: 0.2rem 1rem;
     align-items: end;
     padding: 1rem 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 1rem;
-    background: rgba(15, 18, 19, 0.68);
+    background: rgba(15, 18, 19, 0.82);
+    color: #f5f5f1;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
     backdrop-filter: blur(18px);
   }
 
@@ -481,8 +581,12 @@ const steps = [
   }
 
   .story-visual figcaption strong {
+    color: #f5f5f1;
     font-family: var(--font-body);
     font-size: 0.95rem;
+    font-weight: 650;
+    line-height: 1.35;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.32);
   }
 
   .story-visual figcaption small {
