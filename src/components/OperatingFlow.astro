@@ -214,7 +214,20 @@ const channelLogos = [
         const screens = [...root.querySelectorAll('[data-flow-screen]')];
         const previews = [...root.querySelectorAll('[data-flow-preview]')];
         const grid = root.querySelector('.stage-grid');
+        const phoneFrame = root.querySelector('.phone-frame');
         if (!steps.length || !screens.length || !grid) return;
+        const syncPhoneGeometry = () => {
+          if (!phoneFrame || innerWidth <= 1060) {
+            root.style.removeProperty('--phone-frame-height');
+            return;
+          }
+          root.style.setProperty('--phone-frame-height', `${phoneFrame.getBoundingClientRect().height}px`);
+        };
+        syncPhoneGeometry();
+        if (phoneFrame && 'ResizeObserver' in window) {
+          const phoneObserver = new ResizeObserver(syncPhoneGeometry);
+          phoneObserver.observe(phoneFrame);
+        }
         let active = 0;
         const setActive = (index) => {
           active = Math.max(0, Math.min(steps.length - 1, index));
@@ -252,7 +265,10 @@ const channelLogos = [
         setActive(0);
         update();
         addEventListener('scroll', update, { passive: true });
-        addEventListener('resize', update, { passive: true });
+        addEventListener('resize', () => {
+          syncPhoneGeometry();
+          update();
+        }, { passive: true });
       });
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
@@ -880,12 +896,12 @@ const channelLogos = [
   .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
   .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
 
-  /* Keep the phone in its original sticky position; pin only the connector to the operator-marked Plan axis */
+  /* Keep the connector locked to the rendered center of the sticky phone frame */
   @media(min-width:1061px){
     .flow-workspace{grid-template-rows:auto 16vh;padding-bottom:0}
     .phone-column{position:sticky;top:max(5.5rem,calc(50vh - 21rem));align-self:start;grid-row:1 / -1;transform:none}
     .phone-caption{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:1rem}
-    .flow-bridge{position:sticky;top:50svh;align-self:start;grid-row:1 / -1;height:1px;transform:translateY(calc(30svh - 50%));z-index:5}
+    .flow-bridge{position:sticky;top:max(5.5rem,calc(50vh - 21rem));align-self:start;grid-row:1 / -1;height:1px;transform:translateY(calc(var(--phone-frame-height,42rem)/2));z-index:5}
     .stage-grid{grid-row:1}
     .expert-band{position:relative;top:48px;margin-top:clamp(1rem,2vw,1.5rem);margin-bottom:48px;transform:none!important}
     .flow-bridge::before,.flow-bridge::after{top:0}
