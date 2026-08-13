@@ -290,7 +290,7 @@ const channelLogos = [
           grid.style.setProperty('--flow-progress', String(active / Math.max(1, steps.length - 1)));
         };
         const update = () => {
-          if (innerWidth <= 900) return;
+          if (innerWidth <= 820) return;
           const anchor = innerHeight * .5;
           let nearest = 0, distance = Infinity;
           steps.forEach((step, i) => {
