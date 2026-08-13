@@ -861,23 +861,25 @@ const channelLogos = [
   @media(max-width:820px){.flow-workspace{grid-template-columns:1fr}.phone-column{display:none}.flow-bridge{display:none}.stage-grid{padding-left:2.25rem}.stage-grid::before{left:.62rem;top:2rem;bottom:3rem}.stage-grid::after{display:none}.stage-card{min-height:auto;opacity:1!important;filter:none!important;transform:none!important;margin-bottom:1rem}.stage-card::before{left:-2rem}.flow-active-segment{display:none}.stage-card .stage-visual{min-height:8.2rem}.expert-band{margin-top:2rem}}
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-card::before,.phone-stage-indicator>div{transition:none!important}.phone-wrap{animation:none!important}}
 
-  /* Minimal timeline: the phone owns the visual story */
-  .flow-workspace{grid-template-columns:minmax(18rem,.82fr) 3.8rem minmax(0,1.18fr)}
-  .stage-grid{padding-left:4.25rem;gap:1rem}
-  .stage-grid::before{left:1.5rem;top:2rem;bottom:2rem;width:1px;background:rgba(245,245,241,.16)}
-  .stage-card{display:flex;align-items:center;min-height:48vh;margin:0;padding:clamp(1.25rem,2.8vw,2.25rem);border:1px solid rgba(245,245,241,.11);border-radius:1.25rem;background:rgba(245,245,241,.025);opacity:.52;filter:none;transform:none;cursor:pointer;overflow:visible!important;transition:opacity .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
+  /* Borderless scroll-progress timeline */
+  .stage-grid{--rail-x:1.5rem;--step-height:48vh;position:relative;padding-left:4.25rem;gap:1rem}
+  .stage-grid::before,.stage-grid::after{content:"";display:block;position:absolute;left:var(--rail-x);top:calc(var(--step-height)/2);width:1px;border-radius:999px;pointer-events:none}
+  .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18)}
+  .stage-grid::after{height:calc((100% - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:1}
+  .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
+  .stage-card{opacity:.42}
+  .stage-card:hover,.stage-card:focus-visible{opacity:.8}
+  .stage-card.is-active{opacity:1}
   .stage-card::before,.stage-card::after,.flow-active-segment,.stage-shine,.stage-visual,.stage-tags{display:none!important}
-  .stage-number{position:absolute;left:-3.75rem;top:50%;display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(245,245,241,.25);border-radius:50%;background:#0f1213;color:#b4b6b6;font-size:.7rem;font-weight:800;letter-spacing:.08em;transform:translateY(-50%);z-index:2;transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
-  .stage-copy{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:1.15rem;align-items:start;width:100%}
-  .stage-icon{display:grid;place-items:center;width:3.5rem;height:3.5rem;border:1px solid rgba(245,245,241,.14);border-radius:1rem;background:rgba(245,245,241,.035);color:#b4b6b6;font-size:1.45rem;transition:color .3s ease,border-color .3s ease,background .3s ease,transform .3s ease}
+  .stage-number{position:absolute;left:calc(var(--rail-x) - 4.25rem - 1.5rem);top:50%;display:grid;place-items:center;width:3rem;height:3rem;border:1px solid rgba(245,245,241,.3);border-radius:50%;background:#0f1213;color:#b4b6b6;font-size:.7rem;font-weight:800;letter-spacing:.08em;transform:translateY(-50%);z-index:3;transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease,transform .3s ease}
+  .stage-copy{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:1.15rem;align-items:start;width:100%}
+  .stage-icon{display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:#b4b6b6;font-size:1.55rem;line-height:1;box-shadow:none;transition:color .3s ease,transform .3s ease}
   .stage-copy h3{margin:0 0 .55rem;color:#f5f5f1;font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:.95}
   .stage-copy p{max-width:34rem;min-height:0;margin:0;color:#b4b6b6;font-size:clamp(.9rem,1.25vw,1.02rem);line-height:1.55}
-  .stage-card:hover,.stage-card:focus-visible{opacity:.86;border-color:rgba(105,210,84,.34);background:rgba(105,210,84,.035);transform:translateX(.25rem);outline:none}
-  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon{color:#69d254;border-color:rgba(105,210,84,.38);background:rgba(105,210,84,.08);transform:translateY(-.12rem)}
-  .stage-card.is-active{opacity:1;border-color:rgba(105,210,84,.52);background:linear-gradient(135deg,rgba(105,210,84,.08),rgba(245,245,241,.025));box-shadow:0 22px 60px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.05);transform:none}
-  .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.58);transform:translateY(-50%) scale(1.04)}
-  .stage-card.is-active .stage-icon{color:#69d254;border-color:rgba(105,210,84,.48);background:rgba(105,210,84,.1);box-shadow:0 0 24px rgba(105,210,84,.08)}
-  .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.55)}
-  @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{padding-left:4.25rem}.stage-card{min-height:46vh}.stage-number{left:-3.75rem;width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:3rem minmax(0,1fr)}.stage-icon{width:3rem;height:3rem}}
-  @media(max-width:820px){.stage-grid{padding-left:4rem;gap:.9rem}.stage-grid::before{display:block;left:1.25rem;top:1.5rem;bottom:1.5rem}.stage-card{min-height:auto;padding:1.15rem;opacity:1!important}.stage-number{left:-3.55rem;width:2.55rem;height:2.55rem}.stage-copy{grid-template-columns:2.75rem minmax(0,1fr);gap:.85rem}.stage-icon{width:2.75rem;height:2.75rem;font-size:1.15rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{transform:none}.stage-card.is-active{background:rgba(245,245,241,.035);border-color:rgba(245,245,241,.14);box-shadow:none}.stage-card.is-active .stage-number{color:#f5f5f1;border-color:rgba(245,245,241,.28);background:#0f1213;box-shadow:none;transform:translateY(-50%)}}
+  .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card.is-active .stage-icon{color:#69d254;transform:translateY(-.08rem)}
+  .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
+  .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
+  @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{--step-height:46vh;padding-left:4.25rem}.stage-card{min-height:var(--step-height)}.stage-number{left:calc(var(--rail-x) - 4.25rem - 1.35rem);width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:2.1rem minmax(0,1fr)}}
+  @media(max-width:820px){.stage-grid{--rail-x:1.25rem;--step-height:auto;padding-left:4rem;gap:1.5rem}.stage-grid::before{display:block;top:1.4rem;bottom:1.4rem;left:var(--rail-x)}.stage-grid::after{display:none}.stage-card,.stage-card.is-active{min-height:auto;padding:1rem 0;opacity:1!important}.stage-number{left:calc(var(--rail-x) - 4rem - 1.275rem);width:2.55rem;height:2.55rem;color:#b4b6b6!important;border-color:rgba(245,245,241,.28)!important;background:#0f1213!important;box-shadow:none!important;transform:translateY(-50%)!important}.stage-copy{grid-template-columns:2rem minmax(0,1fr);gap:.8rem}.stage-icon{font-size:1.25rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{opacity:1;transform:none}.stage-card.is-active .stage-icon{color:#69d254}}
+  @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-number,.stage-icon{transition:none!important}}
 </style>
