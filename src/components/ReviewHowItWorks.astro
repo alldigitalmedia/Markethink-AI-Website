@@ -93,29 +93,14 @@ const steps = [
     const intro = document.querySelector<HTMLElement>("[data-story-intro]");
     const stage = root.querySelector<HTMLElement>("[data-story-stage]");
 
-    if (intro) {
-      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const setIntroTheme = (isLight: boolean) => {
-        intro.classList.toggle("is-light", isLight);
-      };
-
-      ScrollTrigger.create({
-        trigger: intro,
-        start: "center center",
-        end: "bottom top",
-        invalidateOnRefresh: true,
-        onEnter: () => setIntroTheme(true),
-        onLeaveBack: () => setIntroTheme(false),
-        onRefresh: (self) => setIntroTheme(self.progress > 0 || self.isActive),
-      });
-
-      if (prefersReducedMotion) {
-        intro.style.setProperty("--story-theme-duration", "0.01ms");
-        root.style.setProperty("--story-theme-duration", "0.01ms");
-      }
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      intro?.style.setProperty("--story-theme-duration", "0.01ms");
+      root.style.setProperty("--story-theme-duration", "0.01ms");
     }
 
-    const setCardsTheme = (isLight: boolean) => {
+    const setSectionTheme = (isLight: boolean) => {
+      intro?.classList.toggle("is-light", isLight);
       root.classList.toggle("is-light", isLight);
     };
 
@@ -129,9 +114,9 @@ const steps = [
       endTrigger: root,
       end: "bottom top",
       invalidateOnRefresh: true,
-      onEnter: () => setCardsTheme(true),
-      onLeaveBack: () => setCardsTheme(false),
-      onRefresh: (self) => setCardsTheme(self.progress > 0 || self.isActive),
+      onEnter: () => setSectionTheme(true),
+      onLeaveBack: () => setSectionTheme(false),
+      onRefresh: (self) => setSectionTheme(self.progress > 0 || self.isActive),
     });
 
     if (window.matchMedia("(max-width: 860px)").matches) {
