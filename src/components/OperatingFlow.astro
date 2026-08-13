@@ -883,9 +883,11 @@ const channelLogos = [
   /* One shared viewport-center axis: phone, connector, active node and copy */
   @media(min-width:1061px){
     .phone-column{position:sticky;top:50vh;align-self:start;transform:translateY(-50%)}
+    .phone-caption{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:1rem}
     .flow-bridge{position:sticky;top:50vh;align-self:start;height:1px;transform:translateY(-50%);z-index:5}
     .flow-bridge::before,.flow-bridge::after{top:0}
     .flow-bridge span{top:0}
+    .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{flex-direction:row;justify-content:flex-start}
   }
   .stage-copy{align-items:center}
   .stage-icon{display:grid;place-items:center;width:3.25rem;height:3.25rem;border:1px solid rgba(245,245,241,.14);border-radius:.9rem;background:rgba(245,245,241,.045);color:#b4b6b6;font-size:1.35rem;line-height:1;box-shadow:inset 0 1px rgba(255,255,255,.035);transform:none;transition:color .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease,transform .28s cubic-bezier(.2,.8,.2,1)}
