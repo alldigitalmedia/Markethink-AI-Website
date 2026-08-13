@@ -262,7 +262,20 @@ const faq = [
 
             <OperatingFlow sectionId="request-to-result" includeInstagram={false} />
 
-
+      <section class="difference section-light" aria-labelledby="difference-title">
+        <div class="wrap">
+          <div class="difference-hero"><div><p class="eyebrow dark">Why it gets sharper</p><h2 id="difference-title">A correction should improve more than one deliverable.</h2><p class="difference-lead">Markethink keeps the decision and carries it into the next piece of work.</p></div><div class="memory-demo" data-memory-demo><button type="button" class="memory-note is-active" data-memory-step="0"><small>Your correction</small><strong>Lead with the product. Use less copy.</strong></button><span aria-hidden="true"></span><button type="button" class="memory-note" data-memory-step="1"><small>Business memory</small><strong>Preference retained with context.</strong></button><span aria-hidden="true"></span><button type="button" class="memory-note" data-memory-step="2"><small>Next campaign</small><strong>The rule appears in the new work.</strong></button></div></div>
+          <div class="triad"><article tabindex="0"><strong>AI supports the volume</strong><p>Research, drafts, production, organization, and consistency.</p></article><article tabindex="0"><strong>Experts own the judgment</strong><p>Direction, review, priorities, and accountability.</p></article><article tabindex="0"><strong>You control what moves</strong><p>Approvals, corrections, and every commercial decision.</p></article></div>
+          <p class="comparison-intro">The difference is structural: who carries the work, how decisions connect, and where the knowledge stays.</p>
+          <div class="table-wrap"><table><thead><tr><th>Decision point</th><th>Disconnected tools</th><th>Separate providers</th><th>Markethink</th></tr></thead><tbody>
+            <tr><th>Business context</th><td>Re-entered by the owner</td><td>Spread across people and documents</td><td>Retained in one business memory</td></tr>
+            <tr><th>Production</th><td>Drafts still need coordination</td><td>Moves on separate schedules</td><td>Runs as one managed scope</td></tr>
+            <tr><th>Approvals</th><td>Managed manually</td><td>Scattered across threads</td><td>Clear decisions with receipts</td></tr>
+            <tr><th>Website to pipeline</th><td>Requires separate setup</td><td>Often split across scopes</td><td>Connected when included in the plan</td></tr>
+            <tr><th>Accountability</th><td>The owner carries it</td><td>Divided by vendor</td><td>Expert team stays accountable</td></tr>
+          </tbody></table></div>
+        </div>
+      </section>
 
             <ReviewHowItWorks />
 
@@ -369,9 +382,9 @@ const faq = [
       else {
         const laneObserver = new IntersectionObserver(([entry]) => {
           if (!entry.isIntersecting) return;
-          window.setTimeout(revealLaneCards, 850);
+          window.setTimeout(revealLaneCards, 120);
           laneObserver.disconnect();
-        }, { threshold: .34, rootMargin: '0px 0px -12% 0px' });
+        }, { threshold: .01, rootMargin: '0px 0px 360px 0px' });
         laneObserver.observe(root);
       }
     }
