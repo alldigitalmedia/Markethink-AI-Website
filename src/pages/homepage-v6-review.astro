@@ -369,9 +369,9 @@ const faq = [
       else {
         const laneObserver = new IntersectionObserver(([entry]) => {
           if (!entry.isIntersecting) return;
-          window.setTimeout(revealLaneCards, 120);
+          window.setTimeout(revealLaneCards, 260);
           laneObserver.disconnect();
-        }, { threshold: .01, rootMargin: '0px 0px 360px 0px' });
+        }, { threshold: .12, rootMargin: '0px 0px -4% 0px' });
         laneObserver.observe(root);
       }
     }
