@@ -110,8 +110,23 @@ const steps = [
 
       if (prefersReducedMotion) {
         intro.style.setProperty("--story-theme-duration", "0.01ms");
+        root.style.setProperty("--story-theme-duration", "0.01ms");
       }
     }
+
+    const setCardsTheme = (isLight: boolean) => {
+      root.classList.toggle("is-light", isLight);
+    };
+
+    ScrollTrigger.create({
+      trigger: root,
+      start: "top 96%",
+      end: "bottom top",
+      invalidateOnRefresh: true,
+      onEnter: () => setCardsTheme(true),
+      onLeaveBack: () => setCardsTheme(false),
+      onRefresh: (self) => setCardsTheme(self.progress > 0 || self.isActive),
+    });
 
     if (window.matchMedia("(max-width: 860px)").matches) {
       panels.forEach((panel) => panel.removeAttribute("style"));
@@ -217,7 +232,16 @@ const steps = [
   }
 
   .story {
+    --story-theme-duration: 0.75s;
     min-height: 400vh;
+    background: #0f1213;
+    color: #f5f5f1;
+    transition:
+      background-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light {
     background: #f5f5f1;
     color: #0f1213;
   }
@@ -272,10 +296,15 @@ const steps = [
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: rgba(15, 18, 19, 0.58);
+    color: rgba(245, 245, 241, 0.58);
     font-size: 0.68rem;
     font-weight: 750;
     letter-spacing: 0.14em;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light .story-eyebrow {
+    color: rgba(15, 18, 19, 0.58);
   }
 
   .story-eyebrow span {
@@ -292,20 +321,30 @@ const steps = [
   .story-panel h2 {
     max-width: 34rem;
     margin-top: 1.25rem;
-    color: #0f1213;
+    color: #f5f5f1;
     font-family: "Instrument Serif", Georgia, serif;
     font-weight: 400;
     font-size: clamp(3rem, 5vw, 5.3rem);
     line-height: 0.96;
     letter-spacing: -0.045em;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light .story-panel h2 {
+    color: #0f1213;
   }
 
   .story-description {
     max-width: 34rem;
     margin-top: 1.35rem;
-    color: rgba(15, 18, 19, 0.68);
+    color: rgba(245, 245, 241, 0.68);
     font-size: clamp(1rem, 1.25vw, 1.12rem);
     line-height: 1.72;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light .story-description {
+    color: rgba(15, 18, 19, 0.68);
   }
 
   .story-panel ul {
@@ -319,8 +358,13 @@ const steps = [
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: rgba(15, 18, 19, 0.78);
+    color: rgba(245, 245, 241, 0.78);
     font-size: 0.88rem;
+    transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light .story-panel li {
+    color: rgba(15, 18, 19, 0.78);
   }
 
   .story-panel li i {
@@ -340,11 +384,18 @@ const steps = [
   .story-progress span {
     width: 2.3rem;
     height: 2px;
-    background: rgba(15, 18, 19, 0.16);
-    transition: background 0.3s ease, width 0.3s ease;
+    background: rgba(245, 245, 241, 0.16);
+    transition:
+      background var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.3s ease;
   }
 
-  .story-progress span.is-active {
+  .story.is-light .story-progress span {
+    background: rgba(15, 18, 19, 0.16);
+  }
+
+  .story-progress span.is-active,
+  .story.is-light .story-progress span.is-active {
     width: 4.5rem;
     background: #69d254;
   }
@@ -354,9 +405,17 @@ const steps = [
     width: 100%;
     aspect-ratio: 1.04;
     overflow: hidden;
-    border: 1px solid rgba(15, 18, 19, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: 1.9rem;
     background: #171b1c;
+    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36);
+    transition:
+      border-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .story.is-light .story-stage {
+    border-color: rgba(15, 18, 19, 0.12);
     box-shadow: 0 38px 100px rgba(15, 18, 19, 0.18);
   }
 
@@ -456,8 +515,16 @@ const steps = [
       opacity: 1;
       pointer-events: auto;
       padding: 1.25rem;
-      border: 1px solid rgba(15, 18, 19, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 1.2rem;
+      background: #171b1c;
+      transition:
+        background-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
+        border-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .story.is-light .story-panel {
+      border-color: rgba(15, 18, 19, 0.1);
       background: #ffffff;
     }
 
