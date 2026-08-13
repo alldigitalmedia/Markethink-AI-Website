@@ -231,6 +231,18 @@ const channelLogos = [
           bridgeObserver.observe(root);
           bridgeObserver.observe(grid);
         }
+        const syncEndpointNodes = () => {
+          if (!bridge || innerWidth <= 1060) {
+            root.style.removeProperty('--first-node-shift-y');
+            root.style.removeProperty('--last-node-shift-y');
+            return;
+          }
+          const arrowY = bridge.getBoundingClientRect().top;
+          const firstRect = steps[0].getBoundingClientRect();
+          const lastRect = steps[steps.length - 1].getBoundingClientRect();
+          root.style.setProperty('--first-node-shift-y', `${arrowY - (firstRect.top + firstRect.height / 2)}px`);
+          root.style.setProperty('--last-node-shift-y', `${arrowY - (lastRect.top + lastRect.height / 2)}px`);
+        };
         let active = 0;
         const setActive = (index) => {
           active = Math.max(0, Math.min(steps.length - 1, index));
@@ -251,6 +263,7 @@ const channelLogos = [
         };
         const update = () => {
           if (innerWidth <= 820) return;
+          syncEndpointNodes();
           const anchor = innerHeight * .5;
           let nearest = 0, distance = Infinity;
           steps.forEach((step, i) => {
@@ -898,6 +911,11 @@ const channelLogos = [
   .stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card.is-active .stage-icon{color:#69d254}
   .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
   .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
+
+  @media(min-width:1061px){
+    .stage-card:first-child.is-active .stage-number{transform:translateY(calc(-50% + var(--first-node-shift-y,0px))) scale(1.04);transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+    .stage-card:last-child.is-active .stage-number{transform:translateY(calc(-50% + var(--last-node-shift-y,0px))) scale(1.04);transition:color .3s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease}
+  }
 
   /* Keep the connector locked to the rendered center of the sticky phone frame */
   @media(min-width:1061px){
