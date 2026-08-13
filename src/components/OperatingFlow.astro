@@ -213,7 +213,24 @@ const channelLogos = [
         const screens = [...root.querySelectorAll('[data-flow-screen]')];
         const previews = [...root.querySelectorAll('[data-flow-preview]')];
         const grid = root.querySelector('.stage-grid');
+        const bridge = root.querySelector('.flow-bridge');
         if (!steps.length || !screens.length || !grid) return;
+        const syncBridgeWidth = () => {
+          if (!bridge || innerWidth <= 1060) {
+            root.style.removeProperty('--flow-bridge-width');
+            return;
+          }
+          const bridgeLeft = bridge.getBoundingClientRect().left;
+          const railX = parseFloat(getComputedStyle(grid).getPropertyValue('--rail-x')) || 0;
+          const railLeft = grid.getBoundingClientRect().left + railX;
+          root.style.setProperty('--flow-bridge-width', `${Math.max(0, railLeft - bridgeLeft)}px`);
+        };
+        syncBridgeWidth();
+        if ('ResizeObserver' in window) {
+          const bridgeObserver = new ResizeObserver(syncBridgeWidth);
+          bridgeObserver.observe(root);
+          bridgeObserver.observe(grid);
+        }
         let active = 0;
         const setActive = (index) => {
           active = Math.max(0, Math.min(steps.length - 1, index));
@@ -251,7 +268,10 @@ const channelLogos = [
         setActive(0);
         update();
         addEventListener('scroll', update, { passive: true });
-        addEventListener('resize', update, { passive: true });
+        addEventListener('resize', () => {
+          syncBridgeWidth();
+          update();
+        }, { passive: true });
       });
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
@@ -884,7 +904,7 @@ const channelLogos = [
     .flow-workspace{grid-template-columns:minmax(18rem,.82fr) minmax(0,1.3fr);column-gap:3.8rem;grid-template-rows:auto 16vh;padding-bottom:0}
     .phone-column{position:sticky;top:max(5.5rem,calc(50vh - 21rem));align-self:start;grid-row:1 / -1;transform:none}
     .phone-caption{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:1rem}
-    .flow-bridge{position:absolute;left:100%;top:50%;width:3.8rem;height:1px;transform:translateY(-50%);z-index:5}
+    .flow-bridge{position:absolute;left:100%;top:50%;width:var(--flow-bridge-width,3.8rem);height:1px;transform:translateY(-50%);z-index:5}
     .stage-grid{grid-row:1}
     .expert-band{position:relative;top:48px;margin-top:clamp(1rem,2vw,1.5rem);margin-bottom:48px;transform:none!important}
     .flow-bridge::before,.flow-bridge::after{top:0}
