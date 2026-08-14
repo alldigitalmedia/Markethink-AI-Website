@@ -983,4 +983,18 @@ const channelLogos = [
   .operating-flow[data-lock-endpoints="true"] .stage-grid::before,
   .operating-flow[data-lock-endpoints="true"] .stage-grid::after{z-index:0}
   .operating-flow[data-lock-endpoints="true"] .stage-card{position:relative;z-index:1}
+  @media(min-width:1061px){
+    .operating-flow[data-lock-endpoints="true"] .stage-grid{
+      --entry-offset:10.125rem;
+      --step-height:20.25rem;
+      --timeline-end-pad:clamp(0rem,calc(11rem - 16vh),4rem);
+      padding-bottom:var(--timeline-end-pad);
+    }
+    .operating-flow[data-lock-endpoints="true"] .stage-grid::before{
+      bottom:calc(var(--step-height)/2 + var(--timeline-end-pad));
+    }
+    .operating-flow[data-lock-endpoints="true"] .stage-grid::after{
+      height:calc((100% - var(--entry-offset) - var(--step-height) - var(--timeline-end-pad))*var(--flow-progress));
+    }
+  }
 </style>
