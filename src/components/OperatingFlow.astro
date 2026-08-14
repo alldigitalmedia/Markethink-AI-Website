@@ -242,25 +242,7 @@ const channelLogos = [
             });
           }
         };
-        const updateBoundedRows = () => {
-          if (!bridge || innerWidth <= 1060) return;
-          const arrowY = bridge.getBoundingClientRect().top;
-          [steps[0], steps[steps.length - 1]].forEach((step) => {
-            const row = step?.querySelector('.stage-row');
-            if (!row) return;
-            const currentShift = Number(row.dataset.rowShift || 0);
-            const rowRect = row.getBoundingClientRect();
-            const stepRect = step.getBoundingClientRect();
-            const naturalTop = rowRect.top - currentShift;
-            const naturalBottom = rowRect.bottom - currentShift;
-            const naturalCenter = naturalTop + rowRect.height / 2;
-            const minShift = stepRect.top - naturalTop;
-            const maxShift = stepRect.bottom - naturalBottom;
-            const shift = Math.max(minShift, Math.min(maxShift, arrowY - naturalCenter));
-            row.dataset.rowShift = String(shift);
-            row.style.setProperty('--row-shift-y', `${shift}px`);
-          });
-        };
+
         let active = 0;
         const setActive = (index) => {
           active = Math.max(0, Math.min(steps.length - 1, index));
@@ -281,7 +263,6 @@ const channelLogos = [
         };
         const update = () => {
           if (innerWidth <= 820) return;
-          updateBoundedRows();
           const anchor = innerHeight * .5;
           let nearest = 0, distance = Infinity;
           steps.forEach((step, i) => {
@@ -913,11 +894,11 @@ const channelLogos = [
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-card::before,.phone-stage-indicator>div{transition:none!important}.phone-wrap{animation:none!important}}
 
   /* Borderless scroll-progress timeline */
-  .stage-grid{--rail-x:1.5rem;--step-height:38vh;--entry-offset:14vh;position:relative;padding:var(--entry-offset) 0 0 4.25rem;gap:.25rem}
+  .stage-grid{--rail-x:1.5rem;--step-height:38vh;--entry-offset:14vh;position:relative;isolation:isolate;padding:var(--entry-offset) 0 0 4.25rem;gap:.25rem}
   .stage-grid::before,.stage-grid::after{content:"";display:block;position:absolute;left:var(--rail-x);top:calc(var(--entry-offset) + var(--step-height)/2);width:1px;border-radius:999px;pointer-events:none}
-  .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18)}
-  .stage-grid::after{height:calc((100% - var(--entry-offset) - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:1}
-  .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
+  .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18);z-index:0}
+  .stage-grid::after{height:calc((100% - var(--entry-offset) - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:0}
+  .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{position:relative;z-index:1;display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
   .stage-row{position:relative;display:flex;align-items:center;width:100%}
   .stage-card{opacity:.42}
   .stage-card:hover,.stage-card:focus-visible{opacity:.8}
@@ -932,12 +913,7 @@ const channelLogos = [
   .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
   .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
 
-  /* Rows keep their natural timeline position. During scroll, each complete row
-     is translated only within its own step: it pauses at the phone connector,
-     then the step boundary carries it away. */
-  @media(min-width:1061px){
-    .stage-row{transform:translateY(var(--row-shift-y,0px));will-change:transform}
-  }
+  /* Every row stays anchored to its natural timeline position while state changes. */
 
   /* Keep the connector locked to the rendered center of the sticky phone frame */
   @media(min-width:1061px){
