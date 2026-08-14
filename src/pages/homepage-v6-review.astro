@@ -744,14 +744,12 @@ const faq = [
 
     const founderSection = document.querySelector('[data-founder-reveal]');
     if (founderSection) {
-      const revealFounder = () => founderSection.classList.add('is-founder-visible');
-      if (reduce || !('IntersectionObserver' in window)) revealFounder();
+      const setFounderState = (visible) => founderSection.classList.toggle('is-founder-visible', visible);
+      if (reduce || !('IntersectionObserver' in window)) setFounderState(true);
       else {
         const founderObserver = new IntersectionObserver(([entry]) => {
-          if (!entry.isIntersecting) return;
-          window.requestAnimationFrame(() => window.requestAnimationFrame(revealFounder));
-          founderObserver.disconnect();
-        }, { threshold: .22, rootMargin: '0px 0px -8% 0px' });
+          setFounderState(entry.isIntersecting && entry.intersectionRatio >= .14);
+        }, { threshold: [0, .14, .3], rootMargin: '-6% 0px -6% 0px' });
         founderSection.classList.add('founder-motion-armed');
         founderObserver.observe(founderSection);
       }
@@ -769,14 +767,12 @@ const faq = [
         ['mouseenter','focus','click'].forEach((event) => tab.addEventListener(event, () => activate(tab.dataset.capabilityTab)));
         tab.addEventListener('keydown', (event) => { if (!['ArrowDown','ArrowUp','ArrowRight','ArrowLeft'].includes(event.key)) return; event.preventDefault(); const direction = ['ArrowDown','ArrowRight'].includes(event.key) ? 1 : -1; const next = tabs[(index + direction + tabs.length) % tabs.length]; next.focus(); activate(next.dataset.capabilityTab); });
       });
-      const revealLaneCards = () => root.classList.add('is-visible');
-      if (reduce) revealLaneCards();
+      const setLaneCardsState = (visible) => root.classList.toggle('is-visible', visible);
+      if (reduce || !('IntersectionObserver' in window)) setLaneCardsState(true);
       else {
         const laneObserver = new IntersectionObserver(([entry]) => {
-          if (!entry.isIntersecting) return;
-          window.setTimeout(revealLaneCards, 260);
-          laneObserver.disconnect();
-        }, { threshold: .12, rootMargin: '0px 0px -4% 0px' });
+          setLaneCardsState(entry.isIntersecting && entry.intersectionRatio >= .1);
+        }, { threshold: [0, .1, .22], rootMargin: '-5% 0px -5% 0px' });
         laneObserver.observe(root);
       }
     }
@@ -784,17 +780,75 @@ const faq = [
     const changeSection = document.querySelector('[data-change-cards]');
     if (changeSection) {
       const changeCards = [...changeSection.querySelectorAll('.change-card')];
+      let changeTimers = [];
+      const clearChangeTimers = () => {
+        changeTimers.forEach((timer) => window.clearTimeout(timer));
+        changeTimers = [];
+      };
       const revealCards = () => changeCards.forEach((card, index) => {
-        window.setTimeout(() => card.classList.add('is-revealed'), index * 180);
+        changeTimers.push(window.setTimeout(() => card.classList.add('is-revealed'), index * 180));
       });
+      const hideCards = () => {
+        clearChangeTimers();
+        changeCards.forEach((card) => card.classList.remove('is-revealed'));
+      };
       if (reduce) revealCards();
       else {
         const changeObserver = new IntersectionObserver(([entry]) => {
-          if (!entry.isIntersecting) return;
-          window.requestAnimationFrame(() => window.requestAnimationFrame(revealCards));
-          changeObserver.disconnect();
-        }, { threshold: .12, rootMargin: '0px 0px -4% 0px' });
+          if (entry.isIntersecting && entry.intersectionRatio >= .1) {
+            clearChangeTimers();
+            window.requestAnimationFrame(() => window.requestAnimationFrame(revealCards));
+          } else hideCards();
+        }, { threshold: [0, .1, .24], rootMargin: '-5% 0px -5% 0px' });
         changeObserver.observe(changeSection);
+      }
+    }
+
+    const scrollRevealTargets = [
+      ['.trust-strip', 'vertical'],
+      ['.change-heading', 'vertical'],
+      ['.real-work > .wrap', 'vertical'],
+      ['.founder > .wrap', 'vertical'],
+      ['.lane-center', 'vertical'],
+      ['.lane-side-left', 'left'],
+      ['.lane-side-right', 'right'],
+      ['.connections-heading', 'vertical'],
+      ['.connections-stage', 'vertical'],
+      ['.connections-foot', 'vertical'],
+      ['.operating-flow > .container', 'vertical'],
+      ['.faq-heading', 'left'],
+      ['.accordions', 'right'],
+      ['.footer-audit-form', 'vertical'],
+      ['.closing-cta', 'vertical'],
+      ['.closing-footer', 'vertical'],
+    ].flatMap(([selector, direction]) => [...document.querySelectorAll(selector)].map((element) => ({ element, direction })));
+
+    if (scrollRevealTargets.length) {
+      scrollRevealTargets.forEach(({ element, direction }) => {
+        element.classList.add('scroll-reveal-item', `scroll-reveal-${direction}`, 'is-below');
+      });
+      document.documentElement.classList.add('v6-scroll-reveal-ready');
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        scrollRevealTargets.forEach(({ element }) => element.classList.add('is-in-view'));
+      } else {
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const viewportMiddle = entry.rootBounds
+              ? entry.rootBounds.top + entry.rootBounds.height / 2
+              : window.innerHeight / 2;
+            const isVisible = entry.isIntersecting && entry.intersectionRatio >= .06;
+            entry.target.classList.toggle('is-in-view', isVisible);
+            if (isVisible) {
+              entry.target.classList.remove('is-above', 'is-below');
+              return;
+            }
+            const isAbove = entry.boundingClientRect.top < viewportMiddle;
+            entry.target.classList.toggle('is-above', isAbove);
+            entry.target.classList.toggle('is-below', !isAbove);
+          });
+        }, { threshold: [0, .06, .16], rootMargin: '-7% 0px -7% 0px' });
+        scrollRevealTargets.forEach(({ element }) => revealObserver.observe(element));
       }
     }
 
@@ -849,6 +903,11 @@ const faq = [
   @media(prefers-reduced-motion:reduce){:global(html){scroll-behavior:auto}.button{transition:none}.capability-track{animation:none;transform:none}.change-card,.proof-strip.is-visible .change-card{opacity:1;filter:none;transform:none;transition:none}.change-card-media,.change-card-media img,.change-card-copy,.change-card-copy p,.change-card-copy>span,.founder-photo img,.founder-reveal{transition:none!important}.founder-motion-armed .founder-reveal{opacity:1!important;transform:none!important}.founder-photo:hover img{transform:none}}
 
   /* v6 relational interaction system */
+  :global(.v6-scroll-reveal-ready) .scroll-reveal-item{--scroll-reveal-x:0px;--scroll-reveal-y:34px;opacity:0;filter:blur(9px);transform:translate3d(var(--scroll-reveal-x),var(--scroll-reveal-y),0) scale(.988);transition:opacity .58s ease,filter .72s cubic-bezier(.22,1,.36,1),transform .76s cubic-bezier(.16,1,.3,1);will-change:opacity,filter,transform}
+  :global(.v6-scroll-reveal-ready) .scroll-reveal-item.scroll-reveal-left{--scroll-reveal-x:-34px}
+  :global(.v6-scroll-reveal-ready) .scroll-reveal-item.scroll-reveal-right{--scroll-reveal-x:34px}
+  :global(.v6-scroll-reveal-ready) .scroll-reveal-item.is-above{--scroll-reveal-y:-30px}
+  :global(.v6-scroll-reveal-ready) .scroll-reveal-item.is-in-view{--scroll-reveal-x:0px;--scroll-reveal-y:0px;opacity:1;filter:blur(0);transform:translate3d(0,0,0) scale(1)}
   .button,.capability-card,.work-feature,.service-grid article,.triad article,.engagement-grid article,.memory-note,.accordions summary{transition:transform .42s cubic-bezier(.22,1,.36,1),background-color .3s ease,border-color .3s ease,box-shadow .3s ease,opacity .3s ease}
   .button-roll{overflow:hidden}.button-label{height:1.25em;display:grid;overflow:hidden}.button-label>span{grid-area:1/1;transition:transform .36s cubic-bezier(.22,1,.36,1)}.button-label>span+span{transform:translateY(140%)}.button-roll:hover .button-label>span:first-child,.button-roll:focus-visible .button-label>span:first-child{transform:translateY(-140%)}.button-roll:hover .button-label>span+span,.button-roll:focus-visible .button-label>span+span{transform:translateY(0)}
   .arrow-link{display:inline-flex;align-items:center;gap:.65rem}.arrow-link i{position:relative;width:1.15rem;height:1.15rem;overflow:hidden;font-style:normal}.arrow-link i b{position:absolute;inset:0;display:grid;place-items:center;transition:transform .34s cubic-bezier(.22,1,.36,1),opacity .25s ease}.arrow-link i b+ b{transform:translate(-100%,100%);opacity:0}.arrow-link:hover i b:first-child,.arrow-link:focus-visible i b:first-child{transform:translate(100%,-100%);opacity:0}.arrow-link:hover i b+ b,.arrow-link:focus-visible i b+ b{transform:none;opacity:1}.text-link{width:max-content;color:inherit;text-decoration:none;font-weight:750;border-bottom:1px solid currentColor;padding-bottom:.28rem}
@@ -881,7 +940,7 @@ const faq = [
   @media(prefers-reduced-motion:reduce){.lane-card,:global(.v6-interactions-ready) .lane-card,.lane-orbit.is-visible .lane-card,.lane-orbit.is-visible .lane-card:hover,.lane-orbit.is-visible .lane-card:focus-visible,.lane-orbit.is-visible .lane-card[aria-selected=true]{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}.lane-card-image,.lane-card:hover .lane-card-image,.lane-card:focus-visible .lane-card-image,.lane-card:active .lane-card-image{transform:none!important;transition:none!important}.lane-response article{transition:none}}
   @media(max-width:980px){.proof-layout,.capability-console,.cta-shell{grid-template-columns:1fr}.proof-layout{gap:3rem}.capability-stage{min-height:540px}.memory-demo{grid-template-columns:1fr}.memory-demo>span{width:1px;height:1rem;justify-self:center}.cta-shell{gap:2rem}.hero-response{display:none}.work-stage-content{width:min(68%,640px)}}
   @media(max-width:680px){.work-stage{min-height:980px;border-radius:1.35rem}.work-stage-image{height:47%;top:auto;bottom:0;object-position:center 50%;filter:saturate(.98) brightness(1.01)}.work-stage-shade{background:linear-gradient(180deg,#0b0f10 0%,#0b0f10 53%,rgba(11,15,16,.88) 65%,rgba(11,15,16,.12) 100%)}.work-stage-content{width:100%;padding:2rem 1.1rem 1.2rem}.work-stage-content h2{font-size:2.8rem}.work-stage-lead{font-size:.9rem;margin:1rem 0 1.15rem}.work-lanes{gap:.5rem}.work-lanes article{min-height:4.55rem;padding:.7rem .75rem;grid-template-columns:2.65rem 1fr;background:rgba(237,244,234,.085)}.work-lane-icon{width:2.15rem;height:2.15rem}.work-lanes strong{font-size:.82rem}.work-stage-content .button{width:100%}.work-stage-note{right:auto;left:1rem;bottom:.8rem;font-size:.54rem}.capability-tabs{grid-template-columns:1fr 1fr}.capability-tabs button{display:block;padding:.9rem}.capability-tabs button>span{display:block;margin-bottom:.4rem}.capability-tabs button strong{font-size:1.15rem}.capability-tabs button small{display:none}.capability-stage{min-height:520px}.capability-stage article{padding:1.1rem}.stage-art{height:250px;margin:1rem 0}.engagement-note{display:block}.cta-shell{padding:1.2rem}.cta-actions{display:grid}.cta-actions .text-link{width:100%;justify-content:center}.hero-capabilities{touch-action:pan-x}.capability-card:hover{transform:none}}
-  @media(prefers-reduced-motion:reduce){.button,.button-label>span,.arrow-link i b,.capability-card,.work-media img,.editorial-work-grid article,.capability-stage article,.memory-note,.triad article,.engagement-grid article,.engagement-grid article::after{transition:none!important;animation:none!important}.button-label>span+span,.arrow-link i b+ b{display:none}.memory-note{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.scroll-reveal-item,:global(.v6-scroll-reveal-ready) .scroll-reveal-item{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}.button,.button-label>span,.arrow-link i b,.capability-card,.work-media img,.editorial-work-grid article,.capability-stage article,.memory-note,.triad article,.engagement-grid article,.engagement-grid article::after{transition:none!important;animation:none!important}.button-label>span+span,.arrow-link i b+ b{display:none}.memory-note{opacity:1;transform:none}}
   @media(max-width:980px){.change-heading{grid-template-columns:1fr;gap:.6rem}.change-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.change-card:last-child{grid-column:1/-1;min-height:520px}}
   @media(max-width:680px){.change-heading{margin-bottom:2rem}.change-heading h2{font-size:44px}.change-cards{grid-template-columns:1fr;gap:1rem}.change-card,.change-card:last-child{grid-column:auto;min-height:540px;opacity:1;filter:none;transform:none}.change-card-media{inset:0 0 215px}.change-card-copy,.change-card:hover .change-card-copy,.change-card:focus-visible .change-card-copy{height:216px;padding:1.35rem}.change-card-copy h3{font-size:2rem}.change-card-copy p{opacity:1!important;transform:none!important;margin-top:.65rem}.change-card:hover,.change-card:focus-visible{transform:none}.change-card:hover .change-card-media,.change-card:focus-visible .change-card-media{transform:none}.change-card:hover .change-card-media img,.change-card:focus-visible .change-card-media img{transform:none;filter:none}}
   @media(prefers-reduced-motion:reduce){.change-card,.proof-strip.is-visible .change-card{opacity:1;filter:none;transform:none;transition:none}.change-card-media,.change-card-media img,.change-card-copy,.change-card-copy p{transition:none}}
