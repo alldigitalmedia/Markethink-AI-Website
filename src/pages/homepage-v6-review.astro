@@ -400,7 +400,7 @@ const faq = [
           const progress = index / samples;
           const u = progress * 2 - 1;
           const x = cx + rx * u;
-          const y = crown + drop * Math.pow(Math.abs(u), 1.65);
+          const y = endpoint - drop * Math.sqrt(Math.max(0, 1 - u * u));
           if (points.length) total += Math.hypot(x - points.at(-1).x, y - points.at(-1).y);
           points.push({ x, y, distance: total });
         }
