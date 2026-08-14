@@ -388,17 +388,19 @@ const faq = [
         const rect = connectionsStage.getBoundingClientRect();
         pathWidth = rect.width;
         pathHeight = rect.height;
-        const rx = pathWidth * .42;
-        const ry = Math.min(pathWidth * .34, pathHeight * .58);
+        const rx = pathWidth * .30;
         const cx = pathWidth * .5;
-        const baseline = pathHeight * .76;
+        const crown = pathHeight * .14;
+        const endpoint = pathHeight * .78;
+        const drop = endpoint - crown;
         const samples = 720;
         const points = [];
         let total = 0;
         for (let index = 0; index <= samples; index += 1) {
-          const theta = Math.PI - (Math.PI * index / samples);
-          const x = cx + rx * Math.cos(theta);
-          const y = baseline - ry * Math.pow(Math.sin(theta), .7);
+          const progress = index / samples;
+          const u = progress * 2 - 1;
+          const x = cx + rx * u;
+          const y = crown + drop * Math.pow(Math.abs(u), 3);
           if (points.length) total += Math.hypot(x - points.at(-1).x, y - points.at(-1).y);
           points.push({ x, y, distance: total });
         }
