@@ -3,9 +3,14 @@ interface Props {
   sectionId?: string;
   includeInstagram?: boolean;
   lockEndpointNodes?: boolean;
+  previewImages?: {
+    plan?: string;
+    convert?: string;
+    learn?: string;
+  };
 }
 
-const { sectionId = "how-it-works", includeInstagram = true, lockEndpointNodes = false } = Astro.props;
+const { sectionId = "how-it-works", includeInstagram = true, lockEndpointNodes = false, previewImages } = Astro.props;
 
 const stages = [
   {
@@ -103,13 +108,26 @@ const channelLogos = [
               </div>
 
               <div class="phone-stage-previews" aria-label="Plan, Ship, Convert, and Learn previews">
-                <div class="phone-preview phone-preview-image phone-preview-plan is-active" data-flow-preview="plan">
-                  <small>Campaign brief</small>
-                  <div class="phone-preview-media">
-                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-plan-v1.jpg" alt="Marketing plan notebook with a launch illustration" loading="lazy" />
+                {previewImages?.plan ? (
+                  <div class="phone-preview phone-preview-image phone-preview-plan is-active" data-flow-preview="plan">
+                    <small>Campaign brief</small>
+                    <div class="phone-preview-media">
+                      <img src={previewImages.plan} alt="Marketing plan notebook with a launch illustration" loading="lazy" />
+                    </div>
+                    <b>Brief ready for review</b>
                   </div>
-                  <b>Brief ready for review</b>
-                </div>
+                ) : (
+                  <div class="phone-preview is-active" data-flow-preview="plan">
+                    <small>Campaign brief</small>
+                    <dl>
+                      <div><dt>Offer</dt><dd>New service</dd></div>
+                      <div><dt>Audience</dt><dd>Priority buyers</dd></div>
+                      <div><dt>Channels</dt><dd>Web, social, email</dd></div>
+                      <div><dt>Approval</dt><dd>Expert review, then you</dd></div>
+                    </dl>
+                    <b>Brief ready for review</b>
+                  </div>
+                )}
                 <div class="phone-preview" data-flow-preview="ship">
                   <small>Work ready to ship</small>
                   <div class="phone-preview-website">
@@ -117,19 +135,39 @@ const channelLogos = [
                   </div>
                   <b>Social · Landing · Email</b>
                 </div>
-                <div class="phone-preview phone-preview-image phone-preview-convert" data-flow-preview="convert">
-                  <small>New inquiry</small>
-                  <div class="phone-preview-media">
-                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-crm-v1.jpg" alt="A marketing dashboard being reviewed for CRM and campaign performance" loading="lazy" />
+                {previewImages?.convert ? (
+                  <div class="phone-preview phone-preview-image phone-preview-convert" data-flow-preview="convert">
+                    <small>New inquiry</small>
+                    <div class="phone-preview-media">
+                      <img src={previewImages.convert} alt="A marketing dashboard being reviewed for CRM and campaign performance" loading="lazy" />
+                    </div>
                   </div>
-                </div>
-                <div class="phone-preview phone-preview-image phone-preview-learn" data-flow-preview="learn">
-                  <small>Approval memory</small>
-                  <div class="phone-preview-media">
-                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-learn-v1.jpg" alt="A marketer reviewing performance charts and applying campaign learnings" loading="lazy" />
+                ) : (
+                  <div class="phone-preview" data-flow-preview="convert">
+                    <small>New inquiry</small>
+                    <div class="phone-preview-lead"><i>↗</i><span><strong>Campaign response</strong><em>Lead captured with context</em></span><b>Ready</b></div>
+                    <div class="phone-preview-route"><span>Lead</span><i>→</i><span>CRM</span><i>→</i><span>Follow-up</span></div>
                   </div>
-                  <b>Active for the next campaign</b>
-                </div>
+                )}
+                {previewImages?.learn ? (
+                  <div class="phone-preview phone-preview-image phone-preview-learn" data-flow-preview="learn">
+                    <small>Approval memory</small>
+                    <div class="phone-preview-media">
+                      <img src={previewImages.learn} alt="A marketer reviewing performance charts and applying campaign learnings" loading="lazy" />
+                    </div>
+                    <b>Active for the next campaign</b>
+                  </div>
+                ) : (
+                  <div class="phone-preview" data-flow-preview="learn">
+                    <small>Approval memory</small>
+                    <ul>
+                      <li><i>✓</i><span>Headline approved</span></li>
+                      <li><i>↗</i><span>Audience refined</span></li>
+                      <li><i>+</i><span>Result added</span></li>
+                    </ul>
+                    <b>Active for the next campaign</b>
+                  </div>
+                )}
               </div>
 
               <div class="chat-thread phone-chat-original">
