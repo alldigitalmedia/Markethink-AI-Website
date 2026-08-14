@@ -2,9 +2,10 @@
 interface Props {
   sectionId?: string;
   includeInstagram?: boolean;
+  lockEndpointNodes?: boolean;
 }
 
-const { sectionId = "how-it-works", includeInstagram = true } = Astro.props;
+const { sectionId = "how-it-works", includeInstagram = true, lockEndpointNodes = false } = Astro.props;
 
 const stages = [
   {
@@ -50,7 +51,7 @@ const channelLogos = [
 ].filter((logo) => includeInstagram || logo.name !== "Instagram");
 ---
 
-<section class="operating-flow" id={sectionId} data-operating-story>
+<section class="operating-flow" id={sectionId} data-operating-story data-lock-endpoints={lockEndpointNodes ? "true" : undefined}>
   <div class="flow-glow flow-glow-one" aria-hidden="true"></div>
   <div class="flow-glow flow-glow-two" aria-hidden="true"></div>
 
@@ -242,7 +243,33 @@ const channelLogos = [
             });
           }
         };
-
+        const updateBoundedRows = () => {
+          if (root.dataset.lockEndpoints === 'true') {
+            [steps[0], steps[steps.length - 1]].forEach((step) => {
+              const row = step?.querySelector('.stage-row');
+              row?.style.removeProperty('--row-shift-y');
+              if (row) row.dataset.rowShift = '0';
+            });
+            return;
+          }
+          if (!bridge || innerWidth <= 1060) return;
+          const arrowY = bridge.getBoundingClientRect().top;
+          [steps[0], steps[steps.length - 1]].forEach((step) => {
+            const row = step?.querySelector('.stage-row');
+            if (!row) return;
+            const currentShift = Number(row.dataset.rowShift || 0);
+            const rowRect = row.getBoundingClientRect();
+            const stepRect = step.getBoundingClientRect();
+            const naturalTop = rowRect.top - currentShift;
+            const naturalBottom = rowRect.bottom - currentShift;
+            const naturalCenter = naturalTop + rowRect.height / 2;
+            const minShift = stepRect.top - naturalTop;
+            const maxShift = stepRect.bottom - naturalBottom;
+            const shift = Math.max(minShift, Math.min(maxShift, arrowY - naturalCenter));
+            row.dataset.rowShift = String(shift);
+            row.style.setProperty('--row-shift-y', `${shift}px`);
+          });
+        };
         let active = 0;
         const setActive = (index) => {
           active = Math.max(0, Math.min(steps.length - 1, index));
@@ -263,6 +290,7 @@ const channelLogos = [
         };
         const update = () => {
           if (innerWidth <= 820) return;
+          updateBoundedRows();
           const anchor = innerHeight * .5;
           let nearest = 0, distance = Infinity;
           steps.forEach((step, i) => {
@@ -894,11 +922,11 @@ const channelLogos = [
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-card::before,.phone-stage-indicator>div{transition:none!important}.phone-wrap{animation:none!important}}
 
   /* Borderless scroll-progress timeline */
-  .stage-grid{--rail-x:1.5rem;--step-height:38vh;--entry-offset:14vh;position:relative;isolation:isolate;padding:var(--entry-offset) 0 0 4.25rem;gap:.25rem}
+  .stage-grid{--rail-x:1.5rem;--step-height:38vh;--entry-offset:14vh;position:relative;padding:var(--entry-offset) 0 0 4.25rem;gap:.25rem}
   .stage-grid::before,.stage-grid::after{content:"";display:block;position:absolute;left:var(--rail-x);top:calc(var(--entry-offset) + var(--step-height)/2);width:1px;border-radius:999px;pointer-events:none}
-  .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18);z-index:0}
-  .stage-grid::after{height:calc((100% - var(--entry-offset) - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:0}
-  .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{position:relative;z-index:1;display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
+  .stage-grid::before{bottom:calc(var(--step-height)/2);height:auto;background:rgba(245,245,241,.18)}
+  .stage-grid::after{height:calc((100% - var(--entry-offset) - var(--step-height))*var(--flow-progress));background:#69d254;box-shadow:0 0 12px rgba(105,210,84,.55);transition:height .32s ease;z-index:1}
+  .stage-card,.stage-card.is-active,.stage-card:hover,.stage-card:focus-visible{display:flex;align-items:center;min-height:var(--step-height);margin:0;padding:clamp(.75rem,1.8vw,1.25rem) 0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;filter:none;transform:none!important;overflow:visible!important;cursor:pointer;outline:none;transition:opacity .3s ease}
   .stage-row{position:relative;display:flex;align-items:center;width:100%}
   .stage-card{opacity:.42}
   .stage-card:hover,.stage-card:focus-visible{opacity:.8}
@@ -913,7 +941,12 @@ const channelLogos = [
   .stage-card.is-active .stage-number{color:#0f1213;border-color:#69d254;background:#69d254;box-shadow:0 0 0 .5rem rgba(105,210,84,.1),0 0 24px rgba(105,210,84,.62);transform:translateY(-50%) scale(1.04)}
   .stage-card.is-passed .stage-number{color:#69d254;border-color:rgba(105,210,84,.72);background:#0f1213}
 
-  /* Every row stays anchored to its natural timeline position while state changes. */
+  /* Rows keep their natural timeline position. During scroll, each complete row
+     is translated only within its own step: it pauses at the phone connector,
+     then the step boundary carries it away. */
+  @media(min-width:1061px){
+    .stage-row{transform:translateY(var(--row-shift-y,0px));will-change:transform}
+  }
 
   /* Keep the connector locked to the rendered center of the sticky phone frame */
   @media(min-width:1061px){
@@ -944,4 +977,10 @@ const channelLogos = [
   @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr)}.stage-grid{--step-height:36vh;padding-left:4.25rem;gap:.25rem}.stage-card{min-height:var(--step-height)}.stage-number{left:calc(var(--rail-x) - 4.25rem - 1.35rem);width:2.7rem;height:2.7rem}.stage-copy{grid-template-columns:3.1rem minmax(0,1fr)}.stage-icon{width:3rem;height:3rem}}
   @media(max-width:820px){.stage-grid{--rail-x:1.25rem;--step-height:auto;padding-left:4rem;gap:1.5rem}.stage-grid::before{display:block;top:1.4rem;bottom:1.4rem;left:var(--rail-x)}.stage-grid::after{display:none}.stage-card,.stage-card.is-active{min-height:auto;padding:1rem 0;opacity:1!important}.stage-number{left:calc(var(--rail-x) - 4rem - 1.275rem);width:2.55rem;height:2.55rem;color:#b4b6b6!important;border-color:rgba(245,245,241,.28)!important;background:#0f1213!important;box-shadow:none!important;transform:translateY(-50%)!important}.stage-copy{grid-template-columns:2.75rem minmax(0,1fr);gap:.8rem}.stage-icon{width:2.75rem;height:2.75rem;font-size:1.15rem}.stage-copy h3{font-size:1.75rem}.stage-copy p{font-size:.86rem}.stage-card:hover,.stage-card:focus-visible{opacity:1;transform:none}.stage-card.is-active .stage-icon{color:#69d254}}
   @media(prefers-reduced-motion:reduce){.stage-grid::after,.stage-card,.stage-number,.stage-icon,.stage-copy h3,.stage-copy p{transition:none!important}.stage-card:hover .stage-number,.stage-card:focus-visible .stage-number{transform:translateY(-50%)!important}.stage-card:hover .stage-icon,.stage-card:focus-visible .stage-icon,.stage-card:hover .stage-copy h3,.stage-card:focus-visible .stage-copy h3,.stage-card:hover .stage-copy p,.stage-card:focus-visible .stage-copy p{transform:none!important}}
+
+  /* Review-route correction: keep 01/04 anchored and paint both rails behind every node. */
+  .operating-flow[data-lock-endpoints="true"] .stage-grid{isolation:isolate}
+  .operating-flow[data-lock-endpoints="true"] .stage-grid::before,
+  .operating-flow[data-lock-endpoints="true"] .stage-grid::after{z-index:0}
+  .operating-flow[data-lock-endpoints="true"] .stage-card{position:relative;z-index:1}
 </style>
