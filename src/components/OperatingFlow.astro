@@ -103,9 +103,11 @@ const channelLogos = [
               </div>
 
               <div class="phone-stage-previews" aria-label="Plan, Ship, Convert, and Learn previews">
-                <div class="phone-preview is-active" data-flow-preview="plan">
+                <div class="phone-preview phone-preview-image phone-preview-plan is-active" data-flow-preview="plan">
                   <small>Campaign brief</small>
-                  <dl><div><dt>Offer</dt><dd>New service</dd></div><div><dt>Audience</dt><dd>Priority buyers</dd></div><div><dt>Channels</dt><dd>Web, social, email</dd></div><div><dt>Approval</dt><dd>Expert review, then you</dd></div></dl>
+                  <div class="phone-preview-media">
+                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-plan-v1.jpg" alt="Marketing plan notebook with a launch illustration" loading="lazy" />
+                  </div>
                   <b>Brief ready for review</b>
                 </div>
                 <div class="phone-preview" data-flow-preview="ship">
@@ -115,14 +117,17 @@ const channelLogos = [
                   </div>
                   <b>Social · Landing · Email</b>
                 </div>
-                <div class="phone-preview" data-flow-preview="convert">
+                <div class="phone-preview phone-preview-image phone-preview-convert" data-flow-preview="convert">
                   <small>New inquiry</small>
-                  <div class="phone-preview-lead"><i>↗</i><span><strong>Campaign response</strong><em>Lead captured with context</em></span><b>Ready</b></div>
-                  <div class="phone-preview-route"><span>Lead</span><i>→</i><span>CRM</span><i>→</i><span>Follow-up</span></div>
+                  <div class="phone-preview-media">
+                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-crm-v1.jpg" alt="A marketing dashboard being reviewed for CRM and campaign performance" loading="lazy" />
+                  </div>
                 </div>
-                <div class="phone-preview" data-flow-preview="learn">
+                <div class="phone-preview phone-preview-image phone-preview-learn" data-flow-preview="learn">
                   <small>Approval memory</small>
-                  <ul><li><i>✓</i><span>Headline approved</span></li><li><i>↗</i><span>Audience refined</span></li><li><i>+</i><span>Result added</span></li></ul>
+                  <div class="phone-preview-media">
+                    <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-learn-v1.jpg" alt="A marketer reviewing performance charts and applying campaign learnings" loading="lazy" />
+                  </div>
                   <b>Active for the next campaign</b>
                 </div>
               </div>
@@ -914,7 +919,7 @@ const channelLogos = [
   .phone-stage-previews{position:relative!important;z-index:3;display:block!important;flex:1;min-height:18rem;margin:.65rem 1rem .5rem;overflow:hidden}
   .phone-stage-previews>.phone-preview{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column;gap:.7rem;padding:1rem;border:1px solid rgba(255,255,255,.08);border-radius:1rem;background:linear-gradient(145deg,rgba(245,245,241,.96),rgba(237,244,234,.9));color:#0f1213;opacity:0!important;visibility:hidden!important;transform:translateY(.5rem) scale(.985)!important;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
   .phone-stage-previews>.phone-preview.is-active{opacity:1!important;visibility:visible!important;transform:none!important}
-  .phone-preview>small{color:#496244;font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.phone-preview>b{margin-top:auto;color:#496244;font-size:.58rem}.phone-preview dl{display:grid;gap:.45rem;margin-top:.4rem}.phone-preview dl>div{display:grid;grid-template-columns:.75fr 1.25fr;gap:.5rem;padding-bottom:.35rem;border-bottom:1px solid rgba(15,18,19,.1);font-size:.58rem}.phone-preview dt{color:#686b6c}.phone-preview dd{font-weight:700}.phone-preview-website{position:relative;flex:1;min-height:0;overflow:hidden;border:1px solid rgba(15,18,19,.14);border-radius:.7rem;background:#f5f5f1;box-shadow:0 .55rem 1.2rem rgba(15,18,19,.12)}.phone-preview-website img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}.phone-preview-lead{display:grid;grid-template-columns:auto 1fr auto;gap:.55rem;align-items:center;margin-top:.7rem;padding:.7rem;border-radius:.7rem;background:#171b1c;color:#f5f5f1}.phone-preview-lead>i{display:grid;place-items:center;width:2rem;height:2rem;border-radius:.55rem;background:rgba(105,210,84,.15);color:#69d254}.phone-preview-lead>span{display:flex;flex-direction:column}.phone-preview-lead strong{font-size:.62rem}.phone-preview-lead em{color:#b4b6b6;font-size:.48rem;font-style:normal}.phone-preview-lead>b{color:#69d254;font-size:.48rem}.phone-preview-route{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;color:#496244;font-size:.55rem}.phone-preview-route span{padding:.35rem .48rem;border:1px solid rgba(105,210,84,.35);border-radius:999px}.phone-preview ul{display:grid;gap:.5rem;padding:0;list-style:none}.phone-preview li{display:flex;align-items:center;gap:.55rem;padding:.6rem;border-radius:.55rem;background:#171b1c;color:#f5f5f1;font-size:.58rem}.phone-preview li i{display:grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:.35rem;background:rgba(105,210,84,.15);color:#69d254}
+  .phone-preview>small{color:#496244;font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.phone-preview>b{margin-top:auto;color:#496244;font-size:.58rem}.phone-preview dl{display:grid;gap:.45rem;margin-top:.4rem}.phone-preview dl>div{display:grid;grid-template-columns:.75fr 1.25fr;gap:.5rem;padding-bottom:.35rem;border-bottom:1px solid rgba(15,18,19,.1);font-size:.58rem}.phone-preview dt{color:#686b6c}.phone-preview dd{font-weight:700}.phone-preview-website{position:relative;flex:1;min-height:0;overflow:hidden;border:1px solid rgba(15,18,19,.14);border-radius:.7rem;background:#f5f5f1;box-shadow:0 .55rem 1.2rem rgba(15,18,19,.12)}.phone-preview-website img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}.phone-preview-media{position:relative;flex:1;min-height:0;overflow:hidden;border:1px solid rgba(15,18,19,.14);border-radius:.7rem;background:#0f1213;box-shadow:0 .55rem 1.2rem rgba(15,18,19,.12)}.phone-preview-media img{display:block;width:100%;height:100%;object-fit:cover}.phone-preview-plan .phone-preview-media img{object-position:center 50%}.phone-preview-convert .phone-preview-media img{object-position:center 50%}.phone-preview-learn .phone-preview-media img{object-position:center 44%}.phone-preview-lead{display:grid;grid-template-columns:auto 1fr auto;gap:.55rem;align-items:center;margin-top:.7rem;padding:.7rem;border-radius:.7rem;background:#171b1c;color:#f5f5f1}.phone-preview-lead>i{display:grid;place-items:center;width:2rem;height:2rem;border-radius:.55rem;background:rgba(105,210,84,.15);color:#69d254}.phone-preview-lead>span{display:flex;flex-direction:column}.phone-preview-lead strong{font-size:.62rem}.phone-preview-lead em{color:#b4b6b6;font-size:.48rem;font-style:normal}.phone-preview-lead>b{color:#69d254;font-size:.48rem}.phone-preview-route{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;color:#496244;font-size:.55rem}.phone-preview-route span{padding:.35rem .48rem;border:1px solid rgba(105,210,84,.35);border-radius:999px}.phone-preview ul{display:grid;gap:.5rem;padding:0;list-style:none}.phone-preview li{display:flex;align-items:center;gap:.55rem;padding:.6rem;border-radius:.55rem;background:#171b1c;color:#f5f5f1;font-size:.58rem}.phone-preview li i{display:grid;place-items:center;width:1.35rem;height:1.35rem;border-radius:.35rem;background:rgba(105,210,84,.15);color:#69d254}
   .phone-chat-original{display:none!important}
   .chat-thread{flex:1}.expert-band{position:relative;z-index:4;margin-top:clamp(3rem,7vw,6rem);clear:both}
   @media(min-width:821px) and (max-width:1060px){.flow-workspace{grid-template-columns:minmax(16rem,.78fr) minmax(0,1.22fr);gap:1.5rem}.phone-column{grid-column:1}.stage-grid{grid-column:2}.flow-bridge{display:none}.phone-wrap{width:min(100%,18rem)}.stage-card{min-height:64vh}}
