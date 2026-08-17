@@ -1,0 +1,421 @@
+1|---
+2|import Layout from "../layouts/Layout.astro";
+3|import Navbar from "../components/Navbar.astro";
+4|import Footer from "../components/Footer.astro";
+5|
+6|const pageTitle = "What Our Clients Shipped | Markethink";
+7|const pageDescription = "See the websites, campaigns, content, advertising, and pipeline work clients are shipping with Markethink, powered by AI and managed by expert marketers.";
+8|const canonicalUrl = "https://markethink.ai/shipped/";
+9|const walkthroughHref = "/schedule-a-walkthrough/";
+10|
+11|const monthLabel = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date());
+12|
+13|const categories = [
+14|  { id: "all", label: "All work" },
+15|  { id: "web", label: "Web" },
+16|  { id: "campaigns", label: "Campaigns" },
+17|  { id: "social", label: "Social + content" },
+18|  { id: "advertising", label: "Advertising" },
+19|  { id: "pipeline", label: "Leads + pipeline" },
+20|];
+21|
+22|const workItems = [
+23|  {
+24|    category: "web campaigns",
+25|    type: "Website + campaign",
+26|    title: "A clearer path from offer to inquiry.",
+27|    description: "Website direction, campaign messaging, lead capture, and the next follow-up step organized as one launch flow.",
+28|    client: "Premium service business",
+29|    image: "/images/markethink-ship-real-website-mockup.svg",
+30|    alt: "An anonymized website and campaign launch prepared through Markethink",
+31|    deliverables: ["Website", "Campaign", "Lead capture"],
+32|    featured: true,
+33|    tone: "green",
+34|  },
+35|  {
+36|    category: "social campaigns",
+37|    type: "Social content system",
+38|    title: "A content rhythm the team can actually approve.",
+39|    description: "A connected set of campaign themes, social creative, review points, and publishing-ready assets.",
+40|    client: "Luxury home-design brand",
+41|    image: "/images/blog-consistent-marketing-rhythm.avif",
+42|    alt: "An anonymized social content system with campaign planning and approval context",
+43|    deliverables: ["Content direction", "Social creative", "Approvals"],
+44|    tone: "warm",
+45|  },
+46|  {
+47|    category: "pipeline campaigns",
+48|    type: "Lead research + CRM",
+49|    title: "Good-fit opportunities moved into a usable follow-up queue.",
+50|    description: "Prospect research, fit context, CRM organization, and follow-up priorities prepared for the commercial team.",
+51|    client: "LATAM consulting company",
+52|    image: "/images/blog-ideas-to-client-opportunities.avif",
+53|    alt: "An anonymized lead research and follow-up workflow",
+54|    deliverables: ["Lead research", "CRM", "Follow-up"],
+55|    tone: "dark",
+56|  },
+57|  {
+58|    category: "advertising web",
+59|    type: "Paid search + landing",
+60|    title: "Search intent carried all the way to the page.",
+61|    description: "Campaign structure, search messaging, landing-page alignment, and inquiry capture prepared as one acquisition path.",
+62|    client: "Professional services business",
+63|    image: "/images/ai-marketing-law-firms-search-v2.webp",
+64|    alt: "An anonymized paid search and landing page system",
+65|    deliverables: ["Paid search", "Landing page", "Tracking"],
+66|    featured: true,
+67|    tone: "wash",
+68|  },
+69|  {
+70|    category: "campaigns social",
+71|    type: "Brand + campaign memory",
+72|    title: "Every approval made the next round more useful.",
+73|    description: "Voice, visual references, campaign decisions, and corrections organized so future work starts with more context.",
+74|    client: "Premium real estate brand",
+75|    image: "/images/feature-card-brand-memory-system.avif",
+76|    alt: "An anonymized brand and campaign memory system",
+77|    deliverables: ["Brand direction", "Campaign memory", "Review rules"],
+78|    tone: "green",
+79|  },
+80|  {
+81|    category: "campaigns pipeline web",
+82|    type: "Agency delivery workflow",
+83|    title: "More client work, without splitting the operation into more tools.",
+84|    description: "Campaigns, web work, approvals, and pipeline context arranged in one partner delivery view.",
+85|    client: "Agency partner workflow",
+86|    image: "/images/dashboard-main.png",
+87|    alt: "An anonymized agency partner delivery dashboard",
+88|    deliverables: ["Campaigns", "Client review", "Pipeline"],
+89|    tone: "dark",
+90|  },
+91|  {
+92|    category: "social campaigns",
+93|    type: "Campaign content sequence",
+94|    title: "One campaign idea turned into a month of connected work.",
+95|    description: "The campaign theme, content sequence, creative direction, and review rhythm prepared together instead of asset by asset.",
+96|    client: "Growing consumer brand",
+97|    image: "/images/blog-markethink-week-2-campaigns-moving.avif",
+98|    alt: "An anonymized campaign content sequence",
+99|    deliverables: ["Campaign idea", "Content sequence", "Creative"],
+100|    featured: true,
+101|    tone: "warm",
+102|  },
+103|  {
+104|    category: "pipeline advertising",
+105|    type: "Inquiry + follow-up path",
+106|    title: "The campaign did not stop at the form submission.",
+107|    description: "Inquiry capture, source context, CRM status, and the next follow-up action connected before the campaign moved live.",
+108|    client: "Premium service brand",
+109|    image: "/images/ai-marketing-law-firms-pipeline-v2.webp",
+110|    alt: "An anonymized inquiry and CRM follow-up path",
+111|    deliverables: ["Inquiry capture", "CRM", "Follow-up"],
+112|    tone: "wash",
+113|  },
+114|];
+115|
+116|const structuredData = [
+117|  {
+118|    "@context": "https://schema.org",
+119|    "@type": "CollectionPage",
+120|    name: "What Our Clients Shipped",
+121|    description: pageDescription,
+122|    url: canonicalUrl,
+123|    inLanguage: "en",
+124|    publisher: { "@id": "https://markethink.ai/#organization" },
+125|    mainEntity: {
+126|      "@type": "ItemList",
+127|      numberOfItems: workItems.length,
+128|      itemListElement: workItems.map((item, index) => ({
+129|        "@type": "ListItem",
+130|        position: index + 1,
+131|        name: item.type,
+132|        description: item.description,
+133|      })),
+134|    },
+135|  },
+136|  {
+137|    "@context": "https://schema.org",
+138|    "@type": "BreadcrumbList",
+139|    itemListElement: [
+140|      { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+141|      { "@type": "ListItem", position: 2, name: "What Our Clients Shipped", item: canonicalUrl },
+142|    ],
+143|  },
+144|];
+145|---
+146|
+147|<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="/images/markethink-ship-real-website-mockup.svg" structuredData={structuredData}>
+148|  <Navbar />
+149|  <main class="shipped-page">
+150|    <section class="shipped-hero" id="top">
+151|      <div class="container hero-shell">
+152|        <div class="hero-copy animate-fade-up">
+153|          <p class="hero-kicker"><span></span> NOW SHIPPING · {monthLabel.toUpperCase()}</p>
+154|          <h1>See what our clients are <em>shipping.</em></h1>
+155|          <p class="hero-intro">A living view of the websites, campaigns, content, advertising, and pipeline work moving through Markethink.</p>
+156|          <p class="privacy-note">Client identities and sensitive material stay private unless approved for public use. Protected work is shown as an anonymized view.</p>
+157|          <div class="hero-actions">
+158|            <a href="#latest-work" class="button">See the latest work</a>
+159|            <a href={walkthroughHref} class="text-link">Book a walkthrough <span aria-hidden="true">↗</span></a>
+160|          </div>
+161|        </div>
+162|
+163|        <div class="hero-feature animate-scale-in" aria-label="Featured work moving through Markethink">
+164|          <img src="/images/markethink-ship-real-website-mockup.svg" alt="A website and campaign launch prepared through Markethink" width="1200" height="800" />
+165|          <div class="hero-feature-shade"></div>
+166|          <div class="hero-feature-copy">
+167|            <div>
+168|              <p>Featured workstream</p>
+169|              <h2>Website + campaign launch</h2>
+170|            </div>
+171|            <span aria-hidden="true">↗</span>
+172|          </div>
+173|        </div>
+174|      </div>
+175|
+176|      <div class="container operating-strip" aria-label="Connected marketing operation">
+177|        <span>Request</span><i></i><span>Strategy</span><i></i><span>Creative</span><i></i><span>Approval</span><i></i><span>Pipeline</span>
+178|      </div>
+179|    </section>
+180|
+181|    <section class="work-section" id="latest-work">
+182|      <div class="container work-intro">
+183|        <div>
+184|          <p class="subtitle">WHAT MOVED THIS MONTH</p>
+185|          <h2>Real work. Connected to a business job.</h2>
+186|        </div>
+187|        <p>Not a gallery of disconnected assets. Each piece starts with a business need and moves through strategy, production, review, and the next commercial step.</p>
+188|      </div>
+189|
+190|      <div class="filter-shell" data-filter-shell>
+191|        <div class="container filters" role="group" aria-label="Filter client work">
+192|          {categories.map((category, index) => (
+193|            <button type="button" class:list={["filter-button", index === 0 && "is-active"]} data-filter={category.id} aria-pressed={index === 0 ? "true" : "false"}>
+194|              {category.label}
+195|            </button>
+196|          ))}
+197|        </div>
+198|      </div>
+199|
+200|      <div class="work-grid" data-work-grid>
+201|        {workItems.map((item, index) => (
+202|          <article class:list={["work-card", item.featured && "is-featured", `tone-${item.tone}`]} data-categories={item.category} style={`--card-index:${index}`}>
+203|            <div class="card-media">
+204|              <img src={item.image} alt={item.alt} width="1200" height="800" loading={index < 2 ? "eager" : "lazy"} />
+205|              <div class="card-wash"></div>
+206|              <span class="anonymized-label">Anonymized work view</span>
+207|            </div>
+208|            <div class="card-copy">
+209|              <div class="card-meta">
+210|                <span>{item.type}</span>
+211|                <span>{item.client}</span>
+212|              </div>
+213|              <h3>{item.title}</h3>
+214|              <p>{item.description}</p>
+215|              <div class="deliverables">
+216|                {item.deliverables.map((deliverable) => <span>{deliverable}</span>)}
+217|              </div>
+218|            </div>
+219|          </article>
+220|        ))}
+221|      </div>
+222|
+223|      <p class="empty-state" data-empty-state hidden>No public work is available in this category yet.</p>
+224|    </section>
+225|
+226|    <section class="system-section">
+227|      <div class="container system-grid">
+228|        <div class="system-copy animate-fade-up">
+229|          <p class="subtitle">THE WORK AROUND THE WORK</p>
+230|          <h2>One request can become a complete marketing motion.</h2>
+231|          <p>Markethink does not stop at the asset. The system carries business context into the campaign, keeps review moving, connects the response to the pipeline, and remembers what should improve next.</p>
+232|          <a href={walkthroughHref} class="text-link dark-link">See how the operation works <span aria-hidden="true">↗</span></a>
+233|        </div>
+234|        <div class="motion-map animate-stagger" aria-label="Markethink operating sequence">
+235|          <article><span>01</span><div><strong>Request</strong><p>The business need, offer, audience, and priority.</p></div></article>
+236|          <article><span>02</span><div><strong>Ship</strong><p>Campaigns, web, content, advertising, and lead work.</p></div></article>
+237|          <article><span>03</span><div><strong>Approve</strong><p>A real marketing team directs, reviews, and stays accountable.</p></div></article>
+238|          <article><span>04</span><div><strong>Convert</strong><p>Lead capture, CRM context, follow-up, and the next action.</p></div></article>
+239|          <article><span>05</span><div><strong>Learn</strong><p>Every approval, correction, and result sharpens what comes next.</p></div></article>
+240|        </div>
+241|      </div>
+242|    </section>
+243|
+244|    <section class="closing-section">
+245|      <div class="container closing-panel animate-scale-in">
+246|        <p class="subtitle">YOUR NEXT MONTH</p>
+247|        <h2>What could your business ship next?</h2>
+248|        <p>Show us where marketing is getting stuck. We will map the first useful move and how it connects to the rest of the operation.</p>
+249|        <a href={walkthroughHref} class="button">Book a Markethink walkthrough</a>
+250|      </div>
+251|    </section>
+252|  </main>
+253|  <Footer />
+254|</Layout>
+255|
+256|<script>
+257|  function initWorkFilters() {
+258|    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+259|    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-categories]"));
+260|    const emptyState = document.querySelector<HTMLElement>("[data-empty-state]");
+261|
+262|    const applyFilter = (filter: string) => {
+263|      let visibleCount = 0;
+264|      cards.forEach((card) => {
+265|        const categories = (card.dataset.categories || "").split(" ");
+266|        const show = filter === "all" || categories.includes(filter);
+267|        card.hidden = !show;
+268|        card.classList.toggle("is-filtered-in", show);
+269|        if (show) visibleCount += 1;
+270|      });
+271|      if (emptyState) emptyState.hidden = visibleCount > 0;
+272|      buttons.forEach((button) => {
+273|        const active = button.dataset.filter === filter;
+274|        button.classList.toggle("is-active", active);
+275|        button.setAttribute("aria-pressed", String(active));
+276|      });
+277|    };
+278|
+279|    buttons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+280|    applyFilter("all");
+281|  }
+282|
+283|  function initWorkReveals() {
+284|    const cards = Array.from(document.querySelectorAll<HTMLElement>(".work-card"));
+285|    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+286|      cards.forEach((card) => card.classList.add("is-revealed"));
+287|      return;
+288|    }
+289|    const observer = new IntersectionObserver((entries) => {
+290|      entries.forEach((entry) => {
+291|        if (!entry.isIntersecting) return;
+292|        const card = entry.target as HTMLElement;
+293|        card.classList.add("is-revealed");
+294|        observer.unobserve(card);
+295|      });
+296|    }, { threshold: 0.12 });
+297|    cards.forEach((card) => observer.observe(card));
+298|  }
+299|
+300|  document.addEventListener("DOMContentLoaded", () => {
+301|    initWorkFilters();
+302|    initWorkReveals();
+303|  });
+304|  if (document.readyState !== "loading") {
+305|    initWorkFilters();
+306|    initWorkReveals();
+307|  }
+308|</script>
+309|
+310|<style>
+311|  .shipped-page { background: #0f1213; color: #f5f5f1; overflow: clip; }
+312|
+313|  .shipped-hero { position: relative; padding: 10rem 0 4rem; background: #0f1213; }
+314|  .shipped-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 72% 18%, rgba(105,210,84,.16), transparent 28rem), linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: auto, 72px 72px, 72px 72px; mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); }
+315|  .hero-shell { position: relative; display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: center; min-height: 70vh; }
+316|  .hero-copy { max-width: 42rem; }
+317|  .hero-kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.25rem; color: rgba(245,245,241,.6); font-size: .72rem; font-weight: 750; letter-spacing: .12em; }
+318|  .hero-kicker span { width: .52rem; height: .52rem; border-radius: 50%; background: #69d254; box-shadow: 0 0 0 .36rem rgba(105,210,84,.12); }
+319|  .hero-copy h1 { font-size: clamp(4.5rem, 7.4vw, 8rem); line-height: .84; letter-spacing: -.062em; text-wrap: balance; }
+320|  .hero-copy h1 em { color: #69d254; font-weight: 400; }
+321|  .hero-intro { max-width: 38rem; margin-top: 1.6rem; color: rgba(245,245,241,.82); font-size: clamp(1.05rem,1.4vw,1.28rem); line-height: 1.65; }
+322|  .privacy-note { max-width: 38rem; margin-top: .8rem; color: rgba(245,245,241,.48); font-size: .82rem; line-height: 1.6; }
+323|  .hero-actions { display: flex; align-items: center; gap: 1.3rem; margin-top: 2rem; }
+324|  .text-link { display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; }
+325|  .text-link span { color: #69d254; font-size: 1.15rem; transition: transform .2s ease; }
+326|  .text-link:hover span { transform: translate(3px,-3px); }
+327|  .hero-feature { position: relative; overflow: hidden; min-height: clamp(31rem,48vw,47rem); border-radius: 2rem; background: #171b1c; box-shadow: 0 34px 120px rgba(0,0,0,.34); }
+328|  .hero-feature img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; transition: transform .8s cubic-bezier(.22,1,.36,1); }
+329|  .hero-feature:hover img { transform: scale(1.025); }
+330|  .hero-feature-shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, rgba(15,18,19,.9) 100%); }
+331|  .hero-feature-copy { position: absolute; inset: auto 0 0; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem,3vw,2.5rem); }
+332|  .hero-feature-copy p { color: rgba(245,245,241,.62); font-size: .7rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+333|  .hero-feature-copy h2 { margin-top: .35rem; font-size: clamp(2rem,3vw,3.5rem); line-height: 1; }
+334|  .hero-feature-copy > span { display: grid; place-items: center; width: 3rem; height: 3rem; flex: 0 0 auto; border-radius: 50%; background: #69d254; color: #0f1213; font-size: 1.2rem; }
+335|  .operating-strip { position: relative; display: grid; grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto; align-items: center; gap: .9rem; margin-top: 3.5rem; padding: 1rem 1.2rem; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(245,245,241,.58); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
+336|  .operating-strip i { height: 1px; background: linear-gradient(90deg, rgba(105,210,84,.15), #69d254, rgba(105,210,84,.15)); }
+337|
+338|  .work-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0 0; }
+339|  .work-intro { display: grid; grid-template-columns: 1.1fr .65fr; gap: clamp(2rem,6vw,6rem); align-items: end; margin-bottom: 3rem; }
+340|  .work-intro .subtitle, .system-section .subtitle, .closing-panel .subtitle { color: rgba(15,18,19,.48); }
+341|  .work-intro h2, .system-copy h2, .closing-panel h2 { max-width: 48rem; margin-top: .8rem; font-size: clamp(3.6rem,6.5vw,7rem); line-height: .9; letter-spacing: -.055em; text-wrap: balance; }
+342|  .work-intro > p { max-width: 34rem; color: rgba(15,18,19,.65); line-height: 1.7; }
+343|  .filter-shell { position: sticky; top: 0; z-index: 40; padding: .75rem 0; border-block: 1px solid rgba(15,18,19,.09); background: rgba(245,245,241,.9); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+344|  .filters { display: flex; gap: .55rem; overflow-x: auto; scrollbar-width: none; }
+345|  .filters::-webkit-scrollbar { display: none; }
+346|  .filter-button { flex: 0 0 auto; padding: .72rem 1rem; border: 1px solid rgba(15,18,19,.12); border-radius: 999px; background: transparent; color: rgba(15,18,19,.64); font: 700 .78rem/1 var(--font-body); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+347|  .filter-button:hover, .filter-button.is-active { border-color: #0f1213; background: #0f1213; color: #f5f5f1; }
+348|  .work-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); background: #0f1213; }
+349|  .work-card { position: relative; min-height: clamp(38rem,57vw,58rem); overflow: hidden; background: #171b1c; color: #f5f5f1; opacity: 0; filter: blur(18px); transform: translateY(44px) scale(.98); transition: opacity .9s cubic-bezier(.22,1,.36,1), filter 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); transition-delay: calc((var(--card-index) % 2) * 90ms); }
+350|  .work-card.is-revealed { opacity: 1; filter: blur(0); transform: none; }
+351|  .work-card[hidden] { display: none; }
+352|  .card-media { position: absolute; inset: 0; overflow: hidden; }
+353|  .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.22,1,.36,1), filter .5s ease; }
+354|  .work-card:hover .card-media img { transform: scale(1.03); }
+355|  .card-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,18,19,.02) 28%, rgba(15,18,19,.94) 88%); }
+356|  .tone-green .card-wash { background: linear-gradient(180deg, rgba(105,210,84,.04), rgba(15,18,19,.95) 88%); }
+357|  .tone-warm .card-wash { background: linear-gradient(180deg, rgba(245,245,241,.02), rgba(15,18,19,.93) 88%); }
+358|  .tone-dark .card-wash { background: linear-gradient(180deg, rgba(15,18,19,.12), rgba(15,18,19,.97) 86%); }
+359|  .tone-wash .card-wash { background: linear-gradient(180deg, rgba(237,244,234,.03), rgba(15,18,19,.94) 88%); }
+360|  .anonymized-label { position: absolute; top: 1.25rem; right: 1.25rem; padding: .48rem .68rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(15,18,19,.42); color: rgba(245,245,241,.76); font-size: .66rem; font-weight: 750; letter-spacing: .04em; backdrop-filter: blur(12px); }
+361|  .card-copy { position: absolute; inset: auto 0 0; z-index: 2; padding: clamp(1.4rem,3vw,2.5rem); }
+362|  .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: rgba(245,245,241,.58); font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+363|  .card-copy h3 { max-width: 46rem; margin-top: .75rem; font-size: clamp(2.4rem,4.3vw,5.1rem); line-height: .92; letter-spacing: -.045em; text-wrap: balance; }
+364|  .card-copy > p { max-width: 42rem; margin-top: .8rem; color: rgba(245,245,241,.72); line-height: 1.6; }
+365|  .deliverables { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+366|  .deliverables span { padding: .45rem .62rem; border-radius: 999px; background: rgba(245,245,241,.11); color: rgba(245,245,241,.82); font-size: .68rem; }
+367|  .empty-state { padding: 5rem 1rem; text-align: center; color: rgba(15,18,19,.55); }
+368|
+369|  .system-section { background: #edf4ea; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0; }
+370|  .system-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem,8vw,8rem); align-items: start; }
+371|  .system-copy > p:not(.subtitle) { max-width: 39rem; margin-top: 1.25rem; color: rgba(15,18,19,.65); line-height: 1.72; }
+372|  .dark-link { margin-top: 1.5rem; }
+373|  .motion-map { border-top: 1px solid rgba(15,18,19,.13); }
+374|  .motion-map article { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; padding: 1.45rem 0; border-bottom: 1px solid rgba(15,18,19,.13); }
+375|  .motion-map article > span { color: #4aa63c; font-size: .72rem; font-weight: 850; letter-spacing: .08em; }
+376|  .motion-map strong { font-family: "Instrument Serif", Georgia, serif; font-size: 2rem; font-weight: 400; }
+377|  .motion-map p { margin-top: .25rem; color: rgba(15,18,19,.58); line-height: 1.55; }
+378|
+379|  .closing-section { background: #f5f5f1; color: #0f1213; padding: 0 0 clamp(6rem,9vw,9rem); }
+380|  .closing-panel { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3rem,7vw,7rem); border-radius: 2.2rem; background: #0f1213; color: #f5f5f1; }
+381|  .closing-panel .subtitle { color: #aee8a0; }
+382|  .closing-panel h2 { max-width: 62rem; }
+383|  .closing-panel > p:not(.subtitle) { max-width: 42rem; margin-top: 1.2rem; color: rgba(245,245,241,.67); font-size: 1.05rem; line-height: 1.7; }
+384|  .closing-panel .button { margin-top: 1.8rem; }
+385|
+386|  @media (max-width: 980px) {
+387|    .hero-shell, .work-intro, .system-grid { grid-template-columns: 1fr; }
+388|    .hero-shell { min-height: auto; }
+389|    .hero-feature { min-height: 37rem; }
+390|    .work-intro { align-items: start; }
+391|    .work-intro > p { max-width: 44rem; }
+392|  }
+393|
+394|  @media (max-width: 720px) {
+395|    .shipped-hero { padding: 8.3rem 0 3rem; }
+396|    .hero-copy h1 { font-size: clamp(4rem,17vw,5.6rem); }
+397|    .hero-intro { font-size: 1rem; }
+398|    .hero-actions { align-items: flex-start; flex-direction: column; }
+399|    .hero-feature { min-height: 27rem; border-radius: 1.4rem; }
+400|    .hero-feature-copy { padding: 1.25rem; }
+401|    .hero-feature-copy h2 { font-size: 2rem; }
+402|    .operating-strip { grid-template-columns: 1fr; border-radius: 1.4rem; }
+403|    .operating-strip i { width: 1px; height: .7rem; margin-left: .25rem; background: #69d254; }
+404|    .work-intro h2, .system-copy h2, .closing-panel h2 { font-size: clamp(3.4rem,14vw,4.7rem); }
+405|    .filter-shell { top: 0; }
+406|    .work-grid { grid-template-columns: 1fr; }
+407|    .work-card { min-height: 34rem; transition-delay: 0ms; }
+408|    .card-copy { padding: 1.25rem; }
+409|    .card-meta { align-items: flex-start; flex-direction: column; gap: .25rem; }
+410|    .card-copy h3 { font-size: clamp(2.6rem,12vw,3.7rem); }
+411|    .card-copy > p { font-size: .9rem; }
+412|    .anonymized-label { top: .85rem; right: .85rem; }
+413|    .closing-panel { align-items: flex-start; text-align: left; border-radius: 1.5rem; }
+414|  }
+415|
+416|  @media (prefers-reduced-motion: reduce) {
+417|    .work-card { opacity: 1; filter: none; transform: none; transition: none; }
+418|    .card-media img, .text-link span { transition: none; }
+419|  }
+420|</style>
+421|
