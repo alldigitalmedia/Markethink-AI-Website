@@ -274,7 +274,7 @@ const steps = [
     --story-theme-duration: 0.75s;
     position: relative;
     overflow: hidden;
-    padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(2.5rem, 4vw, 4rem);
+    padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(2rem, 3vw, 3rem);
     background: #0f1213;
     color: #f5f5f1;
     transition:
@@ -300,10 +300,13 @@ const steps = [
     z-index: 1;
     width: min(1180px, calc(100% - 2rem));
     margin-inline: auto;
+    display: grid;
+    justify-items: center;
+    text-align: center;
   }
 
   .story-intro p {
-    margin: 0 0 1rem;
+    margin: 0 0 0.8rem;
     color: #69d254;
     font-size: 0.72rem;
     font-weight: 800;
@@ -317,11 +320,11 @@ const steps = [
   }
 
   .story-intro h2 {
-    max-width: 48rem;
-    margin: 0;
+    max-width: 44rem;
+    margin: 0 auto;
     color: #f5f5f1;
     font-family: "Instrument Serif", Georgia, serif;
-    font-size: clamp(3.6rem, 7vw, 7rem);
+    font-size: clamp(2.8rem, 4.6vw, 4.25rem);
     font-weight: 400;
     line-height: 0.94;
     letter-spacing: -0.045em;
@@ -425,7 +428,7 @@ const steps = [
     color: #f5f5f1;
     font-family: "Instrument Serif", Georgia, serif;
     font-weight: 400;
-    font-size: clamp(3rem, 5vw, 5.3rem);
+    font-size: clamp(2.7rem, 4.2vw, 4.25rem);
     line-height: 0.96;
     letter-spacing: -0.045em;
     transition: color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
@@ -595,6 +598,15 @@ const steps = [
   }
 
   @media (max-width: 860px) {
+    .story-intro {
+      padding: 4rem 0 2.5rem;
+    }
+
+    .story-intro h2 {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
     .story {
       min-height: auto;
     }
@@ -636,7 +648,8 @@ const steps = [
     }
 
     .story-panel h2 {
-      font-size: clamp(2.4rem, 9vw, 3.5rem);
+      font-size: 2.35rem;
+      line-height: 1;
     }
 
     .story-progress,
