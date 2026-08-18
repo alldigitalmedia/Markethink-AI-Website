@@ -274,7 +274,7 @@ const steps = [
     --story-theme-duration: 0.75s;
     position: relative;
     overflow: hidden;
-    padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(2rem, 3vw, 3rem);
+    padding: clamp(3.25rem, 5vw, 4.5rem) 0 clamp(0.75rem, 1.4vw, 1.25rem);
     background: #0f1213;
     color: #f5f5f1;
     transition:
@@ -353,10 +353,10 @@ const steps = [
   .story-pin {
     position: sticky;
     top: 0;
-    min-height: 100svh;
+    min-height: 88svh;
     display: grid;
     place-items: center;
-    padding: clamp(5rem, 8vw, 7rem) 0;
+    padding: clamp(1.5rem, 3vw, 3rem) 0 clamp(2.5rem, 4vw, 4rem);
     overflow: hidden;
   }
 
@@ -370,10 +370,10 @@ const steps = [
 
   .story-shell {
     position: relative;
-    width: min(1180px, calc(100% - 2rem));
+    width: min(1320px, calc(100% - 2rem));
     display: grid;
-    grid-template-columns: minmax(0, 0.86fr) minmax(28rem, 1.14fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 0.76fr) minmax(32rem, 1.24fr);
+    gap: clamp(2.25rem, 4vw, 4.5rem);
     align-items: center;
   }
 
@@ -507,7 +507,7 @@ const steps = [
   .story-stage {
     position: relative;
     width: 100%;
-    aspect-ratio: 1.04;
+    aspect-ratio: 1.08;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: 1.9rem;
@@ -597,9 +597,16 @@ const steps = [
     font-size: 0.68rem;
   }
 
+  @media (min-width: 861px) and (max-width: 1080px) {
+    .story-shell {
+      grid-template-columns: minmax(0, 0.82fr) minmax(28rem, 1.18fr);
+      gap: 2rem;
+    }
+  }
+
   @media (max-width: 860px) {
     .story-intro {
-      padding: 4rem 0 2.5rem;
+      padding: 3rem 0 1.25rem;
     }
 
     .story-intro h2 {
@@ -614,7 +621,7 @@ const steps = [
     .story-pin {
       position: static;
       display: block;
-      padding: 5rem 0;
+      padding: 3rem 0;
       overflow: visible;
     }
 
