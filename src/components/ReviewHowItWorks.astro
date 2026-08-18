@@ -353,10 +353,11 @@ const steps = [
   .story-pin {
     position: sticky;
     top: 0;
-    min-height: 88svh;
+    box-sizing: border-box;
+    min-height: 100svh;
     display: grid;
     place-items: center;
-    padding: clamp(1.5rem, 3vw, 3rem) 0 clamp(2.5rem, 4vw, 4rem);
+    padding: clamp(1rem, 2vw, 2rem) 0;
     overflow: hidden;
   }
 
@@ -512,7 +513,7 @@ const steps = [
     border: 1px solid rgba(255, 255, 255, 0.11);
     border-radius: 1.9rem;
     background: #171b1c;
-    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36);
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.2);
     transition:
       border-color var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1),
       box-shadow var(--story-theme-duration) cubic-bezier(0.22, 1, 0.36, 1);
@@ -520,7 +521,7 @@ const steps = [
 
   .story.is-light .story-stage {
     border-color: rgba(15, 18, 19, 0.12);
-    box-shadow: 0 38px 100px rgba(15, 18, 19, 0.18);
+    box-shadow: 0 10px 32px rgba(15, 18, 19, 0.09);
   }
 
   .story-visual {
