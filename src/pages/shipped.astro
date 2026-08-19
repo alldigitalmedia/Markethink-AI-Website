@@ -89,6 +89,15 @@ const workItems = [
     tone: "warm",
     fit: "contain",
   },
+  {
+    category: "web",
+    client: "Emma Sacks Interiors",
+    work: "Website redesign for an interiors practice shaped by form, function, and luxury",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/emma-sacks-website-redesign.webp",
+    alt: "Emma Sacks Interiors website redesign displayed on a laptop",
+    action: "Website redesign in progress",
+    tone: "warm",
+  },
 ];
 
 const structuredData = [
@@ -163,7 +172,7 @@ const structuredData = [
           <p class="subtitle">REAL CLIENT WORK</p>
           <h2>Live projects. Built for real businesses.</h2>
         </div>
-        <p>Selected work across websites, social media, and email. Select any card to visit the client’s live destination.</p>
+        <p>Selected work across websites, social media, and email. Linked cards open the live destination or finished creative.</p>
       </div>
 
       <div class="filter-shell" data-filter-shell>
@@ -178,7 +187,7 @@ const structuredData = [
 
       <div class="work-grid" data-work-grid>
         {workItems.map((item, index) => (
-          <a class:list={["work-card", `tone-${item.tone}`]} href={item.href} target="_blank" rel="noopener noreferrer" data-categories={item.category} style={`--card-index:${index}`} aria-label={`${item.action}: ${item.client}`}>
+          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href ? "_blank" : undefined} rel={item.href ? "noopener noreferrer" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
             <div
               class:list={["card-media", item.fit === "contain" && "fit-contain"]}
               style={item.fit === "contain" ? `--card-image: url("${item.image}")` : undefined}
@@ -191,7 +200,7 @@ const structuredData = [
                 loading={index < 2 ? "eager" : "lazy"}
               />
               <div class="card-wash"></div>
-              <span class="anonymized-label">{item.action} ↗</span>
+              <span class="anonymized-label">{item.action}{item.href ? " ↗" : ""}</span>
             </div>
             <div class="card-copy">
               <h3>{item.client}</h3>
