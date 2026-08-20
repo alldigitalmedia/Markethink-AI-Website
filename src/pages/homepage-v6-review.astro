@@ -85,15 +85,13 @@ const connectedPlatforms = [
   { name: "Stripe", icon: "/brand-logos/connections/stripe.svg", mark: null, ring: "inner", x: "70%", y: "68%", delay: "2.85s" },
 ];
 
-const trustLogoPlaceholders = [
-  { mark: "diamond", label: "Logo 01" },
-  { mark: "bars", label: "Logo 02" },
-  { mark: "circle", label: "Logo 03" },
-  { mark: "slash", label: "Logo 04" },
-  { mark: "hex", label: "Logo 05" },
-  { mark: "square", label: "Logo 06" },
-  { mark: "ring", label: "Logo 07" },
-  { mark: "spark", label: "Logo 08" },
+const trustedClients = [
+  { name: "Pambuddha Curated", logo: "/brand-logos/trust/pambuddha.svg" },
+  { name: "Emma Sacks Interiors", logo: "/brand-logos/trust/emma-sacks.svg" },
+  { name: "Green", logo: "/brand-logos/trust/green.svg" },
+  { name: "All Digital Media", logo: "/brand-logos/trust/all-digital-media.svg" },
+  { name: "Atlanta Lawyer, Jonathan W. Johnson, LLC", logo: "/brand-logos/trust/jonathan-johnson.svg" },
+  { name: "Selten Logistics", logo: "/brand-logos/trust/selten-logistics.svg" },
 ];
 
 const faq = [
@@ -228,22 +226,20 @@ const faq = [
       <section class="proof-strip section-light" aria-labelledby="proof-title" data-change-cards>
         <div class="wrap">
           <div class="trust-strip" aria-labelledby="trust-title">
-            <h2 id="trust-title">They trust us.</h2>
-            <div class="trust-marquee" aria-label="Approved client logo placeholders">
+            <h2 id="trust-title">Helping businesses like yours grow.</h2>
+            <div class="trust-marquee" aria-label="Businesses supported by Markethink">
               <div class="trust-track">
                 <div class="trust-logo-set">
-                  {trustLogoPlaceholders.map((logo) => (
-                    <span class="trust-logo" role="img" aria-label="Client logo placeholder">
-                      <i class={`trust-mark trust-mark-${logo.mark}`} aria-hidden="true"></i>
-                      <b>{logo.label}</b>
+                  {trustedClients.map((client) => (
+                    <span class="trust-logo">
+                      <img src={client.logo} alt={client.name} loading="eager" decoding="async" />
                     </span>
                   ))}
                 </div>
                 <div class="trust-logo-set" aria-hidden="true">
-                  {trustLogoPlaceholders.map((logo) => (
+                  {trustedClients.map((client) => (
                     <span class="trust-logo">
-                      <i class={`trust-mark trust-mark-${logo.mark}`} aria-hidden="true"></i>
-                      <b>{logo.label}</b>
+                      <img src={client.logo} alt="" loading="eager" decoding="async" />
                     </span>
                   ))}
                 </div>
@@ -635,55 +631,6 @@ const faq = [
       };
       fitResponsiveDashboard();
       window.addEventListener('resize', fitResponsiveDashboard, { passive: true });
-    }
-
-    const trustMarquee = document.querySelector('.trust-marquee');
-    if (trustMarquee && trustMarquee.dataset.edgeMotionReady !== 'true') {
-      trustMarquee.dataset.edgeMotionReady = 'true';
-      const trustLogos = [...trustMarquee.querySelectorAll('.trust-logo')];
-      let trustRailVisible = true;
-
-      const paintTrustEdges = () => {
-        const marqueeRect = trustMarquee.getBoundingClientRect();
-        trustLogos.forEach((logo) => {
-          const logoRect = logo.getBoundingClientRect();
-          const progress = (logoRect.left + logoRect.width * .5 - marqueeRect.left) / marqueeRect.width;
-          if (progress < 0 || progress > 1) {
-            logo.style.setProperty('--trust-edge-opacity', '0');
-            logo.style.setProperty('--trust-edge-blur', '18px');
-            logo.style.setProperty('--trust-edge-scale', '.84');
-            return;
-          }
-          const edgeDistance = Math.min(progress, 1 - progress);
-          const edgeMix = Math.max(0, Math.min(1, edgeDistance / .14));
-          const easedEdge = edgeMix * edgeMix * (3 - 2 * edgeMix);
-          logo.style.setProperty('--trust-edge-opacity', String((.78 * easedEdge).toFixed(3)));
-          logo.style.setProperty('--trust-edge-blur', `${((1 - easedEdge) * 18).toFixed(2)}px`);
-          logo.style.setProperty('--trust-edge-scale', String((.84 + easedEdge * .16).toFixed(3)));
-        });
-      };
-
-      if (reduce) {
-        trustLogos.forEach((logo) => {
-          logo.style.setProperty('--trust-edge-opacity', '.78');
-          logo.style.setProperty('--trust-edge-blur', '0px');
-          logo.style.setProperty('--trust-edge-scale', '1');
-        });
-      } else {
-        if ('IntersectionObserver' in window) {
-          const trustObserver = new IntersectionObserver(([entry]) => {
-            trustRailVisible = entry.isIntersecting;
-            if (trustRailVisible) paintTrustEdges();
-          }, { rootMargin: '80px 0px' });
-          trustObserver.observe(trustMarquee);
-        }
-        const animateTrustEdges = () => {
-          if (trustRailVisible) paintTrustEdges();
-          requestAnimationFrame(animateTrustEdges);
-        };
-        paintTrustEdges();
-        requestAnimationFrame(animateTrustEdges);
-      }
     }
 
     const connectionsStage = document.querySelector('[data-connections-ecosystem] .connections-stage');
@@ -1189,5 +1136,73 @@ const faq = [
       align-content:start;
       gap:8px;
     }
+  }
+  /* Approved client proof: one compact monochrome marquee on a shared surface. */
+  .trust-strip{
+    margin:0 0 clamp(56px,7vw,82px);
+    padding:0;
+    background:#F5F5F1;
+    text-align:center;
+  }
+  .trust-strip h2{
+    max-width:none;
+    margin:0 auto;
+    color:#0F1213;
+    font:400 clamp(28px,3vw,40px)/1.05 "Instrument Serif",Georgia,serif;
+    letter-spacing:-.035em;
+    text-wrap:balance;
+  }
+  .trust-marquee{
+    position:relative;
+    margin:clamp(18px,2.4vw,26px) calc(50% - 50vw) 0;
+    padding:7px 0;
+    overflow:hidden;
+    background:#F5F5F1;
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  }
+  .trust-track{
+    display:flex;
+    width:max-content;
+    animation:trustRail 32s linear infinite;
+    will-change:transform;
+  }
+  .trust-logo-set{
+    display:flex;
+    align-items:center;
+    gap:clamp(42px,5vw,70px);
+    padding-right:clamp(42px,5vw,70px);
+  }
+  .trust-logo{
+    display:flex;
+    width:clamp(142px,13vw,188px);
+    height:52px;
+    flex:0 0 auto;
+    align-items:center;
+    justify-content:center;
+    opacity:.76!important;
+    filter:none!important;
+    transform:none!important;
+  }
+  .trust-logo:nth-child(5){width:clamp(190px,17vw,236px)}
+  .trust-logo img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  @media(max-width:680px){
+    .trust-strip{margin-bottom:58px;padding-bottom:0}
+    .trust-strip h2{font-size:30px;padding:0 20px}
+    .trust-marquee{margin-top:18px;padding:5px 0}
+    .trust-logo-set{gap:36px;padding-right:36px}
+    .trust-logo{width:142px;height:46px}
+    .trust-logo:nth-child(5){width:188px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .trust-track{animation:none;transform:none}
+    .trust-logo-set[aria-hidden="true"]{display:none}
+    .trust-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+    .trust-logo-set{padding:0 22px}
   }
 </style>
