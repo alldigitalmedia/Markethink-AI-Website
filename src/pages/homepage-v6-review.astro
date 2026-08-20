@@ -1050,4 +1050,73 @@ const faq = [
   @media(max-width:420px){.hero-sticky{min-height:calc(620px + var(--mobile-dashboard-height,220px))}.hero-dashboard-stage{top:560px;transform:translateX(-50%) scale(var(--mobile-dashboard-scale,.32))}.hero h1{font-size:42px}}
   @media(prefers-reduced-motion:reduce) and (max-width:980px){.mobile-menu,.mobile-menu-nav a,.mobile-menu-toggle span{transition:none!important}}
 
+  /* Final alignment contract for the three What changes cards. */
+  .change-card-media{inset:0 0 140px}
+  .change-card-copy,
+  .change-card:hover .change-card-copy,
+  .change-card:focus-visible .change-card-copy,
+  .change-card:focus-within .change-card-copy{
+    height:140px;
+    padding:16px 20px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-rows:56px 31px 0;
+    align-content:center;
+    justify-items:center;
+    gap:6px;
+    text-align:center;
+  }
+  .change-card-copy h3{
+    grid-column:1;
+    grid-row:1;
+    width:100%;
+    min-height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    text-wrap:balance;
+  }
+  .change-card-copy p{
+    grid-column:1;
+    grid-row:3;
+    width:min(100%,33rem);
+    text-align:center;
+  }
+  .change-card-cta{
+    grid-column:1;
+    grid-row:2;
+    justify-self:center;
+    align-self:center;
+    max-height:31px;
+    overflow:visible;
+    margin:0;
+    opacity:1;
+    pointer-events:auto;
+    transform:none;
+    white-space:nowrap;
+  }
+  .change-card:hover .change-card-copy,
+  .change-card:focus-visible .change-card-copy,
+  .change-card:focus-within .change-card-copy{
+    height:270px;
+    padding:24px;
+    grid-template-rows:56px 31px minmax(0,auto);
+    align-content:start;
+    gap:10px;
+  }
+  @media(max-width:680px){
+    .change-card,.change-card:last-child{min-height:560px}
+    .change-card-media{inset:0 0 240px}
+    .change-card-copy,
+    .change-card:hover .change-card-copy,
+    .change-card:focus-visible .change-card-copy,
+    .change-card:focus-within .change-card-copy{
+      height:240px;
+      padding:20px;
+      grid-template-rows:56px 31px minmax(0,auto);
+      align-content:start;
+      gap:8px;
+    }
+  }
 </style>
