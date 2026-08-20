@@ -39,22 +39,13 @@ const changeCards = [
   },
 ];
 
-const services = [
-  ["Social content", "Written, designed, and published in your brand voice."],
-  ["Landing pages and website updates", "Built to convert, shipped to your connected site."],
-  ["Email campaigns", "Written, designed, and sent when email is in your plan."],
-  ["Advertising", "Managed inside budget limits you approve up front."],
-  ["Leads and follow-up", "Capture, CRM, and follow-up running through the channels you connect."],
-  ["Reporting with receipts", "Work, approvals, and results, tracked in your dashboard."],
-];
-
 const capabilityScenes = [
-  { key: "social", image: "/images/homepage-v6-lanes/social-content.svg", title: "Social content", kicker: "From brief to approved post", body: "A channel-ready content set, shaped around your voice and reviewed before it moves.", status: "Ready for review", artifact: "4:5 campaign post" },
-  { key: "web", image: "/images/homepage-v6-lanes/web-landing-pages.svg", title: "Web and landing pages", kicker: "From offer to conversion path", body: "A focused page update with the message, hierarchy, and next step working together.", status: "Conversion pass", artifact: "Landing page update" },
-  { key: "email", image: "/images/homepage-v6-lanes/email-campaigns.svg", title: "Email campaigns", kicker: "From angle to send-ready", body: "Subject, structure, creative, and call to action prepared as one connected campaign piece.", status: "Approval pending", artifact: "Campaign email" },
-  { key: "ads", image: "/images/homepage-v6-lanes/advertising.svg", title: "Advertising", kicker: "From campaign to managed test", body: "Creative and campaign structure prepared inside the scope and budget you approve.", status: "Test plan ready", artifact: "Paid campaign" },
-  { key: "leads", image: "/images/homepage-v6-lanes/leads-follow-up.svg", title: "Leads and follow-up", kicker: "From response to next step", body: "New opportunities organized with context, ownership, and the next useful action visible.", status: "Next step assigned", artifact: "Lead follow-up" },
-  { key: "reporting", image: "/images/homepage-v6-lanes/reporting-receipts.svg", title: "Reporting with receipts", kicker: "From activity to decisions", body: "Work, approvals, and results stay connected so the next decision starts with evidence.", status: "Decision brief", artifact: "Weekly review" },
+  { key: "social", image: "/images/homepage-v6-lanes/social-content.svg", title: "Social content", kicker: "From priority to channel-ready content", body: "Campaign angles, copy, creative, and a publishing plan prepared in your voice and reviewed by experts." },
+  { key: "web", image: "/images/homepage-v6-lanes/web-landing-pages.svg", title: "Web and landing pages", kicker: "From offer to a clearer next step", body: "Website updates and landing pages with sharper messaging, useful hierarchy, and a defined action for the visitor." },
+  { key: "email", image: "/images/homepage-v6-lanes/email-campaigns.svg", title: "Email campaigns", kicker: "From campaign idea to send-ready email", body: "Subject lines, copy, creative direction, audience logic, and calls to action prepared for your approval." },
+  { key: "ads", image: "/images/homepage-v6-lanes/advertising.svg", title: "Paid advertising", kicker: "From offer to managed campaign test", body: "Campaign structure, audience approach, creative, and a test plan prepared within the budget and access you approve." },
+  { key: "leads", image: "/images/homepage-v6-lanes/leads-follow-up.svg", title: "Leads and CRM", kicker: "From response to the next action", body: "New inquiries organized in your CRM with their source, owner, stage, and next action visible." },
+  { key: "reporting", image: "/images/homepage-v6-lanes/reporting-receipts.svg", title: "Reporting and learning", kicker: "From results to the next decision", body: "Approvals, corrections, and performance signals shape the next brief and the next round of work." },
 ];
 
 const heroCapabilities = [
@@ -365,19 +356,20 @@ const faq = [
           <div class="lane-side lane-side-left" role="tablist" aria-label="Marketing capabilities, first group">
             {capabilityScenes.slice(0, 3).map((scene, index) => (
               <button class="lane-card" type="button" role="tab" aria-selected={index === 0 ? "true" : "false"} tabindex={index === 0 ? "0" : "-1"} data-capability-tab={scene.key} style={`--lane-order:${index}`}>
-                <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" /><span class="lane-card-copy"><small>{scene.artifact}</small><strong>{scene.title}</strong><em>{scene.kicker}</em></span>
+                <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" />
+                <span class="lane-card-copy"><small>{scene.title}</small><strong>{scene.kicker}</strong></span>
               </button>
             ))}
           </div>
 
           <div class="lane-center">
-            <p class="eyebrow">One connected operation</p>
-            <h2 id="manages-title">Choose a lane.<br />See what moves with it.</h2>
-            <p class="lane-intro">Each capability is useful alone. The advantage comes from sharing the same context, approvals, and next step.</p>
+            <p class="eyebrow">What your business receives</p>
+            <h2 id="manages-title">Start with the work that is slowing growth.</h2>
+            <p class="lane-intro">Each area delivers useful marketing on its own. When several are included, the same business knowledge, priorities, and approval rules carry across the work.</p>
             <div class="lane-response" aria-live="polite">
               {capabilityScenes.map((scene, index) => (
                 <article class={index === 0 ? "is-active" : ""} role="tabpanel" data-capability-panel={scene.key} aria-hidden={index === 0 ? "false" : "true"} style={`--lane-response-image:url("${scene.image}")`}>
-                  <small>{scene.status}</small><strong>{scene.kicker}</strong><p>{scene.body}</p>
+                  <small>{scene.title}</small><strong>{scene.kicker}</strong><p>{scene.body}</p>
                 </article>
               ))}
             </div>
@@ -386,7 +378,8 @@ const faq = [
           <div class="lane-side lane-side-right" role="tablist" aria-label="Marketing capabilities, second group">
             {capabilityScenes.slice(3).map((scene, index) => (
               <button class="lane-card" type="button" role="tab" aria-selected="false" tabindex="-1" data-capability-tab={scene.key} style={`--lane-order:${index}`}>
-                <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" /><span class="lane-card-copy"><small>{scene.artifact}</small><strong>{scene.title}</strong><em>{scene.kicker}</em></span>
+                <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" />
+                <span class="lane-card-copy"><small>{scene.title}</small><strong>{scene.kicker}</strong></span>
               </button>
             ))}
           </div>
@@ -397,7 +390,7 @@ const faq = [
         <div class="wrap connections-heading">
           <p class="eyebrow">Your existing stack</p>
           <h2 id="connections-title">Keep the tools your business already uses.</h2>
-          <p>Connections are scoped around your existing channels and approved access. No platform migration is required to begin.</p>
+          <p>Markethink works through the channels and platforms included in your scope. You approve the access and permissions. You do not need to replace your current tools to begin.</p>
         </div>
         <div class="connections-stage wrap" aria-label="Platforms Markethink can work around, based on approved access and scope">
           <div class="connection-core">
@@ -414,9 +407,8 @@ const faq = [
             </div>
           ))}
         </div>
-        <div class="wrap connections-foot">
-          <span>20 platforms shown</span>
-          <p>Markethink scopes each connection around the work, permissions, and channels your business actually uses.</p>
+        <div class="wrap connections-foot connections-foot-single">
+          <p>During the demo, we map the tools your business uses and explain where Markethink can work with them. Any custom setup is confirmed during scoping.</p>
         </div>
       </section>
 
@@ -437,7 +429,53 @@ const faq = [
 
 
 
-            <section class="faq" aria-labelledby="faq-title">
+            <section class="managed-operation" aria-labelledby="managed-operation-title">
+        <div class="wrap managed-operation-shell">
+          <header class="managed-operation-heading">
+            <p class="eyebrow">What Markethink manages</p>
+            <h2 id="managed-operation-title">We do not sell you a tool. We run your marketing.</h2>
+            <p>Markethink plans, prepares, reviews, and ships the work included in your scope.</p>
+          </header>
+
+          <div class="managed-operation-grid">
+            <article><strong>Plan</strong><p>We learn your offers, audience, voice, priorities, channels, and approval rules.</p></article>
+            <article><strong>Ship</strong><p>Pages, posts, emails, and campaign assets are prepared in your brand voice and reviewed by experts.</p></article>
+            <article><strong>Convert</strong><p>Leads are captured, organized in your CRM, and supported with the next follow-up action included in your scope.</p></article>
+            <article><strong>Learn</strong><p>Your approvals, corrections, and results inform the next brief and the next draft.</p></article>
+          </div>
+
+          <div class="managed-request">
+            <div class="managed-request-copy">
+              <p class="managed-request-eyebrow">Example request</p>
+              <div class="managed-request-block">
+                <small>Prompt</small>
+                <h3>What should marketing help your business achieve next?</h3>
+              </div>
+              <div class="managed-request-block managed-request-response">
+                <small>Response</small>
+                <p>You receive a private working preview based on your public brand and the priority you share. Nothing is published without your approval.</p>
+              </div>
+            </div>
+
+            <div class="managed-request-preview">
+              <small>Preview includes</small>
+              <ul>
+                <li>One campaign direction</li>
+                <li>One sample deliverable</li>
+                <li>One recommended next step</li>
+              </ul>
+              <div class="managed-control-labels" aria-label="How the work stays controlled">
+                <span>You set the scope</span>
+                <span>Experts review the work</span>
+                <span>You approve what ships</span>
+              </div>
+              <p class="managed-request-note">Approvals can happen in chat. The dashboard keeps the work, decisions, and status visible.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-title">
         <div class="wrap faq-grid">
           <div class="faq-heading">
             <p class="eyebrow">FAQ</p>
@@ -944,6 +982,10 @@ const faq = [
   .difference-hero{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.difference-hero img{width:100%;border-radius:26px;aspect-ratio:1.18/1;object-fit:cover}.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:44px 0}.triad article,.engagement-grid article{padding:28px;border:1px solid #d7ddd3;border-radius:20px;background:white}.triad strong{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400}.triad p{color:#686B6C;line-height:1.55}.memory-copy{font-size:20px;line-height:1.7;max-width:950px;margin:70px auto}.ai-emphasis{font-family:"Instrument Serif",Georgia,serif;font-size:36px;line-height:1.25}.memory-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:15px;align-items:center}.memory-flow article{min-height:150px;padding:24px;border-radius:18px;background:#0F1213;color:#F5F5F1}.memory-flow small{color:#69D254;text-transform:uppercase;letter-spacing:.12em}.memory-flow>span{font-size:28px}.comparison-intro{font-size:22px;line-height:1.55;max-width:850px;margin:80px 0 30px}.table-wrap{overflow-x:auto;border-radius:20px;border:1px solid #d7ddd3}table{width:100%;border-collapse:collapse;min-width:880px;background:white}th,td{text-align:left;padding:17px 15px;border-bottom:1px solid #e2e6df;font-size:13px;line-height:1.4}thead th{background:#0F1213;color:#F5F5F1}tbody th{font-weight:700}td:last-child{background:#EDF4EA;font-weight:700}
   .timeline{margin-top:60px}.timeline article{display:grid;grid-template-columns:70px 1fr 280px;gap:32px;align-items:center;padding:38px 0;border-top:1px solid rgba(245,245,241,.14)}.timeline-number{font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:#69D254}.timeline small{text-transform:uppercase;letter-spacing:.15em;color:#69D254}.timeline h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin:8px 0}.timeline p{color:#B4B6B6;line-height:1.6;max-width:610px}.timeline-art{height:160px;border-radius:20px;background:#171b1c;border:1px solid rgba(245,245,241,.12);position:relative;overflow:hidden}.timeline-art span,.timeline-art i,.timeline-art b{position:absolute;display:block;border-radius:10px}.timeline-art span{width:58%;height:20px;background:#F5F5F1;left:20%;top:28px}.timeline-art i{width:40%;height:64px;background:#EDF4EA;left:12%;top:63px}.timeline-art b{width:30%;height:64px;background:#69D254;right:12%;top:63px}.art-2{transform:rotate(-1deg)}.art-3 span{width:18px;height:100px;background:#69D254;left:50%;top:28px}.art-4{background:radial-gradient(circle at center,#69D254 0 6px,transparent 7px),#171b1c}
   .engagement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:46px 0}.engagement-grid h3{font-family:"Instrument Serif",Georgia,serif;font-size:30px;font-weight:400;margin-top:0}.engagement-grid p{color:#686B6C;line-height:1.6}.investment{font-size:24px;line-height:1.5;max-width:900px;font-weight:700}
+  .connections-foot-single{display:block}.connections-foot-single p{max-width:760px;margin:0 auto;text-align:center}.lane-card-copy{padding-left:4px}.lane-card strong{font-size:clamp(18px,1.3vw,22px);line-height:1.04;text-wrap:balance}.lane-center h2{text-wrap:balance}
+  .managed-operation{padding:clamp(100px,11vw,160px) 0;background:#EDF4EA;color:#0F1213;overflow:hidden}.managed-operation-shell{display:grid;gap:clamp(34px,5vw,64px)}.managed-operation-heading{display:grid;justify-items:center;text-align:center}.managed-operation-heading .eyebrow{color:#315b28}.managed-operation-heading h2{max-width:920px;margin:0;font-size:clamp(48px,5.4vw,78px);line-height:.91;letter-spacing:-.04em;text-wrap:balance}.managed-operation-heading>p:last-child{max-width:700px;margin:24px auto 0;color:#4f5651;font-size:18px;line-height:1.58}.managed-operation-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.managed-operation-grid article{min-height:220px;padding:28px 26px;border:1px solid rgba(15,18,19,.1);border-radius:22px;background:rgba(245,245,241,.76);box-shadow:0 18px 48px rgba(15,18,19,.05)}.managed-operation-grid strong{display:block;margin-bottom:54px;color:#315b28;font:400 34px/.95 "Instrument Serif",Georgia,serif}.managed-operation-grid p{margin:0;color:#3f4742;font-size:15px;line-height:1.58}.managed-request{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:clamp(24px,4vw,56px);align-items:stretch;padding:clamp(26px,4vw,54px);border-radius:34px;background:#0F1213;color:#F5F5F1;box-shadow:0 30px 72px rgba(15,18,19,.18)}.managed-request-copy{display:flex;flex-direction:column}.managed-request-eyebrow{margin:0 0 42px;color:#69D254;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.managed-request-block small,.managed-request-preview>small{display:block;margin-bottom:12px;color:#69D254;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.managed-request-block h3{max-width:600px;margin:0;font:400 clamp(38px,4vw,58px)/.95 "Instrument Serif",Georgia,serif;letter-spacing:-.035em;text-wrap:balance}.managed-request-response{max-width:620px;margin-top:auto;padding-top:40px}.managed-request-response p{margin:0;color:#B4B6B6;font-size:16px;line-height:1.58}.managed-request-preview{display:flex;flex-direction:column;padding:clamp(24px,3vw,38px);border-radius:26px;background:#F5F5F1;color:#0F1213}.managed-request-preview ul{display:grid;gap:0;margin:6px 0 30px;padding:0;list-style:none}.managed-request-preview li{position:relative;padding:15px 0 15px 30px;border-bottom:1px solid rgba(15,18,19,.1);font:400 25px/1.05 "Instrument Serif",Georgia,serif}.managed-request-preview li::before{content:"";position:absolute;left:0;top:20px;width:10px;height:10px;border-radius:50%;background:#69D254;box-shadow:0 0 0 5px rgba(105,210,84,.16)}.managed-control-labels{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}.managed-control-labels span{padding:9px 11px;border:1px solid rgba(49,91,40,.2);border-radius:999px;background:#EDF4EA;color:#315b28;font-size:10px;font-weight:800;letter-spacing:.04em}.managed-request-note{margin:22px 0 0;padding-top:18px;border-top:1px solid rgba(15,18,19,.1);color:#59605b;font-size:13px;line-height:1.5}
+  @media(max-width:980px){.managed-operation-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.managed-operation-grid article{min-height:190px}.managed-operation-grid strong{margin-bottom:38px}.managed-request{grid-template-columns:1fr}.managed-request-response{margin-top:36px;padding-top:0}.managed-request-preview{min-height:420px}}
+  @media(max-width:680px){.managed-operation{padding:88px 0}.managed-operation-heading h2{font-size:42px;line-height:.94}.managed-operation-heading>p:last-child{font-size:16px;line-height:1.5}.managed-operation-grid{grid-template-columns:1fr}.managed-operation-grid article{min-height:0;padding:23px 22px}.managed-operation-grid strong{margin-bottom:24px;font-size:30px}.managed-request{padding:20px;border-radius:26px}.managed-request-eyebrow{margin-bottom:28px}.managed-request-block h3{font-size:39px}.managed-request-response p{font-size:15px}.managed-request-preview{min-height:0;padding:22px;border-radius:20px}.managed-request-preview li{font-size:22px}.managed-control-labels{display:grid;grid-template-columns:1fr}.managed-control-labels span{text-align:center}}
   .faq-grid{display:grid;grid-template-columns:.65fr 1fr;gap:80px}.faq-heading{position:sticky;top:40px;align-self:start}.accordions details{border-top:1px solid rgba(245,245,241,.18)}.accordions details:last-child{border-bottom:1px solid rgba(245,245,241,.18)}summary{list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-size:20px;font-weight:700;cursor:pointer}summary::-webkit-details-marker{display:none}summary span{color:#69D254;font-size:28px}.accordions details[open] summary span{transform:rotate(45deg)}.accordions details p{color:#B4B6B6;line-height:1.7;margin:0;padding:0 44px 26px 0}
   .cta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px}.cta-grid>div,.founder-call{padding:42px;border-radius:26px;background:white;border:1px solid #d7ddd3}.cta-grid h2{font-size:60px}.cta-grid p{font-size:18px;line-height:1.6;color:#525854}.preview-form{display:grid;gap:16px;margin-top:30px}.preview-form label,.preview-form legend{font-size:13px;font-weight:700}.preview-form input,.preview-form textarea{display:block;width:100%;margin-top:7px;border:1px solid #cfd5cc;background:#F5F5F1;border-radius:12px;padding:14px;font:inherit}.preview-form fieldset{border:1px solid #cfd5cc;border-radius:14px;padding:18px}.preview-form fieldset label{display:flex;align-items:center;gap:8px;margin-top:12px}.preview-form fieldset input{display:inline;width:auto;margin:0}.preview-form small{color:#686B6C;line-height:1.5}.founder-call{background:#0F1213;color:#F5F5F1}.founder-call h3{font-family:"Instrument Serif",Georgia,serif;font-size:42px;font-weight:400;margin-top:0}.founder-call p{color:#B4B6B6}.calendar-placeholder{margin-top:28px;padding:24px;border:1px dashed rgba(245,245,241,.35);border-radius:18px;min-height:330px;background:linear-gradient(180deg,rgba(105,210,84,.12),transparent)}.calendar-placeholder p{font-size:14px}.proof-echo{margin:28px auto 0;padding:22px;border:1px dashed #9aa195;border-radius:16px;color:#525854}
   .footer-audit-form{position:relative;display:grid;grid-template-columns:minmax(245px,.62fr) minmax(0,1.65fr);gap:clamp(26px,3.2vw,48px);width:100%;padding:clamp(26px,3vw,40px);border:1px solid rgba(245,245,241,.45);border-radius:30px;background:rgba(245,245,241,.98);color:#0F1213;box-shadow:0 28px 80px rgba(0,0,0,.28);backdrop-filter:blur(18px) saturate(112%)}
