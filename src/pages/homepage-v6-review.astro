@@ -91,6 +91,7 @@ const trustedClients = [
   { name: "Green", logo: "/brand-logos/trust/green.svg" },
   { name: "All Digital Media", logo: "/brand-logos/trust/all-digital-media.svg" },
   { name: "Atlanta Lawyer, Jonathan W. Johnson, LLC", logo: "/brand-logos/trust/jonathan-johnson.svg" },
+  { name: "Villazzo", logo: "/brand-logos/trust/villazzo.svg" },
   { name: "Selten Logistics", logo: "/brand-logos/trust/selten-logistics.svg" },
 ];
 
@@ -1148,7 +1149,7 @@ const faq = [
     max-width:none;
     margin:0 auto;
     color:#0F1213;
-    font:400 clamp(28px,3vw,40px)/1.05 "Instrument Serif",Georgia,serif;
+    font:400 clamp(15px,1.5vw,20px)/1.1 "Instrument Serif",Georgia,serif;
     letter-spacing:-.035em;
     text-wrap:balance;
   }
@@ -1170,13 +1171,13 @@ const faq = [
   .trust-logo-set{
     display:flex;
     align-items:center;
-    gap:clamp(42px,5vw,70px);
-    padding-right:clamp(42px,5vw,70px);
+    gap:clamp(28px,4vw,48px);
+    padding-right:clamp(28px,4vw,48px);
   }
   .trust-logo{
     display:flex;
-    width:clamp(142px,13vw,188px);
-    height:52px;
+    width:auto;
+    height:26px;
     flex:0 0 auto;
     align-items:center;
     justify-content:center;
@@ -1184,20 +1185,19 @@ const faq = [
     filter:none!important;
     transform:none!important;
   }
-  .trust-logo:nth-child(5){width:clamp(190px,17vw,236px)}
   .trust-logo img{
     display:block;
-    width:100%;
-    height:100%;
+    width:auto;
+    max-width:none;
+    height:26px;
     object-fit:contain;
   }
   @media(max-width:680px){
     .trust-strip{margin-bottom:58px;padding-bottom:0}
-    .trust-strip h2{font-size:30px;padding:0 20px}
-    .trust-marquee{margin-top:18px;padding:5px 0}
-    .trust-logo-set{gap:36px;padding-right:36px}
-    .trust-logo{width:142px;height:46px}
-    .trust-logo:nth-child(5){width:188px}
+    .trust-strip h2{font-size:15px;padding:0 20px}
+    .trust-marquee{margin-top:14px;padding:5px 0}
+    .trust-logo-set{gap:28px;padding-right:28px}
+    .trust-logo,.trust-logo img{width:auto;height:23px}
   }
   @media(prefers-reduced-motion:reduce){
     .trust-track{animation:none;transform:none}
