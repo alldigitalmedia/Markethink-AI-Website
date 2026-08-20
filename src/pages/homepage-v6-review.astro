@@ -8,24 +8,30 @@ const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/
 const expertsImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-experts-v1.webp";
 const changeCards = [
   {
-    title: "It learns the business",
+    title: "We get to know your business",
     description: "Your voice, offers, audience, priorities, approved references, and past decisions remain available for the next assignment.",
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/homepage-v6-change-card-1-v2.png",
-    alt: "A business operator organizing offers, audience cues, approved references, and past decisions into retained business context",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-get-to-know-your-business.webp",
+    alt: "Marketing strategist reviewing business information on a tablet during a team workshop",
+    width: 1280,
+    height: 853,
     tone: "wash",
   },
   {
     title: "The work gets shipped",
     description: "Pages, campaigns, content, email, advertising, and follow-up are handled through one working rhythm instead of separate handoffs.",
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/homepage-v6-change-card-2-v2.png",
-    alt: "One approved priority moving through coordinated website, campaign, content, email, advertising, and follow-up outputs",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-work-gets-shipped.webp",
+    alt: "Connected marketing workflow showing approved work moving into coordinated channel outputs",
+    width: 1536,
+    height: 1024,
     tone: "green",
   },
   {
     title: "Someone stays accountable",
     description: "Expert marketers set direction, review the work, and bring you the decisions that require your approval.",
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/homepage-v6-change-card-3-v2.png",
-    alt: "An expert marketer reviewing campaign materials and presenting a clear set of approval decisions",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-expert-marketing-accountability.webp",
+    alt: "Expert marketer reviewing campaign materials and approval decisions with a colleague",
+    width: 1536,
+    height: 1024,
     tone: "cream",
   },
 ];
@@ -258,7 +264,7 @@ const faq = [
           <div class="change-cards" aria-label="What changes with Markethink">
             {changeCards.map((card, index) => (
               <article class={`change-card change-card-${card.tone}`} tabindex="0" style={`--card-order:${index}`}>
-                <div class="change-card-media"><img src={card.image} alt={card.alt} loading="lazy" /></div>
+                <div class="change-card-media"><img src={card.image} alt={card.alt} width={card.width} height={card.height} loading="lazy" decoding="async" /></div>
                 <div class="change-card-copy">
                   <h3>{card.title}</h3>
                   <p>{card.description}</p>
