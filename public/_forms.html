@@ -46,6 +46,7 @@
       <input name="bot-field" />
       <input type="text" name="full_name" />
       <input type="email" name="email" />
+      <input type="tel" name="phone" />
       <input type="text" name="studio_or_website" />
       <textarea name="ideal_projects"></textarea>
       <textarea name="marketing_gap"></textarea>
@@ -57,6 +58,90 @@
         <option>Paid ads campaign foundation</option>
         <option>Email or referral follow-up</option>
       </select>
+    </form>
+
+    <form
+      name="markethink-marketing-system-audit"
+      method="POST"
+      action="/thank-you/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="markethink-marketing-system-audit" />
+      <input type="hidden" name="source" value="homepage-marketing-system-audit" />
+      <input name="bot-field" />
+      <input type="text" name="full_name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company_or_website" />
+      <select name="buyer_path">
+        <option value="">Select one</option>
+        <option>Growing brand</option>
+        <option>Agency or referral partner</option>
+        <option>Not sure yet</option>
+      </select>
+      <textarea name="marketing_bottleneck"></textarea>
+    </form>
+
+    <form
+      name="markethink-trial-application"
+      method="POST"
+      action="/thank-you/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="markethink-trial-application" />
+      <input type="hidden" name="source" value="trial-page" />
+      <input name="bot-field" />
+      <input type="text" name="full_name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="business_or_website" />
+      <textarea name="business_offer"></textarea>
+      <textarea name="marketing_stuck_point"></textarea>
+      <select name="first_focus"><option value="">Select one</option></select>
+      <select name="monthly_intent"><option value="">Select one</option></select>
+    </form>
+
+    <form
+      name="markethink-client-onboarding"
+      method="POST"
+      action="/onboarding/thanks/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="markethink-client-onboarding" />
+      <input type="hidden" name="source" value="onboarding-page-single-screen" />
+      <input name="bot-field" />
+      <input type="text" name="full_name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <input type="text" name="website" />
+      <textarea name="business_description"></textarea>
+      <textarea name="ideal_customer"></textarea>
+      <textarea name="customer_problem"></textarea>
+      <textarea name="market_references"></textarea>
+      <textarea name="primary_offer"></textarea>
+      <textarea name="offer_difference"></textarea>
+      <select name="primary_goal"><option value="">Select one</option></select>
+      <textarea name="active_channels"></textarea>
+      <textarea name="whats_working"></textarea>
+      <textarea name="whats_stuck"></textarea>
+      <input type="text" name="asset_folder" />
+      <input type="file" name="brand_asset" />
+      <textarea name="important_links"></textarea>
+      <input type="text" name="approver" />
+      <select name="approval_speed"><option value="">Select one</option></select>
+      <textarea name="avoid"></textarea>
+      <input type="checkbox" name="credential_confirmation" />
     </form>
   </body>
 </html>
