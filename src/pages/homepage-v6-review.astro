@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import OperatingFlow from "../components/OperatingFlow.astro";
 import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
@@ -409,68 +408,11 @@ const faq = [
         </div>
       </section>
 
-            <OperatingFlow
-              sectionId="request-to-result"
-              includeInstagram={false}
-              lockEndpointNodes={true}
-              previewImages={{
-                plan: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-plan-v1.jpg",
-                convert: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-crm-v1.jpg",
-                learn: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-phone-learn-v1.jpg",
-              }}
-            />
-
 
 
             <ReviewHowItWorks />
 
 
-
-            <section class="managed-operation" aria-labelledby="managed-operation-title">
-        <div class="wrap managed-operation-shell">
-          <header class="managed-operation-heading">
-            <p class="eyebrow">What Markethink manages</p>
-            <h2 id="managed-operation-title">We do not sell you a tool. We run your marketing.</h2>
-            <p>Markethink plans, prepares, reviews, and ships the work included in your scope.</p>
-          </header>
-
-          <div class="managed-operation-grid">
-            <article><strong>Plan</strong><p>We learn your offers, audience, voice, priorities, channels, and approval rules.</p></article>
-            <article><strong>Ship</strong><p>Pages, posts, emails, and campaign assets are prepared in your brand voice and reviewed by experts.</p></article>
-            <article><strong>Convert</strong><p>Leads are captured, organized in your CRM, and supported with the next follow-up action included in your scope.</p></article>
-            <article><strong>Learn</strong><p>Your approvals, corrections, and results inform the next brief and the next draft.</p></article>
-          </div>
-
-          <div class="managed-request">
-            <div class="managed-request-copy">
-              <p class="managed-request-eyebrow">Example request</p>
-              <div class="managed-request-block">
-                <small>Prompt</small>
-                <h3>What should marketing help your business achieve next?</h3>
-              </div>
-              <div class="managed-request-block managed-request-response">
-                <small>Response</small>
-                <p>You receive a private working preview based on your public brand and the priority you share. Nothing is published without your approval.</p>
-              </div>
-            </div>
-
-            <div class="managed-request-preview">
-              <small>Preview includes</small>
-              <ul>
-                <li>One campaign direction</li>
-                <li>One sample deliverable</li>
-                <li>One recommended next step</li>
-              </ul>
-              <div class="managed-control-labels" aria-label="How the work stays controlled">
-                <span>You set the scope</span>
-                <span>Experts review the work</span>
-                <span>You approve what ships</span>
-              </div>
-              <p class="managed-request-note">Approvals can happen in chat. The dashboard keeps the work, decisions, and status visible.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section class="faq" aria-labelledby="faq-title">
         <div class="wrap faq-grid">
