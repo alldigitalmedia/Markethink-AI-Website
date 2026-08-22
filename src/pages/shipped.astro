@@ -1,14 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
 const pageTitle = "What Our Clients Shipped | Markethink";
 const pageDescription = "See the websites, campaigns, content, advertising, and pipeline work clients are shipping with Markethink, powered by AI and managed by expert marketers.";
 const canonicalUrl = "https://markethink.ai/shipped/";
 const walkthroughHref = "/schedule-a-walkthrough/";
-
-const monthLabel = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date());
 
 const categories = [
   { id: "all", label: "All work" },
@@ -132,37 +129,52 @@ const structuredData = [
 ];
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="/images/markethink-ship-real-website-mockup.svg" structuredData={structuredData}>
-  <Navbar />
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="/images/shipped-hero-client-work.svg" structuredData={structuredData}>
+  <header class="site-header">
+    <a class="logo" href="/" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
+    <nav aria-label="Primary navigation">
+      <a href="/#how-it-works">How it works</a>
+      <a href="/#real-work">Real work</a>
+      <a href="/blog/">Insights</a>
+      <a href="/#spanish">ES</a>
+      <a href="https://dashboard.markethink.ai/">Log in</a>
+    </nav>
+    <a class="header-cta" href="/schedule-a-walkthrough/">Book A Demo</a>
+    <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true" data-mobile-menu>
+    <div class="mobile-menu-shell">
+      <div class="mobile-menu-top">
+        <a class="mobile-menu-logo" href="/" aria-label="Markethink home" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
+        <button class="mobile-menu-close" type="button" aria-label="Close navigation" data-mobile-menu-close><span></span><span></span></button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
+        <a href="/#how-it-works" data-mobile-menu-close><small>01</small><span>How it works</span></a>
+        <a href="/#real-work" data-mobile-menu-close><small>02</small><span>Real work</span></a>
+        <a href="/blog/" data-mobile-menu-close><small>03</small><span>Insights</span></a>
+        <a href="/#spanish" data-mobile-menu-close><small>04</small><span>Español</span></a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a class="mobile-menu-cta" href="/schedule-a-walkthrough/" data-mobile-menu-close>Book A Demo</a>
+        <a class="mobile-menu-login" href="https://dashboard.markethink.ai/" data-mobile-menu-close>Log in <span>↗</span></a>
+        <p>Powered by AI. Managed by expert marketers.</p>
+      </div>
+    </div>
+  </div>
   <main class="shipped-page">
-    <section class="shipped-hero" id="top">
+    <section class="shipped-hero" id="top" aria-labelledby="shipped-hero-title">
+      <div class="hero-background" aria-hidden="true">
+        <img src="/images/shipped-hero-client-work.svg" alt="" width="1280" height="720" fetchpriority="high" />
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
       <div class="container hero-shell">
         <div class="hero-copy animate-fade-up">
-          <p class="hero-kicker"><span></span> NOW SHIPPING · {monthLabel.toUpperCase()}</p>
-          <h1>See what our clients are <em>shipping.</em></h1>
-          <p class="hero-intro">A living view of the websites, campaigns, content, advertising, and pipeline work moving through Markethink.</p>
-          <p class="privacy-note">Real client work, shared for public viewing. Select any project to visit the live website or Instagram profile.</p>
-          <div class="hero-actions">
-            <a href="#latest-work" class="button">See the latest work</a>
-            <a href={walkthroughHref} class="text-link">Book a walkthrough <span aria-hidden="true">↗</span></a>
-          </div>
+          <h1 id="shipped-hero-title">We Hate<br /><em>AI Slop</em></h1>
+          <p class="hero-intro">See what our team has shipped for clients lately.</p>
         </div>
-
-        <div class="hero-feature animate-scale-in" aria-label="Selected work moving through Markethink">
-          <img src="/images/markethink-ship-real-website-mockup.svg" alt="Selected website and campaign work prepared through Markethink" width="1200" height="800" />
-          <div class="hero-feature-shade"></div>
-          <div class="hero-feature-copy">
-            <div>
-              <p>Selected work</p>
-              <h2>From request to shipped</h2>
-            </div>
-            <span aria-hidden="true">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="container operating-strip" aria-label="Connected marketing operation">
-        <span>Request</span><i></i><span>Strategy</span><i></i><span>Creative</span><i></i><span>Approval</span><i></i><span>Pipeline</span>
       </div>
     </section>
 
@@ -244,6 +256,37 @@ const structuredData = [
 </Layout>
 
 <script>
+  function initMobileMenu() {
+    const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+    const opener = document.querySelector<HTMLButtonElement>("[data-mobile-menu-open]");
+    if (!menu || !opener || menu.dataset.ready === "true") return;
+    menu.dataset.ready = "true";
+    const closeControls = Array.from(menu.querySelectorAll<HTMLElement>("[data-mobile-menu-close]"));
+    const setMenu = (open: boolean, restoreFocus = false) => {
+      menu.classList.toggle("is-open", open);
+      menu.setAttribute("aria-hidden", String(!open));
+      opener.setAttribute("aria-expanded", String(open));
+      opener.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      document.documentElement.classList.toggle("mobile-menu-open", open);
+      if (open) window.setTimeout(() => menu.querySelector<HTMLElement>("a,button")?.focus(), 360);
+      else if (restoreFocus) opener.focus();
+    };
+    opener.addEventListener("click", () => setMenu(true));
+    closeControls.forEach((control) => control.addEventListener("click", () => setMenu(false, control.matches("button"))));
+    document.addEventListener("keydown", (event) => {
+      if (!menu.classList.contains("is-open")) return;
+      if (event.key === "Escape") { setMenu(false, true); return; }
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(menu.querySelectorAll<HTMLElement>("a[href],button:not([disabled])"));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    window.addEventListener("resize", () => { if (window.innerWidth > 980 && menu.classList.contains("is-open")) setMenu(false); }, { passive: true });
+  }
+
   function initWorkFilters() {
     const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
     const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-categories]"));
@@ -288,10 +331,12 @@ const structuredData = [
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    initMobileMenu();
     initWorkFilters();
     initWorkReveals();
   });
   if (document.readyState !== "loading") {
+    initMobileMenu();
     initWorkFilters();
     initWorkReveals();
   }
@@ -300,30 +345,26 @@ const structuredData = [
 <style>
   .shipped-page { background: #0f1213; color: #f5f5f1; overflow: clip; }
 
-  .shipped-hero { position: relative; padding: 10rem 0 4rem; background: #0f1213; }
-  .shipped-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 72% 18%, rgba(105,210,84,.16), transparent 28rem), linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: auto, 72px 72px, 72px 72px; mask-image: linear-gradient(to bottom, #000 0%, transparent 92%); }
-  .hero-shell { position: relative; display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(2rem, 5vw, 5.5rem); align-items: center; min-height: 70vh; }
-  .hero-copy { max-width: 42rem; }
-  .hero-kicker { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.25rem; color: rgba(245,245,241,.6); font-size: .72rem; font-weight: 750; letter-spacing: .12em; }
-  .hero-kicker span { width: .52rem; height: .52rem; border-radius: 50%; background: #69d254; box-shadow: 0 0 0 .36rem rgba(105,210,84,.12); }
-  .hero-copy h1 { font-size: clamp(4.5rem, 7.4vw, 8rem); line-height: .84; letter-spacing: -.062em; text-wrap: balance; }
+  .site-header { height: 54px; padding: 0 15px 0 19px; display: flex; align-items: center; gap: 22px; position: absolute; top: 10px; left: max(18px, calc((100vw - 1280px)/2)); right: max(18px, calc((100vw - 1280px)/2)); z-index: 70; border: 1px solid rgba(245,245,241,.2); border-radius: 999px; background: rgba(15,18,19,.42); backdrop-filter: blur(18px) saturate(120%); -webkit-backdrop-filter: blur(18px) saturate(120%); box-shadow: 0 16px 50px rgba(0,0,0,.16); }
+  .site-header .logo { width: 124px; height: 100%; display: flex; align-items: center; }
+  .site-header .logo img { display: block; width: 100%; transform: translateY(-2px); }
+  .site-header nav { display: flex; gap: 22px; margin-left: auto; }
+  .site-header a { color: #f5f5f1; text-decoration: none; font-size: 13px; }
+  .site-header nav a { opacity: .8; transition: opacity .2s ease; }
+  .site-header nav a:hover, .site-header nav a:focus-visible { opacity: 1; }
+  .header-cta, .mobile-menu-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 1px solid #69d254; border-radius: 999px; background: #69d254; color: #0f1213 !important; font-size: 12px !important; font-weight: 700; white-space: nowrap; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+  .header-cta:hover, .header-cta:focus-visible, .mobile-menu-cta:hover, .mobile-menu-cta:focus-visible { background: #82df6f; border-color: #82df6f; transform: translateY(-2px); }
+  .mobile-menu-toggle, .mobile-menu { display: none; }
+
+  .shipped-hero { position: relative; min-height: clamp(42rem, 78vh, 55rem); display: flex; align-items: flex-end; overflow: hidden; background: #0f1213; isolation: isolate; }
+  .hero-background { position: absolute; z-index: -3; inset: 0; margin: 0; overflow: hidden; }
+  .hero-background img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: saturate(.92) contrast(1.02); transform: scale(1.002); }
+  .hero-shade { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(7,9,10,.94) 0%, rgba(7,9,10,.82) 28%, rgba(7,9,10,.38) 53%, rgba(7,9,10,.08) 79%), linear-gradient(180deg, rgba(7,9,10,.12) 0%, transparent 45%, rgba(7,9,10,.42) 100%); pointer-events: none; }
+  .hero-shell { position: relative; width: 100%; min-height: inherit; display: flex; align-items: flex-end; padding-top: 9rem; padding-bottom: clamp(4rem, 8vw, 7rem); }
+  .hero-copy { max-width: min(48rem, 61vw); }
+  .hero-copy h1 { margin: 0; color: #f5f5f1; font-family: "Instrument Serif", Georgia, serif; font-size: clamp(5rem, 9.4vw, 10.5rem); font-weight: 400; line-height: .78; letter-spacing: -.064em; text-wrap: balance; }
   .hero-copy h1 em { color: #69d254; font-weight: 400; }
-  .hero-intro { max-width: 38rem; margin-top: 1.6rem; color: rgba(245,245,241,.82); font-size: clamp(1.05rem,1.4vw,1.28rem); line-height: 1.65; }
-  .privacy-note { max-width: 38rem; margin-top: .8rem; color: rgba(245,245,241,.48); font-size: .82rem; line-height: 1.6; }
-  .hero-actions { display: flex; align-items: center; gap: 1.3rem; margin-top: 2rem; }
-  .text-link { display: inline-flex; align-items: center; gap: .45rem; font-weight: 700; }
-  .text-link span { color: #69d254; font-size: 1.15rem; transition: transform .2s ease; }
-  .text-link:hover span { transform: translate(3px,-3px); }
-  .hero-feature { position: relative; overflow: hidden; min-height: clamp(31rem,48vw,47rem); border-radius: 2rem; background: #171b1c; box-shadow: 0 34px 120px rgba(0,0,0,.34); }
-  .hero-feature img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; transition: transform .8s cubic-bezier(.22,1,.36,1); }
-  .hero-feature:hover img { transform: scale(1.025); }
-  .hero-feature-shade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 42%, rgba(15,18,19,.9) 100%); }
-  .hero-feature-copy { position: absolute; inset: auto 0 0; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: clamp(1.4rem,3vw,2.5rem); }
-  .hero-feature-copy p { color: rgba(245,245,241,.62); font-size: .7rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-  .hero-feature-copy h2 { margin-top: .35rem; font-size: clamp(2rem,3vw,3.5rem); line-height: 1; }
-  .hero-feature-copy > span { display: grid; place-items: center; width: 3rem; height: 3rem; flex: 0 0 auto; border-radius: 50%; background: #69d254; color: #0f1213; font-size: 1.2rem; }
-  .operating-strip { position: relative; display: grid; grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto; align-items: center; gap: .9rem; margin-top: 3.5rem; padding: 1rem 1.2rem; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(245,245,241,.58); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; }
-  .operating-strip i { height: 1px; background: linear-gradient(90deg, rgba(105,210,84,.15), #69d254, rgba(105,210,84,.15)); }
+  .hero-intro { max-width: 36rem; margin: clamp(1.6rem, 3vw, 2.4rem) 0 0; color: rgba(245,245,241,.9); font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.5; }
 
   .work-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0 0; }
   .work-intro { display: grid; grid-template-columns: 1.1fr .65fr; gap: clamp(2rem,6vw,6rem); align-items: end; margin-bottom: 3rem; }
@@ -379,23 +420,19 @@ const structuredData = [
   .closing-panel .button { margin-top: 1.8rem; }
 
   @media (max-width: 980px) {
-    .hero-shell, .work-intro, .system-grid { grid-template-columns: 1fr; }
-    .hero-shell { min-height: auto; }
-    .hero-feature { min-height: 37rem; }
+    .work-intro, .system-grid { grid-template-columns: 1fr; }
     .work-intro { align-items: start; }
     .work-intro > p { max-width: 44rem; }
   }
 
   @media (max-width: 720px) {
-    .shipped-hero { padding: 8.3rem 0 3rem; }
-    .hero-copy h1 { font-size: clamp(4rem,17vw,5.6rem); }
-    .hero-intro { font-size: 1rem; }
-    .hero-actions { align-items: flex-start; flex-direction: column; }
-    .hero-feature { min-height: 27rem; border-radius: 1.4rem; }
-    .hero-feature-copy { padding: 1.25rem; }
-    .hero-feature-copy h2 { font-size: 2rem; }
-    .operating-strip { grid-template-columns: 1fr; border-radius: 1.4rem; }
-    .operating-strip i { width: 1px; height: .7rem; margin-left: .25rem; background: #69d254; }
+    .shipped-hero { min-height: 47rem; align-items: flex-end; }
+    .hero-background img { object-position: 63% center; }
+    .hero-shade { background: linear-gradient(180deg, rgba(7,9,10,.48) 0%, rgba(7,9,10,.34) 28%, rgba(7,9,10,.82) 70%, rgba(7,9,10,.96) 100%), linear-gradient(90deg, rgba(7,9,10,.48), rgba(7,9,10,.08)); }
+    .hero-shell { min-height: inherit; padding-top: 8rem; padding-bottom: 3.5rem; }
+    .hero-copy { max-width: 100%; }
+    .hero-copy h1 { font-size: clamp(4.2rem, 19vw, 6.1rem); line-height: .82; }
+    .hero-intro { max-width: 20rem; font-size: 1rem; }
     .work-intro h2, .system-copy h2, .closing-panel h2 { font-size: clamp(3.4rem,14vw,4.7rem); }
     .filter-shell { top: 0; }
     .work-grid { grid-template-columns: 1fr; }
@@ -408,8 +445,56 @@ const structuredData = [
     .closing-panel { align-items: flex-start; text-align: left; border-radius: 1.5rem; }
   }
 
+
+  @media (max-width: 980px) {
+    .site-header > nav, .site-header > .header-cta { display: none; }
+    .mobile-menu-toggle { display: flex; width: 44px; height: 44px; margin-left: auto; padding: 0; flex: 0 0 44px; align-items: center; justify-content: center; flex-direction: column; gap: 6px; border: 1px solid rgba(105,210,84,.44); border-radius: 50%; background: rgba(105,210,84,.08); color: #f5f5f1; cursor: pointer; }
+    .mobile-menu-toggle span { display: block; width: 17px; height: 1px; background: currentColor; transition: transform .35s cubic-bezier(.22,1,.36,1), width .35s ease; }
+    .mobile-menu { position: fixed; z-index: 90; inset: 0; display: block; overflow: hidden; background: radial-gradient(circle at 7% 8%, rgba(105,210,84,.2), transparent 34%), radial-gradient(circle at 92% 82%, rgba(237,244,234,.08), transparent 32%), #090d0b; color: #f5f5f1; opacity: 0; visibility: hidden; pointer-events: none; transform: translate3d(-100%,0,0); transition: transform .72s cubic-bezier(.16,1,.3,1), opacity .4s ease, visibility .72s; }
+    .mobile-menu::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(105,210,84,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(105,210,84,.055) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(135deg,#000,transparent 72%); pointer-events: none; }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+    .mobile-menu-shell { position: relative; z-index: 2; width: min(100%,760px); height: 100%; margin: 0 auto; padding: 18px clamp(22px,6vw,54px) max(24px,env(safe-area-inset-bottom)); display: grid; grid-template-rows: auto 1fr auto; }
+    .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+    .mobile-menu-logo { display: flex; width: 126px; }
+    .mobile-menu-logo img { display: block; width: 100%; }
+    .mobile-menu-close { position: relative; width: 46px; height: 46px; padding: 0; border: 1px solid rgba(245,245,241,.2); border-radius: 50%; background: rgba(245,245,241,.06); color: #f5f5f1; cursor: pointer; }
+    .mobile-menu-close span { position: absolute; left: 14px; right: 14px; top: 22px; height: 1px; background: currentColor; }
+    .mobile-menu-close span:first-child { transform: rotate(45deg); }
+    .mobile-menu-close span:last-child { transform: rotate(-45deg); }
+    .mobile-menu-nav { align-self: center; display: grid; }
+    .mobile-menu-nav a { display: grid; grid-template-columns: 42px 1fr; align-items: center; min-height: 76px; border-bottom: 1px solid rgba(245,245,241,.12); color: #f5f5f1; text-decoration: none; opacity: 0; transform: translateX(-34px); transition: opacity .45s ease, transform .62s cubic-bezier(.22,1,.36,1), color .25s ease; }
+    .mobile-menu-nav a:first-child { border-top: 1px solid rgba(245,245,241,.12); }
+    .mobile-menu-nav small { color: #69d254; font: 700 9px/1 Inter,sans-serif; letter-spacing: .12em; }
+    .mobile-menu-nav span { font: 400 clamp(38px,8vw,62px)/.92 "Instrument Serif",Georgia,serif; letter-spacing: -.035em; }
+    .mobile-menu-nav a:hover, .mobile-menu-nav a:focus-visible { color: #69d254; }
+    .mobile-menu.is-open .mobile-menu-nav a { opacity: 1; transform: none; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(1) { transition-delay: .16s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(2) { transition-delay: .22s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(3) { transition-delay: .28s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(4) { transition-delay: .34s; }
+    .mobile-menu-footer { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; }
+    .mobile-menu-cta { width: 100%; min-height: 58px; text-decoration: none; }
+    .mobile-menu-login { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 0 22px; border: 1px solid rgba(245,245,241,.22); border-radius: 999px; color: #f5f5f1; text-decoration: none; font-size: 13px; }
+    .mobile-menu-login span { color: #69d254; }
+    .mobile-menu-footer p { grid-column: 1/-1; margin: 4px 0 0; color: #858b89; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+    :global(html.mobile-menu-open), :global(html.mobile-menu-open body) { overflow: hidden; }
+  }
+
+  @media (max-width: 760px) {
+    .site-header { height: 58px; top: 12px; left: 12px; right: 12px; padding: 0 8px 0 16px; }
+    .site-header .logo { width: 112px; }
+  }
+
+  @media (max-width: 520px) {
+    .mobile-menu-footer { grid-template-columns: 1fr; }
+    .mobile-menu-login { width: 100%; }
+    .mobile-menu-footer p { grid-column: auto; }
+    .mobile-menu-nav a { min-height: 68px; }
+    .mobile-menu-nav span { font-size: 40px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .work-card { opacity: 1; filter: none; transform: none; transition: none; }
-    .card-media img, .text-link span { transition: none; }
+    .card-media img, .text-link span, .mobile-menu, .mobile-menu-nav a, .mobile-menu-toggle span { transition: none; }
   }
 </style>
