@@ -129,7 +129,7 @@ const structuredData = [
 ];
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="/images/shipped-hero-client-work.svg" structuredData={structuredData}>
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink-shipped-hero-business-work-20260822.webp" structuredData={structuredData}>
   <header class="site-header">
     <a class="logo" href="/" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
     <nav aria-label="Primary navigation">
@@ -166,16 +166,19 @@ const structuredData = [
   </div>
   <main class="shipped-page">
     <section class="shipped-hero" id="top" aria-labelledby="shipped-hero-title">
-      <div class="hero-background" aria-hidden="true">
-        <img src="/images/shipped-hero-client-work.svg" alt="" width="1280" height="720" fetchpriority="high" />
-      </div>
+      <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink-shipped-hero-business-work-20260822.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="container hero-shell">
-        <div class="hero-copy animate-fade-up">
-          <h1 id="shipped-hero-title">We Hate<br /><em>AI Slop</em></h1>
-          <p class="hero-intro">See what our team has shipped for clients lately.</p>
-        </div>
-      </div>
+      <div class="hero-shell"><div class="hero-copy animate-fade-up">
+        <p class="hero-eyebrow">RECENT CLIENT WORK</p>
+        <h1 id="shipped-hero-title">Real marketing work.<br /><em>Built to move business forward.</em></h1>
+        <p class="hero-intro">Websites, social, email, and growth systems shipped by our team, powered by AI and managed by expert marketers.</p>
+      </div></div>
+      <nav class="hero-capability-rail" aria-label="Explore work by category">
+        <a href="#latest-work" data-hero-filter="all"><span class="capability-preview preview-all" aria-hidden="true"><i></i><i></i><i></i></span><span>All work</span></a>
+        <a href="#latest-work" data-hero-filter="web"><span class="capability-preview preview-web" aria-hidden="true"><i></i><i></i><i></i></span><span>Websites</span></a>
+        <a href="#latest-work" data-hero-filter="social"><span class="capability-preview preview-social" aria-hidden="true"><i></i><i></i><i></i></span><span>Social media</span></a>
+        <a href="#latest-work" data-hero-filter="email"><span class="capability-preview preview-email" aria-hidden="true"><i></i><i></i><i></i></span><span>Email marketing</span></a>
+      </nav>
     </section>
 
     <section class="work-section" id="latest-work">
@@ -313,6 +316,14 @@ const structuredData = [
     applyFilter("all");
   }
 
+  function initHeroCategories() {
+    document.querySelectorAll<HTMLElement>("[data-hero-filter]").forEach((link) => link.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.querySelector<HTMLButtonElement>(`[data-filter="${link.dataset.heroFilter || "all"}"]`)?.click();
+      document.querySelector("#latest-work")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }));
+  }
+
   function initWorkReveals() {
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".work-card"));
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -333,11 +344,13 @@ const structuredData = [
   document.addEventListener("DOMContentLoaded", () => {
     initMobileMenu();
     initWorkFilters();
+    initHeroCategories();
     initWorkReveals();
   });
   if (document.readyState !== "loading") {
     initMobileMenu();
     initWorkFilters();
+    initHeroCategories();
     initWorkReveals();
   }
 </script>
@@ -356,15 +369,34 @@ const structuredData = [
   .header-cta:hover, .header-cta:focus-visible, .mobile-menu-cta:hover, .mobile-menu-cta:focus-visible { background: #82df6f; border-color: #82df6f; transform: translateY(-2px); }
   .mobile-menu-toggle, .mobile-menu { display: none; }
 
-  .shipped-hero { position: relative; min-height: clamp(42rem, 78vh, 55rem); display: flex; align-items: flex-end; overflow: hidden; background: #0f1213; isolation: isolate; }
-  .hero-background { position: absolute; z-index: -3; inset: 0; margin: 0; overflow: hidden; }
-  .hero-background img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: saturate(.92) contrast(1.02); transform: scale(1.002); }
-  .hero-shade { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(7,9,10,.94) 0%, rgba(7,9,10,.82) 28%, rgba(7,9,10,.38) 53%, rgba(7,9,10,.08) 79%), linear-gradient(180deg, rgba(7,9,10,.12) 0%, transparent 45%, rgba(7,9,10,.42) 100%); pointer-events: none; }
-  .hero-shell { position: relative; width: min(1280px, calc(100% - 48px)); min-height: inherit; margin: 0 auto; display: flex; align-items: flex-end; padding-top: 9rem; padding-bottom: clamp(4rem, 8vw, 7rem); }
-  .hero-copy { max-width: min(48rem, 61vw); }
-  .hero-copy h1 { margin: 0; color: #f5f5f1; font-family: "Instrument Serif", Georgia, serif; font-size: clamp(5rem, 9.4vw, 10.5rem); font-weight: 400; line-height: .78; letter-spacing: -.064em; text-wrap: balance; }
-  .hero-copy h1 em { color: #69d254; font-weight: 400; }
-  .hero-intro { max-width: 36rem; margin: clamp(1.6rem, 3vw, 2.4rem) 0 0; color: rgba(245,245,241,.9); font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.5; }
+  .shipped-hero { position: relative; min-height: clamp(46rem,80vh,54rem); display:flex; align-items:center; overflow:hidden; background:#0f1213; isolation:isolate; }
+  .hero-background { position:absolute; z-index:-3; inset:0; overflow:hidden; }
+  .hero-background img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:saturate(.94) contrast(1.025); }
+  .hero-shade { position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(7,9,10,.96) 0%,rgba(7,9,10,.88) 27%,rgba(7,9,10,.52) 50%,rgba(7,9,10,.08) 76%),linear-gradient(180deg,rgba(7,9,10,.12),transparent 44%,rgba(7,9,10,.62)); pointer-events:none; }
+  .hero-shell { position:relative; width:min(1280px,calc(100% - 48px)); min-height:inherit; margin:0 auto; display:flex; align-items:center; padding:7.5rem 0 8.5rem; }
+  .hero-copy { max-width:min(43rem,58vw); }
+  .hero-eyebrow { margin:0 0 1.4rem; color:#aee8a0; font-size:.72rem; font-weight:800; letter-spacing:.16em; }
+  .hero-copy h1 { margin:0; color:#f5f5f1; font-family:"Instrument Serif",Georgia,serif; font-size:clamp(4.2rem,6.5vw,7.2rem); font-weight:400; line-height:.86; letter-spacing:-.052em; text-wrap:balance; }
+  .hero-copy h1 em { display:inline-block; color:#69d254; font-weight:400; }
+  .hero-intro { max-width:37rem; margin:clamp(1.5rem,2.5vw,2.1rem) 0 0; color:rgba(245,245,241,.86); font-size:clamp(1rem,1.25vw,1.15rem); line-height:1.56; }
+  .hero-capability-rail { position:absolute; z-index:3; left:0; right:0; bottom:0; display:flex; gap:.7rem; padding:.75rem max(18px,calc((100vw - 1280px)/2)) 1rem; overflow-x:auto; scrollbar-width:none; }
+  .hero-capability-rail::-webkit-scrollbar { display:none; }
+  .hero-capability-rail a { flex:1 0 12.5rem; max-width:19rem; height:4.2rem; display:flex; align-items:center; gap:.75rem; padding:.5rem .8rem; border:1px solid rgba(15,18,19,.08); border-radius:.72rem; background:rgba(245,245,241,.96); color:#0f1213; text-decoration:none; font-size:.78rem; font-weight:700; box-shadow:0 12px 34px rgba(0,0,0,.16); backdrop-filter:blur(12px); transition:transform .2s ease,background .2s ease; }
+  .hero-capability-rail a:hover,.hero-capability-rail a:focus-visible { background:#fff; transform:translateY(-3px); }
+  .capability-preview { position:relative; width:3.1rem; height:3.1rem; flex:0 0 3.1rem; overflow:hidden; border-radius:.48rem; background:#15191a; }
+  .capability-preview i { position:absolute; display:block; }
+  .preview-all i:nth-child(1) { inset:.45rem .45rem auto; height:.32rem; border-radius:1rem; background:#69d254; }
+  .preview-all i:nth-child(2) { left:.45rem; right:1.35rem; top:1.15rem; bottom:.45rem; border-radius:.25rem; background:#f5f5f1; }
+  .preview-all i:nth-child(3) { right:.45rem; width:.65rem; top:1.15rem; bottom:.45rem; border-radius:.25rem; background:#4a5651; }
+  .preview-web i:nth-child(1) { inset:.4rem .4rem auto; height:.48rem; background:#edf4ea; }
+  .preview-web i:nth-child(2) { left:.4rem; right:.4rem; top:1rem; height:.75rem; background:linear-gradient(135deg,#69d254,#315b34); }
+  .preview-web i:nth-child(3) { left:.4rem; right:.95rem; bottom:.42rem; height:.46rem; background:#f5f5f1; }
+  .preview-social i:nth-child(1) { left:.42rem; top:.45rem; width:1.08rem; height:1.46rem; border-radius:.22rem; background:#69d254; transform:rotate(-7deg); }
+  .preview-social i:nth-child(2) { right:.42rem; top:.58rem; width:1.08rem; height:1.46rem; border-radius:.22rem; background:#f5f5f1; transform:rotate(6deg); }
+  .preview-social i:nth-child(3) { left:1rem; bottom:.42rem; width:1.12rem; height:.3rem; border-radius:1rem; background:#56615d; }
+  .preview-email i:nth-child(1) { inset:.42rem; border-radius:.22rem; background:#f5f5f1; }
+  .preview-email i:nth-child(2) { left:.68rem; right:.68rem; top:.78rem; height:.32rem; background:#69d254; }
+  .preview-email i:nth-child(3) { left:.68rem; right:1.1rem; top:1.35rem; height:.16rem; box-shadow:0 .42rem 0 #b7bdb9; background:#8c9490; }
 
   .work-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0 0; }
   .work-intro { display: grid; grid-template-columns: 1.1fr .65fr; gap: clamp(2rem,6vw,6rem); align-items: end; margin-bottom: 3rem; }
@@ -426,13 +458,17 @@ const structuredData = [
   }
 
   @media (max-width: 720px) {
-    .shipped-hero { min-height: 47rem; align-items: flex-end; }
-    .hero-background img { object-position: 63% center; }
-    .hero-shade { background: linear-gradient(180deg, rgba(7,9,10,.48) 0%, rgba(7,9,10,.34) 28%, rgba(7,9,10,.82) 70%, rgba(7,9,10,.96) 100%), linear-gradient(90deg, rgba(7,9,10,.48), rgba(7,9,10,.08)); }
-    .hero-shell { width: calc(100% - 32px); min-height: inherit; padding-top: 8rem; padding-bottom: 3.5rem; }
-    .hero-copy { max-width: 100%; }
-    .hero-copy h1 { font-size: clamp(4.2rem, 19vw, 6.1rem); line-height: .82; }
-    .hero-intro { max-width: 20rem; font-size: 1rem; }
+    .shipped-hero { min-height:48rem; align-items:center; }
+    .hero-background img { object-position:80% top; }
+    .hero-shade { background:linear-gradient(180deg,rgba(7,9,10,.58),rgba(7,9,10,.42) 32%,rgba(7,9,10,.76) 68%,rgba(7,9,10,.96)),linear-gradient(90deg,rgba(7,9,10,.86),rgba(7,9,10,.46) 62%,rgba(7,9,10,.14)); }
+    .hero-shell { width:calc(100% - 32px); min-height:inherit; padding:7rem 0 8rem; align-items:center; }
+    .hero-copy { max-width:22rem; }
+    .hero-eyebrow { margin-bottom:1rem; font-size:.66rem; }
+    .hero-copy h1 { font-size:clamp(3.55rem,15.5vw,5rem); line-height:.88; }
+    .hero-intro { max-width:21rem; font-size:.96rem; }
+    .hero-capability-rail { gap:.55rem; padding:.65rem 1rem .85rem; }
+    .hero-capability-rail a { flex-basis:11.8rem; height:3.8rem; padding:.4rem .65rem; }
+    .capability-preview { width:2.85rem; height:2.85rem; flex-basis:2.85rem; }
     .work-intro h2, .system-copy h2, .closing-panel h2 { font-size: clamp(3.4rem,14vw,4.7rem); }
     .filter-shell { top: 0; }
     .work-grid { grid-template-columns: 1fr; }
