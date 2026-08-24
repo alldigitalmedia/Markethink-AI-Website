@@ -56,6 +56,105 @@ export const journeyPosts = [
 
 export const insightPosts: BlogPost[] = [
   {
+    slug: "seo-content-feedback-loop",
+    title: "The SEO Content Feedback Loop: Improve Existing Pages Before Publishing More",
+    seoTitle: "SEO Content Feedback Loop: A Practical System | Markethink",
+    description:
+      "Build an SEO and AI-search content feedback loop that prioritizes page opportunities, routes changes through expert review, and measures business impact.",
+    excerpt:
+      "A practical, source-backed system for finding content opportunities, making focused improvements, approving changes, and learning from search and conversion results.",
+    label: "OPERATING GUIDE",
+    image: "/images/blog-brand-memory-approval-loop.avif",
+    imageAlt:
+      "A Markethink approval workflow connecting feedback, business memory, and an approved marketing asset",
+    publishedDate: "2026-08-24",
+    updatedDate: "2026-08-24",
+    readingTime: "11 min read",
+    category: "Search Strategy",
+    keywords: [
+      "SEO content feedback loop",
+      "content optimization workflow",
+      "AI SEO workflow",
+      "content refresh strategy",
+      "SEO content audit",
+      "AI search optimization",
+      "AEO content strategy",
+      "Search Console content optimization",
+      "content performance measurement",
+    ],
+    author: {
+      name: "Markethink Editorial Team",
+      title: "AI marketing systems managed by expert marketers",
+    },
+    intro: [
+      "Most content programs treat publication as the finish line. A topic is selected, a page is written, and the team moves on. The result is a growing library with very little operating memory.",
+      "A stronger model treats every existing page as a source of evidence. Search performance shows where attention is being lost. Page and conversion data show whether the visit creates value. Expert review turns that evidence into a focused change, and the result informs what happens next.",
+      "This guide explains how to build that loop without handing strategy or publishing decisions to automation, overreacting to short-term data, or treating answer engine optimization as a separate collection of tricks.",
+    ],
+    seoHubLink: {
+      copy: "For the broader system behind this approach, see our",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "For a deeper guide to search and answer visibility, read",
+      anchor: "How to Get Your Business to Show Up in AI Search",
+      href: "/blog/how-to-show-up-in-ai-search/",
+    },
+    relatedSlugs: [
+      "how-to-show-up-in-ai-search",
+      "how-to-use-ai-for-marketing-small-business",
+      "brand-memory-feedback-approved-campaigns",
+    ],
+    sections: [
+      { heading: "Publishing is not the finish line", body: [] },
+      { heading: "Start with the page", body: [] },
+      { heading: "Prioritize by opportunity", body: [] },
+      { heading: "Make focused improvements", body: [] },
+      { heading: "Keep an expert review gate", body: [] },
+      { heading: "Measure page, site, and pipeline", body: [] },
+      { heading: "Divide the work clearly", body: [] },
+      { heading: "Run a monthly rhythm", body: [] },
+    ],
+    faq: [
+      {
+        question: "What is an SEO content feedback loop?",
+        answer:
+          "An SEO content feedback loop is a repeatable process that uses page, search, and conversion evidence to identify an opportunity, recommend a focused change, route it through expert review, publish it, measure the result, and use that learning to choose the next action.",
+      },
+      {
+        question: "Should a business update old content or publish new content?",
+        answer:
+          "Do both, but prioritize by business and search opportunity rather than age alone. Update a page when evidence shows a specific visibility, click, relevance, conversion, or technical problem. Publish a new page when the audience has an important question that the current site does not answer well.",
+      },
+      {
+        question: "How should content refresh opportunities be prioritized?",
+        answer:
+          "Useful categories include pages losing visibility, pages earning impressions but weak click-through, pages close to stronger search positions, pages with missing evidence or intent gaps, and pages with technical or internal-linking problems. Exact thresholds should reflect the site and market.",
+      },
+      {
+        question: "How long should you wait before measuring an SEO content update?",
+        answer:
+          "A 28-day before-and-after comparison is a practical starting point for many sites, but low-volume pages, seasonal markets, and slow recrawls may need a longer window. Compare like periods and check the edited page against the sitewide organic trend.",
+      },
+      {
+        question: "Does AEO require different content from SEO?",
+        answer:
+          "Not as a separate content system. Google says its foundational SEO practices continue to apply to AI Overviews and AI Mode. Clear, useful, original, crawlable content with accurate evidence remains the foundation. Special AI files, forced chunking, and answer-engine-only rewrites are not required for Google Search.",
+      },
+      {
+        question: "Can AI publish SEO changes automatically?",
+        answer:
+          "It can technically automate parts of the workflow, but recommendations and publishing should remain separate. An expert should review the diagnosis, business claims, brand voice, technical risk, and measurement plan before a meaningful change goes live.",
+      },
+      {
+        question: "Which metrics matter after a content update?",
+        answer:
+          "Use Search Console for impressions, clicks, CTR, queries, and average position. Use analytics and CRM data for engagement, qualified actions, leads, and conversions. Do not judge success from rankings alone.",
+      },
+    ],
+  },
+  {
     slug: "how-to-use-ai-for-marketing-small-business",
     title: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
     seoTitle: "How to Use AI for Marketing: Small Business Guide | Markethink",
