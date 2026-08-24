@@ -3,6 +3,18 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/trial"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/trial/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/start/thanks"
   to = "/start/thanks/index.html"
   status = 200
