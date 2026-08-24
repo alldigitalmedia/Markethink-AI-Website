@@ -8,7 +8,7 @@ const pageDescription = "Interior design marketing managed by experts and powere
 const canonicalUrl = "https://markethink.ai/ai-marketing-for-interior-designers/";
 const applyHref = "#apply";
 
-const signals = ["Interior design studios", "First month free", "Selective fit review"];
+const signals = ["Interior design studios", "Focused marketing audit", "Selective fit review"];
 
 const painPoints = [
   ["Beautiful projects sit in folders", "Your completed work should become campaigns, portfolio stories, emails, posts, and follow-up — not disappear after the install photos are approved."],
@@ -25,29 +25,29 @@ const systemPieces = [
   ["Weekly shipping", "Every week has a clear set of work to review, approve, and move — not a random list of marketing tasks."],
 ];
 
-const freeMonthIncludes = [
+const auditIncludes = [
   "A focused audit of your studio's current website, offer, project visuals, and inquiry path",
   "One campaign angle for the design service or project type you want more of",
   "A starter content and landing-page plan built around your actual studio work",
-  "A review-ready set of first-month marketing assets or page recommendations",
+  "Specific recommendations for the first marketing assets or page changes to prioritize",
   "A simple follow-up structure for inquiries, referrals, and warm prospects",
-  "A clear recommendation for the next paid month if there is a fit",
+  "A clear recommendation for the next step if there is a fit",
 ];
 
 const process = [
   ["1", "Apply with your studio context", "Tell us your website, ideal projects, current marketing gap, and what you want to move first."],
-  ["2", "We choose one focused first motion", "The free month is intentionally narrow: one studio, one growth priority, one campaign path."],
+  ["2", "We choose one focused first motion", "The audit is intentionally focused: one studio, one growth priority, and one campaign path."],
   ["3", "Markethink organizes the system", "We structure the campaign, create reviewable work, capture approvals, and prepare the next steps."],
-  ["4", "You decide if it should continue", "If the first month creates clarity and momentum, we map the paid monthly rhythm. If not, you still leave with a useful audit."],
+  ["4", "You decide if it should continue", "If the audit creates clarity, we map the right monthly rhythm. Either way, you leave with a useful recommendation."],
 ];
 
 const faqs = [
   { question: "What is AI marketing for interior designers?", answer: "AI marketing for interior designers means using modern marketing automation and creation support with the right studio context: your services, project visuals, design voice, approval rules, campaigns, inquiries, and follow-up. Markethink turns that into a marketing system, not a pile of disconnected tools." },
   { question: "Is this only for large interior design firms?", answer: "No. The strongest fit is a studio with real project work, a clear service offer, and a desire to market more consistently. That can be a boutique studio, a growing firm, or a design-build business." },
-  { question: "What does the free month include?", answer: "The free month includes a focused audit, one campaign direction, starter marketing assets or page recommendations, an approval rhythm, and a next-month plan if the fit is strong. It does not include ad spend, a full website rebuild, or unlimited content." },
+  { question: "What does the focused audit include?", answer: "The audit reviews the studio offer, website, project visuals, campaign opportunity, and inquiry path. We identify the strongest first move and recommend the next step. It does not include ad spend, a full website rebuild, or unlimited content." },
   { question: "Can this support paid ads?", answer: "Yes. The page and first campaign are built with paid traffic in mind: clear message match, a direct offer, a specific audience, and a simple application path. We still keep the page useful for organic search." },
   { question: "Will Markethink make our studio look generic?", answer: "No. The whole point is to learn the business and preserve the studio's voice, visual taste, approval preferences, and ideal-client direction. The system should make your marketing more consistent, not flatter the brand." },
-  { question: "What happens after I apply?", answer: "We review the studio, the offer, and the first marketing problem. If there is a fit, we reply with the recommended first focus and the next step to begin the free month." },
+  { question: "What happens after I request the audit?", answer: "We review the studio, the offer, and the first marketing problem. If there is a fit, we reply with the recommended first focus and the next step." },
 ];
 
 const structuredData = [
@@ -70,7 +70,7 @@ const structuredData = [
             Markethink turns project work into connected campaigns, content, website updates, approvals, inquiries, and follow-up. AI supports the production. Expert marketers direct the work and protect the studio's point of view.
           </p>
           <div class="button-group animate-fade-up">
-            <a href={applyHref} class="button">Apply for 1 Free Month</a>
+            <a href={applyHref} class="button">Request a Studio Marketing Audit</a>
             <a href="#system" class="button is-secondary">See What It Does</a>
           </div>
           <div class="trust-row animate-fade-up" aria-label="Page signals">
@@ -137,13 +137,13 @@ const structuredData = [
           <p class="subtitle">BUILT FOR ADS AND SEARCH</p>
           <h2>The page answers the click, then gives the studio a reason to apply.</h2>
           <p>
-            Paid traffic needs a fast promise: one free month to organize the studio's marketing system. Search traffic needs depth: what AI marketing for interior designers means, what it does, and why a system beats disconnected tools.
+            Paid traffic needs a fast promise: a focused audit that identifies the strongest first marketing move. Search traffic needs depth: what AI marketing for interior designers means, what it does, and why a system beats disconnected tools.
           </p>
           <ul>
             <li>Clear message match for ad campaigns aimed at interior designers.</li>
             <li>Organic sections that answer practical search intent without sounding generic.</li>
             <li>A selective application flow instead of a cheap signup.</li>
-            <li>Concrete scope so the free month feels valuable and controlled.</li>
+            <li>Concrete scope so the audit feels useful and focused.</li>
           </ul>
           <p class="context-link">For the broader operating model, see <a href="/ai-marketing-for-small-business/">how AI marketing becomes a connected weekly system</a>. For educational implementation, use our <a href="/blog/how-to-use-ai-for-marketing-small-business/">practical AI marketing workflow</a>.</p>
         </div>
@@ -153,15 +153,15 @@ const structuredData = [
     <section class="section light-green offer-section">
       <div class="container offer-grid">
         <div class="offer-card">
-          <p class="subtitle">SELECTIVE FIRST MONTH</p>
-          <h2>Apply for one free month inside Markethink.</h2>
+          <p class="subtitle">FOCUSED MARKETING AUDIT</p>
+          <h2>Request a focused marketing audit for your studio.</h2>
           <p>
-            We are using this offer to work closely with the right interior design studios and build a strong category position early. The first month is free when there is a clear fit and one focused marketing problem to move.
+            We review the studio, the offer, and the current marketing bottleneck. If there is a fit, we identify the strongest first move and recommend the right next step.
           </p>
-          <a href={applyHref} class="button">Apply for 1 Free Month</a>
+          <a href={applyHref} class="button">Request the Audit</a>
         </div>
         <div class="included-list">
-          {freeMonthIncludes.map((item) => (
+          {auditIncludes.map((item) => (
             <article>
               <span aria-hidden="true">✓</span>
               <p>{item}</p>
@@ -175,9 +175,9 @@ const structuredData = [
       <div class="container">
         <div class="section-header">
           <p class="subtitle">HOW IT WORKS</p>
-          <h2>A controlled first month, not an open-ended marketing sprint.</h2>
+          <h2>A focused starting point, not an open-ended marketing sprint.</h2>
           <p class="section-description dark-copy">
-            The goal is to prove the system on a real studio priority. We keep the scope tight so the work can move quickly and the next step is obvious.
+            The goal is to identify the strongest first move around a real studio priority. We keep the audit focused so the recommendation is useful and the next step is obvious.
           </p>
         </div>
         <div class="process-grid">
@@ -200,7 +200,7 @@ const structuredData = [
           <ul>
             <li>You have completed projects, a point of view, and a service you want more clients to understand.</li>
             <li>You want better campaigns, content, website clarity, and follow-up without making the studio feel generic.</li>
-            <li>You are open to a monthly marketing system if the free month creates clarity and useful work.</li>
+            <li>You are open to a monthly marketing system if the audit identifies a useful first move.</li>
           </ul>
         </div>
         <div class="fit-card muted">
@@ -235,10 +235,10 @@ const structuredData = [
     <section class="section light-green application-section" id="apply">
       <div class="container application-grid">
         <div class="application-copy">
-          <p class="subtitle">APPLY FOR 1 FREE MONTH</p>
+          <p class="subtitle">REQUEST A STUDIO MARKETING AUDIT</p>
           <h2>Tell us what kind of interior design work you want more of.</h2>
           <p>
-            We review each studio before starting. If there is a fit, we will reply with the recommended first focus and the next step to begin the free month.
+            We review each studio before starting. If there is a fit, we will reply with the recommended first focus and the right next step.
           </p>
         </div>
         <form
@@ -274,8 +274,8 @@ const structuredData = [
               <option>Email or referral follow-up</option>
             </select>
           </label>
-          <button type="submit" class="button form-button">Apply for 1 free month</button>
-          <p class="form-note">No ad spend is included. The free month is scoped around one studio priority and a fit review.</p>
+          <button type="submit" class="button form-button">Request My Studio Marketing Audit</button>
+          <p class="form-note">Packages depend on scope. The audit is focused around one studio priority and a fit review.</p>
         </form>
       </div>
     </section>
