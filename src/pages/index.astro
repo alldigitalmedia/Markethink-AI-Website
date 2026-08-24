@@ -509,10 +509,17 @@ const faq = [
       window.addEventListener('resize', fitResponsiveDashboard, { passive: true });
     }
 
+    const mobileHero = document.querySelector('[data-scroll-hero]');
+    if (mobileHero && window.innerWidth <= 760) {
+      if (reduce) mobileHero.classList.add('is-mobile-motion-ready');
+      else requestAnimationFrame(() => requestAnimationFrame(() => mobileHero.classList.add('is-mobile-motion-ready')));
+    }
+
     const connectionsStage = document.querySelector('[data-connections-ecosystem] .connections-stage');
     if (connectionsStage && connectionsStage.dataset.streamReady !== 'true') {
       connectionsStage.dataset.streamReady = 'true';
       const platforms = [...connectionsStage.querySelectorAll('.connection-platform')];
+      platforms.forEach((platform, index) => platform.style.setProperty('--mobile-platform-order', String(index)));
       const cycleMs = 76000;
       const visibleWindow = .70;
       let pathLookup = [];
@@ -1079,5 +1086,75 @@ const faq = [
     .trust-logo-set[aria-hidden="true"]{display:none}
     .trust-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
     .trust-logo-set{padding:0 22px}
+  }
+
+  /* Mobile-safe motion: retain the desktop's layered entrance language without scroll pinning or hover dependencies. */
+  @keyframes mobileHeroReveal{
+    from{opacity:0;filter:blur(8px);transform:translate3d(0,22px,0)}
+    to{opacity:1;filter:blur(0);transform:translate3d(0,0,0)}
+  }
+  @keyframes mobileDashboardReveal{
+    from{opacity:0;filter:blur(9px) drop-shadow(0 24px 48px rgba(0,0,0,.5))}
+    to{opacity:1;filter:blur(0) drop-shadow(0 24px 48px rgba(0,0,0,.5))}
+  }
+  @keyframes mobileAuroraFloat{
+    from{translate:-2% -2%;scale:.98}
+    to{translate:3% 3%;scale:1.04}
+  }
+  @keyframes mobilePlatformFloat{
+    0%,100%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(0,-4px,0)}
+  }
+  @media(max-width:760px) and (prefers-reduced-motion:no-preference){
+    :global(.v6-interactions-ready) .hero-content .eyebrow,
+    :global(.v6-interactions-ready) .hero-content h1,
+    :global(.v6-interactions-ready) .hero-content .hero-copy,
+    :global(.v6-interactions-ready) .hero-content .hero-actions,
+    :global(.v6-interactions-ready) .hero-content .microcopy{
+      opacity:0;
+      filter:blur(8px);
+      transform:translate3d(0,22px,0);
+    }
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .eyebrow,
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content h1,
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .hero-copy,
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .hero-actions,
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .microcopy{
+      animation:mobileHeroReveal .72s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content h1{animation-delay:.08s}
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .hero-copy{animation-delay:.16s}
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .hero-actions{animation-delay:.24s}
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-content .microcopy{animation-delay:.31s}
+    :global(.v6-interactions-ready) .hero-dashboard-stage{opacity:0}
+    :global(.v6-interactions-ready) .hero.is-mobile-motion-ready .hero-dashboard-stage{
+      animation:mobileDashboardReveal .92s .24s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .hero.is-mobile-motion-ready .hero-aurora-one{animation:mobileAuroraFloat 9s ease-in-out infinite alternate}
+    .hero.is-mobile-motion-ready .hero-aurora-two{animation:mobileAuroraFloat 11s -4s ease-in-out infinite alternate-reverse}
+  }
+  @media(max-width:680px) and (prefers-reduced-motion:no-preference){
+    :global(.v6-scroll-reveal-ready) .connections-stage .connection-platform{
+      opacity:0;
+      transform:translate3d(0,20px,0) scale(.985);
+      transition:opacity .55s ease,transform .7s cubic-bezier(.16,1,.3,1);
+      transition-delay:calc(var(--mobile-platform-order)*32ms);
+    }
+    :global(.v6-scroll-reveal-ready) .connections-stage.is-in-view .connection-platform{
+      opacity:1;
+      transform:translate3d(0,0,0) scale(1);
+    }
+    .connections-stage.is-in-view .connection-logo{
+      animation:mobilePlatformFloat 5.2s ease-in-out infinite;
+      animation-delay:calc(var(--mobile-platform-order)*-240ms);
+    }
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-content .eyebrow,.hero-content h1,.hero-content .hero-copy,.hero-content .hero-actions,.hero-content .microcopy,.hero-dashboard-stage,.connection-platform,.connection-logo{
+      opacity:1!important;
+      filter:none;
+      animation:none!important;
+      transition:none!important;
+    }
   }
 </style>
