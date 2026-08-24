@@ -44,11 +44,6 @@ const staticPages = [
     changefreq: "monthly",
   },
   {
-    path: "/trial/",
-    priority: "0.8",
-    changefreq: "monthly",
-  },
-  {
     path: "/privacy/",
     priority: "0.3",
     changefreq: "yearly",
