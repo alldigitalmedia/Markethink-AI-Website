@@ -52,13 +52,30 @@ const companyLinks = [
 
 <style>
   .site-footer-wrap {
-    width: min(calc(100% - 28px), 1440px);
-    margin: 0 auto;
-    padding-top: clamp(54px, 7vw, 96px);
+    --footer-transition-depth: clamp(54px, 7vw, 96px);
+    width: 100vw;
+    margin-top: calc(var(--footer-transition-depth) * -1);
+    margin-left: calc(50% - 50vw);
+    padding: calc(var(--footer-transition-depth) * 2) max(14px, calc((100vw - 1440px) / 2)) 0;
+    box-sizing: border-box;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 18, 19, 0) 0%,
+      rgba(15, 18, 19, 0.2) 22%,
+      rgba(15, 18, 19, 0.82) 60%,
+      #0F1213 100%
+    );
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
   }
 
   .site-footer {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     display: grid;
+    pointer-events: auto;
     grid-template-columns: minmax(280px, 1.05fr) minmax(480px, 1.4fr);
     gap: clamp(28px, 4vw, 58px);
     padding: clamp(22px, 2.6vw, 32px) clamp(34px, 4vw, 54px) clamp(18px, 2vw, 26px);
@@ -149,8 +166,9 @@ const companyLinks = [
 
   @media (max-width: 680px) {
     .site-footer-wrap {
-      width: min(calc(100% - 20px), 1440px);
-      padding-top: 64px;
+      --footer-transition-depth: 64px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
 
     .site-footer {
