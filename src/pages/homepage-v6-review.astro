@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
+import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
 const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp";
@@ -117,14 +118,10 @@ const faq = [
     <header class="site-header">
       <a class="logo" href="#top" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
       <nav aria-label="Primary navigation">
-        <a href="#how-it-works">How it works</a>
-        <a href="/shipped/">Real work</a>
-        <a href="/who-we-help/">Who we help</a>
-        <a href="#proof-title">Why Markethink</a>
-        <a href="/blog/">Insights</a>
-        <a href="https://dashboard.markethink.ai/">Log in</a>
+        {primaryNavigation.map((link) => <a href={link.reviewHref}>{link.label}</a>)}
+        <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
       </nav>
-      <a class="button button-small button-roll" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a>
+      <a class="button button-small button-roll" href={primaryNavigationActions.ctaHref}><span class="button-label"><span>{primaryNavigationActions.ctaLabel}</span><span aria-hidden="true">{primaryNavigationActions.ctaLabel}</span></span></a>
       <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
         <span></span><span></span>
       </button>
@@ -137,15 +134,13 @@ const faq = [
           <button class="mobile-menu-close" type="button" aria-label="Close navigation" data-mobile-menu-close><span></span><span></span></button>
         </div>
         <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
-          <a href="#how-it-works" data-mobile-menu-close><small>01</small><span>How it works</span></a>
-          <a href="/shipped/" data-mobile-menu-close><small>02</small><span>Real work</span></a>
-          <a href="/who-we-help/" data-mobile-menu-close><small>03</small><span>Who we help</span></a>
-          <a href="#proof-title" data-mobile-menu-close><small>04</small><span>Why Markethink</span></a>
-          <a href="/blog/" data-mobile-menu-close><small>05</small><span>Insights</span></a>
+          {primaryNavigation.map((link, index) => (
+            <a href={link.reviewHref} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
+          ))}
         </nav>
         <div class="mobile-menu-footer">
-          <a class="button mobile-menu-cta" href="/schedule-a-walkthrough/" data-mobile-menu-close>Book A Demo</a>
-          <a class="mobile-menu-login" href="https://dashboard.markethink.ai/" data-mobile-menu-close>Log in <span>↗</span></a>
+          <a class="button mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
+          <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
           <p>Powered by AI. Managed by expert marketers.</p>
         </div>
       </div>
