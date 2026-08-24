@@ -3,25 +3,98 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
-const pageTitle = "Work Shipped by Markethink | Markethink";
-const pageDescription = "See how Markethink turns brand intelligence, campaign systems, operational visibility, and pipeline thinking into finished work, powered by AI and managed by expert marketers.";
+const pageTitle = "What Our Clients Shipped | Markethink";
+const pageDescription = "See the websites, campaigns, content, advertising, and pipeline work clients are shipping with Markethink, powered by AI and managed by expert marketers.";
 const canonicalUrl = "https://markethink.ai/shipped/";
 const walkthroughHref = "/schedule-a-walkthrough/";
 
 const categories = [
   { id: "all", label: "All work" },
-  { id: "system", label: "Marketing system" },
+  { id: "web", label: "Web" },
+  { id: "social", label: "Social media" },
+  { id: "email", label: "Email marketing" },
 ];
 
 const workItems = [
   {
-    category: "system",
-    client: "Markethink",
-    work: "Brand intelligence, approval memory, visual and voice guardrails, and campaign context",
-    image: "/images/product-brand-intelligence-v4.png",
-    alt: "Markethink Brand Intelligence system connecting audience, offers, voice, approvals, visuals, competitors, memory, and rules",
-    action: "Brand Intelligence system",
+    category: "web",
+    client: "Green",
+    work: "Web design, solution architecture, and contact flow",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/green-web.webp",
+    alt: "Green technology services website displayed on a desktop monitor",
+    href: "https://greencss.com",
+    action: "Visit website",
+    tone: "dark",
+  },
+  {
+    category: "social",
+    client: "Mango Media",
+    work: "Social media creative and content direction",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/mango-social.webp",
+    alt: "Mango Media social media creative displayed on a smartphone",
+    href: "https://www.instagram.com/mangomediaca/",
+    action: "View on Instagram",
+    tone: "green",
+  },
+  {
+    category: "web",
+    client: "Selten Logistics",
+    work: "Web design, inventory experience, and inquiry flow",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-logistics-web.webp",
+    alt: "Selten Logistics equipment marketplace displayed on a laptop",
+    href: "https://www.seltenlogistics.com",
+    action: "Visit website",
     tone: "wash",
+  },
+  {
+    category: "web",
+    client: "+SELTEN Ai",
+    work: "Web design, product positioning, and bilingual experience",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-ai-web.webp",
+    alt: "+SELTEN Ai website displayed on a desktop monitor",
+    href: "https://selten.ai/es",
+    action: "Visit website",
+    tone: "dark",
+  },
+  {
+    category: "social",
+    client: "Pambuddha Homes",
+    work: "Social media creative and editorial content direction",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/pambuddha-homes-social-v2.webp",
+    alt: "Pambuddha Homes flooring content displayed as an Instagram post",
+    href: "https://www.instagram.com/pambuddhahomes/",
+    action: "View on Instagram",
+    tone: "warm",
+  },
+  {
+    category: "social",
+    client: "Villazzo",
+    work: "Social media creative and destination content",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/villazzo-social.webp",
+    alt: "Villazzo luxury villa destination post displayed on a smartphone",
+    href: "https://www.instagram.com/villazzo/",
+    action: "View on Instagram",
+    tone: "green",
+  },
+  {
+    category: "email",
+    client: "Villazzo",
+    work: "Email marketing creative and editorial newsletter design",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
+    alt: "The Villazzo Edit email newsletter displayed on a tablet",
+    href: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
+    action: "View email",
+    tone: "warm",
+    fit: "contain",
+  },
+  {
+    category: "web",
+    client: "Emma Sacks Interiors",
+    work: "Website redesign for an interiors practice shaped by form, function, and luxury",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/emma-sacks-website-redesign.webp",
+    alt: "Emma Sacks Interiors website redesign displayed on a laptop",
+    action: "Website redesign in progress",
+    tone: "warm",
   },
 ];
 
@@ -29,7 +102,7 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Work Shipped by Markethink",
+    name: "What Our Clients Shipped",
     description: pageDescription,
     url: canonicalUrl,
     inLanguage: "en",
@@ -51,13 +124,13 @@ const structuredData = [
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
-      { "@type": "ListItem", position: 2, name: "Work Shipped by Markethink", item: canonicalUrl },
+      { "@type": "ListItem", position: 2, name: "What Our Clients Shipped", item: canonicalUrl },
     ],
   },
 ];
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp" structuredData={structuredData}>
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" structuredData={structuredData}>
   <header class="site-header">
     <a class="logo" href="/" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
     <nav aria-label="Primary navigation">
@@ -90,21 +163,21 @@ const structuredData = [
   </div>
   <main class="shipped-page">
     <section class="shipped-hero" id="top" aria-labelledby="shipped-hero-title">
-      <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>
+      <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-shell"><div class="hero-copy animate-fade-up">
-        <p class="hero-eyebrow">RECENT WORK</p>
+        <p class="hero-eyebrow">RECENT CLIENT WORK</p>
         <h1 id="shipped-hero-title">Real marketing work.<br /><em>Built to move business forward.</em></h1>
-        <p class="hero-intro">Brand intelligence, campaign systems, operational visibility, and pipeline thinking shipped by our team, powered by AI and managed by expert marketers.</p>
+        <p class="hero-intro">Websites, social, email, and growth systems shipped by our team, powered by AI and managed by expert marketers.</p>
       </div></div>
-      <div class="hero-work-marquee" aria-label="Explore recent Markethink work">
+      <div class="hero-work-marquee" aria-label="Explore real client work">
         <div class="hero-work-track">
           {[0, 1].map((copyIndex) => (
             <div class="hero-work-group" aria-hidden={copyIndex === 1 ? "true" : undefined}>
               {workItems.map((item) => (
                 <a href="#latest-work" class="hero-work-card" data-hero-filter={item.category} tabindex={copyIndex === 1 ? "-1" : undefined} aria-label={`View ${item.client} work`}>
                   <img src={item.image} alt="" width="120" height="88" loading="eager" />
-                  <span><small>{item.category === "system" ? "SYSTEM" : item.category === "web" ? "WEB" : item.category === "social" ? "SOCIAL" : "EMAIL"}</small><strong>{item.client}</strong></span>
+                  <span><small>{item.category === "web" ? "WEB" : item.category === "social" ? "SOCIAL" : "EMAIL"}</small><strong>{item.client}</strong></span>
                 </a>
               ))}
             </div>
@@ -116,10 +189,10 @@ const structuredData = [
     <section class="work-section" id="latest-work">
       <div class="container work-intro">
         <div>
-          <p class="subtitle">CURRENT WORK</p>
-          <h2>Real work. Built to move the operation forward.</h2>
+          <p class="subtitle">REAL CLIENT WORK</p>
+          <h2>Live projects. Built for real businesses.</h2>
         </div>
-        <p>First-party work from Markethink. More client work will be added only when public permission is documented.</p>
+        <p>Selected work across websites, social media, and email. Linked cards open the live destination or finished creative.</p>
       </div>
 
       <div class="filter-shell" data-filter-shell>
@@ -333,11 +406,11 @@ const structuredData = [
   .filters::-webkit-scrollbar { display: none; }
   .filter-button { flex: 0 0 auto; padding: .72rem 1rem; border: 1px solid rgba(15,18,19,.12); border-radius: 999px; background: transparent; color: rgba(15,18,19,.64); font: 700 .78rem/1 var(--font-body); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
   .filter-button:hover, .filter-button.is-active { border-color: #0f1213; background: #0f1213; color: #f5f5f1; }
-  .work-grid { display: grid; grid-template-columns: minmax(0,min(100%,980px)); justify-content: center; gap: clamp(1rem,2vw,2rem); padding: 0 clamp(1rem,3vw,3rem) clamp(4rem,8vw,8rem); background: #f5f5f1; }
+  .work-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(1rem,2vw,2rem); padding: 0 clamp(1rem,3vw,3rem) clamp(4rem,8vw,8rem); background: #f5f5f1; }
   .work-card { position: relative; display: block; min-height: 0; overflow: visible; background: transparent; color: #0f1213; opacity: 0; filter: blur(18px); transform: translateY(44px) scale(.98); transition: opacity .9s cubic-bezier(.22,1,.36,1), filter 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); transition-delay: calc((var(--card-index) % 2) * 90ms); }
   .work-card.is-revealed { opacity: 1; filter: blur(0); transform: none; }
   .work-card[hidden] { display: none; }
-  .card-media { position: relative; inset: auto; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 1.25rem; background: #171b1c; isolation: isolate; }
+  .card-media { position: relative; inset: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 1.25rem; background: #171b1c; isolation: isolate; }
   .card-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.22,1,.36,1), filter .5s ease; }
   .card-media.fit-contain::before { content: ""; position: absolute; z-index: 0; inset: -7%; background-image: var(--card-image); background-position: center; background-size: cover; filter: blur(30px) saturate(.8) brightness(.8); transform: scale(1.09); }
   .card-media.fit-contain::after { content: ""; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgba(15,18,19,.18), transparent 28%, transparent 72%, rgba(15,18,19,.18)); pointer-events: none; }
