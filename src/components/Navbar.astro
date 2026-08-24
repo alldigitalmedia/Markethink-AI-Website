@@ -1,6 +1,5 @@
 ---
-const auditHref = "/#audit";
-const dashboardHref = "https://dashboard.markethink.ai";
+import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 ---
 
 <nav class="navbar" aria-label="Primary navigation">
@@ -9,15 +8,11 @@ const dashboardHref = "https://dashboard.markethink.ai";
       <img src="/images/logo-white.svg" alt="Markethink" class="nav-logo" />
     </a>
     <div class="nav-links" id="primary-navigation">
-      <a href="/shipped/" class="nav-link">Work</a>
-      <a href="/#how-it-works" class="nav-link">How it works</a>
-      <a href="/#who-its-for" class="nav-link">Who it is for</a>
-      <a href="/blog/" class="nav-link">Insights</a>
-      <a href="/#comparison" class="nav-link">Why Markethink</a>
+      {primaryNavigation.map((link) => <a href={link.href} class="nav-link">{link.label}</a>)}
     </div>
     <div class="nav-actions">
-      <a href={dashboardHref} class="nav-login">Log in</a>
-      <a href={auditHref} class="button nav-button">Request an Audit</a>
+      <a href={primaryNavigationActions.loginHref} class="nav-login">{primaryNavigationActions.loginLabel}</a>
+      <a href={primaryNavigationActions.ctaHref} class="button nav-button">{primaryNavigationActions.ctaLabel}</a>
     </div>
     <button class="mobile-menu-btn" aria-label="Toggle menu" aria-controls="primary-navigation" aria-expanded="false">
       <span></span>
