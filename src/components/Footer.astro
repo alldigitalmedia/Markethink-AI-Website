@@ -1,131 +1,185 @@
 ---
-const pageLinks = [
-  { label: "Home", href: "/#hero" },
-  { label: "What Our Clients Shipped", href: "/shipped/" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Who It Is For", href: "/#who-its-for" },
-  { label: "Who We Help", href: "/who-we-help/" },
+const exploreLinks = [
+  { label: "Home", href: "/" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Real work", href: "/shipped/" },
+  { label: "Who we help", href: "/who-we-help/" },
   { label: "Why Markethink", href: "/#comparison" },
-  { label: "First 30 Days", href: "/#first-30-days" },
-  { label: "Marketing System Audit", href: "/#audit" },
-  { label: "30-Day Trial", href: "/trial/" },
   { label: "Insights", href: "/blog/" },
-  { label: "Privacy", href: "/privacy/" },
 ];
 
-const socialLinks = [
+const connectLinks = [
+  { label: "Book A Demo", href: "/schedule-a-walkthrough/" },
+  { label: "Contact", href: "mailto:hello@markethink.ai" },
+  { label: "Log in", href: "https://dashboard.markethink.ai/" },
+  { label: "30-Day Trial", href: "/trial/" },
+];
+
+const companyLinks = [
+  { label: "Privacy", href: "/privacy/", external: false },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/markethink-ai/", external: true },
   { label: "Instagram", href: "https://www.instagram.com/markethink.ai/", external: true },
 ];
 ---
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/#hero" class="footer-logo-link">
-          <img src="/images/logo-white.svg" alt="Markethink" class="footer-logo" />
-        </a>
-        <p class="footer-description">
-          Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.
-        </p>
-      </div>
-      <div class="footer-links-col">
-        <h5 class="footer-heading">Pages</h5>
-        <ul class="footer-link-list">
-          {pageLinks.map((link) => (
-            <li>
-              <a href={link.href} class="footer-link">{link.label}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h5 class="footer-heading">Follow us on social</h5>
-        <ul class="footer-link-list">
-          {socialLinks.map((link) => (
-            <li>
-              <a href={link.href} class="footer-link" target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>{link.label}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+<div class="site-footer-wrap">
+  <footer class="site-footer">
+    <div class="site-footer-brand">
+      <a href="/" aria-label="Markethink home"><img src="/images/logo.svg" alt="Markethink" /></a>
+      <p>Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.</p>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copyright">Your marketing operation, powered by AI and managed by experts.</p>
+    <nav class="site-footer-nav" aria-label="Footer navigation">
+      <div>
+        <strong>Explore</strong>
+        {exploreLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+      <div>
+        <strong>Connect</strong>
+        {connectLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+      <div>
+        <strong>Company</strong>
+        {companyLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>{link.label}</a>)}
+        <span>Powered by AI</span>
+        <span>Managed by experts</span>
+      </div>
+    </nav>
+    <div class="site-footer-bottom">
+      <span>© Markethink</span>
+      <strong>Your marketing operation, powered by AI and managed by experts.</strong>
     </div>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <style>
-  .footer {
-    padding: 5rem 0 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  .site-footer-wrap {
+    width: min(calc(100% - 28px), 1440px);
+    margin: 0 auto;
+    padding-top: clamp(54px, 7vw, 96px);
   }
 
-  .footer-grid {
+  .site-footer {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: minmax(280px, 1.05fr) minmax(480px, 1.4fr);
+    gap: clamp(28px, 4vw, 58px);
+    padding: clamp(22px, 2.6vw, 32px) clamp(34px, 4vw, 54px) clamp(18px, 2vw, 26px);
+    border-radius: 32px 32px 0 0;
+    background: rgba(245, 245, 241, 0.97);
+    color: #0F1213;
+    box-shadow: 0 -24px 70px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(16px) saturate(112%);
+    -webkit-backdrop-filter: blur(16px) saturate(112%);
   }
 
-  .footer-logo {
-    width: 190px;
-    height: auto;
+  .site-footer-brand img {
     display: block;
-    margin-bottom: 1rem;
+    width: 158px;
+    height: auto;
   }
 
-  .footer-description {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.6;
-    max-width: 20rem;
+  .site-footer-brand p {
+    max-width: 470px;
+    margin: 12px 0 0;
+    color: #525854;
+    line-height: 1.5;
+    font-size: 15px;
   }
 
-  .footer-heading {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 1.25rem;
+  .site-footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
   }
 
-  .footer-link-list {
-    list-style: none;
+  .site-footer-nav > div {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 11px;
   }
 
-  .footer-link {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
-    transition: color 0.3s;
+  .site-footer-nav strong {
+    margin-bottom: 4px;
+    font-size: 13px;
   }
 
-  .footer-link:hover {
-    color: var(--text-invert);
+  .site-footer-nav a,
+  .site-footer-nav span {
+    color: #525854;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.3;
   }
 
-  .footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  .site-footer-nav a:hover,
+  .site-footer-nav a:focus-visible {
+    color: #315b28;
   }
 
-  .footer-copyright {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
-    text-align: center;
+  .site-footer-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding-top: 14px;
+    border-top: 1px solid #d7ddd3;
+    color: #686B6C;
+    font-size: 12px;
   }
 
-  @media (max-width: 767px) {
-    .footer-grid {
+  .site-footer-bottom strong {
+    color: #315b28;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  @media (max-width: 980px) {
+    .site-footer {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 24px;
+    }
+
+    .site-footer-nav {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .site-footer-bottom {
+      margin-top: 2px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .site-footer-wrap {
+      width: min(calc(100% - 20px), 1440px);
+      padding-top: 64px;
+    }
+
+    .site-footer {
+      padding: 26px 24px 20px;
+      border-radius: 26px 26px 0 0;
+      gap: 24px;
+    }
+
+    .site-footer-nav {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .site-footer-nav > div:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .site-footer-bottom {
+      display: grid;
+      gap: 9px;
+    }
+
+    .site-footer-bottom strong {
+      text-align: left;
+    }
+
+    .site-footer-brand p {
+      font-size: 14px;
     }
   }
 </style>
