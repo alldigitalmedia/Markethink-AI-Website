@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
+import Footer from "../components/Footer.astro";
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
@@ -478,18 +479,7 @@ const faq = [
             <div class="cta-actions"><a class="button button-roll" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a></div>
           </div>
 
-          <footer class="closing-footer">
-            <div class="closing-footer-brand">
-              <img src="/images/logo.svg" alt="Markethink" />
-              <p>Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.</p>
-            </div>
-            <nav class="closing-footer-nav" aria-label="Footer navigation">
-              <div><strong>Explore</strong><a href="#top">Home</a><a href="#how-it-works">How it works</a><a href="/shipped/">Real work</a><a href="/who-we-help/">Who we help</a><a href="#proof-title">Why Markethink</a><a href="/blog/">Insights</a></div>
-              <div><strong>Connect</strong><a href="/schedule-a-walkthrough/">Book A Demo</a><a href="mailto:hello@markethink.ai">Contact</a><a href="https://dashboard.markethink.ai/">Log in</a><a href="/trial/">30-Day Trial</a></div>
-              <div><strong>Company</strong><a href="/privacy/">Privacy</a><a href="https://www.linkedin.com/company/markethink-ai/">LinkedIn</a><a href="https://www.instagram.com/markethink.ai/">Instagram</a><span>Powered by AI</span><span>Managed by experts</span></div>
-            </nav>
-            <div class="closing-footer-bottom"><span>© Markethink</span><strong>Your marketing operation, powered by AI and managed by experts.</strong></div>
-          </footer>
+          <Footer />
         </div>
       </section>
 
