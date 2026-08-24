@@ -181,40 +181,16 @@ const faq = [
               <div class="depth-flow"><span></span><i></i><span></span><i></i><span></span></div>
               <em><i></i> Follow-up ready</em>
             </div>
-            <div class="hero-dashboard-frame">
-              <div class="dashboard-topbar">
-                <div class="dashboard-brand"><img src="/images/logo-white.svg" alt="" /><span>Marketing operation</span></div>
-                <div class="dashboard-status"><i></i> Work moving now</div>
-                <div class="dashboard-avatar" aria-hidden="true">MT</div>
-              </div>
-              <div class="dashboard-body">
-                <aside class="dashboard-sidebar" aria-hidden="true">
-                  <span class="is-active">Overview</span><span>Campaigns</span><span>Website</span><span>Social</span><span>Leads</span><span>Approvals</span>
-                  <b>Expert team online</b>
-                </aside>
-                <div class="dashboard-main">
-                  <div class="dashboard-heading"><div><small>Thursday overview</small><h2>Good morning. Here is what is moving.</h2></div><button type="button" tabindex="-1">Request new work <span>↗</span></button></div>
-                  <div class="dashboard-kpis">
-                    <article><small>In production</small><strong>Campaign work</strong><span><i></i> Moving</span></article>
-                    <article><small>Needs your decision</small><strong>Approvals</strong><span class="is-warm"><i></i> Ready</span></article>
-                    <article><small>Pipeline</small><strong>Lead follow-up</strong><span><i></i> Connected</span></article>
-                  </div>
-                  <div class="dashboard-grid">
-                    <section class="dashboard-work">
-                      <div class="panel-title"><div><small>Live production</small><strong>Work moving now</strong></div><span>This week</span></div>
-                      <div class="work-row"><i class="work-thumb thumb-web"></i><div><small>Website</small><strong>Campaign landing page</strong><span>Conversion review</span></div><b>In review</b></div>
-                      <div class="work-row"><i class="work-thumb thumb-social"></i><div><small>Social</small><strong>Launch content set</strong><span>Creative production</span></div><b>In progress</b></div>
-                      <div class="work-row"><i class="work-thumb thumb-email"></i><div><small>Email</small><strong>Follow-up sequence</strong><span>Copy and delivery</span></div><b>Ready</b></div>
-                    </section>
-                    <section class="dashboard-pipeline">
-                      <div class="panel-title"><div><small>Connected pipeline</small><strong>From campaign to next step</strong></div><span>Live</span></div>
-                      <div class="pipeline-flow" aria-hidden="true"><span><i></i><b>Campaign</b></span><em></em><span><i></i><b>Lead</b></span><em></em><span><i></i><b>Follow-up</b></span></div>
-                      <div class="decision-card"><small>Latest decision applied</small><strong>Lead with the product. Use less copy.</strong><span>Carried into the next deliverable</span></div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <figure class="hero-dashboard-frame">
+              <img
+                src="https://dashboard.markethink.ai/generated/landing/markethink/homepage-v6-dashboard-white-v1.jpg"
+                alt="Markethink dashboard showing campaigns, approvals, live work, and the marketing team conversation"
+                width="1280"
+                height="719"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
             <p class="dashboard-note"><span></span> Illustrative Markethink workspace</p>
           </div>
           <div class="scroll-cue" aria-hidden="true"><span></span> Scroll to enter the operation</div>
@@ -571,7 +547,7 @@ const faq = [
         }
         const scale = Math.min(1, Math.max(.25, (window.innerWidth - 28) / 1100));
         responsiveHero.style.setProperty('--mobile-dashboard-scale', scale.toFixed(4));
-        responsiveHero.style.setProperty('--mobile-dashboard-height', `${Math.round(720 * scale)}px`);
+        responsiveHero.style.setProperty('--mobile-dashboard-height', `${Math.round(618 * scale)}px`);
       };
       fitResponsiveDashboard();
       window.addEventListener('resize', fitResponsiveDashboard, { passive: true });
@@ -949,9 +925,9 @@ const faq = [
   .hero-horizon{position:absolute;left:10%;right:10%;bottom:25%;height:1px;background:linear-gradient(90deg,transparent,rgba(105,210,84,.35),transparent);box-shadow:0 0 50px rgba(105,210,84,.25)}
   .hero-content{position:absolute;z-index:4;top:clamp(130px,15vh,170px);left:50%;transform:translateX(-50%) translateY(calc(var(--hero-progress)*-9vh));padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;opacity:calc(1 - var(--hero-progress)*1.7);pointer-events:auto;will-change:transform,opacity}
   .hero-content>*{max-width:760px}.hero-content .eyebrow{margin-bottom:18px}.hero h1{font-size:clamp(58px,6.3vw,102px);max-width:980px;line-height:.87;letter-spacing:-.055em;text-wrap:balance}.hero h1 em{color:#69D254;font-weight:400}.hero-copy{max-width:720px;font-size:clamp(15px,1.2vw,19px);line-height:1.55;margin:23px auto 22px;color:rgba(245,245,241,.78)}.hero-actions{justify-content:center}.microcopy{color:rgba(245,245,241,.55)}
-  .hero-dashboard-stage{position:absolute;z-index:5;left:50%;top:49%;width:min(1240px,88vw);height:min(720px,60vw);transform:translate3d(-50%,calc(21vh - var(--hero-progress)*55vh),0) perspective(1500px) rotateX(calc(11deg - var(--hero-progress)*11deg)) scale(calc(.69 + var(--hero-progress)*.31));transform-origin:center top;will-change:transform;filter:drop-shadow(0 38px 70px rgba(0,0,0,.55))}
+  .hero-dashboard-stage{position:absolute;z-index:5;left:50%;top:49%;width:min(1240px,88vw);height:min(697px,49.44vw);transform:translate3d(-50%,calc(21vh - var(--hero-progress)*55vh),0) perspective(1500px) rotateX(calc(11deg - var(--hero-progress)*11deg)) scale(calc(.69 + var(--hero-progress)*.31));transform-origin:center top;will-change:transform;filter:drop-shadow(0 38px 70px rgba(0,0,0,.55))}
   .hero-dashboard-glow{position:absolute;inset:-18%;background:radial-gradient(ellipse at center,rgba(105,210,84,.2),rgba(105,210,84,.04) 40%,transparent 70%);filter:blur(35px);opacity:calc(.45 + var(--hero-progress)*.35)}
-  .hero-dashboard-frame{position:absolute;z-index:3;inset:0;border:1px solid rgba(245,245,241,.16);border-radius:24px;background:rgba(15,18,19,.96);overflow:hidden;box-shadow:inset 0 1px rgba(255,255,255,.08),0 50px 120px rgba(0,0,0,.58);backdrop-filter:blur(24px)}
+  .hero-dashboard-frame{position:absolute;z-index:3;inset:0;margin:0;border:1px solid rgba(245,245,241,.24);border-radius:24px;background:#F5F5F1;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.48)}.hero-dashboard-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
   .hero-depth-panel{position:absolute;z-index:1;top:22%;width:250px;min-height:220px;padding:22px;border:1px solid rgba(245,245,241,.12);border-radius:20px;background:linear-gradient(145deg,rgba(29,35,34,.9),rgba(12,15,16,.96));box-shadow:0 32px 70px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.06);backdrop-filter:blur(20px);opacity:calc(.34 + var(--hero-progress)*.5);will-change:transform,opacity}
   .hero-depth-panel-left{left:-170px;transform:translate3d(calc(var(--hero-progress)*-72px),calc(62px - var(--hero-progress)*48px),0) rotateY(calc(14deg - var(--hero-progress)*5deg)) rotateZ(calc(-5deg + var(--hero-progress)*3deg)) scale(calc(.94 + var(--hero-progress)*.06))}
   .hero-depth-panel-right{right:-170px;transform:translate3d(calc(var(--hero-progress)*64px),calc(112px - var(--hero-progress)*76px),0) rotateY(calc(-15deg + var(--hero-progress)*6deg)) rotateZ(calc(5deg - var(--hero-progress)*2deg)) scale(calc(.91 + var(--hero-progress)*.09))}
@@ -1004,7 +980,7 @@ const faq = [
     .hero-content{position:relative;top:auto;left:auto;width:min(100% - 28px,680px);transform:none;opacity:1;padding:112px 0 0;text-align:center;align-items:center;margin:0 auto}
     .hero-content>*{max-width:620px}.hero-content .eyebrow{font-size:9px;line-height:1.45;margin-bottom:16px}.hero h1{font-size:clamp(42px,11.5vw,64px);line-height:.92;max-width:640px}.hero-copy{max-width:590px;font-size:15px;line-height:1.55;margin:20px auto 24px;text-align:center}
     .hero-content>.hero-actions{display:grid;width:100%;max-width:440px;align-self:stretch;justify-content:stretch;gap:12px;margin-inline:auto}.hero-actions .button{width:100%;min-height:58px;padding-inline:28px}
-    .hero-dashboard-stage{top:560px;left:50%;width:1100px;height:720px;max-height:none;transform:translateX(-50%) scale(var(--mobile-dashboard-scale,.33));transform-origin:center top;filter:drop-shadow(0 24px 48px rgba(0,0,0,.5))}
+    .hero-dashboard-stage{top:560px;left:50%;width:1100px;height:618px;max-height:none;transform:translateX(-50%) scale(var(--mobile-dashboard-scale,.33));transform-origin:center top;filter:drop-shadow(0 24px 48px rgba(0,0,0,.5))}
     .dashboard-body{grid-template-columns:160px 1fr}.dashboard-main{padding:24px}.dashboard-heading h2{font-size:31px}.dashboard-heading button{display:block}.dashboard-kpis article{padding:14px 15px;min-height:76px}.dashboard-kpis strong{font-size:18px}.dashboard-kpis span{display:block}.dashboard-grid{grid-template-columns:1.14fr .86fr}.dashboard-pipeline{display:block}.dashboard-work,.dashboard-pipeline{min-height:360px}.work-row{padding:13px 0}.dashboard-note,.scroll-cue{display:none}
     .proof-strip{margin-top:-48px}
   }
