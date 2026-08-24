@@ -4,24 +4,24 @@ import Footer from "../components/Footer.astro";
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
 const pageTitle = "Work Shipped by Markethink | Markethink";
-const pageDescription = "See how Markethink turns positioning, web experience, campaign systems, and pipeline thinking into finished work, powered by AI and managed by expert marketers.";
+const pageDescription = "See how Markethink turns brand intelligence, campaign systems, operational visibility, and pipeline thinking into finished work, powered by AI and managed by expert marketers.";
 const canonicalUrl = "https://markethink.ai/shipped/";
 const walkthroughHref = "/schedule-a-walkthrough/";
 
 const categories = [
   { id: "all", label: "All work" },
-  { id: "web", label: "Web" },
+  { id: "system", label: "Marketing system" },
 ];
 
 const workItems = [
   {
-    category: "web",
+    category: "system",
     client: "Markethink",
-    work: "Marketing dashboard, approval visibility, daily operating view, and connected pipeline workspace",
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-dashboard-updated-full.png",
-    alt: "Markethink marketing dashboard showing campaigns, approvals, performance, and daily priorities",
-    action: "Product experience",
-    tone: "dark",
+    work: "Brand intelligence, approval memory, visual and voice guardrails, and campaign context",
+    image: "/images/product-brand-intelligence-v4.png",
+    alt: "Markethink Brand Intelligence system connecting audience, offers, voice, approvals, visuals, competitors, memory, and rules",
+    action: "Brand Intelligence system",
+    tone: "wash",
   },
 ];
 
@@ -95,7 +95,7 @@ const structuredData = [
       <div class="hero-shell"><div class="hero-copy animate-fade-up">
         <p class="hero-eyebrow">RECENT WORK</p>
         <h1 id="shipped-hero-title">Real marketing work.<br /><em>Built to move business forward.</em></h1>
-        <p class="hero-intro">Positioning, web experience, campaigns, and pipeline thinking shipped by our team, powered by AI and managed by expert marketers.</p>
+        <p class="hero-intro">Brand intelligence, campaign systems, operational visibility, and pipeline thinking shipped by our team, powered by AI and managed by expert marketers.</p>
       </div></div>
       <div class="hero-work-marquee" aria-label="Explore recent Markethink work">
         <div class="hero-work-track">
@@ -104,7 +104,7 @@ const structuredData = [
               {workItems.map((item) => (
                 <a href="#latest-work" class="hero-work-card" data-hero-filter={item.category} tabindex={copyIndex === 1 ? "-1" : undefined} aria-label={`View ${item.client} work`}>
                   <img src={item.image} alt="" width="120" height="88" loading="eager" />
-                  <span><small>{item.category === "web" ? "WEB" : item.category === "social" ? "SOCIAL" : "EMAIL"}</small><strong>{item.client}</strong></span>
+                  <span><small>{item.category === "system" ? "SYSTEM" : item.category === "web" ? "WEB" : item.category === "social" ? "SOCIAL" : "EMAIL"}</small><strong>{item.client}</strong></span>
                 </a>
               ))}
             </div>
@@ -337,7 +337,7 @@ const structuredData = [
   .work-card { position: relative; display: block; min-height: 0; overflow: visible; background: transparent; color: #0f1213; opacity: 0; filter: blur(18px); transform: translateY(44px) scale(.98); transition: opacity .9s cubic-bezier(.22,1,.36,1), filter 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); transition-delay: calc((var(--card-index) % 2) * 90ms); }
   .work-card.is-revealed { opacity: 1; filter: blur(0); transform: none; }
   .work-card[hidden] { display: none; }
-  .card-media { position: relative; inset: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 1.25rem; background: #171b1c; isolation: isolate; }
+  .card-media { position: relative; inset: auto; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 1.25rem; background: #171b1c; isolation: isolate; }
   .card-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.22,1,.36,1), filter .5s ease; }
   .card-media.fit-contain::before { content: ""; position: absolute; z-index: 0; inset: -7%; background-image: var(--card-image); background-position: center; background-size: cover; filter: blur(30px) saturate(.8) brightness(.8); transform: scale(1.09); }
   .card-media.fit-contain::after { content: ""; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgba(15,18,19,.18), transparent 28%, transparent 72%, rgba(15,18,19,.18)); pointer-events: none; }
