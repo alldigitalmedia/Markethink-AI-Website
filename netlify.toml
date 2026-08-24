@@ -15,6 +15,18 @@
   force = true
 
 [[redirects]]
+  from = "/homepage-v6-review"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/homepage-v6-review/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/start/thanks"
   to = "/start/thanks/index.html"
   status = 200
@@ -35,7 +47,3 @@
     Content-Type = "text/markdown; charset=utf-8"
     X-Robots-Tag = "noindex, follow"
 
-[[headers]]
-  for = "/homepage-v6-review/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
