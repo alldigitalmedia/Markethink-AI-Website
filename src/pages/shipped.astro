@@ -107,17 +107,6 @@ const structuredData = [
     url: canonicalUrl,
     inLanguage: "en",
     publisher: { "@id": "https://markethink.ai/#organization" },
-    mainEntity: {
-      "@type": "ItemList",
-      numberOfItems: workItems.length,
-      itemListElement: workItems.map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: item.client,
-        description: item.work,
-        url: item.href,
-      })),
-    },
   },
   {
     "@context": "https://schema.org",
@@ -137,6 +126,9 @@ const structuredData = [
       {primaryNavigation.map((link) => <a href={link.href}>{link.label}</a>)}
       <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
     </nav>
+    <nav class="language-switcher" aria-label="Language selection">
+      <a href="/shipped/" lang="en" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es">ES</a>
+    </nav>
     <a class="header-cta" href={primaryNavigationActions.ctaHref}>{primaryNavigationActions.ctaLabel}</a>
     <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
       <span></span><span></span>
@@ -155,6 +147,9 @@ const structuredData = [
         ))}
       </nav>
       <div class="mobile-menu-footer">
+        <nav class="mobile-language-switcher" aria-label="Language selection">
+          <a href="/shipped/" lang="en" aria-current="page" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" data-mobile-menu-close>ES</a>
+        </nav>
         <a class="mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
         <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
         <p>Powered by AI. Managed by expert marketers.</p>
@@ -370,6 +365,10 @@ const structuredData = [
   .site-header a { color: #f5f5f1; text-decoration: none; font-size: 13px; }
   .site-header nav a { opacity: .8; transition: opacity .2s ease; }
   .site-header nav a:hover, .site-header nav a:focus-visible { opacity: 1; }
+  .site-header .language-switcher { margin-left: 0; gap: .35rem; font-weight: 700; letter-spacing: .08em; }
+  .site-header .language-switcher a, .mobile-language-switcher a { font-size: 11px; }
+  .language-switcher a[aria-current="page"], .mobile-language-switcher a[aria-current="page"] { color: #69d254; opacity: 1; }
+  .mobile-language-switcher { grid-column: 1 / -1; display: flex; justify-content: center; gap: .45rem; font-weight: 700; letter-spacing: .08em; }
   .header-cta, .mobile-menu-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 1px solid #69d254; border-radius: 999px; background: #69d254; color: #0f1213 !important; font-size: 12px !important; font-weight: 700; white-space: nowrap; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
   .header-cta:hover, .header-cta:focus-visible, .mobile-menu-cta:hover, .mobile-menu-cta:focus-visible { background: #82df6f; border-color: #82df6f; transform: translateY(-2px); }
   .mobile-menu-toggle, .mobile-menu { display: none; }
