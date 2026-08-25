@@ -1,8 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
-import Footer from "../components/Footer.astro";
-import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
+import Layout from "../../layouts/Layout.astro";
+import ReviewHowItWorks from "../../components/ReviewHowItWorks.astro";
+import Footer from "../../components/Footer.astro";
+import { primaryNavigationActions } from "../../data/siteNavigation";
+const primaryNavigation = [
+ { label: "Cómo funciona", reviewHref: "#how-it-works" }, { label: "Trabajo real", reviewHref: "/shipped/" },
+ { label: "Por qué Markethink", reviewHref: "#proof-title" }, { label: "Ideas", reviewHref: "/blog/" },
+];
+const localizedActions = { ...primaryNavigationActions, loginLabel: "Ingresar", ctaLabel: "Solicitar una demo", ctaHref: "/es/solicitar-demo/" };
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
 const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp";
@@ -10,32 +15,32 @@ const workImageMobile = "https://dashboard.markethink.ai/generated/landing/marke
 const expertsImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-experts-v1.webp";
 const changeCards = [
   {
-    title: "We get to know your business",
-    description: "Your voice, offers, audience, priorities, approved references, and past decisions remain available for the next assignment.",
+    title: "Conocemos tu negocio",
+    description: "Tu voz, ofertas, audiencia, prioridades, referencias aprobadas y decisiones anteriores quedan disponibles para la siguiente tarea.",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-get-to-know-your-business.webp",
-    alt: "Marketing strategist reviewing business information on a tablet during a team workshop",
+    alt: "Estratega de marketing revisando información del negocio en una tableta durante un taller de equipo",
     width: 1280,
     height: 853,
-    ctaLabel: "See who Markethink is built for",
+    ctaLabel: "Conoce para quién está creado Markethink",
     ctaHref: "/who-we-help/",
     tone: "wash",
   },
   {
-    title: "The work gets shipped",
-    description: "Pages, campaigns, content, email, advertising, and follow-up are handled through one working rhythm instead of separate handoffs.",
+    title: "El trabajo se publica",
+    description: "Páginas, campañas, contenido, correo, publicidad y seguimiento avanzan con un solo ritmo de trabajo en lugar de entregas separadas.",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-client-website-shipped-this-month.webp",
-    alt: "Client technology services website displayed on a desktop monitor",
+    alt: "Sitio web de servicios tecnológicos mostrado en un monitor de escritorio",
     width: 1672,
     height: 941,
-    ctaLabel: "See what we’ve shipped this month",
+    ctaLabel: "Mira lo que publicamos este mes",
     ctaHref: "/shipped/",
     tone: "green",
   },
   {
-    title: "Someone stays accountable",
-    description: "Expert marketers set direction, review the work, and bring you the decisions that require your approval.",
+    title: "Alguien se mantiene responsable",
+    description: "Expertos en marketing definen la dirección, revisan el trabajo y te presentan las decisiones que requieren tu aprobación.",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink-expert-marketing-accountability.webp",
-    alt: "Expert marketer reviewing campaign materials and approval decisions with a colleague",
+    alt: "Experto en marketing revisando materiales de campaña y decisiones de aprobación con un colega",
     width: 1536,
     height: 1024,
     tone: "cream",
@@ -43,24 +48,24 @@ const changeCards = [
 ];
 
 const capabilityScenes = [
-  { key: "social", image: "/images/homepage-v6-lanes/social-content.svg", title: "Social content", kicker: "From priority to channel-ready content", body: "Campaign angles, copy, creative, and a publishing plan prepared in your voice and reviewed by experts." },
-  { key: "web", image: "/images/homepage-v6-lanes/web-landing-pages.svg", title: "Web and landing pages", kicker: "From offer to a clearer next step", body: "Website updates and landing pages with sharper messaging, useful hierarchy, and a defined action for the visitor." },
-  { key: "email", image: "/images/homepage-v6-lanes/email-campaigns.svg", title: "Email campaigns", kicker: "From campaign idea to send-ready email", body: "Subject lines, copy, creative direction, audience logic, and calls to action prepared for your approval." },
-  { key: "ads", image: "/images/homepage-v6-lanes/advertising.svg", title: "Paid advertising", kicker: "From offer to managed campaign test", body: "Campaign structure, audience approach, creative, and a test plan prepared within the budget and access you approve." },
-  { key: "leads", image: "/images/homepage-v6-lanes/leads-follow-up.svg", title: "Leads and CRM", kicker: "From response to the next action", body: "New inquiries organized in your CRM with their source, owner, stage, and next action visible." },
-  { key: "reporting", image: "/images/homepage-v6-lanes/reporting-receipts.svg", title: "Reporting and learning", kicker: "From results to the next decision", body: "Approvals, corrections, and performance signals shape the next brief and the next round of work." },
+  { key: "social", image: "/images/homepage-v6-lanes/social-content.svg", title: "Contenido para redes", kicker: "De la prioridad al contenido listo para cada canal", body: "Ángulos de campaña, textos, creatividad y un plan de publicación preparados con tu voz y revisados por expertos." },
+  { key: "web", image: "/images/homepage-v6-lanes/web-landing-pages.svg", title: "Sitios web y páginas de destino", kicker: "De la oferta a un siguiente paso más claro", body: "Actualizaciones del sitio y páginas de destino con mensajes más precisos, jerarquía útil y una acción definida para el visitante." },
+  { key: "email", image: "/images/homepage-v6-lanes/email-campaigns.svg", title: "Campañas de correo", kicker: "De la idea de campaña al correo listo para enviar", body: "Asuntos, textos, dirección creativa, lógica de audiencia y llamados a la acción preparados para tu aprobación." },
+  { key: "ads", image: "/images/homepage-v6-lanes/advertising.svg", title: "Publicidad pagada", kicker: "De la oferta a una prueba de campaña gestionada", body: "Estructura de campaña, enfoque de audiencia, creatividad y un plan de prueba dentro del presupuesto y los accesos que apruebas." },
+  { key: "leads", image: "/images/homepage-v6-lanes/leads-follow-up.svg", title: "Prospectos y CRM", kicker: "De la respuesta a la siguiente acción", body: "Nuevas consultas organizadas en tu CRM con fuente, responsable, etapa y siguiente acción visibles." },
+  { key: "reporting", image: "/images/homepage-v6-lanes/reporting-receipts.svg", title: "Reportes y aprendizaje", kicker: "De los resultados al siguiente paso", body: "Aprobaciones, correcciones y señales de rendimiento dan forma al siguiente resumen y a la próxima ronda de trabajo." },
 ];
 
 const heroCapabilities = [
-  { icon: "web", title: "Websites & landing pages", note: "Conversion-ready pages" },
-  { icon: "campaign", title: "Campaign concepts", note: "One connected idea" },
-  { icon: "social", title: "Social content", note: "Designed in your voice" },
-  { icon: "email", title: "Email campaigns", note: "From subject to send" },
-  { icon: "ads", title: "Paid advertising", note: "Creative built to perform" },
-  { icon: "leads", title: "Lead lists", note: "Organized opportunities" },
-  { icon: "crm", title: "CRM & follow-up", note: "Every next step visible" },
-  { icon: "seo", title: "SEO & content", note: "Built around real intent" },
-  { icon: "reporting", title: "Reporting & learnings", note: "Results sharpen the work" },
+  { icon: "web", title: "Sitios web y páginas de destino", note: "Páginas preparadas para convertir" },
+  { icon: "campaign", title: "Conceptos de campaña", note: "Una idea conectada" },
+  { icon: "social", title: "Contenido para redes", note: "Diseñado con tu voz" },
+  { icon: "email", title: "Campañas de correo", note: "Del asunto al envío" },
+  { icon: "ads", title: "Publicidad pagada", note: "Creatividad diseñada para rendir" },
+  { icon: "leads", title: "Listas de prospectos", note: "Oportunidades organizadas" },
+  { icon: "crm", title: "CRM y seguimiento", note: "Cada siguiente paso visible" },
+  { icon: "seo", title: "SEO y contenido", note: "Creado alrededor de intención real" },
+  { icon: "reporting", title: "Reportes y aprendizajes", note: "Los resultados afinan el trabajo" },
 ];
 
 const heroCapabilityRail = [...heroCapabilities, ...heroCapabilities];
@@ -89,14 +94,14 @@ const connectedPlatforms = [
 ];
 
 const faq = [
-  ["Who actually does the work?", "The Markethink team directs strategy, reviews priority work, and stays accountable. The AI marketing system supports production and continuity. You control what ships and set the approval rules."],
-  ["Will it sound like my brand?", "That is the first thing the preview proves. When something is off, say so in plain words, in chat. It revises, and it remembers why."],
-  ["Do I have to learn new software or replace my tools?", "No. Approvals happen in your connected chat channel, the dashboard is there when you want receipts, and Markethink connects to what you already run. No platform migration is required to get started."],
-  ["What does it cost?", "Packages depend on scope. After a walkthrough, you receive a clear recommendation based on the channels, volume, and support your business needs."],
-  ["What if the work is not good?", "Reject it and say why. The work is revised, and the correction becomes useful context for what comes next."],
-  ["How is this different from an agency or a freelancer?", "Good ones exist. The difference is structural: with Markethink the strategy, production, publishing, and follow-up run as one operation, the knowledge compounds in a business memory instead of leaving with a person or an account team, and every deliverable is timestamped in your dashboard."],
-  ["Is my business information safe?", "Client work and business context stay isolated to the appropriate account and approved access."],
-  ["What happens when new AI models come out?", "The Markethink team evaluates improvements to the system over time. Your business context remains the foundation, while the operation continues to improve."],
+  ["¿Quién hace realmente el trabajo?", "El equipo de  Markethink dirige la estrategia, revisa el trabajo prioritario y se mantiene responsable. El sistema de marketing con IA apoya la producción y la continuidad. Tú controlas qué se publica y defines las reglas de aprobación."],
+  ["¿Sonará como mi marca?", "Eso es lo primero que demuestra la vista previa. Si algo no encaja, dilo con palabras simples en el chat. El trabajo se revisa y el sistema recuerda por qué."],
+  ["¿Tengo que aprender otro software o reemplazar mis herramientas?", "No. Las aprobaciones ocurren en tu canal de chat conectado, el panel está disponible cuando quieres evidencia y  Markethink se conecta con lo que ya usas. No necesitas migrar de plataforma para empezar."],
+  ["¿Cuánto cuesta?", "Los paquetes dependen del alcance. Después de una sesión guiada, recibes una recomendación clara según los canales, el volumen y el apoyo que necesita tu negocio."],
+  ["¿Qué pasa si el trabajo no es bueno?", "Recházalo y explica por qué. El trabajo se revisa y la corrección se convierte en contexto útil para lo que sigue."],
+  ["¿En qué se diferencia de una agencia o un profesional independiente?", "Hay buenos. La diferencia es estructural: con Markethink, la estrategia, la producción, la publicación y el seguimiento funcionan como una sola operación. El conocimiento se acumula en la memoria del negocio y cada entrega queda registrada en tu panel."],
+  ["¿La información de mi negocio está segura?", "El trabajo y el contexto de cada cliente se mantienen aislados en la cuenta correspondiente y con los accesos aprobados."],
+  ["¿Qué pasa cuando aparecen nuevos modelos de IA?", "El equipo de  Markethink evalúa mejoras del sistema con el tiempo. El contexto de tu negocio sigue siendo la base mientras la operación continúa mejorando."],
 ];
 
 const homeStructuredData = {
@@ -110,10 +115,11 @@ const homeStructuredData = {
 ---
 
 <Layout
-  title="Markethink | Your Marketing Operation, Powered by AI and Managed by Experts"
-  description="Markethink learns your business and runs your website, social media, content, campaigns, advertising, leads, CRM, and follow-up with expert marketers directing the work."
-  canonical="https://markethink.ai/"
+  title="Markethink | Tu operación de marketing con IA, gestionada por expertos"
+  description="Markethink aprende tu negocio y gestiona sitio web, redes sociales, contenido, campañas, publicidad, prospectos, CRM y seguimiento con expertos dirigiendo el trabajo."
+  canonical="https://markethink.ai/es/"
   image="/images/hero-image.png"
+  lang="es"
   alternates={[
     { lang: "en", href: "https://markethink.ai/" },
     { lang: "es", href: "https://markethink.ai/es/" },
@@ -124,38 +130,38 @@ const homeStructuredData = {
 >
   <div class="review-page">
     <header class="site-header">
-      <a class="logo" href="#top" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-      <nav aria-label="Primary navigation">
+      <a class="logo" href="#top" aria-label="Inicio de Markethink"><img src="/images/logo-white.svg" alt="Markethink" /></a>
+      <nav aria-label="Navegación principal">
         {primaryNavigation.map((link) => <a href={link.reviewHref}>{link.label}</a>)}
-        <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
+        <a href={localizedActions.loginHref}>{localizedActions.loginLabel}</a>
       </nav>
-      <nav class="language-switcher" aria-label="Language selection">
-        <a href="/" lang="en" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es">ES</a>
+      <nav class="language-switcher" aria-label="Selección de idioma">
+        <a href="/" lang="en">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" aria-current="page">ES</a>
       </nav>
-      <a class="button button-small button-roll" href={primaryNavigationActions.ctaHref}><span class="button-label"><span>{primaryNavigationActions.ctaLabel}</span><span aria-hidden="true">{primaryNavigationActions.ctaLabel}</span></span></a>
-      <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
+      <a class="button button-small button-roll" href={localizedActions.ctaHref}><span class="button-label"><span>{localizedActions.ctaLabel}</span><span aria-hidden="true">{localizedActions.ctaLabel}</span></span></a>
+      <button class="mobile-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
         <span></span><span></span>
       </button>
     </header>
 
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true" data-mobile-menu>
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true" data-mobile-menu>
       <div class="mobile-menu-shell">
         <div class="mobile-menu-top">
-          <a class="mobile-menu-logo" href="#top" aria-label="Markethink home" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
-          <button class="mobile-menu-close" type="button" aria-label="Close navigation" data-mobile-menu-close><span></span><span></span></button>
+          <a class="mobile-menu-logo" href="#top" aria-label="Inicio de Markethink" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
+          <button class="mobile-menu-close" type="button" aria-label="Cerrar navegación" data-mobile-menu-close><span></span><span></span></button>
         </div>
-        <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
+        <nav class="mobile-menu-nav" aria-label="Enlaces de navegación móvil">
           {primaryNavigation.map((link, index) => (
             <a href={link.reviewHref} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
           ))}
         </nav>
         <div class="mobile-menu-footer">
-          <nav class="mobile-language-switcher" aria-label="Language selection">
-            <a href="/" lang="en" aria-current="page" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" data-mobile-menu-close>ES</a>
+          <nav class="mobile-language-switcher" aria-label="Selección de idioma">
+            <a href="/" lang="en" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" aria-current="page" data-mobile-menu-close>ES</a>
           </nav>
-          <a class="button mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
-          <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
-          <p>Powered by AI. Managed by expert marketers.</p>
+          <a class="button mobile-menu-cta" href={localizedActions.ctaHref} data-mobile-menu-close>{localizedActions.ctaLabel}</a>
+          <a class="mobile-menu-login" href={localizedActions.loginHref} data-mobile-menu-close>{localizedActions.loginLabel} <span>↗</span></a>
+          <p>Impulsado por IA. Gestionado por expertos en marketing.</p>
         </div>
       </div>
     </div>
@@ -170,51 +176,51 @@ const homeStructuredData = {
             <span class="hero-horizon"></span>
           </div>
           <div class="hero-content wrap">
-            <p class="eyebrow">Powered by AI. Managed by expert marketers.</p>
-            <h1>Your marketing operation,<br /><em>moving every day.</em></h1>
-            <p class="hero-copy">Markethink learns your business and runs the work across your website, social media, content, campaigns, and advertising. It links that work to leads, CRM, and follow-up, while expert marketers direct the strategy, review the work, and stay accountable.</p>
+            <p class="eyebrow">Impulsado por IA. Gestionado por expertos en marketing.</p>
+            <h1>Tu operación de marketing,<br /><em>en movimiento cada día.</em></h1>
+            <p class="hero-copy"> Markethink aprende tu negocio y ejecuta el trabajo en tu sitio web, redes sociales, contenido, campañas y publicidad. Conecta ese trabajo con prospectos, CRM y seguimiento, mientras expertos en marketing dirigen la estrategia, revisan el trabajo y se mantienen responsables.</p>
             <div class="hero-actions">
-              <a class="button button-roll" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a>
+              <a class="button button-roll" href="/es/solicitar-demo/"><span class="button-label"><span>Solicitar una demo</span><span aria-hidden="true">Solicitar una demo</span></span></a>
             </div>
           </div>
 
-          <div class="hero-dashboard-stage" aria-label="Illustrative Markethink marketing dashboard">
+          <div class="hero-dashboard-stage" aria-label="Panel ilustrativo de marketing de Markethink">
             <div class="hero-dashboard-glow" aria-hidden="true"></div>
             <div class="hero-depth-panel hero-depth-panel-left" aria-hidden="true">
-              <small>Campaign brief</small>
-              <strong>One priority, connected work</strong>
-              <div><span>Website</span><span>Social</span><span>Email</span></div>
-              <em><i></i> In production</em>
+              <small>Resumen de campaña</small>
+              <strong>Una prioridad, trabajo conectado</strong>
+              <div><span>Sitio web</span><span>Redes sociales</span><span>Correo</span></div>
+              <em><i></i> En producción</em>
             </div>
             <div class="hero-depth-panel hero-depth-panel-right" aria-hidden="true">
-              <small>Pipeline connected</small>
-              <strong>Campaign to next step</strong>
+              <small>Pipeline conectado</small>
+              <strong>De la campaña al siguiente paso</strong>
               <div class="depth-flow"><span></span><i></i><span></span><i></i><span></span></div>
-              <em><i></i> Follow-up ready</em>
+              <em><i></i> Seguimiento listo</em>
             </div>
             <figure class="hero-dashboard-frame">
               <img
                 src="https://dashboard.markethink.ai/generated/landing/markethink/homepage-v6-dashboard-white-full-v2.png"
-                alt="Markethink dashboard showing campaigns, approvals, live work, and the marketing team conversation"
+                alt=" Panel de Markethink con campañas, aprobaciones, trabajo activo y la conversación con el equipo de marketing"
                 width="1672"
                 height="940"
                 loading="eager"
                 decoding="async"
               />
             </figure>
-            <p class="dashboard-note"><span></span> Illustrative Markethink workspace</p>
+            <p class="dashboard-note"><span></span> Espacio ilustrativo de Markethink</p>
           </div>
-          <div class="scroll-cue" aria-hidden="true"><span></span> Scroll to enter the operation</div>
+          <div class="scroll-cue" aria-hidden="true"><span></span> Desplázate para entrar en la operación</div>
         </div>
       </section>
 
       <section class="proof-strip section-light" aria-labelledby="proof-title" data-change-cards>
         <div class="wrap">
           <div class="change-heading">
-            <p class="eyebrow dark">What changes</p>
-            <h2 id="proof-title">Marketing stops living in separate tabs.</h2>
+            <p class="eyebrow dark">Lo que cambia</p>
+            <h2 id="proof-title">El marketing deja de vivir en pestañas separadas.</h2>
           </div>
-          <div class="change-cards" aria-label="What changes with Markethink">
+          <div class="change-cards" aria-label="Lo que cambia con Markethink">
             {changeCards.map((card, index) => (
               <article class={`change-card change-card-${card.tone}`} tabindex="0" style={`--card-order:${index}`}>
                 <div class="change-card-media"><img src={card.image} alt={card.alt} width={card.width} height={card.height} loading="lazy" decoding="async" /></div>
@@ -239,13 +245,13 @@ const homeStructuredData = {
           <div class="work-stage" data-work-motion>
             <picture class="work-stage-picture">
               <source media="(max-width: 680px)" srcset={workImageMobile} />
-              <img class="work-stage-image" src={workImage} alt="Marketing team planning campaigns with notes, shared screens, and analytics dashboards" width="1280" height="720" loading="lazy" decoding="async" />
+              <img class="work-stage-image" src={workImage} alt="Equipo de marketing planificando campañas con notas, pantallas compartidas y paneles de análisis" width="1280" height="720" loading="lazy" decoding="async" />
             </picture>
             <div class="work-stage-shade" aria-hidden="true"></div>
             <div class="work-stage-content">
-              <h2 id="work-title">From request to finished work</h2>
-              <p class="work-stage-lead">A request does not become another isolated draft. Markethink turns the priority into the pages, content, email, advertising, and follow-up it needs, then brings the important decisions back to you.</p>
-              <div class="work-lanes" aria-label="How work moves through Markethink">
+              <h2 id="work-title">De la solicitud al trabajo terminado</h2>
+              <p class="work-stage-lead">Una solicitud no se convierte en otro borrador aislado.  Markethink transforma la prioridad en las páginas, el contenido, el correo, la publicidad y el seguimiento que necesita, y luego te presenta las decisiones importantes.</p>
+              <div class="work-lanes" aria-label="Cómo avanza el trabajo en Markethink">
                 <article tabindex="0" style="--work-lane-order:0">
                   <span class="work-lane-icon" aria-hidden="true">
                     <svg viewBox="0 0 32 32">
@@ -256,7 +262,7 @@ const homeStructuredData = {
                       <circle class="icon-dot" cx="8.5" cy="25" r="1.6"></circle>
                     </svg>
                   </span>
-                  <div><small>Step 1</small><strong>Direction</strong><p>Expert marketers turn the request into a clear brief and decide what the work needs to accomplish.</p></div>
+                  <div><small>Paso 1</small><strong>Dirección</strong><p>Expertos en marketing convierten la solicitud en un resumen claro y definen lo que el trabajo debe lograr.</p></div>
                 </article>
                 <article tabindex="0" style="--work-lane-order:1">
                   <span class="work-lane-icon" aria-hidden="true">
@@ -269,7 +275,7 @@ const homeStructuredData = {
                       <circle class="icon-dot" cx="16" cy="17.5" r="1.6"></circle>
                     </svg>
                   </span>
-                  <div><small>Step 2</small><strong>Production</strong><p>AI supports production across the channels included in your scope.</p></div>
+                  <div><small>Paso 2</small><strong>Producción</strong><p>La IA apoya la producción en los canales incluidos en tu alcance.</p></div>
                 </article>
                 <article tabindex="0" style="--work-lane-order:2">
                   <span class="work-lane-icon" aria-hidden="true">
@@ -280,12 +286,12 @@ const homeStructuredData = {
                       <path d="M24.5 6.5v3M23 8h3"></path>
                     </svg>
                   </span>
-                  <div><small>Step 3</small><strong>Expert review</strong><p>The team checks the message, quality, and next step before you decide what ships.</p></div>
+                  <div><small>Paso 3</small><strong>Revisión experta</strong><p>El equipo revisa el mensaje, la calidad y el siguiente paso antes de que decidas qué se publica.</p></div>
                 </article>
               </div>
-              <a class="button button-roll" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a>
+              <a class="button button-roll" href="/es/solicitar-demo/"><span class="button-label"><span>Solicitar una demo</span><span aria-hidden="true">Solicitar una demo</span></span></a>
             </div>
-            <p class="work-stage-note"><span></span> Illustrative Markethink workflow</p>
+            <p class="work-stage-note"><span></span> Flujo ilustrativo de Markethink</p>
           </div>
         </div>
       </section>
@@ -293,26 +299,26 @@ const homeStructuredData = {
             <section class="founder section-light" id="why-markethink" aria-labelledby="founder-title" data-founder-reveal>
         <div class="wrap founder-grid">
           <figure class="founder-photo founder-photo-live founder-reveal" style="--founder-order:0">
-            <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/human-accountability-real-team-v1.jpg" alt="A marketing expert guiding a live review from his workspace" loading="lazy" decoding="async" />
+            <img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/human-accountability-real-team-v1.jpg" alt="Experto en marketing guiando una revisión en vivo desde su espacio de trabajo" loading="lazy" decoding="async" />
             <span class="founder-green-arc" aria-hidden="true"></span>
           </figure>
           <div class="founder-copy">
-            <p class="eyebrow dark founder-reveal" style="--founder-order:1">Expert Accountability</p>
-            <h2 id="founder-title" class="founder-reveal" style="--founder-order:2">AI moves the work. Expert marketers own the judgment.</h2>
-            <p class="founder-lead founder-reveal" style="--founder-order:3">Markethink combines the speed and consistency of AI with the direction of a real marketing team. The work moves faster without removing judgment, review, or accountability.</p>
-            <div class="accountability-roles founder-reveal" style="--founder-order:4" aria-label="How responsibility is shared">
-              <div><span>AI</span><strong>Runs daily production</strong></div>
-              <div><span>Expert marketers</span><strong>Direct strategy and review</strong></div>
-              <div><span>You</span><strong>Approve key decisions</strong></div>
+            <p class="eyebrow dark founder-reveal" style="--founder-order:1">Responsabilidad experta</p>
+            <h2 id="founder-title" class="founder-reveal" style="--founder-order:2">La IA mueve el trabajo. Los expertos en marketing toman las decisiones.</h2>
+            <p class="founder-lead founder-reveal" style="--founder-order:3"> Markethink combina la velocidad y constancia de la IA con la dirección de un equipo de marketing real. El trabajo avanza más rápido sin perder criterio, revisión ni responsabilidad.</p>
+            <div class="accountability-roles founder-reveal" style="--founder-order:4" aria-label="Cómo se comparte la responsabilidad">
+              <div><span>IA</span><strong>Ejecuta la producción diaria</strong></div>
+              <div><span>Expertos en marketing</span><strong>Dirigen la estrategia y la revisión</strong></div>
+              <div><span>Tú</span><strong>Apruebas las decisiones clave</strong></div>
             </div>
-            <a class="button button-roll accountability-cta founder-reveal" style="--founder-order:5" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a>
+            <a class="button button-roll accountability-cta founder-reveal" style="--founder-order:5" href="/es/solicitar-demo/"><span class="button-label"><span>Solicitar una demo</span><span aria-hidden="true">Solicitar una demo</span></span></a>
           </div>
         </div>
       </section>
 
       <section class="manages lane-orbit" aria-labelledby="manages-title" data-capability-console>
         <div class="lane-orbit-shell">
-          <div class="lane-side lane-side-left" role="tablist" aria-label="Marketing capabilities, first group">
+          <div class="lane-side lane-side-left" role="tablist" aria-label="Capacidades de marketing, primer grupo">
             {capabilityScenes.slice(0, 3).map((scene, index) => (
               <button class="lane-card" type="button" role="tab" aria-selected="false" tabindex="-1" data-capability-tab={scene.key} style={`--lane-order:${index}`}>
                 <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" />
@@ -322,9 +328,9 @@ const homeStructuredData = {
           </div>
 
           <div class="lane-center">
-            <p class="eyebrow">What your business receives</p>
-            <h2 id="manages-title">Start with the work that is slowing growth.</h2>
-            <p class="lane-intro">Each area delivers useful marketing on its own. When several are included, the same business knowledge, priorities, and approval rules carry across the work.</p>
+            <p class="eyebrow">Lo que recibe tu negocio</p>
+            <h2 id="manages-title">Empieza con el trabajo que está frenando el crecimiento.</h2>
+            <p class="lane-intro">Cada área entrega marketing útil por sí sola. Cuando se incluyen varias, el mismo conocimiento del negocio, las prioridades y las reglas de aprobación se mantienen en todo el trabajo.</p>
             <div class="lane-response" aria-live="polite">
               {capabilityScenes.map((scene, index) => (
                 <article class={index === 5 ? "is-active" : ""} role="tabpanel" data-capability-panel={scene.key} aria-hidden={index === 5 ? "false" : "true"} style={`--lane-response-image:url("${scene.image}")`}>
@@ -334,7 +340,7 @@ const homeStructuredData = {
             </div>
           </div>
 
-          <div class="lane-side lane-side-right" role="tablist" aria-label="Marketing capabilities, second group">
+          <div class="lane-side lane-side-right" role="tablist" aria-label="Capacidades de marketing, segundo grupo">
             {capabilityScenes.slice(3).map((scene, index) => (
               <button class="lane-card" type="button" role="tab" aria-selected={index === 2 ? "true" : "false"} tabindex={index === 2 ? "0" : "-1"} data-capability-tab={scene.key} style={`--lane-order:${index}`}>
                 <img class="lane-card-image" src={scene.image} alt="" loading="lazy" decoding="async" />
@@ -347,15 +353,15 @@ const homeStructuredData = {
 
       <section class="connections-ecosystem" aria-labelledby="connections-title" data-connections-ecosystem>
         <div class="wrap connections-heading">
-          <p class="eyebrow">Your existing stack</p>
-          <h2 id="connections-title">Keep the tools your business already uses.</h2>
-          <p>Markethink works through the channels and platforms included in your scope. You approve the access and permissions. You do not need to replace your current tools to begin.</p>
+          <p class="eyebrow">Tus herramientas actuales</p>
+          <h2 id="connections-title">Conserva las herramientas que tu negocio ya usa.</h2>
+          <p> Markethink trabaja en los canales y plataformas incluidos en tu alcance. Tú apruebas los accesos y permisos. No necesitas reemplazar tus herramientas actuales para empezar.</p>
         </div>
-        <div class="connections-stage wrap" aria-label="Platforms Markethink can work around, based on approved access and scope">
+        <div class="connections-stage wrap" aria-label="Plataformas con las que Markethink puede trabajar según el acceso y el alcance aprobados">
           <div class="connection-core">
             <span class="connection-core-mark"><img src="/images/logo.svg" alt="" /></span>
-            <strong>One connected<br />marketing operation</strong>
-            <small>Scope first. Access approved by you.</small>
+            <strong>Una sola<br />operación de marketing</strong>
+            <small>Primero el alcance. Tú apruebas el acceso.</small>
           </div>
           {connectedPlatforms.map((platform, index) => (
             <div class="connection-platform" style={`--platform-index:${index}`} title={platform.name} aria-label={platform.name}>
@@ -367,21 +373,21 @@ const homeStructuredData = {
           ))}
         </div>
         <div class="wrap connections-foot connections-foot-single">
-          <p>During the demo, we map the tools your business uses and explain where Markethink can work with them. Any custom setup is confirmed during scoping.</p>
+          <p>Durante la demo, mapeamos las herramientas que usa tu negocio y explicamos cómo  Markethink puede trabajar con ellas. Cualquier configuración personalizada se confirma al definir el alcance.</p>
         </div>
       </section>
 
 
 
-            <ReviewHowItWorks />
+            <ReviewHowItWorks lang="es" />
 
 
 
       <section class="faq" aria-labelledby="faq-title">
         <div class="wrap faq-grid">
           <div class="faq-heading">
-            <p class="eyebrow">FAQ</p>
-            <h2 id="faq-title">The questions owners actually ask</h2>
+            <p class="eyebrow">PREGUNTAS FRECUENTES</p>
+            <h2 id="faq-title">Las preguntas que los dueños realmente hacen</h2>
           </div>
           <div class="accordions">
             {faq.map(([question, answer], index) => (
@@ -395,82 +401,82 @@ const homeStructuredData = {
       </section>
 
       <section class="closing-supersection" id="preview-form" aria-labelledby="cta-title">
-        <img class="closing-background" src="/images/homepage-v6-cta-footer-team.svg" alt="A team collaborating around a shared table" loading="lazy" decoding="async" />
+        <img class="closing-background" src="/images/homepage-v6-cta-footer-team.svg" alt="Un equipo colaborando alrededor de una mesa compartida" loading="lazy" decoding="async" />
         <div class="closing-shade" aria-hidden="true"></div>
         <div class="wrap closing-content">
           <form
-            name="markethink-marketing-system-audit"
+            name="markethink-marketing-system-audit-es"
             method="POST"
-            action="/thank-you/"
+            action="/es/gracias/"
             netlify
             data-netlify="true"
             netlify-honeypot="bot-field"
             class="footer-audit-form"
             aria-labelledby="footer-audit-title"
           >
-            <input type="hidden" name="form-name" value="markethink-marketing-system-audit" />
-            <input type="hidden" name="source" value="homepage-marketing-system-audit" />
+            <input type="hidden" name="form-name" value="markethink-marketing-system-audit-es" />
+            <input type="hidden" name="source" value="homepage-marketing-system-audit-es" />
             <p class="footer-audit-honeypot">
-              <label>Do not fill this out <input name="bot-field" /></label>
+              <label>No completes este campo <input name="bot-field" /></label>
             </p>
 
             <div class="footer-audit-intro">
-              <p>Request your audit</p>
-              <h3 id="footer-audit-title">Tell us where marketing is stuck.</h3>
+              <p>Solicita tu auditoría</p>
+              <h3 id="footer-audit-title">Cuéntanos dónde está atascado el marketing.</h3>
             </div>
 
             <div class="footer-audit-fields">
               <div class="footer-audit-primary">
                 <label>
-                  <span>Full name</span>
+                  <span>Nombre completo</span>
                   <input type="text" name="full_name" autocomplete="name" required />
                 </label>
                 <label>
-                  <span>Work email</span>
+                  <span>Correo de trabajo</span>
                   <input type="email" name="email" autocomplete="email" required />
                 </label>
                 <label>
-                  <span>Phone number</span>
+                  <span>Número de teléfono</span>
                   <input type="tel" name="phone" autocomplete="tel" required />
                 </label>
                 <label>
-                  <span>Company or website</span>
+                  <span>Empresa o sitio web</span>
                   <input type="text" name="company_or_website" autocomplete="organization" required />
                 </label>
                 <label>
-                  <span>Which path best describes you?</span>
+                  <span>¿Qué opción te describe mejor?</span>
                   <select name="buyer_path" required>
-                    <option value="">Select one</option>
-                    <option>Growing brand</option>
-                    <option>Agency or referral partner</option>
-                    <option>Not sure yet</option>
+                    <option value="">Selecciona una</option>
+                    <option>Marca en crecimiento</option>
+                    <option>Agencia o socio de referidos</option>
+                    <option>Aún no estoy seguro</option>
                   </select>
                 </label>
               </div>
 
               <div class="footer-audit-lower">
                 <label class="footer-audit-bottleneck">
-                  <span>What is the biggest bottleneck in your marketing right now?</span>
+                  <span>¿Cuál es el mayor cuello de botella de tu marketing en este momento?</span>
                   <textarea name="marketing_bottleneck" rows="4" required></textarea>
                 </label>
               </div>
               <div class="footer-audit-final-row">
                 <div class="footer-audit-action">
-                  <button type="submit" class="button footer-audit-submit">Request My Marketing Audit</button>
+                  <button type="submit" class="button footer-audit-submit">Solicitar mi auditoría de marketing</button>
                 </div>
-                <p class="footer-audit-support">Prefer a conversation? <a href="/schedule-a-walkthrough/">Book A Demo</a>. By submitting, you agree to our <a href="/privacy/">privacy policy</a>.</p>
+                <p class="footer-audit-support">¿Prefieres conversar? <a href="/es/solicitar-demo/">Solicitar una demo</a>. Al enviar, aceptas nuestra <a href="/privacy/">política de privacidad</a>.</p>
               </div>
             </div>
           </form>
 
           <div class="closing-cta">
-            <p class="eyebrow">Campaign preview</p>
-            <h2 id="cta-title">Bring us the part of marketing that needs to move.</h2>
-            <p>Share your website and the priority. We will prepare the right starting conversation around your brand, current work, and pipeline.</p>
-            <div class="cta-actions"><a class="button button-roll" href="/schedule-a-walkthrough/"><span class="button-label"><span>Book A Demo</span><span aria-hidden="true">Book A Demo</span></span></a></div>
+            <p class="eyebrow">Vista previa de campaña</p>
+            <h2 id="cta-title">Tráenos la parte del marketing que necesita avanzar.</h2>
+            <p>Comparte tu sitio web y la prioridad. Prepararemos la conversación inicial adecuada sobre tu marca, el trabajo actual y el pipeline.</p>
+            <div class="cta-actions"><a class="button button-roll" href="/es/solicitar-demo/"><span class="button-label"><span>Solicitar una demo</span><span aria-hidden="true">Solicitar una demo</span></span></a></div>
           </div>
 
-          <Footer />
+          <Footer lang="es" />
         </div>
       </section>
 
@@ -493,7 +499,7 @@ const homeStructuredData = {
         mobileMenu.classList.toggle('is-open', open);
         mobileMenu.setAttribute('aria-hidden', String(!open));
         mobileMenuOpen.setAttribute('aria-expanded', String(open));
-        mobileMenuOpen.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+        mobileMenuOpen.setAttribute('aria-label', open ? 'Cerrar navegación' : 'Abrir navegación');
         document.documentElement.classList.toggle('mobile-menu-open', open);
         if (open) window.setTimeout(() => mobileMenu.querySelector('a,button')?.focus(), reduce ? 0 : 360);
         else if (restoreFocus) mobileMenuOpen.focus();
@@ -974,7 +980,7 @@ const homeStructuredData = {
   @media(max-width:420px){.hero-sticky{min-height:calc(620px + var(--mobile-dashboard-height,220px))}.hero-dashboard-stage{top:560px;transform:translateX(-50%) scale(var(--mobile-dashboard-scale,.32))}.hero h1{font-size:42px}}
   @media(prefers-reduced-motion:reduce) and (max-width:980px){.mobile-menu,.mobile-menu-nav a,.mobile-menu-toggle span{transition:none!important}}
 
-  /* Final alignment contract for the three What changes cards. */
+  /* Final alignment contract for the three Lo que cambia cards. */
   .change-card-media{inset:0 0 140px}
   .change-card-copy,
   .change-card:hover .change-card-copy,

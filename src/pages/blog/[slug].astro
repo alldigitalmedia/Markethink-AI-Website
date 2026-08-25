@@ -43,14 +43,11 @@ const articleSchema = {
   dateModified: post.updatedDate,
   author: {
     "@type": "Organization",
+    "@id": `${siteUrl}/#editorial-team`,
     name: post.author.name,
+    parentOrganization: { "@id": `${siteUrl}/#organization` },
   },
-  publisher: {
-    "@type": "Organization",
-    name: "Markethink",
-    url: siteUrl,
-    logo: `${siteUrl}/images/logo.svg`,
-  },
+  publisher: { "@id": `${siteUrl}/#organization` },
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": canonical,

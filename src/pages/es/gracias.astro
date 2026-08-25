@@ -1,13 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
 <Layout
-  title="Thank You | Markethink"
-  description="Thanks for requesting a Markethink walkthrough."
-  canonical="https://markethink.ai/thank-you/"
+  title="Gracias por solicitar una demo | Markethink"
+  description="Recibimos tu solicitud de demo de Markethink. Revisaremos el contexto de tu negocio antes de enviarte horarios."
+  canonical="https://markethink.ai/es/gracias/"
+  lang="es"
   alternates={[
     { lang: "en", href: "https://markethink.ai/thank-you/" },
     { lang: "es", href: "https://markethink.ai/es/gracias/" },
@@ -15,28 +16,28 @@ import Footer from "../components/Footer.astro";
   ]}
   noindex={true}
 >
-  <Navbar />
+  <Navbar lang="es" />
   <main class="thank-you-page">
     <section class="thank-you-hero">
       <div class="container thank-you-grid">
         <div class="thank-you-copy animate-fade-up">
-          <p class="subtitle">REQUEST RECEIVED</p>
-          <h1>Thanks. We will send over times and a focused agenda.</h1>
+          <p class="subtitle">SOLICITUD RECIBIDA</p>
+          <h1>Gracias. Te enviaremos horarios y una agenda enfocada.</h1>
           <p>
-            We will review your business context first so the walkthrough can focus on where Markethink can create momentum fastest.
+            Primero revisaremos el contexto de tu negocio para enfocar la demo donde Markethink pueda generar avance con mayor rapidez.
           </p>
           <div class="button-group">
-            <a href="/" class="button">Back to Home</a>
-            <a href="/blog/" class="button is-secondary">Read Insights</a>
+            <a href="/es/" class="button">Volver al inicio</a>
+            <a href="/blog/" class="button is-secondary">Leer ideas en inglés</a>
           </div>
         </div>
         <div class="thank-you-visual animate-scale-in">
-          <img src="/images/product-continuous-improvement.png" alt="Markethink continuous improvement preview" />
+          <img src="/images/product-continuous-improvement.png" alt="Vista del sistema de mejora continua de Markethink" />
         </div>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="es" />
 </Layout>
 
 <style>

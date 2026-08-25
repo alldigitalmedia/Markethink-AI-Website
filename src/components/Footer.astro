@@ -1,5 +1,15 @@
 ---
-const exploreLinks = [
+interface Props { lang?: "en" | "es"; }
+const { lang = "en" } = Astro.props;
+const isSpanish = lang === "es";
+
+const exploreLinks = isSpanish ? [
+  { label: "Inicio", href: "/es/" },
+  { label: "Cómo funciona", href: "/es/#how-it-works" },
+  { label: "Trabajo real", href: "/shipped/" },
+  { label: "Por qué Markethink", href: "/es/#why-markethink" },
+  { label: "Ideas", href: "/blog/" },
+] : [
   { label: "Home", href: "/" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Real work", href: "/shipped/" },
@@ -7,13 +17,21 @@ const exploreLinks = [
   { label: "Insights", href: "/blog/" },
 ];
 
-const connectLinks = [
+const connectLinks = isSpanish ? [
+  { label: "Solicitar una demo", href: "/es/solicitar-demo/" },
+  { label: "Contacto", href: "mailto:hello@markethink.ai" },
+  { label: "Ingresar", href: "https://dashboard.markethink.ai/" },
+] : [
   { label: "Book A Demo", href: "/schedule-a-walkthrough/" },
   { label: "Contact", href: "mailto:hello@markethink.ai" },
   { label: "Log in", href: "https://dashboard.markethink.ai/" },
 ];
 
-const companyLinks = [
+const companyLinks = isSpanish ? [
+  { label: "Privacidad", href: "/privacy/", external: false },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/markethink-ai/", external: true },
+  { label: "Instagram", href: "https://www.instagram.com/markethink.ai/", external: true },
+] : [
   { label: "Privacy", href: "/privacy/", external: false },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/markethink-ai/", external: true },
   { label: "Instagram", href: "https://www.instagram.com/markethink.ai/", external: true },
@@ -23,28 +41,28 @@ const companyLinks = [
 <div class="site-footer-wrap">
   <footer class="site-footer">
     <div class="site-footer-brand">
-      <a href="/" aria-label="Markethink home"><img src="/images/logo.svg" alt="Markethink" /></a>
-      <p>Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.</p>
+      <a href={isSpanish ? "/es/" : "/"} aria-label={isSpanish ? "Inicio de Markethink" : "Markethink home"}><img src="/images/logo.svg" alt="Markethink" /></a>
+      <p>{isSpanish ? "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día y conecta las campañas con prospectos y seguimiento." : "Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up."}</p>
     </div>
-    <nav class="site-footer-nav" aria-label="Footer navigation">
+    <nav class="site-footer-nav" aria-label={isSpanish ? "Navegación del pie" : "Footer navigation"}>
       <div>
-        <strong>Explore</strong>
+        <strong>{isSpanish ? "Explora" : "Explore"}</strong>
         {exploreLinks.map((link) => <a href={link.href}>{link.label}</a>)}
       </div>
       <div>
-        <strong>Connect</strong>
+        <strong>{isSpanish ? "Conecta" : "Connect"}</strong>
         {connectLinks.map((link) => <a href={link.href}>{link.label}</a>)}
       </div>
       <div>
-        <strong>Company</strong>
+        <strong>{isSpanish ? "Empresa" : "Company"}</strong>
         {companyLinks.map((link) => <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>{link.label}</a>)}
-        <span>Powered by AI</span>
-        <span>Managed by experts</span>
+        <span>{isSpanish ? "Impulsado por IA" : "Powered by AI"}</span>
+        <span>{isSpanish ? "Gestionado por expertos" : "Managed by experts"}</span>
       </div>
     </nav>
     <div class="site-footer-bottom">
       <span>© Markethink</span>
-      <strong>Your marketing operation, powered by AI and managed by experts.</strong>
+      <strong>{isSpanish ? "Tu operación de marketing, impulsada por IA y gestionada por expertos." : "Your marketing operation, powered by AI and managed by experts."}</strong>
     </div>
   </footer>
 </div>

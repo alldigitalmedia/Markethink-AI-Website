@@ -1,25 +1,53 @@
 ---
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
+
+interface Props { lang?: "en" | "es"; }
+const { lang = "en" } = Astro.props;
+const isSpanish = lang === "es";
+const currentPath = Astro.url.pathname;
+const spanishNavigation = [
+  { label: "Cómo funciona", href: "/es/#how-it-works" },
+  { label: "Trabajo real", href: "/shipped/" },
+  { label: "Por qué Markethink", href: "/es/#comparison" },
+  { label: "Ideas", href: "/blog/" },
+];
+const navigation = isSpanish ? spanishNavigation : primaryNavigation;
+const homeHref = isSpanish ? "/es/" : "/";
+const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ctaHref;
+const demoLabel = isSpanish ? "Solicitar una demo" : primaryNavigationActions.ctaLabel;
+const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
+const alternateHref = isSpanish
+  ? (currentPath.startsWith("/es/solicitar-demo") ? "/schedule-a-walkthrough/" : "/")
+  : (currentPath.startsWith("/schedule-a-walkthrough") ? "/es/solicitar-demo/" : "/es/");
+const labels = isSpanish
+  ? { home: "Inicio de Markethink", primary: "Navegación principal", open: "Abrir navegación", close: "Cerrar navegación", mobile: "Navegación móvil", mobileLinks: "Enlaces de navegación móvil", language: "Selección de idioma", tagline: "Impulsado por IA. Gestionado por expertos en marketing." }
+  : { home: "Markethink home", primary: "Primary navigation", open: "Open navigation", close: "Close navigation", mobile: "Mobile navigation", mobileLinks: "Mobile navigation links", language: "Language selection", tagline: "Powered by AI. Managed by expert marketers." };
 ---
 
 <div class="mt-site-header">
-  <a class="mt-nav-logo" href="/" aria-label="Markethink home">
+  <a class="mt-nav-logo" href={homeHref} aria-label={labels.home}>
     <img src="/images/logo-white.svg" alt="Markethink" />
   </a>
 
-  <nav class="mt-desktop-nav" aria-label="Primary navigation">
-    {primaryNavigation.map((link) => <a href={link.href}>{link.label}</a>)}
-    <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
+  <nav class="mt-desktop-nav" aria-label={labels.primary}>
+    {navigation.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href={primaryNavigationActions.loginHref}>{loginLabel}</a>
   </nav>
 
-  <a class="mt-nav-cta" href={primaryNavigationActions.ctaHref}>{primaryNavigationActions.ctaLabel}</a>
+  <nav class="mt-language-switcher" aria-label={labels.language}>
+    <a href={isSpanish ? alternateHref : currentPath} lang="en" aria-current={!isSpanish ? "page" : undefined}>EN</a><span aria-hidden="true">/</span><a href={isSpanish ? currentPath : alternateHref} lang="es" aria-current={isSpanish ? "page" : undefined}>ES</a>
+  </nav>
+
+  <a class="mt-nav-cta" href={demoHref}>{demoLabel}</a>
 
   <button
     class="mt-mobile-menu-toggle"
     type="button"
-    aria-label="Open navigation"
+    aria-label={labels.open}
     aria-controls="mt-mobile-menu"
     aria-expanded="false"
+    data-open-label={labels.open}
+    data-close-label={labels.close}
     data-mt-mobile-menu-open
   >
     <span></span><span></span>
@@ -31,22 +59,22 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
   id="mt-mobile-menu"
   role="dialog"
   aria-modal="true"
-  aria-label="Mobile navigation"
+  aria-label={labels.mobile}
   aria-hidden="true"
   data-mt-mobile-menu
 >
   <div class="mt-mobile-menu-shell">
     <div class="mt-mobile-menu-top">
-      <a class="mt-mobile-menu-logo" href="/" aria-label="Markethink home" data-mt-mobile-menu-close>
+      <a class="mt-mobile-menu-logo" href={homeHref} aria-label={labels.home} data-mt-mobile-menu-close>
         <img src="/images/logo-white.svg" alt="Markethink" />
       </a>
-      <button class="mt-mobile-menu-close" type="button" aria-label="Close navigation" data-mt-mobile-menu-close>
+      <button class="mt-mobile-menu-close" type="button" aria-label={labels.close} data-mt-mobile-menu-close>
         <span></span><span></span>
       </button>
     </div>
 
-    <nav class="mt-mobile-menu-nav" aria-label="Mobile navigation links">
-      {primaryNavigation.map((link, index) => (
+    <nav class="mt-mobile-menu-nav" aria-label={labels.mobileLinks}>
+      {navigation.map((link, index) => (
         <a href={link.href} data-mt-mobile-menu-close>
           <small>{String(index + 1).padStart(2, "0")}</small>
           <span>{link.label}</span>
@@ -55,11 +83,14 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
     </nav>
 
     <div class="mt-mobile-menu-footer">
-      <a class="mt-mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mt-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
+      <nav class="mt-mobile-language-switcher" aria-label={labels.language}>
+        <a href={isSpanish ? alternateHref : currentPath} lang="en" aria-current={!isSpanish ? "page" : undefined} data-mt-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href={isSpanish ? currentPath : alternateHref} lang="es" aria-current={isSpanish ? "page" : undefined} data-mt-mobile-menu-close>ES</a>
+      </nav>
+      <a class="mt-mobile-menu-cta" href={demoHref} data-mt-mobile-menu-close>{demoLabel}</a>
       <a class="mt-mobile-menu-login" href={primaryNavigationActions.loginHref} data-mt-mobile-menu-close>
-        {primaryNavigationActions.loginLabel} <span aria-hidden="true">↗</span>
+        {loginLabel} <span aria-hidden="true">↗</span>
       </a>
-      <p>Powered by AI. Managed by expert marketers.</p>
+      <p>{labels.tagline}</p>
     </div>
   </div>
 </div>
@@ -78,7 +109,7 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
       menu.classList.toggle('is-open', open);
       menu.setAttribute('aria-hidden', String(!open));
       openButton.setAttribute('aria-expanded', String(open));
-      openButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      openButton.setAttribute('aria-label', open ? (openButton.dataset.closeLabel || 'Close navigation') : (openButton.dataset.openLabel || 'Open navigation'));
       document.documentElement.classList.toggle('mt-mobile-menu-open', open);
 
       if (open) {
@@ -174,6 +205,20 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
     opacity: 1;
   }
 
+  .mt-language-switcher,
+  .mt-mobile-language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font: 700 11px/1 Inter, system-ui, sans-serif;
+    letter-spacing: 0.08em;
+  }
+
+  .mt-language-switcher a,
+  .mt-mobile-language-switcher a { color: rgba(245, 245, 241, 0.62); }
+  .mt-language-switcher a[aria-current="page"],
+  .mt-mobile-language-switcher a[aria-current="page"] { color: #69d254; }
+
   .mt-nav-cta,
   .mt-mobile-menu-cta {
     display: inline-flex;
@@ -217,6 +262,7 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
 
   @media (max-width: 980px) {
     .mt-desktop-nav,
+    .mt-language-switcher,
     .mt-nav-cta {
       display: none;
     }
@@ -400,6 +446,12 @@ import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigat
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 12px;
       align-items: center;
+    }
+
+    .mt-mobile-language-switcher {
+      grid-column: 1 / -1;
+      justify-content: center;
+      margin-bottom: 2px;
     }
 
     .mt-mobile-menu-cta {

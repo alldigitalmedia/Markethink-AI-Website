@@ -1,38 +1,38 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 
-const pageTitle = "Schedule a Markethink Walkthrough | See Your Marketing System";
+const pageTitle = "Solicita una demo de Markethink | Conoce tu sistema de marketing";
 const pageDescription =
-  "Book a focused Markethink walkthrough to map campaigns, content, website updates, leads, CRM follow-up, and approvals into one marketing system.";
+  "Solicita una sesión enfocada de Markethink para conectar campañas, contenido, actualizaciones del sitio web, prospectos, seguimiento en CRM y aprobaciones en un solo sistema de marketing.";
 
 const walkthroughSteps = [
   {
-    title: "Your business",
-    copy: "We look at your website, offers, audience, and current marketing rhythm.",
+    title: "Tu negocio",
+    copy: "Revisamos tu sitio web, tus ofertas, tu audiencia y el ritmo actual de marketing.",
   },
   {
-    title: "Your first workflows",
-    copy: "We map where Markethink could help first: campaigns, social, web, blog, or leads.",
+    title: "Tus primeros flujos de trabajo",
+    copy: "Definimos dónde puede ayudar Markethink primero: campañas, redes sociales, web, blog o prospectos.",
   },
   {
-    title: "Your next step",
-    copy: "You leave with a clear idea of what the first month could look like.",
+    title: "Tu siguiente paso",
+    copy: "Terminas con una idea clara de cómo podría verse el primer mes.",
   },
 ];
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Markethink Walkthrough Request",
+  name: "Solicitud de demo de Markethink",
   description: pageDescription,
-  url: "https://markethink.ai/schedule-a-walkthrough/",
+  url: "https://markethink.ai/es/solicitar-demo/",
   mainEntity: {
     "@type": "Service",
     name: "Markethink",
     description:
-      "A marketing system that learns a business, organizes campaigns, and helps marketing improve every week.",
+      "Un sistema de marketing que aprende un negocio, organiza campañas y ayuda a mejorar el marketing cada semana.",
     provider: { "@id": "https://markethink.ai/#organization" },
   },
 };
@@ -42,7 +42,8 @@ const structuredData = {
   title={pageTitle}
   description={pageDescription}
   image="/images/hero-image.png"
-  canonical="https://markethink.ai/schedule-a-walkthrough/"
+  canonical="https://markethink.ai/es/solicitar-demo/"
+  lang="es"
   alternates={[
     { lang: "en", href: "https://markethink.ai/schedule-a-walkthrough/" },
     { lang: "es", href: "https://markethink.ai/es/solicitar-demo/" },
@@ -50,21 +51,21 @@ const structuredData = {
   ]}
   structuredData={structuredData}
 >
-  <Navbar />
+  <Navbar lang="es" />
   <main class="walkthrough-page">
     <section class="walkthrough-hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="subtitle animate-fade-up">SCHEDULE A WALKTHROUGH</p>
-          <h1 class="animate-fade-up">See how Markethink can connect your marketing and pipeline.</h1>
+          <p class="subtitle animate-fade-up">SOLICITA UNA DEMO</p>
+          <h1 class="animate-fade-up">Descubre cómo Markethink puede conectar tu marketing con el pipeline.</h1>
           <p class="hero-description animate-fade-up">
-            A focused walkthrough built around your business, your marketing gaps, and the strongest place to start across campaigns, content, website updates, leads, CRM follow-up, and approvals.
+            Una sesión enfocada en tu negocio, tus brechas de marketing y el mejor punto de partida entre campañas, contenido, actualizaciones del sitio, prospectos, seguimiento en CRM y aprobaciones.
           </p>
 
           <div class="signal-row animate-fade-up">
-            <span>30 minutes</span>
-            <span>No generic demo</span>
-            <span>Clear next move</span>
+            <span>30 minutos</span>
+            <span>Sin demo genérica</span>
+            <span>Siguiente paso claro</span>
           </div>
 
           <div class="mini-plan animate-stagger">
@@ -78,77 +79,77 @@ const structuredData = {
         </div>
 
         <form
-          name="markethink-walkthrough"
+          name="markethink-walkthrough-es"
           method="POST"
-          action="/thank-you/"
+          action="/es/gracias/"
           netlify
           data-netlify="true"
           netlify-honeypot="bot-field"
           class="walkthrough-form animate-fade-up"
         >
-          <input type="hidden" name="form-name" value="markethink-walkthrough" />
-          <input type="hidden" name="source" value="schedule-a-walkthrough-page" />
+          <input type="hidden" name="form-name" value="markethink-walkthrough-es" />
+          <input type="hidden" name="source" value="schedule-a-walkthrough-page-es" />
           <p class="hidden-field">
-            <label>Do not fill this out <input name="bot-field" /></label>
+            <label>No completes este campo <input name="bot-field" /></label>
           </p>
 
           <div class="form-header">
-            <p class="form-kicker">Request your walkthrough</p>
-            <h2>Tell us where to start</h2>
+            <p class="form-kicker">Solicita tu demo</p>
+            <h2>Cuéntanos por dónde empezar</h2>
             <p>
-              We will use this to make the session useful from minute one.
+              Usaremos esta información para que la sesión sea útil desde el primer minuto.
             </p>
           </div>
 
           <div class="field-grid">
             <label>
-              <span>Full name</span>
+              <span>Nombre completo</span>
               <input type="text" name="full_name" autocomplete="name" required />
             </label>
             <label>
-              <span>Work email</span>
+              <span>Correo de trabajo</span>
               <input type="email" name="email" autocomplete="email" required />
             </label>
           </div>
 
           <label>
-            <span>Phone number</span>
+            <span>Número de teléfono</span>
             <input type="tel" name="phone" autocomplete="tel" required />
           </label>
 
           <label>
-            <span>Company or website</span>
+            <span>Empresa o sitio web</span>
             <input type="text" name="company_or_website" autocomplete="organization" required />
           </label>
 
           <label>
-            <span>Main priority</span>
+            <span>Prioridad principal</span>
             <select name="main_priority" required>
-              <option value="">Select one</option>
-              <option>More qualified leads</option>
-              <option>Consistent social content</option>
-              <option>Landing pages and campaigns</option>
-              <option>Blog and web management</option>
-              <option>Agency partnership</option>
+              <option value="">Selecciona una</option>
+              <option>Más prospectos calificados</option>
+              <option>Contenido constante para redes</option>
+              <option>Páginas de destino y campañas</option>
+              <option>Gestión del blog y el sitio web</option>
+              <option>Alianza con agencia</option>
             </select>
           </label>
 
           <label>
-            <span>What would make this useful?</span>
+            <span>¿Qué haría útil esta sesión?</span>
             <textarea
               name="goal"
               rows="3"
-              placeholder="Example: We need more qualified leads and a better content rhythm."
+              placeholder="Ejemplo: necesitamos más prospectos calificados y un mejor ritmo de contenido."
             ></textarea>
           </label>
 
-          <button type="submit" class="button form-button">Schedule My Walkthrough</button>
-          <p class="form-note">We will reply with available times and a short agenda for your business.</p>
+          <button type="submit" class="button form-button">Solicitar mi demo</button>
+          <p class="form-note">Responderemos con horarios disponibles y una agenda breve para tu negocio.</p>
         </form>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="es" />
 </Layout>
 
 <style>
