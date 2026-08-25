@@ -1,18 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.astro";
-import { primaryNavigationActions } from "../../data/siteNavigation";
+import Navbar from "../../components/Navbar.astro";
 
 const pageTitle = "Trabajo real de nuestros clientes | Markethink";
 const pageDescription = "Explora sitios web, campañas, contenido, publicidad y sistemas de crecimiento creados para clientes con Markethink, impulsado por IA y gestionado por expertos en marketing.";
 const canonicalUrl = "https://markethink.ai/es/trabajo-real/";
 const walkthroughHref = "/es/solicitar-demo/";
-const navigation = [
-  { label: "Cómo funciona", href: "/es/#how-it-works" },
-  { label: "Trabajo real", href: "/es/trabajo-real/" },
-  { label: "Por qué Markethink", href: "/es/#comparison" },
-  { label: "Ideas", href: "/blog/" },
-];
 
 const categories = [
   { id: "all", label: "Todo" },
@@ -126,42 +120,8 @@ const structuredData = [
 ---
 
 <Layout lang="es" title={pageTitle} description={pageDescription} canonical={canonicalUrl} alternates={[{ lang: "en", href: "https://markethink.ai/shipped/" }, { lang: "es", href: canonicalUrl }, { lang: "x-default", href: "https://markethink.ai/shipped/" }]} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" structuredData={structuredData}>
-  <header class="site-header">
-    <a class="logo" href="/es/" aria-label="Inicio de Markethink"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-    <nav class="language-switcher" aria-label="Selección de idioma">
-      <a href="/shipped/" lang="en">EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page">ES</a>
-    </nav>
-    <nav aria-label="Navegación principal">
-      {navigation.map((link) => <a href={link.href}>{link.label}</a>)}
-      <a href={primaryNavigationActions.loginHref}>Ingresar</a>
-    </nav>
-    <a class="header-cta" href={walkthroughHref}>Solicitar una demo</a>
-    <button class="mobile-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
-      <span></span><span></span>
-    </button>
-  </header>
+  <Navbar lang="es" />
 
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true" data-mobile-menu>
-    <div class="mobile-menu-shell">
-      <div class="mobile-menu-top">
-        <a class="mobile-menu-logo" href="/es/" aria-label="Inicio de Markethink" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
-        <button class="mobile-menu-close" type="button" aria-label="Cerrar navegación" data-mobile-menu-close><span></span><span></span></button>
-      </div>
-      <nav class="mobile-menu-nav" aria-label="Enlaces de navegación móvil">
-        {navigation.map((link, index) => (
-          <a href={link.href} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
-        ))}
-      </nav>
-      <div class="mobile-menu-footer">
-        <nav class="mobile-language-switcher" aria-label="Selección de idioma">
-          <a href="/shipped/" lang="en" data-mobile-menu-close>EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page" data-mobile-menu-close>ES</a>
-        </nav>
-        <a class="mobile-menu-cta" href={walkthroughHref} data-mobile-menu-close>Solicitar una demo</a>
-        <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>Ingresar <span>↗</span></a>
-        <p>Impulsado por IA. Gestionado por expertos en marketing.</p>
-      </div>
-    </div>
-  </div>
   <main class="shipped-page">
     <section class="shipped-hero" id="top" aria-labelledby="shipped-hero-title">
       <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>

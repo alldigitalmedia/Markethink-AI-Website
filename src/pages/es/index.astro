@@ -2,12 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import ReviewHowItWorks from "../../components/ReviewHowItWorks.astro";
 import Footer from "../../components/Footer.astro";
-import { primaryNavigationActions } from "../../data/siteNavigation";
-const primaryNavigation = [
- { label: "Cómo funciona", reviewHref: "#how-it-works" }, { label: "Trabajo real", reviewHref: "/shipped/" },
- { label: "Por qué Markethink", reviewHref: "#proof-title" }, { label: "Ideas", reviewHref: "/blog/" },
-];
-const localizedActions = { ...primaryNavigationActions, loginLabel: "Ingresar", ctaLabel: "Solicitar una demo", ctaHref: "/es/solicitar-demo/" };
+import Navbar from "../../components/Navbar.astro";
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
 const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp";
@@ -129,42 +124,7 @@ const homeStructuredData = {
   includeSiteEntities={true}
 >
   <div class="review-page">
-    <header class="site-header">
-      <a class="logo" href="#top" aria-label="Inicio de Markethink"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-      <nav aria-label="Navegación principal">
-        {primaryNavigation.map((link) => <a href={link.reviewHref}>{link.label}</a>)}
-        <a href={localizedActions.loginHref}>{localizedActions.loginLabel}</a>
-      </nav>
-      <nav class="language-switcher" aria-label="Selección de idioma">
-        <a href="/" lang="en">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" aria-current="page">ES</a>
-      </nav>
-      <a class="button button-small button-roll" href={localizedActions.ctaHref}><span class="button-label"><span>{localizedActions.ctaLabel}</span><span aria-hidden="true">{localizedActions.ctaLabel}</span></span></a>
-      <button class="mobile-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
-        <span></span><span></span>
-      </button>
-    </header>
-
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true" data-mobile-menu>
-      <div class="mobile-menu-shell">
-        <div class="mobile-menu-top">
-          <a class="mobile-menu-logo" href="#top" aria-label="Inicio de Markethink" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
-          <button class="mobile-menu-close" type="button" aria-label="Cerrar navegación" data-mobile-menu-close><span></span><span></span></button>
-        </div>
-        <nav class="mobile-menu-nav" aria-label="Enlaces de navegación móvil">
-          {primaryNavigation.map((link, index) => (
-            <a href={link.reviewHref} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
-          ))}
-        </nav>
-        <div class="mobile-menu-footer">
-          <nav class="mobile-language-switcher" aria-label="Selección de idioma">
-            <a href="/" lang="en" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" aria-current="page" data-mobile-menu-close>ES</a>
-          </nav>
-          <a class="button mobile-menu-cta" href={localizedActions.ctaHref} data-mobile-menu-close>{localizedActions.ctaLabel}</a>
-          <a class="mobile-menu-login" href={localizedActions.loginHref} data-mobile-menu-close>{localizedActions.loginLabel} <span>↗</span></a>
-          <p>Impulsado por IA. Gestionado por expertos en marketing.</p>
-        </div>
-      </div>
-    </div>
+    <Navbar lang="es" />
 
     <main id="top">
       <section class="hero" data-scroll-hero>
