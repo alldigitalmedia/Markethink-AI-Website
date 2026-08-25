@@ -17,8 +17,16 @@ const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ct
 const demoLabel = isSpanish ? "Solicitar una demo" : primaryNavigationActions.ctaLabel;
 const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
 const alternateHref = isSpanish
-  ? (currentPath.startsWith("/es/solicitar-demo") ? "/schedule-a-walkthrough/" : "/")
-  : (currentPath.startsWith("/schedule-a-walkthrough") ? "/es/solicitar-demo/" : "/es/");
+  ? currentPath.startsWith("/es/solicitar-demo")
+    ? "/schedule-a-walkthrough/"
+    : currentPath.startsWith("/es/trabajo-real")
+      ? "/shipped/"
+      : "/"
+  : currentPath.startsWith("/schedule-a-walkthrough")
+    ? "/es/solicitar-demo/"
+    : currentPath.startsWith("/shipped")
+      ? "/es/trabajo-real/"
+      : "/es/";
 const labels = isSpanish
   ? { home: "Inicio de Markethink", primary: "Navegación principal", open: "Abrir navegación", close: "Cerrar navegación", mobile: "Navegación móvil", mobileLinks: "Enlaces de navegación móvil", language: "Selección de idioma", tagline: "Impulsado por IA. Gestionado por expertos en marketing." }
   : { home: "Markethink home", primary: "Primary navigation", open: "Open navigation", close: "Close navigation", mobile: "Mobile navigation", mobileLinks: "Mobile navigation links", language: "Language selection", tagline: "Powered by AI. Managed by expert marketers." };
@@ -209,15 +217,36 @@ const labels = isSpanish
   .mt-mobile-language-switcher {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font: 700 11px/1 Inter, system-ui, sans-serif;
-    letter-spacing: 0.08em;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid rgba(245, 245, 241, 0.18);
+    border-radius: 999px;
+    background: rgba(15, 18, 19, 0.48);
+    font: 700 10px/1 Inter, system-ui, sans-serif;
+    letter-spacing: 0.06em;
   }
 
+  .mt-language-switcher > span,
+  .mt-mobile-language-switcher > span { display: none; }
+
   .mt-language-switcher a,
-  .mt-mobile-language-switcher a { color: rgba(245, 245, 241, 0.62); }
+  .mt-mobile-language-switcher a {
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: rgba(245, 245, 241, 0.66);
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
   .mt-language-switcher a[aria-current="page"],
-  .mt-mobile-language-switcher a[aria-current="page"] { color: #69d254; }
+  .mt-mobile-language-switcher a[aria-current="page"] {
+    background: #69d254;
+    color: #0f1213;
+  }
 
   .mt-nav-cta,
   .mt-mobile-menu-cta {
