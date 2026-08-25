@@ -1,0 +1,548 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { primaryNavigationActions } from "../../data/siteNavigation";
+
+const pageTitle = "Trabajo real de nuestros clientes | Markethink";
+const pageDescription = "Explora sitios web, campañas, contenido, publicidad y sistemas de crecimiento creados para clientes con Markethink, impulsado por IA y gestionado por expertos en marketing.";
+const canonicalUrl = "https://markethink.ai/es/trabajo-real/";
+const walkthroughHref = "/es/solicitar-demo/";
+const navigation = [
+  { label: "Cómo funciona", href: "/es/#how-it-works" },
+  { label: "Trabajo real", href: "/es/trabajo-real/" },
+  { label: "Por qué Markethink", href: "/es/#comparison" },
+  { label: "Ideas", href: "/blog/" },
+];
+
+const categories = [
+  { id: "all", label: "Todo" },
+  { id: "web", label: "Web" },
+  { id: "social", label: "Redes sociales" },
+  { id: "email", label: "Email marketing" },
+];
+
+const workItems = [
+  {
+    category: "web",
+    client: "Green",
+    work: "Diseño web, arquitectura de soluciones y flujo de contacto",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/green-web.webp",
+    alt: "Sitio web de servicios tecnológicos de Green en un monitor de escritorio",
+    href: "https://greencss.com",
+    action: "Visitar sitio web",
+    tone: "dark",
+  },
+  {
+    category: "social",
+    client: "Mango Media",
+    work: "Creatividad para redes sociales y dirección de contenido",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/mango-social.webp",
+    alt: "Creatividad para redes sociales de Mango Media en un teléfono",
+    href: "https://www.instagram.com/mangomediaca/",
+    action: "Ver en Instagram",
+    tone: "green",
+  },
+  {
+    category: "web",
+    client: "Selten Logistics",
+    work: "Diseño web, experiencia de inventario y flujo de consultas",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-logistics-web.webp",
+    alt: "Marketplace de equipos de Selten Logistics en una computadora portátil",
+    href: "https://www.seltenlogistics.com",
+    action: "Visitar sitio web",
+    tone: "wash",
+  },
+  {
+    category: "web",
+    client: "+SELTEN Ai",
+    work: "Diseño web, posicionamiento de producto y experiencia bilingüe",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-ai-web.webp",
+    alt: "Sitio web de +SELTEN Ai en un monitor de escritorio",
+    href: "https://selten.ai/es",
+    action: "Visitar sitio web",
+    tone: "dark",
+  },
+  {
+    category: "social",
+    client: "Pambuddha Homes",
+    work: "Creatividad para redes sociales y dirección de contenido editorial",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/pambuddha-homes-social-v2.webp",
+    alt: "Contenido de pisos de Pambuddha Homes presentado como publicación de Instagram",
+    href: "https://www.instagram.com/pambuddhahomes/",
+    action: "Ver en Instagram",
+    tone: "warm",
+  },
+  {
+    category: "social",
+    client: "Villazzo",
+    work: "Creatividad para redes sociales y contenido de destinos",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/villazzo-social.webp",
+    alt: "Publicación de destinos de villas de lujo de Villazzo en un teléfono",
+    href: "https://www.instagram.com/villazzo/",
+    action: "Ver en Instagram",
+    tone: "green",
+  },
+  {
+    category: "email",
+    client: "Villazzo",
+    work: "Creatividad para email marketing y diseño editorial de newsletters",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
+    alt: "Newsletter The Villazzo Edit presentada en una tableta",
+    href: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
+    action: "Ver email",
+    tone: "warm",
+    fit: "contain",
+  },
+  {
+    category: "web",
+    client: "Emma Sacks Interiors",
+    work: "Rediseño web para un estudio de interiores definido por la forma, la función y el lujo",
+    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/emma-sacks-website-redesign.webp",
+    alt: "Rediseño del sitio web de Emma Sacks Interiors en una computadora portátil",
+    action: "Rediseño web en curso",
+    tone: "warm",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Trabajo real de nuestros clientes",
+    description: pageDescription,
+    url: canonicalUrl,
+    inLanguage: "es",
+    publisher: { "@id": "https://markethink.ai/#organization" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://markethink.ai/es/" },
+      { "@type": "ListItem", position: 2, name: "Trabajo real de nuestros clientes", item: canonicalUrl },
+    ],
+  },
+];
+---
+
+<Layout lang="es" title={pageTitle} description={pageDescription} canonical={canonicalUrl} alternates={[{ lang: "en", href: "https://markethink.ai/shipped/" }, { lang: "es", href: canonicalUrl }, { lang: "x-default", href: "https://markethink.ai/shipped/" }]} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" structuredData={structuredData}>
+  <header class="site-header">
+    <a class="logo" href="/es/" aria-label="Inicio de Markethink"><img src="/images/logo-white.svg" alt="Markethink" /></a>
+    <nav class="language-switcher" aria-label="Selección de idioma">
+      <a href="/shipped/" lang="en">EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page">ES</a>
+    </nav>
+    <nav aria-label="Navegación principal">
+      {navigation.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a href={primaryNavigationActions.loginHref}>Ingresar</a>
+    </nav>
+    <a class="header-cta" href={walkthroughHref}>Solicitar una demo</a>
+    <button class="mobile-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true" data-mobile-menu>
+    <div class="mobile-menu-shell">
+      <div class="mobile-menu-top">
+        <a class="mobile-menu-logo" href="/es/" aria-label="Inicio de Markethink" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
+        <button class="mobile-menu-close" type="button" aria-label="Cerrar navegación" data-mobile-menu-close><span></span><span></span></button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Enlaces de navegación móvil">
+        {navigation.map((link, index) => (
+          <a href={link.href} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
+        ))}
+      </nav>
+      <div class="mobile-menu-footer">
+        <nav class="mobile-language-switcher" aria-label="Selección de idioma">
+          <a href="/shipped/" lang="en" data-mobile-menu-close>EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page" data-mobile-menu-close>ES</a>
+        </nav>
+        <a class="mobile-menu-cta" href={walkthroughHref} data-mobile-menu-close>Solicitar una demo</a>
+        <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>Ingresar <span>↗</span></a>
+        <p>Impulsado por IA. Gestionado por expertos en marketing.</p>
+      </div>
+    </div>
+  </div>
+  <main class="shipped-page">
+    <section class="shipped-hero" id="top" aria-labelledby="shipped-hero-title">
+      <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-shell"><div class="hero-copy animate-fade-up">
+        <p class="hero-eyebrow">TRABAJO RECIENTE DE CLIENTES</p>
+        <h1 id="shipped-hero-title">Marketing real.<br /><em>Creado para impulsar cada negocio.</em></h1>
+        <p class="hero-intro">Sitios web, redes sociales, email y sistemas de crecimiento creados por nuestro equipo, impulsados por IA y gestionados por expertos en marketing.</p>
+      </div></div>
+      <div class="hero-work-marquee" aria-label="Explora trabajo real de clientes">
+        <div class="hero-work-track">
+          {[0, 1].map((copyIndex) => (
+            <div class="hero-work-group" aria-hidden={copyIndex === 1 ? "true" : undefined}>
+              {workItems.map((item) => (
+                <a href="#latest-work" class="hero-work-card" data-hero-filter={item.category} tabindex={copyIndex === 1 ? "-1" : undefined} aria-label={`Ver el trabajo de ${item.client}`}>
+                  <img src={item.image} alt="" width="120" height="88" loading="eager" />
+                  <span><small>{item.category === "web" ? "WEB" : item.category === "social" ? "REDES" : "EMAIL"}</small><strong>{item.client}</strong></span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="latest-work">
+      <div class="container work-intro">
+        <div>
+          <p class="subtitle">TRABAJO REAL DE CLIENTES</p>
+          <h2>Proyectos reales. Creados para negocios reales.</h2>
+        </div>
+        <p>Una selección de sitios web, redes sociales y email. Las tarjetas enlazadas abren el destino en vivo o la pieza terminada.</p>
+      </div>
+
+      <div class="filter-shell" data-filter-shell>
+        <div class="container filters" role="group" aria-label="Filtrar trabajo de clientes">
+          {categories.map((category, index) => (
+            <button type="button" class:list={["filter-button", index === 0 && "is-active"]} data-filter={category.id} aria-pressed={index === 0 ? "true" : "false"}>
+              {category.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="work-grid" data-work-grid>
+        {workItems.map((item, index) => (
+          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href ? "_blank" : undefined} rel={item.href ? "noopener noreferrer" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
+            <div
+              class:list={["card-media", item.fit === "contain" && "fit-contain"]}
+              style={item.fit === "contain" ? `--card-image: url("${item.image}")` : undefined}
+            >
+              <img
+                src={item.image}
+                alt={item.alt}
+                width={item.fit === "contain" ? "1024" : "1200"}
+                height={item.fit === "contain" ? "1536" : "800"}
+                loading={index < 2 ? "eager" : "lazy"}
+              />
+              <div class="card-wash"></div>
+              <span class="anonymized-label">{item.action}{item.href ? " ↗" : ""}</span>
+            </div>
+            <div class="card-copy">
+              <h3>{item.client}</h3>
+              <p>{item.work}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <p class="empty-state" data-empty-state hidden>Todavía no hay trabajo público disponible en esta categoría.</p>
+    </section>
+
+    <section class="system-section">
+      <div class="container system-grid">
+        <div class="system-copy animate-fade-up">
+          <p class="subtitle">EL TRABAJO DETRÁS DEL TRABAJO</p>
+          <h2>Una solicitud puede convertirse en una operación completa de marketing.</h2>
+          <p>Markethink no se detiene en la pieza. El sistema lleva el contexto del negocio a la campaña, mantiene activa la revisión, conecta la respuesta con el pipeline y recuerda qué debe mejorar después.</p>
+          <a href={walkthroughHref} class="text-link dark-link">Conoce cómo funciona la operación <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="motion-map animate-stagger" aria-label="Secuencia operativa de Markethink">
+          <article><span>01</span><div><strong>Solicitar</strong><p>La necesidad del negocio, la oferta, la audiencia y la prioridad.</p></div></article>
+          <article><span>02</span><div><strong>Ejecutar</strong><p>Campañas, web, contenido, publicidad y trabajo de prospectos.</p></div></article>
+          <article><span>03</span><div><strong>Aprobar</strong><p>Un equipo real de marketing dirige, revisa y se mantiene responsable.</p></div></article>
+          <article><span>04</span><div><strong>Convertir</strong><p>Captura de prospectos, contexto del CRM, seguimiento y siguiente acción.</p></div></article>
+          <article><span>05</span><div><strong>Aprender</strong><p>Cada aprobación, corrección y resultado hace más preciso lo que sigue.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-panel animate-scale-in">
+        <p class="subtitle">TU PRÓXIMO MES</p>
+        <h2>¿Qué podría lanzar tu negocio después?</h2>
+        <p>Muéstranos dónde se está frenando el marketing. Definiremos el primer movimiento útil y cómo se conecta con el resto de la operación.</p>
+        <a href={walkthroughHref} class="button">Solicitar una demo de Markethink</a>
+      </div>
+    </section>
+  </main>
+  <Footer lang="es" />
+</Layout>
+
+<script>
+  function initMobileMenu() {
+    const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+    const opener = document.querySelector<HTMLButtonElement>("[data-mobile-menu-open]");
+    if (!menu || !opener || menu.dataset.ready === "true") return;
+    menu.dataset.ready = "true";
+    const closeControls = Array.from(menu.querySelectorAll<HTMLElement>("[data-mobile-menu-close]"));
+    const setMenu = (open: boolean, restoreFocus = false) => {
+      menu.classList.toggle("is-open", open);
+      menu.setAttribute("aria-hidden", String(!open));
+      opener.setAttribute("aria-expanded", String(open));
+      opener.setAttribute("aria-label", open ? "Cerrar navegación" : "Abrir navegación");
+      document.documentElement.classList.toggle("mobile-menu-open", open);
+      if (open) window.setTimeout(() => menu.querySelector<HTMLElement>("a,button")?.focus(), 360);
+      else if (restoreFocus) opener.focus();
+    };
+    opener.addEventListener("click", () => setMenu(true));
+    closeControls.forEach((control) => control.addEventListener("click", () => setMenu(false, control.matches("button"))));
+    document.addEventListener("keydown", (event) => {
+      if (!menu.classList.contains("is-open")) return;
+      if (event.key === "Escape") { setMenu(false, true); return; }
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(menu.querySelectorAll<HTMLElement>("a[href],button:not([disabled])"));
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    });
+    window.addEventListener("resize", () => { if (window.innerWidth > 980 && menu.classList.contains("is-open")) setMenu(false); }, { passive: true });
+  }
+
+  function initWorkFilters() {
+    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-categories]"));
+    const emptyState = document.querySelector<HTMLElement>("[data-empty-state]");
+
+    const applyFilter = (filter: string) => {
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const categories = (card.dataset.categories || "").split(" ");
+        const show = filter === "all" || categories.includes(filter);
+        card.hidden = !show;
+        card.classList.toggle("is-filtered-in", show);
+        if (show) visibleCount += 1;
+      });
+      if (emptyState) emptyState.hidden = visibleCount > 0;
+      buttons.forEach((button) => {
+        const active = button.dataset.filter === filter;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    };
+
+    buttons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter || "all")));
+    applyFilter("all");
+  }
+
+  function initHeroCategories() {
+    document.querySelectorAll<HTMLElement>("[data-hero-filter]").forEach((link) => link.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.querySelector<HTMLButtonElement>(`[data-filter="${link.dataset.heroFilter || "all"}"]`)?.click();
+      document.querySelector("#latest-work")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }));
+  }
+
+  function initWorkReveals() {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".work-card"));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      cards.forEach((card) => card.classList.add("is-revealed"));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target as HTMLElement;
+        card.classList.add("is-revealed");
+        observer.unobserve(card);
+      });
+    }, { threshold: 0.12 });
+    cards.forEach((card) => observer.observe(card));
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initMobileMenu();
+    initWorkFilters();
+    initHeroCategories();
+    initWorkReveals();
+  });
+  if (document.readyState !== "loading") {
+    initMobileMenu();
+    initWorkFilters();
+    initHeroCategories();
+    initWorkReveals();
+  }
+</script>
+
+<style>
+  .shipped-page { background: #0f1213; color: #f5f5f1; overflow: clip; }
+
+  .site-header { height: 54px; padding: 0 15px 0 19px; display: flex; align-items: center; gap: 22px; position: absolute; top: 10px; left: max(18px, calc((100vw - 1280px)/2)); right: max(18px, calc((100vw - 1280px)/2)); z-index: 70; border: 1px solid rgba(245,245,241,.2); border-radius: 999px; background: rgba(15,18,19,.42); backdrop-filter: blur(18px) saturate(120%); -webkit-backdrop-filter: blur(18px) saturate(120%); box-shadow: 0 16px 50px rgba(0,0,0,.16); }
+  .site-header .logo { width: 124px; height: 100%; display: flex; align-items: center; }
+  .site-header .logo img { display: block; width: 100%; transform: translateY(-2px); }
+  .site-header nav { display: flex; gap: 22px; margin-left: auto; }
+  .site-header a { color: #f5f5f1; text-decoration: none; font-size: 13px; }
+  .site-header nav a { opacity: .8; transition: opacity .2s ease; }
+  .site-header nav a:hover, .site-header nav a:focus-visible { opacity: 1; }
+  .site-header .language-switcher { flex: 0 0 auto; margin-left: 0; gap: 2px; padding: 3px; border: 1px solid rgba(245,245,241,.2); border-radius: 999px; background: rgba(15,18,19,.34); font-weight: 800; letter-spacing: .06em; }
+  .site-header .language-switcher a { min-width: 32px; height: 28px; display: grid; place-items: center; border-radius: 999px; font-size: 10px; opacity: .68; }
+  .site-header .language-switcher a[aria-current="page"] { background: #69d254; color: #0f1213; opacity: 1; }
+  .mobile-language-switcher { grid-column: 1 / -1; display: flex; justify-content: center; gap: .65rem; font-weight: 700; letter-spacing: .08em; }
+  .mobile-language-switcher a { font-size: 11px; }
+  .mobile-language-switcher a[aria-current="page"] { color: #69d254; opacity: 1; }
+  .header-cta, .mobile-menu-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border: 1px solid #69d254; border-radius: 999px; background: #69d254; color: #0f1213 !important; font-size: 12px !important; font-weight: 700; white-space: nowrap; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+  .header-cta:hover, .header-cta:focus-visible, .mobile-menu-cta:hover, .mobile-menu-cta:focus-visible { background: #82df6f; border-color: #82df6f; transform: translateY(-2px); }
+  .mobile-menu-toggle, .mobile-menu { display: none; }
+
+  .shipped-hero { position: relative; min-height: clamp(46rem,80vh,54rem); display:flex; align-items:center; overflow:hidden; background:#0f1213; isolation:isolate; }
+  .hero-background { position:absolute; z-index:-3; inset:0; overflow:hidden; }
+  .hero-background img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:74% top; filter:saturate(1.055) contrast(1.045); }
+  .hero-shade { position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(7,9,10,.96) 0%,rgba(7,9,10,.88) 27%,rgba(7,9,10,.52) 50%,rgba(7,9,10,.08) 76%),linear-gradient(180deg,rgba(7,9,10,.12),transparent 44%,rgba(7,9,10,.62)); pointer-events:none; }
+  .hero-shell { position:relative; width:min(1280px,calc(100% - 48px)); min-height:inherit; margin:0 auto; display:flex; align-items:center; padding:7.5rem 0 8.5rem; }
+  .hero-copy { max-width:min(50rem,60vw); }
+  .hero-eyebrow { margin:0 0 1.4rem; color:#aee8a0; font-size:.72rem; font-weight:800; letter-spacing:.16em; }
+  .hero-copy h1 { margin:0; color:#f5f5f1; font-family:"Instrument Serif",Georgia,serif; font-size:clamp(4.2rem,6.5vw,6.5rem); font-weight:400; line-height:.86; letter-spacing:-.052em; text-wrap:balance; }
+  .hero-copy h1 em { display:inline-block; color:#69d254; font-weight:400; }
+  .hero-intro { max-width:37rem; margin:clamp(1.5rem,2.5vw,2.1rem) 0 0; color:rgba(245,245,241,.86); font-size:clamp(1rem,1.25vw,1.15rem); line-height:1.56; }
+  .hero-work-marquee { position:absolute; z-index:3; left:0; right:0; bottom:0; overflow:hidden; padding:.75rem 0 1rem; mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+  .hero-work-track { display:flex; width:max-content; gap:.75rem; padding-left:.75rem; will-change:transform; animation:hero-work-scroll 42s linear infinite; }
+  .hero-work-group { display:flex; gap:.75rem; }
+  .hero-work-marquee:hover .hero-work-track, .hero-work-marquee:focus-within .hero-work-track { animation-play-state:paused; }
+  .hero-work-card { width:15rem; height:4.65rem; flex:0 0 15rem; display:flex; align-items:center; gap:.75rem; padding:.48rem .78rem .48rem .48rem; border:1px solid rgba(255,255,255,.24); border-radius:.9rem; background:linear-gradient(135deg,rgba(245,245,241,.2),rgba(245,245,241,.08)); color:#f5f5f1; text-decoration:none; box-shadow:0 14px 36px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.2); backdrop-filter:blur(20px) saturate(145%); -webkit-backdrop-filter:blur(20px) saturate(145%); transition:background .22s ease,border-color .22s ease,transform .22s ease; }
+  .hero-work-card:hover, .hero-work-card:focus-visible { border-color:rgba(174,232,160,.68); background:linear-gradient(135deg,rgba(245,245,241,.28),rgba(105,210,84,.13)); transform:translateY(-3px); }
+  .hero-work-card img { width:4rem; height:3.65rem; flex:0 0 4rem; display:block; object-fit:cover; object-position:center; border-radius:.58rem; box-shadow:0 8px 20px rgba(0,0,0,.24); }
+  .hero-work-card span { display:grid; gap:.26rem; min-width:0; }
+  .hero-work-card small { color:#aee8a0; font-size:.56rem; font-weight:800; letter-spacing:.13em; }
+  .hero-work-card strong { overflow:hidden; color:#f5f5f1; font-size:.82rem; font-weight:700; white-space:nowrap; text-overflow:ellipsis; }
+  @keyframes hero-work-scroll { to { transform:translate3d(calc(-50% - .375rem),0,0); } }
+
+  .work-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0 0; }
+  .work-intro { display: grid; grid-template-columns: 1.1fr .65fr; gap: clamp(2rem,6vw,6rem); align-items: end; margin-bottom: 3rem; }
+  .work-intro .subtitle, .system-section .subtitle, .closing-panel .subtitle { color: rgba(15,18,19,.48); }
+  .work-intro h2, .system-copy h2, .closing-panel h2 { max-width: 48rem; margin-top: .8rem; font-size: clamp(3.6rem,6.5vw,7rem); line-height: .9; letter-spacing: -.055em; text-wrap: balance; }
+  .work-intro > p { max-width: 34rem; color: rgba(15,18,19,.65); line-height: 1.7; }
+  .filter-shell { position: sticky; top: 0; z-index: 40; padding: .75rem 0; border-block: 1px solid rgba(15,18,19,.09); background: rgba(245,245,241,.9); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .filters { display: flex; gap: .55rem; overflow-x: auto; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .filter-button { flex: 0 0 auto; padding: .72rem 1rem; border: 1px solid rgba(15,18,19,.12); border-radius: 999px; background: transparent; color: rgba(15,18,19,.64); font: 700 .78rem/1 var(--font-body); cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+  .filter-button:hover, .filter-button.is-active { border-color: #0f1213; background: #0f1213; color: #f5f5f1; }
+  .work-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(1rem,2vw,2rem); padding: 0 clamp(1rem,3vw,3rem) clamp(4rem,8vw,8rem); background: #f5f5f1; }
+  .work-card { position: relative; display: block; min-height: 0; overflow: visible; background: transparent; color: #0f1213; opacity: 0; filter: blur(18px); transform: translateY(44px) scale(.98); transition: opacity .9s cubic-bezier(.22,1,.36,1), filter 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); transition-delay: calc((var(--card-index) % 2) * 90ms); }
+  .work-card.is-revealed { opacity: 1; filter: blur(0); transform: none; }
+  .work-card[hidden] { display: none; }
+  .card-media { position: relative; inset: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 1.25rem; background: #171b1c; isolation: isolate; }
+  .card-media img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.22,1,.36,1), filter .5s ease; }
+  .card-media.fit-contain::before { content: ""; position: absolute; z-index: 0; inset: -7%; background-image: var(--card-image); background-position: center; background-size: cover; filter: blur(30px) saturate(.8) brightness(.8); transform: scale(1.09); }
+  .card-media.fit-contain::after { content: ""; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgba(15,18,19,.18), transparent 28%, transparent 72%, rgba(15,18,19,.18)); pointer-events: none; }
+  .card-media.fit-contain img { object-fit: contain; padding: clamp(.6rem,1.2vw,1.1rem) 0; }
+  .work-card:hover .card-media img, .work-card:focus-visible .card-media img { transform: scale(1.03); }
+  .work-card:hover .card-media.fit-contain img, .work-card:focus-visible .card-media.fit-contain img { transform: scale(1.012); }
+  .work-card:focus-visible { outline: 3px solid #69d254; outline-offset: -3px; }
+  .card-wash { display: none; }
+  .tone-green .card-wash { background: linear-gradient(180deg, rgba(105,210,84,.04), rgba(15,18,19,.95) 88%); }
+  .tone-warm .card-wash { background: linear-gradient(180deg, rgba(245,245,241,.02), rgba(15,18,19,.93) 88%); }
+  .tone-dark .card-wash { background: linear-gradient(180deg, rgba(15,18,19,.12), rgba(15,18,19,.97) 86%); }
+  .tone-wash .card-wash { background: linear-gradient(180deg, rgba(237,244,234,.03), rgba(15,18,19,.94) 88%); }
+  .anonymized-label { position: absolute; z-index: 3; top: 1.25rem; right: 1.25rem; padding: .48rem .68rem; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(15,18,19,.42); color: rgba(245,245,241,.76); font-size: .66rem; font-weight: 750; letter-spacing: .04em; backdrop-filter: blur(12px); }
+  .card-copy { position: relative; inset: auto; z-index: 2; padding: 1rem .15rem 0; }
+  .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: rgba(245,245,241,.58); font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+  .card-copy h3 { max-width: 46rem; margin: 0 0 .35rem; font-size: clamp(1.25rem,2vw,1.75rem); line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
+  .card-copy > p { max-width: 42rem; margin: 0; color: rgba(15,18,19,.58); font-size: clamp(.92rem,1.15vw,1.04rem); line-height: 1.45; }
+  .deliverables { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+  .deliverables span { padding: .45rem .62rem; border-radius: 999px; background: rgba(245,245,241,.11); color: rgba(245,245,241,.82); font-size: .68rem; }
+  .empty-state { padding: 5rem 1rem; text-align: center; color: rgba(15,18,19,.55); }
+
+  .system-section { background: #edf4ea; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0; }
+  .system-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem,8vw,8rem); align-items: start; }
+  .system-copy > p:not(.subtitle) { max-width: 39rem; margin-top: 1.25rem; color: rgba(15,18,19,.65); line-height: 1.72; }
+  .dark-link { margin-top: 1.5rem; }
+  .motion-map { border-top: 1px solid rgba(15,18,19,.13); }
+  .motion-map article { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; padding: 1.45rem 0; border-bottom: 1px solid rgba(15,18,19,.13); }
+  .motion-map article > span { color: #4aa63c; font-size: .72rem; font-weight: 850; letter-spacing: .08em; }
+  .motion-map strong { font-family: "Instrument Serif", Georgia, serif; font-size: 2rem; font-weight: 400; }
+  .motion-map p { margin-top: .25rem; color: rgba(15,18,19,.58); line-height: 1.55; }
+
+  .closing-section { background: #f5f5f1; color: #0f1213; padding: 0 0 clamp(6rem,9vw,9rem); }
+  .closing-panel { display: flex; flex-direction: column; align-items: center; text-align: center; padding: clamp(3rem,7vw,7rem); border-radius: 2.2rem; background: #0f1213; color: #f5f5f1; }
+  .closing-panel .subtitle { color: #aee8a0; }
+  .closing-panel h2 { max-width: 62rem; }
+  .closing-panel > p:not(.subtitle) { max-width: 42rem; margin-top: 1.2rem; color: rgba(245,245,241,.67); font-size: 1.05rem; line-height: 1.7; }
+  .closing-panel .button { margin-top: 1.8rem; }
+
+  @media (max-width: 980px) {
+    .work-intro, .system-grid { grid-template-columns: 1fr; }
+    .work-intro { align-items: start; }
+    .work-intro > p { max-width: 44rem; }
+  }
+
+  @media (max-width: 720px) {
+    .shipped-hero { min-height:48rem; align-items:center; }
+    .hero-background img { object-position:82% top; }
+    .hero-shade { background:linear-gradient(180deg,rgba(7,9,10,.58),rgba(7,9,10,.42) 32%,rgba(7,9,10,.76) 68%,rgba(7,9,10,.96)),linear-gradient(90deg,rgba(7,9,10,.86),rgba(7,9,10,.46) 62%,rgba(7,9,10,.14)); }
+    .hero-shell { width:calc(100% - 32px); min-height:inherit; padding:7rem 0 8rem; align-items:center; }
+    .hero-copy { max-width:22rem; }
+    .hero-eyebrow { margin-bottom:1rem; font-size:.66rem; }
+    .hero-copy h1 { font-size:clamp(3.55rem,15.5vw,5rem); line-height:.88; }
+    .hero-intro { max-width:21rem; font-size:.96rem; }
+    .hero-work-marquee { padding:.6rem 0 .8rem; mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent); }
+    .hero-work-track, .hero-work-group { gap:.55rem; }
+    .hero-work-track { padding-left:.55rem; animation-duration:34s; }
+    .hero-work-card { width:12.2rem; height:4.05rem; flex-basis:12.2rem; gap:.58rem; padding:.4rem .62rem .4rem .4rem; }
+    .hero-work-card img { width:3.45rem; height:3.2rem; flex-basis:3.45rem; }
+    .hero-work-card strong { font-size:.75rem; }
+    .work-intro h2, .system-copy h2, .closing-panel h2 { font-size: clamp(3.4rem,14vw,4.7rem); }
+    .filter-shell { top: 0; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card { min-height: 0; transition-delay: 0ms; }
+    .card-copy { padding: .9rem .1rem 0; }
+    .card-meta { align-items: flex-start; flex-direction: column; gap: .25rem; }
+    .card-copy h3 { font-size: clamp(2.6rem,12vw,3.7rem); }
+    .card-copy > p { font-size: .9rem; }
+    .anonymized-label { top: .85rem; right: .85rem; }
+    .closing-panel { align-items: flex-start; text-align: left; border-radius: 1.5rem; }
+  }
+
+
+  @media (max-width: 980px) {
+    .site-header > nav:not(.language-switcher), .site-header > .header-cta { display: none; }
+    .site-header > .language-switcher { display: flex; margin-left: auto; }
+    .mobile-menu-toggle { display: flex; width: 44px; height: 44px; margin-left: 0; padding: 0; flex: 0 0 44px; align-items: center; justify-content: center; flex-direction: column; gap: 6px; border: 1px solid rgba(105,210,84,.44); border-radius: 50%; background: rgba(105,210,84,.08); color: #f5f5f1; cursor: pointer; }
+    .mobile-menu-toggle span { display: block; width: 17px; height: 1px; background: currentColor; transition: transform .35s cubic-bezier(.22,1,.36,1), width .35s ease; }
+    .mobile-menu { position: fixed; z-index: 90; inset: 0; display: block; overflow: hidden; background: radial-gradient(circle at 7% 8%, rgba(105,210,84,.2), transparent 34%), radial-gradient(circle at 92% 82%, rgba(237,244,234,.08), transparent 32%), #090d0b; color: #f5f5f1; opacity: 0; visibility: hidden; pointer-events: none; transform: translate3d(-100%,0,0); transition: transform .72s cubic-bezier(.16,1,.3,1), opacity .4s ease, visibility .72s; }
+    .mobile-menu::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(105,210,84,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(105,210,84,.055) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(135deg,#000,transparent 72%); pointer-events: none; }
+    .mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+    .mobile-menu-shell { position: relative; z-index: 2; width: min(100%,760px); height: 100%; margin: 0 auto; padding: 18px clamp(22px,6vw,54px) max(24px,env(safe-area-inset-bottom)); display: grid; grid-template-rows: auto 1fr auto; }
+    .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+    .mobile-menu-logo { display: flex; width: 126px; }
+    .mobile-menu-logo img { display: block; width: 100%; }
+    .mobile-menu-close { position: relative; width: 46px; height: 46px; padding: 0; border: 1px solid rgba(245,245,241,.2); border-radius: 50%; background: rgba(245,245,241,.06); color: #f5f5f1; cursor: pointer; }
+    .mobile-menu-close span { position: absolute; left: 14px; right: 14px; top: 22px; height: 1px; background: currentColor; }
+    .mobile-menu-close span:first-child { transform: rotate(45deg); }
+    .mobile-menu-close span:last-child { transform: rotate(-45deg); }
+    .mobile-menu-nav { align-self: center; display: grid; }
+    .mobile-menu-nav a { display: grid; grid-template-columns: 42px 1fr; align-items: center; min-height: 76px; border-bottom: 1px solid rgba(245,245,241,.12); color: #f5f5f1; text-decoration: none; opacity: 0; transform: translateX(-34px); transition: opacity .45s ease, transform .62s cubic-bezier(.22,1,.36,1), color .25s ease; }
+    .mobile-menu-nav a:first-child { border-top: 1px solid rgba(245,245,241,.12); }
+    .mobile-menu-nav small { color: #69d254; font: 700 9px/1 Inter,sans-serif; letter-spacing: .12em; }
+    .mobile-menu-nav span { font: 400 clamp(38px,8vw,62px)/.92 "Instrument Serif",Georgia,serif; letter-spacing: -.035em; }
+    .mobile-menu-nav a:hover, .mobile-menu-nav a:focus-visible { color: #69d254; }
+    .mobile-menu.is-open .mobile-menu-nav a { opacity: 1; transform: none; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(1) { transition-delay: .16s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(2) { transition-delay: .22s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(3) { transition-delay: .28s; }
+    .mobile-menu.is-open .mobile-menu-nav a:nth-child(4) { transition-delay: .34s; }
+    .mobile-menu-footer { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 12px; align-items: center; }
+    .mobile-menu-cta { width: 100%; min-height: 58px; text-decoration: none; }
+    .mobile-menu-login { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; padding: 0 22px; border: 1px solid rgba(245,245,241,.22); border-radius: 999px; color: #f5f5f1; text-decoration: none; font-size: 13px; }
+    .mobile-menu-login span { color: #69d254; }
+    .mobile-menu-footer p { grid-column: 1/-1; margin: 4px 0 0; color: #858b89; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+    :global(html.mobile-menu-open), :global(html.mobile-menu-open body) { overflow: hidden; }
+  }
+
+  @media (max-width: 760px) {
+    .site-header { height: 58px; top: 12px; left: 12px; right: 12px; padding: 0 8px 0 16px; }
+    .site-header .logo { width: 112px; }
+  }
+
+  @media (max-width: 520px) {
+    .mobile-menu-footer { grid-template-columns: 1fr; }
+    .mobile-menu-login { width: 100%; }
+    .mobile-menu-footer p { grid-column: auto; }
+    .mobile-menu-nav a { min-height: 68px; }
+    .mobile-menu-nav span { font-size: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .work-card { opacity: 1; filter: none; transform: none; transition: none; }
+    .hero-work-marquee { overflow-x:auto; mask-image:none; -webkit-mask-image:none; }
+    .hero-work-track { animation:none; }
+    .hero-work-group[aria-hidden="true"] { display:none; }
+    .hero-work-card, .card-media img, .text-link span, .mobile-menu, .mobile-menu-nav a, .mobile-menu-toggle span { transition:none; }
+  }
+</style>
