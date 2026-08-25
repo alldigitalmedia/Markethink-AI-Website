@@ -98,6 +98,15 @@ const faq = [
   ["Is my business information safe?", "Client work and business context stay isolated to the appropriate account and approved access."],
   ["What happens when new AI models come out?", "The Markethink team evaluates improvements to the system over time. Your business context remains the foundation, while the operation continues to improve."],
 ];
+
+const homeStructuredData = {
+  "@type": "FAQPage",
+  mainEntity: faq.map(([question, answer]) => ({
+    "@type": "Question",
+    name: question,
+    acceptedAnswer: { "@type": "Answer", text: answer },
+  })),
+};
 ---
 
 <Layout
@@ -105,6 +114,13 @@ const faq = [
   description="Markethink learns your business and runs your website, social media, content, campaigns, advertising, leads, CRM, and follow-up with expert marketers directing the work."
   canonical="https://markethink.ai/"
   image="/images/hero-image.png"
+  alternates={[
+    { lang: "en", href: "https://markethink.ai/" },
+    { lang: "es", href: "https://markethink.ai/es/" },
+    { lang: "x-default", href: "https://markethink.ai/" },
+  ]}
+  structuredData={homeStructuredData}
+  includeSiteEntities={true}
 >
   <div class="review-page">
     <header class="site-header">
@@ -112,6 +128,9 @@ const faq = [
       <nav aria-label="Primary navigation">
         {primaryNavigation.map((link) => <a href={link.reviewHref}>{link.label}</a>)}
         <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
+      </nav>
+      <nav class="language-switcher" aria-label="Language selection">
+        <a href="/" lang="en" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es">ES</a>
       </nav>
       <a class="button button-small button-roll" href={primaryNavigationActions.ctaHref}><span class="button-label"><span>{primaryNavigationActions.ctaLabel}</span><span aria-hidden="true">{primaryNavigationActions.ctaLabel}</span></span></a>
       <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
@@ -131,6 +150,9 @@ const faq = [
           ))}
         </nav>
         <div class="mobile-menu-footer">
+          <nav class="mobile-language-switcher" aria-label="Language selection">
+            <a href="/" lang="en" aria-current="page" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" data-mobile-menu-close>ES</a>
+          </nav>
           <a class="button mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
           <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
           <p>Powered by AI. Managed by expert marketers.</p>
@@ -796,6 +818,7 @@ const faq = [
   .wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
   .site-header{height:54px;padding:0 15px 0 19px;display:flex;align-items:center;gap:22px;position:absolute;top:10px;left:max(18px,calc((100vw - 1280px)/2));right:max(18px,calc((100vw - 1280px)/2));z-index:20;border:1px solid rgba(245,245,241,.2);border-radius:999px;background:rgba(15,18,19,.42);backdrop-filter:blur(18px) saturate(120%);box-shadow:0 16px 50px rgba(0,0,0,.16)}
   .site-header .logo{width:124px;height:100%;display:flex;align-items:center}.site-header .logo img{display:block;width:100%;transform:translateY(-2px)}.site-header nav{display:flex;gap:22px;margin-left:auto}.site-header a{color:#F5F5F1;text-decoration:none;font-size:13px}.site-header nav a{opacity:.8}.site-header nav a:hover{opacity:1}
+  .site-header .language-switcher{margin-left:0;gap:.35rem;font-weight:700;letter-spacing:.08em}.site-header .language-switcher a{font-size:11px}.language-switcher a[aria-current="page"],.mobile-language-switcher a[aria-current="page"]{color:#69D254;opacity:1}.mobile-language-switcher{display:flex;align-items:center;gap:.45rem;font:700 12px/1 Inter,Arial,sans-serif;letter-spacing:.08em}
   .button{position:relative;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:52px;padding:0 26px;border:1px solid #69D254;border-radius:999px;background:#69D254;color:#0F1213;text-align:center;text-decoration:none;font:700 14px/1 Inter,Arial,sans-serif;white-space:nowrap;cursor:pointer;overflow:hidden;isolation:isolate}.button:hover,.button:focus-visible{background:#82df6f;border-color:#82df6f;transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,18,19,.16)}.button:focus-visible{outline:2px solid #69D254;outline-offset:3px}.button-small{min-height:44px;padding:0 20px;font-size:12px}.button-outline{background:transparent;color:#0F1213;border-color:rgba(15,18,19,.58);box-shadow:none}.button-outline:hover,.button-outline:focus-visible{background:#0F1213;color:#F5F5F1;border-color:#0F1213}.hero .button-outline{color:#F5F5F1;border-color:rgba(245,245,241,.7)}.hero .button-outline:hover,.hero .button-outline:focus-visible{background:#F5F5F1;color:#0F1213;border-color:#F5F5F1}
   .hero{position:relative;min-height:680px;padding:0;display:flex;align-items:center;overflow:hidden}.hero-picture{position:absolute;inset:0}.hero-image{display:block;width:100%;height:100%;object-fit:cover;object-position:right center}.hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,18,19,.96) 0%,rgba(15,18,19,.82) 35%,rgba(15,18,19,.24) 58%,rgba(15,18,19,.02) 84%)}.hero-content{position:relative;z-index:3;padding:72px 0 68px}.hero-content>*{max-width:540px}.eyebrow{font-size:11px;line-height:1.2;text-transform:uppercase;letter-spacing:.16em;color:#69D254;font-weight:700;margin:0 0 18px}.eyebrow.dark{color:#315b28}.hero h1,.review-page h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:.94;margin:0}.hero h1{font-size:clamp(46px,4.15vw,60px);max-width:560px}.hero-copy{font-size:16px;line-height:1.48;margin:17px 0 19px;color:#e5e6e2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.microcopy{font-size:12px;color:#c5c8c5;margin-top:13px}
 
