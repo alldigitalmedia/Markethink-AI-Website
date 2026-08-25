@@ -1,0 +1,378 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const pageTitle = "Solicita una demo de Markethink | Conoce tu sistema de marketing";
+const pageDescription =
+  "Solicita una sesión enfocada de Markethink para conectar campañas, contenido, actualizaciones del sitio web, prospectos, seguimiento en CRM y aprobaciones en un solo sistema de marketing.";
+
+const walkthroughSteps = [
+  {
+    title: "Tu negocio",
+    copy: "Revisamos tu sitio web, tus ofertas, tu audiencia y el ritmo actual de marketing.",
+  },
+  {
+    title: "Tus primeros flujos de trabajo",
+    copy: "Definimos dónde puede ayudar Markethink primero: campañas, redes sociales, web, blog o prospectos.",
+  },
+  {
+    title: "Tu siguiente paso",
+    copy: "Terminas con una idea clara de cómo podría verse el primer mes.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Solicitud de demo de Markethink",
+  description: pageDescription,
+  url: "https://markethink.ai/es/solicitar-demo/",
+  mainEntity: {
+    "@type": "Service",
+    name: "Markethink",
+    description:
+      "Un sistema de marketing que aprende un negocio, organiza campañas y ayuda a mejorar el marketing cada semana.",
+    provider: { "@id": "https://markethink.ai/#organization" },
+  },
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image="/images/hero-image.png"
+  canonical="https://markethink.ai/es/solicitar-demo/"
+  lang="es"
+  alternates={[
+    { lang: "en", href: "https://markethink.ai/schedule-a-walkthrough/" },
+    { lang: "es", href: "https://markethink.ai/es/solicitar-demo/" },
+    { lang: "x-default", href: "https://markethink.ai/schedule-a-walkthrough/" },
+  ]}
+  structuredData={structuredData}
+>
+  <Navbar lang="es" />
+  <main class="walkthrough-page">
+    <section class="walkthrough-hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="subtitle animate-fade-up">SOLICITA UNA DEMO</p>
+          <h1 class="animate-fade-up">Descubre cómo Markethink puede conectar tu marketing con el pipeline.</h1>
+          <p class="hero-description animate-fade-up">
+            Una sesión enfocada en tu negocio, tus brechas de marketing y el mejor punto de partida entre campañas, contenido, actualizaciones del sitio, prospectos, seguimiento en CRM y aprobaciones.
+          </p>
+
+          <div class="signal-row animate-fade-up">
+            <span>30 minutos</span>
+            <span>Sin demo genérica</span>
+            <span>Siguiente paso claro</span>
+          </div>
+
+          <div class="mini-plan animate-stagger">
+            {walkthroughSteps.map((step) => (
+              <article>
+                <h2>{step.title}</h2>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <form
+          name="markethink-walkthrough-es"
+          method="POST"
+          action="/es/gracias/"
+          netlify
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="walkthrough-form animate-fade-up"
+        >
+          <input type="hidden" name="form-name" value="markethink-walkthrough-es" />
+          <input type="hidden" name="source" value="schedule-a-walkthrough-page-es" />
+          <p class="hidden-field">
+            <label>No completes este campo <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-header">
+            <p class="form-kicker">Solicita tu demo</p>
+            <h2>Cuéntanos por dónde empezar</h2>
+            <p>
+              Usaremos esta información para que la sesión sea útil desde el primer minuto.
+            </p>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span>Nombre completo</span>
+              <input type="text" name="full_name" autocomplete="name" required />
+            </label>
+            <label>
+              <span>Correo de trabajo</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Número de teléfono</span>
+            <input type="tel" name="phone" autocomplete="tel" required />
+          </label>
+
+          <label>
+            <span>Empresa o sitio web</span>
+            <input type="text" name="company_or_website" autocomplete="organization" required />
+          </label>
+
+          <label>
+            <span>Prioridad principal</span>
+            <select name="main_priority" required>
+              <option value="">Selecciona una</option>
+              <option>Más prospectos calificados</option>
+              <option>Contenido constante para redes</option>
+              <option>Páginas de destino y campañas</option>
+              <option>Gestión del blog y el sitio web</option>
+              <option>Alianza con agencia</option>
+            </select>
+          </label>
+
+          <label>
+            <span>¿Qué haría útil esta sesión?</span>
+            <textarea
+              name="goal"
+              rows="3"
+              placeholder="Ejemplo: necesitamos más prospectos calificados y un mejor ritmo de contenido."
+            ></textarea>
+          </label>
+
+          <button type="submit" class="button form-button">Solicitar mi demo</button>
+          <p class="form-note">Responderemos con horarios disponibles y una agenda breve para tu negocio.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  .walkthrough-page {
+    background: var(--bg-primary);
+    color: var(--text-invert);
+  }
+
+  .walkthrough-hero {
+    padding: 8.25rem 0 4rem;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 45rem;
+    font-size: clamp(3rem, 5.7vw, 5.2rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .hero-description {
+    max-width: 38rem;
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .signal-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .signal-row span {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mini-plan {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+    max-width: 44rem;
+  }
+
+  .mini-plan article {
+    min-height: 146px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .mini-plan h2 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    margin-bottom: 0.45rem;
+  }
+
+  .mini-plan p {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+  .walkthrough-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: #f5f5f1;
+    color: var(--text-primary);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.3);
+  }
+
+  .hidden-field {
+    display: none;
+  }
+
+  .form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .form-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(15, 18, 19, 0.48);
+  }
+
+  .form-header h2 {
+    font-family: var(--font-body);
+    font-size: 1.45rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+
+  .form-header p,
+  .form-note {
+    color: rgba(15, 18, 19, 0.6);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  label span {
+    font-size: 0.78rem;
+    font-weight: 650;
+    color: rgba(15, 18, 19, 0.74);
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(15, 18, 19, 0.12);
+    border-radius: 10px;
+    background: white;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 0.82rem 0.88rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 88px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(105, 210, 84, 0.95);
+    box-shadow: 0 0 0 4px rgba(105, 210, 84, 0.16);
+  }
+
+  .form-button {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .form-note {
+    text-align: center;
+  }
+
+  @media (max-width: 991px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .walkthrough-form {
+      max-width: 680px;
+    }
+
+    .mini-plan {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .walkthrough-hero {
+      padding: 7.5rem 0 4rem;
+      min-height: auto;
+    }
+
+    .hero-grid {
+      gap: 2rem;
+    }
+
+    .field-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-copy h1 {
+      font-size: 2.6rem;
+    }
+  }
+</style>
