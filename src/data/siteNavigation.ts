@@ -1,7 +1,6 @@
 export const primaryNavigation = [
   { label: "How it works", href: "/#how-it-works", reviewHref: "#how-it-works" },
   { label: "Real work", href: "/shipped/", reviewHref: "/shipped/" },
-  { label: "Why Markethink", href: "/#comparison", reviewHref: "#proof-title" },
   { label: "Insights", href: "/blog/", reviewHref: "/blog/" },
 ] as const;
 
