@@ -1,17 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Footer from "../components/Footer.astro";
-import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { primaryNavigationActions } from "../../data/siteNavigation";
 
-const pageTitle = "What Our Clients Shipped | Markethink";
-const pageDescription = "See the websites, campaigns, content, advertising, and pipeline work clients are shipping with Markethink, powered by AI and managed by expert marketers.";
-const canonicalUrl = "https://markethink.ai/shipped/";
-const walkthroughHref = "/schedule-a-walkthrough/";
+const pageTitle = "Trabajo real de nuestros clientes | Markethink";
+const pageDescription = "Explora sitios web, campañas, contenido, publicidad y sistemas de crecimiento creados para clientes con Markethink, impulsado por IA y gestionado por expertos en marketing.";
+const canonicalUrl = "https://markethink.ai/es/trabajo-real/";
+const walkthroughHref = "/es/solicitar-demo/";
+const navigation = [
+  { label: "Cómo funciona", href: "/es/#how-it-works" },
+  { label: "Trabajo real", href: "/es/trabajo-real/" },
+  { label: "Por qué Markethink", href: "/es/#comparison" },
+  { label: "Ideas", href: "/blog/" },
+];
 
 const categories = [
-  { id: "all", label: "All work" },
+  { id: "all", label: "Todo" },
   { id: "web", label: "Web" },
-  { id: "social", label: "Social media" },
+  { id: "social", label: "Redes sociales" },
   { id: "email", label: "Email marketing" },
 ];
 
@@ -19,81 +25,81 @@ const workItems = [
   {
     category: "web",
     client: "Green",
-    work: "Web design, solution architecture, and contact flow",
+    work: "Diseño web, arquitectura de soluciones y flujo de contacto",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/green-web.webp",
-    alt: "Green technology services website displayed on a desktop monitor",
+    alt: "Sitio web de servicios tecnológicos de Green en un monitor de escritorio",
     href: "https://greencss.com",
-    action: "Visit website",
+    action: "Visitar sitio web",
     tone: "dark",
   },
   {
     category: "social",
     client: "Mango Media",
-    work: "Social media creative and content direction",
+    work: "Creatividad para redes sociales y dirección de contenido",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/mango-social.webp",
-    alt: "Mango Media social media creative displayed on a smartphone",
+    alt: "Creatividad para redes sociales de Mango Media en un teléfono",
     href: "https://www.instagram.com/mangomediaca/",
-    action: "View on Instagram",
+    action: "Ver en Instagram",
     tone: "green",
   },
   {
     category: "web",
     client: "Selten Logistics",
-    work: "Web design, inventory experience, and inquiry flow",
+    work: "Diseño web, experiencia de inventario y flujo de consultas",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-logistics-web.webp",
-    alt: "Selten Logistics equipment marketplace displayed on a laptop",
+    alt: "Marketplace de equipos de Selten Logistics en una computadora portátil",
     href: "https://www.seltenlogistics.com",
-    action: "Visit website",
+    action: "Visitar sitio web",
     tone: "wash",
   },
   {
     category: "web",
     client: "+SELTEN Ai",
-    work: "Web design, product positioning, and bilingual experience",
+    work: "Diseño web, posicionamiento de producto y experiencia bilingüe",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/selten-ai-web.webp",
-    alt: "+SELTEN Ai website displayed on a desktop monitor",
+    alt: "Sitio web de +SELTEN Ai en un monitor de escritorio",
     href: "https://selten.ai/es",
-    action: "Visit website",
+    action: "Visitar sitio web",
     tone: "dark",
   },
   {
     category: "social",
     client: "Pambuddha Homes",
-    work: "Social media creative and editorial content direction",
+    work: "Creatividad para redes sociales y dirección de contenido editorial",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/pambuddha-homes-social-v2.webp",
-    alt: "Pambuddha Homes flooring content displayed as an Instagram post",
+    alt: "Contenido de pisos de Pambuddha Homes presentado como publicación de Instagram",
     href: "https://www.instagram.com/pambuddhahomes/",
-    action: "View on Instagram",
+    action: "Ver en Instagram",
     tone: "warm",
   },
   {
     category: "social",
     client: "Villazzo",
-    work: "Social media creative and destination content",
+    work: "Creatividad para redes sociales y contenido de destinos",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/shipped/villazzo-social.webp",
-    alt: "Villazzo luxury villa destination post displayed on a smartphone",
+    alt: "Publicación de destinos de villas de lujo de Villazzo en un teléfono",
     href: "https://www.instagram.com/villazzo/",
-    action: "View on Instagram",
+    action: "Ver en Instagram",
     tone: "green",
   },
   {
     category: "email",
     client: "Villazzo",
-    work: "Email marketing creative and editorial newsletter design",
+    work: "Creatividad para email marketing y diseño editorial de newsletters",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
-    alt: "The Villazzo Edit email newsletter displayed on a tablet",
+    alt: "Newsletter The Villazzo Edit presentada en una tableta",
     href: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/villazzo-mail-approved-v2.webp",
-    action: "View email",
+    action: "Ver email",
     tone: "warm",
     fit: "contain",
   },
   {
     category: "web",
     client: "Emma Sacks Interiors",
-    work: "Website redesign for an interiors practice shaped by form, function, and luxury",
+    work: "Rediseño web para un estudio de interiores definido por la forma, la función y el lujo",
     image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/emma-sacks-website-redesign.webp",
-    alt: "Emma Sacks Interiors website redesign displayed on a laptop",
-    action: "Website redesign in progress",
+    alt: "Rediseño del sitio web de Emma Sacks Interiors en una computadora portátil",
+    action: "Rediseño web en curso",
     tone: "warm",
   },
 ];
@@ -102,57 +108,57 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "What Our Clients Shipped",
+    name: "Trabajo real de nuestros clientes",
     description: pageDescription,
     url: canonicalUrl,
-    inLanguage: "en",
+    inLanguage: "es",
     publisher: { "@id": "https://markethink.ai/#organization" },
   },
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
-      { "@type": "ListItem", position: 2, name: "What Our Clients Shipped", item: canonicalUrl },
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://markethink.ai/es/" },
+      { "@type": "ListItem", position: 2, name: "Trabajo real de nuestros clientes", item: canonicalUrl },
     ],
   },
 ];
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} alternates={[{ lang: "en", href: canonicalUrl }, { lang: "es", href: "https://markethink.ai/es/trabajo-real/" }, { lang: "x-default", href: canonicalUrl }]} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" structuredData={structuredData}>
+<Layout lang="es" title={pageTitle} description={pageDescription} canonical={canonicalUrl} alternates={[{ lang: "en", href: "https://markethink.ai/shipped/" }, { lang: "es", href: canonicalUrl }, { lang: "x-default", href: "https://markethink.ai/shipped/" }]} image="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" structuredData={structuredData}>
   <header class="site-header">
-    <a class="logo" href="/" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-    <nav class="language-switcher" aria-label="Language selection">
-      <a href="/shipped/" lang="en" aria-current="page">EN</a><a href="/es/trabajo-real/" lang="es">ES</a>
+    <a class="logo" href="/es/" aria-label="Inicio de Markethink"><img src="/images/logo-white.svg" alt="Markethink" /></a>
+    <nav class="language-switcher" aria-label="Selección de idioma">
+      <a href="/shipped/" lang="en">EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page">ES</a>
     </nav>
-    <nav aria-label="Primary navigation">
-      {primaryNavigation.map((link) => <a href={link.href}>{link.label}</a>)}
-      <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
+    <nav aria-label="Navegación principal">
+      {navigation.map((link) => <a href={link.href}>{link.label}</a>)}
+      <a href={primaryNavigationActions.loginHref}>Ingresar</a>
     </nav>
-    <a class="header-cta" href={primaryNavigationActions.ctaHref}>{primaryNavigationActions.ctaLabel}</a>
-    <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
+    <a class="header-cta" href={walkthroughHref}>Solicitar una demo</a>
+    <button class="mobile-menu-toggle" type="button" aria-label="Abrir navegación" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
       <span></span><span></span>
     </button>
   </header>
 
-  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true" data-mobile-menu>
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navegación móvil" aria-hidden="true" data-mobile-menu>
     <div class="mobile-menu-shell">
       <div class="mobile-menu-top">
-        <a class="mobile-menu-logo" href="/" aria-label="Markethink home" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
-        <button class="mobile-menu-close" type="button" aria-label="Close navigation" data-mobile-menu-close><span></span><span></span></button>
+        <a class="mobile-menu-logo" href="/es/" aria-label="Inicio de Markethink" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
+        <button class="mobile-menu-close" type="button" aria-label="Cerrar navegación" data-mobile-menu-close><span></span><span></span></button>
       </div>
-      <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
-        {primaryNavigation.map((link, index) => (
+      <nav class="mobile-menu-nav" aria-label="Enlaces de navegación móvil">
+        {navigation.map((link, index) => (
           <a href={link.href} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
         ))}
       </nav>
       <div class="mobile-menu-footer">
-        <nav class="mobile-language-switcher" aria-label="Language selection">
-          <a href="/shipped/" lang="en" aria-current="page" data-mobile-menu-close>EN</a><a href="/es/trabajo-real/" lang="es" data-mobile-menu-close>ES</a>
+        <nav class="mobile-language-switcher" aria-label="Selección de idioma">
+          <a href="/shipped/" lang="en" data-mobile-menu-close>EN</a><a href="/es/trabajo-real/" lang="es" aria-current="page" data-mobile-menu-close>ES</a>
         </nav>
-        <a class="mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
-        <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
-        <p>Powered by AI. Managed by expert marketers.</p>
+        <a class="mobile-menu-cta" href={walkthroughHref} data-mobile-menu-close>Solicitar una demo</a>
+        <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>Ingresar <span>↗</span></a>
+        <p>Impulsado por IA. Gestionado por expertos en marketing.</p>
       </div>
     </div>
   </div>
@@ -161,18 +167,18 @@ const structuredData = [
       <div class="hero-background" aria-hidden="true"><img src="https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-shipped-villazzo-real-work-banner-20260822.webp" alt="" width="2560" height="1080" fetchpriority="high" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-shell"><div class="hero-copy animate-fade-up">
-        <p class="hero-eyebrow">RECENT CLIENT WORK</p>
-        <h1 id="shipped-hero-title">Real marketing work.<br /><em>Built to move business forward.</em></h1>
-        <p class="hero-intro">Websites, social, email, and growth systems shipped by our team, powered by AI and managed by expert marketers.</p>
+        <p class="hero-eyebrow">TRABAJO RECIENTE DE CLIENTES</p>
+        <h1 id="shipped-hero-title">Marketing real.<br /><em>Creado para impulsar cada negocio.</em></h1>
+        <p class="hero-intro">Sitios web, redes sociales, email y sistemas de crecimiento creados por nuestro equipo, impulsados por IA y gestionados por expertos en marketing.</p>
       </div></div>
-      <div class="hero-work-marquee" aria-label="Explore real client work">
+      <div class="hero-work-marquee" aria-label="Explora trabajo real de clientes">
         <div class="hero-work-track">
           {[0, 1].map((copyIndex) => (
             <div class="hero-work-group" aria-hidden={copyIndex === 1 ? "true" : undefined}>
               {workItems.map((item) => (
-                <a href="#latest-work" class="hero-work-card" data-hero-filter={item.category} tabindex={copyIndex === 1 ? "-1" : undefined} aria-label={`View ${item.client} work`}>
+                <a href="#latest-work" class="hero-work-card" data-hero-filter={item.category} tabindex={copyIndex === 1 ? "-1" : undefined} aria-label={`Ver el trabajo de ${item.client}`}>
                   <img src={item.image} alt="" width="120" height="88" loading="eager" />
-                  <span><small>{item.category === "web" ? "WEB" : item.category === "social" ? "SOCIAL" : "EMAIL"}</small><strong>{item.client}</strong></span>
+                  <span><small>{item.category === "web" ? "WEB" : item.category === "social" ? "REDES" : "EMAIL"}</small><strong>{item.client}</strong></span>
                 </a>
               ))}
             </div>
@@ -184,14 +190,14 @@ const structuredData = [
     <section class="work-section" id="latest-work">
       <div class="container work-intro">
         <div>
-          <p class="subtitle">REAL CLIENT WORK</p>
-          <h2>Live projects. Built for real businesses.</h2>
+          <p class="subtitle">TRABAJO REAL DE CLIENTES</p>
+          <h2>Proyectos reales. Creados para negocios reales.</h2>
         </div>
-        <p>Selected work across websites, social media, and email. Linked cards open the live destination or finished creative.</p>
+        <p>Una selección de sitios web, redes sociales y email. Las tarjetas enlazadas abren el destino en vivo o la pieza terminada.</p>
       </div>
 
       <div class="filter-shell" data-filter-shell>
-        <div class="container filters" role="group" aria-label="Filter client work">
+        <div class="container filters" role="group" aria-label="Filtrar trabajo de clientes">
           {categories.map((category, index) => (
             <button type="button" class:list={["filter-button", index === 0 && "is-active"]} data-filter={category.id} aria-pressed={index === 0 ? "true" : "false"}>
               {category.label}
@@ -225,37 +231,37 @@ const structuredData = [
         ))}
       </div>
 
-      <p class="empty-state" data-empty-state hidden>No public work is available in this category yet.</p>
+      <p class="empty-state" data-empty-state hidden>Todavía no hay trabajo público disponible en esta categoría.</p>
     </section>
 
     <section class="system-section">
       <div class="container system-grid">
         <div class="system-copy animate-fade-up">
-          <p class="subtitle">THE WORK AROUND THE WORK</p>
-          <h2>One request can become a complete marketing motion.</h2>
-          <p>Markethink does not stop at the asset. The system carries business context into the campaign, keeps review moving, connects the response to the pipeline, and remembers what should improve next.</p>
-          <a href={walkthroughHref} class="text-link dark-link">See how the operation works <span aria-hidden="true">↗</span></a>
+          <p class="subtitle">EL TRABAJO DETRÁS DEL TRABAJO</p>
+          <h2>Una solicitud puede convertirse en una operación completa de marketing.</h2>
+          <p>Markethink no se detiene en la pieza. El sistema lleva el contexto del negocio a la campaña, mantiene activa la revisión, conecta la respuesta con el pipeline y recuerda qué debe mejorar después.</p>
+          <a href={walkthroughHref} class="text-link dark-link">Conoce cómo funciona la operación <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="motion-map animate-stagger" aria-label="Markethink operating sequence">
-          <article><span>01</span><div><strong>Request</strong><p>The business need, offer, audience, and priority.</p></div></article>
-          <article><span>02</span><div><strong>Ship</strong><p>Campaigns, web, content, advertising, and lead work.</p></div></article>
-          <article><span>03</span><div><strong>Approve</strong><p>A real marketing team directs, reviews, and stays accountable.</p></div></article>
-          <article><span>04</span><div><strong>Convert</strong><p>Lead capture, CRM context, follow-up, and the next action.</p></div></article>
-          <article><span>05</span><div><strong>Learn</strong><p>Every approval, correction, and result sharpens what comes next.</p></div></article>
+        <div class="motion-map animate-stagger" aria-label="Secuencia operativa de Markethink">
+          <article><span>01</span><div><strong>Solicitar</strong><p>La necesidad del negocio, la oferta, la audiencia y la prioridad.</p></div></article>
+          <article><span>02</span><div><strong>Ejecutar</strong><p>Campañas, web, contenido, publicidad y trabajo de prospectos.</p></div></article>
+          <article><span>03</span><div><strong>Aprobar</strong><p>Un equipo real de marketing dirige, revisa y se mantiene responsable.</p></div></article>
+          <article><span>04</span><div><strong>Convertir</strong><p>Captura de prospectos, contexto del CRM, seguimiento y siguiente acción.</p></div></article>
+          <article><span>05</span><div><strong>Aprender</strong><p>Cada aprobación, corrección y resultado hace más preciso lo que sigue.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="closing-section">
       <div class="container closing-panel animate-scale-in">
-        <p class="subtitle">YOUR NEXT MONTH</p>
-        <h2>What could your business ship next?</h2>
-        <p>Show us where marketing is getting stuck. We will map the first useful move and how it connects to the rest of the operation.</p>
-        <a href={walkthroughHref} class="button">Book a Markethink walkthrough</a>
+        <p class="subtitle">TU PRÓXIMO MES</p>
+        <h2>¿Qué podría lanzar tu negocio después?</h2>
+        <p>Muéstranos dónde se está frenando el marketing. Definiremos el primer movimiento útil y cómo se conecta con el resto de la operación.</p>
+        <a href={walkthroughHref} class="button">Solicitar una demo de Markethink</a>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer lang="es" />
 </Layout>
 
 <script>
@@ -269,7 +275,7 @@ const structuredData = [
       menu.classList.toggle("is-open", open);
       menu.setAttribute("aria-hidden", String(!open));
       opener.setAttribute("aria-expanded", String(open));
-      opener.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      opener.setAttribute("aria-label", open ? "Cerrar navegación" : "Abrir navegación");
       document.documentElement.classList.toggle("mobile-menu-open", open);
       if (open) window.setTimeout(() => menu.querySelector<HTMLElement>("a,button")?.focus(), 360);
       else if (restoreFocus) opener.focus();
