@@ -1,44 +1,24 @@
 ---
-const steps = [
-  {
-    eyebrow: "Day 1",
-    title: "We learn your business",
-    description: "We get to understand your website, social channels, offers, voice, and priorities. Then we connect the channels included in your scope.",
-    bullets: [],
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-day1-v1.webp",
-    alt: "Markethink organizing business context into a marketing foundation",
-  },
-  {
-    eyebrow: "Week 1",
-    title: "First work arrives",
-    description: "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set.",
-    bullets: [],
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-week1-v1.webp",
-    alt: "Campaign work organized in one connected Markethink workspace",
-  },
-  {
-    eyebrow: "Every week",
-    title: "The operation runs",
-    description: "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone.",
-    bullets: [],
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-weekly-v1.webp",
-    alt: "Marketing work moving through review, approval, and follow-up",
-  },
-  {
-    eyebrow: "As the work continues",
-    title: "Its context compounds",
-    description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.",
-    bullets: [],
-    image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-compounds-v1.webp",
-    alt: "Markethink applying accumulated business context to future campaigns",
-  },
+interface Props { lang?: "en" | "es"; }
+const { lang = "en" } = Astro.props;
+const isSpanish = lang === "es";
+const steps = isSpanish ? [
+  { eyebrow: "Día 1", title: "Aprendemos tu negocio", description: "Conocemos tu sitio web, canales sociales, ofertas, voz y prioridades. Luego conectamos los canales incluidos en tu alcance.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-day1-v1.webp", alt: "Markethink organiza el contexto del negocio en una base de marketing" },
+  { eyebrow: "Semana 1", title: "Llega el primer trabajo", description: "Responde con palabras simples o una nota de voz. El trabajo se revisa y el sistema recuerda por qué. La publicación sigue las reglas de aprobación que defines.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-week1-v1.webp", alt: "Trabajo de campaña organizado en un espacio conectado de Markethink" },
+  { eyebrow: "Cada semana", title: "La operación avanza", description: "Calendario ejecutado, páginas publicadas y seguimiento activo en tus canales conectados. Aprobaciones desde tu teléfono.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-weekly-v1.webp", alt: "Trabajo de marketing que avanza por revisión, aprobación y seguimiento" },
+  { eyebrow: "Mientras continúa el trabajo", title: "El contexto se acumula", description: "Cada aprobación, corrección y resultado suma. El trabajo del mes 6 es más preciso que el del mes 1.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-compounds-v1.webp", alt: "Markethink aplica el contexto acumulado del negocio a campañas futuras" },
+] : [
+  { eyebrow: "Day 1", title: "We learn your business", description: "We get to understand your website, social channels, offers, voice, and priorities. Then we connect the channels included in your scope.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-day1-v1.webp", alt: "Markethink organizing business context into a marketing foundation" },
+  { eyebrow: "Week 1", title: "First work arrives", description: "Reply in plain words or a voice note. It revises, and remembers why. Publishing follows the approval rules you set.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-week1-v1.webp", alt: "Campaign work organized in one connected Markethink workspace" },
+  { eyebrow: "Every week", title: "The operation runs", description: "Calendar executed, pages shipped, follow-up running through your connected channels. Approvals from your phone.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-weekly-v1.webp", alt: "Marketing work moving through review, approval, and follow-up" },
+  { eyebrow: "As the work continues", title: "Its context compounds", description: "Every approval, correction, and result compounds. Month 6 output is sharper than month 1.", bullets: [], image: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/homepage-v6-vivid-compounds-v1.webp", alt: "Markethink applying accumulated business context to future campaigns" },
 ];
 ---
 
 <section class="story-intro" id="how-it-works" aria-labelledby="first-month-title" data-story-intro>
   <div class="story-intro-inner">
-    <p>How it works</p>
-    <h2 id="first-month-title">Your first 30 days</h2>
+    <p>{isSpanish ? "Cómo funciona" : "How it works"}</p>
+    <h2 id="first-month-title">{isSpanish ? "Tus primeros 30 días" : "Your first 30 days"}</h2>
   </div>
 </section>
 
