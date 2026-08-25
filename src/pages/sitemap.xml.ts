@@ -42,6 +42,15 @@ const staticPages: SitemapPage[] = [
     path: "/shipped/",
     priority: "0.9",
     changefreq: "weekly",
+    lastmod: releaseDate,
+    alternates: { en: "/shipped/", es: "/es/trabajo-real/" },
+  },
+  {
+    path: "/es/trabajo-real/",
+    priority: "0.9",
+    changefreq: "weekly",
+    lastmod: releaseDate,
+    alternates: { en: "/shipped/", es: "/es/trabajo-real/" },
   },
   {
     path: "/who-we-help/",
