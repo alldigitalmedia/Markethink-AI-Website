@@ -1,4 +1,5 @@
 ---
+interface AlternateLink { lang: string; href: string; }
 interface Props {
   title?: string;
   description?: string;
@@ -9,10 +10,13 @@ interface Props {
   noindex?: boolean;
   siteName?: string;
   favicon?: string;
+  lang?: "en" | "es";
+  alternates?: AlternateLink[];
+  includeSiteEntities?: boolean;
 }
 
 const {
-  title = "Markethink — Marketing that ships and keeps getting sharper",
+  title = "Markethink: Marketing that ships and keeps getting sharper",
   description = "Markethink learns your business, organizes campaigns, creates the work, tracks approvals, and keeps marketing moving every week.",
   image = "/images/hero-image.png",
   canonical,
@@ -21,77 +25,89 @@ const {
   noindex = false,
   siteName = "Markethink",
   favicon = "/favicon.svg",
+  lang = "en",
+  alternates = [],
+  includeSiteEntities = false,
 } = Astro.props;
 
 const siteUrl = "https://markethink.ai";
+const organizationId = `${siteUrl}/#organization`;
+const websiteId = `${siteUrl}/#website`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const webPageId = `${canonicalUrl}#webpage`;
 const imageUrl = new URL(image, siteUrl).toString();
+const organizationRef = { "@id": organizationId };
+const websiteRef = { "@id": websiteId };
+const webPageRef = { "@id": webPageId };
 
 function markdownPathFor(pathname: string) {
   const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
   return cleanPath ? `/${cleanPath}.md` : "/index.md";
 }
-
 const markdownUrl = new URL(markdownPathFor(new URL(canonicalUrl).pathname), siteUrl).toString();
-const suppliedNodes = structuredData
-  ? (Array.isArray(structuredData) ? structuredData : [structuredData])
+const suppliedNodes = structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : [];
+const pageExtension = suppliedNodes.find((node) => {
+  const value = node["@type"];
+  const types = Array.isArray(value) ? value : [value];
+  return types.some((item) => ["WebPage", "CollectionPage", "ContactPage", "AboutPage"].includes(String(item)));
+});
+const pageExtensionTypes = pageExtension
+  ? (Array.isArray(pageExtension["@type"]) ? pageExtension["@type"] : [pageExtension["@type"]]).filter(Boolean)
   : [];
+const pageExtensionProperties = pageExtension
+  ? Object.fromEntries(Object.entries(pageExtension).filter(([key]) => !["@context", "@type", "@id", "url", "name", "description", "inLanguage", "publisher"].includes(key)))
+  : {};
+
+function normalizedNode(node: Record<string, unknown>, index: number) {
+  const { ["@context"]: _context, ...rest } = node;
+  const value = rest["@type"];
+  const types = (Array.isArray(value) ? value : [value]).filter(Boolean).map(String);
+  const primaryType = types[0] ?? "Thing";
+  const slug = primaryType.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+  const normalized: Record<string, unknown> = { ...rest, "@id": rest["@id"] ?? `${canonicalUrl}#${slug}-${index + 1}` };
+  if (types.includes("BreadcrumbList")) normalized["@id"] = rest["@id"] ?? `${canonicalUrl}#breadcrumb`;
+  if (types.includes("FAQPage")) normalized["@id"] = rest["@id"] ?? `${canonicalUrl}#faq`;
+  if (types.includes("Service")) normalized["@id"] = rest["@id"] ?? `${canonicalUrl}#service`;
+  if (types.includes("ItemList")) normalized["@id"] = rest["@id"] ?? `${canonicalUrl}#itemlist`;
+  if (types.some((item) => ["Article", "BlogPosting", "NewsArticle"].includes(item))) {
+    normalized.mainEntityOfPage = webPageRef;
+    normalized.isPartOf = normalized.isPartOf ?? websiteRef;
+    normalized.publisher = normalized.publisher ?? organizationRef;
+  }
+  if (types.includes("FAQPage") || types.includes("ItemList")) normalized.isPartOf = normalized.isPartOf ?? webPageRef;
+  if (types.includes("Service")) {
+    normalized.provider = organizationRef;
+    normalized.mainEntityOfPage = normalized.mainEntityOfPage ?? webPageRef;
+  }
+  return normalized;
+}
 
 const normalizedSuppliedNodes = suppliedNodes
-  .filter((node) => node["@type"] !== "WebPage")
-  .map((node) => {
-    const { ["@context"]: _context, ...rest } = node;
-    return rest;
-  });
-
+  .filter((node) => node !== pageExtension)
+  .map(normalizedNode);
+const organizationNode = {
+  "@type": "Organization", "@id": organizationId, name: "Markethink", url: `${siteUrl}/`,
+  description: "An AI marketing system managed by expert marketers that learns each business, runs marketing day to day, connects it to the pipeline, and improves with every approval, correction, and result.",
+  logo: { "@type": "ImageObject", "@id": `${siteUrl}/#logo`, url: `${siteUrl}/images/logo.svg`, contentUrl: `${siteUrl}/images/logo.svg`, caption: "Markethink" },
+  sameAs: ["https://www.linkedin.com/company/markethink-ai/", "https://www.instagram.com/markethink.ai/"],
+};
+const websiteNode = {
+  "@type": "WebSite", "@id": websiteId, url: `${siteUrl}/`, name: "Markethink",
+  description: "Your marketing operation, powered by AI and managed by experts.", inLanguage: ["en", "es"], publisher: organizationRef,
+};
+const webPageNode = {
+  "@type": [...new Set(["WebPage", ...pageExtensionTypes.filter((item) => item !== "WebPage")])],
+  "@id": webPageId, url: canonicalUrl, name: title, description, inLanguage: lang, isPartOf: websiteRef, about: organizationRef,
+  primaryImageOfPage: { "@type": "ImageObject", url: imageUrl, contentUrl: imageUrl }, ...pageExtensionProperties,
+};
 const schemaGraph = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: "Markethink",
-      url: `${siteUrl}/`,
-      description: "An AI marketing system managed by expert marketers that learns each business, runs marketing day to day, connects it to the pipeline, and improves with every approval, correction, and result.",
-      logo: {
-        "@type": "ImageObject",
-        "@id": `${siteUrl}/#logo`,
-        url: `${siteUrl}/images/logo.svg`,
-        contentUrl: `${siteUrl}/images/logo.svg`,
-        caption: "Markethink",
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: `${siteUrl}/`,
-      name: "Markethink",
-      description: "Your marketing operation, powered by AI and managed by experts.",
-      inLanguage: "en",
-      publisher: { "@id": `${siteUrl}/#organization` },
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${canonicalUrl}#webpage`,
-      url: canonicalUrl,
-      name: title,
-      description,
-      inLanguage: "en",
-      isPartOf: { "@id": `${siteUrl}/#website` },
-      about: { "@id": `${siteUrl}/#organization` },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: imageUrl,
-        contentUrl: imageUrl,
-      },
-    },
-    ...normalizedSuppliedNodes,
-  ],
+  "@graph": [...(includeSiteEntities ? [organizationNode, websiteNode] : []), webPageNode, ...normalizedSuppliedNodes],
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={favicon} />
@@ -99,6 +115,7 @@ const schemaGraph = {
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />)}
     <title>{title}</title>
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
@@ -106,17 +123,19 @@ const schemaGraph = {
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
     <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
     {!noindex && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
+    {!noindex && <link rel="describedby" type="text/plain" href={lang === "es" ? "/llms-es.txt" : "/llms.txt"} />}
     <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
+<body>
     <slot />
     <script>
       import { gsap } from "gsap";
