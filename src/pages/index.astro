@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ReviewHowItWorks from "../components/ReviewHowItWorks.astro";
 import Footer from "../components/Footer.astro";
-import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
+import Navbar from "../components/Navbar.astro";
 
 const heroImage = "/images/hero-v6-reference-phone.svg";
 const workImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink-marketing-planning-workflow-background.webp";
@@ -123,42 +123,7 @@ const homeStructuredData = {
   includeSiteEntities={true}
 >
   <div class="review-page">
-    <header class="site-header">
-      <a class="logo" href="#top" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" /></a>
-      <nav aria-label="Primary navigation">
-        {primaryNavigation.map((link) => <a href={link.reviewHref}>{link.label}</a>)}
-        <a href={primaryNavigationActions.loginHref}>{primaryNavigationActions.loginLabel}</a>
-      </nav>
-      <nav class="language-switcher" aria-label="Language selection">
-        <a href="/" lang="en" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es">ES</a>
-      </nav>
-      <a class="button button-small button-roll" href={primaryNavigationActions.ctaHref}><span class="button-label"><span>{primaryNavigationActions.ctaLabel}</span><span aria-hidden="true">{primaryNavigationActions.ctaLabel}</span></span></a>
-      <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-open>
-        <span></span><span></span>
-      </button>
-    </header>
-
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true" data-mobile-menu>
-      <div class="mobile-menu-shell">
-        <div class="mobile-menu-top">
-          <a class="mobile-menu-logo" href="#top" aria-label="Markethink home" data-mobile-menu-close><img src="/images/logo-white.svg" alt="Markethink" /></a>
-          <button class="mobile-menu-close" type="button" aria-label="Close navigation" data-mobile-menu-close><span></span><span></span></button>
-        </div>
-        <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
-          {primaryNavigation.map((link, index) => (
-            <a href={link.reviewHref} data-mobile-menu-close><small>{String(index + 1).padStart(2, "0")}</small><span>{link.label}</span></a>
-          ))}
-        </nav>
-        <div class="mobile-menu-footer">
-          <nav class="mobile-language-switcher" aria-label="Language selection">
-            <a href="/" lang="en" aria-current="page" data-mobile-menu-close>EN</a><span aria-hidden="true">/</span><a href="/es/" lang="es" data-mobile-menu-close>ES</a>
-          </nav>
-          <a class="button mobile-menu-cta" href={primaryNavigationActions.ctaHref} data-mobile-menu-close>{primaryNavigationActions.ctaLabel}</a>
-          <a class="mobile-menu-login" href={primaryNavigationActions.loginHref} data-mobile-menu-close>{primaryNavigationActions.loginLabel} <span>↗</span></a>
-          <p>Powered by AI. Managed by expert marketers.</p>
-        </div>
-      </div>
-    </div>
+    <Navbar />
 
     <main id="top">
       <section class="hero" data-scroll-hero>
