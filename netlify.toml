@@ -37,6 +37,13 @@
   to = "https://dashboard.markethink.ai/api/booking/:splat"
   status = 200
 
+# Keep favicon fallback aligned with the current Markethink symbol.
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/trial"
   to = "/"
