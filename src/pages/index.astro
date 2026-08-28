@@ -88,6 +88,16 @@ const connectedPlatforms = [
   { name: "Stripe", icon: "/brand-logos/connections/stripe.svg", mark: null, ring: "inner", x: "70%", y: "68%", delay: "2.85s" },
 ];
 
+const trustedClients = [
+  { name: "Pambuddha Curated", logo: "/brand-logos/trust/pambuddha.svg" },
+  { name: "Emma Sacks Interiors", logo: "/brand-logos/trust/emma-sacks.svg" },
+  { name: "Green", logo: "/brand-logos/trust/green.svg" },
+  { name: "All Digital Media", logo: "/brand-logos/trust/all-digital-media.svg" },
+  { name: "Atlanta Lawyer, Jonathan W. Johnson, LLC", logo: "/brand-logos/trust/jonathan-johnson.svg" },
+  { name: "Villazzo", logo: "/brand-logos/trust/villazzo.svg" },
+  { name: "Selten Logistics", logo: "/brand-logos/trust/selten-logistics.svg" },
+];
+
 const faq = [
   ["Who actually does the work?", "The Markethink team directs strategy, reviews priority work, and stays accountable. The AI marketing system supports production and continuity. You control what ships and set the approval rules."],
   ["Will it sound like my brand?", "That is the first thing the preview proves. When something is off, say so in plain words, in chat. It revises, and it remembers why."],
@@ -175,6 +185,28 @@ const homeStructuredData = {
 
       <section class="proof-strip section-light" aria-labelledby="proof-title" data-change-cards>
         <div class="wrap">
+          <div class="trust-strip" aria-labelledby="trust-title">
+            <h2 id="trust-title">Helping businesses like yours grow.</h2>
+            <div class="trust-marquee" aria-label="Businesses supported by Markethink">
+              <div class="trust-track">
+                <div class="trust-logo-set">
+                  {trustedClients.map((client) => (
+                    <span class="trust-logo">
+                      <img src={client.logo} alt={client.name} loading="eager" decoding="async" />
+                    </span>
+                  ))}
+                </div>
+                <div class="trust-logo-set" aria-hidden="true">
+                  {trustedClients.map((client) => (
+                    <span class="trust-logo">
+                      <img src={client.logo} alt="" loading="eager" decoding="async" />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="change-heading">
             <p class="eyebrow dark">What changes</p>
             <h2 id="proof-title">Marketing stops living in separate tabs.</h2>
