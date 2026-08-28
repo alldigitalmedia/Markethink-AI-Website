@@ -2,6 +2,41 @@
   command = "npm run build"
   publish = "dist"
 
+# --- Booking rail proxy -------------------------------------------------------
+#
+# markethink.ai/meet/santiagososa serves the booking page, but the page itself
+# CANNOT live here. It is a server-side rail that holds the Composio API key and
+# performs free/busy reads and calendar writes; a static site cannot run it, and
+# putting it in a Netlify Function would mean copying that credential onto a
+# second platform.
+#
+# So these are PROXY rewrites (status 200, absolute destination): Netlify fetches
+# from the dashboard server-side and returns the response under this domain. The
+# visitor's address bar stays on markethink.ai throughout, including the emailed
+# confirmation step.
+#
+# The second rule is not optional. The page fetches /api/booking/slots and posts
+# to /api/booking/hold as SAME-ORIGIN requests, and its CSP is connect-src 'self'.
+# Without proxying the API path too, the page renders and then shows no
+# availability at all.
+#
+# These sit FIRST so a future catch-all cannot shadow them — Netlify applies the
+# first matching rule.
+[[redirects]]
+  from = "/meet/santiagososa"
+  to = "https://dashboard.markethink.ai/api/booking/"
+  status = 200
+
+[[redirects]]
+  from = "/meet/santiagososa/*"
+  to = "https://dashboard.markethink.ai/api/booking/"
+  status = 200
+
+[[redirects]]
+  from = "/api/booking/*"
+  to = "https://dashboard.markethink.ai/api/booking/:splat"
+  status = 200
+
 [[redirects]]
   from = "/trial"
   to = "/"
