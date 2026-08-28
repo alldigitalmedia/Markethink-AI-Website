@@ -185,8 +185,7 @@ const homeStructuredData = {
 
       <section class="proof-strip section-light" aria-labelledby="proof-title" data-change-cards>
         <div class="wrap">
-          <div class="trust-strip" aria-labelledby="trust-title">
-            <h2 id="trust-title">Helping businesses like yours grow.</h2>
+          <div class="trust-strip">
             <div class="trust-marquee" aria-label="Businesses supported by Markethink">
               <div class="trust-track">
                 <div class="trust-logo-set">
@@ -1040,11 +1039,39 @@ const homeStructuredData = {
       gap:8px;
     }
   }
+  /* Seamless hero-to-client transition: one continuous dark-to-light field, no white slab or cloud seam. */
+  .proof-strip{
+    margin-top:0;
+    padding-top:clamp(310px,34vh,370px);
+    background:#F5F5F1;
+  }
+  .proof-strip:before{
+    top:0;
+    bottom:auto;
+    height:clamp(310px,34vh,370px);
+    background:linear-gradient(180deg,#090c0d 0%,#0c100f 12%,#181d1a 26%,#343a36 42%,#646b65 58%,#9ca29b 73%,#ced2cb 84%,#eaede7 94%,#F5F5F1 100%);
+    box-shadow:none;
+  }
+  .proof-strip:after{
+    left:-6%;
+    right:-6%;
+    top:0;
+    height:clamp(310px,34vh,370px);
+    background:radial-gradient(ellipse 72% 42% at 50% 14%,rgba(105,210,84,.07),transparent 74%);
+    filter:blur(36px);
+    opacity:.55;
+  }
+  @media(max-width:760px){
+    .proof-strip{margin-top:-48px;padding-top:clamp(255px,36vh,300px);background:#F5F5F1}
+    .proof-strip:before{top:0;bottom:auto;height:clamp(255px,36vh,300px);box-shadow:none}
+    .proof-strip:after{top:0;height:clamp(255px,36vh,300px);filter:blur(30px)}
+  }
+
   /* Approved client proof: one compact monochrome marquee on a shared surface. */
   .trust-strip{
     margin:0 0 clamp(56px,7vw,82px);
     padding:0;
-    background:#F5F5F1;
+    background:transparent;
     text-align:center;
   }
   .trust-strip h2{
@@ -1057,10 +1084,10 @@ const homeStructuredData = {
   }
   .trust-marquee{
     position:relative;
-    margin:clamp(18px,2.4vw,26px) calc(50% - 50vw) 0;
+    margin:0 calc(50% - 50vw);
     padding:7px 0;
     overflow:hidden;
-    background:#F5F5F1;
+    background:transparent;
     mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
   }
@@ -1096,8 +1123,7 @@ const homeStructuredData = {
   }
   @media(max-width:680px){
     .trust-strip{margin-bottom:58px;padding-bottom:0}
-    .trust-strip h2{font-size:15px;padding:0 20px}
-    .trust-marquee{margin-top:14px;padding:5px 0}
+    .trust-marquee{margin-top:0;padding:5px 0}
     .trust-logo-set{gap:28px;padding-right:28px}
     .trust-logo,.trust-logo img{width:auto;height:23px}
   }
