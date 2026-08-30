@@ -21,6 +21,8 @@ export type BlogPost = {
     heading: string;
     body: string[];
     bullets?: string[];
+    image?: string;
+    imageAlt?: string;
   }[];
   seoHubLink?: {
     copy: string;
@@ -55,6 +57,183 @@ export const journeyPosts = [
 ];
 
 export const insightPosts: BlogPost[] = [
+  {
+    slug: "what-is-an-ai-marketing-agency",
+    title: "What Is an AI Marketing Agency? What It Actually Manages",
+    seoTitle: "What Is an AI Marketing Agency? A Buyer’s Guide | Markethink",
+    description:
+      "Learn what an AI marketing agency does, what expert marketers should still own, and how website, content, campaigns, leads, CRM, and follow-up connect.",
+    excerpt:
+      "A practical buyer’s guide to what an AI marketing agency should manage, where expert judgment belongs, and how the work should connect to your pipeline.",
+    label: "BUYER’S GUIDE",
+    image: "/images/ai-marketing-agency-guide/ai-marketing-agency-operating-room.svg",
+    imageAlt:
+      "An expert marketer directing an organized AI-supported marketing operation across website, content, campaigns, leads, and follow-up",
+    publishedDate: "2026-08-30",
+    updatedDate: "2026-08-30",
+    readingTime: "12 min read",
+    category: "AI Marketing",
+    keywords: [
+      "what is an AI marketing agency",
+      "what does an AI marketing agency do",
+      "AI marketing agency services",
+      "AI marketing agency responsibilities",
+      "AI marketing agency vs traditional agency",
+      "managed AI marketing",
+    ],
+    author: {
+      name: "Markethink Editorial Team",
+      title: "AI marketing systems managed by expert marketers",
+    },
+    intro: [
+      "An AI marketing agency uses AI to make research, production, organization, and repetitive execution faster. But speed is only useful when someone still owns the strategy, reviews the work, protects the brand, and stays accountable for what reaches the market.",
+      "The best model is not a collection of generators working in isolation. It is a managed marketing operation. Website updates, social content, campaigns, advertising, lead capture, CRM context, follow-up, and results should move through one connected rhythm instead of restarting in separate tools and conversations.",
+      "That distinction matters because every campaign launched without shared context creates more review work and another disconnected trail of decisions for the next campaign to reconstruct.",
+      "This guide explains what an AI marketing agency should actually manage, which decisions belong to expert marketers and the business, and what to ask before choosing a provider.",
+    ],
+    seoHubLink: {
+      copy: "If you are evaluating a provider rather than only learning the category, see how Markethink operates as an",
+      anchor: "AI marketing agency managed by expert marketers",
+      href: "/",
+    },
+    recommendedGuide: {
+      copy: "For a step-by-step operating workflow, continue with",
+      anchor: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
+    relatedSlugs: [
+      "how-to-use-ai-for-marketing-small-business",
+      "consistent-marketing-beats-chasing-ai-tools",
+      "brand-memory-feedback-approved-campaigns",
+    ],
+    sections: [
+      {
+        heading: "An AI marketing agency should manage an operation, not just generate assets",
+        body: [
+          "Many businesses first encounter AI marketing through a narrow task: write a post, create an image, summarize research, or produce several ad variations. Those uses can save time, but they do not automatically create better marketing.",
+          "Marketing becomes useful when the work is tied to a business goal, reaches the right audience, gives the buyer a clear next step, and creates information the team can use afterward. That requires coordination across more than one asset.",
+          "A capable AI marketing agency should therefore manage the path from priority to result. The job starts with the business objective and continues through the brief, production, expert review, approval, launch, lead handling, measurement, and the next decision. AI supports the pace and continuity. Expert marketers own the judgment and accountability.",
+        ],
+        bullets: [
+          "One business goal and buyer action for each campaign",
+          "A connected asset plan instead of unrelated drafts",
+          "Expert review before important work ships",
+          "A defined approval path for the business",
+          "Lead capture, follow-up, and learning after launch",
+        ],
+      },
+      {
+        heading: "The work begins with business context and a clear campaign brief",
+        body: [
+          "Before content is produced, the agency should understand the business well enough to make useful choices. That includes the offer, audience, positioning, brand voice, approved proof, current priorities, sales process, and the action a buyer should take next.",
+          "AI can organize this context and make it easier to reuse. An expert marketer still has to decide which customer problem matters, what promise is supportable, which channel deserves attention, and what should not be said. The business remains responsible for pricing, risk, customer commitments, and final approval.",
+          "A good campaign brief makes those responsibilities visible. It defines the objective, audience, offer, message, proof, assets, channels, CTA, approval owner, lead destination, and success signal. Without that brief, faster production usually creates more review work rather than more progress.",
+        ],
+      },
+      {
+        heading: "Website, content, social, campaigns, and advertising should work together",
+        body: [
+          "An AI marketing agency should be able to turn one approved priority into the right combination of web and channel work. A campaign may need a landing-page update, a useful article, social content, email support, paid-media creative, and a clear conversion destination. It may not need every channel at once.",
+          "The important distinction is coordination. The website should explain the same offer the campaign promotes. The article should answer the questions that block a decision. Social content should create a reason to visit. Advertising should use approved claims and lead to a relevant page. Each asset should have a job inside the same buyer path.",
+          "AI helps create and adapt the work efficiently. Expert marketers choose the angle, review the claims, protect the creative standard, and decide whether the asset is ready. The result should feel like one campaign, not several unrelated outputs produced by different systems.",
+        ],
+        image: "/images/ai-marketing-agency-guide/ai-marketing-agency-connected-work.svg",
+        imageAlt:
+          "A connected marketing work map showing website, content, social, campaigns, and advertising flowing into leads, CRM, and follow-up",
+      },
+      {
+        heading: "Marketing should connect to leads, CRM, and follow-up",
+        body: [
+          "Publishing is not the end of the marketing job. When a visitor submits a form, replies to a campaign, books a call, or signals interest, the next step should be clear. The inquiry needs source context, an owner, a status, and a follow-up action.",
+          "An AI-supported operation can organize lead details, summarize the campaign context, prepare response drafts, flag missing information, and remind the team about the next step. It should not pretend to own sensitive relationship decisions or send high-risk messages without approval.",
+          "This connection matters because marketing quality cannot be judged only by the volume of posts or drafts. The business needs to see whether the work creates qualified visits, useful conversations, completed next steps, and better information for the next campaign. Keeping CRM and follow-up connected makes that learning possible.",
+        ],
+        bullets: [
+          "Capture the source, campaign, offer, and requested next step",
+          "Keep each opportunity’s owner, status, and follow-up date current",
+          "Prepare responses with the relevant business and campaign context",
+          "Return recurring objections and questions to the content plan",
+        ],
+      },
+      {
+        heading: "Expert marketers should own strategy, review, and accountability",
+        body: [
+          "A credible AI marketing agency should be precise about what AI does and what people still own. AI is strong at organizing information, producing first drafts, adapting approved material, maintaining continuity, and completing repetitive work. It can surface patterns and prepare options. It does not remove the need for judgment.",
+          "Expert marketers should own positioning, campaign strategy, channel priorities, creative direction, claim review, major budget recommendations, and quality control. They should be able to explain why the work exists, how it supports the business, and what should change when the result is weak.",
+          "The business should retain final authority over the offer, pricing posture, legal or reputation risk, important relationship decisions, and publishing approval. The exact review depth can vary by asset, but responsibility should never become vague simply because AI helped produce the work.",
+        ],
+      },
+      {
+        heading: "Approvals and results should improve the next round of work",
+        body: [
+          "Most marketing teams lose useful context between campaigns. A headline is rejected, a visual direction is approved, a buyer objection appears repeatedly, or a follow-up message earns better replies, but the learning stays in a thread or someone’s memory.",
+          "A managed AI marketing operation should record the useful part of those decisions. The next brief can begin with approved references, known corrections, performance history, and the current business priority. This does not mean blindly repeating previous work. It means starting with better context and making a more informed next decision.",
+          "The learning loop is straightforward: the agency prepares the work, experts review it, the business approves it, the campaign ships, real responses are collected, and the next priority is adjusted. Over time, this reduces repeated explanations and makes the operation more consistent without removing human control.",
+        ],
+        image: "/images/ai-marketing-agency-guide/ai-marketing-agency-approval-results-loop.svg",
+        imageAlt:
+          "A continuous marketing loop connecting expert review, business approval, shipped work, real results, and the next decision",
+      },
+      {
+        heading: "What an AI marketing agency should not promise",
+        body: [
+          "The presence of AI does not guarantee rankings, leads, revenue, conversion lifts, or viral reach. Results depend on the offer, market, audience, proof, budget, execution, sales process, and many conditions outside a marketing provider’s control.",
+          "A responsible provider should also avoid implying that every integration, internal application, or unusual data workflow is included in a standard engagement. Heavy custom integrations, complex data movement, and specialist implementation work should be assessed and scoped separately.",
+          "The safest sign is operational clarity. You should know what is being managed, who reviews it, what requires approval, where leads go, how results are interpreted, and what happens when the work misses the mark.",
+        ],
+      },
+      {
+        heading: "Questions to ask before choosing an AI marketing agency",
+        body: [
+          "The right questions reveal whether you are buying connected marketing management or only faster asset production. Ask the provider to walk through one campaign from business objective to follow-up and show where people make the important decisions.",
+        ],
+        bullets: [
+          "How will you learn our offer, audience, voice, proof, and approval rules?",
+          "Who owns strategy, creative direction, claim review, and final quality?",
+          "How do website, content, social, advertising, and campaigns stay connected?",
+          "What happens after a lead or inquiry arrives?",
+          "How are corrections and approved preferences used in future work?",
+          "Which publishing, budget, and customer-facing actions require our approval?",
+          "What work is included, and what custom implementation is scoped separately?",
+          "How will we review results and choose the next priority?",
+        ],
+      },
+      {
+        heading: "Choose the operating model that matches the problem",
+        body: [
+          "A self-serve AI tool can be enough when your team already owns strategy, production, review, publishing, lead handling, and measurement. A traditional agency can be a strong fit when you need specialist thinking or outsourced execution. An AI marketing agency is most useful when you want the speed and continuity of AI combined with expert direction and a connected day-to-day operation.",
+          "The key is not the label. It is whether the provider can keep the work moving from priority to campaign, from campaign to inquiry, and from real results to the next approved decision. That is the standard buyers should use to evaluate the category.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is an AI marketing agency?",
+        answer:
+          "An AI marketing agency uses AI to support research, production, organization, adaptation, and repetitive execution while expert marketers direct strategy, review the work, exercise judgment, and remain accountable. A strong agency connects campaigns to website work, content, advertising, leads, CRM, follow-up, and measurement.",
+      },
+      {
+        question: "What does an AI marketing agency do?",
+        answer:
+          "It can manage business and brand context, campaign briefs, website updates, content, social media, advertising coordination, lead capture, CRM organization, follow-up support, approvals, reporting, and the next campaign decision. The exact scope should be stated clearly before engagement.",
+      },
+      {
+        question: "Is an AI marketing agency the same as an AI marketing tool?",
+        answer:
+          "No. A tool helps with a specific task and usually depends on your team to provide strategy, context, review, publishing, and follow-up. An AI marketing agency should manage a broader operating path and provide expert direction and accountability around the AI-supported work.",
+      },
+      {
+        question: "Does an AI marketing agency remove the need for human marketers?",
+        answer:
+          "No. The strongest model supports the existing business or marketing team with faster production, better organization, and more continuity while people remain responsible for strategy, judgment, approval, and important customer relationships.",
+      },
+      {
+        question: "How do I evaluate an AI marketing agency?",
+        answer:
+          "Ask how the agency learns your business, who owns strategy and quality, how campaigns connect across channels, what requires approval, where leads and follow-up are managed, how results inform the next decision, and which custom work is scoped separately.",
+      },
+    ],
+  },
   {
     slug: "seo-content-feedback-loop",
     title: "The SEO Content Feedback Loop: Improve Existing Pages Before Publishing More",
@@ -196,6 +375,11 @@ export const insightPosts: BlogPost[] = [
       copy: "For the system and service behind this operating approach, see our",
       anchor: "AI marketing for small business",
       href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "If you are comparing operating models, read",
+      anchor: "What Is an AI Marketing Agency? What It Actually Manages",
+      href: "/blog/what-is-an-ai-marketing-agency/",
     },
     relatedSlugs: [
       "how-to-show-up-in-ai-search",
