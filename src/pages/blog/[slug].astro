@@ -194,6 +194,16 @@ const breadcrumbSchema = {
                   {section.body.map((paragraph) => (
                     <p>{paragraph}</p>
                   ))}
+                  {section.image && (
+                    <figure class="article-section-image">
+                      <img
+                        src={section.image}
+                        alt={section.imageAlt ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  )}
                   {section.bullets && (
                     <ul>
                       {section.bullets.map((item) => (
@@ -465,6 +475,21 @@ const breadcrumbSchema = {
 
   .article-section li::marker {
     color: var(--color-secondary);
+  }
+
+  .article-section-image {
+    overflow: hidden;
+    margin: 1.75rem 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-medium);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .article-section-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 
   .article-cta,
