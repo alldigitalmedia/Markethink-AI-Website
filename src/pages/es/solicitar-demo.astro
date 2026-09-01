@@ -84,6 +84,7 @@ const structuredData = {
           action="/es/gracias/"
           netlify
           data-netlify="true"
+          data-netlify-recaptcha="true"
           netlify-honeypot="bot-field"
           class="walkthrough-form animate-fade-up"
         >
@@ -142,6 +143,8 @@ const structuredData = {
               placeholder="Ejemplo: necesitamos más prospectos calificados y un mejor ritmo de contenido."
             ></textarea>
           </label>
+
+          <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
 
           <button type="submit" class="button form-button">Solicitar mi demo</button>
           <p class="form-note">Responderemos con horarios disponibles y una agenda breve para tu negocio.</p>
