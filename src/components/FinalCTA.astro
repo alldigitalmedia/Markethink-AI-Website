@@ -33,6 +33,7 @@ const auditOutputs = [
       action="/thank-you/"
       netlify
       data-netlify="true"
+      data-netlify-recaptcha="true"
       netlify-honeypot="bot-field"
       class:list={["audit-form", { "animate-fade-up": animate }]}
     >
@@ -83,6 +84,8 @@ const auditOutputs = [
         <span>What is the biggest bottleneck in your marketing right now?</span>
         <textarea name="marketing_bottleneck" rows="4" required></textarea>
       </label>
+
+      <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
 
       <button type="submit" class="button form-button">Request My Marketing System Audit</button>
       <p class="form-note">Prefer a conversation? <a href="/schedule-a-walkthrough/">Book a focused walkthrough.</a> By submitting, you agree to our <a href="/privacy/">privacy policy</a>.</p>
