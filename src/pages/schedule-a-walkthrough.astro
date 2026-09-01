@@ -83,6 +83,7 @@ const structuredData = {
           action="/thank-you/"
           netlify
           data-netlify="true"
+          data-netlify-recaptcha="true"
           netlify-honeypot="bot-field"
           class="walkthrough-form animate-fade-up"
         >
@@ -141,6 +142,8 @@ const structuredData = {
               placeholder="Example: We need more qualified leads and a better content rhythm."
             ></textarea>
           </label>
+
+          <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
 
           <button type="submit" class="button form-button">Schedule My Walkthrough</button>
           <p class="form-note">We will reply with available times and a short agenda for your business.</p>
