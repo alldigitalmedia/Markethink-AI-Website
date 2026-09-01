@@ -63,6 +63,7 @@ const setupSteps = [
           action="/onboarding/thanks/"
           netlify
           data-netlify="true"
+          data-netlify-recaptcha="true"
           netlify-honeypot="bot-field"
           enctype="multipart/form-data"
           class="setup-card"
@@ -222,6 +223,7 @@ const setupSteps = [
           <div class="card-actions">
             <button type="button" class="step-button back-button" id="prev-step" disabled>Back</button>
             <button type="button" class="step-button next-button" id="next-step">Continue</button>
+            <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
             <button type="submit" class="step-button next-button hidden" id="submit-step">Send onboarding context</button>
           </div>
         </form>
