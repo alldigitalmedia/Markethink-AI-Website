@@ -55,7 +55,7 @@ const featureVisuals: Record<string, { image: string; alt: string; label: string
         </div>
       </section>
 
-      <section class="feature-section capabilities-section" id="capabilities" aria-labelledby="capabilities-title"><div class="features-wrap"><div class="section-heading" data-reveal><div><p class="eyebrow"><span class="section-number">03</span> Todas las funciones</p><h2 id="capabilities-title">Desde la visión general<br /><em>hasta el último detalle.</em></h2></div><p>Sitios web, diseño, marketing, investigación y coordinación diaria. Explora lo que tu agente y el equipo experto pueden poner a trabajar para tu negocio.</p></div>
+      <section class="feature-section capabilities-section" id="capabilities" aria-labelledby="capabilities-title"><div class="features-wrap"><div class="section-heading" data-reveal><div><p class="eyebrow"><span class="section-number">03</span> Todas las funciones</p><h2 id="capabilities-title">Desde la visión general<br /><em>hasta el último detalle.</em></h2></div><p>Sitios web, diseño, marketing, investigación y coordinación diaria. Explora lo que tu agente y tu equipo experto pueden poner en marcha para tu negocio.</p></div>
         <div class="feature-browser">
           <div class="feature-tabs" aria-label="Categorías de funciones">{featureGroups.map(group => <a href={`#features-${group.id}`} id={`tab-${group.id}`} data-feature-tab={group.id}>{group.label}</a>)}</div>
           <div class="feature-panels">{featureGroups.map(group => <section id={`features-${group.id}`} class={`feature-panel panel-${group.id}`} data-feature-panel={group.id}>
