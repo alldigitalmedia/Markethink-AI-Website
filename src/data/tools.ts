@@ -31,6 +31,17 @@ export const tools = {
   'google-ads': { name: 'Google Ads', logo: 'google-ads.svg' },
   'google-analytics': { name: 'Google Analytics', logo: 'google-analytics.svg' },
   wordpress: { name: 'WordPress', logo: 'wordpress.svg' },
+  shopify: { name: 'Shopify', logo: 'shopify.svg' },
+  woocommerce: { name: 'WooCommerce', logo: 'woocommerce.svg' },
+  webflow: { name: 'Webflow', logo: 'webflow.svg' },
+  wix: { name: 'Wix', logo: 'wix.svg' },
+  squarespace: { name: 'Squarespace', logo: 'squarespace.svg' },
+  html5: { name: 'HTML5', logo: 'html5.svg' },
+  css3: { name: 'CSS3', logo: 'css3.svg' },
+  javascript: { name: 'JavaScript', logo: 'javascript.svg' },
+  react: { name: 'React', logo: 'react.svg' },
+  nextjs: { name: 'Next.js', logo: 'nextjs.svg' },
+  php: { name: 'PHP', logo: 'php.svg' },
   stripe: { name: 'Stripe', logo: 'stripe.svg' },
   kommo: { name: 'Kommo', logo: 'kommo.svg' },
   apollo: { name: 'Apollo', logo: 'apollo.svg' },
@@ -59,7 +70,7 @@ export const tools = {
 export type ToolId = keyof typeof tools;
 export type ToolReference = ToolId | { id: ToolId; context: string };
 
-export const meetingTools = ['zoom', 'google-meet', 'microsoft-teams', 'webex'] as const;
+export const meetingTools = ['zoom', 'google-meet', 'microsoft-teams'] as const;
 export const featureTools: Record<string, ToolId> = {
   'Google Ads management': 'google-ads',
   'Customer conversations': 'whatsapp',
