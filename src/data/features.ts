@@ -65,11 +65,11 @@ export const connectionGroups = [
     apps: [{ id: 'google-ads', context: 'Campaign management' }, { id: 'google-analytics', context: 'Website reporting' }],
     note: 'Keyword, competitor, and AI-answer research informs your marketing direction.' },
   { title: 'Website & content', description: 'Prepare, review, and publish changes through your existing website setup.',
-    apps: ['wordpress', 'shopify', 'woocommerce', 'webflow', 'wix', 'squarespace', 'html5', 'css3', 'javascript', 'react', 'nextjs', 'php'],
+    apps: ['wordpress', 'shopify', 'woocommerce', 'webflow', 'wix', 'squarespace', 'contentful', 'sanity', 'agility-cms', 'github', 'gitlab', 'vercel', 'cloudflare', 'supabase', 'firebase', 'html5', 'css3', 'javascript', 'react', 'nextjs', 'php'],
     note: 'Connected source repositories, hosted websites, and supported file-based publishing workflows.' },
   { title: 'CRM & business operations', description: 'Connect sales context, next actions, and approved billing workflows.',
-    apps: [{ id: 'kommo', context: 'Contacts, leads & tasks' }, { id: 'stripe', context: 'Invoices & payments' }],
-    note: 'Prepare invoices, payment links, and approved recurring billing alongside your sales workflow.' },
+    apps: [{ id: 'kommo', context: 'Contacts, leads & tasks' }, { id: 'hubspot', context: 'Contacts, deals & campaigns' }, { id: 'salesforce', context: 'Leads, opportunities & activities' }, { id: 'pipedrive', context: 'Deals, contacts & follow-up' }, { id: 'zoho', context: 'Leads, contacts & pipelines' }, { id: 'dynamics365', context: 'Sales, service & operations' }, { id: 'active-campaign', context: 'Contacts, automation & pipelines' }, { id: 'close', context: 'Leads, calls & follow-up' }, { id: 'attio', context: 'Contacts, companies & deals' }, { id: 'highlevel', context: 'Leads, funnels & automation' }, { id: 'apollo', context: 'Prospects, contacts & sequences' }, { id: 'stripe', context: 'Invoices & payments' }],
+    note: 'Available actions follow the permissions and connection method approved for each account.' },
 ] as const;
 
 export const iconPaths: Record<string, string> = {
