@@ -6,6 +6,7 @@ import FinalCTA from "../../components/FinalCTA.astro";
 import AiSearchInteractiveGuide from "../../components/blog/AiSearchInteractiveGuide.astro";
 import AiMarketingPracticalGuide from "../../components/blog/AiMarketingPracticalGuide.astro";
 import SeoContentFeedbackLoopGuide from "../../components/blog/SeoContentFeedbackLoopGuide.astro";
+import AiLogoBrandIdentityGuide from "../../components/blog/AiLogoBrandIdentityGuide.astro";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
 
 export function getStaticPaths() {
@@ -20,10 +21,14 @@ const isAiSearchInteractiveGuide = post.slug === "how-to-show-up-in-ai-search";
 const isAiMarketingPracticalGuide =
   post.slug === "how-to-use-ai-for-marketing-small-business";
 const isSeoContentFeedbackLoop = post.slug === "seo-content-feedback-loop";
+const isAiLogoBrandIdentityGuide =
+  post.slug ===
+  "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business";
 const isWideGuide =
   isAiSearchInteractiveGuide ||
   isAiMarketingPracticalGuide ||
-  isSeoContentFeedbackLoop;
+  isSeoContentFeedbackLoop ||
+  isAiLogoBrandIdentityGuide;
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const imageUrl = new URL(post.image, siteUrl).toString();
@@ -187,6 +192,8 @@ const breadcrumbSchema = {
               <AiSearchInteractiveGuide />
             ) : isSeoContentFeedbackLoop ? (
               <SeoContentFeedbackLoopGuide />
+            ) : isAiLogoBrandIdentityGuide ? (
+              <AiLogoBrandIdentityGuide />
             ) : (
               post.sections.map((section, index) => (
                 <section id={`section-${index + 1}`} class="article-section">
@@ -226,6 +233,8 @@ const breadcrumbSchema = {
                     ? "Turn AI-search visibility into an operating plan."
                     : isSeoContentFeedbackLoop
                       ? "Turn content performance into the next approved improvement."
+                      : isAiLogoBrandIdentityGuide
+                        ? "Build an identity your marketing can keep using."
                     : "Marketing improves faster when the system remembers the work."
               }
             </h2>
@@ -237,6 +246,8 @@ const breadcrumbSchema = {
                     ? "Markethink is an AI marketing system managed by expert marketers. It connects website improvements, answer-ready content, approvals, measurement, leads, CRM, and follow-up so search visibility supports the pipeline instead of becoming another isolated SEO project."
                     : isSeoContentFeedbackLoop
                       ? "Markethink connects website work, search evidence, expert review, approvals, leads, CRM, and follow-up in one improving marketing operation. The system keeps the work moving. A real marketing team directs the strategy, reviews the recommendations, and stays accountable for what ships."
+                      : isAiLogoBrandIdentityGuide
+                        ? "Markethink is an AI marketing system managed by expert marketers. We connect brand direction, content, website work, campaigns, approvals, leads, and follow-up so the identity becomes part of a marketing operation that ships and keeps getting sharper."
                     : "Markethink helps your business organize brand intelligence, campaign workflow, content production, approvals, and lead opportunities in one improving system."
               }
             </p>
