@@ -6,6 +6,7 @@ const { lang = "en" } = Astro.props;
 const isSpanish = lang === "es";
 const currentPath = Astro.url.pathname;
 const spanishNavigation = [
+  { label: "Funciones", href: "/es/features/" },
   { label: "Cómo funciona", href: "/es/#how-it-works" },
   { label: "Trabajo real", href: "/es/trabajo-real/" },
   { label: "Ideas", href: "/blog/" },
@@ -16,16 +17,20 @@ const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ct
 const demoLabel = isSpanish ? "Solicitar una demo" : primaryNavigationActions.ctaLabel;
 const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
 const alternateHref = isSpanish
-  ? currentPath.startsWith("/es/solicitar-demo")
-    ? "/schedule-a-walkthrough/"
-    : currentPath.startsWith("/es/trabajo-real")
-      ? "/shipped/"
-      : "/"
-  : currentPath.startsWith("/schedule-a-walkthrough")
-    ? "/es/solicitar-demo/"
-    : currentPath.startsWith("/shipped")
-      ? "/es/trabajo-real/"
-      : "/es/";
+  ? currentPath.startsWith("/es/features")
+    ? "/features/"
+    : currentPath.startsWith("/es/solicitar-demo")
+      ? "/schedule-a-walkthrough/"
+      : currentPath.startsWith("/es/trabajo-real")
+        ? "/shipped/"
+        : "/"
+  : currentPath.startsWith("/features")
+    ? "/es/features/"
+    : currentPath.startsWith("/schedule-a-walkthrough")
+      ? "/es/solicitar-demo/"
+      : currentPath.startsWith("/shipped")
+        ? "/es/trabajo-real/"
+        : "/es/";
 const labels = isSpanish
   ? { home: "Inicio de Markethink", primary: "Navegación principal", open: "Abrir navegación", close: "Cerrar navegación", mobile: "Navegación móvil", mobileLinks: "Enlaces de navegación móvil", language: "Selección de idioma", tagline: "Impulsado por IA. Gestionado por expertos en marketing." }
   : { home: "Markethink home", primary: "Primary navigation", open: "Open navigation", close: "Close navigation", mobile: "Mobile navigation", mobileLinks: "Mobile navigation links", language: "Language selection", tagline: "Powered by AI. Managed by expert marketers." };
