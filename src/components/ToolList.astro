@@ -3,15 +3,17 @@ import ToolLogo from './ToolLogo.astro';
 import { tools, type ToolReference } from '../data/tools';
 interface Props { items: readonly ToolReference[]; label?: string; }
 const { items, label } = Astro.props;
-const scrolling = items.length > 8;
+const scrolling = items.length > 0;
+const fillCopies = items.length ? Math.max(1, Math.ceil(8 / items.length)) : 1;
 ---
-<div class:list={['tool-wall', { 'is-marquee': scrolling }]}><div class="tool-wall-track">
-{Array.from({ length: scrolling ? 2 : 1 }, (_, copy) => <ul class="tool-list" role="list" aria-label={copy === 0 ? label : undefined} aria-hidden={copy === 1 ? 'true' : undefined}>
-  {items.map((item,index) => {
+<div class:list={['tool-wall', { 'is-marquee': scrolling }]} style="--tool-wall-duration:100s"><div class="tool-wall-track">
+{Array.from({ length: scrolling ? 2 : 1 }, (_, trackCopy) => <ul class="tool-list" role="list" aria-label={trackCopy === 0 ? label : undefined} aria-hidden={trackCopy === 1 ? 'true' : undefined}>
+  {Array.from({ length: fillCopies }, (_, fillCopy) => items.map((item,index) => {
     const id = typeof item === 'string' ? item : item.id;
     const context = typeof item === 'string' ? undefined : item.context;
-    return <li class="tool-badge" data-tool={id}><ToolLogo id={id} instance={`${label || 'connections'}-${copy}-${index}`} /><span class="tool-name">{tools[id].name}{context && <small>{context}</small>}</span></li>;
-  })}
+    const decorativeRepeat = trackCopy === 1 || fillCopy > 0;
+    return <li class="tool-badge" data-tool={id} aria-hidden={decorativeRepeat ? 'true' : undefined}><ToolLogo id={id} instance={`${label || 'connections'}-${trackCopy}-${fillCopy}-${index}`} /><span class="tool-name">{tools[id].name}{context && <small>{context}</small>}</span></li>;
+  }))}
 </ul>)}
 </div></div>
 
@@ -21,11 +23,11 @@ const scrolling = items.length > 8;
   .tool-badge { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; max-width: 100%; min-width: 80px; padding: 8px 0; border: 0; border-radius: 0; background: transparent; color: inherit; box-shadow: none; }
   .tool-name { min-width: 0; max-width: 140px; text-align: center; font: 500 .75rem/1.35 Inter, system-ui, sans-serif; overflow-wrap: anywhere; }
   .tool-name small { display: block; margin-top: 3px; font-size: .6875rem; font-weight: 400; line-height: 1.35; }
-  .is-marquee .tool-wall-track { display: flex; width: max-content; animation: tool-wall-drift 48s linear infinite; }
+  .is-marquee .tool-wall-track { display: flex; width: max-content; animation: tool-wall-drift var(--tool-wall-duration,100s) linear infinite; will-change: transform; }
   .is-marquee .tool-list { flex-wrap: nowrap; padding-right: 40px; }
-  .is-marquee:hover .tool-wall-track { animation-play-state: paused; }
+  .is-marquee:hover .tool-wall-track, .is-marquee:focus-within .tool-wall-track { animation-play-state: paused; }
   :global(.inner-paused) .tool-wall-track, :global([data-motion-paused="true"]) .tool-wall-track { animation-play-state: paused; }
   @keyframes tool-wall-drift { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) { .is-marquee .tool-wall-track { animation: none; width: auto; } .is-marquee .tool-list { flex-wrap: wrap; padding: 0; } .tool-list[aria-hidden="true"] { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .is-marquee .tool-wall-track { animation: none; width: auto; } .is-marquee .tool-list { flex-wrap: wrap; padding: 0; } .tool-list[aria-hidden="true"], .tool-badge[aria-hidden="true"] { display: none; } }
   @media (max-width: 540px) { .tool-list { gap: 20px; } .tool-badge { min-width: 68px; } }
 </style>

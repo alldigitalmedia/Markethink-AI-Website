@@ -50,7 +50,7 @@
 .inner-page.inner-motion-enabled .tool-wall.is-marquee .tool-wall-track,
 .features-page.motion-enabled .tool-wall.is-marquee .tool-wall-track,
 .features-page[data-motion-paused='false'] .tool-wall.is-marquee .tool-wall-track {
-  animation: inner-tools-drift 55s linear infinite;
+  animation: inner-tools-drift 100s linear infinite;
   will-change: transform;
 }
 .tool-wall.is-marquee:is(:hover, :focus-within) .tool-wall-track { animation-play-state: paused !important; }
