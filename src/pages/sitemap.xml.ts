@@ -39,6 +39,12 @@ const staticPages: SitemapPage[] = [
     changefreq: "weekly",
   },
   {
+    path: "/features/",
+    priority: "0.9",
+    changefreq: "monthly",
+    lastmod: "2026-09-07",
+  },
+  {
     path: "/shipped/",
     priority: "0.9",
     changefreq: "weekly",

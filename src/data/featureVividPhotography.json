@@ -1,0 +1,137 @@
+{
+  "page-anatomy": {
+    "file": "feature-vivid-page-anatomy",
+    "alt": "A finished home-consultation page on a monitor at a cobalt studio desk."
+  },
+  "contact-sheet": {
+    "file": "feature-vivid-contact-sheet",
+    "alt": "A vivid café advertisement beside a cobalt-tiled storefront.",
+    "detail": {
+      "file": "feature-detail-design-creative",
+      "alt": "Hands holding a tablet with bold café campaign creative beside coral espresso cups."
+    },
+    "heroPosition": "45% 55%"
+  },
+  "calendar": {
+    "file": "feature-vivid-calendar-v2",
+    "alt": "A finished juice-bar social post on a phone beside the fresh orange drink it promotes.",
+    "expert": {
+      "file": "feature-social-expert-v2",
+      "alt": "Two collaborators reviewing three finished juice-bar social posts on a laptop."
+    }
+  },
+  "dispatch": {
+    "file": "feature-vivid-dispatch",
+    "alt": "Hands viewing a finished haircut post in a colorful barbershop."
+  },
+  "email-letter": {
+    "file": "feature-vivid-email-letter",
+    "alt": "A photo-led bakery email creative on a laptop at a coral counter."
+  },
+  "campaign-map": {
+    "file": "feature-vivid-campaign-map",
+    "alt": "A team arranging a coordinated café launch campaign across a colorful storefront."
+  },
+  "target-brief": {
+    "file": "feature-vivid-target-brief",
+    "alt": "A researcher holding a phone beside a row of colorful shopfronts."
+  },
+  "contact-record": {
+    "file": "feature-vivid-contact-record",
+    "alt": "A shop owner discussing business context with a colleague holding a tablet."
+  },
+  "source-timeline": {
+    "file": "feature-vivid-source-timeline",
+    "alt": "Two shop owners opening a colorful storefront to the morning light."
+  },
+  "contact-path": {
+    "file": "feature-vivid-contact-path",
+    "alt": "A client and business owner discussing an interior reference on a tablet."
+  },
+  "message-annotation": {
+    "file": "feature-vivid-message-annotation",
+    "alt": "A marketing professional preparing an introduction beside a bright café window."
+  },
+  "ad-alignment": {
+    "file": "feature-vivid-ad-alignment",
+    "alt": "Matching consultation creative displayed on a laptop and phone in a ceramics studio."
+  },
+  "brief-conversation": {
+    "file": "feature-vivid-brief-conversation",
+    "alt": "Three collaborators shaping a marketing idea in a colorful studio."
+  },
+  "meeting-notes": {
+    "file": "feature-vivid-meeting-notes",
+    "alt": "Four collaborators discussing campaign creative around a teal meeting table."
+  },
+  "proof-notes": {
+    "file": "feature-vivid-proof-notes",
+    "alt": "Two women reviewing the crop of a vivid seasonal campaign poster.",
+    "detail": {
+      "file": "feature-detail-approvals-priorities",
+      "alt": "Hands installing a vivid seasonal flower campaign in a florist's window."
+    },
+    "heroPosition": "50% 40%"
+  },
+  "source-index": {
+    "file": "feature-vivid-source-index",
+    "alt": "A designer working with photographic references in a colorful shared studio.",
+    "detail": {
+      "file": "feature-detail-connected-workspace",
+      "alt": "Collaborators passing a tablet displaying a finished interior campaign photograph."
+    },
+    "heroPosition": "50% 50%"
+  },
+  "human-handoff": {
+    "file": "feature-vivid-human-handoff",
+    "alt": "A shop owner helping a customer compare a richly colored upholstery fabric."
+  },
+  "appointment-agenda": {
+    "file": "feature-vivid-appointment-agenda",
+    "alt": "A receptionist welcoming a client at a colorful service studio.",
+    "detail": {
+      "file": "feature-detail-booking-invoicing",
+      "alt": "A client viewing a photo-led salon visit page on a phone in a colorful lounge."
+    },
+    "heroPosition": "60% 40%"
+  },
+  "learning-ledger": {
+    "file": "feature-vivid-learning-ledger",
+    "alt": "Two collaborators comparing colorful campaign photographs on a studio wall.",
+    "detail": {
+      "file": "feature-detail-business-memory",
+      "alt": "A creative director arranging a café content shoot using a tablet reference."
+    },
+    "heroPosition": "60% 45%"
+  },
+  "brand-book": {
+    "file": "feature-vivid-brand-book",
+    "alt": "Hands holding a richly colored café brand art book against aubergine velvet.",
+    "detail": {
+      "file": "feature-detail-brand-hub",
+      "alt": "A designer viewing bold café brand imagery on a large studio display."
+    },
+    "heroPosition": "50% 55%"
+  },
+  "intent-matrix": {
+    "file": "feature-vivid-intent-matrix",
+    "alt": "A researcher comparing photo-led garden service content on a monitor."
+  },
+  "answer-sources": {
+    "file": "feature-vivid-answer-sources",
+    "alt": "Two people examining a photo-led service source page on a screen.",
+    "detail": {
+      "file": "feature-detail-ai-search-visibility",
+      "alt": "A nursery owner viewing a photo-led service page among plants and colorful pots."
+    },
+    "heroPosition": "62% 50%"
+  },
+  "metric-editorial": {
+    "file": "feature-vivid-metric-editorial",
+    "alt": "Two collaborators reviewing a colorful campaign creative on a tablet."
+  },
+  "question-funnel": {
+    "file": "feature-vivid-question-funnel",
+    "alt": "Hands comparing a consultation page across a laptop and phone."
+  }
+}
