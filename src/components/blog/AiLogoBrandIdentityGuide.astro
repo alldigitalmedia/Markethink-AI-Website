@@ -1,0 +1,286 @@
+---
+const evaluationRows = [
+  ["Relevant", "The idea connects to the business, audience, and offer without needing a long explanation.", "Does this feel specific to us, or could any competitor use it?"],
+  ["Distinctive", "The silhouette, shape, or wordmark is easy to separate from familiar category patterns.", "Would someone confuse this with another company in our market?"],
+  ["Simple", "The mark keeps its idea when details are removed.", "Can we describe the concept in one sentence?"],
+  ["Scalable", "It remains recognizable as a favicon, profile image, sign, and document mark.", "What disappears when this is reduced to 24 pixels?"],
+  ["Flexible", "It works in color, one color, light mode, dark mode, horizontal, and compact formats.", "Can the system adapt without becoming a different brand?"],
+  ["Usable", "The business can reproduce it with practical files, rules, and templates.", "Could another teammate apply it correctly without guessing?"],
+];
+
+const identityRows = [
+  ["Logo system", "Primary, horizontal, compact, icon, light, dark, and one-color versions", "Use the right mark for each size and surface"],
+  ["Color", "Core palette, accent palette, neutral palette, and contrast combinations", "Keep applications recognizable and readable"],
+  ["Typography", "Display, body, UI, fallbacks, weights, and hierarchy", "Create a repeatable voice before the copy is read"],
+  ["Image direction", "Photography, illustration, diagrams, crops, lighting, and exclusions", "Stop every channel from inventing a different visual world"],
+  ["Layout", "Spacing, grid, corner treatment, containers, and information hierarchy", "Make pages and campaigns feel related"],
+  ["Voice", "Message principles, approved phrases, banned phrases, and examples", "Connect the visual identity to how the business speaks"],
+  ["Applications", "Website, social, email, proposals, presentations, signage, and packaging", "Prove the identity works where customers meet it"],
+  ["Governance", "Source files, naming, approvals, ownership, and update rules", "Protect consistency after launch"],
+];
+
+const ownerRows = [
+  ["Business", "Purpose, audience, offer, real differentiators, risk, final approval", "Do not delegate business truth to a generator"],
+  ["AI", "Research support, naming directions, mood exploration, rough concepts, variation, mockups", "Use it for range and speed, not the final judgment"],
+  ["Expert marketer or designer", "Brief, creative direction, selection, refinement, accessibility, system design, rollout review", "Own coherence, quality, and accountability"],
+];
+
+const planRows = [
+  ["1", "Write the business brief", "One page covering audience, offer, difference, personality, uses, constraints, and approval owner"],
+  ["2", "Map the visual territory", "Three distinct directions with references and reasons, not thirty unrelated styles"],
+  ["3", "Generate concepts", "A focused batch for each direction using the same business facts and clear variation requests"],
+  ["4", "Score and shortlist", "A documented scorecard and two finalists with specific strengths and weaknesses"],
+  ["5", "Refine the winner", "Clean geometry, corrected type, intentional spacing, and complete logo variations"],
+  ["6", "Build and test the system", "Color, type, imagery, layouts, mockups, small-size tests, and light/dark tests"],
+  ["7", "Approve and package", "Source files, export set, usage rules, templates, ownership, and a recorded decision"],
+];
+---
+
+<section id="section-1" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 1</p>
+  <h2>Start with the business brief, not the prompt</h2>
+  <p>
+    The first prompt should not ask for a “modern, professional logo.” Those words describe almost every generic result. Begin by deciding what the identity must communicate and where it must work. AI needs a useful constraint system before it needs adjectives.
+  </p>
+  <p>
+    Write down the audience, the offer, the reason customers choose the business, the category conventions you want to keep or reject, and the practical places where the identity will appear. A neighborhood service business may need instant recognition on a vehicle and mobile search result. A B2B company may need a calm wordmark that holds up in a proposal, product screen, and conference booth. Those are different design jobs.
+  </p>
+
+  <div class="brief-card" aria-labelledby="brief-heading">
+    <p class="brief-label">Copy-and-use brief</p>
+    <h3 id="brief-heading">A better starting prompt</h3>
+    <pre><code>We are [business name], a [category] for [specific audience].
+
+Customers choose us because [real differentiator]. We want the identity to feel [three precise traits], but never [three unwanted traits].
+
+The logo must work on [five real applications]. It needs a primary version, a compact mark, a one-color version, and light and dark versions.
+
+Explore three visual territories:
+1. [territory and business reason]
+2. [territory and business reason]
+3. [territory and business reason]
+
+For each territory, explain the central idea, shape logic, typography direction, color rationale, and possible failure point. Do not use famous logos, generic category icons, or unsupported business claims.</code></pre>
+  </div>
+
+  <aside class="guide-note">
+    <strong>Make the prompt accountable to the brief.</strong>
+    If you cannot explain why a shape, type style, or color belongs to the business, it is decoration, not identity.
+  </aside>
+</section>
+
+<section id="section-2" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 2</p>
+  <h2>Use AI to explore directions, not to crown a winner</h2>
+  <p>
+    AI is useful at the beginning because it can make visual territory visible quickly. Use it to explore genuinely different ideas, not to create dozens of nearly identical badges. A productive round might compare a typographic direction, an abstract-symbol direction, and a system built around a distinctive shape or pattern.
+  </p>
+  <p>
+    Keep the business facts stable while changing one design variable at a time. Ask for a new composition, a simpler symbol, a different type category, or a stricter color limit. When every variable changes at once, you cannot tell what improved the concept.
+  </p>
+  <div class="three-up" role="list">
+    <article role="listitem">
+      <span>01</span>
+      <h3>Diverge</h3>
+      <p>Explore three territories that solve the same business brief in visibly different ways.</p>
+    </article>
+    <article role="listitem">
+      <span>02</span>
+      <h3>Explain</h3>
+      <p>Require a rationale for the mark, type, color, and intended customer impression.</p>
+    </article>
+    <article role="listitem">
+      <span>03</span>
+      <h3>Converge</h3>
+      <p>Shortlist with criteria, then refine one direction instead of endlessly regenerating.</p>
+    </article>
+  </div>
+</section>
+
+<section id="section-3" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 3</p>
+  <h2>Choose the logo with a scorecard</h2>
+  <p>
+    “I like it” is useful feedback, but it is not enough to guide a launch. Score each finalist against the same business and usability criteria. A concept that looks impressive at presentation size may fail as a profile icon. A clever symbol may be difficult to reproduce. A fashionable treatment may already look familiar in the category.
+  </p>
+  <div class="table-shell">
+    <table>
+      <caption>Logo concept evaluation scorecard</caption>
+      <thead><tr><th>Criterion</th><th>What good looks like</th><th>Question to ask</th></tr></thead>
+      <tbody>
+        {evaluationRows.map((row) => (
+          <tr><th scope="row" data-label="Criterion">{row[0]}</th><td data-label="What good looks like">{row[1]}</td><td data-label="Question to ask">{row[2]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Use a simple 1-to-5 score for every row, but keep the written reasons. The purpose is not mathematical certainty. It is to expose where taste, business fit, and practical performance disagree before the logo becomes expensive to replace.
+  </p>
+</section>
+
+<section id="section-4" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 4</p>
+  <h2>Turn the selected logo into a brand identity system</h2>
+  <p>
+    A logo identifies the business. A brand identity gives the business a repeatable way to show up. The real work begins after the mark is chosen: define how color, type, imagery, layout, voice, and applications support the same idea.
+  </p>
+  <figure class="guide-figure">
+    <img src="/images/ai-logo-guide/ai-logo-brand-system-rollout.svg" alt="An expert marketer testing one original abstract logo across web, mobile, packaging, signage, and document applications" loading="lazy" decoding="async" />
+    <figcaption>Test one visual idea across the places customers will actually encounter it.</figcaption>
+  </figure>
+  <div class="table-shell">
+    <table>
+      <caption>Minimum practical brand identity kit</caption>
+      <thead><tr><th>Layer</th><th>What to define</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        {identityRows.map((row) => (
+          <tr><th scope="row" data-label="Layer">{row[0]}</th><td data-label="What to define">{row[1]}</td><td data-label="Why it matters">{row[2]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    You do not need a hundred-page manual to launch. You need enough shared direction that the next webpage, post, email, proposal, or sign does not restart the design conversation from zero.
+  </p>
+</section>
+
+<section id="section-5" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 5</p>
+  <h2>Test the identity where customers will see it</h2>
+  <p>
+    Do not approve a logo only on a large white artboard. Put the finalists into real conditions. Test the compact mark at favicon size. Place the wordmark in a narrow mobile header. Check one-color reproduction. Use it on a busy photograph and a quiet document. Try the longest likely business name or tagline. View it in light and dark environments.
+  </p>
+  <ul class="check-list">
+    <li><strong>Small size:</strong> recognizable at 16, 24, and 48 pixels.</li>
+    <li><strong>One color:</strong> understandable without gradients or subtle shading.</li>
+    <li><strong>Light and dark:</strong> clear on both approved backgrounds.</li>
+    <li><strong>Horizontal and compact:</strong> usable in wide headers and square profiles.</li>
+    <li><strong>Real content:</strong> paired with actual headlines, photography, and interface density.</li>
+    <li><strong>Distance:</strong> recognizable on signage or a presentation viewed across a room.</li>
+  </ul>
+  <p>
+    These tests often remove attractive but fragile concepts. That is a good outcome. The goal is not to defend a favorite image. The goal is to choose an identity the business can use consistently.
+  </p>
+</section>
+
+<section id="section-6" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 6</p>
+  <h2>Keep the responsibilities clear</h2>
+  <p>
+    AI, expert marketers, and the business should not own the same decisions. AI is strongest when it accelerates exploration and production. Experts connect design choices to strategy, quality, and rollout. The business owns its truth and final approval.
+  </p>
+  <div class="table-shell">
+    <table>
+      <caption>Who should own each part of the process</caption>
+      <thead><tr><th>Owner</th><th>Primary responsibility</th><th>Guardrail</th></tr></thead>
+      <tbody>
+        {ownerRows.map((row) => (
+          <tr><th scope="row" data-label="Owner">{row[0]}</th><td data-label="Primary responsibility">{row[1]}</td><td data-label="Guardrail">{row[2]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    This division prevents two common failures: treating the first generated image as finished design, or spending weeks polishing a direction that was never tied to the business brief.
+  </p>
+</section>
+
+<section id="section-7" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 7</p>
+  <h2>Use a seven-day decision plan</h2>
+  <p>
+    A focused identity sprint can move quickly without skipping judgment. The schedule below is a decision framework, not a promise about every project. Complex naming, stakeholder, research, or rollout requirements may need more time.
+  </p>
+  <div class="table-shell table-shell--plan">
+    <table>
+      <caption>A practical seven-day identity sprint</caption>
+      <thead><tr><th>Day</th><th>Decision</th><th>Deliverable</th></tr></thead>
+      <tbody>
+        {planRows.map((row) => (
+          <tr><th scope="row" data-label="Day">Day {row[0]}</th><td data-label="Decision">{row[1]}</td><td data-label="Deliverable">{row[2]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="section-8" class="logo-guide-section">
+  <p class="guide-eyebrow">Before launch</p>
+  <h2>Avoid the mistakes that make AI logos feel generic</h2>
+  <div class="mistake-grid">
+    <article><h3>Starting with style words</h3><p>“Modern” and “professional” do not give the model a business position. Start with audience, value, and use.</p></article>
+    <article><h3>Generating before choosing territory</h3><p>Without visual territories, more options create noise rather than useful range.</p></article>
+    <article><h3>Choosing from a thumbnail</h3><p>A strong presentation does not prove small-size recognition, flexibility, or reproducibility.</p></article>
+    <article><h3>Leaving typography to chance</h3><p>Generated lettering often needs deliberate selection, spacing, correction, and export work.</p></article>
+    <article><h3>Treating the logo as the identity</h3><p>Customers experience pages, messages, images, spaces, and follow-up, not an isolated mark.</p></article>
+    <article><h3>Skipping the decision record</h3><p>Document what was approved and why so the next asset does not reopen settled choices.</p></article>
+  </div>
+  <div class="final-check">
+    <h3>Final handoff checklist</h3>
+    <ul>
+      <li>Primary, horizontal, compact, icon, one-color, light, and dark logo versions</li>
+      <li>Vector source plus web-ready SVG, PNG, and favicon exports</li>
+      <li>Defined color values and approved contrast combinations</li>
+      <li>Typography hierarchy and practical fallback fonts</li>
+      <li>Image and layout direction with clear examples and exclusions</li>
+      <li>Templates for the first website, social, email, and document uses</li>
+      <li>One owner for source files, approvals, and future updates</li>
+    </ul>
+  </div>
+  <aside class="source-note">
+    <h3>What we found in the current search results</h3>
+    <p>
+      Pages currently visible for this query are dominated by logo generators and short generation workflows. Canva and Adobe explain prompt-to-download creation. Design.com and Logopony extend the logo into branded assets. A detailed Reddit workflow adds ideation, selection, and formatting. The missing piece is a neutral business guide that connects the brief, concept criteria, expert review, identity system, rollout tests, and decision ownership.
+    </p>
+    <p class="source-links">
+      Research references: <a href="https://www.canva.com/ai-logo-generator/" rel="nofollow">Canva</a>, <a href="https://www.adobe.com/express/create/ai/logo" rel="nofollow">Adobe Express</a>, <a href="https://www.design.com/ai-logo-generator" rel="nofollow">Design.com</a>, <a href="https://www.logopony.com/" rel="nofollow">Logopony</a>, and <a href="https://www.reddit.com/r/branding/comments/1p3up4i/how_to_design_a_logo_that_looks_professional/" rel="nofollow">the Reddit workflow</a>. Search results change, so these are research inputs, not a permanent ranking claim.
+    </p>
+  </aside>
+</section>
+
+<style>
+  .logo-guide-section { margin: 0 0 5.5rem; scroll-margin-top: 7rem; }
+  .logo-guide-section h2 { margin: 0 0 1.4rem; max-width: 18ch; font-family: var(--font-display); font-size: clamp(2.15rem, 5vw, 4.4rem); font-weight: 400; line-height: .98; letter-spacing: -.035em; color: #f5f5f1; }
+  .logo-guide-section h3 { font-family: var(--font-display); font-weight: 400; }
+  .logo-guide-section > p:not(.guide-eyebrow) { max-width: 760px; color: #d2d4d1; font-size: 1.08rem; line-height: 1.8; }
+  .guide-eyebrow { margin: 0 0 .85rem; color: #69d254; font: 700 .76rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
+  .brief-card, .final-check, .source-note { margin: 2rem 0; padding: clamp(1.3rem, 3vw, 2.25rem); border: 1px solid rgba(245,245,241,.15); border-radius: 1.5rem; background: #171b1c; }
+  .brief-card h3, .final-check h3, .source-note h3 { margin: 0 0 1rem; color: #f5f5f1; font-size: clamp(1.55rem, 3vw, 2.3rem); }
+  .brief-label { margin: 0 0 .55rem; color: #69d254; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  code { color: #e9ece7; font: 500 .9rem/1.75 var(--font-body); }
+  .guide-note { margin: 1.5rem 0; padding: 1.2rem 1.35rem; border-left: 3px solid #69d254; background: #edf4ea; color: #0f1213; line-height: 1.65; }
+  .three-up, .mistake-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 2rem 0; }
+  .three-up article, .mistake-grid article { padding: 1.35rem; border: 1px solid rgba(245,245,241,.14); border-radius: 1.2rem; background: #171b1c; }
+  .three-up span { color: #69d254; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
+  .three-up h3, .mistake-grid h3 { margin: .6rem 0; color: #f5f5f1; font-size: 1.45rem; }
+  .three-up p, .mistake-grid p { margin: 0; color: #bfc2bf; line-height: 1.65; }
+  .table-shell { margin: 2rem 0; overflow: hidden; border: 1px solid rgba(245,245,241,.16); border-radius: 1.35rem; background: #f5f5f1; }
+  table { width: 100%; border-collapse: collapse; color: #0f1213; }
+  caption { padding: 1.15rem 1.25rem; background: #edf4ea; color: #0f1213; text-align: left; font-weight: 700; }
+  th, td { padding: 1rem 1.15rem; border-top: 1px solid #d8ddd6; text-align: left; vertical-align: top; line-height: 1.5; }
+  thead th { background: #0f1213; color: #f5f5f1; border-top: 0; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+  tbody th { width: 18%; font-weight: 750; }
+  .guide-figure { margin: 2rem 0; }
+  .guide-figure img { display: block; width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 1.5rem; }
+  .guide-figure figcaption { margin-top: .7rem; color: #9da19d; font-size: .88rem; }
+  .check-list, .final-check ul { display: grid; gap: .75rem; margin: 1.5rem 0; padding: 0; list-style: none; }
+  .check-list li, .final-check li { position: relative; padding-left: 1.45rem; color: #d2d4d1; line-height: 1.65; }
+  .check-list li::before, .final-check li::before { content: ""; position: absolute; left: 0; top: .65em; width: .5rem; height: .5rem; border-radius: 50%; background: #69d254; }
+  .source-note { border-color: rgba(105,210,84,.35); background: #101415; }
+  .source-note p { color: #c8cbc7; line-height: 1.7; }
+  .source-links a { color: #8ee17d; text-underline-offset: 3px; }
+  @media (max-width: 820px) {
+    .three-up, .mistake-grid { grid-template-columns: 1fr; }
+    .logo-guide-section { margin-bottom: 4.2rem; }
+    .table-shell { overflow: visible; border: 0; background: transparent; }
+    table, tbody { display: block; }
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    caption { display: block; border-radius: 1rem 1rem 0 0; }
+    tr { display: block; margin-bottom: 1rem; overflow: hidden; border-radius: 0 0 1rem 1rem; background: #f5f5f1; }
+    tr + tr { border-radius: 1rem; }
+    th, td { display: block; width: auto !important; padding: .8rem 1rem; border-top: 1px solid #d8ddd6; }
+    th::before, td::before { content: attr(data-label); display: block; margin-bottom: .28rem; color: #686b6c; font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+  }
+</style>
