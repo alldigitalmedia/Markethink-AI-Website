@@ -1,10 +1,10 @@
 ---
 import ToolLogo from './ToolLogo.astro';
 import { tools, type ToolReference } from '../data/tools';
-interface Props { items: readonly ToolReference[]; label?: string; }
-const { items, label } = Astro.props;
-const scrolling = items.length > 0;
-const fillCopies = items.length ? Math.max(1, Math.ceil(8 / items.length)) : 1;
+interface Props { items: readonly ToolReference[]; label?: string; marquee?: boolean; }
+const { items, label, marquee = true } = Astro.props;
+const scrolling = marquee && items.length > 0;
+const fillCopies = scrolling && items.length ? Math.max(1, Math.ceil(8 / items.length)) : 1;
 ---
 <div class:list={['tool-wall', { 'is-marquee': scrolling }]} style="--tool-wall-duration:100s"><div class="tool-wall-track">
 {Array.from({ length: scrolling ? 2 : 1 }, (_, trackCopy) => <ul class="tool-list" role="list" aria-label={trackCopy === 0 ? label : undefined} aria-hidden={trackCopy === 1 ? 'true' : undefined}>
