@@ -1,0 +1,83 @@
+/* Load after feature-inner.css, feature-editions.css and feature-exhibits.css. */
+.inner-page.inner-gsap-ready [data-inner-reveal] { transition: none; }
+.inner-page .inner-word-probe { display: inline-block; }
+.inner-page :is(.inner-line-mask, [data-headline-line]) {
+  display: block;
+  overflow: hidden;
+  padding-bottom: .13em;
+  margin-bottom: -.13em;
+}
+.inner-page :is(.inner-line-content, [data-headline-line] > span, [data-headline-line] > em) { display: block; }
+.inner-page .feature-cover,
+.inner-page .how-hero { overflow: clip; }
+.inner-page .inner-parallax-frame { position: relative; display: block; width: 100%; overflow: hidden; }
+.inner-page .inner-parallax-frame > img { position: relative; inset: auto; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.inner-page :is(section, article)[id] { scroll-margin-top: calc(var(--inner-index-height, 60px) + 20px); }
+.inner-page .inner-index a { position: relative; }
+.inner-page .inner-index a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -7px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.inner-page .inner-index a.is-current { color: #365c32; }
+.inner-page .inner-index a.is-current::after { transform: scaleX(1); }
+.inner-page .faq-answer { display: flow-root; }
+.inner-page .inner-faq .faq-answer > p { padding: 0 40px 26px 0; color: inherit; }
+.inner-page .inner-cta .inner-button { position: relative; isolation: isolate; overflow: hidden; }
+.inner-page .inner-cta .inner-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--inner-button-wash, #ffffff29);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.inner-page .inner-cta .inner-button:hover { transform: none; }
+.inner-page .inner-cta .inner-button:is(:hover, :focus-visible)::before { transform: scaleX(1); }
+
+/* The original list is the only accessible copy. A paused wall returns to rows. */
+.tool-wall.is-marquee { overflow: hidden; }
+.tool-wall.is-marquee .tool-wall-track { display: flex; align-items: center; gap: 48px; width: max-content; }
+.tool-wall.is-marquee .tool-wall-track > .tool-list { flex: 0 0 auto; flex-wrap: nowrap; margin: 0; }
+.tool-wall.is-marquee .tool-wall-track > .tool-list > * { flex-shrink: 0; }
+.inner-page.inner-motion-enabled .tool-wall.is-marquee .tool-wall-track,
+.features-page.motion-enabled .tool-wall.is-marquee .tool-wall-track,
+.features-page[data-motion-paused='false'] .tool-wall.is-marquee .tool-wall-track {
+  animation: inner-tools-drift 55s linear infinite;
+  will-change: transform;
+}
+.tool-wall.is-marquee:is(:hover, :focus-within) .tool-wall-track { animation-play-state: paused !important; }
+@keyframes inner-tools-drift { to { transform: translateX(calc(-50% - 24px)); } }
+
+/* CSS and GSAP share the same stop conditions and restore readable content. */
+.inner-page.inner-motion-off *,
+.inner-page.inner-motion-off *::before,
+.inner-page.inner-motion-off *::after,
+.features-page[data-motion-paused='true'] *,
+.features-page[data-motion-paused='true'] *::before,
+.features-page[data-motion-paused='true'] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+.inner-page.inner-motion-off :is([data-inner-reveal], .specimen-plate img, [data-headline-line] > span, [data-headline-line] > em) { opacity: 1 !important; visibility: visible !important; clip-path: none !important; transform: none !important; }
+:is(.inner-paused, .motion-paused, [data-motion-paused='true']) .tool-wall.is-marquee .tool-wall-track {
+  animation: none !important;
+  transform: none !important;
+  will-change: auto;
+  width: 100%;
+}
+:is(.inner-paused, .motion-paused, [data-motion-paused='true']) .tool-wall.is-marquee .tool-wall-track > .tool-list { flex: 0 1 100%; width: 100%; max-width: 100%; min-width: 0; padding-right: 0; flex-wrap: wrap; }
+:is(.inner-paused, .motion-paused, [data-motion-paused='true']) .tool-wall-track > [aria-hidden='true'] { display: none; }
+html:has(.inner-page[data-motion-paused='true']) { scroll-behavior: auto; }
+@media (max-width: 600px) { .inner-page .inner-faq .faq-answer > p { padding-right: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .inner-page *, .inner-page *::before, .inner-page *::after,
+  .tool-wall *, .tool-wall *::before, .tool-wall *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .tool-wall.is-marquee .tool-wall-track { transform: none !important; width: 100%; will-change: auto; }
+  .tool-wall.is-marquee .tool-wall-track > .tool-list { flex: 0 1 100%; width: 100%; max-width: 100%; min-width: 0; padding-right: 0; flex-wrap: wrap; }
+  .tool-wall-track > [aria-hidden='true'] { display: none; }
+}

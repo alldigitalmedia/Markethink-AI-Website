@@ -147,7 +147,9 @@ const schemaGraph = {
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
+        // The features page drives its own scroll-linked motion; Lenis' smoothed
+        // wheel fights its ScrollTrigger pins and hash jumps.
+        smoothWheel: !document.querySelector(".features-page"),
       });
 
       lenis.on("scroll", ScrollTrigger.update);

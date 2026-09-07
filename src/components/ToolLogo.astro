@@ -1,0 +1,32 @@
+---
+import { tools, type ToolId } from '../data/tools';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { createHash } from 'node:crypto';
+interface Props { id: ToolId; instance?: string; }
+const { id, instance = 'standalone' } = Astro.props;
+const tool = tools[id];
+const localSrc = tool.logo.startsWith('/') ? tool.logo : `/brand-logos/connections/${tool.logo}`;
+const filename = join(process.cwd(), 'public', localSrc);
+const available = existsSync(filename);
+const opticalWidth: Partial<Record<ToolId, number>> = { wordpress: 28, mailchimp: 30, linkedin: 27, youtube: 34, stripe: 54, hubspot: 31, meta: 36, markethink: 27 };
+const width = opticalWidth[id] ?? 26;
+const prefix = `logo-${createHash('sha1').update(`${id}-${instance}`).digest('hex').slice(0,10)}-`;
+const svg = available ? readFileSync(filename, 'utf8')
+  .replace(/<\?xml[^>]*>|<!DOCTYPE[^>]*>/g, '')
+  .replace(/<(?:title|desc)\b[^>]*>[\s\S]*?<\/(?:title|desc)>/g, '')
+  .replace(/\saria-labelledby="[^"]*"/g, '')
+  .replace(/\bid="([^"]+)"/g, (_, value) => `id="${prefix}${value}"`)
+  .replace(/url\(#([^)]+)\)/g, (_, value) => `url(#${prefix}${value})`)
+  .replace(/<svg\b([^>]*)>/, (_, attributes) => `<svg ${attributes.replace(/\s(?:width|height)="[^"]*"/g, '')} width="${width}" height="24" aria-hidden="true" focusable="false">`) : '';
+---
+{available
+  ? <span class="tool-logo" style={`--logo-width:${width}px`} data-tool-logo={id} aria-hidden="true" set:html={svg} />
+  : <span class="tool-logo tool-logo-placeholder" aria-hidden="true" data-tool-placeholder={id}>{tool.name.charAt(0)}</span>}
+
+<style>
+  .tool-logo { display: inline-flex; align-items: center; justify-content: center; width: var(--logo-width,26px); height: 24px; flex: 0 0 auto; vertical-align: -.18em; filter: grayscale(1); transition: filter .25s ease; }
+  .tool-logo :global(svg) { display: block; width: var(--logo-width,26px); height: 24px; }
+  :global(.tool-badge:hover) .tool-logo { filter: none; }
+  .tool-logo-placeholder { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; border: 1px dashed #b4c1ae; border-radius: 6px; background: #f0f3eb; color: #6a7862; font: 600 .6875rem/1 Inter, system-ui, sans-serif; }
+</style>

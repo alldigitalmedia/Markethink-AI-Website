@@ -1,0 +1,24 @@
+---
+import { featurePhotography } from '../data/featurePhotography';
+import { slugForFeature } from '../data/featureCardSlugs';
+import { featureArt } from '../data/featureArtDirection';
+import photography from '../data/featureVividPhotography.json';
+interface Props { group: string; index: number; }
+const { group, index } = Astro.props;
+const photo = featurePhotography[group][index];
+const slug = slugForFeature(group,index);
+const visual = slug ? (photography as Record<string,{ file: string; detail?: { file: string; alt: string }; heroPosition?: string }>)[featureArt[slug].exhibit] : undefined;
+const isSocialContent = slug === 'social-content-calendar';
+const source = isSocialContent ? '/images/features/inner/social-campaign-sports.webp' : visual?.detail ? `/images/features/inner/${visual.file}.webp` : `/images/features/${photo.file}.webp`;
+---
+<div class="deliverable-preview" aria-hidden="true">
+  <img src={source} width={isSocialContent || visual?.detail ? 1536 : 1200} height={isSocialContent || visual?.detail ? 1024 : 800} alt="" loading="lazy" decoding="async" style={`object-position:${isSocialContent ? '80% center' : visual?.heroPosition || photo.position || 'center center'}`} />
+</div>
+
+<style>
+  .deliverable-preview { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .deliverable-preview img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.65,.3,1); }
+  :global(.capability-card:hover) .deliverable-preview img { transform: scale(1.045); }
+  @media (prefers-reduced-motion: reduce) { .deliverable-preview img { transition: none; } :global(.capability-card:hover) .deliverable-preview img { transform: none; } }
+  :global(.motion-paused) .deliverable-preview img, :global(.motion-paused .capability-card:hover) .deliverable-preview img { transition: none; transform: none; }
+</style>

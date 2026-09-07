@@ -1,0 +1,55 @@
+/* Brand-consistent feature navigation and complete, evenly filled image cards. */
+.features-page .capabilities-section { background: var(--paper); color: var(--ink); }
+.features-page .capabilities-section > .features-wrap > .section-heading { margin-bottom: 36px; }
+.features-page .capabilities-section .section-heading .eyebrow, .capabilities-section .section-heading h2 em { color: var(--ink); }
+.features-page .capabilities-section .section-heading > p { color: #5d6262; }
+.features-page .feature-browser { overflow: hidden; border: 1px solid #0f121312; border-radius: 32px; background: var(--ink); padding: 12px; }
+.features-page .feature-browser .feature-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: 100%; margin: 0; padding: 6px; gap: 6px; border: 0; border-radius: 22px; background: var(--bg-secondary); }
+.features-page .feature-browser .feature-tabs a { display: flex; align-items: center; justify-content: center; min-height: 58px; padding: 14px 16px; border-radius: 17px; font-size: .9375rem; font-weight: 500; text-align: center; line-height: 1.4; color: var(--paper); }
+.features-page .feature-browser .feature-tabs a:hover { background: #ffffff0f; color: var(--paper); }
+.features-page .feature-browser .feature-tabs a[aria-selected=true] { background: var(--green); color: var(--ink); box-shadow: none; }
+.features-page .feature-browser .feature-tabs a:focus-visible { outline: 2px solid var(--paper); outline-offset: -4px; }
+.features-page .feature-browser .feature-panel { display: block; padding: 38px 12px 12px; margin: 0; background: var(--ink); color: var(--paper); }
+.features-page .feature-browser .feature-panel[hidden] { display: none; }
+.features-page .feature-browser .feature-spotlight { display: block; min-height: 0; margin: 0 0 34px; padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; }
+.features-page .feature-browser .spotlight-copy { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 16px 48px; padding: 0 12px; }
+.features-page .feature-browser .spotlight-copy .eyebrow { grid-column: 1 / -1; margin: 0; font-size: .75rem; letter-spacing: .1em; line-height: 1.5; color: var(--green); }
+.features-page .feature-browser .spotlight-copy h3 { max-width: 560px; font: 400 clamp(2rem, 3vw, 3rem)/1.08 Inter, system-ui, sans-serif; letter-spacing: -.045em; color: var(--paper); }
+.features-page .feature-browser .spotlight-copy > p { max-width: 440px; margin: 0; font-size: 1rem; line-height: 1.6; color: var(--muted); justify-self: end; }
+.features-page .feature-browser .feature-catalog { min-width: 0; scroll-margin-top: 95px; }
+.features-page .feature-browser .capability-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 18px; padding: 0; }
+.features-page .feature-browser .capability-card { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: end; min-width: 0; min-height: 500px; padding: 28px; border: 0; border-radius: 24px; overflow: hidden; background: var(--bg-secondary); color: var(--paper); box-shadow: none; transform: none; }
+.features-page .feature-browser .capability-card::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, #0f121308 0%, #0f121308 25%, #0f12137a 44%, #0f1213eb 70%, #0f1213fa 100%); }
+.features-page .feature-browser .capability-card::after { display: none; }
+.features-page .feature-browser .capability-card:hover { background: var(--bg-secondary); transform: none; box-shadow: none; }
+.features-page .feature-browser .capability-copy { margin-top: 190px; width: 100%; }
+.features-page .feature-browser .capability-card h4 { position: static; display: flex; align-items: flex-start; gap: 10px; margin: 0 0 16px; color: var(--paper); font: 500 clamp(1.3rem, 1.7vw, 1.6rem)/1.2 Inter, system-ui, sans-serif; letter-spacing: -.035em; }
+.features-page .feature-browser .capability-card h4 .tool-logo { position: relative; z-index: 2; width: 26px; height: 26px; flex-basis: 26px; padding: 3px; background: #fff; border-radius: 6px; }
+.features-page .feature-browser .capability-card h4 .capability-link-label { position: relative; z-index: 2; flex: 1; margin: 0; font: inherit; color: inherit; }
+.features-page .feature-browser .capability-card:focus-within { outline: 3px solid var(--green); outline-offset: -3px; }
+.features-page .feature-browser .capability-copy > p { position: relative; z-index: 2; margin: 0; color: var(--paper); font-size: 1rem; line-height: 1.55; }
+.features-page .feature-browser .capability-detail { position: relative; z-index: 2; display: block; width: 100%; max-width: none; margin-top: 20px; padding-top: 16px; border-top: 1px solid #ffffff30; color: #c6ceca; font-size: .8125rem; line-height: 1.55; }
+.features-page .connection-group { min-width: 0; }
+.features-page .connection-group .connection-others { margin-top: 18px; }
+@media (max-width: 1100px) {
+  .features-page .feature-browser .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .features-page .feature-browser .capability-card { min-height: 480px; padding: 26px; }
+  .features-page .feature-browser .feature-panel { padding: 30px 8px 8px; }
+  .features-page .feature-browser .spotlight-copy { gap: 14px 28px; padding-inline: 8px; }
+  .features-page .feature-browser .feature-tabs a { font-size: .875rem; padding-inline: 10px; }
+}
+@media (max-width: 650px) {
+  .features-page .feature-browser { padding: 8px; border-radius: 26px; }
+  .features-page .feature-browser .feature-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 4px; gap: 4px; border-radius: 19px; }
+  .features-page .feature-browser .feature-tabs a { min-height: 52px; padding: 12px 8px; border-radius: 15px; font-size: .875rem; }
+  .features-page .feature-browser .feature-panel { padding: 28px 0 0; }
+  .features-page .feature-browser .feature-spotlight { margin-bottom: 28px; }
+  .features-page .feature-browser .spotlight-copy { display: block; padding: 0 16px; }
+  .features-page .feature-browser .spotlight-copy .eyebrow { margin-bottom: 14px; }
+  .features-page .feature-browser .spotlight-copy h3 { font-size: 2.25rem; }
+  .features-page .feature-browser .spotlight-copy > p { margin-top: 18px; font-size: 1rem; }
+  .features-page .feature-browser .capability-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .features-page .feature-browser .capability-card { min-height: 490px; padding: 24px; border-radius: 20px; }
+  .features-page .feature-browser .capability-card h4 { font-size: 1.5rem; }
+  .features-page .feature-browser .capability-copy { margin-top: 180px; }
+}
