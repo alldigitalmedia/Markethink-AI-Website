@@ -58,6 +58,104 @@ export const journeyPosts = [
 
 export const insightPosts: BlogPost[] = [
   {
+    slug: "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
+    title: "How to Create a Logo With AI and Build a Brand Identity That Holds Up",
+    seoTitle: "How to Create a Logo With AI: Brand Identity Guide | Markethink",
+    description:
+      "Learn how to create a logo with AI, evaluate concepts, build a complete brand identity, test real applications, and keep expert review in the process.",
+    excerpt:
+      "A practical guide to moving from an AI-generated logo idea to a useful identity system with clear criteria, expert review, real-world tests, and a seven-day plan.",
+    label: "PRACTICAL GUIDE",
+    image: "/images/ai-logo-guide/ai-logo-brand-identity-hero.svg",
+    imageAlt:
+      "A business owner and expert marketer reviewing AI-generated logo directions and a complete brand identity system",
+    publishedDate: "2026-09-07",
+    updatedDate: "2026-09-07",
+    readingTime: "14 min read",
+    category: "Brand Strategy",
+    keywords: [
+      "how to create a logo with AI",
+      "AI logo design",
+      "AI brand identity",
+      "brand identity AI",
+      "create a brand identity with AI",
+      "AI logo prompt",
+      "logo design process",
+      "brand identity system",
+    ],
+    author: {
+      name: "Markethink Editorial Team",
+      title: "AI marketing systems managed by expert marketers",
+    },
+    intro: [
+      "To create a logo with AI, start with a real business brief, explore a small number of distinct visual territories, evaluate the concepts against clear criteria, refine the strongest direction with expert judgment, and test the final system across the places customers will actually see it.",
+      "The mistake is treating the first attractive result as a finished identity. A logo is one part of the system. The business also needs typography, color, imagery, layout, voice, application rules, source files, and a clear record of what was approved.",
+      "This guide gives you the complete process: a copy-and-use prompt, a logo scorecard, a minimum identity-kit table, real-world tests, an ownership matrix, and a focused seven-day decision plan.",
+    ],
+    seoHubLink: {
+      copy: "For the broader marketing operation that keeps brand context connected to campaigns and approvals, see",
+      anchor: "AI marketing for small business",
+      href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "For the next step from identity into execution, use",
+      anchor: "How to Use AI for Marketing: A Practical Guide for Small Businesses",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
+    relatedSlugs: [
+      "how-to-use-ai-for-marketing-small-business",
+      "brand-memory-feedback-approved-campaigns",
+      "consistent-marketing-beats-chasing-ai-tools",
+    ],
+    sections: [
+      { heading: "Start with the business brief, not the prompt", body: [] },
+      { heading: "Use AI to explore directions, not to crown a winner", body: [] },
+      { heading: "Choose the logo with a scorecard", body: [] },
+      { heading: "Turn the selected logo into a brand identity system", body: [] },
+      { heading: "Test the identity where customers will see it", body: [] },
+      { heading: "Keep the responsibilities clear", body: [] },
+      { heading: "Use a seven-day decision plan", body: [] },
+      { heading: "Avoid the mistakes that make AI logos feel generic", body: [] },
+    ],
+    faq: [
+      {
+        question: "Can AI create a professional logo for a business?",
+        answer:
+          "AI can generate useful logo concepts and accelerate visual exploration. A professional result still requires a clear business brief, consistent evaluation, typography and geometry refinement, real-world testing, complete file preparation, and accountable expert review.",
+      },
+      {
+        question: "What should I include in an AI logo prompt?",
+        answer:
+          "Include the business category, specific audience, real differentiator, desired and unwanted traits, practical applications, format requirements, and two or three distinct visual territories. Ask for the rationale and likely weakness of each direction, not only an image.",
+      },
+      {
+        question: "How many AI logo concepts should I generate?",
+        answer:
+          "Generate enough to compare a few genuinely different visual territories, then narrow the field. A focused set of distinct directions is more useful than dozens of minor variations because it makes the decision criteria and tradeoffs easier to see.",
+      },
+      {
+        question: "How do I choose the best AI-generated logo?",
+        answer:
+          "Score the finalists for business relevance, distinctiveness, simplicity, scalability, flexibility, and usability. Then test the strongest candidates at small size, in one color, on light and dark backgrounds, and across real customer touchpoints.",
+      },
+      {
+        question: "Is a logo the same as a brand identity?",
+        answer:
+          "No. A logo identifies the business. A brand identity also defines color, typography, imagery, layout, voice, application patterns, and governance so the business can show up consistently across channels.",
+      },
+      {
+        question: "What files should a finished logo package include?",
+        answer:
+          "A practical package includes editable vector source files, web-ready SVG files, transparent PNG exports, favicon sizes, light and dark versions, one-color versions, horizontal and compact layouts, and simple usage guidance.",
+      },
+      {
+        question: "Should a designer or marketer review an AI-generated logo?",
+        answer:
+          "Yes. Expert review helps connect the concept to positioning, correct typography and spacing, test real applications, remove generic patterns, prepare usable files, and keep the identity coherent after the first logo is approved.",
+      },
+    ],
+  },
+  {
     slug: "what-is-an-ai-marketing-agency",
     title: "What Is an AI Marketing Agency? What It Actually Manages",
     seoTitle: "What Is an AI Marketing Agency? A Buyer’s Guide | Markethink",
@@ -382,7 +480,7 @@ export const insightPosts: BlogPost[] = [
       href: "/blog/what-is-an-ai-marketing-agency/",
     },
     relatedSlugs: [
-      "how-to-show-up-in-ai-search",
+      "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
       "consistent-marketing-beats-chasing-ai-tools",
       "brand-memory-feedback-approved-campaigns",
     ],
@@ -609,7 +707,7 @@ export const insightPosts: BlogPost[] = [
     },
     relatedSlugs: [
       "hidden-cost-disconnected-marketing-apps-prompts-docs",
-      "scattered-ideas-to-client-opportunities",
+      "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
       "brand-memory-feedback-approved-campaigns",
     ],
     sections: [
@@ -731,7 +829,7 @@ export const insightPosts: BlogPost[] = [
     relatedSlugs: [
       "consistent-marketing-beats-chasing-ai-tools",
       "hidden-cost-disconnected-marketing-apps-prompts-docs",
-      "scattered-ideas-to-client-opportunities",
+      "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
     ],
     sections: [
       {
