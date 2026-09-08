@@ -223,7 +223,7 @@ const breadcrumbSchema = {
             )
           }
 
-          <section class="article-cta">
+          {!isAiLogoBrandIdentityGuide && <section class="article-cta">
             <p class="article-cta-label">Markethink perspective</p>
             <h2>
               {
@@ -254,7 +254,7 @@ const breadcrumbSchema = {
             <a href="/schedule-a-walkthrough/" class="button"
               >Book a Walkthrough</a
             >
-          </section>
+          </section>}
 
           <section class="article-faq">
             <p class="article-cta-label">FAQ</p>
@@ -298,7 +298,7 @@ const breadcrumbSchema = {
       </div>
     </section>
   </main>
-  <FinalCTA animate={false} />
+  {!isAiLogoBrandIdentityGuide && <FinalCTA animate={false} />}
   <Footer />
 </Layout>
 

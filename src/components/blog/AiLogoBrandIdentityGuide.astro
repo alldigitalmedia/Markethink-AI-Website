@@ -1,278 +1,416 @@
 ---
-const evaluationRows = [
-  ["Relevant", "The idea connects to the business, audience, and offer without needing a long explanation.", "Does this feel specific to us, or could any competitor use it?"],
-  ["Distinctive", "The silhouette, shape, or wordmark is easy to separate from familiar category patterns.", "Would someone confuse this with another company in our market?"],
-  ["Simple", "The mark keeps its idea when details are removed.", "Can we describe the concept in one sentence?"],
-  ["Scalable", "It remains recognizable as a favicon, profile image, sign, and document mark.", "What disappears when this is reduced to 24 pixels?"],
-  ["Flexible", "It works in color, one color, light mode, dark mode, horizontal, and compact formats.", "Can the system adapt without becoming a different brand?"],
-  ["Usable", "The business can reproduce it with practical files, rules, and templates.", "Could another teammate apply it correctly without guessing?"],
+const toolRows = [
+  ["Guided logo makers", "Adobe Express or Looka", "Fast first layouts from a name, category, styles, colors, and symbols", "Treat template-driven output as a starting point. Check distinctiveness, reset the type, and inspect the files before approval.", "https://www.adobe.com/express/create/logo"],
+  ["Open-ended image generators", "Adobe Firefly, Midjourney, or OpenAI GPT Image", "Broad visual-territory exploration, references, variations, and image editing", "Useful for ideas and mockups, not automatic proof of clean vectors, correct lettering, originality, or clearance.", "https://www.adobe.com/products/firefly.html"],
+  ["Template and application tools", "Canva", "Brand boards, layouts, social applications, and prompt-led image concepts", "Library content and AI output can carry separate license and similarity questions. Record what each design uses.", "https://www.canva.com/ai-image-generator/"],
+  ["Text-bearing exploration", "Ideogram", "Generated graphics with text that can be extracted into editable layers", "Its official documentation says text layer extraction is in beta and works best with clear, straight, conventional text. Re-typeset a permanent wordmark.", "https://ideogram.ai/features/text-layers/"],
+  ["Collaborative system design", "Figma", "Side-by-side review, application layouts, components, and documented identity rules", "A design workspace does not provide trademark clearance. Its AI terms require human review and relevant clearances.", "https://www.figma.com/legal/ai-terms/"],
+  ["Vector cleanup", "Adobe Illustrator Image Trace", "Converts raster artwork into editable vector paths with controls for paths, corners, noise, shapes, and expansion", "Automatic tracing can preserve weak curves and create too many anchors. Inspect and redraw the result.", "https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html"],
+  ["Initial automated tracing", "Vectorizer.AI", "Converts common raster formats into SVG, EPS, DXF, and PDF vector output", "A trace changes the file structure. It does not establish design quality, uniqueness, or legal availability.", "https://vectorizer.ai/"],
+];
+
+const scoreRows = [
+  ["Relevant", "5/5", "The route and doorway connect home visits to care arriving at the customer’s location without using a generic pet icon."],
+  ["Distinctive", "4/5", "The silhouette is less familiar than a paw, heart, or animal head, but similar route-based marks may exist and need searching."],
+  ["Simple", "4/5", "The idea can be explained in one sentence and drawn with few shapes. One internal turn is unnecessary."],
+  ["Scalable", "3/5", "The doorway holds at 48 pixels, but the inner route begins to close at 16 and 24 pixels. A small-size version is needed."],
+  ["Flexible", "5/5", "The concept works in one color, reversed, horizontal, and compact arrangements without changing its meaning."],
+  ["Usable", "4/5", "It can work in print, vinyl, and embroidery after the inner line is simplified and the paths are cleaned."],
 ];
 
 const identityRows = [
-  ["Logo system", "Primary, horizontal, compact, icon, light, dark, and one-color versions", "Use the right mark for each size and surface"],
-  ["Color", "Core palette, accent palette, neutral palette, and contrast combinations", "Keep applications recognizable and readable"],
-  ["Typography", "Display, body, UI, fallbacks, weights, and hierarchy", "Create a repeatable voice before the copy is read"],
-  ["Image direction", "Photography, illustration, diagrams, crops, lighting, and exclusions", "Stop every channel from inventing a different visual world"],
-  ["Layout", "Spacing, grid, corner treatment, containers, and information hierarchy", "Make pages and campaigns feel related"],
-  ["Voice", "Message principles, approved phrases, banned phrases, and examples", "Connect the visual identity to how the business speaks"],
-  ["Applications", "Website, social, email, proposals, presentations, signage, and packaging", "Prove the identity works where customers meet it"],
-  ["Governance", "Source files, naming, approvals, ownership, and update rules", "Protect consistency after launch"],
+  ["Position", "Calm, organized veterinary care delivered at home."],
+  ["Core idea", "Care that arrives where the pet already feels safe."],
+  ["Logo family", "Primary symbol plus wordmark, horizontal lockup, compact symbol, favicon, one-color mark, and reversed mark."],
+  ["Palette", "Ink #142A33, Warm White #FAF7F0, Sea Glass #A9D6CC, Terracotta #B5523C, and Graphite #323A3E."],
+  ["Typography", "A warm editorial serif for display and a humanist sans serif for body and interface copy, with tested fallbacks and recorded licenses."],
+  ["Imagery", "Calm home environments, natural light, ordinary preparation, eye-level framing, and no distressed-animal or clinical stock clichés."],
+  ["Layout", "Strong left alignment, wide margins, short line lengths, an eight-point spacing system, and one priority accent per view."],
+  ["Voice", "Calm before clever. Explain the next step. Use concrete service language and avoid guarantees such as ‘stress-free.’"],
+  ["Applications", "Compact favicon, readable mobile header, high-contrast vehicle mark, circular social avatar, proposal cover, and accessible form states."],
+  ["Governance", "Named source-file owner, version record, approval date, known limitations, and rules for future changes."],
 ];
 
-const ownerRows = [
-  ["Business", "Purpose, audience, offer, real differentiators, risk, final approval", "Do not delegate business truth to a generator"],
-  ["AI", "Research support, naming directions, mood exploration, rough concepts, variation, mockups", "Use it for range and speed, not the final judgment"],
-  ["Expert marketer or designer", "Brief, creative direction, selection, refinement, accessibility, system design, rollout review", "Own coherence, quality, and accountability"],
+const testRows = [
+  ["Favicon", "16, 24, 32, and 48 pixels at 100% scale", "Silhouette stays recognizable, no detail closes, and the SVG contains paths rather than an embedded bitmap."],
+  ["Mobile header", "320 to 390 pixel viewport, including sticky and dark states", "The name remains readable, navigation still fits, and the switch to a compact lockup is defined."],
+  ["Monochrome", "Solid black, solid white, office print, photocopy, stamp, vinyl, and embroidery", "No meaning depends on gradients or color, and negative spaces do not fill."],
+  ["Signage", "Scale mockup, expected viewing distance, day and night contrast, and physical proof", "Strokes meet the fabricator’s minimum and both horizontal and stacked layouts remain legible."],
+  ["Social avatar", "Square and circular crops at actual interface size", "The compact mark works without the full wordmark and essential details stay inside the safe area."],
+  ["Documents", "Proposal, invoice, email signature, grayscale print, and exported PDF", "The mark stays sharp, fonts are packaged correctly, and the logo does not overpower the information."],
+  ["Accessibility", "Every approved text and background pair, plus interface states and meaningful graphics", "Normal text meets 4.5:1, qualifying large text meets 3:1, and necessary UI cues and graphics meet 3:1."],
 ];
 
-const planRows = [
-  ["1", "Write the business brief", "One page covering audience, offer, difference, personality, uses, constraints, and approval owner"],
-  ["2", "Map the visual territory", "Three distinct directions with references and reasons, not thirty unrelated styles"],
-  ["3", "Generate concepts", "A focused batch for each direction using the same business facts and clear variation requests"],
-  ["4", "Score and shortlist", "A documented scorecard and two finalists with specific strengths and weaknesses"],
-  ["5", "Refine the winner", "Clean geometry, corrected type, intentional spacing, and complete logo variations"],
-  ["6", "Build and test the system", "Color, type, imagery, layouts, mockups, small-size tests, and light/dark tests"],
-  ["7", "Approve and package", "Source files, export set, usage rules, templates, ownership, and a recorded decision"],
+const failureRows = [
+  ["Generic style words", "‘Create a modern, professional, minimalist logo.’", "Add the audience, business difference, three precise traits, three unwanted traits, prohibited symbols, and real applications."],
+  ["Changing everything at once", "‘Make it simpler, friendlier, blue, and use a different font and icon.’", "Hold the symbol, composition, type category, and palette constant. Change only one detail, such as the inner line weight."],
+  ["Keeping generated lettering", "‘The name is spelled correctly, so the wordmark is finished.’", "Use it as a reference. Re-typeset the name with a licensed font, correct spacing manually, and compare a custom-drawn option."],
+  ["Trusting the file extension", "‘It ends in .svg, so it is production-ready.’", "Confirm that it contains editable paths, remove stray anchors and masks, correct curves, and test it at both very small and very large sizes."],
+  ["Choosing from a mockup", "‘It looks strongest on the storefront scene.’", "Remove lighting, perspective, and texture. Compare each finalist in black and white, at small sizes, in a plain document, and on a one-color sign."],
+  ["Imitating another brand", "‘Make it look like a famous company or a living designer.’", "Translate the intent into observable constraints such as broad negative space, a compact silhouette, and no more than two line weights."],
+  ["Calling the logo the identity", "‘The logo is approved, so the brand is done.’", "Treat logo approval as the start of system development: palette, type, imagery, layout, voice, variants, templates, and governance still need decisions."],
+  ["Leaving rights review until rollout", "‘We will search trademarks after we print.’", "Search early, document similar marks and related goods or services, and take uncertain or business-critical decisions to qualified counsel."],
 ];
 ---
 
 <section id="section-1" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 1</p>
-  <h2>Start with the business brief, not the prompt</h2>
+  <p class="guide-eyebrow">Foundation</p>
+  <h2>Know what AI can and cannot do in logo design</h2>
   <p>
-    The first prompt should not ask for a “modern, professional logo.” Those words describe almost every generic result. Begin by deciding what the identity must communicate and where it must work. AI needs a useful constraint system before it needs adjectives.
+    AI can make ideas visible quickly. It can help a team compare visual territories, produce rough variations, test compositions, and place a concept into mockups. That makes it useful for exploration and iteration.
   </p>
   <p>
-    Write down the audience, the offer, the reason customers choose the business, the category conventions you want to keep or reject, and the practical places where the identity will appear. A neighborhood service business may need instant recognition on a vehicle and mobile search result. A B2B company may need a calm wordmark that holds up in a proposal, product screen, and conference booth. Those are different design jobs.
+    AI cannot decide what the business should stand for, verify that a concept is distinctive in the market, guarantee accurate or editable typography, prove that a file is production-ready, or give a legal clearance opinion. A generated image is evidence that a direction can be pictured. It is not evidence that the direction should be launched.
   </p>
-
-  <div class="brief-card" aria-labelledby="brief-heading">
-    <p class="brief-label">Copy-and-use brief</p>
-    <h3 id="brief-heading">A better starting prompt</h3>
-    <pre><code>We are [business name], a [category] for [specific audience].
-
-Customers choose us because [real differentiator]. We want the identity to feel [three precise traits], but never [three unwanted traits].
-
-The logo must work on [five real applications]. It needs a primary version, a compact mark, a one-color version, and light and dark versions.
-
-Explore three visual territories:
-1. [territory and business reason]
-2. [territory and business reason]
-3. [territory and business reason]
-
-For each territory, explain the central idea, shape logic, typography direction, color rationale, and possible failure point. Do not use famous logos, generic category icons, or unsupported business claims.</code></pre>
+  <div class="boundary-grid" role="list" aria-label="Responsibility boundaries">
+    <article role="listitem"><span>AI helps with</span><h3>Range and iteration</h3><p>Rough concepts, visual references, controlled variations, mockups, and repetitive exploration.</p></article>
+    <article role="listitem"><span>People own</span><h3>Judgment and craft</h3><p>Positioning, creative direction, selection, geometry, typography, accessibility, and production quality.</p></article>
+    <article role="listitem"><span>The business owns</span><h3>Truth and approval</h3><p>The offer, audience, real differentiators, risk tolerance, clearance decisions, and final sign-off.</p></article>
   </div>
-
-  <aside class="guide-note">
-    <strong>Make the prompt accountable to the brief.</strong>
-    If you cannot explain why a shape, type style, or color belongs to the business, it is decoration, not identity.
-  </aside>
+  <aside class="guide-note"><strong>The real cost appears later.</strong> A generic or fragile mark becomes expensive after signs are printed, templates are built, applications are filed, and a team has learned to use it. Resolve uncertainty while the work is still easy to change.</aside>
 </section>
 
 <section id="section-2" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 2</p>
-  <h2>Use AI to explore directions, not to crown a winner</h2>
+  <p class="guide-eyebrow">Step 1</p>
+  <h2>Write the business brief before opening a generator</h2>
   <p>
-    AI is useful at the beginning because it can make visual territory visible quickly. Use it to explore genuinely different ideas, not to create dozens of nearly identical badges. A productive round might compare a typographic direction, an abstract-symbol direction, and a system built around a distinctive shape or pattern.
+    The first prompt should not ask for a “modern, professional logo.” Those words describe almost every generic result. Start with the decisions the identity must carry and the conditions it must survive.
   </p>
-  <p>
-    Keep the business facts stable while changing one design variable at a time. Ask for a new composition, a simpler symbol, a different type category, or a stricter color limit. When every variable changes at once, you cannot tell what improved the concept.
-  </p>
-  <div class="three-up" role="list">
-    <article role="listitem">
-      <span>01</span>
-      <h3>Diverge</h3>
-      <p>Explore three territories that solve the same business brief in visibly different ways.</p>
-    </article>
-    <article role="listitem">
-      <span>02</span>
-      <h3>Explain</h3>
-      <p>Require a rationale for the mark, type, color, and intended customer impression.</p>
-    </article>
-    <article role="listitem">
-      <span>03</span>
-      <h3>Converge</h3>
-      <p>Shortlist with criteria, then refine one direction instead of endlessly regenerating.</p>
-    </article>
+  <div class="brief-grid">
+    <article><h3>Business truth</h3><ul><li>Specific audience and buying situation</li><li>Offer and category</li><li>Real reason customers choose the business</li><li>Geographic and language scope</li></ul></article>
+    <article><h3>Visual direction</h3><ul><li>Three desired traits</li><li>Three traits to avoid</li><li>Category conventions to keep or reject</li><li>Prohibited imagery, symbols, and references</li></ul></article>
+    <article><h3>Practical constraints</h3><ul><li>Favicon, mobile, social, documents, packaging, vehicles, or signs</li><li>One-color and reversed use</li><li>Print, embroidery, engraving, or vinyl limits</li><li>Longest name, descriptor, or multilingual version</li></ul></article>
+    <article><h3>Decision ownership</h3><ul><li>Who narrows the shortlist</li><li>Who approves the business position</li><li>Who cleans the production files</li><li>Who owns clearance and final approval</li></ul></article>
   </div>
+  <h3>Run a rights-aware preflight</h3>
+  <p>
+    Search the proposed business name before investing in a detailed mark. Exclude third-party logos, protected characters, and references you do not have permission to use. Record the source and license of fonts, icons, templates, stock elements, and uploaded images. Keep the original brief, generation history, shortlisted outputs, and notes about human redrawing.
+  </p>
 </section>
 
 <section id="section-3" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 3</p>
-  <h2>Choose the logo with a scorecard</h2>
+  <p class="guide-eyebrow">Step 2</p>
+  <h2>Choose tools by job, not popularity</h2>
   <p>
-    “I like it” is useful feedback, but it is not enough to guide a launch. Score each finalist against the same business and usability criteria. A concept that looks impressive at presentation size may fail as a profile icon. A clever symbol may be difficult to reproduce. A fashionable treatment may already look familiar in the category.
+    Different tools solve different parts of the process. A guided logo maker can assemble quick starting options. An image generator can open wider visual territory. A collaborative design tool can organize review and applications. A vector editor is where geometry and production files are finished.
   </p>
-  <div class="table-shell">
+  <aside class="source-note">
+    <strong>Capability is not quality proof.</strong> The descriptions below summarize capabilities stated in official vendor documentation. They do not independently prove that one product makes better, more original, or legally available logos.
+  </aside>
+  <div class="table-shell tool-table">
     <table>
-      <caption>Logo concept evaluation scorecard</caption>
-      <thead><tr><th>Criterion</th><th>What good looks like</th><th>Question to ask</th></tr></thead>
+      <caption>Tool choice by stage</caption>
+      <thead><tr><th>Job</th><th>Examples</th><th>Useful for</th><th>Watch for</th></tr></thead>
       <tbody>
-        {evaluationRows.map((row) => (
-          <tr><th scope="row" data-label="Criterion">{row[0]}</th><td data-label="What good looks like">{row[1]}</td><td data-label="Question to ask">{row[2]}</td></tr>
+        {toolRows.map((row) => (
+          <tr><th scope="row" data-label="Job">{row[0]}</th><td data-label="Examples"><a href={row[4]}>{row[1]}</a></td><td data-label="Useful for">{row[2]}</td><td data-label="Watch for">{row[3]}</td></tr>
         ))}
       </tbody>
     </table>
   </div>
   <p>
-    Use a simple 1-to-5 score for every row, but keep the written reasons. The purpose is not mathematical certainty. It is to expose where taste, business fit, and practical performance disagree before the logo becomes expensive to replace.
+    Check the terms that apply to the exact account, plan, model, inputs, and intended use before the final commercial generation or download. Product features and terms change. No design tool replaces a clearance process.
   </p>
 </section>
 
 <section id="section-4" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 4</p>
-  <h2>Turn the selected logo into a brand identity system</h2>
+  <p class="guide-eyebrow">Step 3</p>
+  <h2>Use a prompt structure that produces useful differences</h2>
   <p>
-    A logo identifies the business. A brand identity gives the business a repeatable way to show up. The real work begins after the mark is chosen: define how color, type, imagery, layout, voice, and applications support the same idea.
+    Hold the business facts constant. Ask for three visual territories that differ in one major idea, not thirty variations of the same badge. Start in black and white so color and presentation effects do not hide a weak silhouette.
   </p>
-  <figure class="guide-figure">
-    <img src="/images/ai-logo-guide/ai-logo-brand-system-rollout.svg" alt="An expert marketer testing one original abstract logo across web, mobile, packaging, signage, and document applications" loading="lazy" decoding="async" />
-    <figcaption>Test one visual idea across the places customers will actually encounter it.</figcaption>
-  </figure>
-  <div class="table-shell">
-    <table>
-      <caption>Minimum practical brand identity kit</caption>
-      <thead><tr><th>Layer</th><th>What to define</th><th>Why it matters</th></tr></thead>
-      <tbody>
-        {identityRows.map((row) => (
-          <tr><th scope="row" data-label="Layer">{row[0]}</th><td data-label="What to define">{row[1]}</td><td data-label="Why it matters">{row[2]}</td></tr>
-        ))}
-      </tbody>
-    </table>
+  <div class="brief-card" aria-labelledby="prompt-framework-heading">
+    <p class="brief-label">Copy-and-use framework</p>
+    <h3 id="prompt-framework-heading">A decision-ready logo prompt</h3>
+    <pre><code>Create three clearly different logo territories for [hypothetical or real business name].
+
+Business: [category, offer, and real difference]
+Audience: [specific customer and buying situation]
+The identity should feel: [three to five precise traits]
+It must not feel: [three to five unwanted traits]
+Required applications: [five to seven real uses]
+Production constraints: [one color, embroidery, sign, small screen, and so on]
+
+Explore:
+A. A typographic territory tied to [business reason]
+B. An abstract-symbol territory tied to [business reason]
+C. A shape or pattern system tied to [business reason]
+
+For each territory, show horizontal and compact versions in black and white. Explain the central idea, type category, weakest small-size detail, likely category-confusion risk, and one manual cleanup step.
+
+Do not imitate an existing logo or identifiable artist. Do not use [prohibited category clichés]. Do not claim uniqueness, trademark availability, or production readiness.</code></pre>
   </div>
+  <h3>Revise one variable at a time</h3>
   <p>
-    You do not need a hundred-page manual to launch. You need enough shared direction that the next webpage, post, email, proposal, or sign does not restart the design conversation from zero.
+    A useful revision sounds like this: “Keep the symbol, composition, type category, and black-and-white palette unchanged. Remove the smallest internal turn and show three versions that differ only in the remaining line weight.” If color, type, icon, spacing, and mood all change together, the team cannot tell which decision helped.
   </p>
 </section>
 
 <section id="section-5" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 5</p>
-  <h2>Test the identity where customers will see it</h2>
-  <p>
-    Do not approve a logo only on a large white artboard. Put the finalists into real conditions. Test the compact mark at favicon size. Place the wordmark in a narrow mobile header. Check one-color reproduction. Use it on a busy photograph and a quiet document. Try the longest likely business name or tagline. View it in light and dark environments.
-  </p>
-  <ul class="check-list">
-    <li><strong>Small size:</strong> recognizable at 16, 24, and 48 pixels.</li>
-    <li><strong>One color:</strong> understandable without gradients or subtle shading.</li>
-    <li><strong>Light and dark:</strong> clear on both approved backgrounds.</li>
-    <li><strong>Horizontal and compact:</strong> usable in wide headers and square profiles.</li>
-    <li><strong>Real content:</strong> paired with actual headlines, photography, and interface density.</li>
-    <li><strong>Distance:</strong> recognizable on signage or a presentation viewed across a room.</li>
-  </ul>
-  <p>
-    These tests often remove attractive but fragile concepts. That is a good outcome. The goal is not to defend a favorite image. The goal is to choose an identity the business can use consistently.
-  </p>
+  <p class="guide-eyebrow">Applied examples</p>
+  <h2>Five practical hypothetical AI logo prompts</h2>
+  <aside class="hypothetical-note"><strong>Important:</strong> Every business and name in this guide is hypothetical. The names have not been cleared for commercial or trademark use. The examples are educational, not client work or evidence of real results.</aside>
+  <div class="prompt-stack">
+    <article>
+      <p class="prompt-number">01 / Local service</p><h3>Northline Mobile Vet</h3>
+      <pre><code>Create three logo territories for the hypothetical business Northline Mobile Vet, which provides scheduled veterinary visits at customers’ homes for busy urban pet owners. The benefit is a calmer appointment with less travel and waiting-room stress. The identity should feel calm, capable, warm, organized, and contemporary, but not childish, clinical, luxurious, or sentimental.
+
+It must work as a 24-pixel favicon, narrow mobile header, square social image, vehicle-door graphic, one-color folder mark, and embroidery. Explore: A) a restrained wordmark with a subtle directional detail in the N, B) an abstract route or doorway suggesting care arriving at home, and C) a compact path-and-shelter symbol. Do not use paws, hearts, crosses, animal heads, or house clichés. Show black-and-white horizontal and compact versions, rationale, small-size risk, and one manual cleanup step. Do not claim uniqueness or trademark availability.</code></pre>
+    </article>
+    <article>
+      <p class="prompt-number">02 / B2B software</p><h3>VelaGrid</h3>
+      <pre><code>Develop three logo territories for the hypothetical B2B software company VelaGrid. It helps field-service companies organize crews, equipment, work orders, and schedule changes around the daily dispatch board. The audience is operations directors and service-business owners who value clarity, reliability, and quick decisions. The identity should feel structured, responsive, precise, practical, and established, but not futuristic, playful, financial, or like cryptocurrency.
+
+Test a product header, 16-pixel favicon, app icon, proposal cover, conference booth, and monochrome watermark. Explore: A) a custom wordmark using spacing to suggest coordinated movement, B) a modular grid with one clear route, and C) a compact monogram. Use no globes, rockets, lightning bolts, brains, circuits, shields, graphs, or infinity symbols. For each black-and-white direction, explain the rationale, confusion risk, 16/24/48-pixel tests, and one simplification.</code></pre>
+    </article>
+    <article>
+      <p class="prompt-number">03 / Food and beverage</p><h3>Tide &amp; Timber Coffee</h3>
+      <pre><code>Explore three original logo directions for the hypothetical neighborhood roaster Tide &amp; Timber Coffee. It sells through one coastal shop, local grocery partners, and recyclable mail-order packaging. The audience cares about freshness and local character without wanting technical jargon or luxury positioning. The identity should feel grounded, coastal, tactile, welcoming, and quietly distinctive, but not nautical-theme-park, rustic-western, tropical, or elite.
+
+It must work on a two-inch bag label, one-color rubber stamp, storefront sign, circular avatar, invoice, and embroidered cap. Explore: A) a sturdy condensed wordmark, B) an abstract meeting of tide lines and timber grain, and C) a simple container shape with coast-and-craft negative space. Do not draw a cup, bean, anchor, wave, tree, or mountain. Avoid vintage badges, distress, scripts, and detailed illustrations. Show the mark alone, the wordmark, packaging risk, and manual redraw need.</code></pre>
+    </article>
+    <article>
+      <p class="prompt-number">04 / Repair business</p><h3>FieldPatch Outdoor Repair</h3>
+      <pre><code>Create three territories for the hypothetical company FieldPatch Outdoor Repair. It repairs tents, backpacks, sleeping bags, and outdoor clothing so customers can keep using equipment they own. The audience includes hikers, families, guides, and outdoor clubs. The business difference is skilled repair and dependable turnaround, not selling new gear or making unsupported environmental claims. The identity should feel resourceful, durable, human, useful, and optimistic, but not militaristic, survivalist, precious, or corporate.
+
+Test a woven label, small repair tag, workshop sign, social image, one-color shipping stamp, and simple website header. Explore: A) a wordmark with one controlled stitched connection, B) an abstract patch with one repair line, and C) two incomplete forms joined into one stable symbol. Do not use mountains, pines, tents, compasses, recycling arrows, globes, or shields. Use solid shapes only. Identify small-size and embroidery risks.</code></pre>
+    </article>
+    <article>
+      <p class="prompt-number">05 / Education</p><h3>BrightStep Language School</h3>
+      <pre><code>Develop three territories for the hypothetical BrightStep Language School, which offers small-group classes for adults who need practical conversation for work, travel, and daily life. The audience may feel self-conscious about returning to a classroom. The difference is usable situations and steady progress rather than exams or status. The identity should feel encouraging, clear, adult, social, and dependable, but not child-focused, institutional, academic, loud, or like a translation app.
+
+Test classroom window signage, a 24-pixel favicon, mobile course cards, a social image, workbook covers, and certificates. Explore: A) a warm wordmark with a subtle forward baseline, B) two simple shapes suggesting conversation, and C) a modular progression symbol. Do not use stairs, arrows, flags, speech bubbles, globes, books, or graduation caps literally. Flag cultural or interpretation risks and specify what target-language learners should review.</code></pre>
+    </article>
+  </div>
 </section>
 
 <section id="section-6" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 6</p>
-  <h2>Keep the responsibilities clear</h2>
+  <p class="guide-eyebrow">Step 4</p>
+  <h2>Generate territories, not dozens of random logos</h2>
   <p>
-    AI, expert marketers, and the business should not own the same decisions. AI is strongest when it accelerates exploration and production. Experts connect design choices to strategy, quality, and rollout. The business owns its truth and final approval.
+    A territory is a coherent answer to the brief. It has an idea, a silhouette, a type direction, a reason it fits the business, and a known risk. The team can discuss it without relying on taste alone.
   </p>
-  <div class="table-shell">
-    <table>
-      <caption>Who should own each part of the process</caption>
-      <thead><tr><th>Owner</th><th>Primary responsibility</th><th>Guardrail</th></tr></thead>
-      <tbody>
-        {ownerRows.map((row) => (
-          <tr><th scope="row" data-label="Owner">{row[0]}</th><td data-label="Primary responsibility">{row[1]}</td><td data-label="Guardrail">{row[2]}</td></tr>
-        ))}
-      </tbody>
-    </table>
+  <div class="boundary-grid" role="list">
+    <article role="listitem"><span>Territory A</span><h3>Typographic</h3><p>Find distinctiveness in the wordmark, spacing, rhythm, or one custom letter detail. Risk: style can replace substance.</p></article>
+    <article role="listitem"><span>Territory B</span><h3>Abstract symbol</h3><p>Translate the business position into a simple visual relationship. Risk: the idea can drift into familiar category geometry.</p></article>
+    <article role="listitem"><span>Territory C</span><h3>Shape or pattern</h3><p>Build a compact mark and a wider visual language from one repeatable form. Risk: the system can become decorative or too detailed.</p></article>
   </div>
   <p>
-    This division prevents two common failures: treating the first generated image as finished design, or spending weeks polishing a direction that was never tied to the business brief.
+    Document each territory with one sentence of rationale, the strongest application, the weakest application, the most likely confusion risk, and the next controlled revision. Shortlist the territory before polishing every variation.
   </p>
 </section>
 
 <section id="section-7" class="logo-guide-section">
-  <p class="guide-eyebrow">Step 7</p>
-  <h2>Use a seven-day decision plan</h2>
+  <p class="guide-eyebrow">Step 5</p>
+  <h2>Score concepts before approving a favorite</h2>
   <p>
-    A focused identity sprint can move quickly without skipping judgment. The schedule below is a decision framework, not a promise about every project. Complex naming, stakeholder, research, or rollout requirements may need more time.
+    Use the same six criteria for every finalist: relevance, distinctiveness, simplicity, scalability, flexibility, and usability. Score each from 1 to 5 and keep the written reasoning. A 1 means the concept fails the criterion in its current form. A 3 means it can proceed only with a named correction. A 5 means it works across the tested conditions without a material concern.
   </p>
-  <div class="table-shell table-shell--plan">
+  <div class="table-shell">
     <table>
-      <caption>A practical seven-day identity sprint</caption>
-      <thead><tr><th>Day</th><th>Decision</th><th>Deliverable</th></tr></thead>
+      <caption>Completed hypothetical scorecard: Northline Mobile Vet, route-doorway territory</caption>
+      <thead><tr><th>Criterion</th><th>Score</th><th>Reason</th></tr></thead>
       <tbody>
-        {planRows.map((row) => (
-          <tr><th scope="row" data-label="Day">Day {row[0]}</th><td data-label="Decision">{row[1]}</td><td data-label="Deliverable">{row[2]}</td></tr>
+        {scoreRows.map((row) => (
+          <tr><th scope="row" data-label="Criterion">{row[0]}</th><td data-label="Score"><strong>{row[1]}</strong></td><td data-label="Reason">{row[2]}</td></tr>
+        ))}
+        <tr class="total-row"><th scope="row" data-label="Criterion">Total</th><td data-label="Score"><strong>25/30</strong></td><td data-label="Reason"><strong>Promising, but not ready for approval.</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="guide-note"><strong>Decision: refine, do not approve.</strong> Remove the smallest internal turn, redraw the compact version for 16 to 24 pixels, and repeat the one-color test. Reject the direction if simplification makes it look like a generic location pin or house.</aside>
+  <h3>Use automatic rejection conditions</h3>
+  <ul class="check-list">
+    <li>Reject a concept that is unreadable or unrecognizable in a required application.</li>
+    <li>Reject generated wording that cannot be re-typeset cleanly.</li>
+    <li>Reject a direction that depends on gradients, texture, or mockup lighting to make sense.</li>
+    <li>Pause a direction when a search reveals a close visual or verbal conflict that has not been assessed.</li>
+    <li>Restart when the concept cannot be made relevant without adding a long explanation.</li>
+  </ul>
+  <p>A numeric score does not establish objective quality or legal availability. It makes the decision and its unresolved risks visible.</p>
+</section>
+
+<section id="section-8" class="logo-guide-section">
+  <p class="guide-eyebrow">Worked system</p>
+  <h2>Build the identity around one business position</h2>
+  <p>
+    The logo should not live in isolation. This hypothetical system shows how every layer can support the same position without turning the logo into a repeated decoration.
+  </p>
+  <aside class="hypothetical-note"><strong>Hypothetical example:</strong> Northline Mobile Vet is invented for this guide and has not been trademark-cleared.</aside>
+  <div class="table-shell identity-table">
+    <table>
+      <caption>Northline Mobile Vet identity system</caption>
+      <thead><tr><th>Layer</th><th>Decision</th></tr></thead>
+      <tbody>
+        {identityRows.map((row) => (
+          <tr><th scope="row" data-label="Layer">{row[0]}</th><td data-label="Decision">{row[1]}</td></tr>
         ))}
       </tbody>
     </table>
   </div>
+  <h3>Test the palette as combinations, not swatches</h3>
+  <p>
+    For this hypothetical palette, Ink on Warm White, Graphite on Warm White, and Ink on Sea Glass are strong reading combinations. Terracotta should be tested carefully before it carries small text. The <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">W3C guidance for WCAG 2.2 text contrast</a> sets a 4.5:1 minimum for normal text and 3:1 for qualifying large text. Text in a logo or brand name is exempt from that specific criterion, but the exemption does not cover the surrounding website, buttons, navigation, documents, or diagrams. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">Meaningful graphics and necessary interface cues</a> generally need 3:1 against adjacent colors.
+  </p>
+  <p>
+    Do not use the logotype exemption as a design goal. Prepare a higher-contrast mark for difficult backgrounds whenever practical, and test the complete application rather than one isolated color pair.
+  </p>
 </section>
 
-<section id="section-8" class="logo-guide-section">
-  <p class="guide-eyebrow">Before launch</p>
-  <h2>Avoid the mistakes that make AI logos feel generic</h2>
-  <div class="mistake-grid">
-    <article><h3>Starting with style words</h3><p>“Modern” and “professional” do not give the model a business position. Start with audience, value, and use.</p></article>
-    <article><h3>Generating before choosing territory</h3><p>Without visual territories, more options create noise rather than useful range.</p></article>
-    <article><h3>Choosing from a thumbnail</h3><p>A strong presentation does not prove small-size recognition, flexibility, or reproducibility.</p></article>
-    <article><h3>Leaving typography to chance</h3><p>Generated lettering often needs deliberate selection, spacing, correction, and export work.</p></article>
-    <article><h3>Treating the logo as the identity</h3><p>Customers experience pages, messages, images, spaces, and follow-up, not an isolated mark.</p></article>
-    <article><h3>Skipping the decision record</h3><p>Document what was approved and why so the next asset does not reopen settled choices.</p></article>
+<section id="section-9" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 6</p>
+  <h2>Clean the geometry and typography</h2>
+  <p>
+    Generated lettering is a picture of type, not a dependable wordmark. Re-typeset the business name with a licensed font or draw it deliberately. Correct spelling, spacing, kerning, repeated letters, punctuation, and optical balance. Keep a live-type master with the font information, plus an outlined production copy for vendors that do not have the font.
+  </p>
+  <p>
+    For symbols, redraw weak curves and corners. Remove tiny notches, false joins, unnecessary anchor points, hidden objects, clipping masks, and details that disappear. Automatic tracing can produce editable paths, but editable does not mean clean. Adobe’s <a href="https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html">Image Trace documentation</a> describes controls for paths, corners, noise, shapes, and expansion. Those controls help create a starting vector. A person still needs to inspect the geometry.
+  </p>
+  <aside class="guide-note"><strong>Inspect the SVG.</strong> An SVG file can contain an embedded raster image. Open the file in a vector editor and confirm that the mark is built from real paths. A file extension alone does not prove resolution independence.</aside>
+  <h3>Separate screen and print files</h3>
+  <p>
+    Keep RGB files for screens and prepare CMYK or spot-color specifications for print when the production method requires them. Ask the printer, sign maker, embroiderer, or fabricator for minimum stroke, gap, color, and file requirements. Run a physical proof before a full production run.
+  </p>
+</section>
+
+<section id="section-10" class="logo-guide-section">
+  <p class="guide-eyebrow">Step 7</p>
+  <h2>Test the identity in real use</h2>
+  <p>
+    Mockups can help a team understand context, but presentation effects can also hide a weak mark. Test plain, measurable conditions first. Use the real business name, likely content density, actual interface sizes, and the production method that will be used.
+  </p>
+  <div class="table-shell test-table">
+    <table>
+      <caption>Pass or fail tests before launch</caption>
+      <thead><tr><th>Application</th><th>Test</th><th>Pass condition</th></tr></thead>
+      <tbody>
+        {testRows.map((row) => (
+          <tr><th scope="row" data-label="Application">{row[0]}</th><td data-label="Test">{row[1]}</td><td data-label="Pass condition">{row[2]}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Record failures instead of hiding them. If the primary mark fails at 16 pixels but a purpose-built compact mark passes, document the switch point. If embroidery cannot hold an internal gap, create an approved embroidery version. A controlled variant is better than letting every vendor repair the logo differently.
+  </p>
+</section>
+
+<section id="section-11" class="logo-guide-section">
+  <p class="guide-eyebrow">Rights and clearance</p>
+  <h2>Review rights before launch, not after rollout</h2>
+  <aside class="legal-note"><strong>General information only, not legal advice.</strong> Laws, registrations, contracts, and risk differ by jurisdiction. Use qualified counsel for a business-critical clearance opinion, filing strategy, dispute, or material launch.</aside>
+  <h3>Trademark search is more than an exact-name check</h3>
+  <p>
+    A logo generator does not determine whether a name or design is available. Start with the <a href="https://www.uspto.gov/trademarks/search">USPTO trademark search resources</a>, then examine similar wording, spellings, sounds, meanings, symbols, and overall commercial impressions, along with related goods and services. The USPTO’s <a href="https://www.uspto.gov/trademarks/search/likelihood-confusion">likelihood-of-confusion guidance</a> explains why a different font or added symbol may not resolve a conflict.
+  </p>
+  <ul class="check-list">
+    <li>Search the proposed name, close spellings, phonetic equivalents, and translated meanings where relevant.</li>
+    <li>Review visually similar symbols and dominant design elements, not only exact matches.</li>
+    <li>Compare the goods and services attached to potentially similar marks.</li>
+    <li>Record dates, search terms, owners, classes, links, and unresolved questions.</li>
+    <li>Do not call a concept “trademark-safe” because one search returned no exact match.</li>
+  </ul>
+  <h3>Copyrightability and contract ownership are different questions</h3>
+  <p>
+    The <a href="https://www.copyright.gov/ai/">U.S. Copyright Office’s AI initiative</a> includes its January 2025 report on copyrightability. The report explains that copyright protects human-authored expression, that wholly AI-generated material is not protected, and that AI-assisted work can include protectable human contributions depending on the facts. Prompts alone generally do not provide sufficient control under the systems considered in that report. Document human selection, arrangement, redrawing, type work, geometry, spacing, and system design rather than assuming a long prompt settles the question. Read the <a href="https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf">full Copyrightability report</a> for the Office’s analysis.
+  </p>
+  <h3>Separate four questions before commercial use</h3>
+  <ol class="number-list">
+    <li>Does the vendor contract permit the account to use this output?</li>
+    <li>Does the output include licensed third-party content with separate conditions?</li>
+    <li>Is the human contribution legally protectable in the relevant jurisdiction?</li>
+    <li>Could the output conflict with another party’s trademark, copyright, publicity, privacy, design, or contractual rights?</li>
+  </ol>
+  <p>
+    A vendor statement that “you own the output” addresses only part of the first question. It does not prove exclusivity, copyrightability, trademark availability, or non-infringement. For example, <a href="https://www.canva.com/policies/ai-product-terms/">Canva’s AI Product Terms</a> say outputs may not be unique and that licensed content remains subject to its license. <a href="https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service">Midjourney’s terms</a> make ownership subject to stated conditions and third-party rights, while describing public visibility and remixing by default. <a href="https://openai.com/policies/services-agreement/">OpenAI’s business terms</a> assign output to the customer to the extent permitted by law, require input rights and user evaluation, and note that output may not be unique. <a href="https://www.figma.com/legal/ai-terms/">Figma’s AI terms</a> require human review and relevant clearances.
+  </p>
+  <p>
+    Confirm the licenses for fonts, icons, templates, stock assets, and reference images across desktop design, websites, applications, merchandise, and third-party production. Do not upload a reference unless the business has the right to use it for that purpose. Re-check current terms before the final commercial generation or download.
+  </p>
+</section>
+
+<section id="section-12" class="logo-guide-section">
+  <p class="guide-eyebrow">Production handoff</p>
+  <h2>Package the final identity so another person can use it</h2>
+  <div class="package-grid">
+    <article><h3>Master files</h3><ul><li>Editable vector master with clean paths</li><li>Live-type master with documented fonts</li><li>Outlined-type production copy</li><li>RGB and print color specifications</li></ul></article>
+    <article><h3>Export set</h3><ul><li>SVG, EPS, and print-ready PDF</li><li>Transparent PNG exports at useful scales</li><li>Favicon and app-icon sizes</li><li>Light, dark, one-color, horizontal, and compact versions</li></ul></article>
+    <article><h3>Application files</h3><ul><li>Social-avatar template</li><li>Proposal or document template</li><li>Signage, packaging, vehicle, or embroidery proof as relevant</li><li>Approved color combinations</li></ul></article>
+    <article><h3>Governance</h3><ul><li>One-page usage sheet</li><li>File-naming and version convention</li><li>License and source record</li><li>Approval date, known limitations, and responsible owner</li></ul></article>
+  </div>
+  <aside class="guide-note"><strong>Simple handoff test:</strong> Give the package to someone who was not in the project. They should be able to find the correct mark for a dark website header, a one-color print job, and a social avatar without asking the designer.</aside>
+</section>
+
+<section id="section-13" class="logo-guide-section">
+  <p class="guide-eyebrow">Corrections</p>
+  <h2>Common AI logo failure modes and better decisions</h2>
+  <div class="failure-stack">
+    {failureRows.map((row, index) => (
+      <article>
+        <p class="prompt-number">{String(index + 1).padStart(2, "0")}</p>
+        <h3>{row[0]}</h3>
+        <p><strong>Weak decision:</strong> {row[1]}</p>
+        <p><strong>Better decision:</strong> {row[2]}</p>
+      </article>
+    ))}
   </div>
   <div class="final-check">
-    <h3>Final handoff checklist</h3>
+    <h3>Launch only when these statements are true</h3>
     <ul>
-      <li>Primary, horizontal, compact, icon, one-color, light, and dark logo versions</li>
-      <li>Vector source plus web-ready SVG, PNG, and favicon exports</li>
-      <li>Defined color values and approved contrast combinations</li>
-      <li>Typography hierarchy and practical fallback fonts</li>
-      <li>Image and layout direction with clear examples and exclusions</li>
-      <li>Templates for the first website, social, email, and document uses</li>
-      <li>One owner for source files, approvals, and future updates</li>
+      <li>The chosen direction answers the business brief and passes the documented scorecard.</li>
+      <li>The wordmark has been properly typeset or drawn, and the symbol has clean vector geometry.</li>
+      <li>Required small, monochrome, mobile, social, document, signage, and production tests have passed.</li>
+      <li>Approved color combinations have been tested for their actual text, interface, and graphic uses.</li>
+      <li>Fonts, icons, templates, stock elements, and reference materials have a recorded source and license.</li>
+      <li>Trademark and copyright questions have been assessed at a level appropriate to the business risk.</li>
+      <li>The production package, usage sheet, approval record, and responsible owner are in place.</li>
     </ul>
   </div>
-  <aside class="source-note">
-    <h3>What we found in the current search results</h3>
-    <p>
-      Pages currently visible for this query are dominated by logo generators and short generation workflows. Canva and Adobe explain prompt-to-download creation. Design.com and Logopony extend the logo into branded assets. A detailed Reddit workflow adds ideation, selection, and formatting. The missing piece is a neutral business guide that connects the brief, concept criteria, expert review, identity system, rollout tests, and decision ownership.
-    </p>
-    <p class="source-links">
-      Research references: <a href="https://www.canva.com/ai-logo-generator/" rel="nofollow">Canva</a>, <a href="https://www.adobe.com/express/create/ai/logo" rel="nofollow">Adobe Express</a>, <a href="https://www.design.com/ai-logo-generator" rel="nofollow">Design.com</a>, <a href="https://www.logopony.com/" rel="nofollow">Logopony</a>, and <a href="https://www.reddit.com/r/branding/comments/1p3up4i/how_to_design_a_logo_that_looks_professional/" rel="nofollow">the Reddit workflow</a>. Search results change, so these are research inputs, not a permanent ranking claim.
-    </p>
-  </aside>
+  <p class="restrained-cta">Need a second set of eyes before launch? Markethink can review the brief, shortlist, identity system, and real-use tests with you. <a href="/schedule-a-walkthrough/">Book a focused walkthrough.</a></p>
 </section>
 
 <style>
   .logo-guide-section { margin: 0 0 5.5rem; scroll-margin-top: 7rem; }
-  .logo-guide-section h2 { margin: 0 0 1.4rem; max-width: 18ch; font-family: var(--font-display); font-size: clamp(2.15rem, 5vw, 4.4rem); font-weight: 400; line-height: .98; letter-spacing: -.035em; color: #f5f5f1; }
-  .logo-guide-section h3 { font-family: var(--font-display); font-weight: 400; }
-  .logo-guide-section > p:not(.guide-eyebrow) { max-width: 760px; color: #d2d4d1; font-size: 1.08rem; line-height: 1.8; }
-  .guide-eyebrow { margin: 0 0 .85rem; color: #69d254; font: 700 .76rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
-  .brief-card, .final-check, .source-note { margin: 2rem 0; padding: clamp(1.3rem, 3vw, 2.25rem); border: 1px solid rgba(245,245,241,.15); border-radius: 1.5rem; background: #171b1c; }
-  .brief-card h3, .final-check h3, .source-note h3 { margin: 0 0 1rem; color: #f5f5f1; font-size: clamp(1.55rem, 3vw, 2.3rem); }
+  .logo-guide-section h2 { margin: 0 0 1.4rem; max-width: 19ch; font-family: var(--font-display); font-size: clamp(2.15rem, 5vw, 4.4rem); font-weight: 400; line-height: .98; letter-spacing: -.035em; color: #f5f5f1; }
+  .logo-guide-section h3 { margin: 2rem 0 .9rem; font-family: var(--font-display); font-size: clamp(1.45rem, 3vw, 2.15rem); font-weight: 400; color: #f5f5f1; }
+  .logo-guide-section > p:not(.guide-eyebrow, .restrained-cta) { max-width: 780px; color: #d2d4d1; font-size: 1.08rem; line-height: 1.8; }
+  .logo-guide-section a { color: #8ee17d; text-decoration: underline; text-underline-offset: 3px; }
+  .guide-eyebrow, .prompt-number { margin: 0 0 .85rem; color: #69d254; font: 700 .76rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
+  .boundary-grid, .brief-grid, .package-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin: 2rem 0; }
+  .boundary-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .boundary-grid article, .brief-grid article, .package-grid article, .failure-stack article, .prompt-stack article { padding: 1.35rem; border: 1px solid rgba(245,245,241,.14); border-radius: 1.2rem; background: #171b1c; }
+  .boundary-grid span { color: #69d254; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .boundary-grid h3, .brief-grid h3, .package-grid h3, .failure-stack h3, .prompt-stack h3 { margin: .55rem 0 .75rem; }
+  .boundary-grid p, .failure-stack p { margin: 0; color: #c8cbc7; line-height: 1.65; }
+  .brief-grid ul, .package-grid ul { display: grid; gap: .55rem; margin: 0; padding-left: 1.15rem; }
+  .brief-grid li, .package-grid li { color: #c8cbc7; line-height: 1.55; }
+  .brief-card, .final-check, .source-note, .hypothetical-note, .legal-note { margin: 2rem 0; padding: clamp(1.3rem, 3vw, 2.25rem); border: 1px solid rgba(245,245,241,.15); border-radius: 1.5rem; background: #171b1c; }
+  .brief-card h3, .final-check h3 { margin: 0 0 1rem; }
   .brief-label { margin: 0 0 .55rem; color: #69d254; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
   pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
-  code { color: #e9ece7; font: 500 .9rem/1.75 var(--font-body); }
+  code { color: #e9ece7; font: 500 .88rem/1.72 var(--font-body); }
   .guide-note { margin: 1.5rem 0; padding: 1.2rem 1.35rem; border-left: 3px solid #69d254; background: #edf4ea; color: #0f1213; line-height: 1.65; }
-  .three-up, .mistake-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; margin: 2rem 0; }
-  .three-up article, .mistake-grid article { padding: 1.35rem; border: 1px solid rgba(245,245,241,.14); border-radius: 1.2rem; background: #171b1c; }
-  .three-up span { color: #69d254; font-size: .75rem; font-weight: 700; letter-spacing: .15em; }
-  .three-up h3, .mistake-grid h3 { margin: .6rem 0; color: #f5f5f1; font-size: 1.45rem; }
-  .three-up p, .mistake-grid p { margin: 0; color: #bfc2bf; line-height: 1.65; }
+  .source-note { border-color: rgba(105,210,84,.35); background: #101415; color: #c8cbc7; line-height: 1.7; }
+  .hypothetical-note, .legal-note { background: #edf4ea; color: #0f1213; line-height: 1.65; }
   .table-shell { margin: 2rem 0; overflow: hidden; border: 1px solid rgba(245,245,241,.16); border-radius: 1.35rem; background: #f5f5f1; }
   table { width: 100%; border-collapse: collapse; color: #0f1213; }
   caption { padding: 1.15rem 1.25rem; background: #edf4ea; color: #0f1213; text-align: left; font-weight: 700; }
   th, td { padding: 1rem 1.15rem; border-top: 1px solid #d8ddd6; text-align: left; vertical-align: top; line-height: 1.5; }
   thead th { background: #0f1213; color: #f5f5f1; border-top: 0; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
-  tbody th { width: 18%; font-weight: 750; }
-  .guide-figure { margin: 2rem 0; }
-  .guide-figure img { display: block; width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 1.5rem; }
-  .guide-figure figcaption { margin-top: .7rem; color: #9da19d; font-size: .88rem; }
+  tbody th { width: 17%; font-weight: 750; }
+  .tool-table tbody th { width: 15%; }
+  .total-row { background: #edf4ea; }
+  .prompt-stack, .failure-stack { display: grid; gap: 1rem; margin: 2rem 0; }
+  .prompt-stack article { padding: clamp(1.3rem, 3vw, 2rem); }
+  .prompt-stack pre { margin-top: 1rem; padding: 1.2rem; border-radius: 1rem; background: #0f1213; }
+  .number-list { display: grid; gap: .7rem; margin: 1.5rem 0; padding-left: 1.4rem; }
+  .number-list li { color: #d2d4d1; line-height: 1.65; }
   .check-list, .final-check ul { display: grid; gap: .75rem; margin: 1.5rem 0; padding: 0; list-style: none; }
   .check-list li, .final-check li { position: relative; padding-left: 1.45rem; color: #d2d4d1; line-height: 1.65; }
   .check-list li::before, .final-check li::before { content: ""; position: absolute; left: 0; top: .65em; width: .5rem; height: .5rem; border-radius: 50%; background: #69d254; }
-  .source-note { border-color: rgba(105,210,84,.35); background: #101415; }
-  .source-note p { color: #c8cbc7; line-height: 1.7; }
-  .source-links a { color: #8ee17d; text-underline-offset: 3px; }
+  .restrained-cta { margin-top: 2.25rem; padding-top: 1.4rem; border-top: 1px solid rgba(245,245,241,.15); color: #d2d4d1; font-size: 1rem; line-height: 1.7; }
   @media (max-width: 820px) {
-    .three-up, .mistake-grid { grid-template-columns: 1fr; }
+    .boundary-grid, .brief-grid, .package-grid { grid-template-columns: 1fr; }
     .logo-guide-section { margin-bottom: 4.2rem; }
     .table-shell { overflow: visible; border: 0; background: transparent; }
     table, tbody { display: block; }
@@ -282,5 +420,6 @@ For each territory, explain the central idea, shape logic, typography direction,
     tr + tr { border-radius: 1rem; }
     th, td { display: block; width: auto !important; padding: .8rem 1rem; border-top: 1px solid #d8ddd6; }
     th::before, td::before { content: attr(data-label); display: block; margin-bottom: .28rem; color: #686b6c; font-size: .68rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    .prompt-stack pre { padding: 1rem; }
   }
 </style>
