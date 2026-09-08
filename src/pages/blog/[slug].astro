@@ -174,13 +174,20 @@ const breadcrumbSchema = {
             }
             {
               post.recommendedGuide && (
-                <p class="article-hub-link article-hub-link--guide">
-                  {post.recommendedGuide.copy}{" "}
-                  <a href={post.recommendedGuide.href}>
-                    {post.recommendedGuide.anchor}
-                  </a>
-                  .
-                </p>
+                isAiLogoBrandIdentityGuide ? (
+                  <p class="article-hub-link article-hub-link--guide">
+                    {post.recommendedGuide.copy}{" "}
+                    <a href={post.recommendedGuide.href}>{post.recommendedGuide.anchor}</a>.
+                  </p>
+                ) : (
+                  <p class="article-hub-link article-hub-link--guide">
+                    {post.recommendedGuide.copy}{" "}
+                    <a href={post.recommendedGuide.href}>
+                      {post.recommendedGuide.anchor}
+                    </a>
+                    .
+                  </p>
+                )
               )
             }
           </section>
