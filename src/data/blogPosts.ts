@@ -578,7 +578,7 @@ export const insightPosts: BlogPost[] = [
     imageAlt:
       "A small-business owner and expert marketer organizing answer-ready content for AI search",
     publishedDate: "2026-07-17",
-    updatedDate: "2026-08-12",
+    updatedDate: "2026-09-10",
     readingTime: "16 min read",
     category: "AI Search",
     keywords: [
@@ -679,7 +679,7 @@ export const insightPosts: BlogPost[] = [
       {
         question: "How can I track whether my business appears in AI search?",
         answer:
-          "Use Search Console for overall Google Web performance, Bing Webmaster Tools AI Performance for Bing citations and grounding queries, analytics for referral visits, CRM source notes for inquiries, and a stable sample of real customer questions for directional citation checks.",
+          "Use Search Console’s Generative AI performance report for impressions from AI Overviews and AI Mode, with page, country, date, and device dimensions. Google says it completed the worldwide rollout on August 31, 2026. Also use Bing Webmaster Tools AI Performance for Bing citations and grounding queries, analytics for referral visits, CRM source notes for inquiries, and a stable sample of real customer questions for directional citation checks.",
       },
       {
         question: "Do I need a special AI file such as llms.txt?",
