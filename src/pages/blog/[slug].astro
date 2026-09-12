@@ -32,6 +32,11 @@ const isWideGuide =
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
 const imageUrl = new URL(post.image, siteUrl).toString();
+const isRepresentativeAgencyGuide = post.slug === "what-is-an-ai-marketing-agency";
+const representativeSocialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/ai-marketing-agency-guide-og-1200x630.jpg";
+const socialImage = isRepresentativeAgencyGuide ? representativeSocialImage : imageUrl;
+const socialImageWidth = isRepresentativeAgencyGuide ? 1200 : undefined;
+const socialImageHeight = isRepresentativeAgencyGuide ? 630 : undefined;
 const relatedPosts = post.relatedSlugs?.length
   ? post.relatedSlugs
       .map((slug) => insightPosts.find((item) => item.slug === slug))
@@ -43,7 +48,16 @@ const articleSchema = {
   "@type": "BlogPosting",
   headline: post.title,
   description: post.description,
-  image: imageUrl,
+  image: isRepresentativeAgencyGuide
+    ? {
+        "@type": "ImageObject",
+        url: socialImage,
+        contentUrl: socialImage,
+        width: 1200,
+        height: 630,
+        caption: post.imageAlt,
+      }
+    : imageUrl,
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
   author: {
@@ -102,7 +116,10 @@ const breadcrumbSchema = {
 <Layout
   title={post.seoTitle}
   description={post.description}
-  image={post.image}
+  image={socialImage}
+  imageAlt={post.imageAlt}
+  imageWidth={socialImageWidth}
+  imageHeight={socialImageHeight}
   canonical={canonical}
   type="article"
   structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
@@ -113,8 +130,10 @@ const breadcrumbSchema = {
       <header class="article-hero">
         <div class="container article-hero-grid">
           <div class="article-hero-copy animate-fade-up">
-            <a href="/blog/" class="article-back">Insights</a>
-            <p class="article-kicker">{post.category}</p>
+            <div class="article-hero-topline">
+              <a href="/blog/" class="article-back"><span aria-hidden="true">←</span> Insights</a>
+              <p class="article-kicker">{post.category}</p>
+            </div>
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Article details">
@@ -132,7 +151,16 @@ const breadcrumbSchema = {
             </div>
           </div>
           <div class="article-hero-image animate-scale-in">
-            <img src={post.image} alt={post.imageAlt} />
+            <picture>
+              <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/svg+xml" />
+              <img src={post.image} alt={post.imageAlt} width="1536" height="1024" fetchpriority="high" decoding="async" />
+            </picture>
+            <div class="hero-visual-rail" aria-label="The managed operating model">
+              <span>Business context</span>
+              <span>Expert judgment</span>
+              <span>Connected execution</span>
+            </div>
+            <p class="hero-visual-caption">The managed loop <span aria-hidden="true">↗</span></p>
           </div>
         </div>
       </header>
@@ -190,6 +218,12 @@ const breadcrumbSchema = {
                 )
               )
             }
+            {post.slug === "what-is-an-ai-marketing-agency" && (
+              <p class="article-hub-link article-hub-link--research">
+                For current adoption, use-case, trust, and human-review evidence, explore the{" "}
+                <a href="/ai-marketing-statistics/">AI Marketing Statistics 2026 research ledger</a>.
+              </p>
+            )}
           </section>
 
           {
@@ -289,11 +323,14 @@ const breadcrumbSchema = {
           {
             relatedPosts.map((related) => (
               <a href={`/blog/${related.slug}/`} class="related-card">
-                <img
-                  src={related.image}
-                  alt={related.imageAlt}
-                  loading="lazy"
-                />
+                <picture>
+                  <source media="(max-width: 680px)" srcset={related.imageMobile} type="image/svg+xml" />
+                  <img
+                    src={related.image}
+                    alt={related.imageAlt}
+                    loading="lazy"
+                  />
+                </picture>
                 <div>
                   <span>{related.category}</span>
                   <h3>{related.title}</h3>
@@ -378,8 +415,12 @@ const breadcrumbSchema = {
     background: rgba(255, 255, 255, 0.04);
   }
 
+  .article-hero-image picture,
   .article-hero-image img {
     width: 100%;
+  }
+
+  .article-hero-image img {
     aspect-ratio: 16 / 10;
     object-fit: cover;
   }
@@ -644,5 +685,430 @@ const breadcrumbSchema = {
     .article-meta span::after {
       display: none;
     }
+  }
+
+  /* Editorial review treatment: scoped to the article template. */
+  .article-page {
+    --article-paper: #f4f1e8;
+    --article-paper-bright: #fbfaf5;
+    --article-ink: #0f1213;
+    --article-muted: #5f655f;
+    --article-green: #69d254;
+    --article-coral: #ff775f;
+    overflow: clip;
+    background: var(--article-paper);
+    color: var(--article-ink);
+  }
+
+  .article-hero {
+    padding: clamp(7.1rem, 9vw, 8.2rem) 0 clamp(1.9rem, 3vw, 2.7rem);
+    border-bottom: 1px solid rgba(245, 245, 241, 0.12);
+    background:
+      radial-gradient(circle at 7% 100%, rgba(105, 210, 84, 0.13), transparent 28rem),
+      radial-gradient(circle at 94% 10%, rgba(255, 119, 95, 0.12), transparent 24rem),
+      var(--article-ink);
+    color: #f7f6ef;
+  }
+
+  .article-hero-grid {
+    grid-template-columns: minmax(0, 1.12fr) minmax(25rem, 0.88fr);
+    gap: clamp(2rem, 4vw, 3.8rem);
+    align-items: stretch;
+  }
+
+  .article-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .article-hero-topline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-back {
+    display: inline-flex;
+    gap: 0.45rem;
+    align-items: center;
+    margin: 0;
+    color: rgba(247, 246, 239, 0.64);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .article-back:hover,
+  .article-back:focus-visible { color: #fff; }
+
+  .article-kicker {
+    padding-left: 1rem;
+    border-left: 1px solid rgba(247, 246, 239, 0.25);
+    color: var(--article-green);
+  }
+
+  .article-hero h1 {
+    max-width: 46rem;
+    margin-top: 0;
+    font: 600 clamp(3rem, 3.7vw, 4.2rem)/0.96 Inter, system-ui, sans-serif;
+    letter-spacing: -0.058em;
+    text-wrap: balance;
+  }
+
+  .article-excerpt {
+    max-width: 38rem;
+    margin-top: 1.15rem;
+    color: rgba(247, 246, 239, 0.74);
+    font-size: clamp(0.94rem, 1.15vw, 1.04rem);
+    line-height: 1.55;
+  }
+
+  .article-meta {
+    gap: 0.65rem;
+    margin-top: 1.1rem;
+    color: rgba(247, 246, 239, 0.5);
+    font-size: 0.75rem;
+  }
+
+  .article-meta span:not(:last-child)::after {
+    margin-left: 0.65rem;
+    color: rgba(247, 246, 239, 0.22);
+  }
+
+  .article-hero-image {
+    position: relative;
+    min-width: 0;
+    min-height: 21.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(247, 246, 239, 0.2);
+    border-radius: 1.5rem;
+    background: #243128;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.26);
+  }
+
+  .article-hero-image::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 0.82rem solid var(--article-coral);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .article-hero-image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: 52% center;
+    transform: scale(1.13);
+    filter: contrast(1.05) saturate(1.08);
+  }
+
+  .hero-visual-rail {
+    position: absolute;
+    z-index: 3;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.72rem;
+    background: rgba(15, 18, 19, 0.88);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-visual-rail span {
+    display: grid;
+    min-height: 2.8rem;
+    place-items: center;
+    padding: 0.5rem;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.61rem;
+    font-weight: 720;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .hero-visual-rail span + span { border-left: 1px solid rgba(255, 255, 255, 0.16); }
+  .hero-visual-rail span:nth-child(2) { color: var(--article-green); }
+
+  .hero-visual-caption {
+    position: absolute;
+    z-index: 3;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.62rem 0.78rem;
+    border-radius: 0.45rem;
+    background: var(--article-coral);
+    color: var(--article-ink);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .article-layout,
+  .article-layout--wide {
+    grid-template-columns: minmax(13rem, 15rem) minmax(0, 44rem);
+    gap: clamp(2.4rem, 5vw, 5rem);
+    justify-content: center;
+    padding-top: clamp(2.8rem, 5vw, 4.8rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  .article-sidebar { top: 6.5rem; }
+
+  .sidebar-panel {
+    padding: 1.15rem;
+    border-color: rgba(15, 18, 19, 0.14);
+    background: rgba(251, 250, 245, 0.76);
+    box-shadow: 0 14px 35px rgba(15, 18, 19, 0.04);
+  }
+
+  .sidebar-label {
+    color: #315b28;
+    font-size: 0.68rem;
+  }
+
+  .sidebar-panel ol { gap: 0.68rem; }
+
+  .sidebar-panel a {
+    color: #59605b;
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  .sidebar-panel a:hover,
+  .sidebar-panel a:focus-visible { color: #23481c; }
+
+  .article-content { max-width: 44rem; min-width: 0; }
+
+  .article-intro {
+    padding-bottom: 2.3rem;
+    border-bottom-color: rgba(15, 18, 19, 0.14);
+  }
+
+  .article-intro > p:first-child {
+    color: var(--article-ink);
+    font-size: clamp(1.2rem, 1.6vw, 1.42rem);
+    font-weight: 530;
+    line-height: 1.58;
+    letter-spacing: -0.02em;
+  }
+
+  .article-content p,
+  .article-content li {
+    color: #4e554f;
+    font-size: 1rem;
+    line-height: 1.78;
+  }
+
+  .article-hub-link {
+    border-color: rgba(49, 91, 40, 0.25);
+    background: #e8f2e3;
+  }
+
+  .article-hub-link--guide { background: #eee9dc; }
+
+  .article-hub-link--research {
+    border-color: rgba(255, 119, 95, 0.46);
+    background: #fee8e0;
+  }
+
+  .article-hub-link a {
+    color: #315b28;
+    text-decoration-thickness: 1px;
+  }
+
+  .article-section { padding-top: clamp(2.8rem, 5vw, 4.1rem); scroll-margin-top: 6rem; }
+
+  .article-section h2,
+  .article-cta h2,
+  .article-faq h2 {
+    margin-bottom: 1.15rem;
+    color: var(--article-ink);
+    font-size: clamp(2.25rem, 4.3vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .article-section ul {
+    border-color: rgba(49, 91, 40, 0.18);
+    background: #eaf2e6;
+  }
+
+  .article-section-image {
+    margin-top: 2rem;
+    padding: clamp(0.7rem, 2vw, 1.15rem);
+    border-color: rgba(15, 18, 19, 0.14);
+    border-radius: 1.25rem;
+    background: var(--article-ink);
+    box-shadow: 0 20px 48px rgba(15, 18, 19, 0.11);
+  }
+
+  .article-section-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    border-radius: 0.65rem;
+  }
+
+  .article-cta,
+  .article-faq {
+    border: 1px solid rgba(15, 18, 19, 0.14);
+    border-radius: 1.35rem;
+  }
+
+  .article-cta {
+    position: relative;
+    overflow: hidden;
+    background: var(--article-green);
+  }
+
+  .article-cta::after {
+    content: "";
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    width: 8rem;
+    height: 8rem;
+    border: 1.15rem solid var(--article-coral);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  .article-cta > * { position: relative; z-index: 2; }
+  .article-cta .article-cta-label,
+  .article-cta p { color: rgba(15, 18, 19, 0.76); }
+
+  .article-faq { background: var(--article-paper-bright); }
+  .article-faq .article-cta-label { color: #315b28; }
+
+  details { border-top-color: rgba(15, 18, 19, 0.13); }
+  summary { color: var(--article-ink); }
+  summary:focus-visible { outline: 2px solid #315b28; outline-offset: 4px; }
+
+  .related-section {
+    padding: clamp(4.5rem, 8vw, 7rem) 0 clamp(8rem, 12vw, 11rem);
+    border-top-color: rgba(255, 255, 255, 0.08);
+    background:
+      radial-gradient(circle at 92% 20%, rgba(255, 119, 95, 0.14), transparent 22rem),
+      var(--article-ink);
+    color: #f7f6ef;
+  }
+
+  .related-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 1rem;
+  }
+
+  .related-header .subtitle { color: var(--article-green); }
+
+  .related-header h2 {
+    margin-top: 0.8rem;
+    font: 600 clamp(2.8rem, 5vw, 4.8rem)/0.94 Inter, system-ui, sans-serif;
+    letter-spacing: -0.055em;
+  }
+
+  .related-grid { gap: 1.2rem; }
+
+  .related-card {
+    border-color: rgba(255, 255, 255, 0.14);
+    border-radius: 1.15rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .related-card:hover,
+  .related-card:focus-visible {
+    border-color: rgba(105, 210, 84, 0.6);
+    transform: translateY(-5px);
+  }
+
+  .related-card:focus-visible { outline: 3px solid var(--article-green); outline-offset: 4px; }
+
+  .related-card img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .related-card:nth-child(2) img { object-position: 58% center; transform: scale(1.05); }
+  .related-card:nth-child(3) img { object-position: 42% 62%; filter: contrast(1.07) saturate(0.94); }
+
+  .related-card div { padding: 1.15rem; }
+  .related-card span { color: var(--article-green); }
+  .related-card h3 {
+    color: #fff;
+    font: 600 1.12rem/1.25 Inter, system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  @media (max-width: 991px) {
+    .article-hero-grid,
+    .article-layout,
+    .article-layout.article-layout--wide {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .article-hero-grid { gap: 1.8rem; }
+    .article-hero-copy { max-width: 44rem; }
+    .article-hero-image { min-height: 0; aspect-ratio: 16 / 9; }
+    .article-layout { justify-content: stretch; }
+    .article-content { max-width: 46rem; }
+    .article-sidebar { position: static; order: 2; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 767px) {
+    .article-hero { padding: 7.3rem 0 2.5rem; }
+    .article-hero-topline { margin-bottom: 0.85rem; }
+    .article-hero h1 { font-size: clamp(2.55rem, 12vw, 3.45rem); line-height: 0.98; }
+    .article-excerpt { margin-top: 1rem; }
+    .article-meta { display: grid; gap: 0.28rem; }
+    .article-meta span:not(:last-child)::after { display: none; }
+    .article-hero-image { aspect-ratio: 4 / 3; border-radius: 1.15rem; }
+    .hero-visual-rail { right: 0.55rem; bottom: 0.55rem; left: 0.55rem; }
+    .hero-visual-rail span { min-height: 2.45rem; padding: 0.35rem; font-size: 0.54rem; }
+    .hero-visual-caption { top: 0.65rem; left: 0.65rem; }
+    .article-layout { gap: 2.4rem; padding-top: 2.6rem; }
+    .article-intro > p:first-child { font-size: 1.16rem; }
+    .article-section-image { padding: 0.5rem; }
+    .article-cta,
+    .article-faq { padding: 1.4rem; }
+    .related-header { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 350px) {
+    .article-hero h1 { font-size: 2.35rem; }
+    .article-hero-topline { gap: 0.65rem; }
+    .article-kicker { padding-left: 0.65rem; font-size: 0.63rem; }
+    .article-back { font-size: 0.65rem; }
+    .hero-visual-caption { font-size: 0.58rem; }
+    .hero-visual-rail span { font-size: 0.48rem; }
+    .article-section h2,
+    .article-cta h2,
+    .article-faq h2 { font-size: 2.15rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .related-card { transition: none; }
   }
 </style>
