@@ -9,6 +9,8 @@ const pageDescription =
   "Explore 60 AI marketing statistics for 2026 with original sources, populations, research dates, definitions, sample sizes, and limitations.";
 const canonical = "https://markethink.ai/ai-marketing-statistics/";
 const heroImage = "/images/ai-marketing-statistics-business-owner-v6.svg";
+const socialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/ai-marketing-statistics-business-owner-v6-og-1200x630.jpg";
+const socialImageAlt = "Illustrative specialty-product business owner comparing two campaign photo proofs beside her product while packing operations continue behind her.";
 
 const sections = [
   { id: "adoption", label: "01", shortLabel: "Adoption", title: "Adoption is broad. Deployment is not the same thing.", intro: "These figures use different units: firms, employees, marketing teams, pilots, and organization-wide deployment. Read the scope before comparing percentages.", keys: ["adoption"] },
@@ -59,7 +61,14 @@ const articleSchema = {
   headline: "AI Marketing Statistics 2026",
   description: pageDescription,
   url: canonical,
-  image: `https://markethink.ai${heroImage}`,
+  image: {
+    "@type": "ImageObject",
+    url: socialImage,
+    contentUrl: socialImage,
+    width: 1200,
+    height: 630,
+    caption: socialImageAlt,
+  },
   dateCreated: "2026-09-12",
   dateModified: "2026-09-12",
   inLanguage: "en",
@@ -77,7 +86,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<Layout title={pageTitle} description={pageDescription} canonical={canonical} image={heroImage} type="article" structuredData={[articleSchema, breadcrumbSchema]}>
+<Layout title={pageTitle} description={pageDescription} canonical={canonical} image={socialImage} imageAlt={socialImageAlt} imageWidth={1200} imageHeight={630} type="article" structuredData={[articleSchema, breadcrumbSchema]}>
   <Navbar ctaLabel="Request available times" />
   <main id="top">
     <article>
