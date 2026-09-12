@@ -1,0 +1,511 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import {
+  STATUS_DEFINITIONS,
+  PHASES,
+  roadmapEntries,
+  measurementNotes,
+  changeLog,
+  statusCounts,
+} from "../data/seoAioStrategy.mjs";
+
+const pageTitle = "SEO & AIO Strategy: Markethink's Public 30-Day Roadmap";
+const pageDescription = "Follow Markethink's evidence-led 30-day SEO and AI-search roadmap, status definitions, verification criteria, measurement plan, and dated change log.";
+const canonical = "https://markethink.ai/seo-aio-strategy/";
+const releaseDate = "2026-09-12";
+const groupedPhases = PHASES.map((phase) => ({
+  ...phase,
+  entries: roadmapEntries.filter((entry) => entry.phaseId === phase.id),
+}));
+const displayDate = (value) => new Intl.DateTimeFormat("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+}).format(new Date(`${value}T00:00:00Z`));
+const statusClass = (status) => status.toLowerCase().replace(/\s+/g, "-");
+
+const articleSchema = {
+  "@type": "Article",
+  headline: "Steal our SEO & AIO strategy.",
+  description: pageDescription,
+  url: canonical,
+  datePublished: releaseDate,
+  dateModified: releaseDate,
+  inLanguage: "en",
+  isAccessibleForFree: true,
+  author: { "@type": "Organization", "@id": "https://markethink.ai/#organization", name: "Markethink" },
+  about: ["Search engine optimization", "AI-assisted search", "Marketing operations"],
+  citation: [
+    "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "https://developers.google.com/search/docs/appearance/ai-features",
+    "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+  ],
+};
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+    { "@type": "ListItem", position: 2, name: "SEO & AIO Strategy", item: canonical },
+  ],
+};
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonical}
+  image="/images/logo.svg"
+  imageAlt="Markethink"
+  type="article"
+  structuredData={[articleSchema, breadcrumbSchema]}
+>
+  <header class="site-header"><Navbar ctaLabel="Request available times" /></header>
+  <main id="top" class="strategy-page">
+    <article>
+      <header class="strategy-hero">
+        <div class="container hero-shell">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span aria-hidden="true">/</span><span>SEO & AIO strategy</span>
+          </nav>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">A PUBLIC WORKING DOCUMENT · EDITION 01</p>
+              <h1>Steal our SEO &amp; AIO strategy.</h1>
+              <p class="supporting-line">Watch us implement it on Markethink.ai.</p>
+            </div>
+            <div class="hero-brief">
+              <p>
+                This is Markethink's documented experiment: a 30-day sequence that starts with buyer evidence, improves the pages that already own the demand, adds permissioned proof, and checks what actually changed.
+              </p>
+              <p>
+                AIO means improving how useful, accurate content is found and represented in AI-assisted search. It builds on conventional SEO. It is not a guaranteed ranking recipe.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-opening" aria-label="Roadmap sequence">
+            {PHASES.slice(0, 6).map((phase, index) => (
+              <a href={`#${phase.id}`}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{phase.label}</strong>
+                <small>{phase.shortLabel}</small>
+              </a>
+            ))}
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="/downloads/seo-aio-strategy-checklist.md" download>Download the reusable checklist <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#roadmap">Read the roadmap</a>
+          </div>
+        </div>
+      </header>
+
+      <section class="principles-section" aria-labelledby="principles-title">
+        <div class="container principles-grid">
+          <div>
+            <p class="eyebrow dark-eyebrow">THE OPERATING RULE</p>
+            <h2 id="principles-title">Evidence before expansion.</h2>
+          </div>
+          <div class="principles-copy">
+            <p class="lead">Publishing more pages is easy. Proving which buyer question, URL, evidence gap, and business action each page should own is the work.</p>
+            <div class="principle-list">
+              <article><span>01</span><div><h3>Improve what exists first.</h3><p>Map buyer needs to current URLs before proposing another page.</p></div></article>
+              <article><span>02</span><div><h3>Keep proof close to the claim.</h3><p>Use approved evidence, state its limits, and leave missing results unfilled.</p></div></article>
+              <article><span>03</span><div><h3>Measure three different outcomes.</h3><p>Organic discovery, observed AI-search representation, and qualified inquiries are separate signals.</p></div></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-section" id="status-definitions" aria-labelledby="status-title">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div><p class="eyebrow">STATUS LANGUAGE</p><h2 id="status-title">Published is not the same as proven.</h2></div>
+            <p>Counts come directly from the structured roadmap entries. They do not move with the calendar, and this page never converts them into a completion percentage.</p>
+          </div>
+          <div class="status-grid">
+            {STATUS_DEFINITIONS.map((status) => (
+              <article class:list={["status-card", `status-${statusClass(status.label)}`]} data-status-count={status.label}>
+                <div><span class="status-name">{status.label}</span><strong>{statusCounts[status.label]}</strong></div>
+                <p>{status.definition}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div><p class="eyebrow dark-eyebrow">THE FULL ROADMAP</p><h2 id="roadmap-title">Every action has a finish line.</h2></div>
+            <p>{roadmapEntries.length} structured actions. No automatic day-based progress. Dates appear only where a public release or acceptance check has evidence.</p>
+          </div>
+
+          <nav class="phase-filters" aria-label="Filter roadmap by phase">
+            <button type="button" data-phase-filter="all" aria-pressed="true">All {roadmapEntries.length}</button>
+            {PHASES.map((phase) => <button type="button" data-phase-filter={phase.id} aria-pressed="false">{phase.label}</button>)}
+          </nav>
+          <p class="filter-result" aria-live="polite">Showing all {roadmapEntries.length} actions.</p>
+          <noscript><p class="noscript-note">All actions are visible. Phase filtering is an optional browser enhancement.</p></noscript>
+
+          <div class="phase-list">
+            {groupedPhases.map((phase, phaseIndex) => (
+              <section class="phase" id={phase.id} data-phase-group={phase.id} aria-labelledby={`${phase.id}-title`}>
+                <header class="phase-header">
+                  <div class="phase-number">{String(phaseIndex + 1).padStart(2, "0")}</div>
+                  <div><p>{phase.label}</p><h3 id={`${phase.id}-title`}>{phase.shortLabel}</h3></div>
+                  <span>{phase.entries.length} {phase.entries.length === 1 ? "action" : "actions"}</span>
+                </header>
+                <div class="entry-list">
+                  {phase.entries.map((entry) => (
+                    <article class="entry-card" data-roadmap-entry={entry.id}>
+                      <header class="entry-header">
+                        <div>
+                          <p class="entry-window">{entry.window}</p>
+                          <h4>{entry.title}</h4>
+                        </div>
+                        <span class:list={["status-pill", `status-${statusClass(entry.status)}`]}>{entry.status}</span>
+                      </header>
+                      <div class="entry-body">
+                        <div class="why-block">
+                          <p class="field-label">Why</p>
+                          <p>{entry.why}</p>
+                          <dl>
+                            <div><dt>Target page</dt><dd>{entry.targetPage}</dd></div>
+                            <div><dt>Verified date</dt><dd>{entry.verifiedDate ? displayDate(entry.verifiedDate) : "Not yet verified"}</dd></div>
+                            <div>
+                              <dt>Public evidence</dt>
+                              <dd>{entry.evidenceUrl ? <a href={entry.evidenceUrl}>{entry.evidenceLabel}</a> : "No public evidence link available"}</dd>
+                            </div>
+                          </dl>
+                        </div>
+                        <div class="how-block">
+                          <p class="field-label">Repeatable how</p>
+                          <ol>{entry.how.map((step) => <li>{step}</li>)}</ol>
+                        </div>
+                        <div class="done-block">
+                          <p class="field-label">Done criteria</p>
+                          <ul>{entry.doneCriteria.map((criterion) => <li>{criterion}</li>)}</ul>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="measurement-section" id="measurement" aria-labelledby="measurement-title">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div><p class="eyebrow dark-eyebrow">MEASUREMENT NOTES</p><h2 id="measurement-title">Three lanes, three honest baselines.</h2></div>
+            <p>Future observations must include a source, date, scope, and denominator. A missing baseline is Not yet measured, never zero.</p>
+          </div>
+          <div class="measurement-grid">
+            {measurementNotes.map((note, index) => (
+              <article data-measurement-lane={note.id}>
+                <div class="measurement-index">0{index + 1}</div>
+                <p class="measurement-label">{note.label}</p>
+                <strong>{note.currentValue}</strong>
+                <h3>What we will observe</h3>
+                <p>{note.measure}</p>
+                <h3>Important limit</h3>
+                <p>{note.limit}</p>
+                <div class="required-fields">Required on every observation: {note.futureObservationRequirements.join(" · ")}</div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="methodology-section" id="methodology" aria-labelledby="methodology-title">
+        <div class="container method-grid">
+          <div class="method-heading">
+            <p class="eyebrow dark-eyebrow">METHOD, NOT MAGIC</p>
+            <h2 id="methodology-title">What AIO changes, and what it does not.</h2>
+          </div>
+          <div class="method-copy">
+            <p class="lead">Conventional SEO, useful original or first-hand content, accurate facts, crawlable pages, internal links, and clear site structure remain central.</p>
+            <p>Google's current official guidance says its generative AI search features use core Search ranking and quality systems. It recommends valuable, non-commodity content and a clear technical structure. It also says there is no special schema.org type, AI text file, or additional technical requirement that guarantees inclusion.</p>
+            <p>Structured data still helps search systems understand eligible page types when it matches visible content. It does not guarantee a rich result, ranking, mention, or citation.</p>
+            <div class="source-list">
+              <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">
+                <span>Google Search Central · Updated July 10, 2026</span>
+                <strong>Optimizing your website for generative AI features on Google Search</strong>
+              </a>
+              <a href="https://developers.google.com/search/docs/appearance/ai-features">
+                <span>Google Search Central · Site-owner guidance</span>
+                <strong>AI features and your website</strong>
+              </a>
+              <a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content">
+                <span>Google Search Central · Content guidance</span>
+                <strong>Using generative AI content on your website</strong>
+              </a>
+            </div>
+            <div class="method-note">
+              <h3>Experiment boundary</h3>
+              <p>We are documenting what Markethink changes, when it changes, what acceptance check passed, and what we observe afterward. We are not claiming that every older strategy or vendor measurement has been independently verified, and we are not promising rankings, citations, traffic, leads, or revenue.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reading-section" aria-labelledby="reading-title">
+        <div class="container reading-grid">
+          <div><p class="eyebrow">RELATED FIELD NOTES</p><h2 id="reading-title">Read the evidence behind the operating plan.</h2></div>
+          <div class="reading-links">
+            <a href="/blog/how-to-show-up-in-ai-search/">
+              <span>Practical guide</span>
+              <strong>How to get your business to show up in AI search</strong>
+              <p>Read the source-backed foundation, readiness checks, evidence model, and measurement limits.</p>
+            </a>
+            <a href="/ai-marketing-statistics/">
+              <span>Research ledger</span>
+              <strong>AI marketing statistics, with the source behind every number</strong>
+              <p>Review the public statistics, study scopes, original-source links, and downloadable source ledgers.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="change-log-section" id="change-log" aria-labelledby="change-log-title">
+        <div class="container change-grid">
+          <div><p class="eyebrow dark-eyebrow">APPEND-ONLY CHANGE LOG</p><h2 id="change-log-title">What changed.</h2></div>
+          <ol class="change-list">
+            {changeLog.map((change) => (
+              <li id={change.id}>
+                <time datetime={change.date}>{displayDate(change.date)}</time>
+                <div><h3>{change.title}</h3><p>{change.detail}</p></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="closing-section" aria-labelledby="closing-title">
+        <div class="container closing-grid">
+          <div>
+            <p class="eyebrow dark-eyebrow">USE THE PLAYBOOK</p>
+            <h2 id="closing-title">Bring us the search and pipeline gap you need to understand.</h2>
+            <p>We will map the buyer question, page ownership, evidence, measurement, and next decision before recommending more content.</p>
+          </div>
+          <div class="closing-action">
+            <a class="button" href="/schedule-a-walkthrough/">Request available times</a>
+            <p>The existing form requests available times. It does not book a meeting.</p>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+  <Footer walkthroughLabel="Request available times" description="Markethink is an AI marketing system managed by expert marketers. We learn your business, run marketing day to day, and connect campaigns to leads and follow-up." />
+</Layout>
+
+<script>
+  const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-phase-filter]"));
+  const phaseGroups = Array.from(document.querySelectorAll<HTMLElement>("[data-phase-group]"));
+  const result = document.querySelector<HTMLElement>(".filter-result");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selected = button.dataset.phaseFilter ?? "all";
+      let visibleActions = 0;
+      filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      phaseGroups.forEach((group) => {
+        const visible = selected === "all" || group.dataset.phaseGroup === selected;
+        group.hidden = !visible;
+        if (visible) visibleActions += group.querySelectorAll("[data-roadmap-entry]").length;
+      });
+      if (result) result.textContent = `Showing ${visibleActions} ${visibleActions === 1 ? "action" : "actions"}.`;
+      if (selected !== "all") document.getElementById(selected)?.scrollIntoView({ block: "start" });
+    });
+  });
+</script>
+
+<style>
+  :global(html) { scroll-behavior: smooth; }
+  :global(body) { background: #0f1213; }
+  .strategy-page { --ink: #0f1213; --paper: #f5f5f1; --wash: #edf4ea; --green: #69d254; --gray: #686b6c; --gray-light: #b4b6b6; color: var(--ink); overflow: clip; }
+  .strategy-hero { padding: 8.4rem 0 3.2rem; background: var(--ink); color: var(--paper); }
+  .hero-shell { position: relative; }
+  .breadcrumbs { display: flex; gap: .55rem; align-items: center; margin-bottom: clamp(2.2rem, 5vw, 4rem); color: var(--gray-light); font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; }
+  .breadcrumbs a { color: inherit; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(18rem, .55fr); gap: clamp(2rem, 7vw, 7rem); align-items: end; }
+  .eyebrow { color: var(--green); font: 700 .69rem/1.25 Inter, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+  .dark-eyebrow { color: var(--ink); }
+  h1 { max-width: 11ch; margin-top: 1rem; font: 400 clamp(4.1rem, 8.1vw, 8.3rem)/.84 "Instrument Serif", Georgia, serif; letter-spacing: -.045em; text-wrap: balance; }
+  .supporting-line { margin-top: 1.2rem; color: var(--green); font-size: clamp(1.15rem, 2vw, 1.65rem); font-weight: 600; letter-spacing: -.025em; }
+  .hero-brief { display: grid; gap: 1.3rem; padding-bottom: .5rem; }
+  .hero-brief p { color: rgba(245,245,241,.7); font-size: clamp(.94rem, 1.2vw, 1.08rem); line-height: 1.65; }
+  .hero-brief p + p { padding-top: 1.3rem; border-top: 1px solid rgba(245,245,241,.18); color: var(--paper); }
+  .timeline-opening { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: clamp(3rem, 7vw, 6rem); border-block: 1px solid rgba(245,245,241,.2); }
+  .timeline-opening a { position: relative; display: flex; min-height: 8.7rem; flex-direction: column; padding: 1rem .9rem; border-right: 1px solid rgba(245,245,241,.16); }
+  .timeline-opening a:last-child { border-right: 0; }
+  .timeline-opening span { color: var(--green); font-size: .65rem; font-variant-numeric: tabular-nums; }
+  .timeline-opening strong { margin-top: auto; font-size: .82rem; font-weight: 650; }
+  .timeline-opening small { margin-top: .25rem; color: var(--gray-light); font-size: .67rem; line-height: 1.3; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; align-items: center; margin-top: 1.7rem; }
+  .button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: .65rem; padding: .76rem 1.08rem; border: 1px solid var(--green); border-radius: 999px; background: var(--green); color: var(--ink); font-size: .78rem; font-weight: 750; }
+  .button:hover { background: #7cdd68; border-color: #7cdd68; }
+  .text-link { color: var(--paper); font-size: .77rem; text-decoration: underline; text-underline-offset: .28em; }
+  .principles-section { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--wash); }
+  .principles-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(2rem, 8vw, 8rem); }
+  h2 { max-width: 15ch; margin-top: .75rem; font: 400 clamp(2.8rem, 5.5vw, 5.3rem)/.94 "Instrument Serif", Georgia, serif; letter-spacing: -.035em; text-wrap: balance; }
+  .lead { color: var(--ink); font-size: clamp(1.12rem, 1.8vw, 1.45rem); line-height: 1.5; }
+  .principle-list { margin-top: 2rem; border-top: 1px solid rgba(15,18,19,.28); }
+  .principle-list article { display: grid; grid-template-columns: 2.8rem 1fr; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(15,18,19,.18); }
+  .principle-list article > span { color: #356c2d; font-size: .68rem; font-weight: 700; }
+  .principle-list h3 { font: 600 1rem/1.35 Inter, system-ui, sans-serif; }
+  .principle-list p { margin-top: .25rem; color: var(--gray); font-size: .83rem; line-height: 1.55; }
+  .status-section { padding: clamp(4rem, 7vw, 6rem) 0; background: var(--ink); color: var(--paper); }
+  .section-heading { margin-bottom: 2rem; }
+  .split-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, .45fr); gap: 2rem 5rem; align-items: end; }
+  .split-heading h2 { max-width: 16ch; }
+  .split-heading > p { color: var(--gray-light); font-size: .86rem; line-height: 1.6; }
+  .roadmap-section .split-heading > p, .measurement-section .split-heading > p { color: var(--gray); }
+  .status-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid rgba(245,245,241,.22); }
+  .status-card { min-height: 13rem; padding: 1.1rem; border-right: 1px solid rgba(245,245,241,.18); }
+  .status-card:last-child { border-right: 0; }
+  .status-card > div { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+  .status-card strong { color: var(--green); font: 400 3.4rem/1 "Instrument Serif", Georgia, serif; }
+  .status-name { padding: .4rem .55rem; border: 1px solid rgba(245,245,241,.28); border-radius: 999px; color: var(--paper); font-size: .65rem; font-weight: 700; }
+  .status-card p { margin-top: 2.2rem; color: var(--gray-light); font-size: .72rem; line-height: 1.55; }
+  .roadmap-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--paper); }
+  .phase-filters { display: flex; gap: .5rem; overflow-x: auto; margin: 2.5rem 0 .75rem; padding-bottom: .45rem; scrollbar-width: thin; }
+  .phase-filters button { flex: 0 0 auto; min-height: 42px; padding: .62rem .85rem; border: 1px solid rgba(15,18,19,.2); border-radius: 999px; background: transparent; color: var(--ink); font: 650 .72rem/1 Inter, system-ui, sans-serif; cursor: pointer; }
+  .phase-filters button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+  .filter-result, .noscript-note { color: var(--gray); font-size: .72rem; }
+  .phase-list { margin-top: 3rem; }
+  .phase { scroll-margin-top: 5.8rem; padding: 2.2rem 0 4.8rem; border-top: 2px solid var(--ink); }
+  .phase[hidden] { display: none; }
+  .phase-header { display: grid; grid-template-columns: 4.5rem 1fr auto; gap: 1rem; align-items: start; margin-bottom: 1.5rem; }
+  .phase-number { color: #356c2d; font: 400 3.5rem/1 "Instrument Serif", Georgia, serif; }
+  .phase-header p { color: var(--gray); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .phase-header h3 { margin-top: .2rem; font: 400 clamp(2rem, 3.7vw, 3.3rem)/1 "Instrument Serif", Georgia, serif; }
+  .phase-header > span { color: var(--gray); font-size: .7rem; }
+  .entry-list { display: grid; gap: 1rem; }
+  .entry-card { border: 1px solid rgba(15,18,19,.2); border-radius: 1rem; background: #fff; overflow: hidden; }
+  .entry-header { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; padding: 1.15rem 1.2rem; border-bottom: 1px solid rgba(15,18,19,.14); }
+  .entry-window { color: #356c2d; font-size: .66rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
+  .entry-header h4 { max-width: 44rem; margin-top: .4rem; font: 600 clamp(1.15rem, 2vw, 1.55rem)/1.22 Inter, system-ui, sans-serif; letter-spacing: -.025em; }
+  .status-pill { display: inline-flex; align-items: center; min-height: 28px; padding: .36rem .58rem; border-radius: 999px; background: #e2e3df; color: var(--ink); font-size: .64rem; font-weight: 750; white-space: nowrap; }
+  .status-pill.status-in-progress, .status-pill.status-live { background: var(--ink); color: var(--paper); }
+  .status-pill.status-verified { background: var(--green); color: var(--ink); }
+  .status-pill.status-blocked { border: 1px solid var(--ink); background: transparent; }
+  .entry-body { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.12fr) minmax(0, 1.06fr); }
+  .entry-body > div { min-width: 0; padding: 1.2rem; border-right: 1px solid rgba(15,18,19,.12); }
+  .entry-body > div:last-child { border-right: 0; }
+  .field-label { margin-bottom: .75rem; color: var(--gray); font-size: .64rem; font-weight: 750; letter-spacing: .11em; text-transform: uppercase; }
+  .why-block > p:nth-child(2) { font-size: .8rem; line-height: 1.6; }
+  .why-block dl { margin-top: 1.2rem; }
+  .why-block dl > div { padding: .65rem 0; border-top: 1px solid rgba(15,18,19,.11); }
+  .why-block dt { color: var(--gray); font-size: .59rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+  .why-block dd { margin-top: .18rem; color: #414647; font-size: .68rem; line-height: 1.48; overflow-wrap: anywhere; }
+  .why-block a { color: #214f1d; font-weight: 700; text-decoration: underline; text-underline-offset: .18em; }
+  .how-block ol, .done-block ul { display: grid; gap: .72rem; padding-left: 1.1rem; }
+  .how-block li, .done-block li { padding-left: .2rem; color: #404546; font-size: .76rem; line-height: 1.55; }
+  .how-block li::marker { color: #356c2d; font-weight: 700; }
+  .done-block ul { list-style: none; padding-left: 0; }
+  .done-block li { position: relative; padding-left: 1.45rem; }
+  .done-block li::before { content: ""; position: absolute; left: 0; top: .35rem; width: .7rem; height: .7rem; border: 1px solid #4d5152; border-radius: .12rem; }
+  .measurement-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--wash); }
+  .measurement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgba(15,18,19,.2); background: var(--paper); }
+  .measurement-grid article { min-height: 26rem; padding: 1.2rem; border-right: 1px solid rgba(15,18,19,.16); }
+  .measurement-grid article:last-child { border-right: 0; }
+  .measurement-index { color: #356c2d; font-size: .67rem; font-weight: 700; }
+  .measurement-label { margin-top: 2.5rem; color: var(--gray); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .measurement-grid strong { display: block; margin: .45rem 0 2rem; font: 400 clamp(2rem, 3.3vw, 3.2rem)/.95 "Instrument Serif", Georgia, serif; }
+  .measurement-grid h3 { margin-top: 1rem; font: 650 .75rem/1.3 Inter, system-ui, sans-serif; }
+  .measurement-grid h3 + p { margin-top: .35rem; color: var(--gray); font-size: .75rem; line-height: 1.55; }
+  .required-fields { margin-top: 1.2rem; padding-top: .8rem; border-top: 1px solid rgba(15,18,19,.16); color: #404546; font-size: .65rem; line-height: 1.5; }
+  .methodology-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--paper); }
+  .method-copy > p + p { margin-top: 1rem; color: var(--gray); font-size: .9rem; line-height: 1.68; }
+  .source-list { margin-top: 2rem; border-top: 1px solid rgba(15,18,19,.28); }
+  .source-list a { display: block; padding: 1rem 2rem 1rem 0; border-bottom: 1px solid rgba(15,18,19,.17); color: var(--ink); background: linear-gradient(var(--green), var(--green)) right 1rem center / .7rem .7rem no-repeat; }
+  .source-list span { display: block; color: #356c2d; font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+  .source-list strong { display: block; margin-top: .3rem; font-size: .84rem; line-height: 1.4; }
+  .method-note { margin-top: 2rem; padding: 1.2rem; border: 1px solid rgba(15,18,19,.2); background: var(--wash); }
+  .method-note h3 { font: 650 .85rem/1.3 Inter, system-ui, sans-serif; }
+  .method-note p { margin-top: .45rem; color: var(--gray); font-size: .78rem; line-height: 1.6; }
+  .reading-section { padding: clamp(4rem, 7vw, 6rem) 0; background: var(--ink); color: var(--paper); }
+  .reading-links { border-top: 1px solid rgba(245,245,241,.24); }
+  .reading-links a { display: block; padding: 1.15rem 0; border-bottom: 1px solid rgba(245,245,241,.18); }
+  .reading-links span { color: var(--green); font-size: .63rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .reading-links strong { display: block; margin-top: .3rem; font-size: 1rem; }
+  .reading-links p { margin-top: .35rem; color: var(--gray-light); font-size: .78rem; line-height: 1.55; }
+  .change-log-section { padding: clamp(4rem, 7vw, 6rem) 0; background: var(--paper); }
+  .change-list { list-style: none; border-top: 1px solid rgba(15,18,19,.3); }
+  .change-list li { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(15,18,19,.18); }
+  .change-list time { font-size: .72rem; font-weight: 700; }
+  .change-list h3 { font: 650 .95rem/1.35 Inter, system-ui, sans-serif; }
+  .change-list p { margin-top: .3rem; color: var(--gray); font-size: .78rem; line-height: 1.58; }
+  .closing-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--wash); }
+  .closing-grid { align-items: end; }
+  .closing-grid h2 { max-width: 17ch; }
+  .closing-grid h2 + p { max-width: 45rem; margin-top: 1rem; color: var(--gray); font-size: .9rem; line-height: 1.65; }
+  .closing-action { display: flex; flex-direction: column; align-items: flex-start; gap: .7rem; }
+  .closing-action p { max-width: 20rem; color: var(--gray); font-size: .66rem; line-height: 1.5; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+
+  @media (max-width: 980px) {
+    .hero-grid, .split-heading, .principles-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { grid-template-columns: 1fr; }
+    .hero-brief { max-width: 46rem; }
+    .timeline-opening { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .timeline-opening a:nth-child(3) { border-right: 0; }
+    .timeline-opening a:nth-child(-n+3) { border-bottom: 1px solid rgba(245,245,241,.16); }
+    .status-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .status-card { border-bottom: 1px solid rgba(245,245,241,.18); }
+    .status-card:nth-child(3) { border-right: 0; }
+    .status-card:nth-child(n+4) { border-bottom: 0; }
+    .entry-body { grid-template-columns: 1fr 1fr; }
+    .entry-body > div:nth-child(2) { border-right: 0; }
+    .entry-body > div:last-child { grid-column: 1 / -1; border-top: 1px solid rgba(15,18,19,.12); }
+    .measurement-grid { grid-template-columns: 1fr; }
+    .measurement-grid article { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(15,18,19,.16); }
+    .measurement-grid article:last-child { border-bottom: 0; }
+  }
+
+  @media (max-width: 680px) {
+    .strategy-hero { padding: 6.8rem 0 2.5rem; }
+    .breadcrumbs { margin-bottom: 2rem; }
+    h1 { max-width: 8.5ch; font-size: clamp(3.55rem, 17vw, 5.2rem); }
+    .supporting-line { font-size: 1.08rem; }
+    .hero-actions { align-items: stretch; flex-direction: column; }
+    .hero-actions .button { width: 100%; }
+    .timeline-opening { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .timeline-opening a { min-height: 7.4rem; }
+    .timeline-opening a:nth-child(3) { border-right: 1px solid rgba(245,245,241,.16); }
+    .timeline-opening a:nth-child(-n+4) { border-bottom: 1px solid rgba(245,245,241,.16); }
+    .timeline-opening a:nth-child(2n) { border-right: 0; }
+    .principles-section, .status-section, .roadmap-section, .measurement-section, .methodology-section, .reading-section, .change-log-section, .closing-section { padding-block: 3.6rem; }
+    h2 { font-size: clamp(2.65rem, 13vw, 4rem); }
+    .status-grid { grid-template-columns: 1fr; }
+    .status-card { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(245,245,241,.18) !important; }
+    .status-card:last-child { border-bottom: 0 !important; }
+    .status-card p { margin-top: 1.2rem; }
+    .phase { scroll-margin-top: 1rem; padding-bottom: 3.6rem; }
+    .phase-header { grid-template-columns: 3.2rem 1fr; }
+    .phase-header > span { grid-column: 2; }
+    .phase-number { font-size: 2.8rem; }
+    .entry-header { grid-template-columns: 1fr; }
+    .status-pill { justify-self: start; }
+    .entry-body { grid-template-columns: 1fr; }
+    .entry-body > div, .entry-body > div:nth-child(2) { border-right: 0; border-bottom: 1px solid rgba(15,18,19,.12); }
+    .entry-body > div:last-child { grid-column: auto; border-top: 0; border-bottom: 0; }
+    .measurement-grid strong { font-size: 2.5rem; }
+    .change-list li { grid-template-columns: 1fr; gap: .45rem; }
+  }
+
+  @media (max-width: 350px) {
+    .strategy-hero { padding-top: 6.2rem; }
+    h1 { font-size: 3.3rem; }
+    .timeline-opening { grid-template-columns: 1fr; }
+    .timeline-opening a, .timeline-opening a:nth-child(3), .timeline-opening a:nth-child(2n) { min-height: 6.4rem; border-right: 0; border-bottom: 1px solid rgba(245,245,241,.16); }
+    .timeline-opening a:last-child { border-bottom: 0; }
+    .entry-card { border-radius: .75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } }
+</style>

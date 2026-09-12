@@ -103,6 +103,12 @@ const staticPages: SitemapPage[] = [
     lastmod: "2026-09-12",
   },
   {
+    path: "/seo-aio-strategy/",
+    priority: "0.8",
+    changefreq: "weekly",
+    lastmod: "2026-09-12",
+  },
+  {
     path: "/ai-marketing-for-law-firms/",
     priority: "0.9",
     changefreq: "monthly",
