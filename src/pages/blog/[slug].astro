@@ -346,6 +346,30 @@ const breadcrumbSchema = {
   <Footer />
 </Layout>
 
+<style is:global>
+  @media (max-width: 359px) {
+    .audit-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .audit-copy,
+    .audit-form {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    .audit-form iframe,
+    .audit-form iframe + *,
+    .audit-form:has(iframe) div:has(> iframe),
+    .audit-form:has(iframe) div:has(> div > iframe) {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+  }
+</style>
+
 <style>
   .article-page {
     background: var(--bg-primary);
