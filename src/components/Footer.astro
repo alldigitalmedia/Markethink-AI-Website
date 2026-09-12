@@ -1,6 +1,6 @@
 ---
-interface Props { lang?: "en" | "es"; }
-const { lang = "en" } = Astro.props;
+interface Props { lang?: "en" | "es"; walkthroughLabel?: string; description?: string; }
+const { lang = "en", walkthroughLabel, description } = Astro.props;
 const isSpanish = lang === "es";
 
 const exploreLinks = isSpanish ? [
@@ -29,6 +29,10 @@ const connectLinks = isSpanish ? [
   { label: "Log in", href: "https://dashboard.markethink.ai/" },
 ];
 
+if (!isSpanish && walkthroughLabel) {
+  connectLinks[0] = { ...connectLinks[0], label: walkthroughLabel };
+}
+
 const companyLinks = isSpanish ? [
   { label: "Privacidad", href: "/privacy/", external: false },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/markethink-ai/", external: true },
@@ -44,7 +48,7 @@ const companyLinks = isSpanish ? [
   <footer class="site-footer">
     <div class="site-footer-brand">
       <a href={isSpanish ? "/es/" : "/"} aria-label={isSpanish ? "Inicio de Markethink" : "Markethink home"}><img src="/images/logo.svg" alt="Markethink" /></a>
-      <p>{isSpanish ? "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día y conecta las campañas con prospectos y seguimiento." : "Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up."}</p>
+      <p>{description ?? (isSpanish ? "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día y conecta las campañas con prospectos y seguimiento." : "Markethink is an AI marketing system managed by expert marketers. It learns your business, runs marketing day to day, and connects campaigns to leads and follow-up.")}</p>
     </div>
     <nav class="site-footer-nav" aria-label={isSpanish ? "Navegación del pie" : "Footer navigation"}>
       <div>
