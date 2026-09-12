@@ -192,17 +192,33 @@ const breadcrumbSchema = {
             {post.intro.map((paragraph) => <p>{paragraph}</p>)}
             {
               post.seoHubLink && (
-                <p class="article-hub-link">
-                  {post.seoHubLink.copy}{" "}
-                  <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a>{" "}
-                  guide explains how to turn tools, content, approvals, and
-                  follow-up into one repeatable marketing system.
-                </p>
+                isRepresentativeAgencyGuide ? (
+                  <p class="article-hub-link">
+                    {post.seoHubLink.copy}{" "}
+                    <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a>. Our{" "}
+                    <a href="/ai-marketing-for-small-business/">AI marketing for small business guide</a>{" "}
+                    explains how to turn tools, content, approvals, and follow-up into one repeatable marketing system.
+                  </p>
+                ) : (
+                  <p class="article-hub-link">
+                    {post.seoHubLink.copy}{" "}
+                    <a href={post.seoHubLink.href}>{post.seoHubLink.anchor}</a>{" "}
+                    guide explains how to turn tools, content, approvals, and
+                    follow-up into one repeatable marketing system.
+                  </p>
+                )
               )
             }
             {
               post.recommendedGuide && (
-                isAiLogoBrandIdentityGuide ? (
+                isRepresentativeAgencyGuide ? (
+                  <p class="article-hub-link article-hub-link--guide">
+                    {post.recommendedGuide.copy}{" "}
+                    <a href={post.recommendedGuide.href}>{post.recommendedGuide.anchor}</a>. For current adoption,
+                    use-case, trust, and human-review evidence, explore the{" "}
+                    <a href="/ai-marketing-statistics/">AI Marketing Statistics 2026 research ledger</a>.
+                  </p>
+                ) : isAiLogoBrandIdentityGuide ? (
                   <p class="article-hub-link article-hub-link--guide">
                     {post.recommendedGuide.copy}{" "}
                     <a href={post.recommendedGuide.href}>{post.recommendedGuide.anchor}</a>.
@@ -218,12 +234,6 @@ const breadcrumbSchema = {
                 )
               )
             }
-            {post.slug === "what-is-an-ai-marketing-agency" && (
-              <p class="article-hub-link article-hub-link--research">
-                For current adoption, use-case, trust, and human-review evidence, explore the{" "}
-                <a href="/ai-marketing-statistics/">AI Marketing Statistics 2026 research ledger</a>.
-              </p>
-            )}
           </section>
 
           {
