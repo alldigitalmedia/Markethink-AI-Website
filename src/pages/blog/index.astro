@@ -8,6 +8,37 @@ import { insightPosts } from "../../data/blogPosts";
 const title = "AI Marketing Insights and Campaign Systems | Markethink";
 const description =
   "Read Markethink insights on consistent marketing, brand memory, AI workflows, campaign systems, and turning ideas into client opportunities.";
+const socialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-blog-index-og-1200x630.jpg";
+const socialImageAlt = "Nine illustrative business-owner editorial scenes showing marketing decisions across retail, making, hospitality, and service businesses.";
+
+const categoryLinks = [
+  { label: "All insights", href: "#all-insights" },
+  { label: "AI marketing", href: "#what-is-an-ai-marketing-agency" },
+  { label: "Search + research", href: "#seo-content-feedback-loop" },
+  { label: "Brand + operations", href: "#how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business" },
+  { label: "Campaign strategy", href: "#scattered-ideas-to-client-opportunities" },
+];
+
+const guideLinks = [
+  {
+    label: "Start here",
+    title: "AI marketing for small business",
+    copy: "How to turn scattered tools, prompts, approvals, and follow-up into a marketing system that ships every week.",
+    href: "/ai-marketing-for-small-business/",
+  },
+  {
+    label: "For law firms",
+    title: "AI marketing for law firms",
+    copy: "Connect SEO, AEO, content, advertising, intake, approvals, and follow-up with expert review.",
+    href: "/ai-marketing-for-law-firms/",
+  },
+  {
+    label: "For design studios",
+    title: "AI marketing for interior designers",
+    copy: "Turn project work into connected campaigns, content, approvals, inquiries, and follow-up.",
+    href: "/ai-marketing-for-interior-designers/",
+  },
+];
 
 const structuredData = [
   {
@@ -44,62 +75,125 @@ const structuredData = [
 ];
 ---
 
-<Layout title={title} description={description} canonical="https://markethink.ai/blog/" structuredData={structuredData}>
+<Layout title={title} description={description} canonical="https://markethink.ai/blog/" image={socialImage} imageAlt={socialImageAlt} imageWidth={1200} imageHeight={630} structuredData={structuredData}>
   <Navbar />
   <main class="blog-index">
     <section class="blog-hero">
-      <div class="container">
-        <p class="subtitle animate-fade-up">MARKETHINK INSIGHTS</p>
-        <h1 class="animate-fade-up">Better marketing systems for businesses that want to grow consistently.</h1>
-        <p class="blog-hero-copy animate-fade-up">
-          Practical thinking on AI marketing, brand memory, campaign workflow, content systems, and turning scattered ideas into client opportunities.
-        </p>
+      <div class="container blog-hero-grid">
+        <div class="hero-heading animate-fade-up">
+          <p class="eyebrow">MARKETHINK INSIGHTS · FIELD NOTES 01—09</p>
+          <h1>
+            Better marketing systems for businesses that want to <em>grow consistently.</em>
+          </h1>
+        </div>
+        <div class="hero-deck animate-fade-up">
+          <p>
+            Practical thinking on AI marketing, brand memory, campaign workflow, content systems, and turning scattered ideas into client opportunities.
+          </p>
+          <p class="hero-note">Research, field guides, and operating principles for marketing that keeps moving.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section dark">
+    <nav class="category-nav" aria-label="Browse insight topics">
+      <div class="container category-nav-inner">
+        <span>Browse</span>
+        {categoryLinks.map((item) => <a href={item.href}>{item.label}</a>)}
+      </div>
+    </nav>
+
+    <section class="research-section" aria-labelledby="featured-research-title">
       <div class="container">
-        <div class="featured-guides animate-fade-up">
-          <a class="featured-guide" href="/ai-marketing-for-small-business/">
-            <span>Start here</span>
-            <div>
-              <h2>AI marketing for small business</h2>
-              <p>How to turn scattered tools, prompts, approvals, and follow-up into a marketing system that ships every week.</p>
+        <a class="research-card animate-fade-up" href="/ai-marketing-statistics/">
+          <div class="research-copy">
+            <p class="research-label"><span></span> Featured research</p>
+            <h2 id="featured-research-title">AI Marketing Statistics 2026</h2>
+            <p class="research-summary">
+              A selective, source-led collection of AI marketing evidence with original sources, populations, research dates, definitions, sample sizes, and limitations kept close enough to check.
+            </p>
+            <div class="research-meta" aria-label="Research details">
+              <span>Substantively reviewed Sep 12, 2026</span>
+              <span>60 statistics · 9 original sources</span>
             </div>
-          </a>
-          <a class="featured-guide" href="/ai-marketing-for-law-firms/">
-            <span>For law firms</span>
-            <div>
-              <h2>AI marketing for law firms</h2>
-              <p>Connect SEO, AEO, content, advertising, intake, approvals, and follow-up with expert review.</p>
-            </div>
-          </a>
-          <a class="featured-guide" href="/ai-marketing-for-interior-designers/">
-            <span>For design studios</span>
-            <div>
-              <h2>AI marketing for interior designers</h2>
-              <p>Turn project work into connected campaigns, content, approvals, inquiries, and follow-up.</p>
-            </div>
-          </a>
+            <span class="research-cta">Explore the research <b aria-hidden="true">↗</b></span>
+          </div>
+          <figure class="research-image">
+            <picture>
+              <img
+                src="/images/ai-marketing-statistics-business-owner-v6.svg"
+                width="1536"
+                height="1024"
+                alt="An illustrative specialty-product business owner compares two campaign photo proofs beside her product while packing operations continue behind her."
+                fetchpriority="high"
+              />
+            </picture>
+            <figcaption>Evidence reviewed against original sources.</figcaption>
+          </figure>
+        </a>
+      </div>
+    </section>
+
+    <section class="insights-section" id="all-insights" aria-labelledby="latest-insights-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">THE EDITORIAL DESK</p>
+          <h2 id="latest-insights-title">Ideas built to be used.</h2>
+          <p>Clear frameworks, practical guides, and connected operating models. No trend-chasing without a next step.</p>
         </div>
         <div class="insight-grid animate-stagger">
-          {insightPosts.map((post) => (
-            <article class="insight-card">
+          {insightPosts.map((post, index) => (
+            <article class:list={["insight-card", `cover-treatment-${(index % 6) + 1}`]} id={post.slug}>
               <a href={`/blog/${post.slug}/`} aria-label={`Read ${post.title}`}>
                 <div class="insight-image">
-                  <img src={post.image} alt={post.imageAlt} loading="lazy" />
+                  <picture>
+                    <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/svg+xml" />
+                    <img
+                      src={post.image}
+                      alt={post.imageAlt}
+                      width="1536"
+                      height="1024"
+                      loading={index < 2 ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </picture>
+                  <span class="card-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div class="insight-content">
-                  <span>{post.category}</span>
-                  <h2>{post.title}</h2>
+                  <div class="card-topline">
+                    <span>{post.category}</span>
+                    <span>{post.readingTime}</span>
+                  </div>
+                  <h3>{post.title}</h3>
                   <p>{post.excerpt}</p>
                   <div class="insight-meta">
-                    <span>{post.readingTime}</span>
                     <span>Updated {new Date(post.updatedDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                    <b aria-hidden="true">↗</b>
                   </div>
                 </div>
               </a>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pathways-section" aria-labelledby="pathways-title">
+      <div class="container pathways-grid">
+        <div class="pathways-heading">
+          <p class="eyebrow">GO DEEPER</p>
+          <h2 id="pathways-title">Find the path that fits your business.</h2>
+        </div>
+        <div class="featured-guides">
+          {guideLinks.map((guide, index) => (
+            <a class="featured-guide" href={guide.href}>
+              <span class="guide-index">0{index + 1}</span>
+              <div>
+                <p>{guide.label}</p>
+                <h3>{guide.title}</h3>
+                <span>{guide.copy}</span>
+              </div>
+              <b aria-hidden="true">↗</b>
+            </a>
           ))}
         </div>
       </div>
@@ -111,152 +205,557 @@ const structuredData = [
 
 <style>
   .blog-index {
-    background: var(--bg-primary);
+    --paper: #f2efe5;
+    --paper-bright: #fbfaf5;
+    --ink: #0f1213;
+    --muted: #5f655f;
+    --green: #69d254;
+    --coral: #ff775f;
+    overflow: clip;
+    background: var(--paper);
+    color: var(--ink);
   }
 
   .blog-hero {
-    padding: 10rem 0 4rem;
+    padding: clamp(8.4rem, 12vw, 10.6rem) 0 clamp(3.2rem, 6vw, 5.8rem);
+    background:
+      radial-gradient(circle at 84% 8%, rgba(255, 119, 95, 0.16), transparent 26rem),
+      linear-gradient(180deg, #fbfaf5 0%, var(--paper) 100%);
   }
 
-  .blog-hero h1 {
-    max-width: 54rem;
-    margin-top: 1rem;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
-  }
-
-  .blog-hero-copy {
-    max-width: 43rem;
-    margin-top: 1.5rem;
-    color: rgba(255, 255, 255, 0.68);
-    font-size: 1.05rem;
-  }
-
-  .featured-guides {
+  .blog-hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: end;
   }
 
-  .featured-guide {
-    display: grid;
-    grid-template-columns: 10rem 1fr;
-    gap: 1.5rem;
-    align-items: center;
-    padding: 1.5rem;
-    border: 1px solid rgba(105, 210, 84, 0.28);
-    border-radius: var(--radius-medium);
-    background: rgba(105, 210, 84, 0.07);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-
-  .featured-guide:hover {
-    transform: translateY(-3px);
-    border-color: rgba(105, 210, 84, 0.52);
-  }
-
-  .featured-guide span {
-    color: var(--color-secondary);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+  .eyebrow {
+    color: #315b28;
+    font: 700 0.72rem/1.2 Inter, system-ui, sans-serif;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
   }
 
-  .featured-guide h2 {
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1;
+  .blog-hero h1 {
+    max-width: 52rem;
+    margin-top: 1.15rem;
+    font: 600 clamp(3.2rem, 5.8vw, 5.75rem)/0.94 Inter, system-ui, sans-serif;
+    letter-spacing: -0.065em;
+    text-wrap: balance;
   }
 
-  .featured-guide p {
-    margin-top: 0.75rem;
-    color: rgba(255, 255, 255, 0.66);
-    max-width: 44rem;
+  .blog-hero h1 em {
+    color: #315b28;
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+  }
+
+  .hero-deck {
+    padding-bottom: 0.35rem;
+  }
+
+  .hero-deck > p:first-child {
+    color: #313633;
+    font-size: clamp(1.04rem, 1.45vw, 1.22rem);
+    line-height: 1.58;
+  }
+
+  .hero-note {
+    margin-top: 1.4rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(15, 18, 19, 0.17);
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .category-nav {
+    position: relative;
+    z-index: 4;
+    border-block: 1px solid rgba(15, 18, 19, 0.12);
+    background: rgba(251, 250, 245, 0.84);
+    backdrop-filter: blur(14px);
+  }
+
+  .category-nav-inner {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    overflow-x: auto;
+    padding-block: 0.85rem;
+    scrollbar-width: none;
+  }
+
+  .category-nav-inner::-webkit-scrollbar { display: none; }
+
+  .category-nav-inner > span {
+    margin-right: 0.45rem;
+    color: #767b76;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .category-nav a {
+    flex: 0 0 auto;
+    padding: 0.56rem 0.88rem;
+    border: 1px solid rgba(15, 18, 19, 0.14);
+    border-radius: 999px;
+    background: transparent;
+    color: #343936;
+    font-size: 0.78rem;
+    font-weight: 650;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .category-nav a:hover,
+  .category-nav a:focus-visible {
+    border-color: #315b28;
+    background: #edf6e8;
+    transform: translateY(-1px);
+  }
+
+  .research-section {
+    padding: clamp(3.5rem, 7vw, 6.5rem) 0;
+  }
+
+  .research-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    min-height: 30rem;
+    overflow: hidden;
+    border: 1px solid rgba(15, 18, 19, 0.2);
+    border-radius: 2rem;
+    background: var(--ink);
+    color: #f7f6ef;
+    box-shadow: 0 30px 70px rgba(15, 18, 19, 0.13);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 38px 80px rgba(15, 18, 19, 0.2);
+  }
+
+  .research-card:focus-visible,
+  .insight-card > a:focus-visible,
+  .featured-guide:focus-visible,
+  .category-nav a:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 4px;
+  }
+
+  .research-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(2rem, 4vw, 3.8rem);
+  }
+
+  .research-copy::after {
+    content: "";
+    position: absolute;
+    right: -1.1rem;
+    bottom: 2.8rem;
+    width: 6rem;
+    height: 6rem;
+    border: 1.15rem solid var(--coral);
+    border-radius: 50%;
+    opacity: 0.86;
+  }
+
+  .research-label {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    color: var(--green);
+    font-size: 0.73rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .research-label span {
+    width: 0.62rem;
+    height: 0.62rem;
+    border-radius: 50%;
+    background: var(--coral);
+  }
+
+  .research-copy h2 {
+    max-width: 32rem;
+    margin-top: 2.1rem;
+    font: 600 clamp(3rem, 5vw, 5rem)/0.92 Inter, system-ui, sans-serif;
+    letter-spacing: -0.06em;
+    text-wrap: balance;
+  }
+
+  .research-summary {
+    max-width: 34rem;
+    margin-top: 1.8rem;
+    color: rgba(247, 246, 239, 0.72);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .research-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.25rem;
+    margin-top: auto;
+    padding-top: 2.2rem;
+    color: rgba(247, 246, 239, 0.55);
+    font-size: 0.76rem;
+  }
+
+  .research-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 21rem);
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(247, 246, 239, 0.18);
+    color: #fff;
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .research-cta b { color: var(--green); font-size: 1.2rem; }
+
+  .research-image {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background: #bbc4b6;
+  }
+
+  .research-image picture,
+  .research-image img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .research-image img {
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.045);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .research-card:hover .research-image img { transform: scale(1.09); }
+
+  .research-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 18, 19, 0.2), transparent 26%);
+    pointer-events: none;
+  }
+
+  .research-image figcaption {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 2;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.4rem;
+    background: rgba(15, 18, 19, 0.88);
+    color: #fff;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+  }
+
+  .insights-section {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    border-top: 1px solid rgba(15, 18, 19, 0.12);
+    background: var(--paper-bright);
+  }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.5fr);
+    gap: 1rem 4rem;
+    align-items: end;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .section-heading .eyebrow { grid-column: 1 / -1; }
+
+  .section-heading h2,
+  .pathways-heading h2 {
+    font: 600 clamp(2.7rem, 5vw, 4.9rem)/0.94 Inter, system-ui, sans-serif;
+    letter-spacing: -0.058em;
+  }
+
+  .section-heading > p:last-child {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
   }
 
   .insight-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.2rem, 2.4vw, 2rem);
   }
 
   .insight-card {
+    scroll-margin-top: 2rem;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-medium);
-    background: rgba(255, 255, 255, 0.02);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(15, 18, 19, 0.13);
+    border-radius: 1.35rem;
+    background: var(--paper);
+    box-shadow: 0 14px 36px rgba(15, 18, 19, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
   }
 
   .insight-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(105, 210, 84, 0.34);
+    transform: translateY(-6px);
+    border-color: rgba(49, 91, 40, 0.45);
+    box-shadow: 0 24px 50px rgba(15, 18, 19, 0.11);
   }
 
   .insight-image {
+    position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
+    border-bottom: 1px solid rgba(15, 18, 19, 0.13);
+    background: #dfe7d9;
   }
 
+  .insight-image::before,
+  .insight-image::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .insight-image picture,
   .insight-image img {
     width: 100%;
     height: 100%;
+  }
+
+  .insight-image img {
     object-fit: cover;
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  }
+
+  .insight-card:hover img { transform: scale(1.055); }
+
+  .card-index {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 3;
+    display: grid;
+    width: 2.3rem;
+    height: 2.3rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(15, 18, 19, 0.9);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 800;
+  }
+
+  .cover-treatment-1 .insight-image::before {
+    left: 1rem;
+    bottom: 1rem;
+    width: 4.7rem;
+    height: 4.7rem;
+    border: 0.7rem solid var(--coral);
+    border-radius: 50%;
+  }
+
+  .cover-treatment-2 .insight-image img { object-position: 58% center; transform: scale(1.1); }
+  .cover-treatment-2:hover .insight-image img { transform: scale(1.16); }
+  .cover-treatment-2 .insight-image::before {
+    inset: auto auto 0 0;
+    width: 36%;
+    height: 0.8rem;
+    background: var(--green);
+  }
+
+  .cover-treatment-3 .insight-image img { object-position: center 42%; filter: saturate(1.12) contrast(1.03); }
+  .cover-treatment-3 .insight-image::before {
+    top: 1rem;
+    left: 1rem;
+    width: 1.1rem;
+    height: calc(100% - 2rem);
+    background: var(--coral);
+  }
+
+  .cover-treatment-4 .insight-image img { object-position: 60% center; transform: scale(1.08); }
+  .cover-treatment-4:hover .insight-image img { transform: scale(1.14); }
+  .cover-treatment-4 .insight-image::before {
+    right: -2rem;
+    bottom: -2rem;
+    width: 8rem;
+    height: 8rem;
+    border: 1.2rem solid rgba(105, 210, 84, 0.88);
+    border-radius: 50%;
+  }
+
+  .cover-treatment-5 .insight-image img { object-position: center 62%; filter: contrast(1.08) saturate(0.92); }
+  .cover-treatment-5 .insight-image::before {
+    inset: 0;
+    border: 0.55rem solid rgba(255, 119, 95, 0.78);
+  }
+
+  .cover-treatment-6 .insight-image img { object-position: 38% center; transform: scale(1.14); }
+  .cover-treatment-6:hover .insight-image img { transform: scale(1.2); }
+  .cover-treatment-6 .insight-image::before {
+    left: 1rem;
+    bottom: 1rem;
+    width: 5.2rem;
+    height: 0.65rem;
+    background: var(--green);
+    box-shadow: 1.3rem -1.3rem 0 var(--coral);
   }
 
   .insight-content {
-    padding: 1.5rem;
+    display: flex;
+    min-height: 18rem;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2.4vw, 1.8rem);
   }
 
-  .insight-content span {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--color-secondary);
-    font-size: 0.75rem;
-    font-weight: 600;
+  .card-topline,
+  .insight-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .card-topline span {
+    color: #315b28;
+    font-size: 0.69rem;
+    font-weight: 750;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
-  .insight-content h2 {
-    font-size: clamp(1.7rem, 3vw, 2.35rem);
-    line-height: 1.08;
-  }
-
-  .insight-content p {
-    margin-top: 1rem;
-    color: rgba(255, 255, 255, 0.64);
-  }
-
-  .insight-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.35rem;
-  }
-
-  .insight-meta span {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.44);
-    font-size: 0.75rem;
+  .card-topline span:last-child {
+    color: #777c77;
     letter-spacing: 0;
     text-transform: none;
   }
 
-  @media (max-width: 991px) {
-    .featured-guides { grid-template-columns: 1fr; }
-    .blog-small-grid {
-      padding-top: 8rem;
-    }
+  .insight-content h3 {
+    margin-top: 1.15rem;
+    font: 600 clamp(1.55rem, 2.5vw, 2.3rem)/1.04 Inter, system-ui, sans-serif;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
 
-    .featured-guide {
+  .insight-content > p {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.58;
+  }
+
+  .insight-meta {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    color: #777c77;
+    font-size: 0.72rem;
+  }
+
+  .insight-meta b { color: #315b28; font-size: 1.05rem; }
+
+  .pathways-section {
+    padding: clamp(4rem, 8vw, 7rem) 0 clamp(8rem, 12vw, 11rem);
+    background: var(--coral);
+  }
+
+  .pathways-grid {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.55fr) minmax(0, 1fr);
+    gap: clamp(2rem, 7vw, 7rem);
+  }
+
+  .pathways-heading .eyebrow { color: rgba(15, 18, 19, 0.66); }
+  .pathways-heading h2 { margin-top: 1rem; max-width: 27rem; }
+
+  .featured-guides {
+    display: grid;
+    border-top: 1px solid rgba(15, 18, 19, 0.3);
+  }
+
+  .featured-guide {
+    display: grid;
+    grid-template-columns: 2.7rem minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid rgba(15, 18, 19, 0.3);
+    transition: padding 0.25s ease, background 0.25s ease;
+  }
+
+  .featured-guide:hover { padding-inline: 0.7rem; background: rgba(255, 255, 255, 0.13); }
+  .guide-index { padding-top: 0.25rem; font-size: 0.69rem; font-weight: 800; }
+  .featured-guide p { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+  .featured-guide h3 { margin-top: 0.32rem; font: 600 1.35rem/1.05 Inter, system-ui, sans-serif; letter-spacing: -0.035em; }
+  .featured-guide div > span { display: block; margin-top: 0.55rem; color: rgba(15, 18, 19, 0.68); font-size: 0.84rem; line-height: 1.5; }
+  .featured-guide b { color: var(--ink); font-size: 1.1rem; }
+
+  @media (max-width: 900px) {
+    .blog-hero-grid,
+    .research-card,
+    .section-heading,
+    .pathways-grid {
       grid-template-columns: 1fr;
     }
 
-    .insight-grid {
-      grid-template-columns: 1fr;
-    }
+    .blog-hero-grid { gap: 2rem; }
+    .hero-deck { max-width: 38rem; }
+    .research-card { min-height: 0; }
+    .research-image { min-height: 24rem; order: -1; }
+    .research-copy::after { display: none; }
+    .section-heading { gap: 1rem; }
+    .section-heading .eyebrow { grid-column: auto; }
+  }
+
+  @media (max-width: 680px) {
+    .blog-hero { padding-top: 7.4rem; }
+    .blog-hero h1 { font-size: clamp(2.75rem, 14.5vw, 4rem); }
+    .category-nav-inner { width: 100%; padding-inline: 1rem; }
+    .category-nav-inner > span { display: none; }
+    .research-section { padding-top: 2rem; }
+    .research-card { border-radius: 1.35rem; }
+    .research-image { min-height: 15rem; aspect-ratio: 4 / 3; }
+    .research-copy { padding: 1.45rem; }
+    .research-copy h2 { margin-top: 1.4rem; font-size: 2.7rem; }
+    .research-meta { display: grid; margin-top: 0; padding-top: 1.6rem; }
+    .research-image figcaption { right: 0.75rem; bottom: 0.75rem; }
+    .insight-grid { grid-template-columns: 1fr; }
+    .insight-content { min-height: 17rem; }
+    .section-heading h2,
+    .pathways-heading h2 { font-size: clamp(2.55rem, 12.5vw, 3.8rem); }
+    .pathways-section { padding-bottom: 8rem; }
+  }
+
+  @media (max-width: 350px) {
+    .blog-hero h1 { font-size: 2.7rem; }
+    .research-copy h2 { font-size: 2.35rem; }
+    .research-summary { font-size: 0.92rem; }
+    .insight-content h3 { font-size: 1.48rem; }
+    .featured-guide { grid-template-columns: 2rem minmax(0, 1fr) auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .research-card,
+    .insight-card,
+    .insight-image img,
+    .featured-guide,
+    .category-nav a { transition: none; }
   }
 </style>
