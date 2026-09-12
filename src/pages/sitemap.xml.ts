@@ -97,6 +97,12 @@ const staticPages: SitemapPage[] = [
     changefreq: "monthly",
   },
   {
+    path: "/ai-marketing-statistics/",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-09-12",
+  },
+  {
     path: "/ai-marketing-for-law-firms/",
     priority: "0.9",
     changefreq: "monthly",
