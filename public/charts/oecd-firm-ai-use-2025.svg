@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">OECD AI use by firm size in 2025</title>
+  <desc id="desc">Small firms reported 17.4 percent AI use and large firms reported 52.0 percent across OECD countries with available data.</desc>
+  <rect width="1200" height="640" fill="#F4F2EC"/>
+  <text x="72" y="82" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#0F1213">OECD firm AI use, 2025</text>
+  <text x="72" y="122" font-family="Inter,Arial,sans-serif" font-size="18" fill="#5B5E59">Share of firms reporting AI use · covered OECD countries</text>
+  <line x1="300" y1="180" x2="1100" y2="180" stroke="#CBC9C2"/>
+  <line x1="300" y1="500" x2="1100" y2="500" stroke="#CBC9C2"/>
+  <text x="72" y="270" font-family="Inter,Arial,sans-serif" font-size="24" fill="#0F1213">Small firms</text>
+  <rect x="300" y="220" width="139.2" height="76" rx="8" fill="#69D254"/>
+  <text x="460" y="270" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="700" fill="#0F1213">17.4%</text>
+  <text x="72" y="420" font-family="Inter,Arial,sans-serif" font-size="24" fill="#0F1213">Large firms</text>
+  <rect x="300" y="370" width="416" height="76" rx="8" fill="#0F1213"/>
+  <text x="736" y="420" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="700" fill="#0F1213">52.0%</text>
+  <text x="72" y="566" font-family="Inter,Arial,sans-serif" font-size="16" fill="#686B67">Source: OECD · Published Jan. 28, 2026 · National business ICT surveys; n varies by country</text>
+  <text x="72" y="594" font-family="Inter,Arial,sans-serif" font-size="15" fill="#777A75">Coverage and size thresholds vary by national source. This is descriptive, not causal.</text>
+</svg>
