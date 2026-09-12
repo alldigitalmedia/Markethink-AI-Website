@@ -4,89 +4,27 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import ledger from "../data/aiMarketingStatistics.json";
 
-const pageTitle = "AI Marketing Statistics: 60 Verified Data Points | Markethink";
+const pageTitle = "AI Marketing Statistics 2026: 60 Sourced Data Points | Markethink";
 const pageDescription =
-  "Explore 60 verified AI marketing statistics with original sources, sample sizes, research dates, definitions, and limitations. Reviewed September 2026.";
+  "Explore 60 AI marketing statistics for 2026 with original sources, populations, research dates, definitions, sample sizes, and limitations.";
 const canonical = "https://markethink.ai/ai-marketing-statistics/";
+const heroImage = "/images/ai-marketing-statistics-business-owner-v6.svg";
 
 const sections = [
-  {
-    id: "adoption",
-    label: "01",
-    title: "Adoption is broad. Deployment is not the same thing.",
-    intro:
-      "These figures use different units: firms, employees, marketing teams, pilots, and organization-wide deployment. Read the scope before comparing the percentages.",
-    keys: ["adoption"],
-  },
-  {
-    id: "small-business",
-    label: "02",
-    title: "Small-business use depends on what the survey counts.",
-    intro:
-      "A survey asking about any business AI use can produce a very different number from one asking about AI in marketing. Both can be accurate within their definitions.",
-    keys: ["small-business"],
-  },
-  {
-    id: "marketing-use-cases",
-    label: "03",
-    title: "Marketing is a leading business use case.",
-    intro:
-      "The strongest evidence points to active use across sales and marketing, but the maturity of that use varies from experimentation to embedded workflows.",
-    keys: ["marketing-use-cases"],
-  },
-  {
-    id: "content-and-campaigns",
-    label: "04",
-    title: "Content is the entry point. Campaign operations are wider.",
-    intro:
-      "Copy and creative production lead current usage. Social, SEO, email, and advertising workflows show where AI is moving beyond a single drafting tool.",
-    keys: ["content-and-campaigns"],
-  },
-  {
-    id: "crm-leads-follow-up",
-    label: "05",
-    title: "Lead and follow-up evidence needs careful attribution.",
-    intro:
-      "Survey respondents report improved lead generation and growing use in email. These are useful operating signals, not proof that AI caused the outcome.",
-    keys: ["crm-leads-follow-up"],
-  },
-  {
-    id: "human-review",
-    label: "06",
-    title: "Human review remains part of the operating model.",
-    intro:
-      "Respondents consistently point to augmentation, disclosure, and escalation to people. This is evidence about preferred controls and working models, not a universal rule for every task.",
-    keys: ["human-review"],
-  },
-  {
-    id: "budgets-and-investment",
-    label: "07",
-    title: "Investment is moving toward AI, with scrutiny attached.",
-    intro:
-      "The available budget figure records stated 2026 priorities. It should not be read as realized spend or return on investment.",
-    keys: ["budgets-and-investment"],
-  },
-  {
-    id: "trust-governance-limits",
-    label: "08",
-    title: "Trust, governance, and measurement are still unresolved.",
-    intro:
-      "Consumers and advertisers do not always see AI-generated marketing the same way. Disclosure, measurement frameworks, and content quality remain material constraints.",
-    keys: ["trust-and-governance", "barriers-and-limits"],
-  },
-  {
-    id: "measured-outcomes",
-    label: "09",
-    title: "Most outcome data is self-reported, not causal.",
-    intro:
-      "Productivity, quality, personalization, lead, and retention findings describe what respondents observed. They do not isolate AI from strategy, staffing, channels, or market conditions.",
-    keys: ["measured-outcomes"],
-  },
+  { id: "adoption", label: "01", shortLabel: "Adoption", title: "Adoption is broad. Deployment is not the same thing.", intro: "These figures use different units: firms, employees, marketing teams, pilots, and organization-wide deployment. Read the scope before comparing percentages.", keys: ["adoption"] },
+  { id: "small-business", label: "02", shortLabel: "Small business", title: "Small-business use depends on what the survey counts.", intro: "A survey asking about any business AI use can produce a very different number from one asking about AI in marketing. Both can be accurate within their definitions.", keys: ["small-business"] },
+  { id: "marketing-use-cases", label: "03", shortLabel: "Use cases", title: "Marketing is a leading business use case.", intro: "The strongest evidence points to active use across sales and marketing, but the maturity of that use varies from experimentation to embedded workflows.", keys: ["marketing-use-cases"] },
+  { id: "content-and-campaigns", label: "04", shortLabel: "Content", title: "Content is the entry point. Campaign operations are wider.", intro: "Copy and creative production lead current usage. Social, SEO, email, and advertising workflows show where AI is moving beyond a single drafting tool.", keys: ["content-and-campaigns"] },
+  { id: "crm-leads-follow-up", label: "05", shortLabel: "Leads", title: "Lead and follow-up evidence needs careful attribution.", intro: "Survey respondents report improved lead generation and growing use in email. These are useful operating signals, not proof that AI caused the outcome.", keys: ["crm-leads-follow-up"] },
+  { id: "human-review", label: "06", shortLabel: "Human review", title: "Human review remains part of the operating model.", intro: "Respondents consistently point to augmentation, disclosure, and escalation to people. This is evidence about preferred controls and working models, not a universal rule for every task.", keys: ["human-review"] },
+  { id: "budgets-and-investment", label: "07", shortLabel: "Investment", title: "Investment is moving toward AI, with scrutiny attached.", intro: "The available budget figure records stated 2026 priorities. It should not be read as realized spend or return on investment.", keys: ["budgets-and-investment"] },
+  { id: "trust-governance-limits", label: "08", shortLabel: "Trust", title: "Trust, governance, and measurement are still unresolved.", intro: "Consumers and advertisers do not always see AI-generated marketing the same way. Disclosure, measurement frameworks, and content quality remain material constraints.", keys: ["trust-and-governance", "barriers-and-limits"] },
+  { id: "measured-outcomes", label: "09", shortLabel: "Outcomes", title: "Most outcome data is self-reported, not causal.", intro: "Productivity, quality, personalization, lead, and retention findings describe what respondents observed. They do not isolate AI from strategy, staffing, channels, or market conditions.", keys: ["measured-outcomes"] },
 ];
 
 const stats = ledger.statistics;
 const sources = Object.entries(ledger.sources);
-const featuredIds = ["AM001", "AM025", "AM046", "AM059"];
+const featuredIds = ["AM011", "AM025", "AM049", "AM055"];
 const featured = featuredIds.map((id) => stats.find((item) => item.id === id)).filter(Boolean);
 const sectionStats = (keys: string[]) => stats.filter((item) => keys.includes(item.section));
 const sourceYear = (value: string) => value.match(/\d{4}/)?.[0] ?? value;
@@ -94,12 +32,34 @@ const sourceName = (url: string) => {
   const record = sources.find(([, source]) => source.source_url === url);
   return record ? record[1].publisher : new URL(url).hostname.replace("www.", "");
 };
+const percentParts = (value: string) => value.match(/^([0-9.]+)(%)$/);
+const featuredValue = (item: (typeof stats)[number]) => item.id === "AM049" ? "37-point gap" : item.value;
+
+const compositeValues: Record<string, { label: string; value: string }[]> = {
+  AM049: [
+    { label: "Ad executives’ belief", value: "82%" },
+    { label: "Young consumers’ response", value: "45%" },
+  ],
+  AM050: [
+    { label: "Gen Z negative", value: "39%" },
+    { label: "Millennial negative", value: "20%" },
+  ],
+  AM057: [
+    { label: "Extensive use", value: "42.5%" },
+    { label: "Occasional use", value: "38%" },
+  ],
+  AM058: [
+    { label: "Extensive use", value: "34.1%" },
+    { label: "Occasional use", value: "36.5%" },
+  ],
+};
 
 const articleSchema = {
   "@type": "Article",
-  headline: pageTitle,
+  headline: "AI Marketing Statistics 2026",
   description: pageDescription,
   url: canonical,
+  image: `https://markethink.ai${heroImage}`,
   dateCreated: "2026-09-12",
   dateModified: "2026-09-12",
   inLanguage: "en",
@@ -117,405 +77,393 @@ const breadcrumbSchema = {
 };
 ---
 
-<Layout
-  title={pageTitle}
-  description={pageDescription}
-  canonical={canonical}
-  type="article"
-  structuredData={[articleSchema, breadcrumbSchema]}
->
+<Layout title={pageTitle} description={pageDescription} canonical={canonical} image={heroImage} type="article" structuredData={[articleSchema, breadcrumbSchema]}>
   <Navbar ctaLabel="Request available times" />
   <main id="top">
     <article>
       <header class="resource-hero">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <nav class="breadcrumbs" aria-label="Breadcrumb">
-              <a href="/">Home</a><span aria-hidden="true">/</span><span>Research</span>
-            </nav>
+            <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Research</span></nav>
             <p class="eyebrow">MARKETHINK RESEARCH LEDGER</p>
-            <h1>AI marketing statistics, with the source behind every number.</h1>
-            <p class="dek">
-              A selective, reviewable collection of <strong>{ledger.statistic_count} statistics</strong> from <strong>{ledger.source_count} original sources</strong>, with sample context, dates, definitions, and limits preserved.
-            </p>
+            <h1>AI Marketing Statistics 2026</h1>
+            <p class="dek">A selective collection of <strong>{ledger.statistic_count} AI marketing statistics</strong> from <strong>{ledger.source_count} original sources</strong>. Every number keeps its source, date, population, definition, and limitation close enough to check.</p>
             <div class="hero-meta" aria-label="Resource details">
-              <span>Last substantively reviewed September 12, 2026</span>
+              <span>Substantively reviewed September 12, 2026</span>
               <span>Curated and analyzed by Markethink</span>
             </div>
             <div class="download-row">
-              <a class="button" href="/downloads/ai-marketing-statistics-source-ledger.csv" download>
-                Download the source ledger <span aria-hidden="true">↓</span>
-              </a>
-              <a class="text-link" href="#methodology">Read the methodology</a>
+              <a class="button" href="/downloads/ai-marketing-statistics-source-ledger.csv" download>Download all 60 rows <span aria-hidden="true">↓</span></a>
+              <a class="text-link" href="#data-charts">Start with three charts</a>
             </div>
           </div>
-          <aside class="hero-note" aria-label="How to use this page">
-            <p class="note-label">USE IT CAREFULLY</p>
-            <p>
-              “Uses AI,” “pilots AI,” “deploys AI,” and “reports an outcome” are not interchangeable. Every entry below names the population and evidence type.
-            </p>
-          </aside>
+          <figure class="hero-visual">
+            <img src={heroImage} width="1536" height="1024" fetchpriority="high" alt="An illustrative specialty-food business owner on her packing floor weighs two physical campaign photo proofs beside the jar she sells while packing continues behind her." />
+            <figcaption>Conceptual illustration.</figcaption>
+          </figure>
         </div>
       </header>
 
+      <section class="chart-suite" id="data-charts" aria-labelledby="charts-title">
+        <div class="container">
+          <div class="section-heading chart-heading">
+            <p class="eyebrow">THREE SOURCE-LED VIEWS</p>
+            <h2 id="charts-title">Different populations. Different questions. No false comparison.</h2>
+            <p>These charts stay within each study’s denominator. The accompanying tables repeat every value.</p>
+          </div>
+
+          <figure class="chart-card" aria-labelledby="chart-oecd-title">
+            <div class="chart-intro">
+              <div><p class="chart-index">CHART 01</p><h3 id="chart-oecd-title">Large firms reported AI use at nearly three times the small-firm rate.</h3></div>
+              <a href="/charts/oecd-firm-ai-use-2025.svg" download>Download SVG ↓</a>
+            </div>
+            <div class="bar-chart" role="img" aria-label="In 2025, 17.4 percent of small firms and 52.0 percent of large firms across covered OECD countries reported using AI.">
+              <div class="bar-row"><span class="bar-label">Small firms</span><span class="bar-track"><span style="width:17.4%"></span></span><strong>17.4%</strong></div>
+              <div class="bar-row dark"><span class="bar-label">Large firms</span><span class="bar-track"><span style="width:52%"></span></span><strong>52.0%</strong></div>
+            </div>
+            <table><caption>OECD firm AI use by size, 2025</caption><thead><tr><th>Population</th><th>Share reporting AI use</th></tr></thead><tbody><tr><th>Small firms</th><td>17.4%</td></tr><tr><th>Large firms</th><td>52.0%</td></tr></tbody></table>
+            <figcaption><strong>Source:</strong> <a href={ledger.sources.S2.source_url}>OECD</a> · Data year: 2025 · Published January 28, 2026 · Population: national business ICT surveys in OECD countries with available data; n varies by country. <strong>Limit:</strong> coverage and firm-size thresholds can vary by national source. This is descriptive, not causal.</figcaption>
+          </figure>
+
+          <figure class="chart-card" aria-labelledby="chart-cmi-title">
+            <div class="chart-intro">
+              <div><p class="chart-index">CHART 02</p><h3 id="chart-cmi-title">Copy leads AI tool use among AI-using B2B marketers.</h3></div>
+              <a href="/charts/cmi-b2b-ai-tool-use-2025.svg" download>Download SVG ↓</a>
+            </div>
+            <div class="bar-chart multi" role="img" aria-label="Among eligible AI-using B2B marketers, 89 percent used copy tools, 53 percent creative asset tools, 41 percent SEO tools, 38 percent social media tools, and 36 percent email marketing tools. Multiple responses were allowed.">
+              {[{label:"Copy",value:"89%",width:"89%"},{label:"Creative",value:"53%",width:"53%"},{label:"SEO",value:"41%",width:"41%"},{label:"Social",value:"38%",width:"38%"},{label:"Email",value:"36%",width:"36%"}].map((row) => <div class="bar-row"><span class="bar-label">{row.label}</span><span class="bar-track"><span style={`width:${row.width}`}></span></span><strong>{row.value}</strong></div>)}
+            </div>
+            <table><caption>AI tools used by eligible AI-using B2B marketers</caption><thead><tr><th>Tool category</th><th>Share selecting category</th></tr></thead><tbody><tr><th>Copy</th><td>89%</td></tr><tr><th>Creative assets</th><td>53%</td></tr><tr><th>SEO</th><td>41%</td></tr><tr><th>Social media</th><td>38%</td></tr><tr><th>Email marketing</th><td>36%</td></tr></tbody></table>
+            <figcaption><strong>Source:</strong> <a href={ledger.sources.S5.source_url}>Content Marketing Institute and MarketingProfs</a> · Published October 8, 2025 · Fielded June 24 to August 14, 2025 · Eligible population: B2B marketers whose organizations use AI-powered applications; the article reports on 1,015 B2B marketers, mostly in North America. <strong>Limit:</strong> self-reported, sponsor-backed research. Multiple responses were allowed, so the categories should not be summed.</figcaption>
+          </figure>
+
+          <figure class="chart-card inverse" aria-labelledby="chart-iab-title">
+            <div class="chart-intro">
+              <div><p class="chart-index">CHART 03</p><h3 id="chart-iab-title">Advertisers overestimated young consumers’ positive sentiment by 37 points.</h3></div>
+              <a href="/charts/iab-ai-ad-perception-gap-2026.svg" download>Download SVG ↓</a>
+            </div>
+            <div class="bar-chart" role="img" aria-label="Eighty-two percent of ad executives believed Gen Z and Millennial consumers felt positive about AI-generated ads, while 45 percent of surveyed young consumers reported positive sentiment. The difference is 37 percentage points.">
+              <div class="bar-row"><span class="bar-label">Ad executives’ belief</span><span class="bar-track"><span style="width:82%"></span></span><strong>82%</strong></div>
+              <div class="bar-row light"><span class="bar-label">Young consumers’ response</span><span class="bar-track"><span style="width:45%"></span></span><strong>45%</strong></div>
+              <p class="gap-callout"><span>37</span> percentage-point gap</p>
+            </div>
+            <table><caption>IAB advertiser perception and young-consumer sentiment</caption><thead><tr><th>Respondent group</th><th>Positive sentiment measure</th></tr></thead><tbody><tr><th>Ad executives’ belief about consumers</th><td>82%</td></tr><tr><th>Surveyed Gen Z and Millennial consumers</th><td>45%</td></tr></tbody></table>
+            <figcaption><strong>Source:</strong> <a href={ledger.sources.S7.source_url}>IAB and Sonata Insights</a> · Fielded October 2025 to January 2026 · United States · Populations: 104 ad executives at companies spending at least $1 million annually on media, and 505 ad-engaged Gen Z and Millennial consumers. <strong>Limit:</strong> separately sampled groups answered different-perspective questions. The gap is descriptive, not causal.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="key-findings" aria-labelledby="key-findings-title">
         <div class="container">
-          <div class="section-heading compact">
-            <p class="eyebrow">FOUR NUMBERS TO START WITH</p>
-            <h2 id="key-findings-title">The useful story is adoption plus operating discipline.</h2>
-          </div>
+          <div class="section-heading compact"><p class="eyebrow">FOUR NUMBERS TO START WITH</p><h2 id="key-findings-title">The useful story is adoption plus operating discipline.</h2></div>
           <div class="finding-grid">
-            {featured.map((item) => (
-              <blockquote class="finding" cite={item.source_url}>
-                <strong>{item.value}</strong>
+            {featured.map((item) => {
+              const display = featuredValue(item);
+              const parts = percentParts(display);
+              return <blockquote class="finding" cite={item.source_url}>
+                <strong>{parts ? <span class="measure"><span>{parts[1]}</span><span class="unit">{parts[2]}</span></span> : display}</strong>
                 <p>{item.claim}</p>
-                <footer>
-                  <a href={item.source_url} rel="nofollow">{sourceName(item.source_url)}, {sourceYear(item.publication_date)}</a>
-                  <span>{item.id}</span>
-                </footer>
-              </blockquote>
-            ))}
+                <footer><a href={item.source_url} rel="nofollow">{sourceName(item.source_url)}, {sourceYear(item.publication_date)}</a><span>{item.id}</span></footer>
+              </blockquote>;
+            })}
           </div>
         </div>
       </section>
 
       <section class="analysis" aria-labelledby="analysis-title">
         <div class="container analysis-grid">
-          <div>
-            <p class="eyebrow">MARKETHINK ANALYSIS</p>
-            <h2 id="analysis-title">Four conclusions the data can support.</h2>
-          </div>
+          <div><p class="eyebrow">MARKETHINK ANALYSIS</p><h2 id="analysis-title">What this evidence can support.</h2></div>
           <div class="analysis-list">
-            <article>
-              <span>01</span>
-              <div><h3>Adoption is not one number.</h3><p>Firm-level surveys, marketing-team surveys, and vendor studies count different behaviors. Treat the definition as part of the statistic.</p></div>
-            </article>
-            <article>
-              <span>02</span>
-              <div><h3>Broad use can coexist with shallow deployment.</h3><p>High “any use” figures sit beside lower organization-wide deployment figures. Experimentation is not the same as an embedded operating system.</p></div>
-            </article>
-            <article>
-              <span>03</span>
-              <div><h3>Content is common. Measurement is less mature.</h3><p>Writing and creative tools lead use cases, while measurement frameworks and causal outcome evidence remain limited.</p></div>
-            </article>
-            <article>
-              <span>04</span>
-              <div><h3>Human judgment shows up as a control, not a slogan.</h3><p>Augmentation, disclosure, escalation, and differentiated human content recur across independent studies.</p></div>
-            </article>
+            <article><span>01</span><div><h3>Adoption is not one number.</h3><p>Firm-level surveys, marketing-team surveys, and vendor studies count different behaviors. Treat the definition as part of the statistic.</p></div></article>
+            <article><span>02</span><div><h3>Broad use can coexist with shallow deployment.</h3><p>High “any use” figures sit beside lower organization-wide deployment figures. Experimentation is not the same as an embedded operating system.</p></div></article>
+            <article><span>03</span><div><h3>Content is common. Measurement is less mature.</h3><p>Writing and creative tools lead use cases, while measurement frameworks and causal outcome evidence remain limited.</p></div></article>
+            <article><span>04</span><div><h3>Trust depends on visible human controls.</h3><p>In one global survey, organizations ranked clear AI disclosure and easy escalation to human support among the most important trust factors. These results describe stated priorities, not proof that either control produces trust.</p></div></article>
           </div>
         </div>
       </section>
 
       <div class="resource-body container">
-        <aside class="contents" aria-label="On this page">
-          <p>ON THIS PAGE</p>
+        <aside class="contents" aria-label="Jump to topic">
+          <p>JUMP TO TOPIC</p>
           <ol>
-            {sections.map((section) => <li><a href={`#${section.id}`}>{section.title}</a></li>)}
-            <li><a href="#methodology">Methodology and limitations</a></li>
-            <li><a href="#sources">Primary source index</a></li>
-            <li><a href="#glossary">Glossary</a></li>
-            <li><a href="#updates">Update log</a></li>
+            {sections.map((section) => <li><a href={`#${section.id}`}><span>{section.label}</span>{section.shortLabel}</a></li>)}
+            <li><a href="#methodology"><span>10</span>Methods</a></li>
+            <li><a href="#sources"><span>11</span>Sources</a></li>
           </ol>
         </aside>
 
         <div class="stat-sections">
           {sections.map((section) => {
             const entries = sectionStats(section.keys);
-            return (
-              <section class="stat-section" id={section.id} aria-labelledby={`${section.id}-title`}>
-                <div class="section-heading">
-                  <p class="section-number">{section.label} / {String(sections.length).padStart(2, "0")}</p>
-                  <h2 id={`${section.id}-title`}>{section.title}</h2>
-                  <p>{section.intro}</p>
-                </div>
-                <div class="stat-list">
-                  {entries.map((item) => (
-                    <article class="stat-row" id={item.id.toLowerCase()}>
-                      <div class="stat-value">{item.value}</div>
-                      <div class="stat-detail">
-                        <p class="stat-claim">{item.claim}</p>
-                        <dl>
-                          <div><dt>Evidence</dt><dd>{item.evidence_type}</dd></div>
-                          <div><dt>Study</dt><dd>{item.geography}; {item.research_period}</dd></div>
-                          <div><dt>Sample</dt><dd>{item.sample_size}</dd></div>
-                          <div><dt>Context</dt><dd>{item.context_note}</dd></div>
-                        </dl>
-                        <div class="citation-line">
-                          <a href={item.source_url} rel="nofollow">Source: {item.publisher}</a>
-                          <time>{item.publication_date}</time>
-                          <a class="stat-id" href={`#${item.id.toLowerCase()}`} aria-label={`Permanent link to statistic ${item.id}`}>{item.id}</a>
-                        </div>
+            return <section class="stat-section" id={section.id} aria-labelledby={`${section.id}-title`}>
+              <div class="section-heading"><p class="section-number">{section.label} / {String(sections.length).padStart(2, "0")}</p><h2 id={`${section.id}-title`}>{section.title}</h2><p>{section.intro}</p></div>
+              <div class="stat-list">
+                {entries.map((item) => {
+                  const simple = percentParts(item.value);
+                  const groups = compositeValues[item.id];
+                  return <article class="stat-row" id={item.id.toLowerCase()}>
+                    <div class:list={["stat-value", groups && "is-composite"]}>
+                      {groups ? groups.map((group) => {
+                        const groupParts = percentParts(group.value)!;
+                        return <div class="value-group"><span class="value-group-label">{group.label}</span><span class="measure"><span>{groupParts[1]}</span><span class="unit">{groupParts[2]}</span></span></div>;
+                      }) : simple ? <span class="measure"><span>{simple[1]}</span><span class="unit">{simple[2]}</span></span> : <span class="value-phrase">{item.value}</span>}
+                    </div>
+                    <div class="stat-detail">
+                      <p class="stat-claim">{item.claim}</p>
+                      <div class="stat-meta" aria-label="Source, year, and population">
+                        <a href={item.source_url} rel="nofollow">{item.publisher}</a><span>{item.publication_date}</span><span>{item.sample_size}</span>
                       </div>
-                    </article>
-                  ))}
-                </div>
-                <a class="back-link" href="#top">Back to top ↑</a>
-              </section>
-            );
+                      <details><summary>Study context and limits</summary><dl><div><dt>Evidence</dt><dd>{item.evidence_type}</dd></div><div><dt>Study</dt><dd>{item.geography}; {item.research_period}</dd></div><div><dt>Limitation</dt><dd>{item.context_note}</dd></div></dl></details>
+                      <a class="stat-id" href={`#${item.id.toLowerCase()}`} aria-label={`Permanent link to statistic ${item.id}`}>{item.id}</a>
+                    </div>
+                  </article>;
+                })}
+              </div>
+            </section>;
           })}
 
           <section class="method-section" id="methodology" aria-labelledby="methodology-title">
-            <p class="eyebrow">HOW THIS RESOURCE WAS BUILT</p>
-            <h2 id="methodology-title">Methodology and limitations</h2>
-            <div class="method-grid">
-              <div>
-                <h3>Inclusion standard</h3>
-                <p>We included a number only when it appeared in an original government dataset, official research report, original survey, or the publisher’s own report page. Secondary statistics roundups were not used as evidence.</p>
-              </div>
-              <div>
-                <h3>Verification standard</h3>
-                <p>Each source URL was loaded during the September 12, 2026 review. Every displayed number is mapped to a ledger ID, publisher, research period, geography, sample note, evidence type, and limitation.</p>
-              </div>
-              <div>
-                <h3>What the page does not claim</h3>
-                <p>Self-reported improvement does not prove causation. Stated plans are not realized adoption. Opinions and preferences are not measured business outcomes. Unlike survey questions are not averaged together.</p>
-              </div>
-              <div>
-                <h3>Curator role</h3>
-                <p>Markethink is the curator and analyst, not the original source of third-party statistics. Our analysis is labeled and kept separate from source findings.</p>
-              </div>
+            <p class="eyebrow">HOW THIS RESOURCE WAS BUILT</p><h2 id="methodology-title">Methodology and limitations</h2>
+            <div class="method-details">
+              <details open><summary>Inclusion and verification standards</summary><div class="method-grid"><div><h3>Inclusion standard</h3><p>We included a number only when it appeared in an original government dataset, official research report, original survey, or the publisher’s own report page. Secondary statistics roundups were not used as evidence.</p></div><div><h3>Verification standard</h3><p>Each source URL was loaded during the September 12, 2026 review. Every displayed number maps to a ledger ID, publisher, research period, geography, sample note, evidence type, and limitation.</p></div></div></details>
+              <details><summary>Claims, curator role, and known limits</summary><div class="method-grid"><div><h3>What the page does not claim</h3><p>Self-reported improvement does not prove causation. Stated plans are not realized adoption. Opinions and preferences are not measured business outcomes. Unlike survey questions are not averaged together.</p></div><div><h3>Curator role</h3><p>Markethink is the curator and analyst, not the original source of third-party statistics. Our analysis is labeled and kept separate from source findings.</p></div></div><ul class="known-limits"><li>Definitions of AI, generative AI, and agentic AI vary by study.</li><li>Several sources are vendor-sponsored or vendor-published and rely on self-reported responses.</li><li>Global surveys do not automatically represent every country or small business.</li><li>Some subgroup findings use much smaller samples than the headline survey.</li><li>This page is a dated evidence review, not a live market counter.</li></ul></details>
             </div>
-            <div class="limitations-box">
-              <h3>Known limits</h3>
-              <ul>
-                <li>Definitions of AI, generative AI, and agentic AI vary by study.</li>
-                <li>Several sources are vendor-sponsored or vendor-published and rely on self-reported responses.</li>
-                <li>Global surveys do not automatically represent every country or small business.</li>
-                <li>Some subgroup findings use much smaller samples than the headline survey.</li>
-                <li>This page is a dated evidence review, not a live market counter.</li>
-              </ul>
-            </div>
-            <div class="download-panel">
-              <div><p class="eyebrow">MACHINE-READABLE</p><h3>Audit the dataset yourself.</h3><p>The downloads contain all {ledger.statistic_count} rows and their research context.</p></div>
-              <div class="download-actions">
-                <a class="button dark" href="/downloads/ai-marketing-statistics-source-ledger.csv" download>Download CSV</a>
-                <a class="text-link dark-link" href="/downloads/ai-marketing-statistics-source-ledger.json" download>Download JSON</a>
-              </div>
-            </div>
+            <div class="download-panel"><div><p class="eyebrow">MACHINE-READABLE</p><h3>Audit the dataset yourself.</h3><p>The downloads contain all {ledger.statistic_count} rows and their research context.</p></div><div class="download-actions"><a class="button dark" href="/downloads/ai-marketing-statistics-source-ledger.csv" download>Download CSV</a><a class="text-link dark-link" href="/downloads/ai-marketing-statistics-source-ledger.json" download>Download JSON</a></div></div>
           </section>
 
           <section class="method-section" id="sources" aria-labelledby="sources-title">
-            <p class="eyebrow">PRIMARY SOURCE INDEX</p>
-            <h2 id="sources-title">Nine original sources, with their boundaries.</h2>
-            <ol class="source-list">
-              {sources.map(([id, source]) => (
-                <li id={`source-${id.toLowerCase()}`}>
-                  <div class="source-number">{id}</div>
-                  <div>
-                    <h3><a href={source.source_url}>{source.title}</a></h3>
-                    <p>{source.publisher} · {source.publication_date} · {source.geography}</p>
-                    <dl>
-                      <div><dt>Research period</dt><dd>{source.research_period}</dd></div>
-                      <div><dt>Sample</dt><dd>{source.sample_size}</dd></div>
-                      <div><dt>Source type</dt><dd>{source.source_type}</dd></div>
-                      <div><dt>Limitation</dt><dd>{source.limitation}</dd></div>
-                    </dl>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <p class="eyebrow">PRIMARY SOURCE INDEX</p><h2 id="sources-title">Nine original sources, with their boundaries.</h2>
+            <ol class="source-list">{sources.map(([id, source]) => <li id={`source-${id.toLowerCase()}`}><div class="source-number">{id}</div><div><h3><a href={source.source_url}>{source.title}</a></h3><p>{source.publisher} · {source.publication_date} · {source.geography}</p><details><summary>Research period, sample, and limitation</summary><dl><div><dt>Research period</dt><dd>{source.research_period}</dd></div><div><dt>Sample</dt><dd>{source.sample_size}</dd></div><div><dt>Source type</dt><dd>{source.source_type}</dd></div><div><dt>Limitation</dt><dd>{source.limitation}</dd></div></dl></details></div></li>)}</ol>
           </section>
 
-          <section class="method-section" id="glossary" aria-labelledby="glossary-title">
-            <p class="eyebrow">DEFINITIONS</p>
-            <h2 id="glossary-title">Glossary</h2>
-            <dl class="glossary">
-              <div><dt>AI adoption</dt><dd>A respondent reports using an AI technology. This can range from one task to organization-wide use.</dd></div>
-              <div><dt>Experimentation or pilot</dt><dd>Limited testing that has not necessarily reached standard workflows or broad deployment.</dd></div>
-              <div><dt>Scaled deployment</dt><dd>Use expanded across a function or organization. Each source’s exact definition still applies.</dd></div>
-              <div><dt>Generative AI</dt><dd>Systems that create text, images, audio, video, or other outputs from prompts or data.</dd></div>
-              <div><dt>Agentic AI</dt><dd>Systems described by a source as taking autonomous or semi-autonomous actions across steps in a workflow.</dd></div>
-              <div><dt>Self-reported outcome</dt><dd>An improvement or decline described by a respondent, without experimental proof that AI caused it.</dd></div>
-              <div><dt>Employment-weighted</dt><dd>A measure that gives larger employers more influence than a simple count of firms.</dd></div>
-            </dl>
-          </section>
+          <section class="method-section" id="glossary" aria-labelledby="glossary-title"><p class="eyebrow">DEFINITIONS</p><h2 id="glossary-title">Glossary</h2><dl class="glossary"><div><dt>AI adoption</dt><dd>A respondent reports using an AI technology. This can range from one task to organization-wide use.</dd></div><div><dt>Experimentation or pilot</dt><dd>Limited testing that has not necessarily reached standard workflows or broad deployment.</dd></div><div><dt>Scaled deployment</dt><dd>Use expanded across a function or organization. Each source’s exact definition still applies.</dd></div><div><dt>Generative AI</dt><dd>Systems that create text, images, audio, video, or other outputs from prompts or data.</dd></div><div><dt>Self-reported use</dt><dd>Use described by a survey respondent. It is not independently observed behavior.</dd></div><div><dt>Self-reported outcome</dt><dd>An improvement or decline described by a respondent, without experimental proof that AI caused it.</dd></div></dl></section>
 
-          <section class="method-section update-section" id="updates" aria-labelledby="updates-title">
-            <p class="eyebrow">UPDATE LOG</p>
-            <h2 id="updates-title">Substantive changes only.</h2>
-            <div class="update-entry">
-              <time datetime="2026-09-12">September 12, 2026</time>
-              <p>Initial research edition prepared with {ledger.statistic_count} verified statistics from {ledger.source_count} original sources. No date rotation or simulated freshness.</p>
-            </div>
-          </section>
+          <section class="method-section update-section" id="updates" aria-labelledby="updates-title"><p class="eyebrow">UPDATE LOG</p><h2 id="updates-title">What changed in this edition.</h2><div class="update-entry"><time datetime="2026-09-12">September 12, 2026</time><p>Initial research edition prepared with {ledger.statistic_count} verified statistics from {ledger.source_count} original sources. The review records the evidence available on that date and will change only when the research changes.</p></div></section>
         </div>
       </div>
 
-      <section class="related-reading" aria-labelledby="related-title">
-        <div class="container related-grid">
-          <div>
-            <p class="eyebrow">KEEP RESEARCHING</p>
-            <h2 id="related-title">Put the numbers in operating context.</h2>
-          </div>
-          <div class="related-links">
-            <a href="/ai-marketing-for-small-business/"><span>Guide</span><strong>AI marketing for small business</strong><p>Where AI helps, where tools stop, and what a managed system adds.</p></a>
-            <a href="/"><span>Operating model</span><strong>How managed AI marketing should work</strong><p>See how Markethink pairs AI execution with expert strategy, review, and accountability.</p></a>
-          </div>
-        </div>
-      </section>
+      <section class="related-reading" aria-labelledby="related-title"><div class="container related-grid"><div><p class="eyebrow">KEEP RESEARCHING</p><h2 id="related-title">Put the numbers in operating context.</h2></div><div class="related-links"><a href="/ai-marketing-for-small-business/"><span>Guide</span><strong>AI marketing for small business</strong><p>Where AI helps, where tools stop, and what a managed system adds.</p></a><a href="/"><span>Operating model</span><strong>How managed AI marketing should work</strong><p>See how Markethink pairs AI execution with expert strategy, review, and accountability.</p></a></div></div></section>
 
-      <section class="quiet-cta" aria-labelledby="cta-title">
-        <div class="container cta-grid">
-          <div>
-            <p class="eyebrow">SECONDARY NEXT STEP</p>
-            <h2 id="cta-title">Want to map the evidence to your marketing operation?</h2>
-            <p>Request a focused walkthrough of the workflows, controls, and measurement gaps that matter for your business.</p>
-          </div>
-          <div class="cta-action">
-            <a class="button" href="/schedule-a-walkthrough/">Request available times</a>
-            <p>The form requests available times. It does not book a meeting.</p>
-          </div>
-        </div>
-      </section>
+      <section class="quiet-cta" aria-labelledby="cta-title"><div class="container cta-grid"><div><p class="eyebrow">APPLY THE RESEARCH</p><h2 id="cta-title">Map the evidence to your marketing operation.</h2><p>Request a focused walkthrough of the workflows, controls, and measurement gaps that matter for your business.</p></div><div class="cta-action"><a class="button" href="/schedule-a-walkthrough/">Request available times</a><p>Tell us what you are working on. We will reply with available times.</p></div></div></section>
     </article>
   </main>
-  <Footer
-    walkthroughLabel="Request available times"
-    description="Markethink is an AI marketing system managed by expert marketers. We learn your business, run marketing day to day, and connect campaigns to leads and follow-up."
-  />
+  <Footer walkthroughLabel="Request available times" description="Markethink is an AI marketing system managed by expert marketers. We learn your business, run marketing day to day, and connect campaigns to leads and follow-up." />
 </Layout>
 
 <style>
   :global(html) { scroll-behavior: smooth; }
   :global(body) { background: #f4f2ec; }
   main { color: #0f1213; }
-  .resource-hero { background: #0f1213; color: #fff; padding: 9.5rem 0 5.5rem; position: relative; overflow: hidden; }
-  .resource-hero::after { content: "60"; position: absolute; right: -0.03em; bottom: -0.29em; font-family: var(--font-display); font-size: min(35vw, 34rem); line-height: 1; color: rgba(105,210,84,.055); pointer-events: none; }
-  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, .55fr); gap: clamp(2rem, 7vw, 8rem); align-items: end; position: relative; z-index: 1; }
-  .hero-copy { max-width: 58rem; }
-  .breadcrumbs { display: flex; gap: .55rem; align-items: center; margin-bottom: 3rem; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.52); }
+  .resource-hero { background: #0f1213; color: #fff; padding: 7.6rem 0 2.8rem; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .breadcrumbs { display: flex; gap: .55rem; align-items: center; margin-bottom: 1.6rem; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.52); }
   .breadcrumbs a { color: inherit; }
-  .eyebrow, .section-number, .note-label, .contents > p { font-size: .72rem; line-height: 1.2; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
-  .eyebrow { color: #57af49; margin-bottom: 1.1rem; }
-  h1 { font-size: clamp(3.3rem, 7.5vw, 7.2rem); line-height: .94; letter-spacing: -.025em; max-width: 14ch; text-wrap: balance; }
-  .dek { margin-top: 2rem; max-width: 48rem; font-size: clamp(1.08rem, 1.6vw, 1.35rem); line-height: 1.65; color: rgba(255,255,255,.72); }
+  .eyebrow, .section-number, .contents > p, .chart-index { font-size: .68rem; line-height: 1.2; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+  .eyebrow { color: #69d254; margin-bottom: .75rem; }
+  h1 { font-size: clamp(3.5rem, 6.3vw, 6.6rem); line-height: .9; letter-spacing: -.025em; max-width: 9ch; text-wrap: balance; }
+  .dek { margin-top: 1.45rem; max-width: 43rem; font-size: clamp(1rem, 1.35vw, 1.22rem); line-height: 1.58; color: rgba(255,255,255,.72); }
   .dek strong { color: #fff; }
-  .hero-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1.6rem; font-size: .82rem; color: rgba(255,255,255,.52); }
-  .download-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.35rem; margin-top: 2.1rem; }
-  .button { display: inline-flex; align-items: center; justify-content: center; gap: .7rem; min-height: 48px; padding: .8rem 1.1rem; border: 1px solid #69d254; background: #69d254; color: #0f1213; font-size: .82rem; font-weight: 700; text-decoration: none; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: 1.15rem; font-size: .74rem; color: rgba(255,255,255,.53); }
+  .download-row { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem 1.2rem; margin-top: 1.45rem; }
+  .button { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; min-height: 45px; padding: .72rem 1rem; border: 1px solid #69d254; border-radius: 999px; background: #69d254; color: #0f1213; font-size: .78rem; font-weight: 700; text-decoration: none; }
   .button:hover { background: #7cdf67; border-color: #7cdf67; }
-  .text-link { color: #fff; font-size: .84rem; text-decoration: underline; text-underline-offset: .28em; }
-  .hero-note { border-top: 1px solid rgba(255,255,255,.22); padding-top: 1.1rem; margin-bottom: .4rem; }
-  .hero-note .note-label { color: #69d254; margin-bottom: .8rem; }
-  .hero-note > p:last-child { color: rgba(255,255,255,.68); font-size: .92rem; line-height: 1.7; }
-  .key-findings { background: #fff; padding: 5.5rem 0; border-bottom: 1px solid #d9d6ce; }
-  .section-heading.compact { max-width: 48rem; margin-bottom: 2.6rem; }
-  .section-heading h2, .method-section > h2, .analysis h2, .related-reading h2, .quiet-cta h2 { font-size: clamp(2.25rem, 4.7vw, 4.5rem); line-height: 1; letter-spacing: -.015em; text-wrap: balance; }
+  .text-link { color: #fff; font-size: .78rem; text-decoration: underline; text-underline-offset: .25em; }
+  .hero-visual { position: relative; margin: 0; }
+  .hero-visual picture, .hero-visual > img { display: block; overflow: hidden; border-radius: 1.15rem; aspect-ratio: 3 / 2; background: #1b1f20; }
+  .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-visual figcaption { padding-top: .55rem; font-size: .66rem; color: rgba(255,255,255,.52); }
+
+  .section-heading h2, .method-section > h2, .analysis h2, .related-reading h2, .quiet-cta h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1; letter-spacing: -.015em; text-wrap: balance; }
+  .chart-suite { padding: 4.5rem 0 5rem; background: #edf4ea; }
+  .chart-heading { max-width: 55rem; margin-bottom: 2.1rem; }
+  .chart-heading > p:last-child, .section-heading > p:last-child { max-width: 49rem; margin-top: .8rem; color: #5d615c; font-size: .9rem; line-height: 1.6; }
+  .chart-card { background: #fff; border: 1px solid #ced3cb; border-radius: 1.25rem; padding: clamp(1.1rem, 3vw, 2rem); margin-top: 1.25rem; box-shadow: 0 12px 36px rgba(15,18,19,.055); }
+  .chart-card.inverse { background: #0f1213; color: #f4f2ec; border-color: #0f1213; }
+  .chart-intro { display: flex; justify-content: space-between; align-items: start; gap: 1.5rem; padding-bottom: 1.15rem; border-bottom: 1px solid #d9ddd6; }
+  .inverse .chart-intro { border-color: rgba(255,255,255,.18); }
+  .chart-index { color: #397e31; margin-bottom: .45rem; }
+  .chart-intro h3 { font-size: clamp(1.55rem, 2.8vw, 2.55rem); line-height: 1.05; max-width: 28ch; }
+  .chart-intro > a { flex: 0 0 auto; color: #295e25; font-size: .72rem; font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
+  .inverse .chart-intro > a, .inverse .chart-index { color: #69d254; }
+  .bar-chart { display: grid; gap: .9rem; padding: 1.5rem 0; }
+  .bar-row { display: grid; grid-template-columns: minmax(8rem, 11rem) minmax(10rem, 1fr) 4.4rem; gap: .9rem; align-items: center; }
+  .bar-label { font-size: .78rem; font-weight: 600; }
+  .bar-track { height: 1.65rem; border-radius: 999px; background: #e7e9e4; overflow: hidden; }
+  .bar-track > span { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: #69d254; }
+  .bar-row.dark .bar-track > span { background: #0f1213; }
+  .inverse .bar-track { background: rgba(255,255,255,.16); }
+  .inverse .bar-row.light .bar-track > span { background: #f4f2ec; }
+  .bar-row strong { font-size: 1.25rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .gap-callout { margin-top: .4rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.68); font-size: .82rem; }
+  .gap-callout span { margin-right: .25rem; color: #69d254; font-family: var(--font-display); font-size: 2.6rem; line-height: 1; }
+  .chart-card table { width: 100%; border-collapse: collapse; margin: .2rem 0 1.1rem; font-size: .76rem; }
+  .chart-card caption { text-align: left; padding-bottom: .45rem; font-weight: 700; }
+  .chart-card th, .chart-card td { padding: .45rem .55rem; text-align: left; border-top: 1px solid #dedfd9; }
+  .chart-card td { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+  .inverse th, .inverse td { border-color: rgba(255,255,255,.16); }
+  .chart-card > figcaption { color: #5f635e; font-size: .7rem; line-height: 1.6; }
+  .chart-card > figcaption a { color: #254f20; text-decoration: underline; text-underline-offset: .2em; }
+  .inverse > figcaption { color: rgba(255,255,255,.65); }
+  .inverse > figcaption a { color: #8ae376; }
+
+  .key-findings { background: #fff; padding: 4rem 0; border-bottom: 1px solid #d9d6ce; }
+  .section-heading.compact { max-width: 48rem; margin-bottom: 1.8rem; }
   .finding-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #bfc0b8; border-bottom: 1px solid #bfc0b8; }
-  .finding { display: flex; flex-direction: column; gap: 1rem; min-height: 310px; padding: 1.4rem; border-right: 1px solid #d9d6ce; }
+  .finding { display: flex; flex-direction: column; gap: .8rem; min-height: 245px; padding: 1.1rem; border-right: 1px solid #d9d6ce; }
   .finding:last-child { border-right: 0; }
-  .finding strong { font-family: var(--font-display); font-size: clamp(3.4rem, 6vw, 6.4rem); line-height: .85; font-weight: 400; color: #326f2a; letter-spacing: -.03em; }
-  .finding > p { font-size: .94rem; line-height: 1.55; }
-  .finding footer { display: flex; gap: 1rem; justify-content: space-between; align-items: end; margin-top: auto; padding-top: 1rem; border-top: 1px solid #e5e2db; font-size: .69rem; line-height: 1.4; color: #6f706b; }
+  .finding strong { font-family: var(--font-display); font-size: clamp(2.55rem, 4.4vw, 4.5rem); line-height: .9; font-weight: 400; color: #326f2a; letter-spacing: -.03em; }
+  .measure { display: inline-flex; align-items: baseline; white-space: nowrap; }
+  .measure .unit { font-family: var(--font-body); font-size: .42em; line-height: 1; font-weight: 700; letter-spacing: 0; margin-left: .08em; transform: translateY(-.08em); }
+  .finding > p { font-size: .82rem; line-height: 1.5; }
+  .finding footer { display: flex; gap: .7rem; justify-content: space-between; align-items: end; margin-top: auto; padding-top: .8rem; border-top: 1px solid #e5e2db; font-size: .62rem; line-height: 1.4; color: #6f706b; }
   .finding footer a { color: #3f423f; text-decoration: underline; text-underline-offset: .2em; }
-  .analysis { background: #d8f6d2; padding: 6rem 0; }
-  .analysis-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(3rem, 8vw, 8rem); }
+
+  .analysis { background: #d8f6d2; padding: 4.5rem 0; }
+  .analysis-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(2rem, 7vw, 7rem); }
   .analysis-list { border-top: 1px solid rgba(15,18,19,.35); }
-  .analysis-list article { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid rgba(15,18,19,.22); }
-  .analysis-list article > span { font-size: .72rem; color: #386e30; font-weight: 700; }
-  .analysis-list h3 { font-family: var(--font-body); font-size: 1.03rem; letter-spacing: 0; line-height: 1.35; margin-bottom: .4rem; }
-  .analysis-list p { font-size: .9rem; line-height: 1.65; color: rgba(15,18,19,.68); }
-  .resource-body { display: grid; grid-template-columns: minmax(210px,.28fr) minmax(0,1fr); gap: clamp(2rem, 7vw, 7rem); padding-top: 6rem; padding-bottom: 7rem; }
-  .contents { position: sticky; top: 6.5rem; align-self: start; max-height: calc(100vh - 8rem); overflow: auto; padding-right: 1rem; }
-  .contents > p { margin-bottom: 1.15rem; color: #5a5c58; }
-  .contents ol { list-style: none; counter-reset: section; }
+  .analysis-list article { display: grid; grid-template-columns: 2.6rem 1fr; gap: .8rem; padding: 1rem 0; border-bottom: 1px solid rgba(15,18,19,.22); }
+  .analysis-list article > span { font-size: .67rem; color: #386e30; font-weight: 700; }
+  .analysis-list h3 { font-family: var(--font-body); font-size: .94rem; letter-spacing: 0; line-height: 1.35; margin-bottom: .25rem; }
+  .analysis-list p { font-size: .8rem; line-height: 1.55; color: rgba(15,18,19,.68); }
+
+  .resource-body { display: grid; grid-template-columns: minmax(155px,.22fr) minmax(0,1fr); gap: clamp(1.5rem, 5vw, 5rem); padding-top: 4rem; padding-bottom: 4.5rem; }
+  .contents { position: sticky; top: 5.7rem; align-self: start; max-height: calc(100vh - 7rem); overflow: auto; padding-right: .5rem; }
+  .contents > p { margin-bottom: .75rem; color: #5a5c58; }
+  .contents ol { list-style: none; }
   .contents li { border-top: 1px solid #d1cfc8; }
   .contents li:last-child { border-bottom: 1px solid #d1cfc8; }
-  .contents a { display: block; padding: .72rem 0; color: #50534f; font-size: .75rem; line-height: 1.35; text-decoration: none; }
+  .contents a { display: flex; gap: .55rem; padding: .55rem 0; color: #50534f; font-size: .7rem; line-height: 1.25; text-decoration: none; }
+  .contents a span { color: #397e31; font-variant-numeric: tabular-nums; }
   .contents a:hover { color: #0f1213; }
-  .stat-section { scroll-margin-top: 6.5rem; padding-bottom: 6rem; }
-  .section-heading { margin-bottom: 2rem; max-width: 56rem; }
-  .section-number { color: #4c8c41; margin-bottom: .8rem; }
-  .section-heading > p:last-child { max-width: 47rem; margin-top: 1rem; color: #666964; font-size: .96rem; line-height: 1.7; }
+  .stat-section { scroll-margin-top: 6rem; padding-bottom: 3.7rem; }
+  .section-heading { margin-bottom: 1.25rem; max-width: 56rem; }
+  .section-number { color: #4c8c41; margin-bottom: .55rem; }
   .stat-list { border-top: 1px solid #aeadab; }
-  .stat-row { display: grid; grid-template-columns: minmax(145px,.28fr) minmax(0,1fr); gap: clamp(1.2rem,4vw,3.5rem); padding: 2rem 0 2.2rem; border-bottom: 1px solid #cbc9c2; scroll-margin-top: 7rem; }
-  .stat-value { font-family: var(--font-display); font-size: clamp(2.8rem,5vw,5.4rem); line-height: .9; color: #2e7125; letter-spacing: -.03em; overflow-wrap: anywhere; }
-  .stat-claim { font-size: clamp(1.05rem,1.5vw,1.25rem); line-height: 1.55; font-weight: 520; max-width: 48rem; }
-  .stat-detail dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem 1.4rem; margin-top: 1.3rem; }
-  .stat-detail dl > div, .source-list dl > div { display: grid; grid-template-columns: 5.2rem 1fr; gap: .8rem; }
-  dt { font-size: .66rem; line-height: 1.45; letter-spacing: .08em; text-transform: uppercase; color: #767872; font-weight: 700; }
-  dd { font-size: .77rem; line-height: 1.55; color: #5b5e59; }
-  .citation-line { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin-top: 1.25rem; font-size: .72rem; color: #73756f; }
-  .citation-line > a:first-child { color: #254f20; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
-  .stat-id { margin-left: auto; color: #696b67; text-decoration: none; }
-  .back-link { display: inline-block; margin-top: 1rem; color: #555852; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
-  .method-section { scroll-margin-top: 6.5rem; padding: 5.5rem 0; border-top: 1px solid #aaa9a4; }
-  .method-section > h2 { margin-bottom: 2.4rem; max-width: 50rem; }
-  .method-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2.2rem; }
-  .method-grid h3, .limitations-box h3, .download-panel h3, .source-list h3 { font-family: var(--font-body); font-size: 1rem; line-height: 1.35; letter-spacing: 0; margin-bottom: .5rem; }
-  .method-grid p, .limitations-box li, .download-panel p { color: #5e615c; font-size: .86rem; line-height: 1.7; }
-  .limitations-box { margin-top: 2.6rem; padding: 1.6rem; background: #fff; border-left: 4px solid #69d254; }
-  .limitations-box ul { display: grid; gap: .4rem; padding-left: 1.1rem; }
-  .download-panel { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-top: 2.3rem; padding: 2rem; background: #0f1213; color: #fff; }
-  .download-panel .eyebrow { margin-bottom: .55rem; }
+  .stat-row { display: grid; grid-template-columns: minmax(150px, .24fr) minmax(0,1fr); gap: clamp(1rem, 3vw, 2.5rem); padding: 1.15rem 0 1.25rem; border-bottom: 1px solid #cbc9c2; scroll-margin-top: 6rem; }
+  .stat-value { min-width: 0; font-family: var(--font-display); font-size: clamp(2.55rem, 4.2vw, 4.2rem); line-height: .9; color: #2e7125; letter-spacing: -.03em; }
+  .stat-value.is-composite { display: grid; grid-template-columns: 1fr; gap: .65rem; font-size: clamp(1.65rem, 2.3vw, 2.35rem); }
+  .value-group { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .45rem; align-items: baseline; }
+  .value-group-label { display: block; min-height: 0; margin-bottom: 0; font-family: var(--font-body); font-size: .62rem; line-height: 1.2; font-weight: 700; letter-spacing: .02em; color: #666a65; }
+  .value-phrase { display: inline-block; font-size: .7em; line-height: 1; white-space: nowrap; }
+  .stat-claim { font-size: clamp(.98rem,1.3vw,1.12rem); line-height: 1.45; font-weight: 520; max-width: 48rem; }
+  .stat-meta { display: grid; grid-template-columns: minmax(130px,.75fr) 5.5rem minmax(180px,1.25fr); gap: .45rem .9rem; align-items: start; margin-top: .75rem; padding-top: .65rem; border-top: 1px solid #dedcd5; font-size: .67rem; line-height: 1.45; color: #666964; }
+  .stat-meta a { color: #254f20; font-weight: 700; text-decoration: underline; text-underline-offset: .18em; }
+  .stat-detail details, .source-list details, .method-details details { margin-top: .55rem; }
+  summary { cursor: pointer; color: #4f534e; font-size: .68rem; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+  .stat-detail dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem 1rem; margin-top: .65rem; padding: .75rem; background: #ebe9e3; }
+  .stat-detail dl > div, .source-list dl > div { display: grid; grid-template-columns: 4.8rem 1fr; gap: .65rem; }
+  .stat-detail dl > div:last-child { grid-column: 1 / -1; }
+  dt { font-size: .61rem; line-height: 1.4; letter-spacing: .08em; text-transform: uppercase; color: #73766f; font-weight: 700; }
+  dd { font-size: .7rem; line-height: 1.48; color: #555953; }
+  .stat-id { display: inline-block; margin-top: .55rem; color: #696b67; font-size: .62rem; text-decoration: none; }
+  .stat-id:hover { text-decoration: underline; }
+
+  .method-section { scroll-margin-top: 6rem; padding: 3.5rem 0; border-top: 1px solid #aaa9a4; }
+  .method-section > h2 { margin-bottom: 1.5rem; max-width: 50rem; }
+  .method-details { display: grid; gap: .75rem; }
+  .method-details details { border: 1px solid #cbc9c2; background: #fff; padding: 1rem; }
+  .method-details summary { font-size: .78rem; text-decoration: none; }
+  .method-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; padding-top: 1rem; }
+  .method-grid h3, .download-panel h3, .source-list h3 { font-family: var(--font-body); font-size: .92rem; line-height: 1.35; letter-spacing: 0; margin-bottom: .35rem; }
+  .method-grid p, .known-limits li, .download-panel p { color: #5e615c; font-size: .78rem; line-height: 1.6; }
+  .known-limits { display: grid; gap: .3rem; margin: .8rem 0 0 1.1rem; }
+  .download-panel { display: flex; justify-content: space-between; gap: 1.5rem; align-items: end; margin-top: 1.25rem; padding: 1.4rem; border-radius: .8rem; background: #0f1213; color: #fff; }
+  .download-panel .eyebrow { margin-bottom: .4rem; }
   .download-panel p { color: rgba(255,255,255,.64); }
-  .download-actions { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
-  .button.dark { background: #69d254; color: #0f1213; }
+  .download-actions { display: flex; align-items: center; gap: .85rem; flex-shrink: 0; }
   .dark-link { color: #fff; }
   .source-list { list-style: none; border-top: 1px solid #aaa9a4; }
-  .source-list > li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1.2rem; padding: 1.5rem 0; border-bottom: 1px solid #cbc9c2; scroll-margin-top: 7rem; }
-  .source-number { color: #397e31; font-size: .74rem; font-weight: 700; }
+  .source-list > li { display: grid; grid-template-columns: 3.3rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #cbc9c2; scroll-margin-top: 6rem; }
+  .source-number { color: #397e31; font-size: .68rem; font-weight: 700; }
   .source-list h3 a { color: #0f1213; text-decoration-thickness: 1px; text-underline-offset: .2em; }
-  .source-list h3 + p { color: #6b6d68; font-size: .75rem; margin-bottom: 1rem; }
-  .source-list dl { display: grid; gap: .45rem; }
-  .source-list dl > div { grid-template-columns: 7rem 1fr; }
-  .glossary { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 2rem; border-top: 1px solid #aaa9a4; }
-  .glossary > div { padding: 1.2rem 0; border-bottom: 1px solid #cbc9c2; }
-  .glossary dt { color: #0f1213; font-size: .78rem; margin-bottom: .4rem; }
-  .glossary dd { font-size: .84rem; }
+  .source-list h3 + p { color: #6b6d68; font-size: .68rem; margin-bottom: .35rem; }
+  .source-list dl { display: grid; gap: .35rem; margin-top: .65rem; padding: .75rem; background: #ebe9e3; }
+  .source-list dl > div { grid-template-columns: 6.5rem 1fr; }
+  .glossary { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; border-top: 1px solid #aaa9a4; }
+  .glossary > div { padding: .9rem 0; border-bottom: 1px solid #cbc9c2; }
+  .glossary dt { color: #0f1213; font-size: .72rem; margin-bottom: .25rem; }
+  .glossary dd { font-size: .76rem; }
   .update-section { padding-bottom: 0; }
-  .update-entry { display: grid; grid-template-columns: 10rem 1fr; gap: 2rem; padding: 1.3rem 0; border-top: 1px solid #aaa9a4; border-bottom: 1px solid #cbc9c2; }
-  .update-entry time { font-size: .75rem; font-weight: 700; }
-  .update-entry p { font-size: .84rem; line-height: 1.65; color: #5e615c; }
-  .related-reading { background: #fff; border-top: 1px solid #d5d2ca; padding: 6rem 0; }
-  .related-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(3rem,8vw,8rem); }
+  .update-entry { display: grid; grid-template-columns: 9rem 1fr; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid #aaa9a4; border-bottom: 1px solid #cbc9c2; }
+  .update-entry time { font-size: .7rem; font-weight: 700; }
+  .update-entry p { font-size: .76rem; line-height: 1.55; color: #5e615c; }
+
+  .related-reading { background: #fff; border-top: 1px solid #d5d2ca; padding: 4rem 0; }
+  .related-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(2rem,7vw,7rem); }
   .related-links { border-top: 1px solid #aaa9a4; }
-  .related-links > a { display: block; padding: 1.3rem 0; border-bottom: 1px solid #d5d2ca; color: #0f1213; text-decoration: none; }
-  .related-links span { display: block; font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; color: #397e31; font-weight: 700; margin-bottom: .35rem; }
-  .related-links strong { display: block; font-size: 1.05rem; }
-  .related-links p { margin-top: .35rem; color: #666964; font-size: .82rem; line-height: 1.55; }
-  .quiet-cta { background: #0f1213; color: #fff; padding: 5.5rem 0; }
-  .cta-grid { display: grid; grid-template-columns: 1.2fr .55fr; gap: 3rem; align-items: end; }
+  .related-links > a { display: block; padding: 1rem 0; border-bottom: 1px solid #d5d2ca; color: #0f1213; text-decoration: none; }
+  .related-links span { display: block; font-size: .61rem; text-transform: uppercase; letter-spacing: .1em; color: #397e31; font-weight: 700; margin-bottom: .25rem; }
+  .related-links strong { display: block; font-size: .95rem; }
+  .related-links p { margin-top: .25rem; color: #666964; font-size: .74rem; line-height: 1.5; }
+  .quiet-cta { background: #0f1213; color: #fff; padding: 4rem 0; }
+  .cta-grid { display: grid; grid-template-columns: 1.2fr .55fr; gap: 2.5rem; align-items: end; }
   .quiet-cta h2 { max-width: 45rem; }
-  .quiet-cta h2 + p { max-width: 40rem; margin-top: 1rem; color: rgba(255,255,255,.63); line-height: 1.7; }
-  .cta-action { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; }
-  .cta-action p { color: rgba(255,255,255,.5); font-size: .72rem; line-height: 1.5; }
-  a:focus-visible { outline: 3px solid #69d254; outline-offset: 4px; }
+  .quiet-cta h2 + p { max-width: 40rem; margin-top: .7rem; color: rgba(255,255,255,.63); line-height: 1.6; font-size: .88rem; }
+  .cta-action { display: flex; flex-direction: column; align-items: flex-start; gap: .65rem; }
+  .cta-action p { color: rgba(255,255,255,.5); font-size: .67rem; line-height: 1.45; }
+  a:focus-visible, summary:focus-visible { outline: 3px solid #69d254; outline-offset: 4px; }
+
   @media (max-width: 980px) {
     .hero-grid, .analysis-grid, .related-grid { grid-template-columns: 1fr; }
-    .hero-note { max-width: 34rem; }
+    .resource-hero { padding-top: 7rem; }
+    .hero-copy { max-width: 46rem; }
+    .hero-visual { max-width: 52rem; }
     .finding-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
     .finding:nth-child(2) { border-right: 0; }
     .finding:nth-child(-n+2) { border-bottom: 1px solid #d9d6ce; }
-    .resource-body { grid-template-columns: 1fr; }
-    .contents { position: static; max-height: none; padding: 0 0 1.5rem; }
-    .contents ol { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 1.5rem; }
+    .resource-body { grid-template-columns: 1fr; padding-top: 0; }
+    .contents { position: sticky; top: 4.4rem; z-index: 12; max-height: none; margin: 0 calc(50% - 50vw) 2.5rem; padding: .75rem max(1rem, calc((100vw - 1120px)/2)); background: rgba(244,242,236,.97); border-bottom: 1px solid #cbc9c2; }
+    .contents > p { margin: 0 0 .45rem; padding-left: .15rem; }
+    .contents ol { display: flex; gap: .35rem; overflow-x: auto; scrollbar-width: thin; padding-bottom: .25rem; }
+    .contents li, .contents li:last-child { flex: 0 0 auto; border: 0; }
+    .contents a { padding: .5rem .65rem; border: 1px solid #c9c8c1; border-radius: 999px; background: #fff; white-space: nowrap; }
+    .stat-section, .stat-row, .method-section { scroll-margin-top: 11rem; }
     .cta-grid { grid-template-columns: 1fr; }
   }
+
   @media (max-width: 680px) {
-    .resource-hero { padding: 7.7rem 0 4rem; }
-    .breadcrumbs { margin-bottom: 2rem; }
-    h1 { font-size: clamp(3rem,15vw,4.7rem); }
+    .resource-hero { padding: 6.6rem 0 2.2rem; }
+    .hero-grid { gap: 1.6rem; }
+    .breadcrumbs { margin-bottom: 1.15rem; }
+    h1 { font-size: clamp(3.2rem, 16vw, 4.6rem); max-width: 8ch; }
     .download-row { align-items: stretch; flex-direction: column; }
     .download-row .button { width: 100%; }
-    .key-findings, .analysis, .related-reading, .quiet-cta { padding: 4rem 0; }
+    .hero-visual picture, .hero-visual > img { border-radius: .8rem; }
+    .chart-suite, .key-findings, .analysis, .related-reading, .quiet-cta { padding: 3.2rem 0; }
+    .chart-card { border-radius: .9rem; }
+    .chart-intro { flex-direction: column; gap: .65rem; }
+    .bar-row { grid-template-columns: minmax(0,1fr) auto; gap: .4rem .75rem; }
+    .bar-track { grid-column: 1 / -1; grid-row: 2; height: 1.35rem; }
+    .bar-row strong { grid-column: 2; grid-row: 1; font-size: 1rem; }
+    .bar-label { grid-column: 1; grid-row: 1; }
+    .chart-card table { font-size: .69rem; }
+    .chart-card th, .chart-card td { padding: .4rem .25rem; }
     .finding-grid { grid-template-columns: 1fr; }
-    .finding { min-height: 240px; border-right: 0; border-bottom: 1px solid #d9d6ce; }
+    .finding { min-height: 190px; border-right: 0; border-bottom: 1px solid #d9d6ce; }
     .finding:last-child { border-bottom: 0; }
-    .resource-body { padding-top: 4rem; padding-bottom: 4rem; }
-    .contents ol { grid-template-columns: 1fr; }
-    .stat-section { padding-bottom: 4.5rem; }
-    .stat-row { grid-template-columns: 1fr; }
-    .stat-value { font-size: 3.9rem; }
+    .resource-body { padding-bottom: 3rem; }
+    .contents { position: relative; top: auto; }
+    .stat-section, .stat-row, .method-section { scroll-margin-top: 1rem; }
+    .stat-section { padding-bottom: 3rem; }
+    .stat-row { grid-template-columns: minmax(108px,.34fr) minmax(0,1fr); gap: .85rem; }
+    .stat-value { font-size: clamp(2.1rem, 12vw, 3.1rem); }
+    .stat-value.is-composite { grid-template-columns: 1fr; font-size: 2rem; gap: .75rem; }
+    .value-group-label { min-height: 0; margin-bottom: .18rem; }
+    .stat-meta { grid-template-columns: 1fr; gap: .2rem; }
+    .stat-meta span:last-child { margin-top: .2rem; }
     .stat-detail dl, .method-grid, .glossary { grid-template-columns: 1fr; }
-    .stat-detail dl > div { grid-template-columns: 4.5rem 1fr; }
-    .stat-id { margin-left: 0; }
+    .stat-detail dl > div, .stat-detail dl > div:last-child { grid-column: auto; grid-template-columns: 1fr; gap: .15rem; }
     .download-panel { align-items: stretch; flex-direction: column; }
     .download-actions { flex-direction: column; align-items: stretch; }
     .download-actions .button { width: 100%; }
-    .source-list > li { grid-template-columns: 2.5rem 1fr; }
-    .source-list dl > div { grid-template-columns: 1fr; gap: .2rem; }
-    .update-entry { grid-template-columns: 1fr; gap: .6rem; }
+    .source-list > li { grid-template-columns: 2rem 1fr; }
+    .source-list dl > div { grid-template-columns: 1fr; gap: .15rem; }
+    .update-entry { grid-template-columns: 1fr; gap: .45rem; }
+  }
+
+  @media (max-width: 360px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-value.is-composite { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { :global(html) { scroll-behavior: auto; } }
 </style>

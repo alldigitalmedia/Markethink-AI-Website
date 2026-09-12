@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI tools used by AI-using B2B marketers</title>
+  <desc id="desc">Content copy tools 89 percent, creative asset tools 53 percent, SEO tools 41 percent, social media tools 38 percent, and email marketing tools 36 percent.</desc>
+  <rect width="1200" height="760" fill="#F4F2EC"/>
+  <text x="72" y="78" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#0F1213">Where AI-using B2B marketers apply tools</text>
+  <text x="72" y="116" font-family="Inter,Arial,sans-serif" font-size="18" fill="#5B5E59">Eligible population: B2B marketers whose organizations use AI-powered applications · multiple responses</text>
+  <g font-family="Inter,Arial,sans-serif" font-size="21" fill="#0F1213">
+    <text x="72" y="207">Copy</text><rect x="260" y="170" width="712" height="50" rx="7" fill="#69D254"/><text x="992" y="207" font-size="28" font-weight="700">89%</text>
+    <text x="72" y="297">Creative</text><rect x="260" y="260" width="424" height="50" rx="7" fill="#337C2B"/><text x="704" y="297" font-size="28" font-weight="700">53%</text>
+    <text x="72" y="387">SEO</text><rect x="260" y="350" width="328" height="50" rx="7" fill="#337C2B"/><text x="608" y="387" font-size="28" font-weight="700">41%</text>
+    <text x="72" y="477">Social</text><rect x="260" y="440" width="304" height="50" rx="7" fill="#337C2B"/><text x="584" y="477" font-size="28" font-weight="700">38%</text>
+    <text x="72" y="567">Email</text><rect x="260" y="530" width="288" height="50" rx="7" fill="#337C2B"/><text x="568" y="567" font-size="28" font-weight="700">36%</text>
+  </g>
+  <text x="72" y="654" font-family="Inter,Arial,sans-serif" font-size="16" fill="#686B67">Source: Content Marketing Institute + MarketingProfs · Published Oct. 8, 2025</text>
+  <text x="72" y="682" font-family="Inter,Arial,sans-serif" font-size="15" fill="#777A75">Survey fielded June 24–Aug. 14, 2025 · 1,015 B2B marketers, mostly North America · self-reported</text>
+  <text x="72" y="710" font-family="Inter,Arial,sans-serif" font-size="15" fill="#777A75">Percentages do not sum to 100 because respondents could select multiple tool categories.</text>
+</svg>
