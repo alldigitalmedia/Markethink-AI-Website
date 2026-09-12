@@ -1,7 +1,7 @@
 export const STATUS_DEFINITIONS = [
   {
     label: "Planned",
-    definition: "Approved for this roadmap, but work has not started and no release is claimed.",
+    definition: "Work has not started and no release is claimed.",
   },
   {
     label: "In progress",
@@ -21,6 +21,21 @@ export const STATUS_DEFINITIONS = [
   },
 ];
 
+export const ROADMAP_META = {
+  canonical: "https://markethink.ai/seo-aio-strategy/",
+  title: "SEO & AIO Strategy: Markethink's Public 30-Day Roadmap",
+  description: "Follow Markethink's evidence-led 30-day SEO and AI-search roadmap, status definitions, verification criteria, measurement plan, and dated change log.",
+  headline: "Steal our SEO & AIO strategy.",
+  supportingLine: "Watch us implement it on Markethink.ai.",
+  publishedDate: "2026-09-12",
+  lastSubstantiveUpdate: "2026-09-12",
+  latestUpdateId: "palette-publication-verification-2026-09-12",
+  sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
+  sharingImageWidth: 1200,
+  sharingImageHeight: 630,
+  sharingImageAlt: "Markethink SEO and AIO 30-day roadmap sharing card with five target windows from evidence through verification.",
+};
+
 export const PHASES = [
   { id: "days-1-5", label: "Days 1–5", shortLabel: "Evidence" },
   { id: "days-6-12", label: "Days 6–12", shortLabel: "Commercial clarity" },
@@ -32,7 +47,7 @@ export const PHASES = [
   { id: "concurrent", label: "Concurrent corrections", shortLabel: "Under review" },
 ];
 
-export const roadmapEntries = [
+const rawRoadmapEntries = [
   {
     id: "buyer-query-serp-evidence",
     phase: "Days 1–5",
@@ -50,7 +65,8 @@ export const roadmapEntries = [
       "The sample separates commercial, comparison, and educational intent before any page changes are proposed.",
     ],
     targetPage: "Research worksheet and the current Markethink.ai search footprint",
-    status: "Planned",
+    status: "In progress",
+    progressNote: "Buyer-query research has begun. Complete coverage, recorded scopes, intent review, and a repeatable fixed sample remain to be verified.",
     verifiedDate: null,
     evidenceUrl: null,
     evidenceLabel: null,
@@ -94,7 +110,8 @@ export const roadmapEntries = [
       "Unavailable measures display Not yet measured and no inaccessible vendor data is claimed.",
     ],
     targetPage: "Baseline ledger for Markethink.ai and the approved target URLs",
-    status: "Planned",
+    status: "In progress",
+    progressNote: "Baseline collection has begun. Complete source coverage, dated scopes, denominators, and the unavailable-data review remain to be verified.",
     verifiedDate: null,
     evidenceUrl: null,
     evidenceLabel: null,
@@ -116,6 +133,7 @@ export const roadmapEntries = [
       "The homepage keeps one clear commercial job and the walkthrough destination remains accurate.",
     ],
     targetPage: "https://markethink.ai/",
+    targetUrl: "https://markethink.ai/",
     status: "Planned",
     verifiedDate: null,
     evidenceUrl: null,
@@ -137,7 +155,8 @@ export const roadmapEntries = [
       "The commercial hub answers the buyer questions assigned to it without taking the homepage primary term.",
       "Comparison content shows selection criteria and tradeoffs with working contextual links.",
     ],
-    targetPage: "Existing commercial hub and comparison coverage identified in the URL map",
+    targetPage: "https://markethink.ai/ai-marketing-for-small-business/",
+    targetUrl: "https://markethink.ai/ai-marketing-for-small-business/",
     status: "Planned",
     verifiedDate: null,
     evidenceUrl: null,
@@ -148,18 +167,23 @@ export const roadmapEntries = [
     phase: "Days 6–12",
     phaseId: "days-6-12",
     window: "Days 6–12",
-    title: "Improve the agency buyer guide",
-    why: "Agency and partner buyers evaluate delivery, accountability, approvals, and client isolation differently from direct brands.",
+    title: "Improve the AI marketing provider buyer guide",
+    why: "Businesses evaluating an AI marketing provider need practical decision support that is separate from an optional agency-partner or white-label track.",
     how: [
-      "Use the query evidence to list the questions an agency buyer needs answered before considering a managed operating partner.",
-      "Explain scope, review, approval, delivery, and isolation without exposing private client or platform details.",
-      "Link the guide to the correct commercial owner and walkthrough rather than creating a second competing sales page.",
+      "Add a provider evaluation matrix that helps businesses compare scope, accountability, evidence, and fit.",
+      "Separate work accelerated by AI from expert judgment, client approval, and follow-up responsibility.",
+      "Include one documented example and link the guide back to the homepage as the primary commercial owner.",
     ],
     doneCriteria: [
-      "The guide has a distinct agency-partner audience and does not blur that audience with direct-brand positioning.",
-      "The guide answers its assigned questions and has a clear internal path to the appropriate next step.",
+      "The guide includes a provider evaluation matrix, clear role separation, one documented example, and a working homepage link.",
+      "The guide serves businesses evaluating an AI marketing provider without becoming a white-label partner guide.",
     ],
-    targetPage: "Existing agency buyer guide or the validated gap assigned by the URL map",
+    targetPage: "https://markethink.ai/blog/what-is-an-ai-marketing-agency/",
+    targetUrl: "https://markethink.ai/blog/what-is-an-ai-marketing-agency/",
+    optionalTrack: {
+      label: "Optional separate agency-partner track",
+      detail: "Evaluate a distinct agency-partner or white-label guide only if query evidence proves a separate audience need. It must not replace or blur the provider guide for businesses.",
+    },
     status: "Planned",
     verifiedDate: null,
     evidenceUrl: null,
@@ -171,14 +195,14 @@ export const roadmapEntries = [
     phaseId: "days-10-18",
     window: "Days 10–18",
     title: "Prepare one documented first-party work story",
-    why: "A specific, permissioned account of the work is more useful than a generic claim about capability.",
+    why: "A specific, documented account of the work is more useful than a generic claim about capability.",
     how: [
-      "Choose one workflow with public naming permission and evidence that can be shown without exposing private client information.",
+      "Choose one workflow with documented public-use clearance and evidence that can be shown without exposing private client information.",
       "Document the starting problem, approved scope, work produced, review decisions, and observable result without inferring causation.",
-      "Separate verified facts from operator commentary and obtain approval for every named claim and asset.",
+      "Separate verified facts from Markethink analysis and confirm every named claim and asset is cleared for public use.",
     ],
     doneCriteria: [
-      "Every claim, name, image, and result has explicit publication permission and a traceable evidence source.",
+      "Every claim, name, image, and result has documented public-use clearance and a traceable evidence source.",
       "The story distinguishes delivered work from measured outcome and contains no invented metric or testimonial.",
     ],
     targetPage: "One approved first-party work story and its relevant commercial page",
@@ -237,15 +261,15 @@ export const roadmapEntries = [
     phaseId: "days-19-24",
     window: "Days 19–24",
     title: "Research relevant external-authority opportunities",
-    why: "Useful third-party corroboration can strengthen discoverability, but irrelevant mentions and unauthorized outreach create risk.",
+    why: "Useful third-party corroboration can strengthen discoverability when the publication, evidence, and audience fit are relevant.",
     how: [
-      "Identify publications, associations, expert-commentary formats, profiles, and communities already relevant to the buyer questions.",
-      "Record audience fit, editorial standard, contribution path, evidence requirement, and risk for each opportunity.",
-      "Prepare recommendations only. Do not contact, pitch, submit, purchase, or place links without separate authorization.",
+      "Shortlist relevant publications, associations, expert-commentary formats, profiles, and communities connected to the buyer questions.",
+      "Prepare the evidence each publication would need and record its audience fit, editorial standard, and contribution path.",
+      "Review the evidence and audience fit before outreach so each proposed contribution is useful and relevant.",
     ],
     doneCriteria: [
-      "The research list contains only relevant opportunities with a documented reason and source URL.",
-      "No outreach, submission, paid placement, or account creation has occurred under this roadmap item.",
+      "The shortlist contains relevant publications with a documented reason, source URL, evidence need, and audience fit.",
+      "Each proposed contribution has an evidence pack and fit review ready before outreach is considered.",
     ],
     targetPage: "External-authority research ledger, not a public outreach campaign",
     status: "Planned",
@@ -380,6 +404,7 @@ export const roadmapEntries = [
       "The downloadable CSV and JSON ledgers are linked from the page and publicly available.",
     ],
     targetPage: "https://markethink.ai/ai-marketing-statistics/",
+    targetUrl: "https://markethink.ai/ai-marketing-statistics/",
     status: "Verified",
     verifiedDate: "2026-09-12",
     evidenceUrl: "https://markethink.ai/ai-marketing-statistics/",
@@ -402,6 +427,7 @@ export const roadmapEntries = [
       "The guide explains that AI-search visibility is not guaranteed and links to relevant Markethink context.",
     ],
     targetPage: "https://markethink.ai/blog/how-to-show-up-in-ai-search/",
+    targetUrl: "https://markethink.ai/blog/how-to-show-up-in-ai-search/",
     status: "Verified",
     verifiedDate: "2026-09-12",
     evidenceUrl: "https://markethink.ai/blog/how-to-show-up-in-ai-search/",
@@ -417,7 +443,7 @@ export const roadmapEntries = [
     how: [
       "Review the contact sheet for B2B relevance, composition, diversity, crop behavior, and consistency with the website palette.",
       "Record approved and rejected directions before preparing any route-level replacement.",
-      "Keep all existing public images in place until full replacement is explicitly approved.",
+      "Keep all existing public images in place while the separate visual review remains open.",
     ],
     doneCriteria: [
       "The contact sheet has an explicit visual decision for every proposed image direction.",
@@ -435,23 +461,42 @@ export const roadmapEntries = [
     phaseId: "concurrent",
     window: "Current review workstream",
     title: "Review the isolated website palette correction",
-    why: "The blog and research surfaces should return to the approved charcoal, warm white, soft green, vivid green, and established gray palette without bundling unrelated redesign work.",
+    why: "The blog and research surfaces should use the canonical charcoal, warm white, soft green, vivid green, and established gray palette without bundling unrelated redesign work.",
     how: [
       "Keep the correction isolated to the blog index, one representative article, and one statistics SVG chart.",
       "Review each changed surface at desktop and mobile sizes and confirm that text contrast remains accessible.",
-      "Publish only after the palette correction receives its own approval and production checks.",
+      "Keep the final canonical-base cleanup open until an independent production check closes it.",
     ],
     doneCriteria: [
-      "The isolated correction contains no orange, coral, or pink and does not change unrelated copy or structure.",
-      "The correction is not described as live or verified until its own release and production checks pass.",
+      "The published correction preserves the green blog and article treatment, contained desktop and 320px views, CAPTCHA behavior, IAB SVG colors, the 82/45/37 values, byte-identical CSV and JSON hashes, and all 60 statistic anchors.",
+      "The final canonical-base cleanup is independently verified and closed without changing the protected research values or links.",
     ],
     targetPage: "Prepared blog-index, representative-article, and statistics-chart correction set",
     status: "In progress",
+    progressNote: "The palette release and listed production evidence are verified. Final canonical-base cleanup remains open for an independent closeout.",
+    verifiedCriterionIndexes: [0],
     verifiedDate: null,
     evidenceUrl: null,
     evidenceLabel: null,
   },
 ];
+
+export const roadmapEntries = rawRoadmapEntries.map((entry) => {
+  const verifiedCriterionIndexes = entry.status === "Verified"
+    ? entry.doneCriteria.map((_, index) => index)
+    : (entry.verifiedCriterionIndexes ?? []);
+  return {
+    ...entry,
+    targetUrl: entry.targetUrl ?? null,
+    progressNote: entry.progressNote ?? null,
+    optionalTrack: entry.optionalTrack ?? null,
+    verifiedCriterionIndexes,
+    doneCriteria: entry.doneCriteria.map((text, index) => ({
+      text,
+      state: verifiedCriterionIndexes.includes(index) ? "verified" : "remaining",
+    })),
+  };
+});
 
 export const measurementNotes = [
   {
@@ -482,10 +527,16 @@ export const measurementNotes = [
 
 export const changeLog = [
   {
+    id: "palette-publication-verification-2026-09-12",
+    date: "2026-09-12",
+    title: "Palette correction published and independently checked",
+    detail: "Published the canonical palette correction. Independent verification confirmed the green blog and article treatment, contained desktop and 320px views, CAPTCHA behavior, IAB SVG canonical colors with the 82/45/37 values preserved, byte-identical CSV and JSON hashes, and all 60 statistic anchors. Palette work remains In progress until the final canonical-base cleanup is independently closed.",
+  },
+  {
     id: "initial-public-roadmap",
     date: "2026-09-12",
     title: "Initial public roadmap published",
-    detail: "Published the operator-approved 30-day plan, recorded the public statistics and blog evidence as pre-existing progress, and kept the B2B imagery and palette correction workstreams marked In progress rather than live.",
+    detail: "Published the public 30-day plan, recorded the public statistics and blog evidence as pre-existing progress, and kept the B2B imagery and palette correction workstreams marked In progress rather than live.",
   },
 ];
 
