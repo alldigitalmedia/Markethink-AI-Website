@@ -1,6 +1,7 @@
 import {
   STATUS_DEFINITIONS,
   PHASES,
+  ROADMAP_META,
   roadmapEntries,
   changeLog,
   measurementNotes,
@@ -16,15 +17,21 @@ export function GET() {
     const entries = roadmapEntries.filter((entry) => entry.phaseId === phase.id);
     const renderedEntries = entries.map((entry) => {
       const how = entry.how.map((step, index) => `${index + 1}. ${line(step)}`).join("\n");
-      const done = entry.doneCriteria.map((criterion) => `- [ ] ${line(criterion)}`).join("\n");
+      const done = entry.doneCriteria.map((criterion) => `- ${criterion.state === "verified" ? "✓" : "•"} ${line(criterion.text)}`).join("\n");
       const evidence = entry.evidenceUrl
         ? `[${entry.evidenceLabel}](${entry.evidenceUrl})`
         : "No public evidence link available";
+      const target = entry.targetUrl ? `[${line(entry.targetPage)}](${entry.targetUrl})` : line(entry.targetPage);
+      const progress = entry.progressNote ? `\n- Current progress: ${line(entry.progressNote)}` : "";
+      const optionalTrack = entry.optionalTrack
+        ? `\n\n### ${line(entry.optionalTrack.label)}\n\n${line(entry.optionalTrack.detail)}`
+        : "";
       return `## ${entry.id}: ${entry.title}
 
+- Action link: [Open this action](${ROADMAP_META.canonical}#${entry.id})
 - Target window: ${entry.window}
-- Status: ${entry.status}
-- Target page: ${entry.targetPage}
+- Status: ${entry.status}${progress}
+- Target page: ${target}
 - Verified date: ${entry.verifiedDate ?? "Not yet verified"}
 - Public evidence: ${evidence}
 
@@ -38,7 +45,7 @@ ${how}
 
 ### Done criteria
 
-${done}`;
+${done}${optionalTrack}`;
     }).join("\n\n");
     return `# ${phase.label}: ${phase.shortLabel}\n\n${renderedEntries}`;
   }).join("\n\n");
@@ -56,12 +63,14 @@ ${done}`;
   ).join("\n\n");
 
   const changes = changeLog.map((change) =>
-    `- ${change.date}: ${change.title}. ${change.detail}`,
+    `- [${change.date}: ${change.title}](${ROADMAP_META.canonical}#${change.id}). ${change.detail}`,
   ).join("\n");
 
   const body = `# Markethink SEO & AIO 30-day checklist
 
-This reusable checklist is generated from the same structured roadmap used by https://markethink.ai/seo-aio-strategy/.
+This reusable checklist is generated from the same structured roadmap used by ${ROADMAP_META.canonical}.
+
+Day ranges such as Days 1–5 and Days 6–12 are target windows, not recorded sprint dates or a claimed sprint start.
 
 AIO means improving how useful, accurate content is found and represented in AI-assisted search. This is a documented experiment, not a guaranteed ranking or citation recipe.
 

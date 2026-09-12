@@ -5,16 +5,25 @@ import Footer from "../components/Footer.astro";
 import {
   STATUS_DEFINITIONS,
   PHASES,
+  ROADMAP_META,
   roadmapEntries,
   measurementNotes,
   changeLog,
   statusCounts,
 } from "../data/seoAioStrategy.mjs";
 
-const pageTitle = "SEO & AIO Strategy: Markethink's Public 30-Day Roadmap";
-const pageDescription = "Follow Markethink's evidence-led 30-day SEO and AI-search roadmap, status definitions, verification criteria, measurement plan, and dated change log.";
-const canonical = "https://markethink.ai/seo-aio-strategy/";
-const releaseDate = "2026-09-12";
+const {
+  title: pageTitle,
+  description: pageDescription,
+  canonical,
+  publishedDate: releaseDate,
+  lastSubstantiveUpdate,
+  latestUpdateId,
+  sharingImageUrl,
+  sharingImageWidth,
+  sharingImageHeight,
+  sharingImageAlt,
+} = ROADMAP_META;
 const groupedPhases = PHASES.map((phase) => ({
   ...phase,
   entries: roadmapEntries.filter((entry) => entry.phaseId === phase.id),
@@ -33,7 +42,15 @@ const articleSchema = {
   description: pageDescription,
   url: canonical,
   datePublished: releaseDate,
-  dateModified: releaseDate,
+  dateModified: lastSubstantiveUpdate,
+  image: {
+    "@type": "ImageObject",
+    url: sharingImageUrl,
+    contentUrl: sharingImageUrl,
+    width: sharingImageWidth,
+    height: sharingImageHeight,
+    caption: sharingImageAlt,
+  },
   inLanguage: "en",
   isAccessibleForFree: true,
   author: { "@type": "Organization", "@id": "https://markethink.ai/#organization", name: "Markethink" },
@@ -43,6 +60,18 @@ const articleSchema = {
     "https://developers.google.com/search/docs/appearance/ai-features",
     "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
   ],
+};
+const webPageSchema = {
+  "@type": "WebPage",
+  dateModified: lastSubstantiveUpdate,
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: sharingImageUrl,
+    contentUrl: sharingImageUrl,
+    width: sharingImageWidth,
+    height: sharingImageHeight,
+    caption: sharingImageAlt,
+  },
 };
 const breadcrumbSchema = {
   "@type": "BreadcrumbList",
@@ -57,10 +86,12 @@ const breadcrumbSchema = {
   title={pageTitle}
   description={pageDescription}
   canonical={canonical}
-  image="/images/logo.svg"
-  imageAlt="Markethink"
+  image={sharingImageUrl}
+  imageAlt={sharingImageAlt}
+  imageWidth={sharingImageWidth}
+  imageHeight={sharingImageHeight}
   type="article"
-  structuredData={[articleSchema, breadcrumbSchema]}
+  structuredData={[webPageSchema, articleSchema, breadcrumbSchema]}
 >
   <header class="site-header"><Navbar ctaLabel="Request available times" /></header>
   <main id="top" class="strategy-page">
@@ -78,14 +109,19 @@ const breadcrumbSchema = {
             </div>
             <div class="hero-brief">
               <p>
-                This is Markethink's documented experiment: a 30-day sequence that starts with buyer evidence, improves the pages that already own the demand, adds permissioned proof, and checks what actually changed.
+                This is Markethink's documented experiment: a 30-day sequence that starts with buyer evidence, improves the pages that already own the demand, adds documented proof, and checks what actually changed.
               </p>
               <p>
                 AIO means improving how useful, accurate content is found and represented in AI-assisted search. It builds on conventional SEO. It is not a guaranteed ranking recipe.
               </p>
             </div>
           </div>
-          <div class="timeline-opening" aria-label="Roadmap sequence">
+          <div class="update-meta">
+            <span>Last substantive update: <time datetime={lastSubstantiveUpdate}>{displayDate(lastSubstantiveUpdate)}</time></span>
+            <a href={`#${latestUpdateId}`}>Latest update</a>
+          </div>
+          <p class="window-note">Day ranges such as Days 1–5 and Days 6–12 are target windows, not recorded sprint dates or a claimed sprint start.</p>
+          <div class="timeline-opening" aria-label="Roadmap target windows">
             {PHASES.slice(0, 6).map((phase, index) => (
               <a href={`#${phase.id}`}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -151,7 +187,7 @@ const breadcrumbSchema = {
 
           <div class="phase-list">
             {groupedPhases.map((phase, phaseIndex) => (
-              <section class="phase" id={phase.id} data-phase-group={phase.id} aria-labelledby={`${phase.id}-title`}>
+              <section class="phase" id={phase.id} data-phase-group={phase.id} aria-labelledby={`${phase.id}-title`} tabindex="-1">
                 <header class="phase-header">
                   <div class="phase-number">{String(phaseIndex + 1).padStart(2, "0")}</div>
                   <div><p>{phase.label}</p><h3 id={`${phase.id}-title`}>{phase.shortLabel}</h3></div>
@@ -159,20 +195,27 @@ const breadcrumbSchema = {
                 </header>
                 <div class="entry-list">
                   {phase.entries.map((entry) => (
-                    <article class="entry-card" data-roadmap-entry={entry.id}>
+                    <article class="entry-card" id={entry.id} data-roadmap-entry={entry.id} tabindex="-1">
                       <header class="entry-header">
                         <div>
                           <p class="entry-window">{entry.window}</p>
                           <h4>{entry.title}</h4>
                         </div>
-                        <span class:list={["status-pill", `status-${statusClass(entry.status)}`]}>{entry.status}</span>
+                        <div class="entry-actions">
+                          <span class:list={["status-pill", `status-${statusClass(entry.status)}`]}>{entry.status}</span>
+                          <button type="button" class="copy-link" data-copy-permalink={entry.id} aria-label={`Copy link to ${entry.title}`}>
+                            <span aria-hidden="true">#</span><span data-copy-label>Copy link</span>
+                          </button>
+                        </div>
                       </header>
                       <div class="entry-body">
                         <div class="why-block">
                           <p class="field-label">Why</p>
                           <p>{entry.why}</p>
+                          {entry.progressNote && <p class="progress-note"><strong>Current progress:</strong> {entry.progressNote}</p>}
+                          {entry.optionalTrack && <div class="optional-track"><strong>{entry.optionalTrack.label}</strong><p>{entry.optionalTrack.detail}</p></div>}
                           <dl>
-                            <div><dt>Target page</dt><dd>{entry.targetPage}</dd></div>
+                            <div><dt>Target page</dt><dd>{entry.targetUrl ? <a href={entry.targetUrl}>{entry.targetPage}</a> : entry.targetPage}</dd></div>
                             <div><dt>Verified date</dt><dd>{entry.verifiedDate ? displayDate(entry.verifiedDate) : "Not yet verified"}</dd></div>
                             <div>
                               <dt>Public evidence</dt>
@@ -186,7 +229,7 @@ const breadcrumbSchema = {
                         </div>
                         <div class="done-block">
                           <p class="field-label">Done criteria</p>
-                          <ul>{entry.doneCriteria.map((criterion) => <li>{criterion}</li>)}</ul>
+                          <ul>{entry.doneCriteria.map((criterion) => <li data-criterion-state={criterion.state}><span class="criterion-icon" aria-hidden="true">{criterion.state === "verified" ? "✓" : "•"}</span><span>{criterion.text}</span></li>)}</ul>
                         </div>
                       </div>
                     </article>
@@ -308,20 +351,83 @@ const breadcrumbSchema = {
   const phaseGroups = Array.from(document.querySelectorAll<HTMLElement>("[data-phase-group]"));
   const result = document.querySelector<HTMLElement>(".filter-result");
 
+  function setActiveFilter(selected: string, scrollPhase = false) {
+    let visibleActions = 0;
+    filterButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.phaseFilter === selected)));
+    phaseGroups.forEach((group) => {
+      const visible = selected === "all" || group.dataset.phaseGroup === selected;
+      group.hidden = !visible;
+      if (visible) visibleActions += group.querySelectorAll("[data-roadmap-entry]").length;
+    });
+    if (result) result.textContent = selected === "all"
+      ? `Showing all ${visibleActions} actions.`
+      : `Showing ${visibleActions} ${visibleActions === 1 ? "action" : "actions"}.`;
+    if (scrollPhase && selected !== "all") document.getElementById(selected)?.scrollIntoView({ block: "start" });
+  }
+
+  function resolveHashTarget(hash = window.location.hash, focusTarget = true) {
+    if (!hash || hash === "#") return;
+    let id = "";
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    const targetPhase = target.matches("[data-phase-group]")
+      ? target
+      : target.closest<HTMLElement>("[data-phase-group]");
+    if (targetPhase?.hidden) setActiveFilter("all");
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start" });
+      if (focusTarget) target.focus({ preventScroll: true });
+    });
+  }
+
   filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const selected = button.dataset.phaseFilter ?? "all";
-      let visibleActions = 0;
-      filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-      phaseGroups.forEach((group) => {
-        const visible = selected === "all" || group.dataset.phaseGroup === selected;
-        group.hidden = !visible;
-        if (visible) visibleActions += group.querySelectorAll("[data-roadmap-entry]").length;
-      });
-      if (result) result.textContent = `Showing ${visibleActions} ${visibleActions === 1 ? "action" : "actions"}.`;
-      if (selected !== "all") document.getElementById(selected)?.scrollIntoView({ block: "start" });
+    button.addEventListener("click", () => setActiveFilter(button.dataset.phaseFilter ?? "all", true));
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", () => window.setTimeout(() => resolveHashTarget(window.location.hash), 0));
+  });
+
+  async function writePermalink(value: string) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+    const fallback = document.createElement("textarea");
+    fallback.value = value;
+    fallback.setAttribute("readonly", "");
+    fallback.style.position = "fixed";
+    fallback.style.opacity = "0";
+    document.body.append(fallback);
+    fallback.select();
+    document.execCommand("copy");
+    fallback.remove();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-permalink]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const id = button.dataset.copyPermalink;
+      if (!id) return;
+      const label = button.querySelector<HTMLElement>("[data-copy-label]");
+      try {
+        await writePermalink(`${window.location.origin}${window.location.pathname}#${id}`);
+        if (label) label.textContent = "Copied";
+        button.setAttribute("aria-label", "Link copied");
+      } catch {
+        if (label) label.textContent = "Copy failed";
+        button.setAttribute("aria-label", "Copy failed. Open this action link instead");
+      }
+      window.setTimeout(() => {
+        if (label) label.textContent = "Copy link";
+        button.setAttribute("aria-label", `Copy link to ${button.closest("[data-roadmap-entry]")?.querySelector("h4")?.textContent ?? "roadmap action"}`);
+      }, 2200);
     });
   });
+
+  window.addEventListener("hashchange", () => resolveHashTarget());
+  window.addEventListener("popstate", () => resolveHashTarget());
+  resolveHashTarget(window.location.hash, false);
 </script>
 
 <style>
@@ -340,6 +446,10 @@ const breadcrumbSchema = {
   .hero-brief { display: grid; gap: 1.3rem; padding-bottom: .5rem; }
   .hero-brief p { color: rgba(245,245,241,.7); font-size: clamp(.94rem, 1.2vw, 1.08rem); line-height: 1.65; }
   .hero-brief p + p { padding-top: 1.3rem; border-top: 1px solid rgba(245,245,241,.18); color: var(--paper); }
+  .update-meta { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; margin-top: 2.2rem; padding-top: 1rem; border-top: 1px solid rgba(245,245,241,.18); color: var(--gray-light); font-size: .73rem; }
+  .update-meta time { color: var(--paper); font-weight: 650; }
+  .update-meta a { color: var(--green); font-weight: 700; text-decoration: underline; text-underline-offset: .25em; }
+  .window-note { max-width: 48rem; margin-top: 1rem; color: var(--gray-light); font-size: .74rem; line-height: 1.55; }
   .timeline-opening { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: clamp(3rem, 7vw, 6rem); border-block: 1px solid rgba(245,245,241,.2); }
   .timeline-opening a { position: relative; display: flex; min-height: 8.7rem; flex-direction: column; padding: 1rem .9rem; border-right: 1px solid rgba(245,245,241,.16); }
   .timeline-opening a:last-child { border-right: 0; }
@@ -388,6 +498,9 @@ const breadcrumbSchema = {
   .entry-list { display: grid; gap: 1rem; }
   .entry-card { border: 1px solid rgba(15,18,19,.2); border-radius: 1rem; background: #fff; overflow: hidden; }
   .entry-header { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; padding: 1.15rem 1.2rem; border-bottom: 1px solid rgba(15,18,19,.14); }
+  .entry-actions { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; justify-content: flex-end; }
+  .copy-link { display: inline-flex; min-height: 32px; align-items: center; gap: .35rem; padding: .35rem .58rem; border: 1px solid rgba(15,18,19,.24); border-radius: 999px; background: transparent; color: var(--ink); font: 650 .64rem/1 Inter, system-ui, sans-serif; cursor: pointer; }
+  .copy-link:hover { border-color: var(--ink); background: var(--wash); }
   .entry-window { color: #356c2d; font-size: .66rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase; }
   .entry-header h4 { max-width: 44rem; margin-top: .4rem; font: 600 clamp(1.15rem, 2vw, 1.55rem)/1.22 Inter, system-ui, sans-serif; letter-spacing: -.025em; }
   .status-pill { display: inline-flex; align-items: center; min-height: 28px; padding: .36rem .58rem; border-radius: 999px; background: #e2e3df; color: var(--ink); font-size: .64rem; font-weight: 750; white-space: nowrap; }
@@ -399,6 +512,9 @@ const breadcrumbSchema = {
   .entry-body > div:last-child { border-right: 0; }
   .field-label { margin-bottom: .75rem; color: var(--gray); font-size: .64rem; font-weight: 750; letter-spacing: .11em; text-transform: uppercase; }
   .why-block > p:nth-child(2) { font-size: .8rem; line-height: 1.6; }
+  .progress-note, .optional-track { margin-top: 1rem; padding: .8rem; border-left: 3px solid var(--green); background: var(--wash); color: #404546; font-size: .72rem; line-height: 1.55; }
+  .optional-track strong { display: block; color: var(--ink); }
+  .optional-track p { margin-top: .25rem; }
   .why-block dl { margin-top: 1.2rem; }
   .why-block dl > div { padding: .65rem 0; border-top: 1px solid rgba(15,18,19,.11); }
   .why-block dt { color: var(--gray); font-size: .59rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
@@ -408,8 +524,9 @@ const breadcrumbSchema = {
   .how-block li, .done-block li { padding-left: .2rem; color: #404546; font-size: .76rem; line-height: 1.55; }
   .how-block li::marker { color: #356c2d; font-weight: 700; }
   .done-block ul { list-style: none; padding-left: 0; }
-  .done-block li { position: relative; padding-left: 1.45rem; }
-  .done-block li::before { content: ""; position: absolute; left: 0; top: .35rem; width: .7rem; height: .7rem; border: 1px solid #4d5152; border-radius: .12rem; }
+  .done-block li { display: grid; grid-template-columns: 1rem minmax(0, 1fr); gap: .45rem; padding-left: 0; }
+  .criterion-icon { color: #59605e; font-weight: 750; line-height: 1.45; }
+  .done-block li[data-criterion-state="verified"] .criterion-icon { color: #356c2d; }
   .measurement-section { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--wash); }
   .measurement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgba(15,18,19,.2); background: var(--paper); }
   .measurement-grid article { min-height: 26rem; padding: 1.2rem; border-right: 1px solid rgba(15,18,19,.16); }
@@ -490,6 +607,7 @@ const breadcrumbSchema = {
     .phase-header > span { grid-column: 2; }
     .phase-number { font-size: 2.8rem; }
     .entry-header { grid-template-columns: 1fr; }
+    .entry-actions { justify-content: flex-start; }
     .status-pill { justify-self: start; }
     .entry-body { grid-template-columns: 1fr; }
     .entry-body > div, .entry-body > div:nth-child(2) { border-right: 0; border-bottom: 1px solid rgba(15,18,19,.12); }
