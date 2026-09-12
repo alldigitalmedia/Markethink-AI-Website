@@ -4,6 +4,9 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   canonical?: string;
   type?: "website" | "article";
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
@@ -19,6 +22,9 @@ const {
   title = "Markethink: Marketing that ships and keeps getting sharper",
   description = "Markethink learns your business, organizes campaigns, creates the work, tracks approvals, and keeps marketing moving every week.",
   image = "/images/hero-image.png",
+  imageAlt = "",
+  imageWidth,
+  imageHeight,
   canonical,
   type = "website",
   structuredData,
@@ -122,12 +128,16 @@ const schemaGraph = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
+    {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    {imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+    {imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
+    {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
     {!noindex && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
     {!noindex && <link rel="describedby" type="text/plain" href={lang === "es" ? "/llms-es.txt" : "/llms.txt"} />}
     <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
