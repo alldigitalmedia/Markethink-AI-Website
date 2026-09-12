@@ -29,7 +29,7 @@ export const ROADMAP_META = {
   supportingLine: "Watch us implement it on Markethink.ai.",
   publishedDate: "2026-09-12",
   lastSubstantiveUpdate: "2026-09-12",
-  latestUpdateId: "palette-publication-verification-2026-09-12",
+  latestUpdateId: "palette-canonical-base-closure-2026-09-12",
   sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
   sharingImageWidth: 1200,
   sharingImageHeight: 630,
@@ -471,13 +471,12 @@ const rawRoadmapEntries = [
       "The published correction preserves the green blog and article treatment, contained desktop and 320px views, CAPTCHA behavior, IAB SVG colors, the 82/45/37 values, byte-identical CSV and JSON hashes, and all 60 statistic anchors.",
       "The final canonical-base cleanup is independently verified and closed without changing the protected research values or links.",
     ],
-    targetPage: "Prepared blog-index, representative-article, and statistics-chart correction set",
-    status: "In progress",
-    progressNote: "The palette release and listed production evidence are verified. Final canonical-base cleanup remains open for an independent closeout.",
-    verifiedCriterionIndexes: [0],
-    verifiedDate: null,
-    evidenceUrl: null,
-    evidenceLabel: null,
+    targetPage: "Published blog index, representative article, and statistics chart",
+    status: "Verified",
+    progressNote: "The canonical palette release and final base cleanup are independently verified in production.",
+    verifiedDate: "2026-09-12",
+    evidenceUrl: "https://markethink.ai/blog/",
+    evidenceLabel: "Published blog index with independently verified canonical base",
   },
 ];
 
@@ -526,6 +525,12 @@ export const measurementNotes = [
 ];
 
 export const changeLog = [
+  {
+    id: "palette-canonical-base-closure-2026-09-12",
+    date: "2026-09-12",
+    title: "Canonical blog base independently closed",
+    detail: "Independent production review closed the final canonical-base cleanup at 19:05 on September 12, 2026. The blog base uses #F5F5F1 to #EDF4EA with the intended green treatment, while the protected research values, source links, and earlier verification evidence remain unchanged.",
+  },
   {
     id: "palette-publication-verification-2026-09-12",
     date: "2026-09-12",
