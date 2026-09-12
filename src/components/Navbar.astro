@@ -1,8 +1,8 @@
 ---
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
-interface Props { lang?: "en" | "es"; }
-const { lang = "en" } = Astro.props;
+interface Props { lang?: "en" | "es"; ctaLabel?: string; }
+const { lang = "en", ctaLabel = primaryNavigationActions.ctaLabel } = Astro.props;
 const isSpanish = lang === "es";
 const currentPath = Astro.url.pathname;
 const spanishNavigation = [
@@ -14,7 +14,7 @@ const spanishNavigation = [
 const navigation = isSpanish ? spanishNavigation : primaryNavigation;
 const homeHref = isSpanish ? "/es/" : "/";
 const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ctaHref;
-const demoLabel = isSpanish ? "Solicitar una demo" : primaryNavigationActions.ctaLabel;
+const demoLabel = isSpanish ? "Solicitar una demo" : ctaLabel;
 const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
 const alternateHref = isSpanish
   ? currentPath.startsWith("/es/features")
