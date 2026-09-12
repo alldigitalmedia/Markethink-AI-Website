@@ -6,6 +6,7 @@ export type BlogPost = {
   excerpt: string;
   label: string;
   image: string;
+  imageMobile: string;
   imageAlt: string;
   publishedDate: string;
   updatedDate: string;
@@ -66,9 +67,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical field guide to briefing, prompting, evaluating, refining, testing, clearing, and packaging an AI-assisted logo and identity system.",
     label: "FIELD GUIDE",
-    image: "/images/ai-logo-guide/ai-logo-brand-identity-hero.svg",
+    image: "/images/blog-editorial/02-ai-logo-usable-brand-identity.svg",
+    imageMobile: "/images/blog-editorial/02-ai-logo-usable-brand-identity-960.svg",
     imageAlt:
-      "A business owner and expert marketer reviewing AI-generated logo directions and a complete brand identity system",
+      "An illustrative ceramic maker packs an order as cobalt bands repeat across packaging, product displays, and studio materials",
     publishedDate: "2026-09-07",
     updatedDate: "2026-09-08",
     readingTime: "20 min read",
@@ -190,9 +192,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical buyer’s guide to what an AI marketing agency should manage, where expert judgment belongs, and how the work should connect to your pipeline.",
     label: "BUYER’S GUIDE",
-    image: "/images/ai-marketing-agency-guide/ai-marketing-agency-operating-room.svg",
+    image: "/images/blog-editorial/01-ai-marketing-agency-owner-operation.svg",
+    imageMobile: "/images/blog-editorial/01-ai-marketing-agency-owner-operation-960.svg",
     imageAlt:
-      "An expert marketer directing an organized AI-supported marketing operation across website, content, campaigns, leads, and follow-up",
+      "An illustrative home-goods business owner aligns a window display while a colleague photographs the finished setup from the sidewalk",
     publishedDate: "2026-08-30",
     updatedDate: "2026-08-30",
     readingTime: "12 min read",
@@ -367,9 +370,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical, source-backed system for finding content opportunities, making focused improvements, approving changes, and learning from search and conversion results.",
     label: "OPERATING GUIDE",
-    image: "/images/blog-brand-memory-approval-loop.avif",
+    image: "/images/blog-editorial/03-seo-content-feedback-loop.svg",
+    imageMobile: "/images/blog-editorial/03-seo-content-feedback-loop-960.svg",
     imageAlt:
-      "A Markethink approval workflow connecting feedback, business memory, and an approved marketing asset",
+      "An illustrative bookstore-café owner replaces a window card while reviewing a marked-up visual printout",
     publishedDate: "2026-08-24",
     updatedDate: "2026-08-24",
     readingTime: "11 min read",
@@ -466,9 +470,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A step-by-step guide to using AI across research, campaigns, content, approvals, lead capture, follow-up, measurement, and continuous improvement.",
     label: "INTERACTIVE GUIDE",
-    image: "/images/ai-marketing-guide/ai-marketing-guide-hero.svg",
+    image: "/images/blog-editorial/04-practical-ai-marketing-guide.svg",
+    imageMobile: "/images/blog-editorial/04-practical-ai-marketing-guide-960.svg",
     imageAlt:
-      "A small-business owner and expert marketer reviewing an AI-supported marketing campaign workflow",
+      "An illustrative bakery owner clips an approved product photo into a campaign sequence while a colleague carries a finished box",
     publishedDate: "2026-08-10",
     updatedDate: "2026-08-12",
     readingTime: "18 min read",
@@ -574,9 +579,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical, source-backed guide to improving AI-search visibility, auditing readiness, strengthening evidence, and connecting visibility to pipeline outcomes.",
     label: "INTERACTIVE GUIDE",
-    image: "/images/blog-how-to-show-up-in-ai-search.svg",
+    image: "/images/blog-editorial/05-show-up-in-ai-search.svg",
+    imageMobile: "/images/blog-editorial/05-show-up-in-ai-search-960.svg",
     imageAlt:
-      "A small-business owner and expert marketer organizing answer-ready content for AI search",
+      "An illustrative bicycle mechanic photographs a repaired component beside a text-free visual checklist",
     publishedDate: "2026-07-17",
     updatedDate: "2026-09-10",
     readingTime: "16 min read",
@@ -698,9 +704,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "More AI tools do not automatically create more demand. A consistent marketing rhythm helps your business show up, learn, and improve every week.",
     label: "INSIGHT",
-    image: "/images/blog-consistent-marketing-rhythm.avif",
+    image: "/images/blog-editorial/06-consistent-marketing-rhythm.svg",
+    imageMobile: "/images/blog-editorial/06-consistent-marketing-rhythm-960.svg",
     imageAlt:
-      "A Markethink marketing rhythm workspace showing campaign planning, approvals, and weekly output",
+      "An illustrative flower-shop owner waters the newest arrangement in a visible row of recurring window displays",
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "6 min read",
@@ -818,9 +825,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Brand memory helps your business stop repeating the same edits and start using feedback as a compounding advantage.",
     label: "INSIGHT",
-    image: "/images/blog-brand-memory-approval-loop.avif",
+    image: "/images/blog-editorial/07-brand-memory-approval-loop.svg",
+    imageMobile: "/images/blog-editorial/07-brand-memory-approval-loop-960.svg",
     imageAlt:
-      "A Markethink brand memory workspace showing feedback, approvals, and campaign learning",
+      "An illustrative chef-owner compares a finished plate with a visual reference while a photographer adjusts the light",
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "7 min read",
@@ -930,9 +938,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Disconnected marketing tools create invisible drag: context switching, repeated explanations, lost approvals, and campaigns that never fully connect.",
     label: "INSIGHT",
-    image: "/images/blog-disconnected-marketing-cost.avif",
+    image: "/images/blog-editorial/08-disconnected-marketing-cost.svg",
+    imageMobile: "/images/blog-editorial/08-disconnected-marketing-cost-960.svg",
     imageAlt:
-      "A Markethink workspace showing disconnected marketing apps being organized into one workflow",
+      "An illustrative furniture maker gathers separate proofs, slips, and material samples into one dispatch tray",
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "7 min read",
@@ -1041,9 +1050,10 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Ideas only create growth when they become campaigns with a clear audience, offer, message, destination, and follow-up path.",
     label: "INSIGHT",
-    image: "/images/blog-ideas-to-client-opportunities.avif",
+    image: "/images/blog-editorial/09-ideas-to-client-opportunities.svg",
+    imageMobile: "/images/blog-editorial/09-ideas-to-client-opportunities-960.svg",
     imageAlt:
-      "A Markethink workflow turning ideas into campaign assets and client opportunities",
+      "An illustrative garden-center owner pins a selected blank question card above a workshop table while a colleague prepares seedlings",
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "8 min read",
