@@ -2,18 +2,18 @@
   <title id="title">IAB advertiser perception and young-consumer sentiment gap</title>
   <desc id="desc">Eighty-two percent of ad executives believed Gen Z and Millennial consumers felt positive about AI-generated ads, while 45 percent of surveyed consumers reported positive sentiment, a 37 percentage-point gap.</desc>
   <rect width="1200" height="690" fill="#0F1213"/>
-  <text x="72" y="82" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#F4F2EC">Advertiser assumption vs. consumer response</text>
-  <text x="72" y="122" font-family="Inter,Arial,sans-serif" font-size="18" fill="#BFC3BE">AI-generated ads · separate respondent groups</text>
-  <text x="72" y="226" font-family="Inter,Arial,sans-serif" font-size="20" fill="#F4F2EC">Ad executives’ belief</text>
+  <text x="72" y="82" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#F5F5F1">Advertiser assumption vs. consumer response</text>
+  <text x="72" y="122" font-family="Inter,Arial,sans-serif" font-size="18" fill="#B4B6B6">AI-generated ads · separate respondent groups</text>
+  <text x="72" y="226" font-family="Inter,Arial,sans-serif" font-size="20" fill="#F5F5F1">Ad executives’ belief</text>
   <rect x="360" y="184" width="656" height="64" rx="8" fill="#69D254"/>
-  <text x="1036" y="226" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#F4F2EC">82%</text>
-  <text x="72" y="356" font-family="Inter,Arial,sans-serif" font-size="20" fill="#F4F2EC">Young consumers’ sentiment</text>
-  <rect x="360" y="314" width="360" height="64" rx="8" fill="#F4F2EC"/>
-  <text x="740" y="356" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#F4F2EC">45%</text>
-  <line x1="720" y1="440" x2="1016" y2="440" stroke="#2457FF" stroke-width="8"/>
-  <circle cx="720" cy="440" r="10" fill="#2457FF"/><circle cx="1016" cy="440" r="10" fill="#2457FF"/>
-  <text x="790" y="424" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700" fill="#F4F2EC">37-point gap</text>
-  <text x="72" y="548" font-family="Inter,Arial,sans-serif" font-size="16" fill="#C7CAC6">Source: IAB + Sonata Insights · Fielded Oct. 2025–Jan. 2026 · United States</text>
-  <text x="72" y="580" font-family="Inter,Arial,sans-serif" font-size="15" fill="#AEB2AD">104 ad executives at $1M+ annual-media-spend companies; 505 Gen Z and Millennial ad-engaged consumers</text>
-  <text x="72" y="612" font-family="Inter,Arial,sans-serif" font-size="15" fill="#AEB2AD">The groups answered different perspective questions. The gap is descriptive, not a causal finding.</text>
+  <text x="1036" y="226" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#F5F5F1">82%</text>
+  <text x="72" y="356" font-family="Inter,Arial,sans-serif" font-size="20" fill="#F5F5F1">Young consumers’ sentiment</text>
+  <rect x="360" y="314" width="360" height="64" rx="8" fill="#F5F5F1"/>
+  <text x="740" y="356" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="700" fill="#F5F5F1">45%</text>
+  <line x1="720" y1="440" x2="1016" y2="440" stroke="#69D254" stroke-width="8"/>
+  <circle cx="720" cy="440" r="10" fill="#69D254"/><circle cx="1016" cy="440" r="10" fill="#69D254"/>
+  <text x="790" y="424" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="700" fill="#F5F5F1">37-point gap</text>
+  <text x="72" y="548" font-family="Inter,Arial,sans-serif" font-size="16" fill="#B4B6B6">Source: IAB + Sonata Insights · Fielded Oct. 2025–Jan. 2026 · United States</text>
+  <text x="72" y="580" font-family="Inter,Arial,sans-serif" font-size="15" fill="#B4B6B6">104 ad executives at $1M+ annual-media-spend companies; 505 Gen Z and Millennial ad-engaged consumers</text>
+  <text x="72" y="612" font-family="Inter,Arial,sans-serif" font-size="15" fill="#B4B6B6">The groups answered different perspective questions. The gap is descriptive, not a causal finding.</text>
 </svg>
