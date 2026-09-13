@@ -87,15 +87,23 @@ for (const note of measurementNotes) {
   for (const field of ["source", "date", "scope", "denominator"]) assert(note.futureObservationRequirements.includes(field), `${note.id} must require ${field}`);
 }
 
-assert(changeLog.length >= 4, "V2 image closure change-log entry missing");
+assert(changeLog.length >= 5, "contextual-link change-log entry or prior entries are missing");
 assert(changeLog.some((item) => item.id === "initial-public-roadmap"), "earlier change-log entry was removed");
 assert(changeLog.some((item) => item.id === "palette-publication-verification-2026-09-12"), "earlier palette publication log was removed");
 assert(changeLog.some((item) => item.id === "palette-canonical-base-closure-2026-09-12"), "palette closure log was removed");
+assert(changeLog.some((item) => item.id === "b2b-editorial-image-system-closure-2026-09-13"), "V2 image closure log was removed");
 for (let index = 1; index < changeLog.length; index += 1) assert(changeLog[index - 1].date >= changeLog[index].date, "change log must be newest first");
 assert.equal(changeLog[0].id, ROADMAP_META.latestUpdateId, "Latest update must target the newest log entry");
+assert.equal(changeLog[0].id, "contextual-internal-links-2026-09-13", "contextual-link update must be the latest public log");
+assert.equal(changeLog[0].date, "2026-09-13", "contextual-link log date changed");
 const newestLog = JSON.stringify(changeLog[0]);
+for (const marker of ["ten crawlable, contextual links", "page-improvement method", "source-led adoption context", "broader proof and internal-links task unchanged"]) {
+  assert(newestLog.toLowerCase().includes(marker.toLowerCase()), `contextual-link change log is missing scope boundary: ${marker}`);
+}
+assert(!/rank|citation|traffic|lead|revenue|effectiveness|result/i.test(changeLog[0].title), "contextual-link log title must not claim an outcome");
+const v2Log = JSON.stringify(changeLog.find((item) => item.id === "b2b-editorial-image-system-closure-2026-09-13"));
 for (const marker of ["P01–P10", "1200×630", "Open Graph", "Twitter", "card order", "unchanged statistics ledgers"]) {
-  assert(newestLog.includes(marker), `newest V2 image change log is missing verified evidence: ${marker}`);
+  assert(v2Log.includes(marker), `V2 image change log is missing verified evidence: ${marker}`);
 }
 
 const [html, checklist, sitemap, pageSource, checklistSource, blogHtml, blogSource] = await Promise.all([
@@ -107,6 +115,55 @@ const [html, checklist, sitemap, pageSource, checklistSource, blogHtml, blogSour
   readFile(join(distRoot, "blog/index.html"), "utf8"),
   readFile(join(projectRoot, "src/pages/blog/index.astro"), "utf8"),
 ]);
+
+const requestedContextualLinks = [
+  { id: 1, source: "/seo-aio-strategy/", destination: "/blog/seo-content-feedback-loop/", sourcePath: "src/pages/seo-aio-strategy.astro", marker: 'href="/blog/seo-content-feedback-loop/"' },
+  { id: 2, source: "/blog/seo-content-feedback-loop/", destination: "/seo-aio-strategy/", sourcePath: "src/components/blog/SeoContentFeedbackLoopGuide.astro", marker: 'href="/seo-aio-strategy/"' },
+  { id: 3, source: "/blog/how-to-show-up-in-ai-search/", destination: "/seo-aio-strategy/", sourcePath: "src/components/blog/AiSearchInteractiveGuide.astro", marker: 'href="/seo-aio-strategy/"' },
+  { id: 4, source: "/blog/how-to-show-up-in-ai-search/", destination: "/blog/seo-content-feedback-loop/", sourcePath: "src/components/blog/AiSearchInteractiveGuide.astro", marker: 'href="/blog/seo-content-feedback-loop/"' },
+  { id: 5, source: "/blog/what-is-an-ai-marketing-agency/", destination: "/seo-aio-strategy/", sourcePath: "src/pages/blog/[slug].astro", marker: 'href="/seo-aio-strategy/"' },
+  { id: 6, source: "/blog/how-to-use-ai-for-marketing-small-business/", destination: "/seo-aio-strategy/", sourcePath: "src/components/blog/AiMarketingPracticalGuide.astro", marker: 'href="/seo-aio-strategy/"' },
+  { id: 7, source: "/blog/how-to-use-ai-for-marketing-small-business/", destination: "/ai-marketing-statistics/", sourcePath: "src/components/blog/AiMarketingPracticalGuide.astro", marker: 'href="/ai-marketing-statistics/"' },
+  { id: 8, source: "/ai-marketing-statistics/", destination: "/blog/what-is-an-ai-marketing-agency/", sourcePath: "src/pages/ai-marketing-statistics.astro", marker: 'href="/blog/what-is-an-ai-marketing-agency/"' },
+  { id: 9, source: "/ai-marketing-statistics/", destination: "/blog/how-to-show-up-in-ai-search/", sourcePath: "src/pages/ai-marketing-statistics.astro", marker: 'href="/blog/how-to-show-up-in-ai-search/"' },
+  { id: 10, source: "/ai-marketing-for-small-business/", destination: "/ai-marketing-statistics/", sourcePath: "src/pages/ai-marketing-for-small-business.astro", marker: 'href="/ai-marketing-statistics/"' },
+];
+assert.equal(requestedContextualLinks.length, 10, "focused contextual-link receipt must contain exactly ten directed links");
+assert.equal(new Set(requestedContextualLinks.map(({ source, destination }) => `${source} -> ${destination}`)).size, 10, "directed contextual links must be unique");
+
+const sourcePaths = [...new Set(requestedContextualLinks.map((item) => item.sourcePath))];
+const sourceFiles = Object.fromEntries(await Promise.all(sourcePaths.map(async (path) => [path, await readFile(join(projectRoot, path), "utf8")])));
+for (const link of requestedContextualLinks) {
+  const sourceText = sourceFiles[link.sourcePath];
+  assert.equal(sourceText.split(link.marker).length - 1, 1, `source mutation ${link.id} must contain exactly one ${link.source} -> ${link.destination} anchor`);
+}
+
+const builtPathFor = (route) => join(distRoot, route.replace(/^\//, ""), "index.html");
+const builtRoutes = [...new Set(requestedContextualLinks.flatMap(({ source, destination }) => [source, destination.split("#")[0]]))];
+const builtByRoute = Object.fromEntries(await Promise.all(builtRoutes.map(async (route) => [route, await readFile(builtPathFor(route), "utf8")])));
+const extractAnchors = (document) => [...document.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
+  href: match[1].match(/\bhref=["']([^"']+)["']/i)?.[1] ?? "",
+  attributes: match[1],
+  text: match[2].replace(/<[^>]+>/g, " ").replace(/&(?:amp|#38);/g, "&").replace(/\s+/g, " ").trim(),
+}));
+for (const link of requestedContextualLinks) {
+  const anchors = extractAnchors(builtByRoute[link.source]).filter((anchor) => anchor.href === link.destination);
+  assert.equal(anchors.length, 1, `built crawlable HTML must contain exactly one requested ${link.source} -> ${link.destination} anchor`);
+  assert(anchors[0].text.length >= 8, `requested link ${link.id} needs descriptive visible anchor text`);
+  assert(!/\bhidden\b/i.test(anchors[0].attributes), `requested link ${link.id} cannot be hidden`);
+  const [destinationPath, fragment] = link.destination.split("#");
+  const destinationHtml = builtByRoute[destinationPath];
+  assert(destinationHtml, `requested destination ${destinationPath} did not resolve to built HTML`);
+  if (fragment) assert(new RegExp(`\\bid=["']${fragment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`).test(destinationHtml), `requested fragment ${link.destination} is missing`);
+}
+
+for (const [path, citation] of [
+  ["src/components/blog/SeoContentFeedbackLoopGuide.astro", "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"],
+  ["src/components/blog/SeoContentFeedbackLoopGuide.astro", "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"],
+  ["src/components/blog/AiSearchInteractiveGuide.astro", "https://developers.google.com/search/docs/appearance/ai-features"],
+  ["src/components/blog/AiSearchInteractiveGuide.astro", "https://developers.openai.com/api/docs/bots"],
+  ["src/components/blog/AiSearchInteractiveGuide.astro", "https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview"],
+]) assert(sourceFiles[path].includes(citation), `original source citation was lost: ${citation}`);
 
 assert(pageSource.includes('from "../data/seoAioStrategy.mjs"'), "page must use the structured source");
 assert(checklistSource.includes('from "../../data/seoAioStrategy.mjs"'), "checklist must use the structured source");
@@ -150,6 +207,9 @@ for (const entry of roadmapEntries) {
 
 assert.equal((html.match(/data-roadmap-entry=/g) ?? []).length, 19, "rendered action count changed");
 assert.equal((checklist.match(/^## [a-z0-9-]+:/gm) ?? []).length, 19, "checklist action count changed");
+for (const [status, count] of Object.entries(statusCounts)) {
+  assert(checklist.includes(`- ${status} (${count}):`), `checklist ${status} count does not match the structured roadmap`);
+}
 assert.equal((html.match(/data-criterion-state="verified"/g) ?? []).length, roadmapEntries.filter((entry) => entry.status === "Verified").reduce((sum, entry) => sum + entry.doneCriteria.length, 0), "verified criterion markers changed");
 assert(html.includes('aria-label="Copy link to'), "copy controls need useful labels");
 assert(pageSource.includes("navigator.clipboard.writeText"), "Clipboard API behavior missing");
@@ -203,6 +263,10 @@ assert(blogHtml.includes('href="/ai-marketing-statistics/"'), "existing blog sta
 console.log(JSON.stringify({
   entries: roadmapEntries.length,
   statusCounts,
+  checklistStatusCounts: statusCounts,
+  requestedContextualLinks: requestedContextualLinks.length,
+  latestUpdateId: ROADMAP_META.latestUpdateId,
+  lastSubstantiveUpdate: ROADMAP_META.lastSubstantiveUpdate,
   changeLogEntries: changeLog.length,
   measurementLanes: measurementNotes.length,
   canonical: ROADMAP_META.canonical,
