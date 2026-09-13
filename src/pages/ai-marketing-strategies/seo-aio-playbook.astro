@@ -13,6 +13,7 @@ import {
   phases,
   requiredInputs,
   requiredOutputs,
+  repeatCycle,
   toolAvailabilityChecks,
   usageModes,
 } from "../../data/strategyLibrary.mjs";
@@ -67,7 +68,7 @@ const breadcrumbsJsonLd = {
             <div>
               <p class="eyebrow">Practical playbook</p>
               <h1>{PLAYBOOK_META.title}</h1>
-              <p class="dek">Turn your website, offer and available search data into a focused 30-day plan, with page priorities, practical briefs and a clear way to review progress.</p>
+              <p class="dek">Build a living SEO and AI-search strategy from your website, offer and available evidence. The first 30 days establish the foundation; each review creates a capacity-aware next-cycle backlog.</p>
             </div>
             <aside class="status-card" aria-label="Playbook evidence status">
               <span class="status-kicker">Evidence status</span>
@@ -97,8 +98,8 @@ const breadcrumbsJsonLd = {
             <h2 id="purpose-title">Plan work the evidence can support.</h2>
           </div>
           <div class="purpose-copy">
-            <p class="lead">This playbook helps a business decide which existing pages deserve attention, which information gaps require useful content, what an agent can responsibly do, and how shipped work will be verified.</p>
-            <p>It fits businesses with a live website, a defined offer, and someone who can verify facts and approve changes. It is less useful when the offer, audience, or permission path is still undefined.</p>
+            <p class="lead">This playbook helps a business decide which existing pages deserve attention, which information gaps require useful content, what an agent can responsibly do, and how shipped work will be verified and carried into the next cycle.</p>
+            <p>It fits businesses with a live website, a defined offer, and someone who can verify facts and approve changes. The initial 30-day cycle is a foundation, not the lifespan of the strategy. It is less useful when the offer, audience, or permission path is still undefined.</p>
             <div class="principle-callout">
               <span>Core distinction</span>
               <p>Delivery completion is not a ranking, traffic, lead, conversion, or citation outcome. Track each on its own timeline.</p>
@@ -145,9 +146,9 @@ const breadcrumbsJsonLd = {
       <section class="method-section" id="playbook-method" aria-labelledby="method-title">
         <div class="shell">
           <header class="section-heading">
-            <p class="eyebrow">30-day method</p>
-            <h2 id="method-title">A phased operating plan that adapts to capacity.</h2>
-            <p>Reduce the number of pages and actions when capacity is tight. Do not remove evidence, ownership, dependencies, or acceptance checks to make the plan look faster.</p>
+            <p class="eyebrow">Initial 30-day cycle</p>
+            <h2 id="method-title">A foundation cycle that adapts to capacity.</h2>
+            <p>Use this sequence to establish the first implementation baseline. Reduce the number of pages and actions when capacity is tight. Do not remove evidence, ownership, dependencies, or acceptance checks to make the plan look faster.</p>
           </header>
           <div class="phase-list">
             {phases.map((phase, index) => (
@@ -169,6 +170,28 @@ const breadcrumbsJsonLd = {
                 </aside>
               </section>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="repeat-section" aria-labelledby="repeat-title">
+        <div class="shell">
+          <header class="section-heading">
+            <p class="eyebrow">Repeat beyond day 30</p>
+            <h2 id="repeat-title">Turn each review into the next useful cycle.</h2>
+            <p>Update the evidence baseline, review delivery and results separately, carry unfinished work forward, add only newly justified opportunities, and prioritize what fits the available capacity.</p>
+          </header>
+          <ol class="repeat-grid">
+            {repeatCycle.map((step, index) => (
+              <li id={step.id}>
+                <span>0{index + 1}</span>
+                <div><h3>{step.title}</h3><p>{step.detail}</p></div>
+              </li>
+            ))}
+          </ol>
+          <div class="permission-callout">
+            <strong>Permission boundary</strong>
+            <p>Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach. Each action still requires the permissions of the person or system using the playbook.</p>
           </div>
         </div>
       </section>
@@ -215,7 +238,7 @@ const breadcrumbsJsonLd = {
             <h2 id="example-title">See how Markethink logs its own implementation.</h2>
           </div>
           <div>
-            <p>Markethink's public SEO and AI-search roadmap shows decisions, sources, shipped work, and review notes on a live site. Use it to understand the operating rhythm, not as independent proof and never as a source of statuses for another business.</p>
+            <p>Markethink's living public SEO and AI-search strategy shows decisions, sources, shipped work, lessons, and review notes on a live site. It is Markethink's implementation record. Use it to understand the operating rhythm, not as independent proof and never as a source of statuses for another business.</p>
             <a href="/seo-aio-strategy/">Open the public implementation log</a>
           </div>
         </div>
@@ -362,7 +385,7 @@ const breadcrumbsJsonLd = {
   .copy-status { grid-column:1/-1; min-height:20px; margin:2px 0 0; color:#274c20; font-size:.82rem; font-weight:700; }
   .format-note { margin:10px 0 0; color:#505758; font-size:.85rem; }
   .format-note a { color:#0f1213; font-weight:700; text-underline-offset:3px; }
-  .purpose-section,.inputs-section,.method-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:112px 0; }
+  .purpose-section,.inputs-section,.method-section,.repeat-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:112px 0; }
   .purpose-grid,.evidence-grid,.measurement-grid,.copy-grid,.two-column { display:grid; grid-template-columns:minmax(250px,.66fr) minmax(0,1.34fr); gap:clamp(50px,9vw,140px); }
   .purpose-copy .lead { margin:0; font-family:"Instrument Serif",Georgia,serif; font-size:clamp(2rem,3.5vw,3.25rem); line-height:1.08; }
   .purpose-copy > p:not(.lead) { max-width:690px; margin:30px 0 0; color:#53595a; line-height:1.7; }
@@ -396,6 +419,15 @@ const breadcrumbsJsonLd = {
   .deliverable-box { align-self:start; padding:22px; background:#edf4ea; }
   .deliverable-box > span { display:block; margin-bottom:14px; color:#3b5c34; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
   .deliverable-box li { margin:8px 0; color:#454c4d; font-size:.88rem; line-height:1.45; }
+  .repeat-section { background:#f5f5f1; }
+  .repeat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; margin:0; padding:0; list-style:none; background:#b4b6b6; border:1px solid #b4b6b6; }
+  .repeat-grid li { display:grid; grid-template-columns:48px 1fr; gap:18px; min-height:190px; padding:28px; background:#edf4ea; }
+  .repeat-grid > li > span { color:#3b5c34; font-size:.72rem; font-weight:800; }
+  .repeat-grid h3 { font-size:2rem; }
+  .repeat-grid p { margin:14px 0 0; color:#4b5253; line-height:1.6; }
+  .permission-callout { display:grid; grid-template-columns:180px 1fr; gap:28px; margin-top:24px; padding:24px 0; border-top:2px solid #0f1213; border-bottom:1px solid #b4b6b6; }
+  .permission-callout strong { font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; }
+  .permission-callout p { margin:0; line-height:1.6; }
   .output-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
   .output-grid article { min-height:270px; padding:28px; background:#f5f5f1; border-top:3px solid #0f1213; }
   .output-grid h3 { font-size:2.15rem; }
@@ -461,8 +493,8 @@ const breadcrumbsJsonLd = {
     h1 { font-size:clamp(3.5rem,17vw,5rem); }
     .action-bar { grid-template-columns:1fr; }
     .copy-status { grid-column:auto; }
-    .purpose-section,.inputs-section,.method-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:78px 0; }
-    .input-grid,.output-grid,.lane-list,.mode-cards { grid-template-columns:1fr; }
+    .purpose-section,.inputs-section,.method-section,.repeat-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:78px 0; }
+    .input-grid,.output-grid,.repeat-grid,.lane-list,.mode-cards { grid-template-columns:1fr; }
     .input-grid li { min-height:0; }
     .input-grid span { margin-bottom:30px; }
     .phase { grid-template-columns:1fr; gap:24px; padding:42px 0; }
@@ -471,7 +503,7 @@ const breadcrumbsJsonLd = {
     .deliverable-box { grid-column:auto; }
     .example-section { padding-bottom:78px; }
     .example-card { width:auto; margin:0 14px; padding:42px 24px; }
-    .principle-callout { grid-template-columns:1fr; gap:12px; }
+    .principle-callout,.permission-callout { grid-template-columns:1fr; gap:12px; }
     .footer-inner { flex-direction:column; align-items:flex-start; }
   }
   @media (prefers-reduced-motion: reduce) {
