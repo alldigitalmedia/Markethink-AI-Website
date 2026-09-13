@@ -35,7 +35,7 @@ const footer = await read("src/components/Footer.astro");
 const roadmap = await read("src/data/seoAioStrategy.mjs");
 const checklist = (await readDist("downloads/seo-aio-strategy-checklist.md")).toString("utf8");
 
-assert.equal(strategyEntries.length, 1, "library must launch with exactly one entry");
+assert.equal(strategyEntries.length, 2, "library must contain the established SEO playbook and the website launch checklist");
 for (const [html, title, h1, pageCanonical] of [
   [hubHtml, LIBRARY_META.title, LIBRARY_META.h1, LIBRARY_META.canonical],
   [entryHtml, PLAYBOOK_META.seoTitle, PLAYBOOK_META.title, PLAYBOOK_META.canonical],
@@ -56,8 +56,8 @@ for (const marker of [
   "WHAT YOU GET",
   "A clear strategy, the steps to put it into practice, and a ready-to-use brief for your AI. Sources and review dates included.",
   "Choose a format and add your business context. Each playbook includes the steps, templates and checks to get started.",
-  "More ways to grow, coming next.",
-  "We plan to expand into sales, email and other marketing disciplines.",
+  "Choose the control that matches the work.",
+  "Use the launch checklist before a new website goes public.",
 ]) assert.ok(hubHtml.includes(marker), `hub correction missing: ${marker}`);
 assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp"));
 assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp"));
@@ -77,8 +77,8 @@ assert.match(nav, /label:\s*"Strategies"[\s\S]*href:\s*"\/ai-marketing-strategie
 assert.match(footer, /Strategies[\s\S]*\/ai-marketing-strategies\//);
 
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert.equal(locs.length, 27);
-assert.equal(new Set(locs).size, 27);
+assert.equal(locs.length, 28);
+assert.equal(new Set(locs).size, 28);
 assert.ok(locs.includes(LIBRARY_META.canonical));
 assert.ok(locs.includes(PLAYBOOK_META.canonical));
 assert.ok(!locs.some((url) => url.includes("/downloads/markethink-seo-aio-playbook")));
