@@ -29,7 +29,7 @@ export const ROADMAP_META = {
   supportingLine: "A living implementation roadmap for Markethink.ai.",
   publishedDate: "2026-09-12",
   lastSubstantiveUpdate: "2026-09-13",
-  latestUpdateId: "ongoing-strategy-follow-up-2026-09-13",
+  latestUpdateId: "homepage-404-accessibility-verification-2026-09-13",
   sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
   sharingImageWidth: 1200,
   sharingImageHeight: 630,
@@ -538,6 +538,18 @@ export const measurementNotes = [
 ];
 
 export const changeLog = [
+  {
+    id: "homepage-404-accessibility-verification-2026-09-13",
+    date: "2026-09-13",
+    title: "Homepage and 404 accessibility corrections published and verified",
+    detail: "Published and verified the English and Spanish homepage CTA corrections with 32px clearance, successful activation to the correct localized walkthrough routes, and normal reachable content flow in short landscape viewports. The branded unknown-route experience retains genuine HTTP 404 status and now gives every action, including the green primary button, a visible offset keyboard-focus outline. A semantic review also closed 52 contextual or decorative image warnings across both language variants: all reviewed images already receive appropriate context from their surrounding controls or labels, so no redundant alt-text edits were required.",
+  },
+  {
+    id: "seo-aio-playbook-1-2-0-verification-2026-09-13",
+    date: "2026-09-13",
+    title: "SEO and AI-search playbook 1.2.0 published and verified",
+    detail: "Published the reviewed editorial playbook with buyer-benefit introduction, Markdown-first download, matching standalone copy and packaged skill, preserved strategy-library and checklist entries, and production checks across desktop, mobile, links, downloads, imagery, accessibility, and all 28 sitemap URLs. Measurement access remains limited: first-party analytics returned an access denial, the requested Semrush route was unavailable, and the available Ahrefs evidence was a five-row sample rather than a full-domain backlink conclusion. These gaps remain Not available, not zero, and do not establish traffic, ranking, citation, lead, or revenue outcomes.",
+  },
   {
     id: "ongoing-strategy-follow-up-2026-09-13",
     date: "2026-09-13",
