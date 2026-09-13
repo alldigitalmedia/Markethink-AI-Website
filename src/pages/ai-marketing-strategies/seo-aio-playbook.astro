@@ -1,0 +1,481 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import {
+  LIBRARY_META,
+  PLAYBOOK_META,
+  evidenceRules,
+  getStandaloneBrief,
+  limitations,
+  measurementLanes,
+  originalSources,
+  phases,
+  requiredInputs,
+  requiredOutputs,
+  toolAvailabilityChecks,
+  usageModes,
+} from "../../data/strategyLibrary.mjs";
+import { b2bEditorialImages } from "../../data/b2bEditorialImages";
+
+const standaloneBrief = getStandaloneBrief();
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: PLAYBOOK_META.title,
+  description: PLAYBOOK_META.description,
+  url: PLAYBOOK_META.canonical,
+  mainEntityOfPage: PLAYBOOK_META.canonical,
+  datePublished: PLAYBOOK_META.reviewedDate,
+  dateModified: PLAYBOOK_META.reviewedDate,
+  version: PLAYBOOK_META.version,
+  author: { "@type": "Organization", name: PLAYBOOK_META.author, url: "https://markethink.ai/" },
+  publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" },
+  proficiencyLevel: "Intermediate",
+  about: ["Search engine optimization", "AI search", "Content strategy", "Search measurement"],
+};
+const breadcrumbsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+    { "@type": "ListItem", position: 2, name: LIBRARY_META.name, item: LIBRARY_META.canonical },
+    { "@type": "ListItem", position: 3, name: PLAYBOOK_META.title, item: PLAYBOOK_META.canonical },
+  ],
+};
+---
+
+<Layout
+  title={PLAYBOOK_META.seoTitle}
+  description={PLAYBOOK_META.description}
+  canonical={PLAYBOOK_META.canonical}
+  image={b2bEditorialImages[0].sharing}
+  imageAlt={b2bEditorialImages[0].alt}
+  type="article"
+  structuredData={[pageJsonLd, breadcrumbsJsonLd]}
+>
+  <Navbar />
+
+  <main>
+    <article>
+      <header class="playbook-hero">
+        <div class="shell">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span aria-hidden="true">/</span><a href="/ai-marketing-strategies/">Strategies</a><span aria-hidden="true">/</span><span>SEO + AI search</span>
+          </nav>
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Practical playbook</p>
+              <h1>{PLAYBOOK_META.title}</h1>
+              <p class="dek">Adapt the method to your business, give a capable agent the right context, and produce an executable plan without manufacturing search evidence.</p>
+            </div>
+            <aside class="status-card" aria-label="Playbook evidence status">
+              <span class="status-kicker">Evidence status</span>
+              <strong>{PLAYBOOK_META.evidenceStatus}</strong>
+              <p>The method and source trail were reviewed. Your baseline, priorities, and outcomes remain unknown until they are measured for your business.</p>
+              <dl>
+                <div><dt>Version</dt><dd>{PLAYBOOK_META.version}</dd></div>
+                <div><dt>Reviewed</dt><dd>{PLAYBOOK_META.reviewedDate}</dd></div>
+                <div><dt>Maintained by</dt><dd>{PLAYBOOK_META.author}</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <div class="action-bar" aria-label="Playbook actions">
+            <a class="action action-read" href="#playbook-method">Read the playbook</a>
+            <button class="action action-copy" type="button" data-copy-brief>Copy for your AI</button>
+            <a class="action action-skill" href="/downloads/markethink-seo-aio-playbook.zip" download>Download the skill</a>
+            <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+          </div>
+          <p class="format-note">Prefer one portable file? <a href="/downloads/markethink-seo-aio-playbook.md" download>Download the plain Markdown fallback.</a></p>
+        </div>
+      </header>
+
+      <section class="purpose-section" aria-labelledby="purpose-title">
+        <div class="shell purpose-grid">
+          <div>
+            <p class="eyebrow">Purpose</p>
+            <h2 id="purpose-title">Plan work the evidence can support.</h2>
+          </div>
+          <div class="purpose-copy">
+            <p class="lead">This playbook helps a business decide which existing pages deserve attention, which information gaps require useful content, what an agent can responsibly do, and how shipped work will be verified.</p>
+            <p>It fits businesses with a live website, a defined offer, and someone who can verify facts and approve changes. It is less useful when the offer, audience, or permission path is still undefined.</p>
+            <div class="principle-callout">
+              <span>Core distinction</span>
+              <p>Delivery completion is not a ranking, traffic, lead, conversion, or citation outcome. Track each on its own timeline.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="inputs-section" aria-labelledby="inputs-title">
+        <div class="shell">
+          <header class="section-heading compact">
+            <p class="eyebrow">Required inputs</p>
+            <h2 id="inputs-title">Start with the business, not a keyword export.</h2>
+            <p>The agent should reuse context already supplied and ask only for material gaps.</p>
+          </header>
+          <ol class="input-grid">
+            {requiredInputs.map((input, index) => (
+              <li>
+                <span>0{index + 1}</span>
+                <h3>{input.label}</h3>
+                <p>{input.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="evidence-title">
+        <div class="shell evidence-grid">
+          <header>
+            <p class="eyebrow light">Evidence discipline</p>
+            <h2 id="evidence-title">Know what the tools can prove.</h2>
+            <p>Tool access changes the research path, not the honesty standard.</p>
+          </header>
+          <div>
+            <ul class="rule-list">
+              {toolAvailabilityChecks.map((rule) => <li>{rule}</li>)}
+              {evidenceRules.map((rule) => <li>{rule}</li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section" id="playbook-method" aria-labelledby="method-title">
+        <div class="shell">
+          <header class="section-heading">
+            <p class="eyebrow">30-day method</p>
+            <h2 id="method-title">A phased operating plan that adapts to capacity.</h2>
+            <p>Reduce the number of pages and actions when capacity is tight. Do not remove evidence, ownership, dependencies, or acceptance checks to make the plan look faster.</p>
+          </header>
+          <div class="phase-list">
+            {phases.map((phase, index) => (
+              <section class="phase" id={phase.id} aria-labelledby={`${phase.id}-title`}>
+                <div class="phase-index">
+                  <span>0{index + 1}</span>
+                  <strong>{phase.window}</strong>
+                </div>
+                <div class="phase-main">
+                  <h3 id={`${phase.id}-title`}>{phase.title}</h3>
+                  <p class="phase-purpose">{phase.purpose}</p>
+                  <ul>
+                    {phase.actions.map((action) => <li>{action}</li>)}
+                  </ul>
+                </div>
+                <aside class="deliverable-box">
+                  <span>Leaves behind</span>
+                  <ul>{phase.deliverables.map((item) => <li>{item}</li>)}</ul>
+                </aside>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="outputs-section" aria-labelledby="outputs-title">
+        <div class="shell">
+          <header class="section-heading compact">
+            <p class="eyebrow">Output contract</p>
+            <h2 id="outputs-title">Require work another person can review.</h2>
+          </header>
+          <div class="output-grid">
+            {requiredOutputs.map((output) => (
+              <article>
+                <h3>{output.name}</h3>
+                <ul>{output.fields.map((field) => <li>{field}</li>)}</ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="measurement-section" aria-labelledby="measurement-title">
+        <div class="shell measurement-grid">
+          <header>
+            <p class="eyebrow">Measurement</p>
+            <h2 id="measurement-title">Seven lanes. No blended visibility score.</h2>
+            <p>A value must keep its source, collection date, scope, filters or denominator, and limitation.</p>
+          </header>
+          <div class="lane-list">
+            {measurementLanes.map((lane) => (
+              <article>
+                <h3>{lane.label}</h3>
+                <p>{lane.limit}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="example-section" aria-labelledby="example-title">
+        <div class="shell example-card">
+          <div>
+            <p class="eyebrow light">Working example</p>
+            <h2 id="example-title">See how Markethink logs its own implementation.</h2>
+          </div>
+          <div>
+            <p>Markethink's public SEO and AI-search roadmap shows decisions, sources, shipped work, and review notes on a live site. Use it to understand the operating rhythm, not as independent proof and never as a source of statuses for another business.</p>
+            <a href="/seo-aio-strategy/">Open the public implementation log</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="copy-section" id="copy-for-ai" aria-labelledby="copy-title">
+        <div class="shell copy-grid">
+          <header>
+            <p class="eyebrow">Use with an agent</p>
+            <h2 id="copy-title">Give the method enough context to stay useful.</h2>
+            <p>Choose the format your agent supports. Copy and paste works broadly. Markdown works as a self-contained attachment. Native skill import is only for products that support the public specification.</p>
+          </header>
+          <div class="mode-cards">
+            {usageModes.map((mode) => (
+              <article><h3>{mode.label}</h3><p>{mode.detail}</p></article>
+            ))}
+          </div>
+          <details class="brief-details" data-brief-details>
+            <summary>View or manually copy the complete standalone brief</summary>
+            <div class="brief-panel">
+              <label for="standalone-brief">Complete standalone brief</label>
+              <textarea id="standalone-brief" readonly rows="18">{standaloneBrief}</textarea>
+              <div class="manual-actions">
+                <button type="button" data-select-brief>Select all text</button>
+                <a href="/downloads/markethink-seo-aio-playbook.md" download>Download Markdown</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="limitations-section" aria-labelledby="limitations-title">
+        <div class="shell two-column">
+          <header>
+            <p class="eyebrow">Limitations</p>
+            <h2 id="limitations-title">Useful work without outcome promises.</h2>
+          </header>
+          <ul class="numbered-list">
+            {limitations.map((limitation, index) => <li><span>0{index + 1}</span><p>{limitation}</p></li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section class="sources-section" aria-labelledby="sources-title">
+        <div class="shell two-column">
+          <header>
+            <p class="eyebrow">Original sources</p>
+            <h2 id="sources-title">Read the guidance behind the method.</h2>
+            <p>Reviewed {PLAYBOOK_META.reviewedDate}. Source pages can change, so read the live guidance before relying on a detail.</p>
+          </header>
+          <ol class="source-list">
+            {originalSources.map((source) => (
+              <li>
+                <span>{source.publisher}</span>
+                <a href={source.url} rel="noopener noreferrer">{source.title}</a>
+                <p>{source.use}</p>
+                <code>{source.url}</code>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="shell footer-inner">
+          <p>Version {PLAYBOOK_META.version} · Reviewed {PLAYBOOK_META.reviewedDate} · Maintained by {PLAYBOOK_META.author}</p>
+          <a href="/ai-marketing-strategies/">Back to the AI Marketing Strategy Library</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const copyButton = document.querySelector('[data-copy-brief]');
+  const status = document.querySelector('[data-copy-status]');
+  const brief = document.querySelector('#standalone-brief');
+  const details = document.querySelector('[data-brief-details]');
+  const selectButton = document.querySelector('[data-select-brief]');
+
+  function revealManualFallback(message) {
+    if (details instanceof HTMLDetailsElement) details.open = true;
+    if (status instanceof HTMLElement) status.textContent = message;
+    if (brief instanceof HTMLTextAreaElement) {
+      brief.focus();
+      brief.select();
+      brief.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    }
+  }
+
+  copyButton?.addEventListener('click', async () => {
+    if (!(brief instanceof HTMLTextAreaElement)) return;
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(brief.value);
+      if (status instanceof HTMLElement) status.textContent = 'Copied. Paste the complete brief into your agent.';
+    } catch {
+      revealManualFallback('Automatic copy was unavailable. The complete brief is selected below for manual copy.');
+    }
+  });
+
+  selectButton?.addEventListener('click', () => {
+    if (!(brief instanceof HTMLTextAreaElement)) return;
+    brief.focus();
+    brief.select();
+    if (status instanceof HTMLElement) status.textContent = 'The complete brief is selected. Use your device copy command.';
+  });
+</script>
+
+<style is:global>
+  .mt-site-header { background: #0f1213 !important; }
+</style>
+
+<style>
+  :global(body) { background: #f5f5f1; color: #0f1213; }
+  .shell { width: min(1240px, calc(100% - 64px)); margin: 0 auto; }
+  .playbook-hero { padding: 148px 0 70px; background: #edf4ea; border-bottom: 1px solid rgba(15,18,19,.18); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 58px; color: #686b6c; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+  .breadcrumbs a { color: #0f1213; text-decoration: underline; text-underline-offset: 4px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0,1.55fr) minmax(280px,.45fr); gap: clamp(44px,8vw,118px); align-items: end; }
+  .eyebrow { margin: 0 0 20px; color: #3b5c34; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
+  .eyebrow.light { color: #8ee47c; }
+  h1,h2,h3 { margin: 0; font-family: "Instrument Serif",Georgia,serif; font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+  h1 { max-width: 900px; font-size: clamp(4rem,8vw,7.25rem); }
+  h2 { font-size: clamp(2.8rem,5.4vw,5.3rem); }
+  h3 { font-size: 2rem; }
+  .dek { max-width: 770px; margin: 32px 0 0; color: #3f4748; font-size: clamp(1.14rem,2vw,1.45rem); line-height: 1.58; }
+  .status-card { padding: 28px; background: #f5f5f1; border-top: 4px solid #0f1213; }
+  .status-kicker { display: block; margin-bottom: 16px; color: #3b5c34; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; }
+  .status-card strong { display: block; font-family: "Instrument Serif",Georgia,serif; font-size: 1.75rem; font-weight: 400; line-height: 1.08; }
+  .status-card p { margin: 18px 0 26px; color: #4b5152; font-size: .92rem; line-height: 1.58; }
+  .status-card dl { margin: 0; border-top: 1px solid #b4b6b6; }
+  .status-card dl div { display:flex; justify-content:space-between; gap:20px; padding:10px 0; border-bottom:1px solid #b4b6b6; }
+  .status-card dt,.status-card dd { margin:0; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
+  .status-card dd { font-weight:700; text-align:right; }
+  .action-bar { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 58px; }
+  .action { display:flex; min-height:56px; align-items:center; justify-content:center; padding:12px 18px; border:2px solid #0f1213; border-radius:0; font: inherit; font-weight:800; text-decoration:none; cursor:pointer; }
+  .action-read { background:#0f1213; color:#f5f5f1; }
+  .action-copy { background:#69d254; color:#0f1213; }
+  .action-skill { background:transparent; color:#0f1213; }
+  .action:hover { transform: translateY(-2px); }
+  .copy-status { grid-column:1/-1; min-height:20px; margin:2px 0 0; color:#274c20; font-size:.82rem; font-weight:700; }
+  .format-note { margin:10px 0 0; color:#505758; font-size:.85rem; }
+  .format-note a { color:#0f1213; font-weight:700; text-underline-offset:3px; }
+  .purpose-section,.inputs-section,.method-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:112px 0; }
+  .purpose-grid,.evidence-grid,.measurement-grid,.copy-grid,.two-column { display:grid; grid-template-columns:minmax(250px,.66fr) minmax(0,1.34fr); gap:clamp(50px,9vw,140px); }
+  .purpose-copy .lead { margin:0; font-family:"Instrument Serif",Georgia,serif; font-size:clamp(2rem,3.5vw,3.25rem); line-height:1.08; }
+  .purpose-copy > p:not(.lead) { max-width:690px; margin:30px 0 0; color:#53595a; line-height:1.7; }
+  .principle-callout { display:grid; grid-template-columns:130px 1fr; gap:28px; margin-top:42px; padding:24px 0; border-top:2px solid #0f1213; border-bottom:1px solid #b4b6b6; }
+  .principle-callout span { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+  .principle-callout p { margin:0; line-height:1.6; }
+  .inputs-section,.outputs-section,.copy-section { background:#edf4ea; }
+  .section-heading { max-width:920px; margin-bottom:68px; }
+  .section-heading.compact { max-width:820px; }
+  .section-heading > p:last-child { max-width:730px; margin:26px 0 0; color:#4e5556; line-height:1.7; }
+  .input-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; padding:0; list-style:none; background:#b4b6b6; border:1px solid #b4b6b6; }
+  .input-grid li { min-height:260px; padding:28px; background:#f5f5f1; }
+  .input-grid li:last-child { grid-column:2/3; }
+  .input-grid span { display:block; margin-bottom:50px; color:#3b5c34; font-size:.72rem; font-weight:800; letter-spacing:.1em; }
+  .input-grid p { margin:14px 0 0; color:#515758; line-height:1.58; }
+  .evidence-section { padding:105px 0; background:#0f1213; color:#f5f5f1; }
+  .evidence-section h2 { color:#f5f5f1; }
+  .evidence-section header > p:last-child { max-width:430px; margin:25px 0 0; color:#b4b6b6; line-height:1.6; }
+  .rule-list { margin:0; padding:0; list-style:none; border-top:1px solid rgba(245,245,241,.25); }
+  .rule-list li { position:relative; padding:18px 0 18px 32px; border-bottom:1px solid rgba(245,245,241,.2); color:#e4e5e1; line-height:1.58; }
+  .rule-list li::before { content:"✓"; position:absolute; left:0; color:#69d254; font-weight:800; }
+  .phase-list { border-top:2px solid #0f1213; }
+  .phase { display:grid; grid-template-columns:140px minmax(0,1fr) 260px; gap:clamp(28px,5vw,70px); padding:54px 0; border-bottom:1px solid #b4b6b6; scroll-margin-top:110px; }
+  .phase-index span,.phase-index strong { display:block; }
+  .phase-index span { color:#3b5c34; font-size:.75rem; font-weight:800; }
+  .phase-index strong { margin-top:18px; font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; }
+  .phase-main h3 { font-size:clamp(2.25rem,4vw,4rem); }
+  .phase-purpose { max-width:720px; margin:18px 0 28px; color:#4d5455; font-size:1.04rem; line-height:1.65; }
+  .phase-main ul,.deliverable-box ul { margin:0; padding-left:20px; }
+  .phase-main li { margin:12px 0; line-height:1.58; }
+  .deliverable-box { align-self:start; padding:22px; background:#edf4ea; }
+  .deliverable-box > span { display:block; margin-bottom:14px; color:#3b5c34; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+  .deliverable-box li { margin:8px 0; color:#454c4d; font-size:.88rem; line-height:1.45; }
+  .output-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+  .output-grid article { min-height:270px; padding:28px; background:#f5f5f1; border-top:3px solid #0f1213; }
+  .output-grid h3 { font-size:2.15rem; }
+  .output-grid ul { margin:28px 0 0; padding:0; list-style:none; }
+  .output-grid li { padding:7px 0; border-bottom:1px solid #d1d2cf; color:#545a5b; font-size:.86rem; }
+  .measurement-section { background:#f5f5f1; }
+  .measurement-grid header { position:sticky; top:118px; align-self:start; }
+  .measurement-grid header > p:last-child { margin:26px 0 0; color:#505758; line-height:1.65; }
+  .lane-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .lane-list article { padding:28px; border:1px solid #b4b6b6; }
+  .lane-list h3 { font-size:1.8rem; }
+  .lane-list p { margin:14px 0 0; color:#525859; line-height:1.58; }
+  .example-section { padding:0 0 112px; }
+  .example-card { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(48px,8vw,120px); padding:72px; background:#0f1213; color:#f5f5f1; }
+  .example-card h2 { color:#f5f5f1; }
+  .example-card p { margin:0; color:#d8d9d6; line-height:1.72; }
+  .example-card a { display:inline-block; margin-top:26px; color:#8ee47c; font-weight:800; text-decoration-thickness:2px; text-underline-offset:6px; }
+  .copy-grid > header > p:last-child { margin:26px 0 0; color:#4e5556; line-height:1.7; }
+  .mode-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .mode-cards article { padding:24px; background:#f5f5f1; border-top:3px solid #0f1213; }
+  .mode-cards h3 { font-size:1.75rem; }
+  .mode-cards p { margin:12px 0 0; color:#555b5c; font-size:.9rem; line-height:1.55; }
+  .brief-details { grid-column:1/-1; margin-top:34px; border-top:2px solid #0f1213; border-bottom:1px solid #b4b6b6; }
+  .brief-details summary { padding:22px 0; font-weight:800; cursor:pointer; }
+  .brief-panel { padding:0 0 30px; }
+  .brief-panel label { display:block; margin-bottom:10px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .brief-panel textarea { box-sizing:border-box; width:100%; max-width:100%; padding:18px; resize:vertical; border:1px solid #686b6c; background:#f5f5f1; color:#0f1213; font: .84rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .manual-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
+  .manual-actions button,.manual-actions a { display:inline-flex; min-height:44px; align-items:center; padding:0 16px; border:2px solid #0f1213; background:#0f1213; color:#f5f5f1; font:inherit; font-weight:800; text-decoration:none; cursor:pointer; }
+  .manual-actions a { background:transparent; color:#0f1213; }
+  .numbered-list { margin:0; padding:0; list-style:none; border-top:1px solid #b4b6b6; }
+  .numbered-list li { display:grid; grid-template-columns:52px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid #b4b6b6; }
+  .numbered-list span { color:#3b5c34; font-size:.72rem; font-weight:800; }
+  .numbered-list p { margin:0; color:#454c4d; line-height:1.62; }
+  .sources-section { padding-top:20px; }
+  .sources-section header > p:last-child { margin:24px 0 0; color:#515758; line-height:1.62; }
+  .source-list { margin:0; padding:0; list-style:none; }
+  .source-list li { padding:25px 0; border-top:1px solid #b4b6b6; }
+  .source-list li > span { display:block; margin-bottom:9px; color:#3b5c34; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .source-list a { color:#0f1213; font-family:"Instrument Serif",Georgia,serif; font-size:1.75rem; line-height:1.15; text-decoration-thickness:1px; text-underline-offset:5px; }
+  .source-list p { margin:12px 0; color:#53595a; line-height:1.58; }
+  .source-list code { display:block; overflow-wrap:anywhere; color:#686b6c; font-size:.7rem; }
+  .article-footer { padding:30px 0; background:#0f1213; color:#f5f5f1; }
+  .footer-inner { display:flex; justify-content:space-between; gap:26px; align-items:center; }
+  .footer-inner p { margin:0; color:#b4b6b6; font-size:.78rem; }
+  .footer-inner a { color:#8ee47c; font-weight:800; }
+  .action:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible { outline:3px solid #69d254; outline-offset:4px; }
+  @media (max-width: 960px) {
+    .shell { width:min(100% - 40px,1240px); }
+    .hero-grid,.purpose-grid,.evidence-grid,.measurement-grid,.copy-grid,.two-column,.example-card { grid-template-columns:1fr; }
+    .status-card { max-width:620px; }
+    .input-grid,.output-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .input-grid li:last-child { grid-column:auto; }
+    .phase { grid-template-columns:100px minmax(0,1fr); }
+    .deliverable-box { grid-column:2; }
+    .measurement-grid header { position:static; }
+    .brief-details { grid-column:auto; }
+  }
+  @media (max-width: 680px) {
+    .shell { width:calc(100% - 28px); }
+    .playbook-hero { padding:112px 0 58px; }
+    .breadcrumbs { margin-bottom:42px; }
+    h1 { font-size:clamp(3.5rem,17vw,5rem); }
+    .action-bar { grid-template-columns:1fr; }
+    .copy-status { grid-column:auto; }
+    .purpose-section,.inputs-section,.method-section,.outputs-section,.measurement-section,.copy-section,.limitations-section,.sources-section { padding:78px 0; }
+    .input-grid,.output-grid,.lane-list,.mode-cards { grid-template-columns:1fr; }
+    .input-grid li { min-height:0; }
+    .input-grid span { margin-bottom:30px; }
+    .phase { grid-template-columns:1fr; gap:24px; padding:42px 0; }
+    .phase-index { display:flex; justify-content:space-between; align-items:center; }
+    .phase-index strong { margin:0; }
+    .deliverable-box { grid-column:auto; }
+    .example-section { padding-bottom:78px; }
+    .example-card { width:auto; margin:0 14px; padding:42px 24px; }
+    .principle-callout { grid-template-columns:1fr; gap:12px; }
+    .footer-inner { flex-direction:column; align-items:flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .action:hover { transform:none; }
+    html:focus-within { scroll-behavior:auto; }
+  }
+</style>

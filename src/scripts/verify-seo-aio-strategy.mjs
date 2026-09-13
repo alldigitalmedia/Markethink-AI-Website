@@ -87,20 +87,24 @@ for (const note of measurementNotes) {
   for (const field of ["source", "date", "scope", "denominator"]) assert(note.futureObservationRequirements.includes(field), `${note.id} must require ${field}`);
 }
 
-assert(changeLog.length >= 5, "contextual-link change-log entry or prior entries are missing");
+assert(changeLog.length >= 6, "strategy-library launch log or prior entries are missing");
 assert(changeLog.some((item) => item.id === "initial-public-roadmap"), "earlier change-log entry was removed");
 assert(changeLog.some((item) => item.id === "palette-publication-verification-2026-09-12"), "earlier palette publication log was removed");
 assert(changeLog.some((item) => item.id === "palette-canonical-base-closure-2026-09-12"), "palette closure log was removed");
 assert(changeLog.some((item) => item.id === "b2b-editorial-image-system-closure-2026-09-13"), "V2 image closure log was removed");
 for (let index = 1; index < changeLog.length; index += 1) assert(changeLog[index - 1].date >= changeLog[index].date, "change log must be newest first");
 assert.equal(changeLog[0].id, ROADMAP_META.latestUpdateId, "Latest update must target the newest log entry");
-assert.equal(changeLog[0].id, "contextual-internal-links-2026-09-13", "contextual-link update must be the latest public log");
-assert.equal(changeLog[0].date, "2026-09-13", "contextual-link log date changed");
+assert.equal(changeLog[0].id, "strategy-library-playbook-launch-2026-09-13", "strategy-library launch must be the latest public log");
+assert.equal(changeLog[0].date, "2026-09-13", "strategy-library launch log date changed");
 const newestLog = JSON.stringify(changeLog[0]);
-for (const marker of ["ten crawlable, contextual links", "page-improvement method", "source-led adoption context", "broader proof and internal-links task unchanged"]) {
-  assert(newestLog.toLowerCase().includes(marker.toLowerCase()), `contextual-link change log is missing scope boundary: ${marker}`);
+for (const marker of ["AI Marketing Strategy Library", "standalone agent brief", "portable Agent Skills package", "all 19 roadmap actions", "status counts"]) {
+  assert(newestLog.toLowerCase().includes(marker.toLowerCase()), `strategy-library launch log is missing scope boundary: ${marker}`);
 }
-assert(!/rank|citation|traffic|lead|revenue|effectiveness|result/i.test(changeLog[0].title), "contextual-link log title must not claim an outcome");
+assert(!/ranking|traffic|lead|revenue|effectiveness|outcome/i.test(changeLog[0].title), "strategy-library launch log title must not claim an outcome");
+const contextualLog = JSON.stringify(changeLog.find((item) => item.id === "contextual-internal-links-2026-09-13"));
+for (const marker of ["ten crawlable, contextual links", "page-improvement method", "source-led adoption context", "broader proof and internal-links task unchanged"]) {
+  assert(contextualLog.toLowerCase().includes(marker.toLowerCase()), `contextual-link change log is missing scope boundary: ${marker}`);
+}
 const v2Log = JSON.stringify(changeLog.find((item) => item.id === "b2b-editorial-image-system-closure-2026-09-13"));
 for (const marker of ["P01–P10", "1200×630", "Open Graph", "Twitter", "card order", "unchanged statistics ledgers"]) {
   assert(v2Log.includes(marker), `V2 image change log is missing verified evidence: ${marker}`);
