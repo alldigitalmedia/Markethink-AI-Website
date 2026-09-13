@@ -53,7 +53,9 @@ for (const token of ["imageThumbnail", "b2bEditorialImages"]) assert.ok(sources.
 assert.match(sources.article, /source media="\(max-width: 680px\)"[^>]*srcset=\{post\.imageMobile\}[^>]*type="image\/webp"[^>]*width="960"[^>]*height="720"/s, "Article hero must expose the approved 4:3 mobile source and intrinsic size");
 assert.match(sources.article, /src=\{post\.image\}[^>]*width="1440"[^>]*height="810"/s, "Article hero must expose the approved desktop source and intrinsic size");
 assert.match(sources.article, /src=\{related\.imageThumbnail\}[^>]*width="960"[^>]*height="600"/s, "Related article cards must use approved thumbnails");
+assert.match(sources.index, /\{editorialInsightPosts\.map\(\(post, index\) =>/, "Blog index cards must follow the approved placement order");
 assert.match(sources.index, /src=\{post\.imageThumbnail\}[^>]*width="960"[^>]*height="600"/s, "Blog index cards must use approved thumbnails");
+assert.match(sources.homepageCards, /const smallPosts = editorialInsightPosts\.map/, "Reusable insight cards must follow the approved placement order");
 assert.match(sources.homepageCards, /image: post\.imageThumbnail/, "Homepage insight cards must use approved thumbnails");
 assert.match(sources.statistics, /source media="\(max-width: 680px\)"[^>]*srcset=\{heroImage\.mobile\}[^>]*type="image\/webp"[^>]*width="960"[^>]*height="640"/s, "Statistics hero must expose the approved mobile source and intrinsic size");
 assert.match(sources.statistics, /src=\{heroImage\.desktop\}[^>]*width="1440"[^>]*height="960"/s, "Statistics hero must expose the approved desktop source and intrinsic size");
