@@ -15,11 +15,11 @@ export const PLAYBOOK_META = {
   portableName: "markethink-seo-aio-playbook",
   title: "SEO & AI Search: An Ongoing Strategy Playbook",
   seoTitle: "SEO & AI Search: An Ongoing Strategy Playbook | Markethink",
-  description: "Build and maintain an evidence-led SEO and AI-search strategy with an initial 30-day implementation cycle, repeat-cycle backlog, measurement limits, and a portable agent skill.",
+  description: "Build and maintain an evidence-led SEO and AI-search strategy with a foundation cycle for new programs, capacity-aware current or next cycles for established programs, measurement limits, and a portable agent skill.",
   canonical: "https://markethink.ai/ai-marketing-strategies/seo-aio-playbook/",
   markdownUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.md",
   skillUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.zip",
-  version: "1.1.0",
+  version: "1.1.1",
   reviewedDate: "2026-09-13",
   author: "Markethink",
   specificationUrl: "https://agentskills.io/specification",
@@ -153,7 +153,7 @@ export const repeatCycle = [
   {
     id: "carry-forward",
     title: "Carry unfinished work forward",
-    detail: "Keep unfinished tasks, dependencies, owners, and acceptance checks visible. Never auto-complete an item because a target date passed.",
+    detail: "Keep each existing work item’s original ID, current status, recorded status history or evidence-transition reference, dependencies, owner, and acceptance checks visible. Never renumber it, overwrite past delivery or status evidence, or auto-complete it because a target date passed. Give proposed new work distinct proposed IDs.",
   },
   {
     id: "scope-opportunities",
@@ -186,8 +186,8 @@ export const requiredOutputs = [
     fields: ["query or question family", "intent", "audience or location", "existing primary URL", "page job", "evidence", "gap", "recommended action"],
   },
   {
-    name: "Prioritized initial 30-day cycle",
-    fields: ["window", "action", "owner", "reviewer", "dependency", "effort", "target URL", "delivery acceptance evidence", "outcome observation and timing"],
+    name: "Prioritized foundation or current/next capacity-aware cycle",
+    fields: ["existing work-item ID or proposed new ID", "current status", "recorded status history or evidence-transition reference", "window or cycle", "action", "owner", "reviewer", "dependency", "effort", "target URL", "delivery acceptance evidence", "outcome observation and timing"],
   },
   {
     name: "Page-improvement briefs",
@@ -203,7 +203,7 @@ export const requiredOutputs = [
   },
   {
     name: "Next-cycle backlog and review checkpoint",
-    fields: ["carried-forward task", "newly justified opportunity", "scope evidence", "priority", "capacity", "owner", "dependency", "acceptance check", "review date or trigger"],
+    fields: ["existing work-item ID or proposed new ID", "current status", "recorded status history or evidence-transition reference", "carried-forward task", "newly justified opportunity", "scope evidence", "priority", "capacity", "owner", "dependency", "acceptance check", "review date or trigger"],
   },
 ];
 
@@ -278,7 +278,7 @@ Reviewed: ${PLAYBOOK_META.reviewedDate}
 Source: ${PLAYBOOK_META.canonical}
 
 ROLE
-Help me adapt and maintain an evidence-led SEO and AI-search strategy for my business. Use the first 30 days as an initial implementation cycle, then produce a capacity-aware next-cycle backlog and review checkpoint so the strategy does not stop at day 30. Support planning, review, and only the execution I separately authorize. Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach. It also does not authorize spending, sending, account changes, or any action outside my permissions.
+Help me adapt and maintain an evidence-led SEO and AI-search strategy for my business. For a new program, produce the initial 30-day foundation cycle. For an established program, resume from its existing records and produce the current or next capacity-aware cycle without restarting day 1. Support planning, review, and only the execution I separately authorize. Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach. It also does not authorize spending, sending, account changes, or any action outside my permissions.
 
 OPERATING RULES
 ${numbered(evidenceRules)}
@@ -290,8 +290,8 @@ ${list(inputLines)}
 TOOL AND DATA CHECK
 ${list(toolAvailabilityChecks)}
 
-INITIAL 30-DAY IMPLEMENTATION CYCLE
-This is the foundation cycle, not the lifespan or completion deadline of the strategy.
+FOUNDATION OR CURRENT/NEXT IMPLEMENTATION CYCLE
+For a new program, use the initial 30-day sequence as the foundation cycle, not the lifespan or completion deadline of the strategy. For an established program, preserve its records and use these phases only as a method for the current or next capacity-aware cycle; do not restart day 1.
 ${phaseLines.join("\n")}
 
 REPEAT CYCLE BEYOND DAY 30
@@ -311,7 +311,8 @@ ACCEPTANCE RULES
 - Mark unavailable data as Not available and state what would be needed to measure it.
 - Treat a completed deliverable as delivery evidence only. Keep rankings, traffic, leads, conversions, and citations pending until observed from a named source.
 - Review delivered work and results in separate fields.
-- Carry unfinished work forward with its dependency and acceptance check. Never auto-complete work because a date passed.
+- Carry unfinished work forward with its original work-item ID, current status, recorded status history or evidence-transition reference, dependency, and acceptance check. Never renumber it, overwrite past delivery or status evidence, or auto-complete work because a date passed.
+- Label newly justified work with distinct proposed new IDs so it cannot be mistaken for or overwrite an existing record.
 - Add a newly justified opportunity only after its evidence, scope, priority, capacity, owner, dependency, and acceptance check are explicit.
 - End every cycle with a next-cycle backlog, a review date or trigger, and an appended dated decision/change log.
 - Preserve original source URLs and attribute any borrowed strategy.
@@ -325,7 +326,7 @@ ORIGINAL SOURCES
 ${list(sourceLines)}
 
 START
-First summarize the context already available. Then show the tool and data-availability register. Ask only for material missing inputs. Produce the initial implementation cycle, review delivery and results separately, and finish with an honest next-cycle backlog and review checkpoint.`;
+First summarize the context already available. Then show the tool and data-availability register. Ask only for material missing inputs. If this is a new program, produce the initial foundation cycle. If this is an established program, resume from existing records and produce the current or next capacity-aware cycle without restarting day 1. Review delivery and results separately, preserve original work-item IDs and status history, distinguish proposed new IDs, and finish with an honest next-cycle backlog and review checkpoint.`;
 }
 
 export function getOutputTemplatesMarkdown() {
@@ -341,10 +342,10 @@ export function getOutputTemplatesMarkdown() {
 | Query or question family | Intent | Audience or location | Existing primary URL | Page job | Evidence | Gap | Recommended action |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-## Prioritized initial 30-day cycle
+## Prioritized foundation or current/next capacity-aware cycle
 
-| Window | Action | Owner | Reviewer | Dependency | Effort | Target | Delivery acceptance evidence | Outcome observation and timing |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Existing work-item ID or proposed new ID | Current status | Status history or evidence-transition reference | Window or cycle | Action | Owner | Reviewer | Dependency | Effort | Target | Delivery acceptance evidence | Outcome observation and timing |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Page-improvement brief
 
@@ -375,8 +376,8 @@ export function getOutputTemplatesMarkdown() {
 
 ## Next-cycle backlog and review checkpoint
 
-| Carried-forward task | Newly justified opportunity | Scope evidence | Priority | Capacity | Owner | Dependency | Acceptance check | Review date or trigger |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Existing work-item ID or proposed new ID | Current status | Status history or evidence-transition reference | Carried-forward task | Newly justified opportunity | Scope evidence | Priority | Capacity | Owner | Dependency | Acceptance check | Review date or trigger |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Dated decision and change log
 
@@ -389,11 +390,11 @@ export function getOriginalSourcesMarkdown() {
 }
 
 export function getSkillMarkdown() {
-  return `---\nname: ${PLAYBOOK_META.portableName}\ndescription: Build and maintain an evidence-led SEO and AI-search strategy from a business's website, offer, audience, constraints, and available search data. Use for an initial implementation cycle, ongoing review, next-cycle backlog planning, answer-ready content, internal links, page improvements, and search measurement.\nmetadata:\n  author: "${PLAYBOOK_META.author}"\n  version: "${PLAYBOOK_META.version}"\n  reviewed: "${PLAYBOOK_META.reviewedDate}"\n  source: "${PLAYBOOK_META.canonical}"\n---\n\n# SEO & AI Search: An Ongoing Strategy Playbook\n\n${getStandaloneBrief()}\n\n## Optional package resources\n\nUse [the original-source reference](references/ORIGINAL-SOURCES.md) when checking source scope or recency. Use [the reusable output templates](assets/OUTPUT-TEMPLATES.md) when the user wants tables or a review record. The instructions above remain complete without loading either file.`;
+  return `---\nname: ${PLAYBOOK_META.portableName}\ndescription: Build and maintain an evidence-led SEO and AI-search strategy from a business's website, offer, audience, constraints, and available search data. Use for a new-program foundation cycle or an established program’s current or next capacity-aware cycle, ongoing review, backlog planning, answer-ready content, internal links, page improvements, and search measurement.\nmetadata:\n  author: "${PLAYBOOK_META.author}"\n  version: "${PLAYBOOK_META.version}"\n  reviewed: "${PLAYBOOK_META.reviewedDate}"\n  source: "${PLAYBOOK_META.canonical}"\n---\n\n# SEO & AI Search: An Ongoing Strategy Playbook\n\n${getStandaloneBrief()}\n\n## Optional package resources\n\nUse [the original-source reference](references/ORIGINAL-SOURCES.md) when checking source scope or recency. Use [the reusable output templates](assets/OUTPUT-TEMPLATES.md) when the user wants tables or a review record. The instructions above remain complete without loading either file.`;
 }
 
 export function getStandaloneMarkdown() {
-  return `# ${PLAYBOOK_META.title}\n\n> ${PLAYBOOK_META.description}\n\n- Version: ${PLAYBOOK_META.version}\n- Reviewed: ${PLAYBOOK_META.reviewedDate}\n- Author: ${PLAYBOOK_META.author}\n- Canonical page: ${PLAYBOOK_META.canonical}\n- Portable skill: ${PLAYBOOK_META.skillUrl}\n\n## Purpose\n\nAdapt a reviewed SEO and AI-search method to a real business, run the first 30 days as an initial implementation cycle, then maintain a capacity-aware next-cycle backlog that distinguishes available evidence from assumptions and delivery from results.\n\n## Who it fits\n\nBusinesses with a live website, a defined offer, and enough internal knowledge to verify facts, review recommendations, and authorize any execution separately.\n\n## Complete standalone AI brief\n\n${getStandaloneBrief()}\n\n## Reusable output templates\n\n${getOutputTemplatesMarkdown()}\n\n## Source notes\n\n${getOriginalSourcesMarkdown()}\n`;
+  return `# ${PLAYBOOK_META.title}\n\n> ${PLAYBOOK_META.description}\n\n- Version: ${PLAYBOOK_META.version}\n- Reviewed: ${PLAYBOOK_META.reviewedDate}\n- Author: ${PLAYBOOK_META.author}\n- Canonical page: ${PLAYBOOK_META.canonical}\n- Portable skill: ${PLAYBOOK_META.skillUrl}\n\n## Purpose\n\nAdapt a reviewed SEO and AI-search method to a real business. Start a new program with an initial foundation cycle, or resume an established program from its existing records with a current or next capacity-aware cycle. Preserve work-item IDs and status history while keeping available evidence separate from assumptions and delivery separate from results.\n\n## Who it fits\n\nBusinesses with a live website, a defined offer, and enough internal knowledge to verify facts, review recommendations, and authorize any execution separately.\n\n## Complete standalone AI brief\n\n${getStandaloneBrief()}\n\n## Reusable output templates\n\n${getOutputTemplatesMarkdown()}\n\n## Source notes\n\n${getOriginalSourcesMarkdown()}\n`;
 }
 
 export const packageFiles = {
