@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -9,6 +10,7 @@ const distRoot = join(projectRoot, "dist");
 const dataModule = await import("../data/seoAioStrategy.mjs");
 const {
   STATUS_DEFINITIONS,
+  ONGOING_PROCESS,
   PHASES,
   ROADMAP_META,
   roadmapEntries,
@@ -28,6 +30,9 @@ assert(ROADMAP_META && /^https:\/\//.test(ROADMAP_META.sharingImageUrl), "absolu
 assert.equal(ROADMAP_META.sharingImageWidth, 1200, "sharing image width changed");
 assert.equal(ROADMAP_META.sharingImageHeight, 630, "sharing image height changed");
 assert.equal(ROADMAP_META.canonical, "https://markethink.ai/seo-aio-strategy/", "canonical changed");
+assert.equal(ROADMAP_META.title, "Our Ongoing SEO & AIO Strategy | Markethink", "ongoing SEO title changed");
+assert.equal(ROADMAP_META.headline, "Our SEO & AIO Strategy, Built in Public", "exact ongoing H1 changed");
+assert.equal(ONGOING_PROCESS.length, 6, "ongoing process must keep all six review and implementation steps");
 assert(/^\d{4}-\d{2}-\d{2}$/.test(ROADMAP_META.lastSubstantiveUpdate), "last substantive update date missing");
 
 const expectedPhases = new Set(["Days 1–5", "Days 6–12", "Days 10–18", "Days 19–24", "Days 25–30", "Days 60/90", "Pre-existing progress", "Concurrent corrections"]);
@@ -87,20 +92,24 @@ for (const note of measurementNotes) {
   for (const field of ["source", "date", "scope", "denominator"]) assert(note.futureObservationRequirements.includes(field), `${note.id} must require ${field}`);
 }
 
-assert(changeLog.length >= 6, "strategy-library launch log or prior entries are missing");
+assert(changeLog.length >= 7, "ongoing follow-up log or prior entries are missing");
 assert(changeLog.some((item) => item.id === "initial-public-roadmap"), "earlier change-log entry was removed");
 assert(changeLog.some((item) => item.id === "palette-publication-verification-2026-09-12"), "earlier palette publication log was removed");
 assert(changeLog.some((item) => item.id === "palette-canonical-base-closure-2026-09-12"), "palette closure log was removed");
 assert(changeLog.some((item) => item.id === "b2b-editorial-image-system-closure-2026-09-13"), "V2 image closure log was removed");
 for (let index = 1; index < changeLog.length; index += 1) assert(changeLog[index - 1].date >= changeLog[index].date, "change log must be newest first");
 assert.equal(changeLog[0].id, ROADMAP_META.latestUpdateId, "Latest update must target the newest log entry");
-assert.equal(changeLog[0].id, "strategy-library-playbook-launch-2026-09-13", "strategy-library launch must be the latest public log");
-assert.equal(changeLog[0].date, "2026-09-13", "strategy-library launch log date changed");
+assert.equal(changeLog[0].id, "ongoing-strategy-follow-up-2026-09-13", "ongoing follow-up must be the latest public log");
+assert.equal(changeLog[0].date, "2026-09-13", "ongoing follow-up log date changed");
 const newestLog = JSON.stringify(changeLog[0]);
-for (const marker of ["AI Marketing Strategy Library", "standalone agent brief", "portable Agent Skills package", "all 19 roadmap actions", "status counts"]) {
-  assert(newestLog.toLowerCase().includes(marker.toLowerCase()), `strategy-library launch log is missing scope boundary: ${marker}`);
+for (const marker of ["living SEO and AIO", "initial foundation phase", "all 19 actions", "day-60/90", "version 1.1.0", "next-cycle backlog", "delivery and results review"]) {
+  assert(newestLog.toLowerCase().includes(marker.toLowerCase()), `ongoing follow-up log is missing scope boundary: ${marker}`);
 }
-assert(!/ranking|traffic|lead|revenue|effectiveness|outcome/i.test(changeLog[0].title), "strategy-library launch log title must not claim an outcome");
+assert(!/ranking uplift|traffic uplift|lead uplift|revenue uplift|effectiveness proven|outcome proven/i.test(changeLog[0].title), "ongoing follow-up log title must not claim an outcome");
+const libraryLaunchLog = JSON.stringify(changeLog.find((item) => item.id === "strategy-library-playbook-launch-2026-09-13"));
+for (const marker of ["AI Marketing Strategy Library", "standalone agent brief", "portable Agent Skills package", "all 19 roadmap actions", "status counts"]) {
+  assert(libraryLaunchLog.toLowerCase().includes(marker.toLowerCase()), `historical strategy-library launch log changed: ${marker}`);
+}
 const contextualLog = JSON.stringify(changeLog.find((item) => item.id === "contextual-internal-links-2026-09-13"));
 for (const marker of ["ten crawlable, contextual links", "page-improvement method", "source-led adoption context", "broader proof and internal-links task unchanged"]) {
   assert(contextualLog.toLowerCase().includes(marker.toLowerCase()), `contextual-link change log is missing scope boundary: ${marker}`);
@@ -171,14 +180,16 @@ for (const [path, citation] of [
 
 assert(pageSource.includes('from "../data/seoAioStrategy.mjs"'), "page must use the structured source");
 assert(checklistSource.includes('from "../../data/seoAioStrategy.mjs"'), "checklist must use the structured source");
-assert(html.includes("Steal our SEO &amp; AIO strategy."), "exact H1 missing");
-assert(html.includes("Watch us implement it on Markethink.ai."), "exact supporting line missing");
+assert(html.includes("Our SEO &amp; AIO Strategy, Built in Public"), "exact ongoing H1 missing");
+assert(html.includes("A living implementation roadmap for Markethink.ai."), "ongoing supporting line missing");
 assert(html.includes(`<link rel="canonical" href="${ROADMAP_META.canonical}">`), "canonical missing");
 assert(sitemap.includes(ROADMAP_META.canonical), "existing sitemap entry missing");
 assert(/Last substantive update/i.test(html), "visible last substantive update is missing");
 assert(html.includes(`href="#${ROADMAP_META.latestUpdateId}"`), "Latest update link must target newest stable log ID");
-assert(/target windows, not recorded sprint dates or a claimed sprint start/i.test(html), "target-window clarification missing");
-assert(/target windows, not recorded sprint dates or a claimed sprint start/i.test(checklist), "checklist target-window clarification missing");
+assert(/target windows in the initial foundation phase[^.]+not recorded sprint dates[^.]+endpoint for the ongoing strategy/i.test(html), "ongoing target-window clarification missing");
+assert(/target windows in the initial 30-day foundation phase[^.]+not recorded sprint dates[^.]+lifespan of the strategy/i.test(checklist), "checklist ongoing target-window clarification missing");
+assert(/current baseline is evidence for the next decision, not a permanent cap on future actions/i.test(html), "baseline-not-cap clarification missing");
+assert(/current baseline is evidence for the next decision, not a permanent cap on future actions/i.test(checklist), "checklist baseline-not-cap clarification missing");
 assert(!/\b\d+(?:\.\d+)?%\s+(?:complete|completed|done)\b/i.test(html), "completion percentage is forbidden");
 assert(!/(?:we|this (?:plan|roadmap|strategy)) guarantees? (?:rankings|citations|uplift)/i.test(html), "guaranteed outcome claim found");
 assert(!html.includes("—") && !checklist.includes("—"), "strategy page and checklist must not use em dashes");
@@ -193,6 +204,8 @@ const visibleText = html
   .replace(/&#39;/g, "'")
   .replace(/&quot;/g, '"')
   .replace(/\s+/g, " ");
+
+for (const step of ONGOING_PROCESS) assert(visibleText.includes(step), `ongoing process step is not server-rendered: ${step}`);
 
 for (const entry of roadmapEntries) {
   for (const value of [entry.title, entry.why, entry.targetPage, ...entry.how, ...entry.doneCriteria.map((criterion) => criterion.text)]) {
@@ -263,6 +276,48 @@ assert(imageObjects.some((node) => node.url === ROADMAP_META.sharingImageUrl && 
 assert(blogSource.includes('href="/seo-aio-strategy/"'), "blog source needs the contextual public-roadmap link");
 assert(blogHtml.includes('href="/seo-aio-strategy/"'), "blog initial HTML needs the contextual public-roadmap link");
 assert(blogHtml.includes('href="/ai-marketing-statistics/"'), "existing blog statistics link must remain");
+
+const activeDiscoveryPaths = [
+  "src/pages/seo-aio-strategy.astro",
+  "src/pages/ai-marketing-strategies/index.astro",
+  "src/pages/ai-marketing-strategies/seo-aio-playbook.astro",
+  "src/pages/blog/index.astro",
+  "src/pages/blog/[slug].astro",
+  "src/components/blog/SeoContentFeedbackLoopGuide.astro",
+  "src/components/blog/AiSearchInteractiveGuide.astro",
+  "src/pages/ai-marketing-statistics.astro",
+];
+const activeDiscovery = (await Promise.all(activeDiscoveryPaths.map((path) => readFile(join(projectRoot, path), "utf8")))).join("\n");
+const roadmapSourceText = await readFile(join(projectRoot, "src/data/seoAioStrategy.mjs"), "utf8");
+for (const stalePhrase of [
+  "See the 30-day sequence, evidence-based statuses, acceptance checks, and measurement plan.",
+  "30-day SEO and AIO roadmap",
+  "30-day SEO and AI-search playbook",
+  "30-day SEO and AI-search strategy playbook",
+  "<span>30-day playbook</span>",
+  "Steal our SEO &amp; AIO strategy.",
+]) assert.ok(!activeDiscovery.includes(stalePhrase), `finite-resource discovery copy remains active: ${stalePhrase}`);
+for (const marker of [
+  "ongoing SEO and AIO strategy",
+  "ongoing SEO and AI-search strategy playbook",
+  "living public implementation",
+  "ongoing playbook",
+]) assert.ok(activeDiscovery.toLowerCase().includes(marker.toLowerCase()), `ongoing discovery marker missing: ${marker}`);
+assert(roadmapSourceText.includes("complete 30-day SEO and AI-search playbook"), "historical dated library-launch record must remain accurate");
+assert(roadmapSourceText.includes("Published the public 30-day plan"), "historical initial-roadmap record must remain accurate");
+
+const protectedFiles = new Map([
+  ["src/data/aiMarketingStatistics.json", "ba55a0ffc74a5b5693ebd1863dab874fb30ed89342a36f0000a03ff315034c26"],
+  ["public/downloads/ai-marketing-statistics-source-ledger.csv", "dc80235918884267c246fdf209c5aafec5a49f0805a5718caaa009634792be7e"],
+  ["public/downloads/ai-marketing-statistics-source-ledger.json", "ba55a0ffc74a5b5693ebd1863dab874fb30ed89342a36f0000a03ff315034c26"],
+  ["public/charts/cmi-b2b-ai-tool-use-2025.svg", "5f68b9642e6b07381d4cd26054abdb18038efb96d45dfe6271265fdc21dc3963"],
+  ["public/charts/iab-ai-ad-perception-gap-2026.svg", "acba9152864551596c3f6608801c1cba8e41150c6a4eba4270ca50c4354945c1"],
+  ["public/charts/oecd-firm-ai-use-2025.svg", "8a0893ae54d51e9b38f725a495536877839ecc762574623080a6078777d0eda3"],
+]);
+for (const [path, expectedHash] of protectedFiles) {
+  const bytes = await readFile(join(projectRoot, path));
+  assert.equal(createHash("sha256").update(bytes).digest("hex"), expectedHash, `protected statistics/ledger/chart bytes changed: ${path}`);
+}
 
 console.log(JSON.stringify({
   entries: roadmapEntries.length,
