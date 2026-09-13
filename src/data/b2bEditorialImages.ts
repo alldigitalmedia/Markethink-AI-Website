@@ -1,0 +1,177 @@
+export type B2BEditorialImage = {
+  placement: number;
+  title: string;
+  route: string;
+  desktop: string;
+  mobile: string;
+  thumbnail: string;
+  alt: string;
+  desktopWidth: number;
+  desktopHeight: number;
+  mobileWidth: number;
+  mobileHeight: number;
+  thumbnailWidth: number;
+  thumbnailHeight: number;
+};
+
+const assetBase =
+  "https://dashboard.markethink.ai/generated/landing/markethink/markethink/";
+
+export const b2bEditorialImages: B2BEditorialImage[] = [
+  {
+    placement: 1,
+    title: "AI marketing statistics resource",
+    route: "/ai-marketing-statistics/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a marketer comparing two campaign directions in an active production workspace.",
+    desktopWidth: 1440,
+    desktopHeight: 960,
+    mobileWidth: 960,
+    mobileHeight: 640,
+    thumbnailWidth: 960,
+    thumbnailHeight: 720,
+  },
+  {
+    placement: 2,
+    title: "What is an AI marketing agency",
+    route: "/blog/what-is-an-ai-marketing-agency/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a content crew documenting technology infrastructure.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 3,
+    title: "AI logo / usable brand identity",
+    route: "/blog/how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a team reviewing an architecture model and identity materials.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 4,
+    title: "SEO/content feedback loop",
+    route: "/blog/seo-content-feedback-loop/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a crew documenting logistics operations on an active loading dock.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 5,
+    title: "Practical AI marketing guide",
+    route: "/blog/how-to-use-ai-for-marketing-small-business/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a team turning a filmed expert interview into a connected campaign sequence.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 6,
+    title: "Showing up in AI search",
+    route: "/blog/how-to-show-up-in-ai-search/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a cybersecurity expert being filmed beside secure infrastructure.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 7,
+    title: "Consistent marketing rhythm",
+    route: "/blog/consistent-marketing-beats-chasing-ai-tools/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a hospitality production crew coordinating content across a multi-zone property.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 8,
+    title: "Brand-memory approval loop",
+    route: "/blog/brand-memory-feedback-approved-campaigns/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a product marketer approving a campaign direction during a SaaS launch rehearsal.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 9,
+    title: "Cost of disconnected marketing",
+    route: "/blog/hidden-cost-disconnected-marketing-apps-prompts-docs/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-thumbnail.webp`,
+    alt: "Conceptual editorial scene of production teams reconciling fragmented campaign display elements.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+  {
+    placement: 10,
+    title: "Ideas to client opportunities",
+    route: "/blog/scattered-ideas-to-client-opportunities/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-thumbnail.webp`,
+    alt: "Conceptual editorial scene of a crew capturing an expert explanation at an architecture site.",
+    desktopWidth: 1440,
+    desktopHeight: 810,
+    mobileWidth: 960,
+    mobileHeight: 720,
+    thumbnailWidth: 960,
+    thumbnailHeight: 600,
+  },
+];
+
+export function getB2BEditorialImage(route: string): B2BEditorialImage {
+  const image = b2bEditorialImages.find((entry) => entry.route === route);
+  if (!image) throw new Error(`Missing B2B editorial image for ${route}`);
+  return image;
+}
