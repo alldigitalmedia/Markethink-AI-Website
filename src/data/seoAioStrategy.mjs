@@ -23,18 +23,27 @@ export const STATUS_DEFINITIONS = [
 
 export const ROADMAP_META = {
   canonical: "https://markethink.ai/seo-aio-strategy/",
-  title: "SEO & AIO Strategy: Markethink's Public 30-Day Roadmap",
-  description: "Follow Markethink's evidence-led 30-day SEO and AI-search roadmap, status definitions, verification criteria, measurement plan, and dated change log.",
-  headline: "Steal our SEO & AIO strategy.",
-  supportingLine: "Watch us implement it on Markethink.ai.",
+  title: "Our Ongoing SEO & AIO Strategy | Markethink",
+  description: "Follow Markethink's living SEO and AI-search strategy as we add scoped priorities, implementation work, evidence, lessons, and capacity-aware review cycles.",
+  headline: "Our SEO & AIO Strategy, Built in Public",
+  supportingLine: "A living implementation roadmap for Markethink.ai.",
   publishedDate: "2026-09-12",
   lastSubstantiveUpdate: "2026-09-13",
-  latestUpdateId: "strategy-library-playbook-launch-2026-09-13",
+  latestUpdateId: "ongoing-strategy-follow-up-2026-09-13",
   sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
   sharingImageWidth: 1200,
   sharingImageHeight: 630,
-  sharingImageAlt: "Markethink SEO and AIO 30-day roadmap sharing card with five target windows from evidence through verification.",
+  sharingImageAlt: "Markethink living SEO and AIO strategy sharing card with initial foundation windows and ongoing review.",
 };
+
+export const ONGOING_PROCESS = [
+  "Review the available evidence and keep unknowns visible.",
+  "Choose the next priorities within current capacity.",
+  "Implement only the work that has been scoped and authorized.",
+  "Verify delivery on the intended production surface and review results separately.",
+  "Record the change, evidence, and lessons in the dated log.",
+  "Carry unfinished work forward, then repeat from the updated baseline.",
+];
 
 export const PHASES = [
   { id: "days-1-5", label: "Days 1–5", shortLabel: "Evidence" },
@@ -529,6 +538,12 @@ export const measurementNotes = [
 ];
 
 export const changeLog = [
+  {
+    id: "ongoing-strategy-follow-up-2026-09-13",
+    date: "2026-09-13",
+    title: "Ongoing strategy and repeat-cycle method added",
+    detail: "Reframed this page as Markethink's living SEO and AIO implementation strategy. Kept the first 30 days as an initial foundation phase, preserved all 19 actions, IDs, evidence, history, day-60/90 checkpoints, and status counts, and added a repeat process for evidence review, capacity-aware priorities, implementation, verification, lessons, carry-forward work, and newly scoped opportunities. Updated the reusable visitor playbook to version 1.1.0 with a next-cycle backlog and separate delivery and results review.",
+  },
   {
     id: "strategy-library-playbook-launch-2026-09-13",
     date: "2026-09-13",

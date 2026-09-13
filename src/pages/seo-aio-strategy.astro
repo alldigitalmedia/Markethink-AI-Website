@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import {
   STATUS_DEFINITIONS,
+  ONGOING_PROCESS,
   PHASES,
   ROADMAP_META,
   roadmapEntries,
@@ -38,7 +39,7 @@ const statusClass = (status) => status.toLowerCase().replace(/\s+/g, "-");
 
 const articleSchema = {
   "@type": "Article",
-  headline: "Steal our SEO & AIO strategy.",
+  headline: ROADMAP_META.headline,
   description: pageDescription,
   url: canonical,
   datePublished: releaseDate,
@@ -103,16 +104,16 @@ const breadcrumbSchema = {
           </nav>
           <div class="hero-grid">
             <div class="hero-copy">
-              <p class="eyebrow">A PUBLIC WORKING DOCUMENT · EDITION 01</p>
-              <h1>Steal our SEO &amp; AIO strategy.</h1>
-              <p class="supporting-line">Watch us implement it on Markethink.ai.</p>
+              <p class="eyebrow">A LIVING PUBLIC WORKING DOCUMENT · EDITION 01</p>
+              <h1>{ROADMAP_META.headline}</h1>
+              <p class="supporting-line">{ROADMAP_META.supportingLine}</p>
             </div>
             <div class="hero-brief">
               <p>
-                This is Markethink's documented experiment: a 30-day sequence that starts with buyer evidence, improves the pages that already own the demand, adds documented proof, and checks what actually changed.
+                This is Markethink's ongoing SEO and AIO implementation strategy. We will keep adding scoped strategies, implementation work, evidence, and lessons as the work develops.
               </p>
               <p>
-                AIO means improving how useful, accurate content is found and represented in AI-assisted search. It builds on conventional SEO. It is not a guaranteed ranking recipe.
+                The first 30 days establish an initial foundation; they are not the strategy's lifespan or a completion deadline. AIO builds on conventional SEO and is not a guaranteed ranking recipe.
               </p>
             </div>
           </div>
@@ -120,7 +121,7 @@ const breadcrumbSchema = {
             <span>Last substantive update: <time datetime={lastSubstantiveUpdate}>{displayDate(lastSubstantiveUpdate)}</time></span>
             <a href={`#${latestUpdateId}`}>Latest update</a>
           </div>
-          <p class="window-note">Day ranges such as Days 1–5 and Days 6–12 are target windows, not recorded sprint dates or a claimed sprint start.</p>
+          <p class="window-note">Day ranges such as Days 1–5 and Days 6–12 are target windows in the initial foundation phase, not recorded sprint dates, a claimed start, or an endpoint for the ongoing strategy.</p>
           <div class="timeline-opening" aria-label="Roadmap target windows">
             {PHASES.slice(0, 6).map((phase, index) => (
               <a href={`#${phase.id}`}>
@@ -155,11 +156,26 @@ const breadcrumbSchema = {
         </div>
       </section>
 
+      <section class="ongoing-section" id="ongoing-process" aria-labelledby="ongoing-title">
+        <div class="container ongoing-grid">
+          <div>
+            <p class="eyebrow dark-eyebrow">ONGOING REVIEW AND IMPLEMENTATION</p>
+            <h2 id="ongoing-title">Review, implement, verify, learn, repeat.</h2>
+            <p class="ongoing-intro">The roadmap stays useful by turning each evidence review into the next capacity-aware cycle. Unfinished work remains visible, and newly justified opportunities enter only after they are scoped.</p>
+          </div>
+          <ol class="ongoing-steps">
+            {ONGOING_PROCESS.map((step, index) => (
+              <li><span>{String(index + 1).padStart(2, "0")}</span><p>{step}</p></li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section class="status-section" id="status-definitions" aria-labelledby="status-title">
         <div class="container">
           <div class="section-heading split-heading">
             <div><p class="eyebrow">STATUS LANGUAGE</p><h2 id="status-title">Published is not the same as proven.</h2></div>
-            <p>Counts come directly from the structured roadmap entries. They do not move with the calendar, and this page never converts them into a completion percentage.</p>
+            <p>Counts come directly from the structured roadmap entries. They do not move with the calendar, and this page never converts them into a completion percentage. New items enter only when they are actually scoped; dates never auto-complete them.</p>
           </div>
           <div class="status-grid">
             {STATUS_DEFINITIONS.map((status) => (
@@ -175,8 +191,8 @@ const breadcrumbSchema = {
       <section class="roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
         <div class="container">
           <div class="section-heading split-heading">
-            <div><p class="eyebrow dark-eyebrow">THE FULL ROADMAP</p><h2 id="roadmap-title">Every action has a finish line.</h2></div>
-            <p>{roadmapEntries.length} structured actions. No automatic day-based progress. Dates appear only where a public release or acceptance check has evidence.</p>
+            <div><p class="eyebrow dark-eyebrow">THE MAINTAINED ROADMAP</p><h2 id="roadmap-title">Every scoped action has a finish line.</h2></div>
+            <p>{roadmapEntries.length} structured actions today. No automatic day-based progress. New actions appear only after they are scoped, and dates appear only where a public release or acceptance check has evidence.</p>
           </div>
 
           <nav class="phase-filters" aria-label="Filter roadmap by phase">
@@ -246,7 +262,7 @@ const breadcrumbSchema = {
         <div class="container">
           <div class="section-heading split-heading">
             <div><p class="eyebrow dark-eyebrow">MEASUREMENT NOTES</p><h2 id="measurement-title">Three lanes, three honest baselines.</h2></div>
-            <p>Future observations must include a source, date, scope, and denominator. A missing baseline is Not yet measured, never zero.</p>
+            <p>Future observations must include a source, date, scope, and denominator. A missing baseline is Not yet measured, never zero. The current baseline is evidence for the next decision, not a permanent cap on future actions.</p>
           </div>
           <div class="measurement-grid">
             {measurementNotes.map((note, index) => (
@@ -275,7 +291,7 @@ const breadcrumbSchema = {
             <p class="lead">Conventional SEO, useful original or first-hand content, accurate facts, crawlable pages, internal links, and clear site structure remain central.</p>
             <p>Google's current official guidance says its generative AI search features use core Search ranking and quality systems. It recommends valuable, non-commodity content and a clear technical structure. It also says there is no special schema.org type, AI text file, or additional technical requirement that guarantees inclusion.</p>
             <p>Structured data still helps search systems understand eligible page types when it matches visible content. It does not guarantee a rich result, ranking, mention, or citation.</p>
-            <p>To adapt this method to another business and turn its real inputs into a scoped plan, use the <a href="/ai-marketing-strategies/seo-aio-playbook/">30-day SEO and AI-search strategy playbook</a>. This roadmap remains Markethink's implementation example, not independent proof.</p>
+            <p>To adapt this method to another business and turn its real inputs into an initial cycle plus a capacity-aware next backlog, use the <a href="/ai-marketing-strategies/seo-aio-playbook/">ongoing SEO and AI-search strategy playbook</a>. This roadmap is Markethink's public implementation; the library playbook is a reusable visitor method, not independent proof.</p>
             <div class="source-list">
               <a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">
                 <span>Google Search Central · Updated July 10, 2026</span>
@@ -463,7 +479,13 @@ const breadcrumbSchema = {
   .button:hover { background: #7cdd68; border-color: #7cdd68; }
   .text-link { color: var(--paper); font-size: .77rem; text-decoration: underline; text-underline-offset: .28em; }
   .principles-section { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--wash); }
-  .principles-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(2rem, 8vw, 8rem); }
+  .ongoing-section { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--paper); }
+  .principles-grid, .ongoing-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { display: grid; grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr); gap: clamp(2rem, 8vw, 8rem); }
+  .ongoing-intro { max-width: 34rem; margin-top: 1.4rem; color: var(--gray); font-size: .9rem; line-height: 1.65; }
+  .ongoing-steps { margin:0; padding:0; list-style:none; border-top:2px solid var(--ink); }
+  .ongoing-steps li { display:grid; grid-template-columns:3rem 1fr; gap:1rem; padding:1.15rem 0; border-bottom:1px solid rgba(15,18,19,.2); }
+  .ongoing-steps span { color:#356c2d; font-size:.68rem; font-weight:700; }
+  .ongoing-steps p { margin:0; line-height:1.6; }
   h2 { max-width: 15ch; margin-top: .75rem; font: 400 clamp(2.8rem, 5.5vw, 5.3rem)/.94 "Instrument Serif", Georgia, serif; letter-spacing: -.035em; text-wrap: balance; }
   .lead { color: var(--ink); font-size: clamp(1.12rem, 1.8vw, 1.45rem); line-height: 1.5; }
   .principle-list { margin-top: 2rem; border-top: 1px solid rgba(15,18,19,.28); }
@@ -571,7 +593,7 @@ const breadcrumbSchema = {
   a:focus-visible, button:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
 
   @media (max-width: 980px) {
-    .hero-grid, .split-heading, .principles-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { grid-template-columns: 1fr; }
+    .hero-grid, .split-heading, .principles-grid, .ongoing-grid, .method-grid, .reading-grid, .change-grid, .closing-grid { grid-template-columns: 1fr; }
     .hero-brief { max-width: 46rem; }
     .timeline-opening { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .timeline-opening a:nth-child(3) { border-right: 0; }

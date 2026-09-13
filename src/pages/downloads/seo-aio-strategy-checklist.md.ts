@@ -1,5 +1,6 @@
 import {
   STATUS_DEFINITIONS,
+  ONGOING_PROCESS,
   PHASES,
   ROADMAP_META,
   roadmapEntries,
@@ -54,6 +55,8 @@ ${done}${optionalTrack}`;
     `- ${status.label} (${statusCounts[status.label]}): ${status.definition}`,
   ).join("\n");
 
+  const ongoingProcess = ONGOING_PROCESS.map((step, index) => `${index + 1}. ${line(step)}`).join("\n");
+
   const measurements = measurementNotes.map((note) => `## ${note.label}
 
 - Current baseline: ${note.currentValue}
@@ -66,13 +69,19 @@ ${done}${optionalTrack}`;
     `- [${change.date}: ${change.title}](${ROADMAP_META.canonical}#${change.id}). ${change.detail}`,
   ).join("\n");
 
-  const body = `# Markethink SEO & AIO 30-day checklist
+  const body = `# Markethink ongoing SEO & AIO strategy checklist
 
-This reusable checklist is generated from the same structured roadmap used by ${ROADMAP_META.canonical}.
+This reusable checklist is generated from the same structured source as Markethink's living public implementation at ${ROADMAP_META.canonical}.
 
-Day ranges such as Days 1–5 and Days 6–12 are target windows, not recorded sprint dates or a claimed sprint start.
+Day ranges such as Days 1–5 and Days 6–12 are target windows in the initial 30-day foundation phase, not recorded sprint dates, a claimed start, or the lifespan of the strategy.
+
+Markethink will keep adding scoped strategies, implementation work, evidence, and lessons. The current baseline is evidence for the next decision, not a permanent cap on future actions. New actions enter only when actually scoped and dates never auto-complete them.
 
 AIO means improving how useful, accurate content is found and represented in AI-assisted search. This is a documented experiment, not a guaranteed ranking or citation recipe.
+
+## Ongoing review and implementation process
+
+${ongoingProcess}
 
 ## Status definitions and current counts
 
