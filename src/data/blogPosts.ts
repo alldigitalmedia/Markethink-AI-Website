@@ -1,3 +1,5 @@
+import { getB2BEditorialImage } from "./b2bEditorialImages";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -7,6 +9,7 @@ export type BlogPost = {
   label: string;
   image: string;
   imageMobile: string;
+  imageThumbnail: string;
   imageAlt: string;
   publishedDate: string;
   updatedDate: string;
@@ -57,6 +60,16 @@ export const journeyPosts = [
   },
 ];
 
+const editorialImage = (route: string) => {
+  const image = getB2BEditorialImage(route);
+  return {
+    image: image.desktop,
+    imageMobile: image.mobile,
+    imageThumbnail: image.thumbnail,
+    imageAlt: image.alt,
+  };
+};
+
 export const insightPosts: BlogPost[] = [
   {
     slug: "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
@@ -67,10 +80,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical field guide to briefing, prompting, evaluating, refining, testing, clearing, and packaging an AI-assisted logo and identity system.",
     label: "FIELD GUIDE",
-    image: "/images/blog-editorial/02-ai-logo-usable-brand-identity.svg",
-    imageMobile: "/images/blog-editorial/02-ai-logo-usable-brand-identity-960.svg",
-    imageAlt:
-      "An illustrative ceramic maker packs an order as cobalt bands repeat across packaging, product displays, and studio materials",
+    ...editorialImage("/blog/how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business/"),
     publishedDate: "2026-09-07",
     updatedDate: "2026-09-08",
     readingTime: "20 min read",
@@ -192,10 +202,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical buyer’s guide to what an AI marketing agency should manage, where expert judgment belongs, and how the work should connect to your pipeline.",
     label: "BUYER’S GUIDE",
-    image: "/images/blog-editorial/01-ai-marketing-agency-owner-operation.svg",
-    imageMobile: "/images/blog-editorial/01-ai-marketing-agency-owner-operation-960.svg",
-    imageAlt:
-      "An illustrative home-goods business owner aligns a window display while a colleague photographs the finished setup from the sidewalk",
+    ...editorialImage("/blog/what-is-an-ai-marketing-agency/"),
     publishedDate: "2026-08-30",
     updatedDate: "2026-08-30",
     readingTime: "12 min read",
@@ -370,10 +377,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical, source-backed system for finding content opportunities, making focused improvements, approving changes, and learning from search and conversion results.",
     label: "OPERATING GUIDE",
-    image: "/images/blog-editorial/03-seo-content-feedback-loop.svg",
-    imageMobile: "/images/blog-editorial/03-seo-content-feedback-loop-960.svg",
-    imageAlt:
-      "An illustrative bookstore-café owner replaces a window card while reviewing a marked-up visual printout",
+    ...editorialImage("/blog/seo-content-feedback-loop/"),
     publishedDate: "2026-08-24",
     updatedDate: "2026-08-24",
     readingTime: "11 min read",
@@ -470,10 +474,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A step-by-step guide to using AI across research, campaigns, content, approvals, lead capture, follow-up, measurement, and continuous improvement.",
     label: "INTERACTIVE GUIDE",
-    image: "/images/blog-editorial/04-practical-ai-marketing-guide.svg",
-    imageMobile: "/images/blog-editorial/04-practical-ai-marketing-guide-960.svg",
-    imageAlt:
-      "An illustrative bakery owner clips an approved product photo into a campaign sequence while a colleague carries a finished box",
+    ...editorialImage("/blog/how-to-use-ai-for-marketing-small-business/"),
     publishedDate: "2026-08-10",
     updatedDate: "2026-08-12",
     readingTime: "18 min read",
@@ -579,10 +580,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "A practical, source-backed guide to improving AI-search visibility, auditing readiness, strengthening evidence, and connecting visibility to pipeline outcomes.",
     label: "INTERACTIVE GUIDE",
-    image: "/images/blog-editorial/05-show-up-in-ai-search.svg",
-    imageMobile: "/images/blog-editorial/05-show-up-in-ai-search-960.svg",
-    imageAlt:
-      "An illustrative bicycle mechanic photographs a repaired component beside a text-free visual checklist",
+    ...editorialImage("/blog/how-to-show-up-in-ai-search/"),
     publishedDate: "2026-07-17",
     updatedDate: "2026-09-10",
     readingTime: "16 min read",
@@ -704,10 +702,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "More AI tools do not automatically create more demand. A consistent marketing rhythm helps your business show up, learn, and improve every week.",
     label: "INSIGHT",
-    image: "/images/blog-editorial/06-consistent-marketing-rhythm.svg",
-    imageMobile: "/images/blog-editorial/06-consistent-marketing-rhythm-960.svg",
-    imageAlt:
-      "An illustrative flower-shop owner waters the newest arrangement in a visible row of recurring window displays",
+    ...editorialImage("/blog/consistent-marketing-beats-chasing-ai-tools/"),
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "6 min read",
@@ -825,10 +820,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Brand memory helps your business stop repeating the same edits and start using feedback as a compounding advantage.",
     label: "INSIGHT",
-    image: "/images/blog-editorial/07-brand-memory-approval-loop.svg",
-    imageMobile: "/images/blog-editorial/07-brand-memory-approval-loop-960.svg",
-    imageAlt:
-      "An illustrative chef-owner compares a finished plate with a visual reference while a photographer adjusts the light",
+    ...editorialImage("/blog/brand-memory-feedback-approved-campaigns/"),
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "7 min read",
@@ -938,10 +930,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Disconnected marketing tools create invisible drag: context switching, repeated explanations, lost approvals, and campaigns that never fully connect.",
     label: "INSIGHT",
-    image: "/images/blog-editorial/08-disconnected-marketing-cost.svg",
-    imageMobile: "/images/blog-editorial/08-disconnected-marketing-cost-960.svg",
-    imageAlt:
-      "An illustrative furniture maker gathers separate proofs, slips, and material samples into one dispatch tray",
+    ...editorialImage("/blog/hidden-cost-disconnected-marketing-apps-prompts-docs/"),
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "7 min read",
@@ -1050,10 +1039,7 @@ export const insightPosts: BlogPost[] = [
     excerpt:
       "Ideas only create growth when they become campaigns with a clear audience, offer, message, destination, and follow-up path.",
     label: "INSIGHT",
-    image: "/images/blog-editorial/09-ideas-to-client-opportunities.svg",
-    imageMobile: "/images/blog-editorial/09-ideas-to-client-opportunities-960.svg",
-    imageAlt:
-      "An illustrative garden-center owner pins a selected blank question card above a workshop table while a colleague prepares seedlings",
+    ...editorialImage("/blog/scattered-ideas-to-client-opportunities/"),
     publishedDate: "2026-05-15",
     updatedDate: "2026-08-12",
     readingTime: "8 min read",
@@ -1160,7 +1146,7 @@ export const allBlogCards = [
   ...insightPosts.map((post) => ({
     title: post.title,
     label: post.label,
-    image: post.image,
+    image: post.imageThumbnail,
     href: `/blog/${post.slug}/`,
   })),
 ];

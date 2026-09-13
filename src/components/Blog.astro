@@ -5,7 +5,8 @@ const largePosts = journeyPosts;
 const smallPosts = insightPosts.map((post) => ({
   title: post.title,
   label: post.label,
-  image: post.image,
+  image: post.imageThumbnail,
+  imageAlt: post.imageAlt,
   href: `/blog/${post.slug}/`,
 }));
 ---
@@ -39,7 +40,7 @@ const smallPosts = insightPosts.map((post) => ({
         {smallPosts.map((post) => (
           <a href={post.href} class="blog-card blog-card-small">
             <div class="blog-card-image">
-              <img src={post.image} alt={post.title} />
+              <img src={post.image} alt={post.imageAlt} width="960" height="600" loading="lazy" decoding="async" />
             </div>
             <div class="blog-card-content">
               <span class="blog-date">{post.label}</span>
@@ -112,7 +113,7 @@ const smallPosts = insightPosts.map((post) => ({
   }
 
   .blog-card-small .blog-card-image {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 10;
   }
 
   .blog-card-image img {
@@ -124,6 +125,10 @@ const smallPosts = insightPosts.map((post) => ({
 
   .blog-card:hover .blog-card-image img {
     transform: scale(1.05);
+  }
+
+  .blog-card-small:hover .blog-card-image img {
+    transform: none;
   }
 
   .blog-card-content {

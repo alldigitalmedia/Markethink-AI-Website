@@ -3,12 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import ledger from "../data/aiMarketingStatistics.json";
+import { getB2BEditorialImage } from "../data/b2bEditorialImages";
 
 const pageTitle = "AI Marketing Statistics 2026: 60 Sourced Data Points | Markethink";
 const pageDescription =
   "Explore 60 AI marketing statistics for 2026 with original sources, populations, research dates, definitions, sample sizes, and limitations.";
 const canonical = "https://markethink.ai/ai-marketing-statistics/";
-const heroImage = "/images/ai-marketing-statistics-business-owner-v6.svg";
+const heroImage = getB2BEditorialImage("/ai-marketing-statistics/");
 const socialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/ai-marketing-statistics-business-owner-v6-og-1200x630.jpg";
 const socialImageAlt = "Illustrative specialty-product business owner comparing two campaign photo proofs beside her product while packing operations continue behind her.";
 
@@ -107,8 +108,11 @@ const breadcrumbSchema = {
             </div>
           </div>
           <figure class="hero-visual">
-            <img src={heroImage} width="1536" height="1024" fetchpriority="high" alt="An illustrative specialty-food business owner on her packing floor weighs two physical campaign photo proofs beside the jar she sells while packing continues behind her." />
-            <figcaption>Conceptual illustration.</figcaption>
+            <picture>
+              <source media="(max-width: 680px)" srcset={heroImage.mobile} type="image/webp" width="960" height="640" />
+              <img src={heroImage.desktop} width="1440" height="960" fetchpriority="high" decoding="async" alt={heroImage.alt} />
+            </picture>
+            <figcaption>Conceptual editorial image.</figcaption>
           </figure>
         </div>
       </header>

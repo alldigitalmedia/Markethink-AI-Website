@@ -21,6 +21,7 @@ const isAiSearchInteractiveGuide = post.slug === "how-to-show-up-in-ai-search";
 const isAiMarketingPracticalGuide =
   post.slug === "how-to-use-ai-for-marketing-small-business";
 const isSeoContentFeedbackLoop = post.slug === "seo-content-feedback-loop";
+const hasProtectedP04Mobile = isSeoContentFeedbackLoop;
 const isAiLogoBrandIdentityGuide =
   post.slug ===
   "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business";
@@ -150,10 +151,10 @@ const breadcrumbSchema = {
               >
             </div>
           </div>
-          <div class="article-hero-image animate-scale-in">
+          <div class:list={["article-hero-image", "animate-scale-in", { "article-hero-image--protected-mobile": hasProtectedP04Mobile }]}>
             <picture>
-              <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/svg+xml" />
-              <img src={post.image} alt={post.imageAlt} width="1536" height="1024" fetchpriority="high" decoding="async" />
+              <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/webp" width="960" height="720" />
+              <img src={post.image} alt={post.imageAlt} width="1440" height="810" fetchpriority="high" decoding="async" />
             </picture>
             <div class="hero-visual-rail" aria-label="The managed operating model">
               <span>Business context</span>
@@ -334,11 +335,13 @@ const breadcrumbSchema = {
             relatedPosts.map((related) => (
               <a href={`/blog/${related.slug}/`} class="related-card">
                 <picture>
-                  <source media="(max-width: 680px)" srcset={related.imageMobile} type="image/svg+xml" />
                   <img
-                    src={related.image}
+                    src={related.imageThumbnail}
                     alt={related.imageAlt}
+                    width="960"
+                    height="600"
                     loading="lazy"
+                    decoding="async"
                   />
                 </picture>
                 <div>
@@ -816,6 +819,7 @@ const breadcrumbSchema = {
     position: relative;
     min-width: 0;
     min-height: 21.5rem;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid rgba(247, 246, 239, 0.2);
     border-radius: 1.5rem;
@@ -836,14 +840,19 @@ const breadcrumbSchema = {
     pointer-events: none;
   }
 
+  .article-hero-image picture,
   .article-hero-image img {
+    display: block;
     width: 100%;
     height: 100%;
+  }
+
+  .article-hero-image img {
     aspect-ratio: auto;
     object-fit: cover;
-    object-position: 52% center;
-    transform: scale(1.13);
-    filter: contrast(1.05) saturate(1.08);
+    object-position: 50% 50%;
+    transform: none;
+    filter: none;
   }
 
   .hero-visual-rail {
@@ -1083,9 +1092,6 @@ const breadcrumbSchema = {
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  .related-card:nth-child(2) img { object-position: 58% center; transform: scale(1.05); }
-  .related-card:nth-child(3) img { object-position: 42% 62%; filter: contrast(1.07) saturate(0.94); }
-
   .related-card div { padding: 1.15rem; }
   .related-card span { color: var(--article-green); }
   .related-card h3 {
@@ -1118,6 +1124,12 @@ const breadcrumbSchema = {
     .article-meta { display: grid; gap: 0.28rem; }
     .article-meta span:not(:last-child)::after { display: none; }
     .article-hero-image { aspect-ratio: 4 / 3; border-radius: 1.15rem; }
+    .article-hero-image--protected-mobile img {
+      object-fit: contain;
+      object-position: 50% 50%;
+      transform: none;
+      background: #0f1213;
+    }
     .hero-visual-rail { right: 0.55rem; bottom: 0.55rem; left: 0.55rem; }
     .hero-visual-rail span { min-height: 2.45rem; padding: 0.35rem; font-size: 0.54rem; }
     .hero-visual-caption { top: 0.65rem; left: 0.65rem; }

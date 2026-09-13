@@ -4,12 +4,14 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import { insightPosts } from "../../data/blogPosts";
+import { getB2BEditorialImage } from "../../data/b2bEditorialImages";
 
 const title = "AI Marketing Insights and Campaign Systems | Markethink";
 const description =
   "Read Markethink insights on consistent marketing, brand memory, AI workflows, campaign systems, and turning ideas into client opportunities.";
 const socialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/markethink-blog-index-og-1200x630.jpg";
 const socialImageAlt = "Nine illustrative business-owner editorial scenes showing marketing decisions across retail, making, hospitality, and service businesses.";
+const statisticsImage = getB2BEditorialImage("/ai-marketing-statistics/");
 
 const categoryLinks = [
   { label: "All insights", href: "#all-insights" },
@@ -120,11 +122,12 @@ const structuredData = [
           <figure class="research-image">
             <picture>
               <img
-                src="/images/ai-marketing-statistics-business-owner-v6.svg"
-                width="1536"
-                height="1024"
-                alt="An illustrative specialty-product business owner compares two campaign photo proofs beside her product while packing operations continue behind her."
+                src={statisticsImage.thumbnail}
+                width="960"
+                height="720"
+                alt={statisticsImage.alt}
                 fetchpriority="high"
+                decoding="async"
               />
             </picture>
             <figcaption>Evidence reviewed against original sources.</figcaption>
@@ -153,12 +156,11 @@ const structuredData = [
               <a href={`/blog/${post.slug}/`} aria-label={`Read ${post.title}`}>
                 <div class="insight-image">
                   <picture>
-                    <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/svg+xml" />
                     <img
-                      src={post.image}
+                      src={post.imageThumbnail}
                       alt={post.imageAlt}
-                      width="1536"
-                      height="1024"
+                      width="960"
+                      height="600"
                       loading={index < 2 ? "eager" : "lazy"}
                       decoding="async"
                     />
@@ -470,13 +472,13 @@ const structuredData = [
   }
 
   .research-image img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    transform: scale(1.045);
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: none;
+    transition: none;
   }
 
-  .research-card:hover .research-image img { transform: scale(1.09); }
+  .research-card:hover .research-image img { transform: none; }
 
   .research-image::after {
     content: "";
@@ -593,7 +595,7 @@ const structuredData = [
     transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
   }
 
-  .insight-card:hover img { transform: scale(1.055); }
+  .insight-card:hover img { transform: none; }
 
   .card-index {
     position: absolute;
@@ -664,6 +666,13 @@ const structuredData = [
     height: 0.65rem;
     background: var(--green);
     box-shadow: 1.3rem -1.3rem 0 var(--green);
+  }
+
+  .insight-card[class*="cover-treatment-"] .insight-image img,
+  .insight-card[class*="cover-treatment-"]:hover .insight-image img {
+    object-position: 50% 50%;
+    transform: none;
+    filter: none;
   }
 
   .insight-content {
