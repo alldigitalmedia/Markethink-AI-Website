@@ -482,11 +482,13 @@ const homeStructuredData = {
       window.addEventListener('resize', () => { if (window.innerWidth > 980 && mobileMenu.classList.contains('is-open')) setMenu(false); }, { passive: true });
     }
 
+    const usesFlowHero = () => window.innerWidth <= 760 || (window.innerWidth <= 980 && window.innerHeight <= 500);
+
     const responsiveDashboard = document.querySelector('.hero-dashboard-stage');
     const responsiveHero = document.querySelector('[data-scroll-hero]');
     if (responsiveDashboard && responsiveHero) {
       const fitResponsiveDashboard = () => {
-        if (window.innerWidth > 760) {
+        if (!usesFlowHero()) {
           responsiveHero.style.removeProperty('--mobile-dashboard-scale');
           responsiveHero.style.removeProperty('--mobile-dashboard-height');
           return;
@@ -502,7 +504,7 @@ const homeStructuredData = {
     const mobileHero = document.querySelector('[data-scroll-hero]');
     if (mobileHero) {
       const syncMobileHeroMotion = () => {
-        mobileHero.classList.toggle('is-mobile-motion-ready', window.innerWidth <= 760);
+        mobileHero.classList.toggle('is-mobile-motion-ready', usesFlowHero());
       };
       syncMobileHeroMotion();
       window.addEventListener('resize', syncMobileHeroMotion, { passive: true });
@@ -1099,6 +1101,18 @@ const homeStructuredData = {
     0%,100%{transform:translate3d(0,0,0)}
     50%{transform:translate3d(0,-4px,0)}
   }
+  /* Keep the hero in normal document flow on short tablet/phone landscape viewports. */
+  @media(min-width:761px) and (max-width:980px) and (max-height:500px){
+    .hero{height:auto;min-height:0;overflow:hidden}
+    .hero-sticky{position:relative;height:auto;min-height:0;display:flex;flex-direction:column}
+    .hero-content{position:relative;top:auto;left:auto;width:min(100% - 40px,760px);transform:none;opacity:1;padding:86px 0 0;text-align:center;align-items:center;margin:0 auto}
+    .hero-content>*{max-width:700px}.hero-content .eyebrow{margin-bottom:14px}.hero h1{font-size:clamp(46px,7vw,60px);line-height:.92}.hero-copy{font-size:15px;line-height:1.5;margin:18px auto 20px}
+    .hero-content>.hero-actions{display:flex;width:auto;max-width:none;align-self:center;justify-content:center;margin-inline:auto}.hero-actions .button{width:auto;min-height:52px}
+    .hero-dashboard-stage{position:relative;top:auto;left:50%;flex:none;width:1100px;height:618px;max-height:none;margin-top:32px;margin-bottom:calc(var(--mobile-dashboard-height,410px) - 618px);transform:translateX(-50%) scale(var(--mobile-dashboard-scale,.68));transform-origin:center top;filter:drop-shadow(0 24px 48px rgba(0,0,0,.5))}
+    .dashboard-body{grid-template-columns:160px 1fr}.dashboard-main{padding:24px}.dashboard-grid{grid-template-columns:1.14fr .86fr}.dashboard-pipeline{display:block}.dashboard-work,.dashboard-pipeline{min-height:360px}.dashboard-note,.scroll-cue{display:none}
+    .proof-strip{margin-top:-48px}
+  }
+
   @media(max-width:760px) and (prefers-reduced-motion:no-preference){
     :global(.v6-interactions-ready) .hero-content .eyebrow,
     :global(.v6-interactions-ready) .hero-content h1,
