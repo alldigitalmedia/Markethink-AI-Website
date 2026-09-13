@@ -1,8 +1,8 @@
 ---
-import { insightPosts, journeyPosts } from "../data/blogPosts";
+import { editorialInsightPosts, journeyPosts } from "../data/blogPosts";
 
 const largePosts = journeyPosts;
-const smallPosts = insightPosts.map((post) => ({
+const smallPosts = editorialInsightPosts.map((post) => ({
   title: post.title,
   label: post.label,
   image: post.imageThumbnail,
