@@ -5,6 +5,7 @@ export type B2BEditorialImage = {
   desktop: string;
   mobile: string;
   thumbnail: string;
+  sharing: string;
   alt: string;
   desktopWidth: number;
   desktopHeight: number;
@@ -12,6 +13,8 @@ export type B2BEditorialImage = {
   mobileHeight: number;
   thumbnailWidth: number;
   thumbnailHeight: number;
+  sharingWidth: number;
+  sharingHeight: number;
 };
 
 const assetBase =
@@ -25,6 +28,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p01-statistics-resource-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a marketer comparing two campaign directions in an active production workspace.",
     desktopWidth: 1440,
     desktopHeight: 960,
@@ -32,6 +36,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 640,
     thumbnailWidth: 960,
     thumbnailHeight: 720,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 2,
@@ -40,6 +46,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p02-ai-marketing-agency-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p02-ai-marketing-agency-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a content crew documenting technology infrastructure.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -47,6 +54,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 3,
@@ -55,6 +64,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p03-ai-logo-usable-brand-identity-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p03-ai-logo-usable-brand-identity-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a team reviewing an architecture model and identity materials.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -62,6 +72,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 4,
@@ -70,6 +82,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p04-seo-content-feedback-loop-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p04-seo-content-feedback-loop-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a crew documenting logistics operations on an active loading dock.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -77,6 +90,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 5,
@@ -85,6 +100,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p05-practical-ai-marketing-guide-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p05-practical-ai-marketing-guide-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a team turning a filmed expert interview into a connected campaign sequence.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -92,6 +108,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 6,
@@ -100,6 +118,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p06-showing-up-in-ai-search-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p06-showing-up-in-ai-search-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a cybersecurity expert being filmed beside secure infrastructure.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -107,6 +126,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 7,
@@ -115,6 +136,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p07-consistent-marketing-rhythm-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p07-consistent-marketing-rhythm-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a hospitality production crew coordinating content across a multi-zone property.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -122,6 +144,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 8,
@@ -130,6 +154,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-v2-p08-brand-memory-approval-loop-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p08-brand-memory-approval-loop-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a product marketer approving a campaign direction during a SaaS launch rehearsal.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -137,6 +162,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 9,
@@ -145,6 +172,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p09-cost-of-disconnected-marketing-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p09-cost-of-disconnected-marketing-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of production teams reconciling fragmented campaign display elements.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -152,6 +180,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
   {
     placement: 10,
@@ -160,6 +190,7 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     desktop: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-desktop.webp`,
     mobile: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-mobile.webp`,
     thumbnail: `${assetBase}b2b-editorial-review-20260912-p10-ideas-to-client-opportunities-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p10-ideas-to-client-opportunities-sharing-1200x630-20260913.jpg`,
     alt: "Conceptual editorial scene of a crew capturing an expert explanation at an architecture site.",
     desktopWidth: 1440,
     desktopHeight: 810,
@@ -167,6 +198,8 @@ export const b2bEditorialImages: B2BEditorialImage[] = [
     mobileHeight: 720,
     thumbnailWidth: 960,
     thumbnailHeight: 600,
+    sharingWidth: 1200,
+    sharingHeight: 630,
   },
 ];
 
