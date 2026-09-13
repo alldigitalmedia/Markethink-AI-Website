@@ -40,7 +40,7 @@ const netlify = await read("netlify.toml");
 
 assert.equal(WEBSITE_LAUNCH_META.version, "1.0.0");
 assert.equal(WEBSITE_LAUNCH_META.reviewedDate, "2026-09-13");
-assert.equal(PLAYBOOK_META.version, "1.1.2", "existing SEO and AI-search playbook version must remain unchanged");
+assert.equal(PLAYBOOK_META.version, "1.2.0", "SEO and AI-search release version must remain synchronized without changing the website launch checklist");
 assert.equal(strategyEntries.length, 2);
 assert.equal(strategyEntries.filter((entry) => entry.slug === WEBSITE_LAUNCH_META.slug).length, 1);
 assert.ok(hubHtml.includes('href="/ai-marketing-strategies/new-website-launch-checklist/"'));

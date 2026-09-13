@@ -7,21 +7,25 @@ import {
   LIBRARY_META,
   PLAYBOOK_META,
   createDeterministicSkillZip,
+  getCandidateMarkdown,
   getSkillMarkdown,
   getStandaloneBrief,
   getStandaloneMarkdown,
   packageFiles,
-  repeatCycle,
-  requiredOutputs,
   strategyEntries,
+  tocSections,
 } from "../data/strategyLibrary.mjs";
+import { WEBSITE_LAUNCH_META } from "../data/websiteLaunchChecklist.mjs";
+import { b2bEditorialImages } from "../data/b2bEditorialImages.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "../..");
 const dist = join(root, "dist");
 const read = (path) => readFile(join(root, path), "utf8");
 const readDist = (path) => readFile(join(dist, path));
+const decode = (value) => value.replaceAll("&amp;", "&").replaceAll("&#38;", "&").replaceAll("&quot;", '"').replaceAll("&#39;", "'");
+const title = (html) => decode(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "").trim();
+const canonical = (html) => decode(html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1] ?? "");
 
-const canonical = PLAYBOOK_META.canonical;
 const markdownPath = "downloads/markethink-seo-aio-playbook.md";
 const zipPath = "downloads/markethink-seo-aio-playbook.zip";
 const hubHtml = (await readDist("ai-marketing-strategies/index.html")).toString("utf8");
@@ -34,45 +38,35 @@ const nav = await read("src/data/siteNavigation.ts");
 const footer = await read("src/components/Footer.astro");
 const roadmap = await read("src/data/seoAioStrategy.mjs");
 const checklist = (await readDist("downloads/seo-aio-strategy-checklist.md")).toString("utf8");
+const routeSource = await read("src/pages/ai-marketing-strategies/seo-aio-playbook.astro");
 
-assert.equal(strategyEntries.length, 2, "library must contain the established SEO playbook and the website launch checklist");
-for (const [html, title, h1, pageCanonical] of [
-  [hubHtml, LIBRARY_META.title, LIBRARY_META.h1, LIBRARY_META.canonical],
-  [entryHtml, PLAYBOOK_META.seoTitle, PLAYBOOK_META.title, PLAYBOOK_META.canonical],
+assert.equal(strategyEntries.length, 2, "library must preserve both established entries");
+assert.equal(strategyEntries.filter((entry) => entry.slug === WEBSITE_LAUNCH_META.slug).length, 1);
+assert.equal(WEBSITE_LAUNCH_META.version, "1.0.0");
+assert.equal(PLAYBOOK_META.title, "SEO & AI Search Growth Playbook");
+assert.equal(PLAYBOOK_META.seoTitle, "SEO & AI Search Growth Playbook | Markethink");
+assert.equal(PLAYBOOK_META.version, "1.2.0");
+assert.equal(PLAYBOOK_META.reviewedDate, "2026-09-13");
+assert.equal(PLAYBOOK_META.canonical, "https://markethink.ai/ai-marketing-strategies/seo-aio-playbook/");
+
+for (const [html, expectedTitle, expectedCanonical] of [
+  [hubHtml, LIBRARY_META.title, LIBRARY_META.canonical],
+  [entryHtml, PLAYBOOK_META.seoTitle, PLAYBOOK_META.canonical],
 ]) {
-  const decoded = html.replaceAll("&amp;", "&").replaceAll("&#38;", "&");
-  assert.ok(decoded.includes(`<title>${title}</title>`));
-  assert.ok(html.includes(`rel="canonical" href="${pageCanonical}"`));
-  assert.ok(html.includes(`<h1`));
-  assert.ok(decoded.includes(h1));
+  assert.equal(title(html), expectedTitle);
+  assert.equal(canonical(html), expectedCanonical);
+  assert.ok(html.includes('<h1'));
   assert.ok(html.includes('class="mt-site-header"'));
-  assert.ok(html.includes('href="/ai-marketing-strategies/"'));
   assert.ok(html.includes('type="application/ld+json"'));
   assert.ok(!html.includes('name="robots" content="noindex'));
 }
-assert.ok(hubHtml.includes(LIBRARY_META.supportingLine));
-for (const marker of [
-  "Explore practical marketing strategies, see our assessment, and take away a playbook you can use yourself or give to your AI agent.",
-  "WHAT YOU GET",
-  "A clear strategy, the steps to put it into practice, and a ready-to-use brief for your AI. Sources and review dates included.",
-  "Choose a format and add your business context. Each playbook includes the steps, templates and checks to get started.",
-  "Choose the control that matches the work.",
-  "Use the launch checklist before a new website goes public.",
-]) assert.ok(hubHtml.includes(marker), `hub correction missing: ${marker}`);
-assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp"));
-assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp"));
-assert.ok(hubHtml.includes("Conceptual editorial scene of a marketer comparing two campaign directions in an active production workspace."));
-assert.ok(entryHtml.includes("Build a living SEO and AI-search strategy from your website, offer and available evidence."));
-assert.ok(entryHtml.includes("The first 30 days establish the foundation; each review creates a capacity-aware next-cycle backlog."));
-assert.ok(entryHtml.includes("What you will create"));
-assert.ok(hubHtml.includes(PLAYBOOK_META.canonical.replace("https://markethink.ai", "")));
+assert.ok(entryHtml.includes('"TechArticle"'));
+assert.ok(entryHtml.includes('"BreadcrumbList"'));
+assert.ok(hubHtml.includes('href="/ai-marketing-strategies/new-website-launch-checklist/"'));
+assert.ok(hubHtml.includes(WEBSITE_LAUNCH_META.title));
+assert.ok(hubHtml.includes(PLAYBOOK_META.title));
+assert.ok(hubHtml.includes(`Version ${PLAYBOOK_META.version}`));
 assert.ok(entryHtml.includes(LIBRARY_META.canonical.replace("https://markethink.ai", "")));
-assert.ok(entryHtml.includes("Copy for your AI"));
-assert.ok(entryHtml.includes("Download the skill"));
-assert.ok(entryHtml.includes("Download the plain Markdown fallback"));
-assert.ok(entryHtml.includes("navigator.clipboard"));
-assert.ok(entryHtml.includes("View or manually copy the complete standalone brief"));
-assert.ok(entryHtml.includes("Select all text"));
 assert.match(nav, /label:\s*"Strategies"[\s\S]*href:\s*"\/ai-marketing-strategies\/"/);
 assert.match(footer, /Strategies[\s\S]*\/ai-marketing-strategies\//);
 
@@ -83,35 +77,71 @@ assert.ok(locs.includes(LIBRARY_META.canonical));
 assert.ok(locs.includes(PLAYBOOK_META.canonical));
 assert.ok(!locs.some((url) => url.includes("/downloads/markethink-seo-aio-playbook")));
 
-const expectedLink = `<${canonical}>; rel=\\"canonical\\"`;
+const expectedLink = `<${PLAYBOOK_META.canonical}>; rel=\\"canonical\\"`;
 assert.ok(netlify.includes('for = "/downloads/markethink-seo-aio-playbook.md"'));
 assert.ok(netlify.includes(`Link = "${expectedLink}"`));
 assert.ok(netlify.includes('Content-Disposition = "attachment; filename=\\"markethink-seo-aio-playbook.md\\""'));
 assert.ok(netlify.includes('for = "/downloads/markethink-seo-aio-playbook.zip"'));
 assert.ok(netlify.includes('Content-Type = "application/zip"'));
-assert.ok((await read("src/pages/downloads/markethink-seo-aio-playbook.md.ts")).includes(`"Link": \`<\${PLAYBOOK_META.canonical}>; rel="canonical"\``));
 
+const candidate = getCandidateMarkdown();
+assert.equal(markdown, candidate);
 assert.equal(markdown, getStandaloneMarkdown());
-assert.ok(markdown.includes(getStandaloneBrief()));
-assert.ok(markdown.includes(`Version: ${PLAYBOOK_META.version}`));
-assert.ok(markdown.includes(`Reviewed: ${PLAYBOOK_META.reviewedDate}`));
-assert.ok(markdown.includes(`Canonical page: ${PLAYBOOK_META.canonical}`));
-assert.equal(PLAYBOOK_META.title, "SEO & AI Search: An Ongoing Strategy Playbook");
-assert.equal(PLAYBOOK_META.seoTitle, "SEO & AI Search: An Ongoing Strategy Playbook | Markethink");
-assert.equal(PLAYBOOK_META.version, "1.1.2");
-assert.equal(PLAYBOOK_META.reviewedDate, "2026-09-13");
-for (const text of [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()]) {
-  assert.ok(text.includes(PLAYBOOK_META.version), "version must agree across HTML, brief, Markdown, and ZIP skill");
-  assert.ok(text.includes(PLAYBOOK_META.reviewedDate), "review date must agree across HTML, brief, Markdown, and ZIP skill");
-}
-assert.ok(!markdown.includes("references/ORIGINAL-SOURCES.md"), "standalone Markdown must not require relative files");
-assert.ok(!markdown.includes("assets/OUTPUT-TEMPLATES.md"), "standalone Markdown must not require relative files");
+assert.equal(markdown, getStandaloneBrief());
+assert.equal(markdown, getSkillMarkdown());
+assert.ok(markdown.startsWith("---\nname: markethink-seo-aio-playbook\n"));
+for (const marker of [
+  'version: "1.2.0"',
+  "# SEO & AI Search Growth Playbook",
+  "Act as my SEO and AI-search strategy lead.",
+  "keep**, **improve**, **consolidate**, **create**, **investigate** or **defer",
+  "Explain why the selected work comes before the next-best alternative",
+  "For each requested page brief, provide:",
+  "preserve each work item's original ID, current status, history or evidence-transition reference",
+  "Planning alone does not authorize spending, publication, outreach, account changes or scheduled monitoring.",
+  "Do not sell an AI text file, special schema, a proprietary score or an exact paragraph length as a requirement for inclusion.",
+]) assert.ok(markdown.includes(marker), `candidate marker missing: ${marker}`);
+
+const h2s = [...candidate.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1]);
+for (const heading of h2s) assert.ok(decode(entryHtml).includes(heading), `server-rendered candidate section missing: ${heading}`);
+for (const id of [
+  "purpose-title", "inputs-title", "evidence-title", "playbook-method", "method-title",
+  "baseline-research", "page-clarity", "answer-ready-content", "verification-review",
+  "repeat-title", "refresh-evidence", "separate-reviews", "carry-forward", "scope-opportunities",
+  "prioritize-capacity", "log-decision", "outputs-title", "measurement-title", "example-title",
+  "copy-for-ai", "copy-title", "limitations-title", "sources-title",
+]) assert.ok(entryHtml.includes(`id="${id}"`), `preserved section ID missing: ${id}`);
+for (const item of tocSections) assert.ok(entryHtml.includes(`href="${item.href}"`), `contents link missing: ${item.href}`);
+
+for (const marker of [
+  "Download for your AI (.md)",
+  "One file. Attach it to your AI conversation.",
+  "Copy for your AI",
+  "Read the playbook",
+  "Full skill package (.zip)",
+  "Import support depends on the product.",
+  "View or manually copy the complete playbook",
+  "Select all text",
+  "navigator.clipboard",
+  "Automatic copy was unavailable.",
+]) assert.ok(entryHtml.includes(marker), `download/copy marker missing: ${marker}`);
+for (const forbidden of ["Markdown fallback", "plain Markdown fallback", "Download the skill"]) assert.ok(!entryHtml.includes(forbidden), `legacy action language remains: ${forbidden}`);
+
+const cover = b2bEditorialImages[0];
+for (const marker of [cover.desktop, cover.mobile, cover.sharing, cover.alt]) assert.ok(entryHtml.includes(marker), `approved P01 cover marker missing: ${marker}`);
+for (const value of [cover.desktopWidth, cover.desktopHeight, cover.mobileWidth, cover.mobileHeight]) assert.ok(entryHtml.includes(String(value)));
+assert.match(routeSource, /h1\s*\{[^}]*font-size:\s*clamp\(3\.35rem,4\.45vw,4rem\)/s);
+assert.match(routeSource, /@media \(max-width: 760px\)[\s\S]*?h1\s*\{[^}]*font-size:\s*clamp\(2\.25rem,10vw,2\.5rem\)/s);
+assert.match(routeSource, /\.guide-content\s*\{[^}]*font-size:\s*1\.08rem/s);
+assert.ok(routeSource.includes("@media (prefers-reduced-motion: reduce)"));
+assert.ok(routeSource.includes("outline: 3px solid #69d254"));
 
 function unzipEntries(buffer) {
   const result = new Map();
   let offset = 0;
   while (offset + 4 <= buffer.length && buffer.readUInt32LE(offset) === 0x04034b50) {
     const method = buffer.readUInt16LE(offset + 8);
+    const expectedCrc = buffer.readUInt32LE(offset + 14);
     const compressedSize = buffer.readUInt32LE(offset + 18);
     const nameLength = buffer.readUInt16LE(offset + 26);
     const extraLength = buffer.readUInt16LE(offset + 28);
@@ -120,149 +150,44 @@ function unzipEntries(buffer) {
     const name = buffer.subarray(nameStart, nameStart + nameLength).toString("utf8");
     const compressed = buffer.subarray(dataStart, dataStart + compressedSize);
     const content = method === 8 ? inflateRawSync(compressed) : compressed;
-    result.set(name, content.toString("utf8"));
+    result.set(name, { content: content.toString("utf8"), expectedCrc });
     offset = dataStart + compressedSize;
   }
   return result;
 }
-
+function crc32(buffer) {
+  let crc = 0xffffffff;
+  for (const byte of buffer) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit += 1) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
 assert.deepEqual(zip, createDeterministicSkillZip());
 const zipped = unzipEntries(zip);
 const expectedRoot = `${PLAYBOOK_META.portableName}/`;
 assert.equal(zipped.size, 3);
 assert.deepEqual([...zipped.keys()].sort(), Object.keys(packageFiles).sort());
-assert.ok([...zipped.keys()].every((path) => path.startsWith(expectedRoot)));
-const skill = zipped.get(`${expectedRoot}SKILL.md`);
-assert.equal(skill, getSkillMarkdown());
-assert.ok(skill.startsWith("---\n"));
-const frontmatterEnd = skill.indexOf("\n---\n", 4);
-assert.ok(frontmatterEnd > 0);
-const frontmatter = skill.slice(4, frontmatterEnd);
-const name = frontmatter.match(/^name:\s*(.+)$/m)?.[1]?.trim();
-const description = frontmatter.match(/^description:\s*(.+)$/m)?.[1]?.trim();
-assert.equal(name, PLAYBOOK_META.portableName);
-assert.match(name, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-assert.ok(name.length <= 64);
-assert.ok(description && description.length <= 1024);
-for (const marker of [PLAYBOOK_META.author, PLAYBOOK_META.version, PLAYBOOK_META.reviewedDate, PLAYBOOK_META.canonical]) {
-  assert.ok(frontmatter.includes(`"${marker}"`));
+for (const [path, entry] of zipped) {
+  assert.ok(path.startsWith(expectedRoot));
+  assert.equal(crc32(Buffer.from(entry.content)), entry.expectedCrc, `CRC mismatch: ${path}`);
+  assert.equal(entry.content, packageFiles[path]);
 }
-for (const relative of ["references/ORIGINAL-SOURCES.md", "assets/OUTPUT-TEMPLATES.md"]) {
-  assert.ok(skill.includes(`](${relative})`));
-  assert.ok(zipped.has(`${expectedRoot}${relative}`));
-}
+assert.equal(zipped.get(`${expectedRoot}SKILL.md`).content, candidate);
 
-const publicTexts = [markdown, ...zipped.values()];
-const forbidden = [/HERMES_/i, /RAILWAY_/i, /\/app\/workspace/i, /\/opt\/data/i, /dashboard\.markethink\.ai\/api/i, /x-hermes-token/i, /clientId\s*:/i];
-for (const text of publicTexts) for (const pattern of forbidden) assert.doesNotMatch(text, pattern);
+const publicTexts = [markdown, ...[...zipped.values()].map((entry) => entry.content)];
+for (const text of publicTexts) for (const pattern of [/HERMES_/i, /RAILWAY_/i, /\/app\/workspace/i, /\/opt\/data/i, /dashboard\.markethink\.ai\/api/i, /x-hermes-token/i, /clientId\s*:/i]) assert.doesNotMatch(text, pattern);
 
-assert.match(roadmap, /id:\s*"ongoing-strategy-follow-up-2026-09-13"/);
-assert.match(roadmap, /id:\s*"strategy-library-playbook-launch-2026-09-13"/);
+for (const marker of [
+  'id: "ongoing-strategy-follow-up-2026-09-13"',
+  'id: "strategy-library-playbook-launch-2026-09-13"',
+  'id: "buyer-query-serp-evidence"',
+  'id: "query-to-url-map"',
+  'id: "baseline-record"',
+  'id: "b2b-editorial-imagery"',
+]) assert.ok(roadmap.includes(marker), `implementation history marker missing: ${marker}`);
 for (const marker of ["Planned (13)", "In progress (2)", "Live (0)", "Verified (4)", "Blocked (0)"]) assert.ok(checklist.includes(marker));
-const entryCount = (checklist.match(/^- Action link:/gm) || []).length;
-assert.equal(entryCount, 19);
-
-const illustrativeDryRun = {
-  label: "Illustrative established-program day-45 dry run. Not product compatibility or performance evidence.",
-  context: {
-    programMode: "established",
-    website: "https://example.com/",
-    business: "Illustrative B2B workflow consultancy",
-    audience: "US operations leaders",
-    objective: "Support qualified consultation requests",
-    currentPages: ["/", "/services/", "/contact/"],
-    capacity: { marketer: "8h", engineer: "1h", reviewer: "30m" },
-    constraints: ["Resume from day-45 records", "No day-1 restart", "No publishing authorization", "No scheduled tasks or monitoring"],
-  },
-  existingRecords: [
-    { id: "SEO-004", currentStatus: "Verified", statusHistoryRef: "delivery-log#SEO-004-verified", evidence: "Existing production-verification record" },
-    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", evidence: "Recorded expert-input dependency" },
-    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", evidence: "Existing approved backlog record" },
-  ],
-  toolRegister: ["Search Console: supplied export with unequal comparison windows", "Analytics: Not available", "Keyword provider: Not available", "User exports: supplied"],
-  currentCycle: [
-    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", action: "Preserve the blocked sourced answer until expert input arrives", owner: "Marketer", dependency: "Expert input", effort: "No current allocation", acceptance: "Original ID and blocked evidence remain unchanged" },
-    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", action: "Review the existing service-page brief", owner: "Marketer", dependency: "Approved offer facts", effort: "Within 8h marketer and 30m reviewer budget", acceptance: "Review record linked to SEO-016" },
-    { proposedId: "PROPOSED-SEO-020", currentStatus: "Proposed", statusHistoryRef: "new proposal; no prior status history", action: "Scope one engineering check", owner: "Engineer", dependency: "SEO-016 review", effort: "Within 1h engineer budget", acceptance: "Scoped check only; no unsupported feature claim" },
-  ],
-  baseline: ["Search volume: Not available", "Organic difficulty: Not available", "Ad competition: Not available", "Indexing: Not available", "Traffic: unequal export windows; no growth claim", "Conversions: Not available", "Sampled AI citations: Not available"],
-  cycleReview: {
-    delivery: "Verified, Blocked, and Planned records preserved with original IDs and status-history references; nothing published",
-    results: "Unequal export windows do not support a growth claim; other outcomes remain Not available",
-  },
-  nextCycleBacklog: [
-    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", priority: 1, item: "Carry forward the blocked sourced answer", reason: "Expert input is still unavailable", capacity: "No current allocation", scope: "Preserve only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
-    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", priority: 2, item: "Review the existing service-page brief", reason: "Planned work needs review before implementation", capacity: "8h marketer and 30m reviewer", scope: "Review only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
-    { proposedId: "PROPOSED-SEO-020", currentStatus: "Proposed", statusHistoryRef: "new proposal; no prior status history", priority: 3, item: "Scope one engineering check", reason: "Newly justified from the current review", capacity: "1h engineer", scope: "Scope only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
-  ],
-  changeLog: [{ date: PLAYBOOK_META.reviewedDate, decision: "Resume the established program without restarting day 1", delivery: "Existing status evidence preserved", results: "No growth claim from unequal windows", lesson: "IDs and transition evidence remain stable across planning cycles", next: "Review at the next user-authorized checkpoint" }],
-};
-assert.ok(illustrativeDryRun.label.includes("established-program day-45"));
-assert.equal(illustrativeDryRun.context.programMode, "established");
-assert.deepEqual(illustrativeDryRun.context.capacity, { marketer: "8h", engineer: "1h", reviewer: "30m" });
-assert.equal(illustrativeDryRun.currentCycle.length, 3);
-assert.ok(illustrativeDryRun.currentCycle.every((item) => (item.id || item.proposedId) && item.currentStatus && item.statusHistoryRef && item.owner && item.dependency && item.effort && item.acceptance));
-assert.deepEqual(illustrativeDryRun.existingRecords.map((item) => [item.id, item.currentStatus]), [["SEO-004", "Verified"], ["SEO-011", "Blocked"], ["SEO-016", "Planned"]]);
-assert.ok(illustrativeDryRun.toolRegister.some((item) => item.includes("unequal comparison windows")));
-assert.ok(illustrativeDryRun.baseline.some((item) => item.includes("no growth claim")));
-assert.match(illustrativeDryRun.cycleReview.delivery, /original IDs and status-history references/);
-assert.match(illustrativeDryRun.cycleReview.results, /do not support a growth claim/);
-assert.equal(illustrativeDryRun.nextCycleBacklog.length, 3, "backlog must respect the stated role budgets");
-assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => (item.id || item.proposedId) && item.currentStatus && item.statusHistoryRef));
-assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => /No publishing/.test(item.authorization)));
-assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => !/outreach authorized|monitoring authorized|paid tools authorized/i.test(item.authorization)));
-assert.equal(illustrativeDryRun.nextCycleBacklog[2].proposedId, "PROPOSED-SEO-020");
-
-assert.equal(requiredOutputs.length, 8);
-assert.equal(repeatCycle.length, 6);
-for (const marker of [
-  "Update the evidence baseline",
-  "Review delivery and results separately",
-  "Carry unfinished work forward",
-  "Add newly justified opportunities",
-  "Prioritize the next capacity-aware cycle",
-  "Append a dated decision and change log",
-  "Next-cycle backlog and review checkpoint",
-]) assert.ok(`${entryHtml}
-${markdown}`.includes(marker), `ongoing method marker missing: ${marker}`);
-const consistencyTexts = [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()];
-for (const marker of [
-  "For a new program, produce the initial 30-day foundation cycle.",
-  "For an established program, resume from its existing records and produce the current or next capacity-aware cycle without restarting day 1.",
-  "existing work-item ID or proposed new ID",
-  "recorded status history or evidence-transition reference",
-  "Never renumber it, overwrite past delivery or status evidence",
-  "distinct proposed new IDs",
-]) {
-  assert.ok(consistencyTexts.some((text) => text.includes(marker)), `conditional cycle or record-preservation marker missing: ${marker}`);
-}
-for (const oldDefect of ["Prioritized initial 30-day cycle", "Produce the initial implementation cycle"]) {
-  for (const text of consistencyTexts) assert.ok(!text.includes(oldDefect), `old initial-only instruction remains: ${oldDefect}`);
-}
-const outputTemplate = packageFiles[`${PLAYBOOK_META.portableName}/assets/OUTPUT-TEMPLATES.md`];
-for (const marker of ["Existing work-item ID or proposed new ID", "Current status", "Status history or evidence-transition reference"]) {
-  assert.ok(outputTemplate.includes(marker), `output template record field missing: ${marker}`);
-}
-const templateLines = outputTemplate.split("\n");
-const templateTableChecks = [];
-const markdownCellCount = (line) => line.split("|").slice(1, -1).length;
-for (let index = 1; index < templateLines.length; index += 1) {
-  const delimiter = templateLines[index];
-  if (!/^\|(?:\s*:?-{3,}:?\s*\|)+$/.test(delimiter)) continue;
-  const header = templateLines[index - 1];
-  assert.ok(header.startsWith("|") && header.endsWith("|"), `template delimiter at line ${index + 1} has no table header`);
-  const headerCells = markdownCellCount(header);
-  const delimiterCells = markdownCellCount(delimiter);
-  assert.equal(delimiterCells, headerCells, `template table column mismatch at delimiter line ${index + 1}: header=${headerCells}, delimiter=${delimiterCells}`);
-  templateTableChecks.push({ delimiterLine: index + 1, columns: headerCells });
-}
-assert.equal(templateTableChecks.length, 8, "all eight reusable output-template tables must be checked");
-
-const permissionBoundary = "Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach.";
-for (const text of [entryHtml, markdown, skill]) assert.ok(text.includes(permissionBoundary), "permission boundary missing from changed playbook format");
-for (const accidentalAuthorization of [/ongoing (?:authorizes|schedules)/i, /continuous monitoring is (?:enabled|authorized)/i, /paid tool calls are authorized/i, /publishing is authorized/i, /outreach is authorized/i]) {
-  for (const text of [entryHtml, markdown, skill]) assert.doesNotMatch(text, accidentalAuthorization, "ongoing framing accidentally expanded authorization");
-}
+assert.equal((checklist.match(/^- Action link:/gm) || []).length, 19);
 
 console.log(JSON.stringify({
   pages: 2,
@@ -271,8 +196,10 @@ console.log(JSON.stringify({
   markdownBytes: Buffer.byteLength(markdown),
   zipBytes: zip.length,
   zipFiles: [...zipped.keys()],
+  zipCrcChecks: zipped.size,
   version: PLAYBOOK_META.version,
   reviewed: PLAYBOOK_META.reviewedDate,
-  templateTables: templateTableChecks,
-  dryRun: "established-program day-45 scenario preserved original IDs, Verified/Blocked/Planned history, unequal-window limits, role budgets, separate reviews, and authorization boundaries",
+  serverRenderedCandidateSections: h2s.length,
+  preservedSectionIds: 23,
+  cover: { placement: cover.placement, desktop: cover.desktop, mobile: cover.mobile, alt: cover.alt },
 }, null, 2));
