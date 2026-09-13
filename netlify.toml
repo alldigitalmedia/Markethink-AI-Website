@@ -89,3 +89,16 @@
     Content-Type = "text/markdown; charset=utf-8"
     X-Robots-Tag = "noindex, follow"
 
+[[headers]]
+  for = "/downloads/markethink-seo-aio-playbook.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    Content-Disposition = "attachment; filename=\"markethink-seo-aio-playbook.md\""
+    Link = "<https://markethink.ai/ai-marketing-strategies/seo-aio-playbook/>; rel=\"canonical\""
+
+[[headers]]
+  for = "/downloads/markethink-seo-aio-playbook.zip"
+  [headers.values]
+    Content-Type = "application/zip"
+    Content-Disposition = "attachment; filename=\"markethink-seo-aio-playbook.zip\""
+
