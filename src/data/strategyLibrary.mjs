@@ -1,11 +1,12 @@
 import { deflateRawSync } from "node:zlib";
+import { WEBSITE_LAUNCH_META } from "./websiteLaunchChecklist.mjs";
 
 export const LIBRARY_META = {
   name: "AI Marketing Strategy Library",
   title: "AI Marketing Strategies & Agent Skills | Markethink",
   h1: "AI Marketing Strategies & Agent Skills",
   supportingLine: "Steal the strategy. Put your AI to work.",
-  description: "Use reviewed AI marketing strategies, practical ongoing playbooks, and portable agent instructions from Markethink, starting with an evidence-led SEO and AI-search method.",
+  description: "Use reviewed AI marketing strategies, practical playbooks, launch checklists, and portable agent instructions from Markethink.",
   canonical: "https://markethink.ai/ai-marketing-strategies/",
   reviewedDate: "2026-09-13",
 };
@@ -36,6 +37,22 @@ export const strategyEntries = [
     fit: "Businesses with a live website, a defined offer, and enough internal knowledge to review facts and approve changes.",
     version: PLAYBOOK_META.version,
     reviewedDate: PLAYBOOK_META.reviewedDate,
+    topic: "SEO + AI search",
+    format: "Ongoing playbook",
+    imageIndex: 0,
+  },
+  {
+    slug: WEBSITE_LAUNCH_META.slug,
+    href: "/ai-marketing-strategies/new-website-launch-checklist/",
+    title: WEBSITE_LAUNCH_META.title,
+    description: "Verify a new website across technical setup, conversion paths, accessibility, analytics, trust, performance, release safety, and post-launch ownership.",
+    use: "Give every launch check an owner, a verification method, a pass criterion, and dated evidence before and after the production release.",
+    fit: "Teams preparing a new marketing website, redesign, migration, or major public release with access to test the final production URL.",
+    version: WEBSITE_LAUNCH_META.version,
+    reviewedDate: WEBSITE_LAUNCH_META.reviewedDate,
+    topic: "Website launch",
+    format: "Verification checklist",
+    imageIndex: 7,
   },
 ];
 
