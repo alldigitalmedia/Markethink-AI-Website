@@ -5,7 +5,7 @@ export const LIBRARY_META = {
   title: "AI Marketing Strategies & Agent Skills | Markethink",
   h1: "AI Marketing Strategies & Agent Skills",
   supportingLine: "Steal the strategy. Put your AI to work.",
-  description: "Use reviewed AI marketing strategies, practical playbooks, and portable agent instructions from Markethink, starting with a 30-day SEO and AI-search plan.",
+  description: "Use reviewed AI marketing strategies, practical ongoing playbooks, and portable agent instructions from Markethink, starting with an evidence-led SEO and AI-search method.",
   canonical: "https://markethink.ai/ai-marketing-strategies/",
   reviewedDate: "2026-09-13",
 };
@@ -13,13 +13,13 @@ export const LIBRARY_META = {
 export const PLAYBOOK_META = {
   slug: "seo-aio-playbook",
   portableName: "markethink-seo-aio-playbook",
-  title: "SEO & AI Search: A 30-Day Strategy Playbook",
-  seoTitle: "SEO & AI Search: A 30-Day Strategy Playbook | Markethink",
-  description: "Build an evidence-led 30-day SEO and AI-search plan for your business with required inputs, practical phases, deliverables, measurement limits, and a portable agent skill.",
+  title: "SEO & AI Search: An Ongoing Strategy Playbook",
+  seoTitle: "SEO & AI Search: An Ongoing Strategy Playbook | Markethink",
+  description: "Build and maintain an evidence-led SEO and AI-search strategy with an initial 30-day implementation cycle, repeat-cycle backlog, measurement limits, and a portable agent skill.",
   canonical: "https://markethink.ai/ai-marketing-strategies/seo-aio-playbook/",
   markdownUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.md",
   skillUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.zip",
-  version: "1.0.0",
+  version: "1.1.0",
   reviewedDate: "2026-09-13",
   author: "Markethink",
   specificationUrl: "https://agentskills.io/specification",
@@ -31,8 +31,8 @@ export const strategyEntries = [
     slug: PLAYBOOK_META.slug,
     href: "/ai-marketing-strategies/seo-aio-playbook/",
     title: PLAYBOOK_META.title,
-    description: "Turn your website, offer, evidence, and available search data into a scoped plan your team or agent can execute and verify.",
-    use: "Choose the right existing pages, improve factual clarity, create sourced answer-ready support, connect contextual links, and measure delivery separately from outcomes.",
+    description: "Turn your website, offer, evidence, and available search data into a maintained strategy your team or agent can execute, verify, review, and repeat.",
+    use: "Choose the right existing pages, improve factual clarity, create sourced answer-ready support, connect contextual links, review delivery separately from results, and build the next capacity-aware backlog.",
     fit: "Businesses with a live website, a defined offer, and enough internal knowledge to review facts and approve changes.",
     version: PLAYBOOK_META.version,
     reviewedDate: PLAYBOOK_META.reviewedDate,
@@ -78,6 +78,7 @@ export const evidenceRules = [
   "Keep search-volume estimates, organic difficulty, ad competition, indexing, traffic, conversions, and sampled AI citations in separate fields.",
   "Keep delivery completion separate from rankings, traffic, leads, citations, and revenue outcomes.",
   "Preserve the receiving user's permissions. Planning or review does not authorize publishing, spending, sending, outreach, or account changes.",
+  "Ongoing means the method can be repeated when a user starts a new authorized cycle. It does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach.",
 ];
 
 export const phases = [
@@ -138,6 +139,39 @@ export const phases = [
   },
 ];
 
+export const repeatCycle = [
+  {
+    id: "refresh-evidence",
+    title: "Update the evidence baseline",
+    detail: "Review available first-party data, supplied exports, live technical checks, and dated search observations. Keep unavailable measures as Not available.",
+  },
+  {
+    id: "separate-reviews",
+    title: "Review delivery and results separately",
+    detail: "Confirm what was delivered and verified before reviewing rankings, traffic, citations, inquiries, or revenue observations on their own timelines.",
+  },
+  {
+    id: "carry-forward",
+    title: "Carry unfinished work forward",
+    detail: "Keep unfinished tasks, dependencies, owners, and acceptance checks visible. Never auto-complete an item because a target date passed.",
+  },
+  {
+    id: "scope-opportunities",
+    title: "Add newly justified opportunities",
+    detail: "Add an opportunity to the maintained backlog only when current evidence and available capacity make it specific enough to scope.",
+  },
+  {
+    id: "prioritize-capacity",
+    title: "Prioritize the next capacity-aware cycle",
+    detail: "Choose the smallest useful set of next actions, with owners, dependencies, effort, target URLs, and delivery acceptance evidence.",
+  },
+  {
+    id: "log-decision",
+    title: "Append a dated decision and change log",
+    detail: "Record the evidence reviewed, delivery status, result status, lessons, carry-forward work, and the next review checkpoint.",
+  },
+];
+
 export const requiredOutputs = [
   {
     name: "Concise business brief",
@@ -152,7 +186,7 @@ export const requiredOutputs = [
     fields: ["query or question family", "intent", "audience or location", "existing primary URL", "page job", "evidence", "gap", "recommended action"],
   },
   {
-    name: "Prioritized 30-day plan",
+    name: "Prioritized initial 30-day cycle",
     fields: ["window", "action", "owner", "reviewer", "dependency", "effort", "target URL", "delivery acceptance evidence", "outcome observation and timing"],
   },
   {
@@ -165,7 +199,11 @@ export const requiredOutputs = [
   },
   {
     name: "Review log",
-    fields: ["date", "decision", "owner", "evidence reviewed", "work shipped", "measurement still pending", "next action"],
+    fields: ["date", "decision", "owner", "evidence reviewed", "delivery review", "results review", "lesson", "next action"],
+  },
+  {
+    name: "Next-cycle backlog and review checkpoint",
+    fields: ["carried-forward task", "newly justified opportunity", "scope evidence", "priority", "capacity", "owner", "dependency", "acceptance check", "review date or trigger"],
   },
 ];
 
@@ -183,7 +221,8 @@ export const limitations = [
   "Search and AI-answer systems change. A plan can improve clarity, crawlability, usefulness, and evidence without guaranteeing selection, ranking, citation, traffic, or leads.",
   "Low-volume businesses may need review windows longer than 30 days for comparable outcome observations.",
   "Tool estimates use different datasets and definitions. Record the provider and do not merge unlike metrics.",
-  "The 30-day window is an execution structure, not a claim that search engines will recrawl, index, rank, or cite a page on that schedule.",
+  "The first 30 days are an initial implementation cycle, not the lifespan of the strategy or a claim that search engines will recrawl, index, rank, or cite a page on that schedule.",
+  "A current baseline is evidence for prioritization, not a permanent cap on future actions. New work enters the maintained backlog only when it is justified and scoped.",
   "Markethink's public roadmap is an implementation example from Markethink.ai. It is not independent proof and its statuses must not be copied into another business's plan.",
 ];
 
@@ -229,14 +268,120 @@ export function getStandaloneBrief() {
     `${phase.window}: ${phase.title}`,
     ...phase.actions.map((action) => `  - ${action}`),
   ]);
+  const repeatLines = repeatCycle.map((step, index) => `${index + 1}. ${step.title}: ${step.detail}`);
   const outputLines = requiredOutputs.map((output) => `${output.name}: ${output.fields.join("; ")}`);
   const measurementLines = measurementLanes.map((lane) => `${lane.label}: ${lane.limit}`);
   const sourceLines = originalSources.map((source) => `${source.publisher}, ${source.title}: ${source.url}`);
-  return `SEO & AI SEARCH: 30-DAY STRATEGY BRIEF\nVersion: ${PLAYBOOK_META.version}\nReviewed: ${PLAYBOOK_META.reviewedDate}\nSource: ${PLAYBOOK_META.canonical}\n\nROLE\nHelp me adapt an evidence-led SEO and AI-search method to my business and produce an executable 30-day plan. Support planning, review, and only the execution I separately authorize. This brief does not authorize publishing, spending, sending, outreach, account changes, or any action outside my permissions.\n\nOPERATING RULES\n${numbered(evidenceRules)}\n\nCONTEXT TO COLLECT\nReuse anything I already supplied. Ask only for material missing information, grouped into one concise request when possible.\n${list(inputLines)}\n\nTOOL AND DATA CHECK\n${list(toolAvailabilityChecks)}\n\nWORKFLOW\n${phaseLines.join("\n")}\n\nREQUIRED OUTPUTS\nReturn every section below. Use tables where they improve readability.\n${numbered(outputLines)}\n\nMEASUREMENT SEPARATION\nNever collapse these into one visibility score.\n${list(measurementLines)}\n\nACCEPTANCE RULES\n- Adapt the number of pages, queries, and actions to the stated capacity.\n- Every action must have an owner, reviewer where needed, dependency, effort, target URL or asset, and delivery acceptance evidence.\n- Mark unavailable data as Not available and state what would be needed to measure it.\n- Treat a completed deliverable as delivery evidence only. Keep rankings, traffic, leads, conversions, and citations pending until observed from a named source.\n- Preserve original source URLs and attribute any borrowed strategy.\n- Do not present Markethink's roadmap or any illustrative example as proof for this business.\n- End with a review log that records decisions, shipped work, measurements still pending, and the next evidence-led action.\n\nLIMITATIONS\n${list(limitations)}\n\nORIGINAL SOURCES\n${list(sourceLines)}\n\nSTART\nFirst summarize the context already available. Then show the tool and data-availability register. Ask only for material missing inputs that prevent a responsible plan. If enough context exists, proceed without repeating questions.`;
+  return `SEO & AI SEARCH: ONGOING STRATEGY BRIEF
+Version: ${PLAYBOOK_META.version}
+Reviewed: ${PLAYBOOK_META.reviewedDate}
+Source: ${PLAYBOOK_META.canonical}
+
+ROLE
+Help me adapt and maintain an evidence-led SEO and AI-search strategy for my business. Use the first 30 days as an initial implementation cycle, then produce a capacity-aware next-cycle backlog and review checkpoint so the strategy does not stop at day 30. Support planning, review, and only the execution I separately authorize. Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach. It also does not authorize spending, sending, account changes, or any action outside my permissions.
+
+OPERATING RULES
+${numbered(evidenceRules)}
+
+CONTEXT TO COLLECT
+Reuse anything I already supplied. Ask only for material missing information, grouped into one concise request when possible.
+${list(inputLines)}
+
+TOOL AND DATA CHECK
+${list(toolAvailabilityChecks)}
+
+INITIAL 30-DAY IMPLEMENTATION CYCLE
+This is the foundation cycle, not the lifespan or completion deadline of the strategy.
+${phaseLines.join("\n")}
+
+REPEAT CYCLE BEYOND DAY 30
+${repeatLines.join("\n")}
+
+REQUIRED OUTPUTS
+Return every section below. Use tables where they improve readability.
+${numbered(outputLines)}
+
+MEASUREMENT SEPARATION
+Never collapse these into one visibility score.
+${list(measurementLines)}
+
+ACCEPTANCE RULES
+- Adapt the number of pages, queries, and actions to the stated capacity.
+- Every action must have an owner, reviewer where needed, dependency, effort, target URL or asset, and delivery acceptance evidence.
+- Mark unavailable data as Not available and state what would be needed to measure it.
+- Treat a completed deliverable as delivery evidence only. Keep rankings, traffic, leads, conversions, and citations pending until observed from a named source.
+- Review delivered work and results in separate fields.
+- Carry unfinished work forward with its dependency and acceptance check. Never auto-complete work because a date passed.
+- Add a newly justified opportunity only after its evidence, scope, priority, capacity, owner, dependency, and acceptance check are explicit.
+- End every cycle with a next-cycle backlog, a review date or trigger, and an appended dated decision/change log.
+- Preserve original source URLs and attribute any borrowed strategy.
+- Do not present Markethink's roadmap or any illustrative example as proof for this business.
+- Do not schedule the next review, create a monitor, use a paid tool, publish, or begin outreach unless I separately authorize that action.
+
+LIMITATIONS
+${list(limitations)}
+
+ORIGINAL SOURCES
+${list(sourceLines)}
+
+START
+First summarize the context already available. Then show the tool and data-availability register. Ask only for material missing inputs. Produce the initial implementation cycle, review delivery and results separately, and finish with an honest next-cycle backlog and review checkpoint.`;
 }
 
 export function getOutputTemplatesMarkdown() {
-  return `# Reusable output templates\n\n## Tool and data-availability register\n\n| Source | Status | Scope | Date range | Filters or denominator | Can support | Unavailable |\n| --- | --- | --- | --- | --- | --- | --- |\n\n## Query-to-existing-URL intent map\n\n| Query or question family | Intent | Audience or location | Existing primary URL | Page job | Evidence | Gap | Recommended action |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n\n## Prioritized 30-day plan\n\n| Window | Action | Owner | Reviewer | Dependency | Effort | Target | Delivery acceptance evidence | Outcome observation and timing |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n\n## Page-improvement brief\n\n- Target URL:\n- Current page job:\n- Observed issue and evidence:\n- Recommended change:\n- Facts or sources required:\n- Contextual links:\n- Approval required:\n- Delivery acceptance check:\n- Outcome observation and timing:\n\n## Measurement baseline\n\n| Measurement lane | Value or Not available | Source | Collection date | Scope | Denominator or filters | Limitation | Next comparable review |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n\n## Review log\n\n| Date | Decision | Owner | Evidence reviewed | Work shipped | Measurement still pending | Next action |\n| --- | --- | --- | --- | --- | --- | --- | --- |`;
+  return `# Reusable output templates
+
+## Tool and data-availability register
+
+| Source | Status | Scope | Date range | Filters or denominator | Can support | Unavailable |
+| --- | --- | --- | --- | --- | --- | --- |
+
+## Query-to-existing-URL intent map
+
+| Query or question family | Intent | Audience or location | Existing primary URL | Page job | Evidence | Gap | Recommended action |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+## Prioritized initial 30-day cycle
+
+| Window | Action | Owner | Reviewer | Dependency | Effort | Target | Delivery acceptance evidence | Outcome observation and timing |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+## Page-improvement brief
+
+- Target URL:
+- Current page job:
+- Observed issue and evidence:
+- Recommended change:
+- Facts or sources required:
+- Contextual links:
+- Approval required:
+- Delivery acceptance check:
+- Outcome observation and timing:
+
+## Measurement baseline
+
+| Measurement lane | Value or Not available | Source | Collection date | Scope | Denominator or filters | Limitation | Next comparable review |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+## Delivery review
+
+| Planned item | Delivery state | Verification evidence | Unfinished dependency | Carry forward |
+| --- | --- | --- | --- | --- |
+
+## Results review
+
+| Measurement lane | Observation or Not available | Source | Collection date | Scope | Limitation |
+| --- | --- | --- | --- | --- | --- |
+
+## Next-cycle backlog and review checkpoint
+
+| Carried-forward task | Newly justified opportunity | Scope evidence | Priority | Capacity | Owner | Dependency | Acceptance check | Review date or trigger |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+## Dated decision and change log
+
+| Date | Decision | Owner | Evidence reviewed | Delivery review | Results review | Lesson | Next action |
+| --- | --- | --- | --- | --- | --- | --- | --- |`;
 }
 
 export function getOriginalSourcesMarkdown() {
@@ -244,11 +389,11 @@ export function getOriginalSourcesMarkdown() {
 }
 
 export function getSkillMarkdown() {
-  return `---\nname: ${PLAYBOOK_META.portableName}\ndescription: Build an evidence-led 30-day SEO and AI-search plan from a business's website, offer, audience, constraints, and available search data. Use when planning or reviewing SEO, AIO, answer-ready content, internal links, page improvements, and search measurement.\nmetadata:\n  author: "${PLAYBOOK_META.author}"\n  version: "${PLAYBOOK_META.version}"\n  reviewed: "${PLAYBOOK_META.reviewedDate}"\n  source: "${PLAYBOOK_META.canonical}"\n---\n\n# SEO and AI Search: 30-Day Strategy Playbook\n\n${getStandaloneBrief()}\n\n## Optional package resources\n\nUse [the original-source reference](references/ORIGINAL-SOURCES.md) when checking source scope or recency. Use [the reusable output templates](assets/OUTPUT-TEMPLATES.md) when the user wants tables or a review record. The instructions above remain complete without loading either file.`;
+  return `---\nname: ${PLAYBOOK_META.portableName}\ndescription: Build and maintain an evidence-led SEO and AI-search strategy from a business's website, offer, audience, constraints, and available search data. Use for an initial implementation cycle, ongoing review, next-cycle backlog planning, answer-ready content, internal links, page improvements, and search measurement.\nmetadata:\n  author: "${PLAYBOOK_META.author}"\n  version: "${PLAYBOOK_META.version}"\n  reviewed: "${PLAYBOOK_META.reviewedDate}"\n  source: "${PLAYBOOK_META.canonical}"\n---\n\n# SEO & AI Search: An Ongoing Strategy Playbook\n\n${getStandaloneBrief()}\n\n## Optional package resources\n\nUse [the original-source reference](references/ORIGINAL-SOURCES.md) when checking source scope or recency. Use [the reusable output templates](assets/OUTPUT-TEMPLATES.md) when the user wants tables or a review record. The instructions above remain complete without loading either file.`;
 }
 
 export function getStandaloneMarkdown() {
-  return `# ${PLAYBOOK_META.title}\n\n> ${PLAYBOOK_META.description}\n\n- Version: ${PLAYBOOK_META.version}\n- Reviewed: ${PLAYBOOK_META.reviewedDate}\n- Author: ${PLAYBOOK_META.author}\n- Canonical page: ${PLAYBOOK_META.canonical}\n- Portable skill: ${PLAYBOOK_META.skillUrl}\n\n## Purpose\n\nAdapt a reviewed SEO and AI-search method to a real business, then produce a scoped plan that distinguishes available evidence from assumptions and delivery from outcomes.\n\n## Who it fits\n\nBusinesses with a live website, a defined offer, and enough internal knowledge to verify facts, review recommendations, and authorize any execution separately.\n\n## Complete standalone AI brief\n\n${getStandaloneBrief()}\n\n## Reusable output templates\n\n${getOutputTemplatesMarkdown()}\n\n## Source notes\n\n${getOriginalSourcesMarkdown()}\n`;
+  return `# ${PLAYBOOK_META.title}\n\n> ${PLAYBOOK_META.description}\n\n- Version: ${PLAYBOOK_META.version}\n- Reviewed: ${PLAYBOOK_META.reviewedDate}\n- Author: ${PLAYBOOK_META.author}\n- Canonical page: ${PLAYBOOK_META.canonical}\n- Portable skill: ${PLAYBOOK_META.skillUrl}\n\n## Purpose\n\nAdapt a reviewed SEO and AI-search method to a real business, run the first 30 days as an initial implementation cycle, then maintain a capacity-aware next-cycle backlog that distinguishes available evidence from assumptions and delivery from results.\n\n## Who it fits\n\nBusinesses with a live website, a defined offer, and enough internal knowledge to verify facts, review recommendations, and authorize any execution separately.\n\n## Complete standalone AI brief\n\n${getStandaloneBrief()}\n\n## Reusable output templates\n\n${getOutputTemplatesMarkdown()}\n\n## Source notes\n\n${getOriginalSourcesMarkdown()}\n`;
 }
 
 export const packageFiles = {
