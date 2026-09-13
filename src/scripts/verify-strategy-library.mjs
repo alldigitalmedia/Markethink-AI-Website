@@ -50,6 +50,19 @@ for (const [html, title, h1, pageCanonical] of [
   assert.ok(!html.includes('name="robots" content="noindex'));
 }
 assert.ok(hubHtml.includes(LIBRARY_META.supportingLine));
+for (const marker of [
+  "Explore practical marketing strategies, see our assessment, and take away a playbook you can use yourself or give to your AI agent.",
+  "WHAT YOU GET",
+  "A clear strategy, the steps to put it into practice, and a ready-to-use brief for your AI. Sources and review dates included.",
+  "Choose a format and add your business context. Each playbook includes the steps, templates and checks to get started.",
+  "More ways to grow, coming next.",
+  "We plan to expand into sales, email and other marketing disciplines.",
+]) assert.ok(hubHtml.includes(marker), `hub correction missing: ${marker}`);
+assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp"));
+assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp"));
+assert.ok(hubHtml.includes("Conceptual editorial scene of a marketer comparing two campaign directions in an active production workspace."));
+assert.ok(entryHtml.includes("Turn your website, offer and available search data into a focused 30-day plan, with page priorities, practical briefs and a clear way to review progress."));
+assert.ok(entryHtml.includes("What you will create"));
 assert.ok(hubHtml.includes(PLAYBOOK_META.canonical.replace("https://markethink.ai", "")));
 assert.ok(entryHtml.includes(LIBRARY_META.canonical.replace("https://markethink.ai", "")));
 assert.ok(entryHtml.includes("Copy for your AI"));

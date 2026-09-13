@@ -52,11 +52,11 @@ const breadcrumbsJsonLd = {
           <p class="eyebrow">Reviewed methods for practical work</p>
           <h1 id="library-title">{LIBRARY_META.h1}</h1>
           <p class="supporting-line">{LIBRARY_META.supportingLine}</p>
-          <p class="intro">An evolving collection of reviewed strategies, practical playbooks, and companion instructions that help AI agents turn business context into accountable marketing work.</p>
+          <p class="intro">Explore practical marketing strategies, see our assessment, and take away a playbook you can use yourself or give to your AI agent.</p>
         </div>
-        <aside class="library-note" aria-label="Library standard">
-          <span class="note-index">Library standard</span>
-          <p>Every release must be useful to a human, complete enough for an agent, explicit about its evidence, and honest about what still needs to be measured.</p>
+        <aside class="library-note" aria-label="What you get">
+          <span class="note-index">WHAT YOU GET</span>
+          <p>A clear strategy, the steps to put it into practice, and a ready-to-use brief for your AI. Sources and review dates included.</p>
         </aside>
       </div>
     </section>
@@ -75,6 +75,17 @@ const breadcrumbsJsonLd = {
               <span>30-day playbook</span>
               <span>Version {entry.version}</span>
             </div>
+            <picture class="feature-image">
+              <source media="(max-width: 640px)" srcset={b2bEditorialImages[0].mobile} />
+              <img
+                src={b2bEditorialImages[0].desktop}
+                alt={b2bEditorialImages[0].alt}
+                width={b2bEditorialImages[0].desktopWidth}
+                height={b2bEditorialImages[0].desktopHeight}
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
             <div class="feature-body">
               <div>
                 <h3>{entry.title}</h3>
@@ -105,7 +116,7 @@ const breadcrumbsJsonLd = {
         <header>
           <p class="eyebrow">How to use a playbook</p>
           <h2 id="use-title">Choose the format your workflow can actually use.</h2>
-          <p>A playbook is not a promise of outcomes. It is a maintained operating method, a clear output contract, and a record of what the available evidence can support.</p>
+          <p>Choose a format and add your business context. Each playbook includes the steps, templates and checks to get started.</p>
         </header>
         <ol class="mode-list">
           {usageModes.map((mode, index) => (
@@ -124,8 +135,8 @@ const breadcrumbsJsonLd = {
     <section class="coverage-section" aria-labelledby="coverage-title">
       <div class="shell coverage-inner">
         <p class="eyebrow">Future coverage</p>
-        <h2 id="coverage-title">The library grows when a strategy is ready to be reviewed, maintained, and used.</h2>
-        <p>Future releases may address other marketing disciplines. We will publish them only when the method, source trail, instructions, and limitations are complete. This keeps discovery focused on real material rather than empty inventory.</p>
+        <h2 id="coverage-title">More ways to grow, coming next.</h2>
+        <p>We plan to expand into sales, email and other marketing disciplines. Start with the SEO and AI-search playbook, and follow our <a href="/seo-aio-strategy/">public roadmap</a> to see it put into practice.</p>
         <a href={PLAYBOOK_META.canonical.replace("https://markethink.ai", "")} class="text-link">Explore the SEO and AI-search playbook</a>
       </div>
     </section>
@@ -160,6 +171,8 @@ const breadcrumbsJsonLd = {
   .feature-card { background: #0f1213; color: #f5f5f1; border-radius: 2px; overflow: hidden; box-shadow: 0 24px 70px rgba(15,18,19,.12); }
   .feature-meta, .feature-footer { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; padding: 22px 28px; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; }
   .feature-meta { border-bottom: 1px solid rgba(245,245,241,.18); color: #b4b6b6; }
+  .feature-image { display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid rgba(245,245,241,.18); background: #171b1c; }
+  .feature-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
   .feature-body { padding: clamp(34px,5vw,68px); }
   .feature-body h3 { max-width: 760px; color: #f5f5f1; font-size: clamp(3rem, 6vw, 6.5rem); letter-spacing: -.045em; }
   .feature-description { max-width: 690px; margin: 34px 0 0; color: #d6d7d3; font-size: 1.1rem; line-height: 1.7; }
@@ -199,6 +212,8 @@ const breadcrumbsJsonLd = {
     .library-hero { padding-top: 112px; }
     h1 { font-size: 3.65rem; }
     .supporting-line { font-size: 2.25rem; }
+    .feature-image { aspect-ratio: 3 / 2; }
+    .feature-image img { object-fit: contain; }
     .feature-body { padding: 34px 24px; }
     .feature-body h3 { font-size: 3.25rem; }
     .feature-meta, .feature-footer { padding-left: 22px; padding-right: 22px; }
