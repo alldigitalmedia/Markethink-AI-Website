@@ -10,6 +10,7 @@ export type BlogPost = {
   image: string;
   imageMobile: string;
   imageThumbnail: string;
+  imageSharing: string;
   imageAlt: string;
   publishedDate: string;
   updatedDate: string;
@@ -66,6 +67,7 @@ const editorialImage = (route: string) => {
     image: image.desktop,
     imageMobile: image.mobile,
     imageThumbnail: image.thumbnail,
+    imageSharing: image.sharing,
     imageAlt: image.alt,
   };
 };
