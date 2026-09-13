@@ -29,7 +29,7 @@ export const ROADMAP_META = {
   supportingLine: "Watch us implement it on Markethink.ai.",
   publishedDate: "2026-09-12",
   lastSubstantiveUpdate: "2026-09-13",
-  latestUpdateId: "contextual-internal-links-2026-09-13",
+  latestUpdateId: "strategy-library-playbook-launch-2026-09-13",
   sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
   sharingImageWidth: 1200,
   sharingImageHeight: 630,
@@ -529,6 +529,12 @@ export const measurementNotes = [
 ];
 
 export const changeLog = [
+  {
+    id: "strategy-library-playbook-launch-2026-09-13",
+    date: "2026-09-13",
+    title: "AI Marketing Strategy Library and first playbook launched",
+    detail: "Published the AI Marketing Strategy Library with a complete 30-day SEO and AI-search playbook, a standalone agent brief, a self-contained Markdown download, and a portable Agent Skills package. Added navigation, sitemap, AI-discovery, and bounded contextual links while preserving all 19 roadmap actions, their acceptance criteria, and status counts.",
+  },
   {
     id: "contextual-internal-links-2026-09-13",
     date: "2026-09-13",
