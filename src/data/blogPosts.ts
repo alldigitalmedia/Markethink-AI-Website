@@ -1141,9 +1141,15 @@ export const insightPosts: BlogPost[] = [
   },
 ];
 
+export const editorialInsightPosts = [...insightPosts].sort((a, b) => {
+  const aPlacement = getB2BEditorialImage(`/blog/${a.slug}/`).placement;
+  const bPlacement = getB2BEditorialImage(`/blog/${b.slug}/`).placement;
+  return aPlacement - bPlacement;
+});
+
 export const allBlogCards = [
   ...journeyPosts,
-  ...insightPosts.map((post) => ({
+  ...editorialInsightPosts.map((post) => ({
     title: post.title,
     label: post.label,
     image: post.imageThumbnail,
