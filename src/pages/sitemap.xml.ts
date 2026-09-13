@@ -121,6 +121,12 @@ const staticPages: SitemapPage[] = [
     lastmod: "2026-09-13",
   },
   {
+    path: "/ai-marketing-strategies/new-website-launch-checklist/",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-09-13",
+  },
+  {
     path: "/ai-marketing-for-law-firms/",
     priority: "0.9",
     changefreq: "monthly",
