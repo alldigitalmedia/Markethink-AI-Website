@@ -29,7 +29,7 @@ export const ROADMAP_META = {
   supportingLine: "Watch us implement it on Markethink.ai.",
   publishedDate: "2026-09-12",
   lastSubstantiveUpdate: "2026-09-13",
-  latestUpdateId: "b2b-editorial-image-system-closure-2026-09-13",
+  latestUpdateId: "contextual-internal-links-2026-09-13",
   sharingImageUrl: "https://dashboard.markethink.ai/generated/landing/markethink/markethink/seo-aio-strategy-sharing-card-1200x630-20260912.png",
   sharingImageWidth: 1200,
   sharingImageHeight: 630,
@@ -529,6 +529,12 @@ export const measurementNotes = [
 ];
 
 export const changeLog = [
+  {
+    id: "contextual-internal-links-2026-09-13",
+    date: "2026-09-13",
+    title: "Ten contextual internal links added",
+    detail: "Added ten crawlable, contextual links among the public SEO and AIO roadmap, relevant implementation guides, the AI marketing agency buyer guide, the statistics research page, and the small-business hub. The links connect planning, page-improvement method, implementation guidance, provider-model interpretation, and source-led adoption context while leaving roadmap statuses and the broader proof and internal-links task unchanged.",
+  },
   {
     id: "b2b-editorial-image-system-closure-2026-09-13",
     date: "2026-09-13",
