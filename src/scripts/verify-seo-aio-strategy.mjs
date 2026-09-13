@@ -22,7 +22,7 @@ assert.deepEqual(STATUS_DEFINITIONS.map((item) => item.label), expectedStatuses,
 assert.equal(roadmapEntries.length, 19, "all 19 established actions must remain present");
 assert.equal(new Set(roadmapEntries.map((item) => item.id)).size, roadmapEntries.length, "entry IDs must be unique");
 assert.equal(Object.values(statusCounts).reduce((sum, value) => sum + value, 0), roadmapEntries.length, "status counts do not match entries");
-assert.deepEqual(statusCounts, { Planned: 13, "In progress": 3, Live: 0, Verified: 3, Blocked: 0 }, "status counts must include the independently closed palette correction without overstating outcomes");
+assert.deepEqual(statusCounts, { Planned: 13, "In progress": 2, Live: 0, Verified: 4, Blocked: 0 }, "status counts must include the independently verified palette and V2 image corrections without overstating outcomes");
 
 assert(ROADMAP_META && /^https:\/\//.test(ROADMAP_META.sharingImageUrl), "absolute sharing image URL missing from structured source");
 assert.equal(ROADMAP_META.sharingImageWidth, 1200, "sharing image width changed");
@@ -57,8 +57,12 @@ for (const entry of roadmapEntries) {
 
 assert(roadmapEntries.some((item) => item.id === "buyer-query-serp-evidence" && item.status === "In progress" && /remain/i.test(item.progressNote)), "buyer-query research must be honestly in progress with remaining coverage named");
 assert(roadmapEntries.some((item) => item.id === "baseline-record" && item.status === "In progress" && /remain/i.test(item.progressNote)), "baseline collection must be honestly in progress with remaining coverage named");
-assert.equal(roadmapEntries.filter((item) => item.status === "Verified").length, 3, "only the two established actions and independently closed palette correction may be verified");
-assert(roadmapEntries.some((item) => item.id === "b2b-editorial-imagery" && item.status === "In progress" && item.evidenceUrl === null), "B2B imagery state must remain untouched");
+assert.equal(roadmapEntries.filter((item) => item.status === "Verified").length, 4, "only the two established actions and independently closed palette and V2 image corrections may be verified");
+const editorialImagery = roadmapEntries.find((item) => item.id === "b2b-editorial-imagery");
+assert(editorialImagery && editorialImagery.status === "Verified", "production-accepted V2 imagery must be verified");
+assert.equal(editorialImagery.verifiedDate, "2026-09-13", "V2 image verification date changed");
+assert.equal(editorialImagery.evidenceUrl, "https://markethink.ai/blog/", "V2 image evidence URL changed");
+assert.equal(editorialImagery.doneCriteria.every((criterion) => criterion.state === "verified"), true, "all verified V2 image criteria must be checkmarked");
 const paletteCorrection = roadmapEntries.find((item) => item.id === "website-palette-correction");
 assert(paletteCorrection && paletteCorrection.status === "Verified", "independently closed palette cleanup must be verified");
 assert.equal(paletteCorrection.verifiedDate, "2026-09-12", "palette verification date changed");
@@ -83,14 +87,15 @@ for (const note of measurementNotes) {
   for (const field of ["source", "date", "scope", "denominator"]) assert(note.futureObservationRequirements.includes(field), `${note.id} must require ${field}`);
 }
 
-assert(changeLog.length >= 3, "palette closure change-log entry missing");
+assert(changeLog.length >= 4, "V2 image closure change-log entry missing");
 assert(changeLog.some((item) => item.id === "initial-public-roadmap"), "earlier change-log entry was removed");
 assert(changeLog.some((item) => item.id === "palette-publication-verification-2026-09-12"), "earlier palette publication log was removed");
+assert(changeLog.some((item) => item.id === "palette-canonical-base-closure-2026-09-12"), "palette closure log was removed");
 for (let index = 1; index < changeLog.length; index += 1) assert(changeLog[index - 1].date >= changeLog[index].date, "change log must be newest first");
 assert.equal(changeLog[0].id, ROADMAP_META.latestUpdateId, "Latest update must target the newest log entry");
 const newestLog = JSON.stringify(changeLog[0]);
-for (const marker of ["19:05", "#F5F5F1", "#EDF4EA", "green", "independently", "closed"]) {
-  assert(newestLog.includes(marker), `newest change log is missing verified evidence: ${marker}`);
+for (const marker of ["P01–P10", "1200×630", "Open Graph", "Twitter", "card order", "unchanged statistics ledgers"]) {
+  assert(newestLog.includes(marker), `newest V2 image change log is missing verified evidence: ${marker}`);
 }
 
 const [html, checklist, sitemap, pageSource, checklistSource, blogHtml, blogSource] = await Promise.all([
