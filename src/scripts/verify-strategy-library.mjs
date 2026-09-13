@@ -106,7 +106,8 @@ const h2s = [...candidate.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1]);
 for (const heading of h2s) assert.ok(decode(entryHtml).includes(heading), `server-rendered candidate section missing: ${heading}`);
 for (const id of [
   "purpose-title", "inputs-title", "evidence-title", "playbook-method", "method-title",
-  "baseline-research", "page-clarity", "answer-ready-content", "verification-review",
+  "baseline-research", "baseline-research-title", "page-clarity", "page-clarity-title",
+  "answer-ready-content", "answer-ready-content-title", "verification-review", "verification-review-title",
   "repeat-title", "refresh-evidence", "separate-reviews", "carry-forward", "scope-opportunities",
   "prioritize-capacity", "log-decision", "outputs-title", "measurement-title", "example-title",
   "copy-for-ai", "copy-title", "limitations-title", "sources-title",
@@ -200,6 +201,6 @@ console.log(JSON.stringify({
   version: PLAYBOOK_META.version,
   reviewed: PLAYBOOK_META.reviewedDate,
   serverRenderedCandidateSections: h2s.length,
-  preservedSectionIds: 23,
+  preservedSectionIds: 27,
   cover: { placement: cover.placement, desktop: cover.desktop, mobile: cover.mobile, alt: cover.alt },
 }, null, 2));
