@@ -64,50 +64,55 @@ const breadcrumbsJsonLd = {
     <section class="feature-section" aria-labelledby="feature-title">
       <div class="shell feature-grid">
         <header class="feature-heading">
-          <p class="eyebrow">Featured strategy</p>
-          <h2 id="feature-title">Start with search work that can be scoped, shipped, checked, and repeated.</h2>
+          <p class="eyebrow">Featured strategies</p>
+          <h2 id="feature-title">Start with work that can be scoped, checked, and reused.</h2>
         </header>
 
-        {strategyEntries.map((entry) => (
-          <article class="feature-card">
-            <div class="feature-meta">
-              <span>SEO + AI search</span>
-              <span>Ongoing playbook</span>
-              <span>Version {entry.version}</span>
-            </div>
-            <picture class="feature-image">
-              <source media="(max-width: 640px)" srcset={b2bEditorialImages[0].mobile} />
-              <img
-                src={b2bEditorialImages[0].desktop}
-                alt={b2bEditorialImages[0].alt}
-                width={b2bEditorialImages[0].desktopWidth}
-                height={b2bEditorialImages[0].desktopHeight}
-                loading="eager"
-                decoding="async"
-              />
-            </picture>
-            <div class="feature-body">
-              <div>
-                <h3>{entry.title}</h3>
-                <p class="feature-description">{entry.description}</p>
-              </div>
-              <div class="feature-value">
-                <div>
-                  <span class="value-label">Use it to</span>
-                  <p>{entry.use}</p>
+        <div class="feature-list">
+          {strategyEntries.map((entry) => {
+            const image = b2bEditorialImages[entry.imageIndex];
+            return (
+              <article class="feature-card">
+                <div class="feature-meta">
+                  <span>{entry.topic}</span>
+                  <span>{entry.format}</span>
+                  <span>Version {entry.version}</span>
                 </div>
-                <div>
-                  <span class="value-label">Best fit</span>
-                  <p>{entry.fit}</p>
+                <picture class="feature-image">
+                  <source media="(max-width: 640px)" srcset={image.mobile} />
+                  <img
+                    src={image.desktop}
+                    alt={image.alt}
+                    width={image.desktopWidth}
+                    height={image.desktopHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                <div class="feature-body">
+                  <div>
+                    <h3>{entry.title}</h3>
+                    <p class="feature-description">{entry.description}</p>
+                  </div>
+                  <div class="feature-value">
+                    <div>
+                      <span class="value-label">Use it to</span>
+                      <p>{entry.use}</p>
+                    </div>
+                    <div>
+                      <span class="value-label">Best fit</span>
+                      <p>{entry.fit}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="feature-footer">
-              <span>Reviewed {entry.reviewedDate}</span>
-              <a href={entry.href} class="primary-link">Read the playbook <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-        ))}
+                <div class="feature-footer">
+                  <span>Reviewed {entry.reviewedDate}</span>
+                  <a href={entry.href} class="primary-link">Open this resource <span aria-hidden="true">↗</span></a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
 
@@ -134,9 +139,9 @@ const breadcrumbsJsonLd = {
 
     <section class="coverage-section" aria-labelledby="coverage-title">
       <div class="shell coverage-inner">
-        <p class="eyebrow">Future coverage</p>
-        <h2 id="coverage-title">More ways to grow, coming next.</h2>
-        <p>We plan to expand into sales, email and other marketing disciplines. Start with the ongoing SEO and AI-search playbook, and follow our <a href="/seo-aio-strategy/">living public implementation</a> to see each scoped cycle put into practice.</p>
+        <p class="eyebrow">Use the library</p>
+        <h2 id="coverage-title">Choose the control that matches the work.</h2>
+        <p>Use the launch checklist before a new website goes public. Use the ongoing SEO and AI-search playbook to decide what to improve, publish, verify, and review after the foundation is sound. Our <a href="/seo-aio-strategy/">living public implementation</a> shows how Markethink records scoped work over time.</p>
         <a href={PLAYBOOK_META.canonical.replace("https://markethink.ai", "")} class="text-link">Explore the SEO and AI-search playbook</a>
       </div>
     </section>
@@ -167,6 +172,7 @@ const breadcrumbsJsonLd = {
   .feature-section { padding: 108px 0 120px; background: #f5f5f1; }
   .feature-grid { display: grid; grid-template-columns: minmax(260px,.55fr) minmax(0,1.45fr); gap: clamp(42px, 8vw, 112px); align-items: start; }
   .feature-heading { position: sticky; top: 118px; }
+  .feature-list { display: grid; gap: 28px; min-width: 0; }
   .feature-heading h2, .use-grid h2, .coverage-inner h2 { font-size: clamp(2.8rem, 5.2vw, 5.4rem); letter-spacing: -.04em; }
   .feature-card { background: #0f1213; color: #f5f5f1; border-radius: 2px; overflow: hidden; box-shadow: 0 24px 70px rgba(15,18,19,.12); }
   .feature-meta, .feature-footer { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; padding: 22px 28px; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; }

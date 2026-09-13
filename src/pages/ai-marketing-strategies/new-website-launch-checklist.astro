@@ -1,0 +1,411 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { LIBRARY_META, usageModes } from "../../data/strategyLibrary.mjs";
+import {
+  WEBSITE_LAUNCH_META,
+  getCompactLaunchBrief,
+  getLaunchChecklistRows,
+  launchCategories,
+  launchPrinciples,
+  launchSources,
+} from "../../data/websiteLaunchChecklist.mjs";
+import { b2bEditorialImages } from "../../data/b2bEditorialImages";
+
+const launchImage = b2bEditorialImages[7];
+const standaloneBrief = getCompactLaunchBrief();
+const checklistCount = getLaunchChecklistRows().length;
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: WEBSITE_LAUNCH_META.title,
+  description: WEBSITE_LAUNCH_META.description,
+  url: WEBSITE_LAUNCH_META.canonical,
+  mainEntityOfPage: WEBSITE_LAUNCH_META.canonical,
+  datePublished: WEBSITE_LAUNCH_META.reviewedDate,
+  dateModified: WEBSITE_LAUNCH_META.reviewedDate,
+  version: WEBSITE_LAUNCH_META.version,
+  author: { "@type": "Organization", name: WEBSITE_LAUNCH_META.author, url: "https://markethink.ai/" },
+  publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" },
+  proficiencyLevel: "Intermediate",
+  about: ["Website launch", "Conversion testing", "Web accessibility", "Web analytics", "Technical SEO", "Web performance"],
+};
+const breadcrumbsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+    { "@type": "ListItem", position: 2, name: LIBRARY_META.name, item: LIBRARY_META.canonical },
+    { "@type": "ListItem", position: 3, name: WEBSITE_LAUNCH_META.title, item: WEBSITE_LAUNCH_META.canonical },
+  ],
+};
+---
+
+<Layout
+  title={WEBSITE_LAUNCH_META.seoTitle}
+  description={WEBSITE_LAUNCH_META.description}
+  canonical={WEBSITE_LAUNCH_META.canonical}
+  image={launchImage.sharing}
+  imageAlt={launchImage.alt}
+  imageWidth={launchImage.sharingWidth}
+  imageHeight={launchImage.sharingHeight}
+  type="article"
+  structuredData={[pageJsonLd, breadcrumbsJsonLd]}
+>
+  <Navbar />
+
+  <main>
+    <article>
+      <header class="launch-hero">
+        <div class="shell">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span aria-hidden="true">/</span><a href="/ai-marketing-strategies/">Strategies</a><span aria-hidden="true">/</span><span>Website launch</span>
+          </nav>
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Practical launch control</p>
+              <h1>{WEBSITE_LAUNCH_META.title}</h1>
+              <p class="dek">A comprehensive, plainspoken checklist for the details teams forget between a finished build and a reliable public website.</p>
+            </div>
+            <aside class="status-card" aria-label="Checklist status">
+              <span class="status-kicker">Evidence status</span>
+              <strong>{WEBSITE_LAUNCH_META.evidenceStatus}</strong>
+              <dl>
+                <div><dt>Checks</dt><dd>{checklistCount}</dd></div>
+                <div><dt>Categories</dt><dd>{launchCategories.length}</dd></div>
+                <div><dt>Version</dt><dd>{WEBSITE_LAUNCH_META.version}</dd></div>
+                <div><dt>Reviewed</dt><dd>{WEBSITE_LAUNCH_META.reviewedDate}</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <div class="action-bar" aria-label="Checklist actions">
+            <a class="action action-read" href="#checklist">Open the checklist</a>
+            <button class="action action-copy" type="button" data-copy-brief>Copy the launch brief</button>
+            <a class="action action-skill" href="/downloads/markethink-new-website-launch-checklist.zip" download>Download the skill</a>
+            <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+          </div>
+          <p class="format-note">Need one portable file? <a href="/downloads/markethink-new-website-launch-checklist.md" download>Download the complete Markdown checklist.</a></p>
+        </div>
+      </header>
+
+      <section class="purpose-section" aria-labelledby="purpose-title">
+        <div class="shell purpose-grid">
+          <div>
+            <p class="eyebrow">Why this exists</p>
+            <h2 id="purpose-title">A launch can look finished and still fail at the edges.</h2>
+          </div>
+          <div class="purpose-copy">
+            <p class="lead">The missing detail is often the one that breaks trust: a form that never arrives, a mobile CTA that covers the page, a staging noindex left behind, or analytics that never records the action.</p>
+            <p>This checklist turns every item into something observable. Each check includes a verification method and a pass criterion so the team can record evidence, fix defects, and name real blockers before traffic reaches the site.</p>
+            <div class="principle-callout">
+              <span>Launch rule</span>
+              <p>A successful build is one checkpoint. The release is ready only after the intended public URLs, content, interactions, downloads, tracking, and recovery path are verified.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sequence-section" aria-labelledby="sequence-title">
+        <div class="shell">
+          <header class="section-heading compact">
+            <p class="eyebrow">Release sequence</p>
+            <h2 id="sequence-title">Run it twice: before release and on production.</h2>
+          </header>
+          <ol class="sequence-grid">
+            <li><span>01</span><div><h3>Define the release</h3><p>Freeze the route and asset inventory, owners, supported devices, conversion path, policy decisions, performance budget, and rollback trigger.</p></div></li>
+            <li><span>02</span><div><h3>Verify the candidate</h3><p>Run every applicable check on the final staging candidate. Fix failures and record blockers instead of assuming they will resolve after launch.</p></div></li>
+            <li><span>03</span><div><h3>Release through the approved path</h3><p>Confirm the dated backup or last known good release, then publish only through the workflow the project owner authorized.</p></div></li>
+            <li><span>04</span><div><h3>Verify the public edge</h3><p>Use fresh sessions on the bare production URLs. Repeat priority desktop, mobile, conversion, metadata, header, link, download, console, and network checks.</p></div></li>
+            <li><span>05</span><div><h3>Watch the first window</h3><p>Start the named monitoring period for uptime, forms, analytics, indexing, performance, and feedback. Keep an owner and decision threshold for each signal.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <nav class="category-nav" aria-label="Checklist categories">
+        <div class="shell category-links">
+          {launchCategories.map((category, index) => <a href={`#${category.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{category.label}</a>)}
+        </div>
+      </nav>
+
+      <div id="checklist" class="checklist-shell">
+        {launchCategories.map((category, categoryIndex) => (
+          <section class={`category-section ${categoryIndex % 2 === 1 ? "tinted" : ""}`} id={category.id} aria-labelledby={`${category.id}-title`}>
+            <div class="shell">
+              <header class="category-heading">
+                <div class="category-index"><span>{String(categoryIndex + 1).padStart(2, "0")}</span><strong>{category.label}</strong></div>
+                <div><h2 id={`${category.id}-title`}>{category.title}</h2><p>{category.purpose}</p></div>
+              </header>
+              <div class="check-grid">
+                {category.items.map((item, itemIndex) => (
+                  <article class="check-card" id={item.id}>
+                    <div class="check-topline"><span>{String(itemIndex + 1).padStart(2, "0")}</span><code>{item.id}</code></div>
+                    <h3>{item.title}</h3>
+                    <dl>
+                      <div><dt>Verification method</dt><dd>{item.verify}</dd></div>
+                      <div><dt>Pass criterion</dt><dd>{item.pass}</dd></div>
+                    </dl>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <section class="principles-section" aria-labelledby="principles-title">
+        <div class="shell two-column">
+          <header>
+            <p class="eyebrow light">Operating boundaries</p>
+            <h2 id="principles-title">Keep the checklist useful without turning it into a promise.</h2>
+          </header>
+          <ol class="boundary-list">
+            {launchPrinciples.map((principle, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><p>{principle}</p></li>)}
+          </ol>
+        </div>
+      </section>
+
+      <section class="copy-section" id="copy-for-ai" aria-labelledby="copy-title">
+        <div class="shell copy-grid">
+          <header>
+            <p class="eyebrow">Use with an AI or team</p>
+            <h2 id="copy-title">Copy one brief that preserves the checks and the evidence standard.</h2>
+            <p>Use it with a capable AI assistant, a launch owner, or a cross-functional team. The brief asks for owners, statuses, evidence, blockers, and a production verification record.</p>
+          </header>
+          <div class="mode-cards">
+            {usageModes.map((mode) => <article><h3>{mode.label}</h3><p>{mode.detail}</p></article>)}
+          </div>
+          <details class="brief-details" data-brief-details>
+            <summary>View or manually copy the complete launch brief</summary>
+            <div class="brief-panel">
+              <label for="standalone-brief">Complete new website launch brief</label>
+              <textarea id="standalone-brief" readonly rows="20">{standaloneBrief}</textarea>
+              <div class="manual-actions">
+                <button type="button" data-select-brief>Select all text</button>
+                <a href="/downloads/markethink-new-website-launch-checklist.md" download>Download Markdown</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="sources-section" aria-labelledby="sources-title">
+        <div class="shell two-column">
+          <header>
+            <p class="eyebrow">Primary guidance</p>
+            <h2 id="sources-title">Use the source that matches the check.</h2>
+            <p>Reviewed {WEBSITE_LAUNCH_META.reviewedDate}. Standards, platform behavior, and legal requirements can change, so recheck the live source when the detail is material.</p>
+          </header>
+          <ol class="source-list">
+            {launchSources.map((source) => (
+              <li>
+                <span>{source.publisher}</span>
+                <a href={source.url} rel="noopener noreferrer">{source.title}</a>
+                <p>{source.use}</p>
+                <code>{source.url}</code>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="shell footer-inner">
+          <p>Version {WEBSITE_LAUNCH_META.version} · Reviewed {WEBSITE_LAUNCH_META.reviewedDate} · Maintained by {WEBSITE_LAUNCH_META.author}</p>
+          <a href="/ai-marketing-strategies/">Back to the AI Marketing Strategy Library</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <div class="mobile-action" aria-label="Mobile checklist action">
+    <a href="#copy-for-ai">Copy or download the checklist</a>
+  </div>
+  <Footer />
+</Layout>
+
+<script>
+  const copyButtons = document.querySelectorAll('[data-copy-brief]');
+  const status = document.querySelector('[data-copy-status]');
+  const brief = document.querySelector('#standalone-brief');
+  const details = document.querySelector('[data-brief-details]');
+  const selectButton = document.querySelector('[data-select-brief]');
+
+  function revealManualFallback(message) {
+    if (details instanceof HTMLDetailsElement) details.open = true;
+    if (status instanceof HTMLElement) status.textContent = message;
+    if (brief instanceof HTMLTextAreaElement) {
+      brief.focus();
+      brief.select();
+      brief.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    }
+  }
+
+  copyButtons.forEach((copyButton) => copyButton.addEventListener('click', async () => {
+    if (!(brief instanceof HTMLTextAreaElement)) return;
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(brief.value);
+      if (status instanceof HTMLElement) status.textContent = 'Copied. Paste the complete brief into your AI or team workspace.';
+    } catch {
+      revealManualFallback('Automatic copy was unavailable. The complete brief is selected below for manual copy.');
+    }
+  }));
+
+  selectButton?.addEventListener('click', () => {
+    if (!(brief instanceof HTMLTextAreaElement)) return;
+    brief.focus();
+    brief.select();
+    if (status instanceof HTMLElement) status.textContent = 'The complete brief is selected. Use your device copy command.';
+  });
+</script>
+
+<style is:global>
+  .mt-site-header { background: #0f1213 !important; }
+</style>
+
+<style>
+  :global(body) { background: #f5f5f1; color: #0f1213; }
+  .shell { width: min(1240px, calc(100% - 64px)); margin: 0 auto; }
+  .launch-hero { padding: 148px 0 70px; background: #edf4ea; border-bottom: 1px solid rgba(15,18,19,.18); }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 58px; color: #686b6c; font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+  .breadcrumbs a { color: #0f1213; text-decoration: underline; text-underline-offset: 4px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0,1.55fr) minmax(280px,.45fr); gap: clamp(44px,8vw,118px); align-items: end; }
+  .eyebrow { margin: 0 0 20px; color: #3b5c34; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; }
+  .eyebrow.light { color: #8ee47c; }
+  h1,h2,h3 { margin: 0; font-family: "Instrument Serif",Georgia,serif; font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+  h1 { max-width: 930px; font-size: clamp(4rem,8vw,7.25rem); }
+  h2 { font-size: clamp(2.8rem,5.4vw,5.3rem); }
+  h3 { font-size: 2rem; }
+  .dek { max-width: 790px; margin: 32px 0 0; color: #3f4748; font-size: clamp(1.14rem,2vw,1.45rem); line-height: 1.58; }
+  .status-card { padding: 28px; background: #f5f5f1; border-top: 4px solid #0f1213; }
+  .status-kicker { display: block; margin-bottom: 16px; color: #3b5c34; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; }
+  .status-card strong { display: block; font-family: "Instrument Serif",Georgia,serif; font-size: 1.65rem; font-weight: 400; line-height: 1.12; }
+  .status-card dl { margin: 24px 0 0; border-top: 1px solid #b4b6b6; }
+  .status-card dl div { display:flex; justify-content:space-between; gap:20px; padding:10px 0; border-bottom:1px solid #b4b6b6; }
+  .status-card dt,.status-card dd { margin:0; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
+  .status-card dd { font-weight:700; text-align:right; }
+  .action-bar { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 58px; }
+  .action { display:flex; min-height:56px; align-items:center; justify-content:center; padding:12px 18px; border:2px solid #0f1213; border-radius:0; font: inherit; font-weight:800; text-align:center; text-decoration:none; cursor:pointer; }
+  .action-read { background:#0f1213; color:#f5f5f1; }
+  .action-copy { background:#69d254; color:#0f1213; }
+  .action-skill { background:transparent; color:#0f1213; }
+  .action:hover { transform: translateY(-2px); }
+  .copy-status { grid-column:1/-1; min-height:20px; margin:2px 0 0; color:#274c20; font-size:.82rem; font-weight:700; }
+  .format-note { margin:10px 0 0; color:#505758; font-size:.85rem; }
+  .format-note a { color:#0f1213; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+  .purpose-section,.sequence-section,.copy-section,.sources-section { padding:112px 0; }
+  .purpose-grid,.copy-grid,.two-column { display:grid; grid-template-columns:minmax(250px,.66fr) minmax(0,1.34fr); gap:clamp(50px,9vw,140px); }
+  .purpose-copy .lead { margin:0; font-family:"Instrument Serif",Georgia,serif; font-size:clamp(2rem,3.5vw,3.25rem); line-height:1.08; }
+  .purpose-copy > p:not(.lead) { max-width:690px; margin:30px 0 0; color:#53595a; line-height:1.7; }
+  .principle-callout { display:grid; grid-template-columns:130px 1fr; gap:28px; margin-top:42px; padding:24px 0; border-top:2px solid #0f1213; border-bottom:1px solid #b4b6b6; }
+  .principle-callout span { font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+  .principle-callout p { margin:0; line-height:1.6; }
+  .sequence-section,.copy-section { background:#edf4ea; }
+  .section-heading { max-width:920px; margin-bottom:68px; }
+  .section-heading.compact { max-width:820px; }
+  .sequence-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:1px; margin:0; padding:0; list-style:none; background:#b4b6b6; border:1px solid #b4b6b6; }
+  .sequence-grid li { min-height:290px; padding:26px; background:#f5f5f1; }
+  .sequence-grid > li > span { display:block; margin-bottom:48px; color:#3b5c34; font-size:.72rem; font-weight:800; }
+  .sequence-grid h3 { font-size:1.75rem; }
+  .sequence-grid p { margin:15px 0 0; color:#505758; font-size:.91rem; line-height:1.58; }
+  .category-nav { position:sticky; top:76px; z-index:20; border-top:1px solid rgba(245,245,241,.16); border-bottom:1px solid rgba(245,245,241,.16); background:#0f1213; color:#f5f5f1; }
+  .category-links { display:flex; overflow-x:auto; scrollbar-width:thin; }
+  .category-links a { display:flex; flex:0 0 auto; gap:10px; align-items:center; min-height:58px; padding:0 20px; border-right:1px solid rgba(245,245,241,.16); color:#f5f5f1; font-size:.76rem; font-weight:700; text-decoration:none; }
+  .category-links span { color:#8ee47c; font-size:.65rem; }
+  .category-section { padding:108px 0; scroll-margin-top:142px; background:#f5f5f1; }
+  .category-section.tinted { background:#edf4ea; }
+  .category-heading { display:grid; grid-template-columns:220px minmax(0,1fr); gap:clamp(40px,8vw,120px); margin-bottom:64px; }
+  .category-index { padding-top:8px; border-top:3px solid #0f1213; }
+  .category-index span,.category-index strong { display:block; }
+  .category-index span { color:#3b5c34; font-size:.72rem; font-weight:800; }
+  .category-index strong { margin-top:12px; font-size:.74rem; text-transform:uppercase; letter-spacing:.12em; }
+  .category-heading > div:last-child > p { max-width:750px; margin:26px 0 0; color:#505758; line-height:1.7; }
+  .check-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .check-card { padding:30px; background:#fff; border:1px solid #c9cbc7; border-top:4px solid #0f1213; scroll-margin-top:150px; }
+  .category-section:not(.tinted) .check-card { background:#edf4ea; }
+  .check-topline { display:flex; justify-content:space-between; gap:18px; align-items:center; margin-bottom:36px; }
+  .check-topline span { color:#3b5c34; font-size:.72rem; font-weight:800; }
+  .check-topline code { overflow-wrap:anywhere; color:#686b6c; font-size:.67rem; }
+  .check-card h3 { max-width:520px; font-size:clamp(2rem,3vw,3rem); }
+  .check-card dl { margin:30px 0 0; }
+  .check-card dl div { padding:20px 0; border-top:1px solid #c9cbc7; }
+  .check-card dt { margin:0 0 10px; color:#3b5c34; font-size:.69rem; font-weight:800; text-transform:uppercase; letter-spacing:.11em; }
+  .check-card dd { margin:0; color:#454c4d; line-height:1.62; }
+  .principles-section { padding:108px 0; background:#0f1213; color:#f5f5f1; }
+  .principles-section h2 { color:#f5f5f1; }
+  .boundary-list { margin:0; padding:0; list-style:none; border-top:1px solid rgba(245,245,241,.26); }
+  .boundary-list li { display:grid; grid-template-columns:54px 1fr; gap:20px; padding:20px 0; border-bottom:1px solid rgba(245,245,241,.2); }
+  .boundary-list span { color:#8ee47c; font-size:.72rem; font-weight:800; }
+  .boundary-list p { margin:0; color:#d8d9d6; line-height:1.62; }
+  .copy-grid > header > p:last-child { margin:26px 0 0; color:#4e5556; line-height:1.7; }
+  .mode-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .mode-cards article { padding:24px; background:#f5f5f1; border-top:3px solid #0f1213; }
+  .mode-cards h3 { font-size:1.75rem; }
+  .mode-cards p { margin:12px 0 0; color:#555b5c; font-size:.9rem; line-height:1.55; }
+  .brief-details { grid-column:1/-1; margin-top:34px; border-top:2px solid #0f1213; border-bottom:1px solid #b4b6b6; }
+  .brief-details summary { padding:22px 0; font-weight:800; cursor:pointer; }
+  .brief-panel { padding:0 0 30px; }
+  .brief-panel label { display:block; margin-bottom:10px; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .brief-panel textarea { box-sizing:border-box; width:100%; max-width:100%; padding:18px; resize:vertical; border:1px solid #686b6c; background:#f5f5f1; color:#0f1213; font:.84rem/1.55 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .manual-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
+  .manual-actions button,.manual-actions a { display:inline-flex; min-height:44px; align-items:center; padding:0 16px; border:2px solid #0f1213; background:#0f1213; color:#f5f5f1; font:inherit; font-weight:800; text-decoration:none; cursor:pointer; }
+  .manual-actions a { background:transparent; color:#0f1213; }
+  .sources-section header > p:last-child { margin:24px 0 0; color:#515758; line-height:1.62; }
+  .source-list { margin:0; padding:0; list-style:none; }
+  .source-list li { padding:25px 0; border-top:1px solid #b4b6b6; }
+  .source-list li > span { display:block; margin-bottom:9px; color:#3b5c34; font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .source-list a { color:#0f1213; font-family:"Instrument Serif",Georgia,serif; font-size:1.75rem; line-height:1.15; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
+  .source-list p { margin:12px 0; color:#53595a; line-height:1.58; }
+  .source-list code { display:block; overflow-wrap:anywhere; color:#686b6c; font-size:.7rem; }
+  .article-footer { padding:30px 0; background:#0f1213; color:#f5f5f1; }
+  .footer-inner { display:flex; justify-content:space-between; gap:26px; align-items:center; }
+  .footer-inner p { margin:0; color:#b4b6b6; font-size:.78rem; }
+  .footer-inner a { color:#8ee47c; font-weight:800; text-decoration:underline; }
+  .mobile-action { display:none; }
+  .action:focus-visible,a:focus-visible,button:focus-visible,summary:focus-visible,textarea:focus-visible { outline:3px solid #69d254; outline-offset:4px; }
+  @media (max-width: 1100px) {
+    .sequence-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .sequence-grid li:last-child { grid-column:1/-1; min-height:0; }
+  }
+  @media (max-width: 960px) {
+    .shell { width:min(100% - 40px,1240px); }
+    .hero-grid,.purpose-grid,.copy-grid,.two-column { grid-template-columns:1fr; }
+    .status-card { max-width:620px; }
+    .category-heading { grid-template-columns:160px minmax(0,1fr); }
+    .brief-details { grid-column:auto; }
+  }
+  @media (max-width: 680px) {
+    :global(body) { padding-bottom:64px; }
+    .shell { width:calc(100% - 28px); }
+    .launch-hero { padding:112px 0 58px; }
+    .breadcrumbs { margin-bottom:42px; }
+    h1 { font-size:clamp(3.45rem,17vw,5rem); overflow-wrap:anywhere; }
+    .action-bar { grid-template-columns:1fr; }
+    .copy-status { grid-column:auto; }
+    .purpose-section,.sequence-section,.copy-section,.sources-section,.category-section { padding:78px 0; }
+    .sequence-grid,.check-grid,.mode-cards { grid-template-columns:1fr; }
+    .sequence-grid li,.sequence-grid li:last-child { grid-column:auto; min-height:0; }
+    .sequence-grid > li > span { margin-bottom:26px; }
+    .category-nav { top:64px; }
+    .category-heading { grid-template-columns:1fr; gap:28px; margin-bottom:46px; }
+    .category-index { max-width:180px; }
+    .check-card { padding:26px 22px; }
+    .check-card h3 { font-size:2.35rem; overflow-wrap:anywhere; }
+    .principle-callout { grid-template-columns:1fr; gap:12px; }
+    .footer-inner { flex-direction:column; align-items:flex-start; }
+    .mobile-action { position:fixed; left:0; right:0; bottom:0; z-index:80; display:block; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); background:#0f1213; }
+    .mobile-action a { display:flex; min-height:48px; align-items:center; justify-content:center; background:#69d254; color:#0f1213; font-size:.82rem; font-weight:800; text-decoration:none; }
+  }
+  @media (max-width: 360px) {
+    .shell { width:calc(100% - 24px); }
+    h1 { font-size:3.25rem; }
+    h2 { font-size:2.75rem; }
+    .status-card,.check-card { padding-left:20px; padding-right:20px; }
+    .category-links a { padding:0 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .action:hover { transform:none; }
+    html:focus-within { scroll-behavior:auto; }
+  }
+</style>
