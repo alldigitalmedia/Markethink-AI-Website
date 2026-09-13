@@ -98,7 +98,7 @@ assert.ok(markdown.includes(`Reviewed: ${PLAYBOOK_META.reviewedDate}`));
 assert.ok(markdown.includes(`Canonical page: ${PLAYBOOK_META.canonical}`));
 assert.equal(PLAYBOOK_META.title, "SEO & AI Search: An Ongoing Strategy Playbook");
 assert.equal(PLAYBOOK_META.seoTitle, "SEO & AI Search: An Ongoing Strategy Playbook | Markethink");
-assert.equal(PLAYBOOK_META.version, "1.1.0");
+assert.equal(PLAYBOOK_META.version, "1.1.1");
 assert.equal(PLAYBOOK_META.reviewedDate, "2026-09-13");
 for (const text of [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()]) {
   assert.ok(text.includes(PLAYBOOK_META.version), "version must agree across HTML, brief, Markdown, and ZIP skill");
@@ -163,43 +163,55 @@ const entryCount = (checklist.match(/^- Action link:/gm) || []).length;
 assert.equal(entryCount, 19);
 
 const illustrativeDryRun = {
-  label: "Illustrative beyond-day-30 dry run. Not product compatibility or performance evidence.",
+  label: "Illustrative established-program day-45 dry run. Not product compatibility or performance evidence.",
   context: {
+    programMode: "established",
     website: "https://example.com/",
     business: "Illustrative B2B workflow consultancy",
     audience: "US operations leaders",
     objective: "Support qualified consultation requests",
     currentPages: ["/", "/services/", "/contact/"],
-    constraints: ["Two page improvements maximum per cycle", "No publishing authorization", "No scheduled tasks or monitoring"],
+    capacity: { marketer: "8h", engineer: "1h", reviewer: "30m" },
+    constraints: ["Resume from day-45 records", "No day-1 restart", "No publishing authorization", "No scheduled tasks or monitoring"],
   },
-  toolRegister: ["Search Console: Not available", "Analytics: Not available", "Keyword provider: Not available", "User exports: Not available"],
-  initialCycle: [
-    { window: "Days 1 to 5", action: "Confirm page jobs and technical access", owner: "Business owner", dependency: "Website access", effort: "Small", acceptance: "Dated URL and access register" },
-    { window: "Days 6 to 12", action: "Prepare one service-page brief", owner: "Marketing lead", dependency: "Approved offer facts", effort: "Medium", acceptance: "Reviewable brief with sources and limits" },
-    { window: "Days 13 to 22", action: "Draft one sourced supporting answer", owner: "Writer", dependency: "Expert input", effort: "Medium", acceptance: "Draft with source URLs; publishing still unauthorized" },
-    { window: "Days 23 to 30", action: "Verify only separately authorized releases", owner: "Web owner", dependency: "Explicit release approval", effort: "Small", acceptance: "Production URL evidence or Not shipped" },
+  existingRecords: [
+    { id: "SEO-004", currentStatus: "Verified", statusHistoryRef: "delivery-log#SEO-004-verified", evidence: "Existing production-verification record" },
+    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", evidence: "Recorded expert-input dependency" },
+    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", evidence: "Existing approved backlog record" },
   ],
-  baseline: ["Search volume: Not available", "Organic difficulty: Not available", "Ad competition: Not available", "Indexing: Not available", "Traffic: Not available", "Conversions: Not available", "Sampled AI citations: Not available"],
+  toolRegister: ["Search Console: supplied export with unequal comparison windows", "Analytics: Not available", "Keyword provider: Not available", "User exports: supplied"],
+  currentCycle: [
+    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", action: "Preserve the blocked sourced answer until expert input arrives", owner: "Marketer", dependency: "Expert input", effort: "No current allocation", acceptance: "Original ID and blocked evidence remain unchanged" },
+    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", action: "Review the existing service-page brief", owner: "Marketer", dependency: "Approved offer facts", effort: "Within 8h marketer and 30m reviewer budget", acceptance: "Review record linked to SEO-016" },
+    { proposedId: "PROPOSED-SEO-020", currentStatus: "Proposed", statusHistoryRef: "new proposal; no prior status history", action: "Scope one engineering check", owner: "Engineer", dependency: "SEO-016 review", effort: "Within 1h engineer budget", acceptance: "Scoped check only; no unsupported feature claim" },
+  ],
+  baseline: ["Search volume: Not available", "Organic difficulty: Not available", "Ad competition: Not available", "Indexing: Not available", "Traffic: unequal export windows; no growth claim", "Conversions: Not available", "Sampled AI citations: Not available"],
   cycleReview: {
-    delivery: "One service-page brief delivered; supporting answer unfinished and carried forward; nothing published",
-    results: "Rankings, traffic, citations, inquiries, and revenue: Not available",
+    delivery: "Verified, Blocked, and Planned records preserved with original IDs and status-history references; nothing published",
+    results: "Unequal export windows do not support a growth claim; other outcomes remain Not available",
   },
   nextCycleBacklog: [
-    { priority: 1, item: "Carry forward the unfinished sourced answer", reason: "Expert input is still unavailable", capacity: "One of two available page slots", scope: "Draft only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
-    { priority: 2, item: "Review the service-page brief against approved offer facts", reason: "Delivered work needs review before implementation", capacity: "Second of two available page slots", scope: "Review only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
+    { id: "SEO-011", currentStatus: "Blocked", statusHistoryRef: "status-log#SEO-011-blocked", priority: 1, item: "Carry forward the blocked sourced answer", reason: "Expert input is still unavailable", capacity: "No current allocation", scope: "Preserve only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
+    { id: "SEO-016", currentStatus: "Planned", statusHistoryRef: "planning-log#SEO-016-planned", priority: 2, item: "Review the existing service-page brief", reason: "Planned work needs review before implementation", capacity: "8h marketer and 30m reviewer", scope: "Review only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
+    { proposedId: "PROPOSED-SEO-020", currentStatus: "Proposed", statusHistoryRef: "new proposal; no prior status history", priority: 3, item: "Scope one engineering check", reason: "Newly justified from the current review", capacity: "1h engineer", scope: "Scope only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
   ],
-  changeLog: [{ date: PLAYBOOK_META.reviewedDate, decision: "Carry unfinished work forward within the two-item capacity limit", delivery: "One brief delivered", results: "Not available", lesson: "Missing expert input remains a dependency", next: "Review at the next user-authorized checkpoint" }],
+  changeLog: [{ date: PLAYBOOK_META.reviewedDate, decision: "Resume the established program without restarting day 1", delivery: "Existing status evidence preserved", results: "No growth claim from unequal windows", lesson: "IDs and transition evidence remain stable across planning cycles", next: "Review at the next user-authorized checkpoint" }],
 };
-assert.ok(illustrativeDryRun.label.includes("beyond-day-30"));
-assert.equal(illustrativeDryRun.initialCycle.length, 4);
-assert.ok(illustrativeDryRun.initialCycle.every((item) => item.owner && item.dependency && item.effort && item.acceptance));
-assert.ok(illustrativeDryRun.toolRegister.every((item) => item.endsWith("Not available")));
-assert.ok(illustrativeDryRun.baseline.every((item) => item.endsWith("Not available")));
-assert.match(illustrativeDryRun.cycleReview.delivery, /carried forward/);
-assert.match(illustrativeDryRun.cycleReview.results, /Not available/);
-assert.equal(illustrativeDryRun.nextCycleBacklog.length, 2, "backlog must respect the two-item capacity limit");
+assert.ok(illustrativeDryRun.label.includes("established-program day-45"));
+assert.equal(illustrativeDryRun.context.programMode, "established");
+assert.deepEqual(illustrativeDryRun.context.capacity, { marketer: "8h", engineer: "1h", reviewer: "30m" });
+assert.equal(illustrativeDryRun.currentCycle.length, 3);
+assert.ok(illustrativeDryRun.currentCycle.every((item) => (item.id || item.proposedId) && item.currentStatus && item.statusHistoryRef && item.owner && item.dependency && item.effort && item.acceptance));
+assert.deepEqual(illustrativeDryRun.existingRecords.map((item) => [item.id, item.currentStatus]), [["SEO-004", "Verified"], ["SEO-011", "Blocked"], ["SEO-016", "Planned"]]);
+assert.ok(illustrativeDryRun.toolRegister.some((item) => item.includes("unequal comparison windows")));
+assert.ok(illustrativeDryRun.baseline.some((item) => item.includes("no growth claim")));
+assert.match(illustrativeDryRun.cycleReview.delivery, /original IDs and status-history references/);
+assert.match(illustrativeDryRun.cycleReview.results, /do not support a growth claim/);
+assert.equal(illustrativeDryRun.nextCycleBacklog.length, 3, "backlog must respect the stated role budgets");
+assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => (item.id || item.proposedId) && item.currentStatus && item.statusHistoryRef));
 assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => /No publishing/.test(item.authorization)));
 assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => !/outreach authorized|monitoring authorized|paid tools authorized/i.test(item.authorization)));
+assert.equal(illustrativeDryRun.nextCycleBacklog[2].proposedId, "PROPOSED-SEO-020");
 
 assert.equal(requiredOutputs.length, 8);
 assert.equal(repeatCycle.length, 6);
@@ -213,6 +225,25 @@ for (const marker of [
   "Next-cycle backlog and review checkpoint",
 ]) assert.ok(`${entryHtml}
 ${markdown}`.includes(marker), `ongoing method marker missing: ${marker}`);
+const consistencyTexts = [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()];
+for (const marker of [
+  "For a new program, produce the initial 30-day foundation cycle.",
+  "For an established program, resume from its existing records and produce the current or next capacity-aware cycle without restarting day 1.",
+  "existing work-item ID or proposed new ID",
+  "recorded status history or evidence-transition reference",
+  "Never renumber it, overwrite past delivery or status evidence",
+  "distinct proposed new IDs",
+]) {
+  assert.ok(consistencyTexts.some((text) => text.includes(marker)), `conditional cycle or record-preservation marker missing: ${marker}`);
+}
+for (const oldDefect of ["Prioritized initial 30-day cycle", "Produce the initial implementation cycle"]) {
+  for (const text of consistencyTexts) assert.ok(!text.includes(oldDefect), `old initial-only instruction remains: ${oldDefect}`);
+}
+const outputTemplate = packageFiles[`${PLAYBOOK_META.portableName}/assets/OUTPUT-TEMPLATES.md`];
+for (const marker of ["Existing work-item ID or proposed new ID", "Current status", "Status history or evidence-transition reference"]) {
+  assert.ok(outputTemplate.includes(marker), `output template record field missing: ${marker}`);
+}
+
 const permissionBoundary = "Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach.";
 for (const text of [entryHtml, markdown, skill]) assert.ok(text.includes(permissionBoundary), "permission boundary missing from changed playbook format");
 for (const accidentalAuthorization of [/ongoing (?:authorizes|schedules)/i, /continuous monitoring is (?:enabled|authorized)/i, /paid tool calls are authorized/i, /publishing is authorized/i, /outreach is authorized/i]) {
@@ -228,5 +259,5 @@ console.log(JSON.stringify({
   zipFiles: [...zipped.keys()],
   version: PLAYBOOK_META.version,
   reviewed: PLAYBOOK_META.reviewedDate,
-  dryRun: "beyond-day-30 dry run preserved unknowns, separate reviews, carry-forward work, capacity, backlog, and authorization limits",
+  dryRun: "established-program day-45 scenario preserved original IDs, Verified/Blocked/Planned history, unequal-window limits, role budgets, separate reviews, and authorization boundaries",
 }, null, 2));
