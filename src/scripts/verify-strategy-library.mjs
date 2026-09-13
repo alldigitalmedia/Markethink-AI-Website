@@ -11,6 +11,7 @@ import {
   getStandaloneBrief,
   getStandaloneMarkdown,
   packageFiles,
+  repeatCycle,
   requiredOutputs,
   strategyEntries,
 } from "../data/strategyLibrary.mjs";
@@ -61,7 +62,8 @@ for (const marker of [
 assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp"));
 assert.ok(hubHtml.includes("b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp"));
 assert.ok(hubHtml.includes("Conceptual editorial scene of a marketer comparing two campaign directions in an active production workspace."));
-assert.ok(entryHtml.includes("Turn your website, offer and available search data into a focused 30-day plan, with page priorities, practical briefs and a clear way to review progress."));
+assert.ok(entryHtml.includes("Build a living SEO and AI-search strategy from your website, offer and available evidence."));
+assert.ok(entryHtml.includes("The first 30 days establish the foundation; each review creates a capacity-aware next-cycle backlog."));
 assert.ok(entryHtml.includes("What you will create"));
 assert.ok(hubHtml.includes(PLAYBOOK_META.canonical.replace("https://markethink.ai", "")));
 assert.ok(entryHtml.includes(LIBRARY_META.canonical.replace("https://markethink.ai", "")));
@@ -94,6 +96,14 @@ assert.ok(markdown.includes(getStandaloneBrief()));
 assert.ok(markdown.includes(`Version: ${PLAYBOOK_META.version}`));
 assert.ok(markdown.includes(`Reviewed: ${PLAYBOOK_META.reviewedDate}`));
 assert.ok(markdown.includes(`Canonical page: ${PLAYBOOK_META.canonical}`));
+assert.equal(PLAYBOOK_META.title, "SEO & AI Search: An Ongoing Strategy Playbook");
+assert.equal(PLAYBOOK_META.seoTitle, "SEO & AI Search: An Ongoing Strategy Playbook | Markethink");
+assert.equal(PLAYBOOK_META.version, "1.1.0");
+assert.equal(PLAYBOOK_META.reviewedDate, "2026-09-13");
+for (const text of [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()]) {
+  assert.ok(text.includes(PLAYBOOK_META.version), "version must agree across HTML, brief, Markdown, and ZIP skill");
+  assert.ok(text.includes(PLAYBOOK_META.reviewedDate), "review date must agree across HTML, brief, Markdown, and ZIP skill");
+}
 assert.ok(!markdown.includes("references/ORIGINAL-SOURCES.md"), "standalone Markdown must not require relative files");
 assert.ok(!markdown.includes("assets/OUTPUT-TEMPLATES.md"), "standalone Markdown must not require relative files");
 
@@ -146,39 +156,68 @@ const publicTexts = [markdown, ...zipped.values()];
 const forbidden = [/HERMES_/i, /RAILWAY_/i, /\/app\/workspace/i, /\/opt\/data/i, /dashboard\.markethink\.ai\/api/i, /x-hermes-token/i, /clientId\s*:/i];
 for (const text of publicTexts) for (const pattern of forbidden) assert.doesNotMatch(text, pattern);
 
+assert.match(roadmap, /id:\s*"ongoing-strategy-follow-up-2026-09-13"/);
 assert.match(roadmap, /id:\s*"strategy-library-playbook-launch-2026-09-13"/);
 for (const marker of ["Planned (13)", "In progress (2)", "Live (0)", "Verified (4)", "Blocked (0)"]) assert.ok(checklist.includes(marker));
 const entryCount = (checklist.match(/^- Action link:/gm) || []).length;
 assert.equal(entryCount, 19);
 
 const illustrativeDryRun = {
-  label: "Illustrative format-validation dry run. Not product compatibility or performance evidence.",
+  label: "Illustrative beyond-day-30 dry run. Not product compatibility or performance evidence.",
   context: {
     website: "https://example.com/",
     business: "Illustrative B2B workflow consultancy",
     audience: "US operations leaders",
     objective: "Support qualified consultation requests",
     currentPages: ["/", "/services/", "/contact/"],
-    constraints: ["Two page improvements maximum", "No publishing authorization"],
+    constraints: ["Two page improvements maximum per cycle", "No publishing authorization", "No scheduled tasks or monitoring"],
   },
   toolRegister: ["Search Console: Not available", "Analytics: Not available", "Keyword provider: Not available", "User exports: Not available"],
-  intentMap: [{ family: "workflow consulting", url: "/services/", evidence: "Illustrative supplied context only", action: "Review page fit before recommending changes" }],
-  plan: [
+  initialCycle: [
     { window: "Days 1 to 5", action: "Confirm page jobs and technical access", owner: "Business owner", dependency: "Website access", effort: "Small", acceptance: "Dated URL and access register" },
     { window: "Days 6 to 12", action: "Prepare one service-page brief", owner: "Marketing lead", dependency: "Approved offer facts", effort: "Medium", acceptance: "Reviewable brief with sources and limits" },
     { window: "Days 13 to 22", action: "Draft one sourced supporting answer", owner: "Writer", dependency: "Expert input", effort: "Medium", acceptance: "Draft with source URLs; publishing still unauthorized" },
     { window: "Days 23 to 30", action: "Verify only separately authorized releases", owner: "Web owner", dependency: "Explicit release approval", effort: "Small", acceptance: "Production URL evidence or Not shipped" },
   ],
   baseline: ["Search volume: Not available", "Organic difficulty: Not available", "Ad competition: Not available", "Indexing: Not available", "Traffic: Not available", "Conversions: Not available", "Sampled AI citations: Not available"],
-  reviewLog: [{ decision: "Keep scope to two page improvements", shipped: "Nothing", outcomes: "Not available", next: "Request only material missing inputs" }],
+  cycleReview: {
+    delivery: "One service-page brief delivered; supporting answer unfinished and carried forward; nothing published",
+    results: "Rankings, traffic, citations, inquiries, and revenue: Not available",
+  },
+  nextCycleBacklog: [
+    { priority: 1, item: "Carry forward the unfinished sourced answer", reason: "Expert input is still unavailable", capacity: "One of two available page slots", scope: "Draft only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
+    { priority: 2, item: "Review the service-page brief against approved offer facts", reason: "Delivered work needs review before implementation", capacity: "Second of two available page slots", scope: "Review only", authorization: "No publishing, paid tools, scheduled tasks, monitoring, or outreach" },
+  ],
+  changeLog: [{ date: PLAYBOOK_META.reviewedDate, decision: "Carry unfinished work forward within the two-item capacity limit", delivery: "One brief delivered", results: "Not available", lesson: "Missing expert input remains a dependency", next: "Review at the next user-authorized checkpoint" }],
 };
-assert.ok(illustrativeDryRun.label.startsWith("Illustrative"));
-assert.equal(illustrativeDryRun.plan.length, 4);
-assert.ok(illustrativeDryRun.plan.every((item) => item.owner && item.dependency && item.effort && item.acceptance));
+assert.ok(illustrativeDryRun.label.includes("beyond-day-30"));
+assert.equal(illustrativeDryRun.initialCycle.length, 4);
+assert.ok(illustrativeDryRun.initialCycle.every((item) => item.owner && item.dependency && item.effort && item.acceptance));
 assert.ok(illustrativeDryRun.toolRegister.every((item) => item.endsWith("Not available")));
 assert.ok(illustrativeDryRun.baseline.every((item) => item.endsWith("Not available")));
-assert.ok(illustrativeDryRun.plan.some((item) => item.acceptance.includes("publishing still unauthorized")));
-assert.equal(requiredOutputs.length, 7);
+assert.match(illustrativeDryRun.cycleReview.delivery, /carried forward/);
+assert.match(illustrativeDryRun.cycleReview.results, /Not available/);
+assert.equal(illustrativeDryRun.nextCycleBacklog.length, 2, "backlog must respect the two-item capacity limit");
+assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => /No publishing/.test(item.authorization)));
+assert.ok(illustrativeDryRun.nextCycleBacklog.every((item) => !/outreach authorized|monitoring authorized|paid tools authorized/i.test(item.authorization)));
+
+assert.equal(requiredOutputs.length, 8);
+assert.equal(repeatCycle.length, 6);
+for (const marker of [
+  "Update the evidence baseline",
+  "Review delivery and results separately",
+  "Carry unfinished work forward",
+  "Add newly justified opportunities",
+  "Prioritize the next capacity-aware cycle",
+  "Append a dated decision and change log",
+  "Next-cycle backlog and review checkpoint",
+]) assert.ok(`${entryHtml}
+${markdown}`.includes(marker), `ongoing method marker missing: ${marker}`);
+const permissionBoundary = "Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach.";
+for (const text of [entryHtml, markdown, skill]) assert.ok(text.includes(permissionBoundary), "permission boundary missing from changed playbook format");
+for (const accidentalAuthorization of [/ongoing (?:authorizes|schedules)/i, /continuous monitoring is (?:enabled|authorized)/i, /paid tool calls are authorized/i, /publishing is authorized/i, /outreach is authorized/i]) {
+  for (const text of [entryHtml, markdown, skill]) assert.doesNotMatch(text, accidentalAuthorization, "ongoing framing accidentally expanded authorization");
+}
 
 console.log(JSON.stringify({
   pages: 2,
@@ -189,5 +228,5 @@ console.log(JSON.stringify({
   zipFiles: [...zipped.keys()],
   version: PLAYBOOK_META.version,
   reviewed: PLAYBOOK_META.reviewedDate,
-  dryRun: "illustrative format validation passed with all unavailable measurements preserved",
+  dryRun: "beyond-day-30 dry run preserved unknowns, separate reviews, carry-forward work, capacity, backlog, and authorization limits",
 }, null, 2));
