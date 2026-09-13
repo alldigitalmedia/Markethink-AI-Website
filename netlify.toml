@@ -102,3 +102,16 @@
     Content-Type = "application/zip"
     Content-Disposition = "attachment; filename=\"markethink-seo-aio-playbook.zip\""
 
+[[headers]]
+  for = "/downloads/markethink-new-website-launch-checklist.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    Content-Disposition = "attachment; filename=\"markethink-new-website-launch-checklist.md\""
+    Link = "<https://markethink.ai/ai-marketing-strategies/new-website-launch-checklist/>; rel=\"canonical\""
+
+[[headers]]
+  for = "/downloads/markethink-new-website-launch-checklist.zip"
+  [headers.values]
+    Content-Type = "application/zip"
+    Content-Disposition = "attachment; filename=\"markethink-new-website-launch-checklist.zip\""
+
