@@ -98,7 +98,7 @@ assert.ok(markdown.includes(`Reviewed: ${PLAYBOOK_META.reviewedDate}`));
 assert.ok(markdown.includes(`Canonical page: ${PLAYBOOK_META.canonical}`));
 assert.equal(PLAYBOOK_META.title, "SEO & AI Search: An Ongoing Strategy Playbook");
 assert.equal(PLAYBOOK_META.seoTitle, "SEO & AI Search: An Ongoing Strategy Playbook | Markethink");
-assert.equal(PLAYBOOK_META.version, "1.1.1");
+assert.equal(PLAYBOOK_META.version, "1.1.2");
 assert.equal(PLAYBOOK_META.reviewedDate, "2026-09-13");
 for (const text of [entryHtml, markdown, getStandaloneBrief(), getSkillMarkdown()]) {
   assert.ok(text.includes(PLAYBOOK_META.version), "version must agree across HTML, brief, Markdown, and ZIP skill");
@@ -243,6 +243,20 @@ const outputTemplate = packageFiles[`${PLAYBOOK_META.portableName}/assets/OUTPUT
 for (const marker of ["Existing work-item ID or proposed new ID", "Current status", "Status history or evidence-transition reference"]) {
   assert.ok(outputTemplate.includes(marker), `output template record field missing: ${marker}`);
 }
+const templateLines = outputTemplate.split("\n");
+const templateTableChecks = [];
+const markdownCellCount = (line) => line.split("|").slice(1, -1).length;
+for (let index = 1; index < templateLines.length; index += 1) {
+  const delimiter = templateLines[index];
+  if (!/^\|(?:\s*:?-{3,}:?\s*\|)+$/.test(delimiter)) continue;
+  const header = templateLines[index - 1];
+  assert.ok(header.startsWith("|") && header.endsWith("|"), `template delimiter at line ${index + 1} has no table header`);
+  const headerCells = markdownCellCount(header);
+  const delimiterCells = markdownCellCount(delimiter);
+  assert.equal(delimiterCells, headerCells, `template table column mismatch at delimiter line ${index + 1}: header=${headerCells}, delimiter=${delimiterCells}`);
+  templateTableChecks.push({ delimiterLine: index + 1, columns: headerCells });
+}
+assert.equal(templateTableChecks.length, 8, "all eight reusable output-template tables must be checked");
 
 const permissionBoundary = "Ongoing does not authorize scheduled tasks, continuous monitoring, paid tool calls, publishing, or outreach.";
 for (const text of [entryHtml, markdown, skill]) assert.ok(text.includes(permissionBoundary), "permission boundary missing from changed playbook format");
@@ -259,5 +273,6 @@ console.log(JSON.stringify({
   zipFiles: [...zipped.keys()],
   version: PLAYBOOK_META.version,
   reviewed: PLAYBOOK_META.reviewedDate,
+  templateTables: templateTableChecks,
   dryRun: "established-program day-45 scenario preserved original IDs, Verified/Blocked/Planned history, unequal-window limits, role budgets, separate reviews, and authorization boundaries",
 }, null, 2));

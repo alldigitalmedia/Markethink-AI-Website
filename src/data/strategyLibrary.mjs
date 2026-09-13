@@ -19,7 +19,7 @@ export const PLAYBOOK_META = {
   canonical: "https://markethink.ai/ai-marketing-strategies/seo-aio-playbook/",
   markdownUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.md",
   skillUrl: "https://markethink.ai/downloads/markethink-seo-aio-playbook.zip",
-  version: "1.1.1",
+  version: "1.1.2",
   reviewedDate: "2026-09-13",
   author: "Markethink",
   specificationUrl: "https://agentskills.io/specification",
@@ -340,7 +340,7 @@ export function getOutputTemplatesMarkdown() {
 ## Query-to-existing-URL intent map
 
 | Query or question family | Intent | Audience or location | Existing primary URL | Page job | Evidence | Gap | Recommended action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Prioritized foundation or current/next capacity-aware cycle
 
@@ -362,7 +362,7 @@ export function getOutputTemplatesMarkdown() {
 ## Measurement baseline
 
 | Measurement lane | Value or Not available | Source | Collection date | Scope | Denominator or filters | Limitation | Next comparable review |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Delivery review
 
@@ -377,7 +377,7 @@ export function getOutputTemplatesMarkdown() {
 ## Next-cycle backlog and review checkpoint
 
 | Existing work-item ID or proposed new ID | Current status | Status history or evidence-transition reference | Carried-forward task | Newly justified opportunity | Scope evidence | Priority | Capacity | Owner | Dependency | Acceptance check | Review date or trigger |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Dated decision and change log
 
