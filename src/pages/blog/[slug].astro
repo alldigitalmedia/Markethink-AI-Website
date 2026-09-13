@@ -32,12 +32,10 @@ const isWideGuide =
   isAiLogoBrandIdentityGuide;
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
-const imageUrl = new URL(post.image, siteUrl).toString();
 const isRepresentativeAgencyGuide = post.slug === "what-is-an-ai-marketing-agency";
-const representativeSocialImage = "https://dashboard.markethink.ai/generated/landing/markethink/markethink/ai-marketing-agency-guide-og-1200x630.jpg";
-const socialImage = isRepresentativeAgencyGuide ? representativeSocialImage : imageUrl;
-const socialImageWidth = isRepresentativeAgencyGuide ? 1200 : undefined;
-const socialImageHeight = isRepresentativeAgencyGuide ? 630 : undefined;
+const socialImage = post.imageSharing;
+const socialImageWidth = 1200;
+const socialImageHeight = 630;
 const relatedPosts = post.relatedSlugs?.length
   ? post.relatedSlugs
       .map((slug) => insightPosts.find((item) => item.slug === slug))
@@ -49,16 +47,14 @@ const articleSchema = {
   "@type": "BlogPosting",
   headline: post.title,
   description: post.description,
-  image: isRepresentativeAgencyGuide
-    ? {
-        "@type": "ImageObject",
-        url: socialImage,
-        contentUrl: socialImage,
-        width: 1200,
-        height: 630,
-        caption: post.imageAlt,
-      }
-    : imageUrl,
+  image: {
+    "@type": "ImageObject",
+    url: socialImage,
+    contentUrl: socialImage,
+    width: socialImageWidth,
+    height: socialImageHeight,
+    caption: post.imageAlt,
+  },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
   author: {
