@@ -71,8 +71,8 @@ assert.match(nav, /label:\s*"Strategies"[\s\S]*href:\s*"\/ai-marketing-strategie
 assert.match(footer, /Strategies[\s\S]*\/ai-marketing-strategies\//);
 
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert.equal(locs.length, 28);
-assert.equal(new Set(locs).size, 28);
+assert.equal(locs.length, 29);
+assert.equal(new Set(locs).size, 29);
 assert.ok(locs.includes(LIBRARY_META.canonical));
 assert.ok(locs.includes(PLAYBOOK_META.canonical));
 assert.ok(!locs.some((url) => url.includes("/downloads/markethink-seo-aio-playbook")));
