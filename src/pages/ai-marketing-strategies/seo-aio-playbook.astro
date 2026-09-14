@@ -203,6 +203,10 @@ const breadcrumbsJsonLd = {
                 <div><dt>Author</dt><dd>{PLAYBOOK_META.author}</dd></div>
                 <div><dt>Reviewed</dt><dd>{PLAYBOOK_META.reviewedDate}</dd></div>
               </dl>
+              <aside class="strategy-attribution" data-strategy-attribution aria-label="Strategy attribution">
+                <p>Created and maintained by Markethink</p>
+                <p>Editorial lead: <a href="/authors/santiago-sosa/">Santiago Sosa</a></p>
+              </aside>
               <div class="hero-actions" aria-label="Playbook actions">
                 <div class="download-action">
                   <a class="button button-primary" href="/downloads/markethink-seo-aio-playbook.md" download>Download for your AI (.md)</a>
@@ -387,6 +391,10 @@ const breadcrumbsJsonLd = {
   .metadata dt,.metadata dd { margin: 0; font-size: .74rem; line-height: 1.3; }
   .metadata dt { color: #686b6c; text-transform: uppercase; letter-spacing: .08em; }
   .metadata dd { color: #0f1213; font-weight: 700; }
+  .strategy-attribution { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; padding: 0; border: 0; color: #303536; font-size: .82rem; line-height: 1.45; }
+  .strategy-attribution p { margin: 0; }
+  .strategy-attribution a { color: #2f7026; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .strategy-attribution a:focus-visible { outline: 3px solid #315b28; outline-offset: 4px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 26px; }
   .download-action { display: flex; flex-direction: column; gap: 7px; }
   .download-action span,.agent-support { color: #4e5657; font-size: .76rem; }

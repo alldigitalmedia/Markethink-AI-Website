@@ -6,6 +6,10 @@ type Props = {
 };
 
 const { author } = Astro.props;
+const profileHref = author.url?.startsWith("https://markethink.ai/")
+  ? new URL(author.url).pathname
+  : author.url;
+const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
 ---
 
 <section
@@ -14,12 +18,14 @@ const { author } = Astro.props;
   aria-labelledby="blog-author-name"
 >
   <p class="blog-author__eyebrow">About the author</p>
-  <h2 id="blog-author-name">{author.name}</h2>
+  <h2 id="blog-author-name">
+    {profileHref ? <a class="blog-author__name-link" href={profileHref}>{author.name}</a> : author.name}
+  </h2>
   <p class="blog-author__title">{author.title}</p>
   {author.bio && <p class="blog-author__bio">{author.bio}</p>}
   {
-    author.url && (
-      <a class="blog-author__link" href={author.url} rel="me external">
+    externalProfileUrl && (
+      <a class="blog-author__link" href={externalProfileUrl} rel="me external">
         {author.linkLabel ?? "View author profile"}
       </a>
     )
@@ -52,6 +58,19 @@ const { author } = Astro.props;
     font: 600 clamp(1.5rem, 3vw, 1.75rem)/1.15 Inter, system-ui, sans-serif;
     letter-spacing: -0.035em;
     overflow-wrap: anywhere;
+  }
+
+  .blog-author__name-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(49, 91, 40, 0.45);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+  }
+
+  .blog-author__name-link:hover {
+    color: #315b28;
+    text-decoration-color: currentColor;
   }
 
   .blog-author__title {
@@ -88,6 +107,7 @@ const { author } = Astro.props;
     color: #0f1213;
   }
 
+  .blog-author__name-link:focus-visible,
   .blog-author__link:focus-visible {
     outline: 3px solid #315b28;
     outline-offset: 4px;

@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
   SANTIAGO_LINKEDIN_URL,
+  SANTIAGO_PROFILE_PATH,
+  SANTIAGO_PROFILE_URL,
   getBlogAuthorSchema,
   resolveBlogAuthor,
 } from "../data/blogAuthors.ts";
@@ -31,7 +33,7 @@ const placeholder = resolveBlogAuthor({
 });
 assert.equal(placeholder.name, expectedName);
 assert.equal(placeholder.title, expectedTitle);
-assert.equal(placeholder.url, SANTIAGO_LINKEDIN_URL);
+assert.equal(placeholder.url, SANTIAGO_PROFILE_URL);
 assert.deepEqual(placeholder.sameAs, [SANTIAGO_LINKEDIN_URL]);
 
 const genuineInput = {
@@ -106,6 +108,10 @@ for (const slug of slugs) {
     assert(authorText.includes(expectedText), `${route}: missing ${expectedText}`);
   }
   assert(
+    new RegExp(`<a[^>]*href="${SANTIAGO_PROFILE_PATH}"[^>]*>[\\s\\S]*${expectedName}[\\s\\S]*<\\/a>`).test(authorMarkup),
+    `${route}: internal author profile destination`,
+  );
+  assert(
     new RegExp(`<a[^>]*href="${SANTIAGO_LINKEDIN_URL}"[^>]*>[\\s\\S]*View Santiago on LinkedIn[\\s\\S]*<\\/a>`).test(authorMarkup),
     `${route}: LinkedIn destination`,
   );
@@ -129,7 +135,7 @@ for (const slug of slugs) {
   assert(posting, `${route}: missing BlogPosting schema`);
   assert.equal(posting.author?.["@type"], "Person", `${route}: author schema type`);
   assert.equal(posting.author?.name, expectedName, `${route}: schema author name`);
-  assert.equal(posting.author?.url, SANTIAGO_LINKEDIN_URL, `${route}: schema author URL`);
+  assert.equal(posting.author?.url, SANTIAGO_PROFILE_URL, `${route}: schema author URL`);
   assert.deepEqual(posting.author?.sameAs, [SANTIAGO_LINKEDIN_URL], `${route}: schema sameAs`);
   assert.equal(posting.publisher?.["@id"], "https://markethink.ai/#organization", `${route}: publisher reference`);
 

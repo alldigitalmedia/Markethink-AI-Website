@@ -39,6 +39,12 @@ const staticPages: SitemapPage[] = [
     changefreq: "weekly",
   },
   {
+    path: "/authors/santiago-sosa/",
+    priority: "0.7",
+    changefreq: "monthly",
+    lastmod: "2026-09-14",
+  },
+  {
     path: "/features/",
     priority: "0.9",
     changefreq: "monthly",

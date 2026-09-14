@@ -77,6 +77,10 @@ const breadcrumbsJsonLd = {
                 <div><dt>Version</dt><dd>{WEBSITE_LAUNCH_META.version}</dd></div>
                 <div><dt>Reviewed</dt><dd>{WEBSITE_LAUNCH_META.reviewedDate}</dd></div>
               </dl>
+              <aside class="strategy-attribution" data-strategy-attribution aria-label="Strategy attribution">
+                <p>Created and maintained by Markethink</p>
+                <p>Editorial lead: <a href="/authors/santiago-sosa/">Santiago Sosa</a></p>
+              </aside>
             </aside>
           </div>
           <div class="action-bar" aria-label="Checklist actions">
@@ -285,6 +289,11 @@ const breadcrumbsJsonLd = {
   .status-card dl div { display:flex; justify-content:space-between; gap:20px; padding:10px 0; border-bottom:1px solid #b4b6b6; }
   .status-card dt,.status-card dd { margin:0; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
   .status-card dd { font-weight:700; text-align:right; }
+  .strategy-attribution { margin-top: 18px; padding-top: 14px; border-top: 2px solid #315b28; color: #303536; font-size: .78rem; line-height: 1.5; }
+  .strategy-attribution p { margin: 0; }
+  .strategy-attribution p + p { margin-top: 5px; }
+  .strategy-attribution a { color: #2f7026; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+  .strategy-attribution a:focus-visible { outline: 3px solid #315b28; outline-offset: 4px; }
   .action-bar { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-top: 58px; }
   .action { display:flex; min-height:56px; align-items:center; justify-content:center; padding:12px 18px; border:2px solid #0f1213; border-radius:0; font: inherit; font-weight:800; text-align:center; text-decoration:none; cursor:pointer; }
   .action-read { background:#0f1213; color:#f5f5f1; }
