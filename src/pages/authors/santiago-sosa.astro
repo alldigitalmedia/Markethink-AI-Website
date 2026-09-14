@@ -29,6 +29,7 @@ const profileSchema = {
     jobTitle: santiagoSosaAuthor.title,
     description: santiagoSosaAuthor.bio,
     url: SANTIAGO_PROFILE_URL,
+    image: santiagoSosaAuthor.image.url,
     sameAs: [SANTIAGO_LINKEDIN_URL],
     worksFor: {
       "@type": "Organization",
@@ -54,14 +55,25 @@ const profileSchema = {
 
   <main class="author-profile">
     <header class="profile-hero">
-      <div class="profile-shell">
-        <p class="eyebrow">Author profile</p>
-        <h1>Santiago Sosa</h1>
-        <p class="role">Founder of Markethink.ai</p>
-        <p class="bio">{santiagoSosaAuthor.bio}</p>
-        <a class="linkedin-link" href={SANTIAGO_LINKEDIN_URL} rel="me external">
-          View Santiago Sosa on LinkedIn
-        </a>
+      <div class="profile-shell profile-identity">
+        <img
+          class="profile-portrait"
+          src={santiagoSosaAuthor.profileImage.path}
+          alt="Santiago Sosa, founder of Markethink.ai"
+          width={santiagoSosaAuthor.profileImage.width}
+          height={santiagoSosaAuthor.profileImage.height}
+          decoding="async"
+          fetchpriority="high"
+        />
+        <div class="profile-copy">
+          <p class="eyebrow">Author profile</p>
+          <h1>Santiago Sosa</h1>
+          <p class="role">Founder of Markethink.ai</p>
+          <p class="bio">{santiagoSosaAuthor.bio}</p>
+          <a class="linkedin-link" href={SANTIAGO_LINKEDIN_URL} rel="me external">
+            View Santiago Sosa on LinkedIn
+          </a>
+        </div>
       </div>
     </header>
 
@@ -132,6 +144,28 @@ const profileSchema = {
   .profile-hero {
     padding: clamp(7.5rem, 13vw, 10rem) 0 clamp(3.25rem, 7vw, 5rem);
     border-bottom: 1px solid rgba(15, 18, 19, 0.18);
+  }
+
+  .profile-identity {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .profile-portrait {
+    display: block;
+    width: 12rem;
+    height: 12rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(15, 18, 19, 0.2);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .profile-copy {
+    min-width: 0;
   }
 
   .eyebrow {
@@ -318,6 +352,17 @@ const profileSchema = {
 
     .profile-hero {
       padding-top: 7rem;
+    }
+
+    .profile-identity {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .profile-portrait {
+      width: 7.5rem;
+      height: 7.5rem;
     }
 
     .split {
