@@ -1,4 +1,5 @@
 import { getB2BEditorialImage } from "./b2bEditorialImages";
+import type { BlogAuthorInput } from "./blogAuthors";
 
 export type BlogPost = {
   slug: string;
@@ -17,10 +18,7 @@ export type BlogPost = {
   readingTime: string;
   category: string;
   keywords: string[];
-  author: {
-    name: string;
-    title: string;
-  };
+  author: BlogAuthorInput;
   intro: string[];
   sections: {
     heading: string;
