@@ -13,33 +13,71 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
 ---
 
 <section
-  class="blog-author"
+  class:list={["blog-author", { "blog-author--with-avatar": author.avatarImage }]}
   data-blog-author
   aria-labelledby="blog-author-name"
 >
-  <p class="blog-author__eyebrow">About the author</p>
-  <h2 id="blog-author-name">
-    {profileHref ? <a class="blog-author__name-link" href={profileHref}>{author.name}</a> : author.name}
-  </h2>
-  <p class="blog-author__title">{author.title}</p>
-  {author.bio && <p class="blog-author__bio">{author.bio}</p>}
   {
-    externalProfileUrl && (
-      <a class="blog-author__link" href={externalProfileUrl} rel="me external">
-        {author.linkLabel ?? "View author profile"}
-      </a>
+    author.avatarImage && (
+      <img
+        class="blog-author__avatar"
+        src={author.avatarImage.path}
+        alt=""
+        width={author.avatarImage.width}
+        height={author.avatarImage.height}
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
     )
   }
+  <div class="blog-author__content">
+    <p class="blog-author__eyebrow">About the author</p>
+    <h2 id="blog-author-name">
+      {profileHref ? <a class="blog-author__name-link" href={profileHref}>{author.name}</a> : author.name}
+    </h2>
+    <p class="blog-author__title">{author.title}</p>
+    {author.bio && <p class="blog-author__bio">{author.bio}</p>}
+    {
+      externalProfileUrl && (
+        <a class="blog-author__link" href={externalProfileUrl} rel="me external">
+          {author.linkLabel ?? "View author profile"}
+        </a>
+      )
+    }
+  </div>
 </section>
 
 <style>
   .blog-author {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
     width: 100%;
     min-width: 0;
     margin-top: clamp(3rem, 6vw, 4.5rem);
     padding: clamp(1.6rem, 4vw, 2.25rem) 0 0;
     border-top: 1px solid rgba(49, 91, 40, 0.34);
     color: #0f1213;
+  }
+
+  .blog-author--with-avatar {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
+
+  .blog-author__avatar {
+    display: block;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: 1px solid rgba(49, 91, 40, 0.28);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .blog-author__content {
+    min-width: 0;
   }
 
   .blog-author__eyebrow {
@@ -112,6 +150,18 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     outline: 3px solid #315b28;
     outline-offset: 4px;
     border-radius: 0.15rem;
+  }
+
+  @media (max-width: 480px) {
+    .blog-author--with-avatar {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .blog-author__avatar {
+      width: 4rem;
+      height: 4rem;
+    }
   }
 
   @media (max-width: 350px) {
