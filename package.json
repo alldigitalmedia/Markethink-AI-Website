@@ -9,6 +9,7 @@
     "dev": "astro dev --host 0.0.0.0 --port 4322",
     "build": "astro build && node src/scripts/generate-ai-discovery.mjs",
     "verify:b2b-editorial-images": "node --experimental-strip-types src/scripts/verify-b2b-editorial-images.mjs",
+    "verify:blog-author-attribution": "node --experimental-strip-types src/scripts/verify-blog-author-attribution.mjs",
     "verify:guide-contrast": "node src/scripts/verify-guide-contrast.mjs",
     "verify:strategy-library": "node src/scripts/verify-strategy-library.mjs && node src/scripts/verify-new-website-launch-checklist.mjs",
     "verify:website-launch-checklist": "node src/scripts/verify-new-website-launch-checklist.mjs",
