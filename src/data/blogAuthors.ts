@@ -20,12 +20,16 @@ export type ResolvedBlogAuthor = {
 
 export const SANTIAGO_LINKEDIN_URL =
   "https://www.linkedin.com/in/santiagososa";
+export const SANTIAGO_PROFILE_PATH = "/authors/santiago-sosa/";
+export const SANTIAGO_PROFILE_URL =
+  `https://markethink.ai${SANTIAGO_PROFILE_PATH}`;
+export const SANTIAGO_PROFILE_ID = `${SANTIAGO_PROFILE_URL}#person`;
 
 export const santiagoSosaAuthor: ResolvedBlogAuthor = Object.freeze({
   name: "Santiago Sosa",
   title: "Founder of Markethink.ai",
   bio: "Santiago Sosa is the founder of Markethink.ai, with more than 20 years of experience in marketing, digital strategy and growth.",
-  url: SANTIAGO_LINKEDIN_URL,
+  url: SANTIAGO_PROFILE_URL,
   sameAs: Object.freeze([SANTIAGO_LINKEDIN_URL]),
   schemaType: "Person",
   linkLabel: "View Santiago on LinkedIn",
