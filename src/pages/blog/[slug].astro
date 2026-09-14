@@ -7,6 +7,11 @@ import AiSearchInteractiveGuide from "../../components/blog/AiSearchInteractiveG
 import AiMarketingPracticalGuide from "../../components/blog/AiMarketingPracticalGuide.astro";
 import SeoContentFeedbackLoopGuide from "../../components/blog/SeoContentFeedbackLoopGuide.astro";
 import AiLogoBrandIdentityGuide from "../../components/blog/AiLogoBrandIdentityGuide.astro";
+import BlogAuthor from "../../components/blog/BlogAuthor.astro";
+import {
+  getBlogAuthorSchema,
+  resolveBlogAuthor,
+} from "../../data/blogAuthors";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
 
 export function getStaticPaths() {
@@ -17,6 +22,7 @@ export function getStaticPaths() {
 }
 
 const { post } = Astro.props as { post: BlogPost };
+const resolvedAuthor = resolveBlogAuthor(post.author);
 const isAiSearchInteractiveGuide = post.slug === "how-to-show-up-in-ai-search";
 const isAiMarketingPracticalGuide =
   post.slug === "how-to-use-ai-for-marketing-small-business";
@@ -57,13 +63,13 @@ const articleSchema = {
   },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: {
+  author: getBlogAuthorSchema(resolvedAuthor),
+  publisher: {
     "@type": "Organization",
-    "@id": `${siteUrl}/#editorial-team`,
-    name: post.author.name,
-    parentOrganization: { "@id": `${siteUrl}/#organization` },
+    "@id": `${siteUrl}/#organization`,
+    name: "Markethink",
+    url: `${siteUrl}/`,
   },
-  publisher: { "@id": `${siteUrl}/#organization` },
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": canonical,
@@ -134,7 +140,7 @@ const breadcrumbSchema = {
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Article details">
-              <span>By {post.author.name}</span>
+              <span data-blog-byline>By {resolvedAuthor.name}, {resolvedAuthor.title}</span>
               <span>{post.readingTime}</span>
               <span
                 >Updated {
@@ -324,6 +330,8 @@ const breadcrumbSchema = {
               ))
             }
           </section>
+
+          <BlogAuthor author={resolvedAuthor} />
         </div>
       </div>
     </article>
