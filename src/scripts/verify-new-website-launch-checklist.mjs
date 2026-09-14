@@ -189,7 +189,7 @@ assert.ok(frontmatter.includes(`version: "${WEBSITE_LAUNCH_META.version}"`));
 assert.ok(frontmatter.includes(`source: "${WEBSITE_LAUNCH_META.canonical}"`));
 
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert.equal(locs.length, 28);
+assert.equal(locs.length, 29);
 assert.equal(new Set(locs).size, locs.length);
 assert.equal(locs.filter((url) => url === WEBSITE_LAUNCH_META.canonical).length, 1);
 assert.ok(!locs.some((url) => url.includes(WEBSITE_LAUNCH_META.portableName)));
