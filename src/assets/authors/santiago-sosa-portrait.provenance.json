@@ -1,0 +1,57 @@
+{
+  "assetId": "santiago-sosa-linkedin-portrait-2026-09-14",
+  "verifiedAt": "2026-09-14T14:17:58Z",
+  "identityContext": "Operator-verified Santiago Sosa portrait in a white collared shirt against the supplied orange-to-navy background.",
+  "source": {
+    "provider": "LinkedIn",
+    "url": "https://media.licdn.com/dms/image/v2/D4D03AQFnB_rkG6kflw/profile-displayphoto-crop_800_800/B4DZx3TMTDKYAI-/0/1771528056730?e=1790812800&v=beta&t=uXYpszz-_XqJqCm-g5ARYe4oQKcFYMV4ntTBE8ERkDI",
+    "browserObservedNaturalWidth": 715,
+    "browserObservedNaturalHeight": 715,
+    "browserObservationNote": "Rendered browser dimensions only; not source-file metadata."
+  },
+  "original": {
+    "outputPath": "dist/images/authors/santiago-sosa-linkedin-original-800x800.png",
+    "publicPath": "/images/authors/santiago-sosa-linkedin-original-800x800.png",
+    "publicUrl": "https://markethink.ai/images/authors/santiago-sosa-linkedin-original-800x800.png",
+    "encodedParts": [
+      "src/assets/authors/santiago-sosa-linkedin-original-800x800.png.base64.part1",
+      "src/assets/authors/santiago-sosa-linkedin-original-800x800.png.base64.part2"
+    ],
+    "sha256": "fa25b532458327c817987787c1a7fa0aa3f88a111bbea17c9d57bae494675455",
+    "bytes": 665946,
+    "width": 800,
+    "height": 800,
+    "mimeType": "image/png",
+    "retention": "Exact source bytes, split only as Base64 text for the UTF-8 website PR rail and restored byte-for-byte during build."
+  },
+  "derivatives": {
+    "profile": {
+      "outputPath": "dist/images/authors/santiago-sosa-profile-400x400.webp",
+      "publicPath": "/images/authors/santiago-sosa-profile-400x400.webp",
+      "publicUrl": "https://markethink.ai/images/authors/santiago-sosa-profile-400x400.webp",
+      "encodedParts": [
+        "src/assets/authors/santiago-sosa-profile-400x400.webp.base64"
+      ],
+      "sha256": "32176c7ef19fb5320242d8a9f292983342230d34615b64a2bf2825507200f56c",
+      "bytes": 16684,
+      "width": 400,
+      "height": 400,
+      "mimeType": "image/webp",
+      "derivation": "Lanczos3 resize from the exact 800 x 800 original; WebP quality 88."
+    },
+    "avatar": {
+      "outputPath": "dist/images/authors/santiago-sosa-avatar-144x144.webp",
+      "publicPath": "/images/authors/santiago-sosa-avatar-144x144.webp",
+      "publicUrl": "https://markethink.ai/images/authors/santiago-sosa-avatar-144x144.webp",
+      "encodedParts": [
+        "src/assets/authors/santiago-sosa-avatar-144x144.webp.base64"
+      ],
+      "sha256": "7f2f0a61533758175bffa42104880a173e8b82f551994e583cd1ef1765a31fd3",
+      "bytes": 3706,
+      "width": 144,
+      "height": 144,
+      "mimeType": "image/webp",
+      "derivation": "Lanczos3 resize from the exact 800 x 800 original; WebP quality 86."
+    }
+  }
+}
