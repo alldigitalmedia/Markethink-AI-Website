@@ -1,3 +1,11 @@
+export type BlogAuthorImage = {
+  path: string;
+  url: string;
+  width: number;
+  height: number;
+  mimeType: "image/png" | "image/webp";
+};
+
 export type BlogAuthorInput = {
   name: string;
   title: string;
@@ -6,6 +14,9 @@ export type BlogAuthorInput = {
   sameAs?: readonly string[];
   schemaType?: "Person" | "Organization";
   linkLabel?: string;
+  image?: BlogAuthorImage;
+  profileImage?: BlogAuthorImage;
+  avatarImage?: BlogAuthorImage;
 };
 
 export type ResolvedBlogAuthor = {
@@ -16,6 +27,9 @@ export type ResolvedBlogAuthor = {
   sameAs: readonly string[];
   schemaType: "Person" | "Organization";
   linkLabel?: string;
+  image?: BlogAuthorImage;
+  profileImage?: BlogAuthorImage;
+  avatarImage?: BlogAuthorImage;
 };
 
 export const SANTIAGO_LINKEDIN_URL =
@@ -24,8 +38,36 @@ export const SANTIAGO_PROFILE_PATH = "/authors/santiago-sosa/";
 export const SANTIAGO_PROFILE_URL =
   `https://markethink.ai${SANTIAGO_PROFILE_PATH}`;
 export const SANTIAGO_PROFILE_ID = `${SANTIAGO_PROFILE_URL}#person`;
+export const SANTIAGO_PORTRAIT_PATH =
+  "/images/authors/santiago-sosa-linkedin-original-800x800.png";
+export const SANTIAGO_PORTRAIT_URL =
+  `https://markethink.ai${SANTIAGO_PORTRAIT_PATH}`;
 
-export const santiagoSosaAuthor: ResolvedBlogAuthor = Object.freeze({
+const santiagoPortraitImage = Object.freeze({
+  path: SANTIAGO_PORTRAIT_PATH,
+  url: SANTIAGO_PORTRAIT_URL,
+  width: 800,
+  height: 800,
+  mimeType: "image/png" as const,
+});
+
+const santiagoProfileImage = Object.freeze({
+  path: "/images/authors/santiago-sosa-profile-400x400.webp",
+  url: "https://markethink.ai/images/authors/santiago-sosa-profile-400x400.webp",
+  width: 400,
+  height: 400,
+  mimeType: "image/webp" as const,
+});
+
+const santiagoAvatarImage = Object.freeze({
+  path: "/images/authors/santiago-sosa-avatar-144x144.webp",
+  url: "https://markethink.ai/images/authors/santiago-sosa-avatar-144x144.webp",
+  width: 144,
+  height: 144,
+  mimeType: "image/webp" as const,
+});
+
+export const santiagoSosaAuthor = Object.freeze({
   name: "Santiago Sosa",
   title: "Founder of Markethink.ai",
   bio: "Santiago Sosa is the founder of Markethink.ai, with more than 20 years of experience in marketing, digital strategy and growth.",
@@ -33,6 +75,9 @@ export const santiagoSosaAuthor: ResolvedBlogAuthor = Object.freeze({
   sameAs: Object.freeze([SANTIAGO_LINKEDIN_URL]),
   schemaType: "Person",
   linkLabel: "View Santiago on LinkedIn",
+  image: santiagoPortraitImage,
+  profileImage: santiagoProfileImage,
+  avatarImage: santiagoAvatarImage,
 });
 
 const EDITORIAL_PLACEHOLDER_NAMES = new Set([
@@ -63,6 +108,9 @@ export function resolveBlogAuthor(
     sameAs,
     schemaType: author?.schemaType ?? "Person",
     ...(author?.linkLabel ? { linkLabel: author.linkLabel } : {}),
+    ...(author?.image ? { image: author.image } : {}),
+    ...(author?.profileImage ? { profileImage: author.profileImage } : {}),
+    ...(author?.avatarImage ? { avatarImage: author.avatarImage } : {}),
   };
 }
 
@@ -72,5 +120,6 @@ export function getBlogAuthorSchema(author: ResolvedBlogAuthor) {
     name: author.name,
     ...(author.url ? { url: author.url } : {}),
     ...(author.sameAs.length ? { sameAs: [...author.sameAs] } : {}),
+    ...(author.image ? { image: author.image.url } : {}),
   };
 }
