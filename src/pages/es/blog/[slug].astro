@@ -2,7 +2,8 @@
 import Layout from "../../../layouts/Layout.astro";
 import Navbar from "../../../components/Navbar.astro";
 import Footer from "../../../components/Footer.astro";
-import { getBlogAuthorSchema, santiagoSosaAuthor } from "../../../data/blogAuthors";
+import BlogAuthor from "../../../components/blog/BlogAuthor.astro";
+import { getBlogAuthorSchema, santiagoSosaAuthorEs } from "../../../data/blogAuthors";
 import { spanishInsightPosts, type SpanishBlogPost } from "../../../data/blogPostsEs";
 
 export function getStaticPaths() {
@@ -17,11 +18,6 @@ const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/es/blog/${post.slug}/`;
 const englishCanonical = `${siteUrl}/blog/${post.sourceSlug}/`;
 const socialImage = post.imageSharing;
-const displayAuthor = {
-  name: santiagoSosaAuthor.name,
-  title: "Fundador de Markethink",
-  bio: "Santiago Sosa es el fundador de Markethink y cuenta con más de 20 años de experiencia en marketing, estrategia digital y crecimiento.",
-};
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -38,7 +34,7 @@ const articleSchema = {
   },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: getBlogAuthorSchema(santiagoSosaAuthor),
+  author: getBlogAuthorSchema(santiagoSosaAuthorEs),
   publisher: {
     "@type": "Organization",
     "@id": `${siteUrl}/#organization`,
@@ -101,7 +97,7 @@ const breadcrumbSchema = {
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Detalles del artículo">
-              <span>Por {displayAuthor.name}, {displayAuthor.title}</span>
+              <span>Por <a href="/es/autores/santiago-sosa/">{santiagoSosaAuthorEs.name}</a>, {santiagoSosaAuthorEs.title}</span>
               <span>{post.readingTime}</span>
               <span>Actualizado el {new Date(post.updatedDate).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}</span>
             </div>
@@ -176,15 +172,7 @@ const breadcrumbSchema = {
             ))}
           </section>
 
-          <section class="blog-author" aria-labelledby="blog-author-name">
-            <img src={santiagoSosaAuthor.avatarImage.path} alt="" width={santiagoSosaAuthor.avatarImage.width} height={santiagoSosaAuthor.avatarImage.height} loading="lazy" decoding="async" aria-hidden="true" />
-            <div>
-              <p class="blog-author-eyebrow">Sobre el autor</p>
-              <h2 id="blog-author-name">{displayAuthor.name}</h2>
-              <p class="blog-author-title">{displayAuthor.title}</p>
-              <p>{displayAuthor.bio}</p>
-            </div>
-          </section>
+          <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />
         </div>
       </div>
     </article>
