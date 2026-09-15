@@ -1,22 +1,22 @@
 ---
 import { primaryNavigation, primaryNavigationActions } from "../data/siteNavigation";
 
-interface Props { lang?: "en" | "es"; ctaLabel?: string; }
-const { lang = "en", ctaLabel = primaryNavigationActions.ctaLabel } = Astro.props;
+interface Props { lang?: "en" | "es"; ctaLabel?: string; alternatePath?: string; }
+const { lang = "en", ctaLabel = primaryNavigationActions.ctaLabel, alternatePath } = Astro.props;
 const isSpanish = lang === "es";
 const currentPath = Astro.url.pathname;
 const spanishNavigation = [
   { label: "Funciones", href: "/es/features/" },
   { label: "Cómo funciona", href: "/es/#how-it-works" },
   { label: "Trabajo real", href: "/es/trabajo-real/" },
-  { label: "Ideas", href: "/blog/" },
+  { label: "Ideas", href: "/es/blog/" },
 ];
 const navigation = isSpanish ? spanishNavigation : primaryNavigation;
 const homeHref = isSpanish ? "/es/" : "/";
 const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ctaHref;
 const demoLabel = isSpanish ? "Solicitar una demo" : ctaLabel;
 const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
-const alternateHref = isSpanish
+const alternateHref = alternatePath ?? (isSpanish
   ? currentPath.startsWith("/es/features")
     ? "/features/"
     : currentPath.startsWith("/es/solicitar-demo")
@@ -30,7 +30,7 @@ const alternateHref = isSpanish
       ? "/es/solicitar-demo/"
       : currentPath.startsWith("/shipped")
         ? "/es/trabajo-real/"
-        : "/es/";
+        : "/es/");
 const labels = isSpanish
   ? { home: "Inicio de Markethink", primary: "Navegación principal", open: "Abrir navegación", close: "Cerrar navegación", mobile: "Navegación móvil", mobileLinks: "Enlaces de navegación móvil", language: "Selección de idioma", tagline: "Impulsado por IA. Gestionado por expertos en marketing." }
   : { home: "Markethink home", primary: "Primary navigation", open: "Open navigation", close: "Close navigation", mobile: "Mobile navigation", mobileLinks: "Mobile navigation links", language: "Language selection", tagline: "Powered by AI. Managed by expert marketers." };
