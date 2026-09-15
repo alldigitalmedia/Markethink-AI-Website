@@ -5,13 +5,15 @@ const isSpanish = lang === "es";
 
 const exploreLinks = isSpanish ? [
   { label: "Inicio", href: "/es/" },
-  { label: "Funciones", href: "/es/features/" },
+  { label: "Para quién es", href: "/es/para-quien-es/" },
+  { label: "Funciones", href: "/es/funciones/" },
   { label: "Cómo funciona", href: "/es/#how-it-works" },
   { label: "Trabajo real", href: "/es/trabajo-real/" },
   { label: "Por qué Markethink", href: "/es/#why-markethink" },
   { label: "Ideas", href: "/es/blog/" },
 ] : [
   { label: "Home", href: "/" },
+  { label: "Who We Help", href: "/who-we-help/" },
   { label: "Features", href: "/features/" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Real work", href: "/shipped/" },
@@ -35,7 +37,7 @@ if (!isSpanish && walkthroughLabel) {
 }
 
 const companyLinks = isSpanish ? [
-  { label: "Privacidad", href: "/privacy/", external: false },
+  { label: "Privacidad", href: "/es/privacidad/", external: false },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/markethink-ai/", external: true },
   { label: "Instagram", href: "https://www.instagram.com/markethink.ai/", external: true },
 ] : [
