@@ -1,135 +1,21 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/Navbar.astro";
-import Footer from "../../components/Footer.astro";
-import { insightPosts } from "../../data/blogPosts";
-import {
-  SANTIAGO_LINKEDIN_URL,
-  SANTIAGO_PROFILE_ID,
-  SANTIAGO_PROFILE_URL,
-  resolveBlogAuthor,
-  santiagoSosaAuthor,
-} from "../../data/blogAuthors";
-
-const authoredPosts = insightPosts.filter(
-  (post) => resolveBlogAuthor(post.author).name === santiagoSosaAuthor.name,
-);
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import { spanishInsightPosts } from "../../../data/blogPostsEs";
+import { SANTIAGO_LINKEDIN_URL, SANTIAGO_PROFILE_ID, SANTIAGO_PROFILE_URL, SANTIAGO_PROFILE_URL_ES, santiagoSosaAuthorEs } from "../../../data/blogAuthors";
+const authoredPosts = spanishInsightPosts;
 const topics = [...new Set(authoredPosts.map((post) => post.category))].sort();
-const profileSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": `${SANTIAGO_PROFILE_URL}#profile-page`,
-  url: SANTIAGO_PROFILE_URL,
-  name: "Santiago Sosa, Founder of Markethink.ai",
-  description: santiagoSosaAuthor.bio,
-  mainEntity: {
-    "@type": "Person",
-    "@id": SANTIAGO_PROFILE_ID,
-    name: santiagoSosaAuthor.name,
-    jobTitle: santiagoSosaAuthor.title,
-    description: santiagoSosaAuthor.bio,
-    url: SANTIAGO_PROFILE_URL,
-    image: santiagoSosaAuthor.image.url,
-    sameAs: [SANTIAGO_LINKEDIN_URL],
-    worksFor: {
-      "@type": "Organization",
-      "@id": "https://markethink.ai/#organization",
-      name: "Markethink",
-      url: "https://markethink.ai/",
-      founder: {
-        "@type": "Person",
-        "@id": SANTIAGO_PROFILE_ID,
-      },
-    },
-  },
-};
+const profileSchema = { "@context": "https://schema.org", "@type": "ProfilePage", "@id": `${SANTIAGO_PROFILE_URL_ES}#profile-page`, url: SANTIAGO_PROFILE_URL_ES, name: "Santiago Sosa, fundador de Markethink.ai", description: santiagoSosaAuthorEs.bio, inLanguage: "es", mainEntity: { "@type": "Person", "@id": SANTIAGO_PROFILE_ID, name: santiagoSosaAuthorEs.name, jobTitle: santiagoSosaAuthorEs.title, description: santiagoSosaAuthorEs.bio, url: SANTIAGO_PROFILE_URL_ES, image: santiagoSosaAuthorEs.image.url, sameAs: [SANTIAGO_LINKEDIN_URL], worksFor: { "@type": "Organization", "@id": "https://markethink.ai/#organization", name: "Markethink", url: "https://markethink.ai/", founder: { "@type": "Person", "@id": SANTIAGO_PROFILE_ID } } } };
 ---
-
-<Layout
-  title="Santiago Sosa, Founder of Markethink.ai"
-  description={santiagoSosaAuthor.bio}
-  canonical={SANTIAGO_PROFILE_URL}
-  alternates={[
-    { lang: "en", href: SANTIAGO_PROFILE_URL },
-    { lang: "es", href: "https://markethink.ai/es/autores/santiago-sosa/" },
-    { lang: "x-default", href: SANTIAGO_PROFILE_URL },
-  ]}
-  structuredData={profileSchema}
->
-  <Navbar alternatePath="/es/autores/santiago-sosa/" />
-
+<Layout title="Santiago Sosa, fundador de Markethink.ai" description={santiagoSosaAuthorEs.bio} canonical={SANTIAGO_PROFILE_URL_ES} lang="es" alternates={[{ lang: "en", href: SANTIAGO_PROFILE_URL }, { lang: "es", href: SANTIAGO_PROFILE_URL_ES }, { lang: "x-default", href: SANTIAGO_PROFILE_URL }]} structuredData={profileSchema}>
+  <Navbar lang="es" alternatePath="/authors/santiago-sosa/" />
   <main class="author-profile">
-    <header class="profile-hero">
-      <div class="profile-shell profile-identity">
-        <img
-          class="profile-portrait"
-          src={santiagoSosaAuthor.profileImage.path}
-          alt="Santiago Sosa, founder of Markethink.ai"
-          width={santiagoSosaAuthor.profileImage.width}
-          height={santiagoSosaAuthor.profileImage.height}
-          decoding="async"
-          fetchpriority="high"
-        />
-        <div class="profile-copy">
-          <p class="eyebrow">Author profile</p>
-          <h1>Santiago Sosa</h1>
-          <p class="role">Founder of Markethink.ai</p>
-          <p class="bio">{santiagoSosaAuthor.bio}</p>
-          <a class="linkedin-link" href={SANTIAGO_LINKEDIN_URL} rel="me external">
-            View Santiago Sosa on LinkedIn
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <section class="profile-section topics" aria-labelledby="topics-title">
-      <div class="profile-shell split">
-        <div>
-          <p class="eyebrow">Published topics</p>
-          <h2 id="topics-title">Areas covered in Santiago’s articles</h2>
-        </div>
-        <ul class="topic-list">
-          {topics.map((topic) => <li>{topic}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <section class="profile-section articles" aria-labelledby="articles-title">
-      <div class="profile-shell">
-        <div class="section-heading">
-          <p class="eyebrow">Current articles</p>
-          <h2 id="articles-title">Articles by Santiago</h2>
-        </div>
-        <ol class="article-list">
-          {authoredPosts.map((post) => (
-            <li data-author-article>
-              <a href={`/blog/${post.slug}/`}>
-                <span>{post.category}</span>
-                <strong>{post.title}</strong>
-                <small>{post.readingTime}</small>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-
-    <section class="profile-section methods" data-company-methods aria-labelledby="methods-title">
-      <div class="profile-shell split">
-        <div>
-          <p class="eyebrow">Company methods</p>
-          <h2 id="methods-title">Maintained by Markethink</h2>
-          <p>These are company-owned working methods, separate from Santiago’s article archive.</p>
-        </div>
-        <ul class="method-list">
-          <li><a href="/ai-marketing-strategies/seo-aio-playbook/">SEO/AIO Playbook</a></li>
-          <li><a href="/ai-marketing-strategies/new-website-launch-checklist/">New Website Launch Checklist</a></li>
-        </ul>
-      </div>
-    </section>
+    <header class="profile-hero"><div class="profile-shell profile-identity"><img class="profile-portrait" src={santiagoSosaAuthorEs.profileImage.path} alt="Santiago Sosa, fundador de Markethink.ai" width={santiagoSosaAuthorEs.profileImage.width} height={santiagoSosaAuthorEs.profileImage.height} decoding="async" fetchpriority="high" /><div class="profile-copy"><p class="eyebrow">Perfil del autor</p><h1>Santiago Sosa</h1><p class="role">Fundador de Markethink.ai</p><p class="bio">{santiagoSosaAuthorEs.bio}</p><a class="linkedin-link" href={SANTIAGO_LINKEDIN_URL} rel="me external">Ver a Santiago Sosa en LinkedIn</a></div></div></header>
+    <section class="profile-section topics" aria-labelledby="topics-title"><div class="profile-shell split"><div><p class="eyebrow">Temas publicados</p><h2 id="topics-title">Áreas cubiertas en los artículos de Santiago</h2></div><ul class="topic-list">{topics.map((topic) => <li>{topic}</li>)}</ul></div></section>
+    <section class="profile-section articles" aria-labelledby="articles-title"><div class="profile-shell"><div class="section-heading"><p class="eyebrow">Artículos actuales</p><h2 id="articles-title">Artículos de Santiago en español</h2></div><ol class="article-list">{authoredPosts.map((post) => (<li data-author-article><a href={`/es/blog/${post.slug}/`}><span>{post.category}</span><strong>{post.title}</strong><small>{post.readingTime}</small></a></li>))}</ol></div></section>
   </main>
-
-  <Footer />
+  <Footer lang="es" />
 </Layout>
 
 <style>

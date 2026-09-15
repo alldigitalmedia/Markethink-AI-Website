@@ -25,7 +25,7 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
     description:
       "Descubre qué hace una agencia de marketing con IA, qué deben seguir dirigiendo los expertos y cómo se conectan el sitio web, el contenido, las campañas, los prospectos, el CRM y el seguimiento.",
     excerpt:
-      "Una guía práctica para entender qué debe gestionar una agencia de marketing con IA, dónde hace falta el criterio experto y cómo debe conectarse el trabajo con tu pipeline.",
+      "Una guía práctica para entender qué debe gestionar una agencia de marketing con IA, dónde hace falta el criterio experto y cómo debe conectarse el trabajo con tu proceso comercial.",
     label: "GUÍA PARA COMPRADORES",
     ...editorialImage("/blog/what-is-an-ai-marketing-agency/"),
     imageAlt:
@@ -59,7 +59,7 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
         body: [
           "Muchas empresas conocen por primera vez el marketing con IA a través de una tarea puntual: redactar una publicación, crear una imagen, resumir una investigación o producir varias versiones de un anuncio. Estos usos pueden ahorrar tiempo, pero no crean automáticamente un mejor marketing.",
           "El marketing se vuelve útil cuando el trabajo está ligado a un objetivo de negocio, llega a la audiencia correcta, ofrece al comprador un siguiente paso claro y genera información que el equipo puede aprovechar después. Eso exige coordinar más de una pieza.",
-          "Por eso, una agencia de marketing con IA competente debe gestionar el recorrido desde la prioridad hasta el resultado. El trabajo comienza con el objetivo del negocio y continúa con el brief, la producción, la revisión experta, la aprobación, el lanzamiento, la gestión de prospectos, la medición y la siguiente decisión. La IA aporta ritmo y continuidad. Los expertos en marketing asumen el criterio y la responsabilidad.",
+          "Por eso, una agencia de marketing con IA competente debe gestionar el recorrido desde la prioridad hasta el resultado. El trabajo comienza con el objetivo del negocio y continúa con el resumen de campaña, la producción, la revisión experta, la aprobación, el lanzamiento, la gestión de prospectos, la medición y la siguiente decisión. La IA aporta ritmo y continuidad. Los expertos en marketing asumen el criterio y la responsabilidad.",
         ],
         bullets: [
           "Un objetivo de negocio y una acción del comprador para cada campaña",
@@ -70,17 +70,17 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
         ],
       },
       {
-        heading: "El trabajo comienza con contexto de negocio y un brief de campaña claro",
+        heading: "El trabajo comienza con contexto de negocio y un resumen de campaña claro",
         body: [
           "Antes de producir contenido, la agencia debe conocer el negocio lo suficiente como para tomar decisiones útiles. Esto incluye la oferta, la audiencia, el posicionamiento, la voz de marca, la evidencia aprobada, las prioridades actuales, el proceso comercial y la acción que debería realizar el comprador a continuación.",
           "La IA puede organizar este contexto y facilitar su reutilización. Un experto en marketing todavía debe decidir qué problema del cliente importa, qué promesa se puede respaldar, qué canal merece atención y qué no debe decirse. La empresa sigue siendo responsable de los precios, los riesgos, los compromisos con clientes y la aprobación final.",
-          "Un buen brief de campaña hace visibles esas responsabilidades. Define el objetivo, la audiencia, la oferta, el mensaje, la evidencia, las piezas, los canales, el llamado a la acción, la persona responsable de aprobar, el destino de los prospectos y la señal de éxito. Sin ese brief, una producción más rápida suele generar más trabajo de revisión en lugar de más progreso.",
+          "Un buen resumen de campaña hace visibles esas responsabilidades. Define el objetivo, la audiencia, la oferta, el mensaje, la evidencia, las piezas, los canales, el llamado a la acción, la persona responsable de aprobar, el destino de los prospectos y la señal de éxito. Sin ese resumen de campaña, una producción más rápida suele generar más trabajo de revisión en lugar de más progreso.",
         ],
       },
       {
         heading: "El sitio web, el contenido, las redes sociales, las campañas y la publicidad deben trabajar juntos",
         body: [
-          "Una agencia de marketing con IA debe poder convertir una prioridad aprobada en la combinación adecuada de trabajo web y de canales. Una campaña puede necesitar una actualización de la landing page, un artículo útil, contenido para redes sociales, apoyo por correo electrónico, creatividad para medios pagados y un destino de conversión claro. No siempre necesita todos los canales al mismo tiempo.",
+          "Una agencia de marketing con IA debe poder convertir una prioridad aprobada en la combinación adecuada de trabajo web y de canales. Una campaña puede necesitar una actualización de la página de destino, un artículo útil, contenido para redes sociales, apoyo por correo electrónico, creatividad para medios pagados y un destino de conversión claro. No siempre necesita todos los canales al mismo tiempo.",
           "La diferencia importante es la coordinación. El sitio web debe explicar la misma oferta que promueve la campaña. El artículo debe responder las preguntas que frenan una decisión. El contenido social debe dar una razón para visitar. La publicidad debe usar afirmaciones aprobadas y dirigir a una página relevante. Cada pieza debe cumplir una función dentro del mismo recorrido del comprador.",
           "La IA ayuda a crear y adaptar el trabajo con eficiencia. Los expertos en marketing eligen el enfoque, revisan las afirmaciones, protegen el estándar creativo y deciden si la pieza está lista. El resultado debe sentirse como una sola campaña, no como varias entregas sin relación producidas por sistemas diferentes.",
         ],
@@ -114,7 +114,7 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
         heading: "Las aprobaciones y los resultados deben mejorar la siguiente ronda de trabajo",
         body: [
           "La mayoría de los equipos de marketing pierde contexto útil entre campañas. Se rechaza un titular, se aprueba una dirección visual, aparece repetidamente una objeción del comprador o un mensaje de seguimiento obtiene mejores respuestas, pero el aprendizaje queda en una conversación o en la memoria de alguien.",
-          "Una operación de marketing con IA gestionada debe registrar la parte útil de esas decisiones. El siguiente brief puede comenzar con referencias aprobadas, correcciones conocidas, historial de desempeño y la prioridad actual del negocio. Esto no significa repetir ciegamente el trabajo anterior. Significa comenzar con mejor contexto y tomar una siguiente decisión más informada.",
+          "Una operación de marketing con IA gestionada debe registrar la parte útil de esas decisiones. El siguiente resumen de campaña puede comenzar con referencias aprobadas, correcciones conocidas, historial de desempeño y la prioridad actual del negocio. Esto no significa repetir ciegamente el trabajo anterior. Significa comenzar con mejor contexto y tomar una siguiente decisión más informada.",
           "El ciclo de aprendizaje es directo: la agencia prepara el trabajo, los expertos lo revisan, la empresa lo aprueba, la campaña se publica, se recopilan respuestas reales y se ajusta la siguiente prioridad. Con el tiempo, esto reduce las explicaciones repetidas y hace que la operación sea más consistente sin quitar el control humano.",
         ],
         image: "/images/ai-marketing-agency-guide/ai-marketing-agency-approval-results-loop.svg",
@@ -162,7 +162,7 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
       {
         question: "¿Qué hace una agencia de marketing con IA?",
         answer:
-          "Puede gestionar el contexto del negocio y de la marca, los briefs de campaña, las actualizaciones del sitio web, el contenido, las redes sociales, la coordinación publicitaria, la captación de prospectos, la organización del CRM, el apoyo al seguimiento, las aprobaciones, los informes y la siguiente decisión de campaña. El alcance exacto debe quedar claro antes de comenzar el servicio.",
+          "Puede gestionar el contexto del negocio y de la marca, los resúmenes de campaña, las actualizaciones del sitio web, el contenido, las redes sociales, la coordinación publicitaria, la captación de prospectos, la organización del CRM, el apoyo al seguimiento, las aprobaciones, los informes y la siguiente decisión de campaña. El alcance exacto debe quedar claro antes de comenzar el servicio.",
       },
       {
         question: "¿Una agencia de marketing con IA es lo mismo que una herramienta de marketing con IA?",

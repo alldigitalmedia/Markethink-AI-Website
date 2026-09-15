@@ -3,9 +3,12 @@ import type { ResolvedBlogAuthor } from "../../data/blogAuthors";
 
 type Props = {
   author: ResolvedBlogAuthor;
+  lang?: "en" | "es";
+  theme?: "light" | "dark";
 };
 
-const { author } = Astro.props;
+const { author, lang = "en", theme = "light" } = Astro.props;
+const isSpanish = lang === "es";
 const profileHref = author.url?.startsWith("https://markethink.ai/")
   ? new URL(author.url).pathname
   : author.url;
@@ -13,7 +16,7 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
 ---
 
 <section
-  class:list={["blog-author", { "blog-author--with-avatar": author.avatarImage }]}
+  class:list={["blog-author", { "blog-author--with-avatar": author.avatarImage, "blog-author--dark": theme === "dark" }]}
   data-blog-author
   aria-labelledby="blog-author-name"
 >
@@ -32,7 +35,7 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     )
   }
   <div class="blog-author__content">
-    <p class="blog-author__eyebrow">About the author</p>
+    <p class="blog-author__eyebrow">{isSpanish ? "Sobre el autor" : "About the author"}</p>
     <h2 id="blog-author-name">
       {profileHref ? <a class="blog-author__name-link" href={profileHref}>{author.name}</a> : author.name}
     </h2>
@@ -41,7 +44,7 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     {
       externalProfileUrl && (
         <a class="blog-author__link" href={externalProfileUrl} rel="me external">
-          {author.linkLabel ?? "View author profile"}
+          {author.linkLabel ?? (isSpanish ? "Ver perfil del autor" : "View author profile")}
         </a>
       )
     }
@@ -150,6 +153,30 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     outline: 3px solid #315b28;
     outline-offset: 4px;
     border-radius: 0.15rem;
+  }
+
+  .blog-author--dark {
+    color: #f5f5f1;
+  }
+
+  .blog-author--dark .blog-author__eyebrow,
+  .blog-author--dark .blog-author__title,
+  .blog-author--dark .blog-author__link {
+    color: #9be68d;
+  }
+
+  .blog-author--dark h2,
+  .blog-author--dark .blog-author__name-link {
+    color: #f5f5f1;
+  }
+
+  .blog-author--dark .blog-author__bio {
+    color: rgba(245, 245, 241, 0.78);
+  }
+
+  .blog-author--dark .blog-author__name-link:hover,
+  .blog-author--dark .blog-author__link:hover {
+    color: #ffffff;
   }
 
   @media (max-width: 480px) {
