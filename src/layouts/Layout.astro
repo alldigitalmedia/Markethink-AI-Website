@@ -93,13 +93,18 @@ const normalizedSuppliedNodes = suppliedNodes
   .map(normalizedNode);
 const organizationNode = {
   "@type": "Organization", "@id": organizationId, name: "Markethink", url: `${siteUrl}/`,
-  description: "An AI marketing system managed by expert marketers that learns each business, runs marketing day to day, connects it to the pipeline, and improves with every approval, correction, and result.",
+  description: lang === "es"
+    ? "Un sistema de marketing con IA gestionado por expertos que aprende cada negocio, ejecuta el marketing día a día, lo conecta con el proceso comercial y mejora con cada aprobación, corrección y resultado."
+    : "An AI marketing system managed by expert marketers that learns each business, runs marketing day to day, connects it to the pipeline, and improves with every approval, correction, and result.",
   logo: { "@type": "ImageObject", "@id": `${siteUrl}/#logo`, url: `${siteUrl}/images/logo.svg`, contentUrl: `${siteUrl}/images/logo.svg`, caption: "Markethink" },
   sameAs: ["https://www.linkedin.com/company/markethink-ai/", "https://www.instagram.com/markethink.ai/"],
 };
 const websiteNode = {
   "@type": "WebSite", "@id": websiteId, url: `${siteUrl}/`, name: "Markethink",
-  description: "Your marketing operation, powered by AI and managed by experts.", inLanguage: ["en", "es"], publisher: organizationRef,
+  description: lang === "es"
+    ? "Tu operación de marketing, impulsada por IA y gestionada por expertos."
+    : "Your marketing operation, powered by AI and managed by experts.",
+  inLanguage: ["en", "es"], publisher: organizationRef,
 };
 const webPageNode = {
   "@type": [...new Set(["WebPage", ...pageExtensionTypes.filter((item) => item !== "WebPage")])],
