@@ -37,6 +37,9 @@ export const SANTIAGO_LINKEDIN_URL =
 export const SANTIAGO_PROFILE_PATH = "/authors/santiago-sosa/";
 export const SANTIAGO_PROFILE_URL =
   `https://markethink.ai${SANTIAGO_PROFILE_PATH}`;
+export const SANTIAGO_PROFILE_PATH_ES = "/es/autores/santiago-sosa/";
+export const SANTIAGO_PROFILE_URL_ES =
+  `https://markethink.ai${SANTIAGO_PROFILE_PATH_ES}`;
 export const SANTIAGO_PROFILE_ID = `${SANTIAGO_PROFILE_URL}#person`;
 export const SANTIAGO_PORTRAIT_PATH =
   "/images/authors/santiago-sosa-linkedin-original-800x800.png";
@@ -80,6 +83,19 @@ export const santiagoSosaAuthor = Object.freeze({
   avatarImage: santiagoAvatarImage,
 });
 
+export const santiagoSosaAuthorEs = Object.freeze({
+  name: "Santiago Sosa",
+  title: "Fundador de Markethink.ai",
+  bio: "Santiago Sosa es el fundador de Markethink.ai y cuenta con más de 20 años de experiencia en marketing, estrategia digital y crecimiento.",
+  url: SANTIAGO_PROFILE_URL_ES,
+  sameAs: Object.freeze([SANTIAGO_LINKEDIN_URL]),
+  schemaType: "Person",
+  linkLabel: "Ver a Santiago en LinkedIn",
+  image: santiagoPortraitImage,
+  profileImage: santiagoProfileImage,
+  avatarImage: santiagoAvatarImage,
+});
+
 const EDITORIAL_PLACEHOLDER_NAMES = new Set([
   "markethink editorial team",
 ]);
@@ -117,6 +133,9 @@ export function resolveBlogAuthor(
 export function getBlogAuthorSchema(author: ResolvedBlogAuthor) {
   return {
     "@type": author.schemaType,
+    ...(author.schemaType === "Person" && author.name === santiagoSosaAuthor.name
+      ? { "@id": SANTIAGO_PROFILE_ID }
+      : {}),
     name: author.name,
     ...(author.url ? { url: author.url } : {}),
     ...(author.sameAs.length ? { sameAs: [...author.sameAs] } : {}),
