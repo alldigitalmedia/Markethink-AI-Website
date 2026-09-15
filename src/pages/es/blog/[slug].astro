@@ -1,0 +1,267 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import { getBlogAuthorSchema, santiagoSosaAuthor } from "../../../data/blogAuthors";
+import { spanishInsightPosts, type SpanishBlogPost } from "../../../data/blogPostsEs";
+
+export function getStaticPaths() {
+  return spanishInsightPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: SpanishBlogPost };
+const siteUrl = "https://markethink.ai";
+const canonical = `${siteUrl}/es/blog/${post.slug}/`;
+const englishCanonical = `${siteUrl}/blog/${post.sourceSlug}/`;
+const socialImage = post.imageSharing;
+const displayAuthor = {
+  name: santiagoSosaAuthor.name,
+  title: "Fundador de Markethink",
+  bio: "Santiago Sosa es el fundador de Markethink y cuenta con más de 20 años de experiencia en marketing, estrategia digital y crecimiento.",
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.title,
+  description: post.description,
+  image: {
+    "@type": "ImageObject",
+    url: socialImage,
+    contentUrl: socialImage,
+    width: 1200,
+    height: 630,
+    caption: post.imageAlt,
+  },
+  datePublished: post.publishedDate,
+  dateModified: post.updatedDate,
+  author: getBlogAuthorSchema(santiagoSosaAuthor),
+  publisher: {
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    name: "Markethink",
+    url: `${siteUrl}/`,
+  },
+  mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+  inLanguage: "es",
+  keywords: post.keywords.join(", "),
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: post.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: `${siteUrl}/es/` },
+    { "@type": "ListItem", position: 2, name: "Ideas", item: `${siteUrl}/es/blog/` },
+    { "@type": "ListItem", position: 3, name: post.title, item: canonical },
+  ],
+};
+---
+
+<Layout
+  title={post.seoTitle}
+  description={post.description}
+  image={socialImage}
+  imageAlt={post.imageAlt}
+  imageWidth={1200}
+  imageHeight={630}
+  canonical={canonical}
+  type="article"
+  lang="es"
+  alternates={[
+    { lang: "en", href: englishCanonical },
+    { lang: "es", href: canonical },
+    { lang: "x-default", href: englishCanonical },
+  ]}
+  structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
+>
+  <Navbar lang="es" alternatePath={`/blog/${post.sourceSlug}/`} />
+  <main class="article-page">
+    <article>
+      <header class="article-hero">
+        <div class="container article-hero-grid">
+          <div class="article-hero-copy animate-fade-up">
+            <div class="article-hero-topline">
+              <a href="/es/blog/" class="article-back"><span aria-hidden="true">←</span> Ideas</a>
+              <p class="article-kicker">{post.category}</p>
+            </div>
+            <h1>{post.title}</h1>
+            <p class="article-excerpt">{post.excerpt}</p>
+            <div class="article-meta" aria-label="Detalles del artículo">
+              <span>Por {displayAuthor.name}, {displayAuthor.title}</span>
+              <span>{post.readingTime}</span>
+              <span>Actualizado el {new Date(post.updatedDate).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}</span>
+            </div>
+          </div>
+          <div class="article-hero-image animate-scale-in">
+            <picture>
+              <source media="(max-width: 680px)" srcset={post.imageMobile} type="image/webp" width="960" height="720" />
+              <img src={post.image} alt={post.imageAlt} width="1440" height="810" fetchpriority="high" decoding="async" />
+            </picture>
+            <div class="hero-visual-rail" aria-label="El modelo operativo gestionado">
+              <span>Contexto del negocio</span>
+              <span>Criterio experto</span>
+              <span>Ejecución conectada</span>
+            </div>
+            <p class="hero-visual-caption">El ciclo gestionado <span aria-hidden="true">↗</span></p>
+          </div>
+        </div>
+      </header>
+
+      <div class="container article-layout">
+        <aside class="article-sidebar">
+          <div class="sidebar-panel">
+            <p class="sidebar-label">En esta guía</p>
+            <ol>
+              {post.sections.map((section, index) => (
+                <li><a href={`#seccion-${index + 1}`}>{section.heading}</a></li>
+              ))}
+            </ol>
+          </div>
+        </aside>
+
+        <div class="article-content">
+          <section class="article-intro">
+            {post.intro.map((paragraph) => <p>{paragraph}</p>)}
+            <p class="article-hub-link">
+              Si estás evaluando un proveedor y no solo aprendiendo sobre la categoría, conoce cómo <a href="/es/">Markethink opera como un sistema de marketing con IA gestionado por expertos</a>.
+            </p>
+          </section>
+
+          {post.sections.map((section, index) => (
+            <section id={`seccion-${index + 1}`} class="article-section">
+              <h2>{section.heading}</h2>
+              {section.body.map((paragraph) => <p>{paragraph}</p>)}
+              {section.image && (
+                <figure class="article-section-image">
+                  <img src={section.image} alt={section.imageAlt ?? ""} loading="lazy" decoding="async" />
+                </figure>
+              )}
+              {section.bullets && (
+                <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>
+              )}
+            </section>
+          ))}
+
+          <section class="article-cta">
+            <p class="article-cta-label">La perspectiva de Markethink</p>
+            <h2>El marketing mejora más rápido cuando el sistema recuerda el trabajo.</h2>
+            <p>
+              Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día, conecta las campañas con los prospectos y el seguimiento, y mejora con cada aprobación, corrección y resultado.
+            </p>
+            <a href="/es/solicitar-demo/" class="button">Solicitar una demo</a>
+          </section>
+
+          <section class="article-faq">
+            <p class="article-cta-label">Preguntas frecuentes</p>
+            <h2>Preguntas comunes</h2>
+            {post.faq.map((item) => (
+              <details>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </section>
+
+          <section class="blog-author" aria-labelledby="blog-author-name">
+            <img src={santiagoSosaAuthor.avatarImage.path} alt="" width={santiagoSosaAuthor.avatarImage.width} height={santiagoSosaAuthor.avatarImage.height} loading="lazy" decoding="async" aria-hidden="true" />
+            <div>
+              <p class="blog-author-eyebrow">Sobre el autor</p>
+              <h2 id="blog-author-name">{displayAuthor.name}</h2>
+              <p class="blog-author-title">{displayAuthor.title}</p>
+              <p>{displayAuthor.bio}</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  .article-page { background: #0f1213; color: #f5f5f1; }
+  .article-hero { padding: 10rem 0 5rem; }
+  .article-hero-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 4rem; align-items: center; }
+  .article-hero-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .article-back { display: inline-flex; gap: .4rem; color: #b4b6b6; font-size: .9rem; font-weight: 600; text-decoration: none; }
+  .article-kicker, .article-cta-label, .sidebar-label, .blog-author-eyebrow { margin: 0; color: #69d254; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .article-hero h1 { margin-top: .9rem; font: 400 clamp(3rem, 6vw, 5.5rem)/.98 "Instrument Serif", Georgia, serif; letter-spacing: -.04em; text-wrap: balance; }
+  .article-excerpt { margin-top: 1.5rem; max-width: 40rem; color: rgba(255,255,255,.72); font-size: 1.08rem; line-height: 1.65; }
+  .article-meta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; color: rgba(255,255,255,.52); font-size: .82rem; }
+  .article-meta span:not(:last-child)::after { content: "/"; margin-left: .8rem; color: rgba(255,255,255,.24); }
+  .article-hero-image { overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 1.25rem; background: rgba(255,255,255,.04); }
+  .article-hero-image picture, .article-hero-image img { display: block; width: 100%; }
+  .article-hero-image img { aspect-ratio: 16 / 10; object-fit: cover; }
+  .hero-visual-rail { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.1); }
+  .hero-visual-rail span { padding: .85rem .7rem; color: rgba(255,255,255,.62); font-size: .72rem; text-align: center; }
+  .hero-visual-rail span + span { border-left: 1px solid rgba(255,255,255,.1); }
+  .hero-visual-caption { margin: 0; padding: 0 1rem 1rem; color: rgba(255,255,255,.42); font-size: .72rem; text-align: right; }
+  .article-layout { display: grid; grid-template-columns: 16rem minmax(0, 44rem); gap: 4rem; align-items: start; padding-bottom: 6rem; }
+  .article-sidebar { position: sticky; top: 7rem; }
+  .sidebar-panel { padding: 1.2rem; border: 1px solid rgba(255,255,255,.08); border-radius: 1rem; background: rgba(255,255,255,.03); }
+  .sidebar-panel ol { display: grid; gap: .7rem; margin: 1rem 0 0; padding-left: 1.2rem; }
+  .sidebar-panel a { color: rgba(255,255,255,.62); font-size: .82rem; line-height: 1.4; text-decoration: none; }
+  .sidebar-panel a:hover, .sidebar-panel a:focus-visible { color: #69d254; }
+  .article-content { min-width: 0; }
+  .article-content :global(p), .article-content :global(li) { color: rgba(245,245,241,.78); font-size: 1.04rem; line-height: 1.78; }
+  .article-intro { padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.09); }
+  .article-intro p:first-child { color: #f5f5f1; font-size: 1.25rem; }
+  .article-intro p + p, .article-section p + p { margin-top: 1rem; }
+  .article-hub-link { margin-top: 1.5rem; padding: 1.1rem 1.2rem; border-left: 3px solid #69d254; background: rgba(105,210,84,.08); }
+  .article-content :global(a) { color: #9be68d; }
+  .article-section { padding: 3.2rem 0; border-bottom: 1px solid rgba(255,255,255,.09); scroll-margin-top: 6rem; }
+  .article-section h2, .article-cta h2, .article-faq h2 { margin-bottom: 1.4rem; color: #f5f5f1; font: 400 clamp(2rem, 4vw, 3.25rem)/1.05 "Instrument Serif", Georgia, serif; letter-spacing: -.025em; }
+  .article-section ul { display: grid; gap: .55rem; margin: 1.2rem 0 0; padding-left: 1.35rem; }
+  .article-section-image { margin: 2rem 0 0; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; background: #edf4ea; }
+  .article-section-image img { display: block; width: 100%; height: auto; }
+  .article-cta { margin-top: 3rem; padding: 2rem; border-radius: 1.25rem; background: #edf4ea; color: #0f1213; }
+  .article-cta h2 { margin-top: .75rem; color: #0f1213; }
+  .article-cta p:not(.article-cta-label) { color: #404641; }
+  .button { display: inline-flex; margin-top: 1.25rem; padding: .85rem 1.15rem; border-radius: 999px; background: #0f1213; color: #f5f5f1 !important; font-weight: 700; text-decoration: none; }
+  .article-faq { padding: 4rem 0 1rem; }
+  .article-faq details { border-top: 1px solid rgba(255,255,255,.1); }
+  .article-faq details:last-child { border-bottom: 1px solid rgba(255,255,255,.1); }
+  .article-faq summary { padding: 1.1rem 0; cursor: pointer; color: #f5f5f1; font-weight: 650; }
+  .article-faq details p { padding: 0 0 1.2rem; }
+  .blog-author { display: grid; grid-template-columns: 4.5rem minmax(0,1fr); gap: 1.25rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(105,210,84,.34); }
+  .blog-author img { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; }
+  .blog-author h2 { margin: .65rem 0 0; color: #f5f5f1; font-size: 1.6rem; }
+  .blog-author-title { margin: .25rem 0 .7rem; color: #9be68d !important; font-weight: 650; }
+  @media (max-width: 980px) {
+    .article-hero { padding-top: 8rem; }
+    .article-hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .article-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .article-sidebar { position: static; }
+    .sidebar-panel ol { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width: 680px) {
+    .article-hero { padding: 7.5rem 0 3rem; }
+    .article-hero h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
+    .article-hero-topline { align-items: flex-start; }
+    .article-meta { display: grid; gap: .35rem; }
+    .article-meta span::after { display: none; }
+    .hero-visual-rail { grid-template-columns: 1fr; }
+    .hero-visual-rail span + span { border-left: 0; border-top: 1px solid rgba(255,255,255,.1); }
+    .sidebar-panel ol { grid-template-columns: 1fr; }
+    .article-content :global(p), .article-content :global(li) { font-size: 1rem; }
+    .article-section { padding: 2.5rem 0; }
+    .article-cta { padding: 1.4rem; }
+  }
+  @media (max-width: 420px) {
+    .blog-author { grid-template-columns: 1fr; }
+  }
+</style>
