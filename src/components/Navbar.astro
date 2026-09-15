@@ -6,7 +6,7 @@ const { lang = "en", ctaLabel = primaryNavigationActions.ctaLabel, alternatePath
 const isSpanish = lang === "es";
 const currentPath = Astro.url.pathname;
 const spanishNavigation = [
-  { label: "Funciones", href: "/es/features/" },
+  { label: "Funciones", href: "/es/funciones/" },
   { label: "Cómo funciona", href: "/es/#how-it-works" },
   { label: "Trabajo real", href: "/es/trabajo-real/" },
   { label: "Ideas", href: "/es/blog/" },
@@ -17,20 +17,36 @@ const demoHref = isSpanish ? "/es/solicitar-demo/" : primaryNavigationActions.ct
 const demoLabel = isSpanish ? "Solicitar una demo" : ctaLabel;
 const loginLabel = isSpanish ? "Ingresar" : primaryNavigationActions.loginLabel;
 const alternateHref = alternatePath ?? (isSpanish
-  ? currentPath.startsWith("/es/features")
+  ? currentPath.startsWith("/es/funciones")
     ? "/features/"
     : currentPath.startsWith("/es/solicitar-demo")
       ? "/schedule-a-walkthrough/"
       : currentPath.startsWith("/es/trabajo-real")
         ? "/shipped/"
-        : "/"
+        : currentPath.startsWith("/es/blog")
+          ? "/blog/"
+          : currentPath.startsWith("/es/autores/santiago-sosa")
+            ? "/authors/santiago-sosa/"
+            : currentPath.startsWith("/es/privacidad")
+              ? "/privacy/"
+              : currentPath.startsWith("/es/para-quien-es")
+                ? "/who-we-help/"
+                : "/"
   : currentPath.startsWith("/features")
-    ? "/es/features/"
+    ? "/es/funciones/"
     : currentPath.startsWith("/schedule-a-walkthrough")
       ? "/es/solicitar-demo/"
       : currentPath.startsWith("/shipped")
         ? "/es/trabajo-real/"
-        : "/es/");
+        : currentPath.startsWith("/blog")
+          ? "/es/blog/"
+          : currentPath.startsWith("/authors/santiago-sosa")
+            ? "/es/autores/santiago-sosa/"
+            : currentPath.startsWith("/privacy")
+              ? "/es/privacidad/"
+              : currentPath.startsWith("/who-we-help")
+                ? "/es/para-quien-es/"
+                : "/es/");
 const labels = isSpanish
   ? { home: "Inicio de Markethink", primary: "Navegación principal", open: "Abrir navegación", close: "Cerrar navegación", mobile: "Navegación móvil", mobileLinks: "Enlaces de navegación móvil", language: "Selección de idioma", tagline: "Impulsado por IA. Gestionado por expertos en marketing." }
   : { home: "Markethink home", primary: "Primary navigation", open: "Open navigation", close: "Close navigation", mobile: "Mobile navigation", mobileLinks: "Mobile navigation links", language: "Language selection", tagline: "Powered by AI. Managed by expert marketers." };

@@ -3,14 +3,14 @@ import type { ToolId, ToolReference } from './tools';
 export const featureGroupsEs = [
   {
     id: 'create', label: 'Crear y publicar', headline: 'De la primera idea al trabajo publicado.',
-    description: 'Un brief compartido, una marca consistente y revisión experta en los canales que importan para tu negocio.',
+    description: 'Un resumen de campaña compartido, una marca consistente y revisión experta en los canales que importan para tu negocio.',
     features: [
       { title: 'Sitios web y páginas de destino', icon: 'web', description: 'Crea páginas de destino para campañas, mejora tu sitio web y revisa los cambios antes de que avancen por el flujo de publicación.', detail: 'Creación de páginas · Actualizaciones del sitio · Vistas previas' },
       { title: 'Diseño y creatividad', icon: 'design', description: 'Gráficos de marca, carruseles, piezas de campaña y textos creados para tu audiencia. Afina la dirección con tu equipo de marketing.', detail: 'Imágenes personalizadas · Diseño para redes · Redacción' },
       { title: 'Contenido y calendario de redes', icon: 'calendar', description: 'Planifica el contenido, revisa publicaciones y carruseles, aprueba textos y mantén organizado el calendario de publicación.', detail: 'Planificación de contenido · Vistas previas · Aprobaciones' },
       { title: 'Publicación en redes', icon: 'publish', description: 'Programa o publica contenido aprobado en tus cuentas conectadas. Revisa el estado de cada publicación y ajusta el plan cuando sea necesario.', detail: 'Programación · Publicación · Estado de entrega' },
       { title: 'Campañas de correo', icon: 'email', description: 'Prepara diseños de correo con tu marca, textos para boletines, segmentos de audiencia y borradores de campaña listos para revisar y enviar.', detail: 'Diseño de correos · Planificación de audiencia · Borradores' },
-      { title: 'Gestión de campañas', icon: 'campaign', description: 'Mantén conectados el objetivo, el trabajo web, el contenido, la actividad de prospectos y los entregables de cada campaña.', detail: 'Briefs de campaña · Entregables · Progreso' },
+      { title: 'Gestión de campañas', icon: 'campaign', description: 'Mantén conectados el objetivo, el trabajo web, el contenido, la actividad de prospectos y los entregables de cada campaña.', detail: 'Resúmenes de campaña · Entregables · Progreso' },
     ],
   },
   {
@@ -20,7 +20,7 @@ export const featureGroupsEs = [
       { title: 'Investigación de prospectos', icon: 'search', description: 'Encuentra prospectos según tu perfil de cliente ideal, incluido el cargo, nivel de responsabilidad, empresa, mercado y ubicación.', detail: 'Descubrimiento de prospectos · Listas de investigación · Exportaciones CSV' },
       { title: 'Enriquecimiento de contactos', icon: 'contacts', description: 'Convierte la investigación en registros útiles con información de la empresa y datos de contacto disponibles para tu proceso comercial.', detail: 'Contexto de empresa · Datos de contacto · Verificación' },
       { title: 'Señales de compra', icon: 'signal', description: 'Investiga señales públicas de cambio: contrataciones, expansión, financiamiento, nuevos directivos y otros motivos oportunos para iniciar una conversación.', detail: 'Señales de negocio · Enlaces a fuentes · Contexto de investigación' },
-      { title: 'Prospectos y CRM', icon: 'pipeline', description: 'Sigue los contactos desde una consulta nueva hasta la reunión, propuesta y resultado. Mantén visibles responsables, notas, fechas y próximas acciones.', detail: 'Etapas del pipeline · Responsables · Seguimiento' },
+      { title: 'Prospectos y CRM', icon: 'pipeline', description: 'Sigue los contactos desde una consulta nueva hasta la reunión, propuesta y resultado. Mantén visibles responsables, notas, fechas y próximas acciones.', detail: 'Etapas comerciales · Responsables · Seguimiento' },
       { title: 'Prospección y seguimiento', icon: 'email', description: 'Prepara secuencias relevantes de prospección y seguimiento, lanza campañas aprobadas y organiza las respuestas desde cuentas de envío conectadas.', detail: 'Secuencias · Gestión de respuestas · Controles de envío' },
       { title: 'Gestión de Google Ads', icon: 'campaign', description: 'Prepara y gestiona campañas de búsqueda, anuncios, palabras clave, pujas y presupuestos con la dirección de tu equipo y las reglas de aprobación acordadas.', detail: 'Campañas · Palabras clave · Controles de presupuesto' },
     ],
@@ -39,7 +39,7 @@ export const featureGroupsEs = [
   },
   {
     id: 'learn', label: 'Entender y mejorar', headline: 'Toma la siguiente decisión con más contexto.',
-    description: 'Lleva la memoria del negocio, la investigación y los informes conectados al siguiente brief.',
+    description: 'Lleva la memoria del negocio, la investigación y los informes conectados al siguiente resumen de campaña.',
     features: [
       { title: 'Memoria del negocio', icon: 'memory', description: 'Los datos, la voz, las decisiones creativas, los patrones aprobados y los comentarios de tu negocio quedan disponibles para el siguiente trabajo.', detail: 'Contexto de marca · Decisiones · Comentarios aprobados' },
       { title: 'Centro de marca y referencias', icon: 'design', description: 'Mantén juntos logotipos, guías, fotografías, ejemplos aprobados y referencias creativas para que cada trabajo comience con la base correcta.', detail: 'Recursos de marca · Guías · Biblioteca de referencias' },
@@ -68,7 +68,7 @@ export const connectionGroupsEs: ReadonlyArray<{ title: string; description: str
     apps: ['wordpress', 'shopify', 'woocommerce', 'webflow', 'wix', 'squarespace', 'contentful', 'sanity', 'agility-cms', 'github', 'gitlab', 'vercel', 'cloudflare', 'supabase', 'firebase', 'html5', 'css3', 'javascript', 'react', 'nextjs', 'php'],
     note: 'Repositorios conectados, sitios alojados y flujos compatibles de publicación basados en archivos.' },
   { title: 'CRM y operaciones del negocio', description: 'Conecta el contexto comercial, las próximas acciones y los flujos de facturación aprobados.',
-    apps: [{ id: 'kommo', context: 'Contactos, prospectos y tareas' }, { id: 'hubspot', context: 'Contactos, negocios y campañas' }, { id: 'salesforce', context: 'Prospectos, oportunidades y actividades' }, { id: 'pipedrive', context: 'Negocios, contactos y seguimiento' }, { id: 'zoho', context: 'Prospectos, contactos y pipelines' }, { id: 'dynamics365', context: 'Ventas, servicio y operaciones' }, { id: 'active-campaign', context: 'Contactos, automatización y pipelines' }, { id: 'close', context: 'Prospectos, llamadas y seguimiento' }, { id: 'attio', context: 'Contactos, empresas y negocios' }, { id: 'highlevel', context: 'Prospectos, embudos y automatización' }, { id: 'apollo', context: 'Prospectos, contactos y secuencias' }, { id: 'stripe', context: 'Facturas y pagos' }],
+    apps: [{ id: 'kommo', context: 'Contactos, prospectos y tareas' }, { id: 'hubspot', context: 'Contactos, negocios y campañas' }, { id: 'salesforce', context: 'Prospectos, oportunidades y actividades' }, { id: 'pipedrive', context: 'Negocios, contactos y seguimiento' }, { id: 'zoho', context: 'Prospectos, contactos y procesos comerciales' }, { id: 'dynamics365', context: 'Ventas, servicio y operaciones' }, { id: 'active-campaign', context: 'Contactos, automatización y procesos comerciales' }, { id: 'close', context: 'Prospectos, llamadas y seguimiento' }, { id: 'attio', context: 'Contactos, empresas y negocios' }, { id: 'highlevel', context: 'Prospectos, embudos y automatización' }, { id: 'apollo', context: 'Prospectos, contactos y secuencias' }, { id: 'stripe', context: 'Facturas y pagos' }],
     note: 'Las acciones disponibles respetan los permisos y el método de conexión aprobados para cada cuenta.' },
 ];
 

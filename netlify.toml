@@ -69,6 +69,18 @@
   force = true
 
 [[redirects]]
+  from = "/es/features"
+  to = "/es/funciones/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/features/*"
+  to = "/es/funciones/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/start/thanks"
   to = "/start/thanks/index.html"
   status = 200
