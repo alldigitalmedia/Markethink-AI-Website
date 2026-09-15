@@ -1,4 +1,5 @@
 import { insightPosts } from "../data/blogPosts";
+import { spanishInsightPosts } from "../data/blogPostsEs";
 
 export const prerender = true;
 
@@ -37,6 +38,13 @@ const staticPages: SitemapPage[] = [
     path: "/blog/",
     priority: "0.8",
     changefreq: "weekly",
+    alternates: { en: "/blog/", es: "/es/blog/" },
+  },
+  {
+    path: "/es/blog/",
+    priority: "0.8",
+    changefreq: "weekly",
+    alternates: { en: "/blog/", es: "/es/blog/" },
   },
   {
     path: "/authors/santiago-sosa/",
@@ -149,11 +157,23 @@ const staticPages: SitemapPage[] = [
   },
 ];
 
-const articlePages: SitemapPage[] = insightPosts.map((post) => ({
-  path: `/blog/${post.slug}/`,
+const articlePages: SitemapPage[] = insightPosts.map((post) => {
+  const spanishPost = spanishInsightPosts.find((item) => item.sourceSlug === post.slug);
+  return {
+    path: `/blog/${post.slug}/`,
+    priority: "0.7",
+    changefreq: "monthly",
+    lastmod: post.updatedDate,
+    ...(spanishPost ? { alternates: { en: `/blog/${post.slug}/`, es: `/es/blog/${spanishPost.slug}/` } } : {}),
+  };
+});
+
+const spanishArticlePages: SitemapPage[] = spanishInsightPosts.map((post) => ({
+  path: `/es/blog/${post.slug}/`,
   priority: "0.7",
   changefreq: "monthly",
   lastmod: post.updatedDate,
+  alternates: { en: `/blog/${post.sourceSlug}/`, es: `/es/blog/${post.slug}/` },
 }));
 
 const escapeXml = (value: string) =>
@@ -167,7 +187,7 @@ const escapeXml = (value: string) =>
 const absolute = (path: string) => new URL(path, siteUrl).toString();
 
 export function GET() {
-  const urls = [...staticPages, ...articlePages]
+  const urls = [...staticPages, ...articlePages, ...spanishArticlePages]
     .map((page) => {
       const lastmod = page.lastmod
         ? `\n    <lastmod>${escapeXml(page.lastmod)}</lastmod>`

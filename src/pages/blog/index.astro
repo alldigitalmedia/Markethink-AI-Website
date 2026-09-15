@@ -83,8 +83,8 @@ const structuredData = [
 ];
 ---
 
-<Layout title={title} description={description} canonical="https://markethink.ai/blog/" image={socialImage} imageAlt={socialImageAlt} imageWidth={1200} imageHeight={630} structuredData={structuredData}>
-  <Navbar />
+<Layout title={title} description={description} canonical="https://markethink.ai/blog/" image={socialImage} imageAlt={socialImageAlt} imageWidth={1200} imageHeight={630} alternates={[{ lang: "en", href: "https://markethink.ai/blog/" }, { lang: "es", href: "https://markethink.ai/es/blog/" }, { lang: "x-default", href: "https://markethink.ai/blog/" }]} structuredData={structuredData}>
+  <Navbar alternatePath="/es/blog/" />
   <main class="blog-index">
     <section class="blog-hero">
       <div class="container blog-hero-grid">

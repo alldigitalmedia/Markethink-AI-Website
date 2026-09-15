@@ -13,6 +13,7 @@ import {
   resolveBlogAuthor,
 } from "../../data/blogAuthors";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
+import { spanishInsightPosts } from "../../data/blogPostsEs";
 
 export function getStaticPaths() {
   return insightPosts.map((post) => ({
@@ -38,6 +39,8 @@ const isWideGuide =
   isAiLogoBrandIdentityGuide;
 const siteUrl = "https://markethink.ai";
 const canonical = `${siteUrl}/blog/${post.slug}/`;
+const spanishPost = spanishInsightPosts.find((item) => item.sourceSlug === post.slug);
+const spanishCanonical = spanishPost ? `${siteUrl}/es/blog/${spanishPost.slug}/` : null;
 const isRepresentativeAgencyGuide = post.slug === "what-is-an-ai-marketing-agency";
 const socialImage = post.imageSharing;
 const socialImageWidth = 1200;
@@ -125,9 +128,14 @@ const breadcrumbSchema = {
   imageHeight={socialImageHeight}
   canonical={canonical}
   type="article"
+  alternates={spanishCanonical ? [
+    { lang: "en", href: canonical },
+    { lang: "es", href: spanishCanonical },
+    { lang: "x-default", href: canonical },
+  ] : []}
   structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
 >
-  <Navbar />
+  <Navbar alternatePath={spanishPost ? `/es/blog/${spanishPost.slug}/` : undefined} />
   <main class="article-page">
     <article>
       <header class="article-hero">

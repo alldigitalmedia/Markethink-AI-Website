@@ -1,0 +1,155 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Navbar from "../../../components/Navbar.astro";
+import Footer from "../../../components/Footer.astro";
+import { spanishInsightPosts } from "../../../data/blogPostsEs";
+
+const title = "Ideas sobre marketing con IA y sistemas de campañas | Markethink";
+const description = "Guías prácticas de Markethink sobre marketing con IA, campañas, aprobaciones, contenido, prospectos, CRM y seguimiento.";
+const canonical = "https://markethink.ai/es/blog/";
+const socialImage = spanishInsightPosts[0].imageSharing;
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Ideas de marketing de Markethink",
+    description,
+    url: canonical,
+    inLanguage: "es",
+    publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Inicio", item: "https://markethink.ai/es/" },
+      { "@type": "ListItem", position: 2, name: "Ideas", item: canonical },
+    ],
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  image={socialImage}
+  imageAlt={spanishInsightPosts[0].imageAlt}
+  imageWidth={1200}
+  imageHeight={630}
+  lang="es"
+  alternates={[
+    { lang: "en", href: "https://markethink.ai/blog/" },
+    { lang: "es", href: canonical },
+    { lang: "x-default", href: "https://markethink.ai/blog/" },
+  ]}
+  structuredData={structuredData}
+>
+  <Navbar lang="es" alternatePath="/blog/" />
+  <main class="blog-index">
+    <section class="blog-hero">
+      <div class="container blog-hero-grid">
+        <div class="animate-fade-up">
+          <p class="eyebrow">IDEAS DE MARKETHINK</p>
+          <h1>Mejores sistemas de marketing para empresas que quieren <em>crecer con consistencia.</em></h1>
+        </div>
+        <div class="hero-deck animate-fade-up">
+          <p>Guías prácticas sobre marketing con IA, campañas, aprobaciones, contenido, prospectos, CRM y seguimiento.</p>
+          <p class="hero-note">Investigación y marcos de trabajo para un marketing que sigue avanzando.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights-section" aria-labelledby="latest-insights-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">LA MESA EDITORIAL</p>
+          <h2 id="latest-insights-title">Ideas creadas para ponerse en práctica.</h2>
+          <p>Recursos claros para conectar el trabajo de marketing con decisiones, prospectos y seguimiento.</p>
+        </div>
+        <div class="insight-grid">
+          {spanishInsightPosts.map((post, index) => (
+            <article class="insight-card" id={post.slug}>
+              <a href={`/es/blog/${post.slug}/`} aria-label={`Leer ${post.title}`}>
+                <div class="insight-image">
+                  <img src={post.imageThumbnail} alt={post.imageAlt} width="960" height="600" loading={index === 0 ? "eager" : "lazy"} decoding="async" />
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                </div>
+                <div class="insight-content">
+                  <div class="card-topline"><span>{post.category}</span><span>{post.readingTime}</span></div>
+                  <h2>{post.title}</h2>
+                  <p>{post.excerpt}</p>
+                  <div class="insight-meta">
+                    <span>Actualizado el {new Date(post.updatedDate).toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" })}</span>
+                    <b aria-hidden="true">↗</b>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="container closing-grid">
+        <div>
+          <p class="eyebrow">UN SIGUIENTE PASO CLARO</p>
+          <h2>Conecta el marketing con una operación que aprende.</h2>
+        </div>
+        <div>
+          <p>Markethink es un sistema de marketing con IA gestionado por expertos. Ejecuta el trabajo diario y lo conecta con prospectos, CRM y seguimiento.</p>
+          <a href="/es/solicitar-demo/">Solicitar una demo <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  .blog-index { background: #f5f5f1; color: #0f1213; overflow: clip; }
+  .blog-hero { padding: clamp(8.4rem,12vw,10.6rem) 0 clamp(3.2rem,6vw,5.8rem); background: radial-gradient(circle at 84% 8%,rgba(105,210,84,.16),transparent 26rem),linear-gradient(180deg,#f5f5f1 0%,#edf4ea 100%); }
+  .blog-hero-grid { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(18rem,.55fr); gap: clamp(2rem,6vw,6rem); align-items: end; }
+  .eyebrow { margin: 0; color: #315b28; font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+  .blog-hero h1 { max-width: 55rem; margin-top: 1.15rem; font: 600 clamp(3.1rem,5.8vw,5.7rem)/.95 Inter,system-ui,sans-serif; letter-spacing: -.06em; text-wrap: balance; }
+  .blog-hero h1 em { color: #315b28; font-family: "Instrument Serif",Georgia,serif; font-weight: 400; }
+  .hero-deck > p:first-child { color: #313633; font-size: clamp(1.04rem,1.45vw,1.22rem); line-height: 1.58; }
+  .hero-note { margin-top: 1.4rem; padding-top: 1.25rem; border-top: 1px solid rgba(15,18,19,.17); color: #686b6c; font-size: .84rem; line-height: 1.5; }
+  .insights-section { padding: clamp(4.5rem,8vw,7rem) 0; }
+  .section-heading { display: grid; grid-template-columns: minmax(0,.55fr) minmax(0,1fr); gap: 1rem 3rem; align-items: end; }
+  .section-heading .eyebrow { grid-column: 1 / -1; }
+  .section-heading h2, .closing-section h2 { margin: 0; font: 400 clamp(2.6rem,5vw,4.8rem)/1 "Instrument Serif",Georgia,serif; letter-spacing: -.03em; }
+  .section-heading > p:last-child { max-width: 34rem; color: #5f655f; line-height: 1.65; }
+  .insight-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .insight-card { border: 1px solid rgba(15,18,19,.12); border-radius: 1.4rem; background: #fbfaf5; overflow: hidden; }
+  .insight-card > a { display: grid; grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr); min-height: 27rem; color: inherit; text-decoration: none; }
+  .insight-image { position: relative; min-height: 100%; overflow: hidden; background: #0f1213; }
+  .insight-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+  .insight-image > span { position: absolute; left: 1rem; bottom: 1rem; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: rgba(15,18,19,.78); color: #f5f5f1; font-size: .72rem; }
+  .insight-card:hover img { transform: scale(1.025); }
+  .insight-content { display: flex; flex-direction: column; padding: clamp(1.4rem,3vw,2.4rem); }
+  .card-topline, .insight-meta { display: flex; justify-content: space-between; gap: 1rem; color: #686b6c; font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .insight-content h2 { margin: 1.2rem 0 0; font: 400 clamp(2rem,3.4vw,3.2rem)/1 "Instrument Serif",Georgia,serif; letter-spacing: -.025em; }
+  .insight-content > p { margin-top: 1.2rem; color: #525854; line-height: 1.65; }
+  .insight-meta { margin-top: auto; padding-top: 1.6rem; border-top: 1px solid rgba(15,18,19,.1); }
+  .closing-section { padding: clamp(4.5rem,8vw,7rem) 0 clamp(8rem,12vw,11rem); background: #edf4ea; }
+  .closing-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); gap: 3rem 6rem; }
+  .closing-section h2 { margin-top: 1rem; }
+  .closing-grid > div:last-child { align-self: end; }
+  .closing-grid > div:last-child p { color: #525854; line-height: 1.7; }
+  .closing-grid a { display: inline-flex; margin-top: 1.3rem; padding: .85rem 1.1rem; border-radius: 999px; background: #0f1213; color: #f5f5f1; font-weight: 700; text-decoration: none; }
+  @media (max-width: 900px) {
+    .blog-hero-grid, .section-heading, .closing-grid { grid-template-columns: 1fr; }
+    .insight-card > a { grid-template-columns: 1fr; }
+    .insight-image { min-height: 19rem; }
+  }
+  @media (max-width: 680px) {
+    .blog-hero { padding-top: 7.5rem; }
+    .blog-hero h1 { font-size: clamp(2.8rem,13vw,4.1rem); }
+    .insight-grid { grid-template-columns: 1fr; }
+    .insight-card > a { min-height: 0; }
+    .insight-image { min-height: 15rem; }
+    .insight-meta { margin-top: 1.5rem; }
+  }
+</style>
