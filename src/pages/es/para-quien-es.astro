@@ -1,0 +1,97 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+const pageTitle = "Para quién es Markethink | Marketing con IA por tipo de negocio";
+const pageDescription = "Conoce cómo Markethink adapta una operación de marketing con IA gestionada por expertos a empresas en crecimiento, firmas profesionales y estudios creativos.";
+const canonicalUrl = "https://markethink.ai/es/para-quien-es/";
+const audiences = [
+  { id: "empresas-en-crecimiento", number: "01", group: "Empresas en crecimiento", title: "Marketing con IA para negocios en crecimiento", description: "Una operación práctica para negocios que necesitan campañas, mejoras web, contenido, aprobaciones, prospectos y seguimiento avanzando cada semana.", image: "/images/ai-marketing-small-business-hero.svg", alt: "Sistema de marketing con IA de Markethink que conecta campañas, aprobaciones, contenido y oportunidades de negocio", capabilities: ["Planificación de campañas", "Sitio web y contenido", "Aprobaciones y seguimiento"], featured: true },
+  { id: "servicios-profesionales", number: "02", group: "Servicios profesionales", title: "Marketing con IA para firmas profesionales", description: "Una operación gestionada por expertos para búsqueda, contenido, publicidad, captación, seguimiento en CRM y revisión del equipo.", image: "/images/ai-marketing-law-firms-hero-v3.svg", alt: "Líderes de una firma profesional usando un sistema de marketing para búsqueda, campañas, aprobaciones, captación y seguimiento", capabilities: ["SEO y búsqueda con IA", "Publicidad y captación", "Revisión experta"], featured: false },
+  { id: "servicios-creativos", number: "03", group: "Servicios creativos", title: "Marketing con IA para estudios creativos", description: "Un sistema que convierte proyectos, recursos visuales, consultas, aprobaciones y seguimiento en campañas que siguen avanzando.", image: "/images/ai-marketing-interior-designers-hero.svg", alt: "Recursos de un proyecto creativo conectados a un sistema de marketing con IA de Markethink", capabilities: ["Campañas de proyectos", "Contenido visual", "Seguimiento de consultas"], featured: false },
+];
+const structuredData = [{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Para quién es Markethink", description: pageDescription, url: canonicalUrl, inLanguage: "es", publisher: { "@id": "https://markethink.ai/#organization" }, mainEntity: { "@type": "ItemList", numberOfItems: audiences.length, itemListElement: audiences.map((audience,index) => ({ "@type": "ListItem", position: index + 1, name: audience.title, url: `${canonicalUrl}#${audience.id}` })) } }, { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Inicio", item: "https://markethink.ai/es/" }, { "@type": "ListItem", position: 2, name: "Para quién es", item: canonicalUrl }] }];
+---
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalUrl} lang="es" structuredData={structuredData} alternates={[{ lang: "en", href: "https://markethink.ai/who-we-help/" }, { lang: "es", href: canonicalUrl }, { lang: "x-default", href: "https://markethink.ai/who-we-help/" }]}>
+  <Navbar lang="es" alternatePath="/who-we-help/" />
+  <main class="who-page">
+    <section class="who-hero"><div class="container hero-grid"><div><p class="subtitle animate-fade-up">PARA QUIÉN ES</p><h1 class="animate-fade-up">Marketing con IA adaptado a la forma en que funciona tu negocio.</h1></div><div class="hero-copy animate-fade-up"><p>Markethink aprende el negocio, organiza la campaña, crea el trabajo, mantiene activas las aprobaciones y conecta el marketing con prospectos y seguimiento.</p><p>La IA aporta velocidad y consistencia. Un equipo real de marketing dirige la estrategia, revisa el trabajo y responde por el avance.</p><a href="#tipos-de-negocio" class="button">Encuentra tu enfoque</a></div></div><div class="container operation-line" aria-label="Operación conectada de marketing de Markethink"><span>Contexto del negocio</span><i></i><span>Campaña</span><i></i><span>Creatividad</span><i></i><span>Aprobación</span><i></i><span>Prospecto y seguimiento</span></div></section>
+    <section class="directory-section" id="tipos-de-negocio"><div class="container"><div class="section-header"><p class="subtitle">ENFOQUES POR NEGOCIO</p><h2>El tipo de negocio cambia cómo el cliente elige. Tu marketing debe entender la diferencia.</h2><p>Revisa el enfoque más cercano a tu negocio. Markethink aprende cómo vendes, crea las campañas adecuadas y conecta las aprobaciones con prospectos, seguimiento y conversión.</p></div><div class="audience-grid">{audiences.map((audience) => (<article id={audience.id} class:list={["audience-card", audience.featured && "is-featured"]}><div class="audience-image"><img src={audience.image} alt={audience.alt} width="1200" height="800" loading={audience.featured ? "eager" : "lazy"} /></div><div class="audience-content"><div class="audience-meta"><span>{audience.number}</span><span>{audience.group}</span></div><h2>{audience.title}</h2><p>{audience.description}</p><div class="capability-row">{audience.capabilities.map((capability) => <span>{capability}</span>)}</div><a class="explore-link" href="/es/solicitar-demo/">Hablar sobre este enfoque <span aria-hidden="true">→</span></a></div></article>))}</div></div></section>
+    <section class="principles-section"><div class="container principles-grid"><div><p class="subtitle">LO QUE SE MANTIENE</p><h2>Un negocio distinto. El mismo estándar operativo.</h2></div><div class="principles-list"><article><span>01</span><div><h3>Aprende el negocio</h3><p>Servicios, audiencia, voz, identidad visual, aprobaciones y contexto de resultados permanecen conectados.</p></div></article><article><span>02</span><div><h3>Ejecuta en toda la operación</h3><p>Sitio web, contenido, campañas, publicidad, prospectos y seguimiento avanzan desde una misma estrategia.</p></div></article><article><span>03</span><div><h3>Gestionado por expertos</h3><p>Un equipo real de marketing dirige prioridades, revisa la calidad y responde por el avance.</p></div></article><article><span>04</span><div><h3>Mejora con el tiempo</h3><p>Cada aprobación, corrección y resultado ayuda a mejorar lo que hace el sistema después.</p></div></article></div></div></section>
+    <section class="next-industry-section"><div class="container next-panel"><div><p class="subtitle">¿NO VES TU NEGOCIO?</p><h2>El sistema puede comenzar con tu operación de marketing.</h2><p>Una sesión enfocada puede adaptar Markethink a tu sitio web, campañas, aprobaciones, prospectos y seguimiento sin convertir tu negocio en una categoría genérica.</p></div><a href="/es/solicitar-demo/" class="button">Solicitar una demo</a></div></section>
+  </main>
+  <Footer lang="es" />
+</Layout>
+
+<style>
+  .who-page { background: #0f1213; color: #f5f5f1; overflow: clip; }
+  .who-hero { padding: 10rem 0 5rem; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .who-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 78% 20%, rgba(105,210,84,.12), transparent 30%), linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: auto, 72px 72px, 72px 72px; mask-image: linear-gradient(to bottom, #000 0%, transparent 88%); }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(3rem,8vw,8rem); align-items: end; }
+  .who-hero h1 { max-width: 54rem; margin-top: 1rem; font-size: clamp(4rem,7vw,7.4rem); line-height: .9; letter-spacing: -.055em; text-wrap: balance; }
+  .hero-copy { max-width: 34rem; display: flex; flex-direction: column; gap: 1rem; color: rgba(245,245,241,.7); line-height: 1.72; }
+  .hero-copy .button { align-self: flex-start; margin-top: .4rem; }
+  .operation-line { position: relative; display: grid; grid-template-columns: auto 1fr auto 1fr auto 1fr auto 1fr auto; gap: .85rem; align-items: center; margin-top: clamp(4rem,7vw,7rem); padding: 1rem 1.15rem; border: 1px solid rgba(255,255,255,.11); border-radius: 999px; background: rgba(255,255,255,.035); color: rgba(245,245,241,.62); font-size: .76rem; letter-spacing: .04em; }
+  .operation-line i { display: block; height: 1px; background: linear-gradient(90deg, rgba(105,210,84,.2), #69d254, rgba(105,210,84,.2)); }
+
+  .directory-section { background: #f5f5f1; color: #0f1213; padding: clamp(6rem,10vw,10rem) 0; }
+  .section-header { max-width: 61rem; margin-bottom: 3rem; }
+  .section-header .subtitle, .principles-section .subtitle { color: rgba(15,18,19,.48); }
+  .section-header h2, .principles-section h2, .next-panel h2 { font-size: clamp(3rem,5.7vw,6rem); line-height: .94; letter-spacing: -.052em; text-wrap: balance; }
+  .section-header > p:last-child { max-width: 48rem; margin-top: 1rem; color: rgba(15,18,19,.65); line-height: 1.72; }
+  .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .audience-card { display: grid; grid-template-rows: auto 1fr; overflow: hidden; border: 1px solid rgba(15,18,19,.11); border-radius: 1.75rem; background: #fff; color: #0f1213; transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; }
+  .audience-card:hover { transform: translateY(-5px); border-color: rgba(105,210,84,.7); box-shadow: 0 28px 80px rgba(15,18,19,.12); }
+  .audience-card.is-featured { grid-column: 1 / -1; grid-template-columns: 1.15fr .85fr; grid-template-rows: 1fr; }
+  .audience-image { min-height: 23rem; overflow: hidden; background: #151a1b; }
+  .audience-card:not(.is-featured) .audience-image { min-height: 20rem; }
+  .audience-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .55s ease; }
+  .audience-card:hover .audience-image img { transform: scale(1.025); }
+  .audience-content { padding: clamp(1.5rem,3vw,2.4rem); display: flex; flex-direction: column; }
+  .audience-meta { display: flex; justify-content: space-between; gap: 1rem; color: #4aa63c; font-size: .72rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+  .audience-content h2 { margin-top: 1.6rem; font-size: clamp(2.2rem,4vw,4.2rem); line-height: .96; letter-spacing: -.045em; }
+  .audience-content > p { margin-top: 1rem; color: rgba(15,18,19,.65); line-height: 1.68; }
+  .capability-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }
+  .capability-row span { padding: .52rem .7rem; border-radius: 999px; background: #edf4ea; color: rgba(15,18,19,.72); font-size: .74rem; }
+  .explore-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1.8rem; font-weight: 750; }
+  .explore-link span { color: #4aa63c; font-size: 1.35rem; transition: transform .25s ease; }
+  .audience-card:hover .explore-link span { transform: translateX(5px); }
+
+  .principles-section { background: #edf4ea; color: #0f1213; padding: clamp(6rem,9vw,9rem) 0; }
+  .principles-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem,8vw,8rem); align-items: start; }
+  .principles-list { border-top: 1px solid rgba(15,18,19,.12); }
+  .principles-list article { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.4rem 0; border-bottom: 1px solid rgba(15,18,19,.12); }
+  .principles-list article > span { color: #4aa63c; font-size: .75rem; font-weight: 800; letter-spacing: .08em; }
+  .principles-list h3 { font-family: var(--font-body); font-size: 1.08rem; margin-bottom: .4rem; }
+  .principles-list p { color: rgba(15,18,19,.64); line-height: 1.65; }
+
+  .next-industry-section { background: #f5f5f1; color: #0f1213; padding: 0 0 clamp(6rem,9vw,9rem); }
+  .next-panel { display: flex; align-items: flex-end; justify-content: space-between; gap: 3rem; border-radius: 2rem; background: #0f1213; color: #f5f5f1; padding: clamp(2rem,5vw,4rem); }
+  .next-panel > div { max-width: 52rem; }
+  .next-panel .subtitle { color: #aee8a0; }
+  .next-panel h2 { margin-top: 1rem; }
+  .next-panel p:last-child { max-width: 45rem; margin-top: 1rem; color: rgba(245,245,241,.68); line-height: 1.7; }
+  .next-panel .button { flex: 0 0 auto; }
+
+  @media (max-width: 980px) {
+    .hero-grid, .principles-grid { grid-template-columns: 1fr; }
+    .who-hero { min-height: auto; }
+    .operation-line { grid-template-columns: 1fr; border-radius: 1.4rem; }
+    .operation-line i { width: 1px; height: 1rem; margin-left: .4rem; background: #69d254; }
+    .audience-card.is-featured { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .who-hero { padding: 8rem 0 4rem; }
+    .who-hero h1 { font-size: clamp(3.4rem,15vw,4.8rem); }
+    .audience-grid { grid-template-columns: 1fr; }
+    .audience-card.is-featured { grid-column: auto; }
+    .audience-image, .audience-card:not(.is-featured) .audience-image { min-height: 17rem; }
+    .audience-content h2 { font-size: 2.65rem; }
+    .next-panel { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .audience-card, .audience-image img, .explore-link span { transition: none; }
+  }
+</style>
