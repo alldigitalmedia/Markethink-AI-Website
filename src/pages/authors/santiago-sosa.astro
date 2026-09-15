@@ -49,9 +49,14 @@ const profileSchema = {
   title="Santiago Sosa, Founder of Markethink.ai"
   description={santiagoSosaAuthor.bio}
   canonical={SANTIAGO_PROFILE_URL}
+  alternates={[
+    { lang: "en", href: SANTIAGO_PROFILE_URL },
+    { lang: "es", href: "https://markethink.ai/es/autores/santiago-sosa/" },
+    { lang: "x-default", href: SANTIAGO_PROFILE_URL },
+  ]}
   structuredData={profileSchema}
 >
-  <Navbar />
+  <Navbar alternatePath="/es/autores/santiago-sosa/" />
 
   <main class="author-profile">
     <header class="profile-hero">
