@@ -5,6 +5,7 @@ export const prerender = true;
 
 const siteUrl = "https://markethink.ai";
 const releaseDate = "2026-08-25";
+const spanishCoreReleaseDate = "2026-09-15";
 
 type AlternateSet = {
   en: string;
@@ -31,7 +32,7 @@ const staticPages: SitemapPage[] = [
     path: "/es/",
     priority: "1.0",
     changefreq: "weekly",
-    lastmod: releaseDate,
+    lastmod: spanishCoreReleaseDate,
     alternates: { en: "/", es: "/es/" },
   },
   {
@@ -85,7 +86,7 @@ const staticPages: SitemapPage[] = [
     path: "/es/trabajo-real/",
     priority: "0.9",
     changefreq: "weekly",
-    lastmod: releaseDate,
+    lastmod: spanishCoreReleaseDate,
     alternates: { en: "/shipped/", es: "/es/trabajo-real/" },
   },
   {
@@ -116,7 +117,7 @@ const staticPages: SitemapPage[] = [
     path: "/es/solicitar-demo/",
     priority: "0.9",
     changefreq: "monthly",
-    lastmod: releaseDate,
+    lastmod: spanishCoreReleaseDate,
     alternates: {
       en: "/schedule-a-walkthrough/",
       es: "/es/solicitar-demo/",

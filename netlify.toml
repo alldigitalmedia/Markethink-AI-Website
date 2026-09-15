@@ -69,6 +69,12 @@
   force = true
 
 [[redirects]]
+  from = "/es/features.md"
+  to = "/es/funciones.md"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/es/features"
   to = "/es/funciones/"
   status = 301

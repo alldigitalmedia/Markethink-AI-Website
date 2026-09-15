@@ -179,6 +179,11 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     color: #ffffff;
   }
 
+  .blog-author--dark .blog-author__name-link:focus-visible,
+  .blog-author--dark .blog-author__link:focus-visible {
+    outline-color: #69d254;
+  }
+
   @media (max-width: 480px) {
     .blog-author--with-avatar {
       grid-template-columns: minmax(0, 1fr);

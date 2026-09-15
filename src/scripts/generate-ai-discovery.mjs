@@ -136,7 +136,7 @@ function compactIndex(pages, language) {
   return [
     "# Markethink", "",
     isSpanish ? "> Tu operación de marketing, impulsada por IA y gestionada por expertos." : "> Your marketing operation, powered by AI and managed by experts.", "",
-    isSpanish ? "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende cada negocio, ejecuta el marketing día a día, lo conecta con el pipeline y mejora con cada aprobación, corrección y resultado." : "Markethink is an AI marketing system managed by expert marketers. It learns each business, runs marketing day to day, connects marketing to the pipeline, and improves with every approval, correction, and result.", "",
+    isSpanish ? "Markethink es una agencia de marketing con IA gestionada por expertos. Aprende cada negocio, ejecuta el marketing día a día, conecta campañas, sitio web, prospectos, CRM y seguimiento con el proceso comercial, y mejora con cada aprobación, corrección y resultado." : "Markethink is an AI marketing system managed by expert marketers. It learns each business, runs marketing day to day, connects marketing to the pipeline, and improves with every approval, correction, and result.", "",
     isSpanish ? "## Páginas principales" : "## Core pages", "", ...corePages.map(linkLine),
     ...(articlePages.length ? ["", isSpanish ? "## Ideas" : "## Insights", "", ...articlePages.map(linkLine)] : []),
     "", isSpanish ? "## Contenido completo del sitio" : "## Complete site content", "",
