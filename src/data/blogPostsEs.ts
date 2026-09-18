@@ -29,7 +29,7 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
     label: "GUÍA PRÁCTICA",
     ...editorialImage("/blog/how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business/"),
     imageAlt:
-      "Escena editorial conceptual sobre el desarrollo de un logo y un sistema de identidad de marca asistidos por IA.",
+      "Escena editorial conceptual de un equipo que revisa una maqueta arquitectónica y materiales de identidad.",
     publishedDate: "2026-09-07",
     updatedDate: "2026-09-08",
     readingTime: "20 min de lectura",

@@ -1,12 +1,12 @@
 ---
 const toolRows = [
   ["Creadores de logotipos guiados", "Adobe Express o Looka", "Primeros diseños rápidos a partir de un nombre, categoría, estilos, colores y símbolos", "Trate el resultado basado en plantillas como punto de partida. Verifique el carácter distintivo, ajuste de nuevo la tipografía e inspeccione los archivos antes de su aprobación.", "https://www.adobe.com/express/create/logo"],
-  ["Generadores de imágenes abiertos", "Adobe Firefly, Midjourney u OpenAI GPT Image", "Amplia exploración de territorios visuales, referencias, variaciones y edición de imágenes.", "Útil para ideas y maquetas, no para pruebas automáticas de vectores limpios, letras correctas, originalidad o autorización.", "https://www.adobe.com/products/firefly.html"],
-  ["Herramientas de plantilla y aplicación.", "Canva", "Tableros de marca, diseños, aplicaciones sociales y conceptos de imagen creados a partir de prompts.", "El contenido de la biblioteca y la salida de IA pueden conllevar preguntas de licencia y similitud separadas. Registre lo que utiliza cada diseño.", "https://www.canva.com/ai-image-generator/"],
-  ["Exploración textual", "Ideogram", "Gráficos generados con texto que se pueden extraer en capas editables.", "Su documentación oficial dice que la extracción de capas de texto está en versión beta y funciona mejor con texto convencional, claro y directo. Vuelva a escribir una logotipo tipográfico permanente.", "https://ideogram.ai/features/text-layers/"],
-  ["Diseño de sistemas colaborativos.", "Figma", "Revisión en paralelo, diseños de aplicaciones, componentes y reglas de identidad documentadas", "Un espacio de trabajo de diseño no proporciona autorización de marca. Sus términos de IA requieren revisión humana y autorizaciones pertinentes.", "https://www.figma.com/legal/ai-terms/"],
+  ["Generadores de imágenes abiertos", "Adobe Firefly, Midjourney u OpenAI GPT Image", "Amplia exploración de territorios visuales, referencias, variaciones y edición de imágenes.", "Útil para ideas y maquetas, no para pruebas automáticas de vectores limpios, letras correctas, originalidad o disponibilidad legal.", "https://www.adobe.com/products/firefly.html"],
+  ["Herramientas para plantillas y aplicaciones", "Canva", "Tableros de marca, diseños, aplicaciones sociales y conceptos de imagen creados a partir de prompts.", "El contenido de la biblioteca y el resultado de IA pueden conllevar cuestiones independientes sobre licencias y similitud. Registre lo que utiliza cada diseño.", "https://www.canva.com/ai-image-generator/"],
+  ["Exploración textual", "Ideogram", "Gráficos generados con texto que se pueden extraer en capas editables.", "Su documentación oficial dice que la extracción de capas de texto está en versión beta y funciona mejor con texto convencional, claro y directo. Vuelva a componer el logotipo tipográfico definitivo.", "https://ideogram.ai/features/text-layers/"],
+  ["Diseño colaborativo de sistemas", "Figma", "Revisión comparativa, diseños de aplicaciones, componentes y reglas de identidad documentadas", "Un espacio de trabajo de diseño no proporciona análisis de disponibilidad de marca. Sus términos de IA requieren revisión humana y revisiones pertinentes.", "https://www.figma.com/legal/ai-terms/"],
   ["Limpieza de vectores", "Calco de imagen de Adobe Illustrator", "Convierte ilustraciones rasterizadas en trazados vectoriales editables con controles para trazados, esquinas, ruido, formas y expansión.", "El trazado automático puede preservar curvas débiles y crear demasiados anclajes. Inspeccione y vuelva a dibujar el resultado.", "https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html"],
-  ["Seguimiento automatizado inicial", "Vectorizer.AI", "Convierte formatos ráster comunes en salida vectorial SVG, EPS, DXF y PDF", "Un seguimiento cambia la estructura del archivo. No establece calidad, singularidad o disponibilidad legal del diseño.", "https://vectorizer.ai/"],
+  ["Trazado automático inicial", "Vectorizer.AI", "Convierte formatos ráster comunes en salida vectorial SVG, EPS, DXF y PDF", "Un trazado cambia la estructura del archivo. No establece calidad, singularidad o disponibilidad legal del diseño.", "https://vectorizer.ai/"],
 ];
 
 const scoreRows = [
@@ -28,28 +28,28 @@ const identityRows = [
   ["Disposición", "Fuerte alineación a la izquierda, márgenes amplios, longitudes de línea breves, un sistema de espaciado de ocho puntos y un solo acento prioritario por vista."],
   ["Voz", "Calma antes que ingenio. Explique el siguiente paso. Utilice un lenguaje de servicio concreto y evite garantías como \"sin estrés\"."],
   ["Aplicaciones", "Favicon compacto, encabezado móvil legible, marca de vehículo de alto contraste, avatar social circular, portada de propuesta y estados de formulario accesibles."],
-  ["Gobernanza", "Propietario designado del archivo fuente, registro de versión, fecha de aprobación, limitaciones conocidas y reglas para cambios futuros."],
+  ["Gobernanza", "Responsable designado del archivo fuente, registro de versión, fecha de aprobación, limitaciones conocidas y reglas para cambios futuros."],
 ];
 
 const testRows = [
   ["Favicon", "16, 24, 32 y 48 píxeles a escala del 100%", "La silueta sigue siendo reconocible, no se cierra ningún detalle y el SVG contiene rutas en lugar de un mapa de bits incrustado."],
-  ["Cabecera móvil", "Ventana gráfica de 320 a 390 píxeles, incluidos estados fijos y oscuros", "El nombre sigue siendo legible, la navegación sigue siendo adecuada y se define el cambio a un bloqueo compacto."],
+  ["Encabezado móvil", "Ventana gráfica de 320 a 390 píxeles, incluidos estados fijos y oscuros", "El nombre sigue siendo legible, la navegación sigue siendo adecuada y se define el cambio a un composición compacta."],
   ["Monocromo", "Negro sólido, blanco sólido, impresión de oficina, fotocopias, sellos, vinilos y bordados", "Ningún significado depende de los degradados o del color, y los espacios negativos no se rellenan."],
   ["Señalización", "Maqueta a escala, distancia de visualización esperada, contraste diurno y nocturno y prueba física", "Los trazos cumplen con el mínimo del fabricante y tanto los diseños horizontales como los apilados siguen siendo legibles."],
-  ["Avatar para redes sociales", "Recortes cuadrados y circulares en el tamaño real de la interfaz", "La marca compacta funciona sin la logotipo tipográfico completa y los detalles esenciales permanecen dentro del área segura."],
+  ["Avatar para redes sociales", "Recortes cuadrados y circulares en el tamaño real de la interfaz", "La marca compacta funciona sin el logotipo tipográfico completo y los detalles esenciales permanecen dentro del área segura."],
   ["Documentos", "Propuesta, factura, firma de correo electrónico, impresión en escala de grises y PDF exportado", "La marca se mantiene nítida, las fuentes están empaquetadas correctamente y el logotipo no domina la información."],
-  ["Accesibilidad", "Cada par de texto y fondo aprobado, además de estados de interfaz y gráficos significativos", "El texto normal cumple con 4.5:1, el texto grande calificado cumple con 3:1 y las señales de interfaz de usuario y los gráficos necesarios cumplen con 3:1."],
+  ["Accesibilidad", "Cada par de texto y fondo aprobado, además de estados de interfaz y gráficos significativos", "El texto normal cumple con 4.5:1, el texto grande que cumple las condiciones cumple con 3:1 y las señales de interfaz de usuario y los gráficos necesarios cumplen con 3:1."],
 ];
 
 const failureRows = [
   ["Palabras de estilo genéricas", "\"Crea un logotipo moderno, profesional y minimalista\".", "Agregue la audiencia, la diferencia comercial, tres rasgos precisos, tres rasgos no deseados, símbolos prohibidos y aplicaciones reales."],
   ["Cambiar todo al mismo tiempo", "\"Hágalo más simple, más amigable, azul y use una fuente e ícono diferentes\".", "Mantenga constantes el símbolo, la composición, la categoría de tipo y la paleta. Cambie solo un detalle, como el grosor de la línea interior."],
-  ["Conservar las letras generadas", "\"El nombre está escrito correctamente, por lo que la logotipo tipográfico está terminada\".", "Úselo como referencia. Vuelva a escribir el nombre con una fuente con licencia, corrija el espaciado manualmente y compare una opción dibujada personalizada."],
+  ["Conservar las letras generadas", "\"El nombre está escrito correctamente, por lo que el logotipo tipográfico está terminado\".", "Úselo como referencia. Vuelva a escribir el nombre con una fuente con licencia, corrija el espaciado manualmente y compare una opción dibujada personalizada."],
   ["Confiar solo en la extensión del archivo", "\"Termina en .svg, por lo que está listo para producción\".", "Confirme que contenga trazados editables, elimine anclajes y máscaras perdidas, corrija las curvas y pruébelo tanto en tamaños muy pequeños como muy grandes."],
   ["Elegir a partir de una maqueta", "\"Parece más fuerte en la escena del escaparate\".", "Elimina iluminación, perspectiva y textura. Compara a cada finalista en blanco y negro, en tamaños pequeños, en un documento simple y en un cartel de un solo color."],
   ["Imitar a otra marca", "\"Haz que parezca una empresa famosa o un diseñador vivo\".", "Traduzca la intención en limitaciones observables, como un espacio negativo amplio, una silueta compacta y no más de dos grosores de línea."],
   ["Confundir el logo con la identidad", "\"El logotipo está aprobado, por lo que la marca está lista\".", "Trate la aprobación del logotipo como el comienzo del desarrollo del sistema: la paleta, el tipo, las imágenes, el diseño, la voz, las variantes, las plantillas y la gobernanza aún necesitan decisiones."],
-  ["Dejar la revisión de derechos para el final", "\"Buscaremos marcas comerciales después de imprimir\".", "Busque con anticipación, documente marcas similares y bienes o servicios relacionados, y tome decisiones inciertas o críticas para el negocio con un asesor calificado."],
+  ["Dejar la revisión de derechos para el final", "\"Buscaremos marcas comerciales después de imprimir\".", "Busque con anticipación, documente marcas similares y bienes o servicios relacionados, y tome decisiones inciertas o críticas para el negocio con un profesional calificado."],
 ];
 ---
 
@@ -65,7 +65,7 @@ const failureRows = [
   <div class="boundary-grid" role="list" aria-label="Límites de responsabilidad">
     <article role="listitem"><span>La IA ayuda con</span><h3>Exploración e iteración</h3><p>Conceptos aproximados, referencias visuales, variaciones controladas, maquetas y exploración repetitiva.</p></article>
     <article role="listitem"><span>Las personas dirigen</span><h3>Criterio y oficio</h3><p>Posicionamiento, dirección creativa, selección, geometría, tipografía, accesibilidad y calidad de producción.</p></article>
-    <article role="listitem"><span>La empresa decide</span><h3>Verdad y aprobación</h3><p>La oferta, la audiencia, los diferenciadores reales, la tolerancia al riesgo, las decisiones de autorización y la aprobación final.</p></article>
+    <article role="listitem"><span>La empresa decide</span><h3>Verdad y aprobación</h3><p>La oferta, la audiencia, los diferenciadores reales, la tolerancia al riesgo, las decisiones sobre disponibilidad y la aprobación final.</p></article>
   </div>
   <aside class="guide-note"><strong>El costo real aparece más tarde.</strong> Una marca genérica o frágil se vuelve costosa después de que se imprimen los letreros, se construyen las plantillas, se presentan las solicitudes y el equipo ha aprendido a usarla. Resuelva la incertidumbre mientras el trabajo aún sea fácil de cambiar.</aside>
 </section>
@@ -80,7 +80,7 @@ const failureRows = [
     <article><h3>verdad empresarial</h3><ul><li>Público específico y situación de compra.</li><li>Oferta y categoría</li><li>La verdadera razón por la que los clientes eligen el negocio</li><li>Ámbito geográfico y lingüístico</li></ul></article>
     <article><h3>dirección visual</h3><ul><li>Tres rasgos deseados</li><li>Tres rasgos a evitar</li><li>Convenciones de categorías para mantener o rechazar</li><li>Imágenes, símbolos y referencias prohibidos</li></ul></article>
     <article><h3>Restricciones prácticas</h3><ul><li>Favicon, móviles, sociales, documentos, embalajes, vehículos o señales</li><li>Uso monocolor y invertido</li><li>Límites de impresión, bordado, grabado o vinilo</li><li>Nombre más largo, descriptor o versión multilingüe</li></ul></article>
-    <article><h3>Responsables de cada decisión</h3><ul><li>¿Quién reduce la lista corta?</li><li>¿Quién aprueba el posicionamiento del negocio?</li><li>¿Quién limpia los archivos de producción?</li><li>¿A quién pertenece la autorización y la aprobación final?</li></ul></article>
+    <article><h3>Responsables de cada decisión</h3><ul><li>¿Quién reduce la selección inicial?</li><li>¿Quién aprueba el posicionamiento del negocio?</li><li>¿Quién limpia los archivos de producción?</li><li>¿Quién se hace responsable de la revisión de disponibilidad y la aprobación final?</li></ul></article>
   </div>
   <h3>Haga una revisión previa de derechos</h3>
   <p>
@@ -90,7 +90,7 @@ const failureRows = [
 
 <section id="seccion-3" class="logo-guide-section">
   <p class="guide-eyebrow">Paso 2</p>
-  <h2>Elige herramientas según el trabajo, no por popularidad</h2>
+  <h2>Elija herramientas según el trabajo, no por popularidad</h2>
   <p>
     Diferentes herramientas resuelven diferentes partes del proceso. Un creador de logotipos guiado puede crear opciones de inicio rápido. Un generador de imágenes puede abrir un territorio visual más amplio. Una herramienta de diseño colaborativo puede organizar revisiones y aplicaciones. Un editor de vectores es donde se terminan los archivos de geometría y producción.
   </p>
@@ -109,13 +109,13 @@ const failureRows = [
     </table>
   </div>
   <p>
-    Verifique los términos que se aplican a la cuenta, plan, modelo, insumos y uso previsto exactos antes de la generación o descarga comercial final. Las características y términos del producto cambian. Ninguna herramienta de diseño reemplaza un proceso de revisión de disponibilidad.
+    Verifique los términos que se aplican a la cuenta, plan, modelo, materiales de entrada y uso previsto específicos antes de la generación o descarga comercial final. Las características y términos del producto cambian. Ninguna herramienta de diseño reemplaza un proceso de revisión de disponibilidad.
   </p>
 </section>
 
 <section id="seccion-4" class="logo-guide-section">
   <p class="guide-eyebrow">Paso 3</p>
-  <h2>Usa una estructura de prompt que produzca diferencias útiles.</h2>
+  <h2>Use una estructura de prompt que produzca diferencias útiles.</h2>
   <p>
     Mantenga constantes los hechos comerciales. Solicite tres territorios visuales que difieran en una idea principal, no treinta variaciones de la misma insignia. Comience en blanco y negro para que los efectos de color y presentación no oculten una silueta débil.
   </p>
@@ -125,9 +125,9 @@ const failureRows = [
     <pre><code>Cree tres territorios de logotipo claramente diferentes para [nombre comercial hipotético o real].
 
 Negocios: [categoría, oferta y diferencia real]
-Público: [cliente específico y situación de compra]
-La identidad debe sentir: [de tres a cinco rasgos precisos]
-No debe sentir: [tres a cinco rasgos no deseados]
+Audiencia: [cliente específico y situación de compra]
+La identidad debe transmitir: [de tres a cinco rasgos precisos]
+No debe transmitir: [tres a cinco rasgos no deseados]
 Aplicaciones requeridas: [cinco a siete usos reales]
 Limitaciones de producción: [un color, bordado, rótulo, pantalla pequeña, etc.]
 
@@ -138,7 +138,7 @@ C. Un sistema de forma o patrón vinculado a [razón comercial]
 
 Para cada territorio, muestre versiones horizontales y compactas en blanco y negro. Explique la idea central, la categoría de tipo, los detalles de tamaño pequeño más débiles, el posible riesgo de confusión de categorías y un paso de limpieza manual.
 
-No imites un logotipo existente o un artista identificable. No utilices [clichés de categorías prohibidas]. No reclame singularidad, disponibilidad de marcas registradas o preparación para la producción.</code></pre>
+No imite un logotipo existente o un artista identificable. No utilice [clichés de categorías prohibidas]. No reclame singularidad, disponibilidad de marcas registradas o preparación para la producción.</code></pre>
   </div>
   <h3>Revisar una variable a la vez</h3>
   <p>
@@ -155,43 +155,43 @@ No imites un logotipo existente o un artista identificable. No utilices [cliché
       <p class="prompt-number">01 / Servicio local</p><h3>Northline Mobile Vet</h3>
       <pre><code>Cree tres territorios de logotipo para la empresa hipotética Northline Mobile Vet, que ofrece visitas veterinarias programadas en los hogares de los clientes para dueños de mascotas urbanos ocupados. El beneficio es una cita más tranquila con menos viajes y estrés en la sala de espera. La identidad debe sentirse tranquila, capaz, cálida, organizada y contemporánea, pero no infantil, clínica, lujosa o sentimental.
 
-Debe funcionar como un favicon de 24 píxeles, un encabezado móvil estrecho, una imagen social cuadrada, un gráfico de puerta de vehículo, una marca de carpeta de un color y un bordado. Explore: A) una logotipo tipográfico sobria con un sutil detalle direccional en la N, B) una ruta o puerta abstracta que sugiere que la atención llegue a casa, y C) un símbolo compacto de camino y refugio. No utilices patas, corazones, cruces, cabezas de animales ni clichés caseros. Muestre versiones horizontales y compactas en blanco y negro, justificación, riesgo de tamaño pequeño y un paso de limpieza manual. No reclame la unicidad o la disponibilidad de la marca registrada.</code></pre>
+Debe funcionar como un favicon de 24 píxeles, un encabezado móvil estrecho, una imagen social cuadrada, un gráfico de puerta de vehículo, una marca de carpeta de un color y un bordado. Explore: A) un logotipo tipográfico sobria con un sutil detalle direccional en la N, B) una ruta o puerta abstracta que sugiere que la atención llegue a casa, y C) un símbolo compacto de camino y refugio. No utilice patas, corazones, cruces, cabezas de animales ni clichés de casas. Muestre versiones horizontales y compactas en blanco y negro, justificación, riesgo de tamaño pequeño y un paso de limpieza manual. No reclame la unicidad o la disponibilidad de la marca registrada.</code></pre>
     </article>
     <article>
       <p class="prompt-number">02/software B2B</p><h3>VelaGrid</h3>
-      <pre><code>Desarrollar tres territorios de logotipo para la hipotética empresa de software B2B VelaGrid. Ayuda a las empresas de servicios de campo a organizar equipos, equipos, órdenes de trabajo y cambios de horarios en el tablero de despacho diario. La audiencia son directores de operaciones y propietarios de empresas de servicios que valoran la claridad, la confiabilidad y las decisiones rápidas. La identidad debe sentirse estructurada, receptiva, precisa, práctica y establecida, pero no futurista, divertida, financiera o como una criptomoneda.
+      <pre><code>Desarrollar tres territorios de logotipo para la hipotética empresa de software B2B VelaGrid. Ayuda a las empresas de servicios de campo a organizar cuadrillas, equipos, órdenes de trabajo y cambios de horarios en el tablero de despacho diario. La audiencia son directores de operaciones y propietarios de empresas de servicios que valoran la claridad, la confiabilidad y las decisiones rápidas. La identidad debe sentirse estructurada, receptiva, precisa, práctica y establecida, pero no futurista, divertida, financiera o como una criptomoneda.
 
-Pruebe un encabezado de producto, un favicon de 16 píxeles, un ícono de aplicación, una portada de propuesta, un stand de conferencia y una marca de agua monocromática. Explore: A) una logotipo tipográfico personalizada que utiliza espacios para sugerir un movimiento coordinado, B) una cuadrícula modular con una ruta clara y C) un monograma compacto. No utilices globos, cohetes, relámpagos, cerebros, circuitos, escudos, gráficos ni símbolos de infinito. Para cada dirección en blanco y negro, explique el fundamento, el riesgo de confusión, las pruebas de 16/24/48 píxeles y una simplificación.</code></pre>
+Pruebe un encabezado de producto, un favicon de 16 píxeles, un ícono de aplicación, una portada de propuesta, un stand de conferencia y una marca de agua monocromática. Explore: A) un logotipo tipográfico personalizada que utiliza espacios para sugerir un movimiento coordinado, B) una cuadrícula modular con una ruta clara y C) un monograma compacto. No utilice globos, cohetes, relámpagos, cerebros, circuitos, escudos, gráficos ni símbolos de infinito. Para cada dirección en blanco y negro, explique el fundamento, el riesgo de confusión, las pruebas de 16/24/48 píxeles y una simplificación.</code></pre>
     </article>
     <article>
       <p class="prompt-number">03 / Alimentos y bebidas</p><h3>Tide &amp; Timber Coffee</h3>
-      <pre><code>Explore tres direcciones de logotipos originales para el hipotético tostador local Tide & Timber Coffee. Se vende a través de una tienda costera, socios de comestibles locales y envases reciclables para pedidos por correo. El público se preocupa por la frescura y el carácter local sin querer jerga técnica ni posicionamiento de lujo. La identidad debe sentirse arraigada, costera, táctil, acogedora y silenciosamente distintiva, pero no como un parque temático náutico, rústico-occidental, tropical o de élite.
+      <pre><code>Explore tres direcciones de logotipos originales para el hipotético tostador local Tide & Timber Coffee. Se vende a través de una tienda costera, tiendas de alimentos locales y envases reciclables para pedidos por correo. El público se preocupa por la frescura y el carácter local sin querer jerga técnica ni posicionamiento de lujo. La identidad debe sentirse arraigada, costera, táctil, acogedora, sobria y distintiva, pero no como un parque temático náutico, del oeste rústico, tropical o de élite.
 
-Debe funcionar en una etiqueta de bolsa de dos pulgadas, un sello de goma de un color, un letrero de escaparate, un avatar circular, una factura y una gorra bordada. Explore: A) una logotipo tipográfico sólida y condensada, B) una reunión abstracta de líneas de marea y vetas de madera, y C) una forma de contenedor simple con un espacio negativo de costa y embarcaciones. No dibujes una taza, un frijol, un ancla, una ola, un árbol o una montaña. Evite insignias antiguas, angustias, guiones e ilustraciones detalladas. Muestre solo la marca, la logotipo tipográfico, el riesgo de embalaje y la necesidad de volver a dibujar manualmente.</code></pre>
+Debe funcionar en una etiqueta de bolsa de dos pulgadas, un sello de goma de un color, un letrero de escaparate, un avatar circular, una factura y una gorra bordada. Explore: A) un logotipo tipográfico sólida y condensada, B) una reunión abstracta de líneas de marea y vetas de madera, y C) una forma de contenedor simple con un espacio negativo que conecte la costa y el oficio artesanal. No dibuje una taza, un frijol, un ancla, una ola, un árbol o una montaña. Evite emblemas vintage, texturas desgastadas, tipografías manuscritas e ilustraciones detalladas. Muestre solo la marca, el logotipo tipográfico, el riesgo de embalaje y la necesidad de volver a dibujar manualmente.</code></pre>
     </article>
     <article>
       <p class="prompt-number">04 / Negocio de reparación</p><h3>FieldPatch Outdoor Repair</h3>
-      <pre><code>Crear tres territorios para la hipotética empresa FieldPatch Outdoor Repair. Repara tiendas de campaña, mochilas, sacos de dormir y ropa de exterior para que los clientes puedan seguir utilizando sus equipos. La audiencia incluye excursionistas, familias, guías y clubes al aire libre. La diferencia comercial es la reparación calificada y la entrega confiable, no vender equipos nuevos ni hacer afirmaciones ambientales sin fundamento. La identidad debe parecer ingeniosa, duradera, humana, útil y optimista, pero no militarista, superviviente, preciosa o corporativa.
+      <pre><code>Crear tres territorios para la hipotética empresa FieldPatch Outdoor Repair. Repara tiendas de campaña, mochilas, sacos de dormir y ropa de exterior para que los clientes puedan seguir utilizando sus equipos. La audiencia incluye excursionistas, familias, guías y clubes al aire libre. La diferencia comercial es la reparación especializada y los plazos confiables, no vender equipos nuevos ni hacer afirmaciones ambientales sin fundamento. La identidad debe parecer ingeniosa, duradera, humana, útil y optimista, pero no militarista, de supervivencia, elitista o corporativa.
 
-Pruebe una etiqueta tejida, una pequeña etiqueta de reparación, un letrero de taller, una imagen social, un sello de envío de un color y un encabezado de sitio web simple. Explore: A) una logotipo tipográfico con una conexión cosida controlada, B) un parche abstracto con una línea de reparación y C) dos formas incompletas unidas en un símbolo estable. No utilice montañas, pinos, tiendas de campaña, brújulas, flechas de reciclaje, globos terráqueos o escudos. Utilice únicamente formas sólidas. Identificar riesgos de tallas pequeñas y bordados.</code></pre>
+Pruebe una etiqueta tejida, una pequeña etiqueta de reparación, un letrero de taller, una imagen social, un sello de envío de un color y un encabezado de sitio web simple. Explore: A) un logotipo tipográfico con una conexión cosida controlada, B) un parche abstracto con una línea de reparación y C) dos formas incompletas unidas en un símbolo estable. No utilice montañas, pinos, tiendas de campaña, brújulas, flechas de reciclaje, globos terráqueos o escudos. Utilice únicamente formas sólidas. Identifique los riesgos en tamaños pequeños y bordado.</code></pre>
     </article>
     <article>
       <p class="prompt-number">05 / Educación</p><h3>BrightStep Language School</h3>
       <pre><code>Desarrollar tres territorios para la hipotética escuela de idiomas BrightStep, que ofrece clases en grupos pequeños para adultos que necesitan una conversación práctica para el trabajo, los viajes y la vida diaria. La audiencia puede sentirse cohibida al regresar al salón de clases. La diferencia son las situaciones utilizables y el progreso constante, más que los exámenes o el estatus. La identidad debe ser alentadora, clara, adulta, social y confiable, pero no centrada en los niños, institucional, académica, ruidosa o como una aplicación de traducción.
 
-Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, tarjetas de cursos móviles, una imagen social, portadas de libros de trabajo y certificados. Explore: A) una cálida logotipo tipográfico con una sutil línea de base hacia adelante, B) dos formas simples que sugieren conversación y C) un símbolo de progresión modular. No utilice literalmente escaleras, flechas, banderas, bocadillos, globos terráqueos, libros o birretes de graduación. Señale los riesgos culturales o de interpretación y especifique qué deben revisar los estudiantes del idioma de destino.</code></pre>
+Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, tarjetas de cursos móviles, una imagen social, portadas de libros de trabajo y certificados. Explore: A) un logotipo tipográfico cálido con una sutil línea de base hacia adelante, B) dos formas simples que sugieren conversación y C) un símbolo de progresión modular. No utilice literalmente escaleras, flechas, banderas, bocadillos, globos terráqueos, libros o birretes de graduación. Señale los riesgos culturales o de interpretación y especifique qué deben revisar los estudiantes del idioma de destino.</code></pre>
     </article>
   </div>
 </section>
 
 <section id="seccion-6" class="logo-guide-section">
   <p class="guide-eyebrow">Paso 4</p>
-  <h2>Genera territorios, no docenas de logos aleatorios</h2>
+  <h2>Genere territorios, no docenas de logos aleatorios</h2>
   <p>
-    Un territorio es una respuesta coherente al encargo. Tiene una idea, una silueta, un tipo de dirección, una razón por la que se adapta al negocio y un riesgo conocido. El equipo puede discutirlo sin depender únicamente del gusto.
+    Un territorio es una respuesta coherente al encargo. Tiene una idea, una silueta, una dirección tipográfica, una razón por la que se adapta al negocio y un riesgo conocido. El equipo puede discutirlo sin depender únicamente del gusto.
   </p>
   <div class="boundary-grid" role="list">
-    <article role="listitem"><span>Territorio A</span><h3>Tipográfico</h3><p>Encuentre distinción en la logotipo tipográfico, el espaciado, el ritmo o el detalle de una letra personalizada. Riesgo: el estilo puede sustituir la sustancia.</p></article>
+    <article role="listitem"><span>Territorio A</span><h3>Tipográfico</h3><p>Busque diferenciación en el logotipo tipográfico, el espaciado, el ritmo o el detalle de una letra personalizada. Riesgo: el estilo puede sustituir la sustancia.</p></article>
     <article role="listitem"><span>Territorio B</span><h3>Símbolo abstracto</h3><p>Traducir la posición del negocio en una relación visual simple. Riesgo: la idea puede derivar hacia una geometría de categoría familiar.</p></article>
     <article role="listitem"><span>Territorio C</span><h3>Forma o patrón</h3><p>Cree una marca compacta y un lenguaje visual más amplio a partir de una forma repetible. Riesgo: el sistema puede volverse decorativo o demasiado detallado.</p></article>
   </div>
@@ -204,11 +204,11 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
   <p class="guide-eyebrow">Paso 5</p>
   <h2>Evalúa los conceptos antes de aprobar un favorito</h2>
   <p>
-    Utilice los mismos seis criterios para cada finalista: relevancia, distinción, simplicidad, escalabilidad, flexibilidad y usabilidad. Puntúe cada uno de ellos del 1 al 5 y conserve el razonamiento escrito. Un 1 significa que el concepto no cumple el criterio en su forma actual. Un 3 significa que sólo puede proceder con una corrección nombrada. Un 5 significa que funciona en las condiciones probadas sin problemas materiales.
+    Utilice los mismos seis criterios para cada finalista: relevancia, distinción, simplicidad, escalabilidad, flexibilidad y usabilidad. Puntúe cada uno de ellos del 1 al 5 y conserve el razonamiento escrito. Un 1 significa que el concepto no cumple el criterio en su forma actual. Un 3 significa que sólo puede proceder con una corrección nombrada. Un 5 significa que funciona en las condiciones probadas sin riesgos importantes.
   </p>
   <div class="table-shell">
     <table>
-      <caption>Matriz de evaluación hipotético completado: Northline Mobile Vet, territorio de ruta-puerta</caption>
+      <caption>Matriz de evaluación hipotética completa: Northline Mobile Vet, territorio de ruta-puerta</caption>
       <thead><tr><th>Criterio</th><th>Puntaje</th><th>Razón</th></tr></thead>
       <tbody>
         {scoreRows.map((row) => (
@@ -224,19 +224,19 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
     <li>Rechazar un concepto que sea ilegible o irreconocible en una aplicación requerida.</li>
     <li>Rechace el texto generado que no se pueda volver a componer limpiamente.</li>
     <li>Rechace una dirección que dependa de gradientes, texturas o iluminación de maqueta para que tenga sentido.</li>
-    <li>Pausa una dirección cuando una búsqueda revela un conflicto visual o verbal cercano que no ha sido evaluado.</li>
+    <li>Pause una dirección cuando una búsqueda revela un conflicto visual o verbal cercano que no ha sido evaluado.</li>
     <li>Reinicie cuando el concepto no pueda hacerse relevante sin agregar una explicación larga.</li>
   </ul>
   <p>Una puntuación numérica no establece calidad objetiva ni disponibilidad legal. Hace visible la decisión y sus riesgos no resueltos.</p>
 </section>
 
 <section id="seccion-8" class="logo-guide-section">
-  <p class="guide-eyebrow">Sistema aplicado</p>
-  <h2>Construir la identidad en torno a una posición del negocio</h2>
+  <p class="guide-eyebrow">Sistema de ejemplo</p>
+  <h2>Construya la identidad en torno a una posición del negocio</h2>
   <p>
-    El logo no debe vivir aislado. Este hipotético sistema muestra cómo cada capa puede soportar la misma posición sin convertir el logo en una decoración repetida.
+    El logo no debe vivir aislado. Este hipotético sistema muestra cómo cada capa puede apoyar la misma posición sin convertir el logo en una decoración repetida.
   </p>
-  <aside class="hypothetical-note"><strong>Ejemplo hipotético:</strong> Northline Mobile Vet se inventó para esta guía y no ha sido autorizado como marca registrada.</aside>
+  <aside class="hypothetical-note"><strong>Ejemplo hipotético:</strong> Northline Mobile Vet se inventó para esta guía y no ha pasado por una revisión de disponibilidad de marca.</aside>
   <div class="table-shell identity-table">
     <table>
       <caption>Sistema de identidad Northline Mobile Vet</caption>
@@ -250,7 +250,7 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
   </div>
   <h3>Pruebe la paleta como combinaciones, no como muestras.</h3>
   <p>
-    Para esta paleta hipotética, Tinta sobre blanco cálido, Grafito sobre blanco cálido y Tinta sobre verde agua son combinaciones de lectura sólidas. La terracota debe probarse cuidadosamente antes de que contenga texto pequeño. El <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Guía del W3C para el contraste de texto WCAG 2.2</a> establece un mínimo de 4,5:1 para texto normal y 3:1 para texto grande calificado. El texto de un logotipo o marca está exento de ese criterio específico, pero la exención no cubre el sitio web, los botones, la navegación, los documentos o los diagramas circundantes. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">Gráficos significativos y señales de interfaz necesarias</a> Generalmente se necesita 3:1 contra colores adyacentes.
+    Para esta paleta hipotética, Tinta sobre blanco cálido, Grafito sobre blanco cálido y Tinta sobre verde agua son combinaciones de lectura sólidas. La terracota debe probarse cuidadosamente antes de que contenga texto pequeño. El <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">Guía del W3C para el contraste de texto WCAG 2.2</a> establece un mínimo de 4,5:1 para texto normal y 3:1 para texto grande que cumple las condiciones. El texto de un logotipo o marca está exento de ese criterio específico, pero la exención no cubre el sitio web, los botones, la navegación, los documentos o los diagramas circundantes. <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html">Los gráficos significativos y las señales necesarias de la interfaz</a> generalmente se necesita 3:1 contra colores adyacentes.
   </p>
   <p>
     No utilice la exención del logotipo como objetivo de diseño. Prepare una marca de mayor contraste para fondos difíciles siempre que sea práctico y pruebe la aplicación completa en lugar de un par de colores aislado.
@@ -259,23 +259,23 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
 
 <section id="seccion-9" class="logo-guide-section">
   <p class="guide-eyebrow">Paso 6</p>
-  <h2>Limpiar la geometría y la tipografía.</h2>
+  <h2>Limpie la geometría y la tipografía.</h2>
   <p>
-    Las letras generadas son una imagen del tipo, no una logotipo tipográfico confiable. Vuelva a escribir el nombre de la empresa con una fuente autorizada o dibújelo deliberadamente. Corrija la ortografía, el espaciado, el kerning, las letras repetidas, la puntuación y el equilibrio óptico. Mantenga un archivo maestro con texto editable con la información de la fuente, además de una copia de producción delineada para los proveedores que no tienen la fuente.
+    Las letras generadas son una representación de tipografía, no un logotipo tipográfico confiable. Vuelva a escribir el nombre de la empresa con una fuente con licencia o dibújelo deliberadamente. Corrija la ortografía, el espaciado, el kerning, las letras repetidas, la puntuación y el equilibrio óptico. Mantenga un archivo maestro con texto editable con la información de la fuente, además de una copia de producción con el texto convertido a contornos para los proveedores que no tienen la fuente.
   </p>
   <p>
-    Para símbolos, vuelva a dibujar curvas y esquinas débiles. Elimine pequeñas muescas, uniones falsas, puntos de anclaje innecesarios, objetos ocultos, máscaras de recorte y detalles que desaparecen. El rastreo automático puede producir rutas editables, pero editable no significa limpias. Adobe <a href="https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html">Documentación de seguimiento de imágenes</a> Describe controles para caminos, esquinas, ruido, formas y expansión. Esos controles ayudan a crear un vector inicial. Una persona todavía necesita inspeccionar la geometría.
+    Para símbolos, vuelva a dibujar curvas y esquinas débiles. Elimine pequeñas muescas, uniones falsas, puntos de anclaje innecesarios, objetos ocultos, máscaras de recorte y detalles que desaparecen. El rastreo automático puede producir trazados editables, pero editable no significa limpias. Adobe <a href="https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/image-trace-panel-options.html">documentación de Calco de imagen</a> describe controles para trazados, esquinas, ruido, formas y expansión. Esos controles ayudan a crear un vector inicial. Una persona todavía necesita inspeccionar la geometría.
   </p>
   <aside class="guide-note"><strong>Inspeccione el SVG.</strong> Un archivo SVG puede contener una imagen rasterizada incrustada. Abra el archivo en un editor de vectores y confirme que la marca se haya creado a partir de rutas reales. Una extensión de archivo por sí sola no demuestra independencia de resolución.</aside>
   <h3>Separar archivos de pantalla e impresión</h3>
   <p>
-    Guarde archivos RGB para pantallas y prepare especificaciones CMYK o colores planos para imprimir cuando el método de producción lo requiera. Pregunte al impresor, fabricante de letreros, bordador o fabricante sobre los requisitos mínimos de trazo, espacio, color y archivo. Realice una prueba física antes de una ejecución de producción completa.
+    Guarde archivos RGB para pantallas y prepare especificaciones CMYK o colores planos para imprimir cuando el método de producción lo requiera. Pregunte al impresor, rotulista, bordador o fabricante cuáles son los requisitos mínimos de trazo, espacio, color y archivo. Realice una prueba física antes de una ejecución de producción completa.
   </p>
 </section>
 
 <section id="seccion-10" class="logo-guide-section">
   <p class="guide-eyebrow">Paso 7</p>
-  <h2>Probar la identidad en uso real.</h2>
+  <h2>Pruebe la identidad en uso real.</h2>
   <p>
     Las maquetas pueden ayudar a un equipo a comprender el contexto, pero los efectos de presentación también pueden ocultar una marca débil. Pruebe primero condiciones simples y mensurables. Utilice el nombre real de la empresa, la densidad probable del contenido, los tamaños reales de la interfaz y el método de producción que se utilizará.
   </p>
@@ -291,14 +291,14 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
     </table>
   </div>
   <p>
-    Registre los fracasos en lugar de ocultarlos. Si la marca principal falla en 16 píxeles pero pasa una marca compacta especialmente diseñada, documente el punto de cambio. Si el bordado no puede mantener un espacio interno, cree una versión de bordado aprobada. Una variante controlada es mejor que dejar que cada proveedor repare el logotipo de forma diferente.
+    Registre los fallos en lugar de ocultarlos. Si la marca principal falla en 16 píxeles pero pasa una marca compacta especialmente diseñada, documente el punto de cambio. Si el bordado no puede mantener un espacio interno, cree una versión de bordado aprobada. Una variante controlada es mejor que dejar que cada proveedor repare el logotipo de forma diferente.
   </p>
 </section>
 
 <section id="seccion-11" class="logo-guide-section">
-  <p class="guide-eyebrow">Derechos y autorización</p>
-  <h2>Revisar los derechos antes del lanzamiento, no después del lanzamiento</h2>
-  <aside class="legal-note"><strong>Sólo información general, no asesoramiento legal.</strong> Las leyes, registros, contratos y riesgos difieren según la jurisdicción. Utilice asesores calificados para obtener una opinión de autorización, una estrategia de presentación, una disputa o un lanzamiento de material críticos para el negocio.</aside>
+  <p class="guide-eyebrow">Derechos y disponibilidad</p>
+  <h2>Revise los derechos antes del lanzamiento, no después de la implementación</h2>
+  <aside class="legal-note"><strong>Solo información general, no asesoría legal.</strong> Las leyes, registros, contratos y riesgos difieren según la jurisdicción. Consulte a profesionales calificados para una opinión sobre disponibilidad, una estrategia de registro, una disputa o un lanzamiento importante para el negocio.</aside>
   <h3>La búsqueda de marcas es más que una comprobación del nombre exacto</h3>
   <p>
     Un generador de logotipos no determina si un nombre o diseño está disponible. Comience con el <a href="https://www.uspto.gov/trademarks/search">Recursos de búsqueda de marcas de la USPTO</a>, luego examine textos, ortografías, sonidos, significados, símbolos e impresiones comerciales generales similares, junto con bienes y servicios relacionados. La USPTO <a href="https://www.uspto.gov/trademarks/search/likelihood-confusion">orientación sobre probabilidad de confusión</a> explica por qué es posible que una fuente diferente o un símbolo agregado no resuelva un conflicto.
@@ -310,7 +310,7 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
     <li>Registre fechas, términos de búsqueda, propietarios, clases, enlaces y preguntas sin resolver.</li>
     <li>No llame a un concepto “seguro para marcas comerciales” porque una búsqueda no arrojó una coincidencia exacta.</li>
   </ul>
-  <h3>La propiedad de los derechos de autor y la propiedad del contrato son cuestiones diferentes</h3>
+  <h3>La propiedad de los derechos de autor y la titularidad contractual son cuestiones diferentes</h3>
   <p>
     El <a href="https://www.copyright.gov/ai/">Iniciativa de inteligencia artificial de la Oficina de derechos de autor de EE. UU.</a> incluye su informe de enero de 2025 sobre derechos de autor. El informe explica que los derechos de autor protegen la expresión creada por personas, que el material generado íntegramente por IA no está protegido y que el trabajo asistido por IA puede incluir contribuciones humanas protegibles dependiendo de los hechos. Las indicaciones por sí solas generalmente no proporcionan suficiente control según los sistemas considerados en ese informe. Documente la selección humana, la disposición, el rediseño, el trabajo tipográfico, la geometría, el espaciado y el diseño del sistema en lugar de asumir que un prompt largo resuelve la cuestión. Lea el <a href="https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf">informe completo de derechos de autor</a> para el análisis de la Oficina.
   </p>
@@ -322,21 +322,21 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
     <li>¿Podría el resultado entrar en conflicto con la marca registrada, los derechos de autor, la publicidad, la privacidad, el diseño o los derechos contractuales de otra parte?</li>
   </ol>
   <p>
-    Una declaración del proveedor de que "usted es dueño del resultado" aborda solo una parte de la primera pregunta. No demuestra exclusividad, derechos de autor, disponibilidad de marcas registradas o no infracción. Por ejemplo, <a href="https://www.canva.com/policies/ai-product-terms/">Términos del producto de IA de Canva</a> indican que los resultados pueden no ser únicos y que el contenido con licencia permanece sujeto a su licencia. <a href="https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service">Términos de Midjourney</a> sujetan la propiedad a condiciones establecidas y derechos de terceros, al tiempo que describe la visibilidad pública y la remezcla de forma predeterminada. <a href="https://openai.com/policies/services-agreement/">Términos comerciales de OpenAI</a> asignan resultados al cliente en la medida permitida por la ley, exigir derechos de entrada y evaluación del usuario, y tener en cuenta que los resultados pueden no ser únicos. <a href="https://www.figma.com/legal/ai-terms/">Términos de IA de Figma</a> requieren revisión humana y autorizaciones pertinentes.
+    Una declaración del proveedor de que "usted es dueño del resultado" aborda solo una parte de la primera pregunta. No demuestra exclusividad, derechos de autor, disponibilidad de marcas registradas o no infracción. Por ejemplo, <a href="https://www.canva.com/policies/ai-product-terms/">Términos del producto de IA de Canva</a> indican que los resultados pueden no ser únicos y que el contenido con licencia permanece sujeto a su licencia. <a href="https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service">Términos de Midjourney</a> sujetan la propiedad a condiciones establecidas y derechos de terceros, al tiempo que describe la visibilidad pública y la remezcla de forma predeterminada. <a href="https://openai.com/policies/services-agreement/">Términos comerciales de OpenAI</a> asignan resultados al cliente en la medida permitida por la ley, exigir derechos sobre los materiales de entrada y evaluación del usuario, y tener en cuenta que los resultados pueden no ser únicos. <a href="https://www.figma.com/legal/ai-terms/">Términos de IA de Figma</a> requieren revisión humana y revisiones pertinentes.
   </p>
   <p>
-    Confirme las licencias para fuentes, íconos, plantillas, recursos de stock e imágenes de referencia en diseño de escritorio, sitios web, aplicaciones, productos y producción de terceros. No cargue una referencia a menos que la empresa tenga derecho a utilizarla para ese fin. Vuelva a verificar los términos actuales antes de la generación o descarga comercial final.
+    Confirme las licencias para fuentes, íconos, plantillas, recursos de stock e imágenes de referencia en software de diseño, sitios web, aplicaciones, productos físicos y producción de terceros. No cargue una referencia a menos que la empresa tenga derecho a utilizarla para ese fin. Vuelva a verificar los términos actuales antes de la generación o descarga comercial final.
   </p>
 </section>
 
 <section id="seccion-12" class="logo-guide-section">
   <p class="guide-eyebrow">Entrega para producción</p>
-  <h2>Organiza la identidad final para que otra persona pueda usarla</h2>
+  <h2>Organice la identidad final para que otra persona pueda usarla</h2>
   <div class="package-grid">
-    <article><h3>Archivos maestros</h3><ul><li>Maestro vectorial editable con trazados limpios</li><li>Archivo maestro con texto editable con fuentes documentadas</li><li>Copia de producción tipo delineado</li><li>Especificaciones de color de impresión y RGB</li></ul></article>
-    <article><h3>Conjunto de exportación</h3><ul><li>SVG, EPS y PDF listo para imprimir</li><li>Exportaciones PNG transparentes a escalas útiles</li><li>Tamaños de iconos de aplicaciones y favicon</li><li>Versiones claras, oscuras, monocolor, horizontales y compactas.</li></ul></article>
+    <article><h3>Archivos maestros</h3><ul><li>Maestro vectorial editable con trazados limpios</li><li>Archivo maestro con texto editable con fuentes documentadas</li><li>Copia de producción con el texto convertido a contornos</li><li>Especificaciones de color de impresión y RGB</li></ul></article>
+    <article><h3>Conjunto de exportación</h3><ul><li>SVG, EPS y PDF listo para imprimir</li><li>Exportaciones PNG transparentes a escalas útiles</li><li>Tamaños de íconos de aplicaciones y favicon</li><li>Versiones claras, oscuras, monocolor, horizontales y compactas.</li></ul></article>
     <article><h3>Archivos de aplicación</h3><ul><li>Plantilla de avatar social</li><li>Plantilla de propuesta o documento</li><li>Prueba de señalización, embalaje, vehículo o bordado, según corresponda</li><li>Combinaciones de colores aprobadas</li></ul></article>
-    <article><h3>Gobernanza</h3><ul><li>Hoja de uso de una página</li><li>Convención de versión y nomenclatura de archivos</li><li>Registro de licencia y fuente</li><li>Fecha de aprobación, limitaciones conocidas y propietario responsable</li></ul></article>
+    <article><h3>Gobernanza</h3><ul><li>Hoja de uso de una página</li><li>Convención de versión y nomenclatura de archivos</li><li>Registro de licencia y fuente</li><li>Fecha de aprobación, limitaciones conocidas y responsable designado</li></ul></article>
   </div>
   <aside class="guide-note"><strong>Prueba de transferencia simple:</strong> Entregue el paquete a alguien que no estuviera en el proyecto. Deberían poder encontrar la marca correcta para un encabezado oscuro de un sitio web, un trabajo de impresión de un color y un avatar social sin preguntarle al diseñador.</aside>
 </section>
@@ -361,12 +361,12 @@ Pruebe la señalización en las ventanas del aula, un favicon de 24 píxeles, ta
       <li>La logotipo tipográfico se ha escrito o dibujado correctamente y el símbolo tiene una geometría vectorial limpia.</li>
       <li>Se han superado las pruebas requeridas en formato pequeño, monocromático, móvil, social, de documentos, de señalización y de producción.</li>
       <li>Las combinaciones de colores aprobadas se han probado para determinar sus usos reales en texto, interfaz y gráficos.</li>
-      <li>Las fuentes, iconos, plantillas, elementos de stock y materiales de referencia tienen una fuente y una licencia registradas.</li>
+      <li>Las fuentes, iconos, plantillas, elementos de stock y materiales de referencia tienen una fuente de origen y una licencia documentadas.</li>
       <li>Las cuestiones sobre marcas comerciales y derechos de autor se han evaluado a un nivel adecuado al riesgo empresarial.</li>
-      <li>El paquete de producción, la hoja de uso, el registro de aprobación y el propietario responsable están vigentes.</li>
+      <li>El paquete de producción, la hoja de uso, el registro de aprobación y el responsable designado están vigentes.</li>
     </ul>
   </div>
-  <p class="restrained-cta">¿Necesita un segundo par de ojos antes del lanzamiento? Markethink puede revisar con usted el resumen, la lista corta, el sistema de identidad y las pruebas de uso real. <a href="/es/solicitar-demo/">Solicita una revisión enfocada.</a></p>
+  <p class="restrained-cta">¿Necesita un segundo par de ojos antes del lanzamiento? Markethink puede revisar con usted el resumen, la lista corta, el sistema de identidad y las pruebas de uso real. <a href="/es/solicitar-demo/">Solicite una revisión enfocada.</a></p>
 </section>
 
 <style>
