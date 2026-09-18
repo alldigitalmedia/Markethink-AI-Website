@@ -18,6 +18,126 @@ const editorialImage = (route: string) => {
 
 export const spanishInsightPosts: SpanishBlogPost[] = [
   {
+    sourceSlug: "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
+    slug: "como-crear-un-logo-con-ia-y-construir-una-identidad-de-marca-util",
+    title: "Cómo crear un logo con IA y construir una identidad de marca útil",
+    seoTitle: "Cómo crear un logo con IA: guía práctica completa | Markethink",
+    description:
+      "Aprende a crear un logo con IA, redactar mejores prompts, evaluar conceptos, probar usos reales, revisar derechos y preparar archivos de marca listos para producción.",
+    excerpt:
+      "Una guía práctica para definir el brief, redactar prompts, evaluar, refinar, probar, revisar y organizar un sistema de logo e identidad asistido por IA.",
+    label: "GUÍA PRÁCTICA",
+    ...editorialImage("/blog/how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business/"),
+    imageAlt:
+      "Escena editorial conceptual sobre el desarrollo de un logo y un sistema de identidad de marca asistidos por IA.",
+    publishedDate: "2026-09-07",
+    updatedDate: "2026-09-08",
+    readingTime: "20 min de lectura",
+    category: "Estrategia de marca",
+    keywords: [
+      "cómo crear un logo con IA",
+      "diseño de logos con IA",
+      "identidad de marca con IA",
+      "crear una identidad de marca con IA",
+      "prompt para logo con IA",
+      "proceso de diseño de logo",
+      "sistema de identidad de marca",
+    ],
+    author: {
+      name: "Equipo editorial de Markethink",
+      title: "Sistemas de marketing con IA gestionados por expertos en marketing",
+    },
+    intro: [
+      "Para crear un logo con IA, comienza con un brief de negocio que permita tomar decisiones, genera un número reducido de territorios visuales distintos, evalúa cada dirección con los mismos criterios y luego reconstruye y prueba el concepto más sólido como un sistema de identidad completo.",
+      "El error habitual es aprobar la primera imagen atractiva. Un logo generado todavía puede ser genérico, ilegible en tamaños pequeños, difícil de reproducir, estar construido con una tipografía débil o parecerse demasiado a una marca existente. Esos problemas se vuelven más costosos después de imprimir letreros, crear plantillas y comenzar a usar la identidad.",
+      "Esta guía cubre el proceso completo: qué puede y qué no puede hacer la IA, el brief de negocio, la elección de herramientas, la estrategia de prompts, cinco ejemplos hipotéticos, los territorios visuales, una matriz de evaluación completa, un sistema de identidad desarrollado, la limpieza de vectores y tipografía, las pruebas de uso real, la revisión de derechos, los archivos de producción y las correcciones habituales.",
+      "Todos los negocios de esta guía son hipotéticos y sus nombres no han pasado por una revisión de marcas. La orientación sobre derechos es información educativa general, no asesoría legal.",
+    ],
+    seoHubLink: {
+      copy: "Para conocer la operación de marketing más amplia que mantiene el contexto de marca conectado con las campañas y las aprobaciones, consulta",
+      anchor: "marketing con IA para pequeñas empresas",
+      href: "/ai-marketing-for-small-business/",
+    },
+    recommendedGuide: {
+      copy: "Para pasar de la identidad a la ejecución, consulta",
+      anchor: "Cómo usar la IA para marketing: una guía práctica para pequeñas empresas",
+      href: "/blog/how-to-use-ai-for-marketing-small-business/",
+    },
+    relatedSlugs: [],
+    sections: [
+      { heading: "Entiende qué puede y qué no puede hacer la IA", body: [] },
+      { heading: "Redacta el brief de negocio", body: [] },
+      { heading: "Elige las herramientas según el trabajo", body: [] },
+      { heading: "Usa una estrategia de prompts controlada", body: [] },
+      { heading: "Estudia cinco prompts hipotéticos", body: [] },
+      { heading: "Genera territorios conceptuales", body: [] },
+      { heading: "Evalúa los conceptos antes de aprobarlos", body: [] },
+      { heading: "Construye el sistema de identidad", body: [] },
+      { heading: "Limpia los vectores y la tipografía", body: [] },
+      { heading: "Prueba la identidad en usos reales", body: [] },
+      { heading: "Revisa los derechos y la disponibilidad", body: [] },
+      { heading: "Organiza los archivos de producción", body: [] },
+      { heading: "Corrige los fallos más comunes", body: [] },
+    ],
+    faq: [
+      {
+        question: "¿La IA puede crear un logo profesional para una empresa?",
+        answer:
+          "La IA puede generar conceptos útiles y acelerar la exploración visual. Un resultado profesional todavía requiere un brief de negocio claro, una evaluación consistente, el refinamiento de la tipografía y la geometría, pruebas en usos reales, la preparación completa de archivos y una revisión experta responsable.",
+      },
+      {
+        question: "¿Qué debo incluir en un prompt para crear un logo con IA?",
+        answer:
+          "Incluye la categoría del negocio, la audiencia específica, el diferenciador real, los rasgos deseados y no deseados, las aplicaciones prácticas, los requisitos de formato y dos o tres territorios visuales distintos. Pide también la justificación y la posible debilidad de cada dirección, no solo una imagen.",
+      },
+      {
+        question: "¿Cuántos conceptos de logo con IA debo generar?",
+        answer:
+          "Genera los suficientes para comparar unas pocas direcciones visuales realmente distintas y luego reduce las opciones. Un conjunto enfocado es más útil que decenas de variaciones menores porque permite ver con claridad los criterios y las decisiones.",
+      },
+      {
+        question: "¿Cómo elijo el mejor logo generado con IA?",
+        answer:
+          "Evalúa los finalistas por relevancia para el negocio, diferenciación, simplicidad, escalabilidad, flexibilidad y facilidad de uso. Después prueba los candidatos más sólidos en tamaños pequeños, en un solo color, sobre fondos claros y oscuros y en puntos de contacto reales.",
+      },
+      {
+        question: "¿Un logo es lo mismo que una identidad de marca?",
+        answer:
+          "No. Un logo identifica a la empresa. Una identidad de marca también define el color, la tipografía, las imágenes, el diseño, la voz, los patrones de aplicación y la gobernanza para que la empresa se presente de forma consistente en todos sus canales.",
+      },
+      {
+        question: "¿Qué archivos debe incluir un paquete final de logo?",
+        answer:
+          "Un paquete práctico incluye un archivo vectorial maestro editable, un archivo con texto editable y datos de las fuentes, una copia de producción con el texto convertido a contornos, SVG, EPS, PDF listo para impresión, PNG transparentes, tamaños de favicon, especificaciones de color para pantalla e impresión, versiones claras, oscuras y de un color, composiciones horizontales y compactas, instrucciones de uso y un registro de aprobación.",
+      },
+      {
+        question: "¿Cómo convierto un logo generado con IA en un vector?",
+        answer:
+          "Usa el trazado automático solo como punto de partida. Abre el resultado en un editor vectorial, confirma que contiene trazados editables y no un mapa de bits incrustado, elimina anclas y máscaras innecesarias, redibuja curvas y esquinas débiles, vuelve a componer el nombre y prueba el archivo limpio en tamaños muy pequeños y muy grandes.",
+      },
+      {
+        question: "¿Puedo usar comercialmente un logo generado con IA?",
+        answer:
+          "Es posible, pero la respuesta depende de los términos del proveedor, la cuenta y el plan, las entradas, el contenido de terceros, el uso previsto y la legislación aplicable. El permiso contractual no demuestra exclusividad, protección por derechos de autor, disponibilidad de marca ni ausencia de infracción. Revisa los términos vigentes y consulta a un profesional calificado para decisiones críticas del negocio.",
+      },
+      {
+        question: "¿Un logo generado con IA puede tener protección de derechos de autor?",
+        answer:
+          "En Estados Unidos, la Oficina de Derechos de Autor indica que el material generado íntegramente por IA no es protegible, mientras que la expresión creada por personas, la selección o disposición creativa y las modificaciones creativas pueden estar protegidas según los hechos. Conserva registros del redibujo humano, la tipografía, el espaciado, la composición y el diseño del sistema. Esta es información general, no asesoría legal.",
+      },
+      {
+        question: "¿Se puede registrar como marca un logo generado con IA?",
+        answer:
+          "La generación con IA no determina la disponibilidad de una marca. Busca nombres y diseños similares, considera el sonido, la apariencia, el significado, la impresión comercial general y los productos o servicios relacionados. Solicita una revisión profesional cuando el riesgo de registro, fabricación o cambio de marca sea importante.",
+      },
+      {
+        question: "¿Los logos deben cumplir las reglas de contraste de WCAG?",
+        answer:
+          "WCAG 2.2 exime al texto que forma parte de un logo o nombre de marca del criterio mínimo de contraste para texto, pero esa exención no cubre el sitio web, la navegación, los botones, el texto del cuerpo, los estados de formularios ni los gráficos significativos. Prueba cada aplicación aprobada y prepara una versión del logo con mayor contraste cuando sea práctico.",
+      },
+    ],
+  },
+  {
     sourceSlug: "what-is-an-ai-marketing-agency",
     slug: "que-es-una-agencia-de-marketing-con-ia",
     title: "¿Qué es una agencia de marketing con IA? Lo que realmente gestiona",
