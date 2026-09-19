@@ -134,6 +134,12 @@ const breadcrumbSchema = {
         <div class="article-content">
           <section class="article-intro">
             {post.intro.map((paragraph) => <p>{paragraph}</p>)}
+            {post.methodNote && (
+              <aside class="article-method-note" aria-labelledby="article-method-title">
+                <p id="article-method-title" class="article-cta-label">Método de esta guía</p>
+                <p>{post.methodNote}</p>
+              </aside>
+            )}
             <p class="article-hub-link">
               Si estás evaluando un proveedor y no solo aprendiendo sobre la categoría, conoce cómo <a href="/es/">Markethink opera como un sistema de marketing con IA gestionado por expertos</a>.
             </p>
@@ -145,7 +151,12 @@ const breadcrumbSchema = {
             post.sections.map((section, index) => (
               <section id={`seccion-${index + 1}`} class="article-section">
                 <h2>{section.heading}</h2>
-                {section.body.map((paragraph) => <p>{paragraph}</p>)}
+                {section.body.map((paragraph, paragraphIndex) => {
+                  const paragraphLink = section.links?.find((link) => link.paragraphIndex === paragraphIndex);
+                  if (!paragraphLink || !paragraph.includes(paragraphLink.anchor)) return <p>{paragraph}</p>;
+                  const [beforeAnchor, afterAnchor] = paragraph.split(paragraphLink.anchor);
+                  return <p>{beforeAnchor}<a href={paragraphLink.href}>{paragraphLink.anchor}</a>{afterAnchor}</p>;
+                })}
                 {section.image && (
                   <figure class="article-section-image">
                     <img src={section.image} alt={section.imageAlt ?? ""} loading="lazy" decoding="async" />
@@ -215,6 +226,8 @@ const breadcrumbSchema = {
   .article-intro { padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.09); }
   .article-intro p:first-child { color: #f5f5f1; font-size: 1.25rem; }
   .article-intro p + p, .article-section p + p { margin-top: 1rem; }
+  .article-method-note { margin-top: 1.5rem; padding: 1.1rem 1.2rem; border: 1px solid rgba(105,210,84,.24); border-radius: .8rem; background: rgba(105,210,84,.06); }
+  .article-method-note p:last-child { margin: .55rem 0 0; }
   .article-hub-link { margin-top: 1.5rem; padding: 1.1rem 1.2rem; border-left: 3px solid #69d254; background: rgba(105,210,84,.08); }
   .article-content :global(a) { color: #9be68d; }
   .article-section { padding: 3.2rem 0; border-bottom: 1px solid rgba(255,255,255,.09); scroll-margin-top: 6rem; }
