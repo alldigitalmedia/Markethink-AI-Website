@@ -20,10 +20,16 @@ export type BlogPost = {
   keywords: string[];
   author: BlogAuthorInput;
   intro: string[];
+  methodNote?: string;
   sections: {
     heading: string;
     body: string[];
     bullets?: string[];
+    links?: {
+      paragraphIndex: number;
+      anchor: string;
+      href: string;
+    }[];
     image?: string;
     imageAlt?: string;
   }[];
