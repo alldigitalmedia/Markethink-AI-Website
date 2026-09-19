@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-const pageTitle = "Schedule a Markethink Walkthrough | See Your Marketing System";
+const pageTitle = "Request a Markethink Walkthrough | See Your Marketing System";
 const pageDescription =
-  "Book a focused Markethink walkthrough to map campaigns, content, website updates, leads, CRM follow-up, and approvals into one marketing system.";
+  "Request a focused Markethink walkthrough to map campaigns, content, website updates, leads, CRM follow-up, and approvals into one marketing system.";
 
 const walkthroughSteps = [
   {
@@ -50,12 +50,12 @@ const structuredData = {
   ]}
   structuredData={structuredData}
 >
-  <Navbar />
+  <Navbar ctaLabel="Request a walkthrough" />
   <main class="walkthrough-page">
     <section class="walkthrough-hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="subtitle animate-fade-up">SCHEDULE A WALKTHROUGH</p>
+          <p class="subtitle animate-fade-up">REQUEST A WALKTHROUGH</p>
           <h1 class="animate-fade-up">See how Markethink can connect your marketing and pipeline.</h1>
           <p class="hero-description animate-fade-up">
             A focused walkthrough built around your business, your marketing gaps, and the strongest place to start across campaigns, content, website updates, leads, CRM follow-up, and approvals.
@@ -94,7 +94,7 @@ const structuredData = {
           </p>
 
           <div class="form-header">
-            <p class="form-kicker">Request your walkthrough</p>
+            <p class="form-kicker">Request available times</p>
             <h2>Tell us where to start</h2>
             <p>
               We will use this to make the session useful from minute one.
@@ -145,14 +145,25 @@ const structuredData = {
 
           <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
 
-          <button type="submit" class="button form-button">Schedule My Walkthrough</button>
+          <button type="submit" class="button form-button">Request Available Times</button>
           <p class="form-note">We will reply with available times and a short agenda for your business.</p>
         </form>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer walkthroughLabel="Request a walkthrough" />
 </Layout>
+
+<script is:inline>
+  (() => {
+    const sourceInput = document.querySelector('input[name="source"]');
+    const requestedSource = new URLSearchParams(window.location.search).get("source");
+    const allowedSources = new Set(["ai-marketing-for-law-firms"]);
+    if (sourceInput instanceof HTMLInputElement && requestedSource && allowedSources.has(requestedSource)) {
+      sourceInput.value = requestedSource;
+    }
+  })();
+</script>
 
 <style>
   .walkthrough-page {

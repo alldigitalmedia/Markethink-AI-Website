@@ -1,6 +1,6 @@
 ---
-interface Props { lang?: "en" | "es"; walkthroughLabel?: string; description?: string; }
-const { lang = "en", walkthroughLabel, description } = Astro.props;
+interface Props { lang?: "en" | "es"; walkthroughLabel?: string; walkthroughHref?: string; description?: string; }
+const { lang = "en", walkthroughLabel, walkthroughHref, description } = Astro.props;
 const isSpanish = lang === "es";
 
 const exploreLinks = isSpanish ? [
@@ -34,6 +34,9 @@ const connectLinks = isSpanish ? [
 
 if (!isSpanish && walkthroughLabel) {
   connectLinks[0] = { ...connectLinks[0], label: walkthroughLabel };
+}
+if (!isSpanish && walkthroughHref) {
+  connectLinks[0] = { ...connectLinks[0], href: walkthroughHref };
 }
 
 const companyLinks = isSpanish ? [

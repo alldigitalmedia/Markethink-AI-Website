@@ -135,7 +135,7 @@ const breadcrumbSchema = {
   ] : []}
   structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
 >
-  <Navbar alternatePath={spanishPost ? `/es/blog/${spanishPost.slug}/` : undefined} />
+  <Navbar ctaLabel={isAiSearchInteractiveGuide ? "Request available times" : undefined} alternatePath={spanishPost ? `/es/blog/${spanishPost.slug}/` : undefined} />
   <main class="article-page">
     <article>
       <header class="article-hero">
@@ -322,7 +322,7 @@ const breadcrumbSchema = {
               }
             </p>
             <a href="/schedule-a-walkthrough/" class="button"
-              >Book a Walkthrough</a
+              >{isAiSearchInteractiveGuide ? "Request available times" : "Book a Walkthrough"}</a
             >
           </section>}
 
@@ -375,8 +375,8 @@ const breadcrumbSchema = {
       </div>
     </section>
   </main>
-  {!isAiLogoBrandIdentityGuide && <FinalCTA animate={false} />}
-  <Footer />
+  {!isAiLogoBrandIdentityGuide && <FinalCTA animate={false} walkthroughLabel={isAiSearchInteractiveGuide ? "Request available times." : undefined} />}
+  <Footer walkthroughLabel={isAiSearchInteractiveGuide ? "Request available times" : undefined} />
 </Layout>
 
 <style is:global>

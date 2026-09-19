@@ -5,9 +5,9 @@ import Footer from "../components/Footer.astro";
 
 const pageTitle = "AI Marketing for Law Firms | SEO, Content, PPC & Intake";
 const pageDescription = "AI marketing for law firms, managed by experts. Connect SEO, AEO, content, PPC, website updates, intake, CRM follow-up, and approvals in one system.";
-const lastUpdated = "July 2026";
+const lastUpdated = "September 2026";
 const canonicalUrl = "https://markethink.ai/ai-marketing-for-law-firms/";
-const walkthroughHref = "/schedule-a-walkthrough/";
+const walkthroughHref = "/schedule-a-walkthrough/?source=ai-marketing-for-law-firms";
 
 const keywords = [
   "AI marketing for law firms",
@@ -88,15 +88,15 @@ const faqs = [
 ];
 
 const structuredData = [
-  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Law Firms", description: pageDescription, url: canonicalUrl, inLanguage: "en", dateModified: "2026-07-17", reviewedBy: { "@type": "Organization", name: "Markethink marketing team" }, publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
-  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Law Firms", serviceType: "Expert-managed AI marketing system for law firm SEO, AEO, content, PPC, websites, intake, approvals, and follow-up", areaServed: ["United States", "Latin America"], provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, audience: { "@type": "Audience", audienceType: "Law firms, attorneys, and legal service practices" }, description: "Markethink helps law firms organize marketing campaigns, improve website and SEO workflows, create review-ready content, manage approvals, and support lead intake follow-up." },
+  { "@context": "https://schema.org", "@type": "WebPage", name: "AI Marketing for Law Firms", description: pageDescription, url: canonicalUrl, inLanguage: "en", dateModified: "2026-09-19", reviewedBy: { "@type": "Organization", name: "Markethink marketing team" }, publisher: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/", logo: "https://markethink.ai/images/logo.svg" } },
+  { "@context": "https://schema.org", "@type": "Service", name: "AI Marketing for Law Firms", serviceType: "Expert-managed AI marketing system for law firm SEO, AEO, content, PPC, websites, intake, approvals, and follow-up", areaServed: "United States", provider: { "@type": "Organization", name: "Markethink", url: "https://markethink.ai/" }, audience: { "@type": "Audience", audienceType: "Law firms, attorneys, and legal service practices" }, description: "Markethink helps law firms organize marketing campaigns, improve website and SEO workflows, create review-ready content, manage approvals, and support lead intake follow-up." },
   { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
   { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" }, { "@type": "ListItem", position: 2, name: "AI Marketing for Law Firms", item: canonicalUrl }] },
 ];
 ---
 
 <Layout title={pageTitle} description={pageDescription} image="/images/ai-marketing-law-firms-hero-v3.svg" canonical={canonicalUrl} structuredData={structuredData}>
-  <Navbar />
+  <Navbar ctaLabel="Request available times" ctaHref={walkthroughHref} />
   <main class="law-page">
     <section class="law-hero">
       <div class="container hero-grid">
@@ -104,10 +104,10 @@ const structuredData = [
           <p class="subtitle animate-fade-up">AI MARKETING FOR LAW FIRMS</p>
           <h1 class="animate-fade-up">AI marketing for law firms, managed by experts.</h1>
           <p class="hero-description animate-fade-up">
-            Connect website updates, SEO, AEO, content, advertising, intake, CRM follow-up, and approvals in one marketing operation. Powered by AI, directed by expert marketers, and reviewed with firm judgment.
+            AI marketing for law firms combines AI-supported research, content, website updates, campaigns, intake, and follow-up with expert marketing direction and firm approval. Markethink organizes that work as one managed system, while attorneys or designated firm reviewers approve public language, claims, and jurisdiction-specific requirements before anything goes live.
           </p>
           <div class="button-group animate-fade-up">
-            <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+            <a href={walkthroughHref} class="button">Request available times</a>
             <a href="#system" class="button is-secondary">See the system</a>
           </div>
           <div class="outcome-row animate-fade-up" aria-label="Connected marketing capabilities">
@@ -115,7 +115,7 @@ const structuredData = [
             <span>PPC + intake</span>
             <span>Expert-managed AI</span>
           </div>
-          <p class="review-line">Updated {lastUpdated} · Reviewed by the Markethink marketing team</p>
+          <p class="review-line">Serving law firms across the United States · Updated {lastUpdated} · Reviewed by the Markethink marketing team</p>
         </div>
         <div class="hero-visual">
           <img src="/images/ai-marketing-law-firms-hero-v3.svg" alt="Law firm leaders and expert marketers working with an AI-powered system connecting search, campaigns, approvals, intake, CRM follow-up, and email" width="1536" height="1024" />
@@ -127,9 +127,10 @@ const structuredData = [
       <div class="container two-column">
         <div>
           <p class="subtitle">THE REAL SEARCH INTENT</p>
-          <h2>Law firms search for AI marketing because consistent client acquisition is hard to maintain.</h2>
+          <h2>Why do law firms use AI marketing?</h2>
         </div>
         <div class="rich-copy">
+          <p>Law firms use AI marketing to make website, content, campaign, intake, and follow-up work more consistent without removing expert direction or firm approval.</p>
           <p>A managing partner may search for <strong>AI marketing for lawyers</strong>, <strong>legal marketing automation</strong>, or <strong>law firm lead generation</strong>. The underlying problem is usually the same: the firm needs clearer pages, better content, faster review, stronger intake, and follow-up that does not disappear after the first inquiry.</p>
           <p>AI can help produce and organize the work faster. But a law firm still needs strategy, judgment, accuracy checks, attorney advertising awareness, and a system that connects marketing to real consultations.</p>
           <p>That is the Markethink role: learn the firm, organize the campaign, create review-ready assets, capture approvals, support intake, and improve with every correction and result.</p>
@@ -149,7 +150,7 @@ const structuredData = [
       <div class="container">
         <div class="section-header text-center">
           <p class="subtitle">LAW FIRM MARKETING SYSTEM</p>
-          <h2>A connected system for SEO, content, campaigns, approvals, and intake.</h2>
+          <h2>What should an AI marketing system connect for a law firm?</h2>
           <p class="section-description dark-copy">Most law firm marketing breaks because the pieces are separated. The website says one thing, the ads say another, intake has no context, and every approval starts from scratch.</p>
         </div>
         <div class="system-stage">
@@ -178,7 +179,7 @@ const structuredData = [
         </div>
         <div class="workflow-copy">
           <p class="subtitle">WHAT AI CAN HELP WITH</p>
-          <h2>Useful AI marketing for law firms starts with the work clients actually judge.</h2>
+          <h2>What can AI improve in law firm marketing?</h2>
           <p>Search visitors judge clarity, relevance, trust, and next steps before they ever speak to the firm. A marketing system should improve those moments, not just generate more posts.</p>
           <ul>
             <li>Practice-area pages that answer real decision questions.</li>
@@ -217,7 +218,7 @@ const structuredData = [
       <div class="container two-column">
         <div>
           <p class="subtitle">PRACTICE-AREA CONTEXT</p>
-          <h2>AI works better when it understands how your firm actually practices.</h2>
+          <h2>How does AI adapt to a law firm's practice areas?</h2>
           <p class="section-description">Markethink configures the marketing system around the firm's real services, locations, client questions, intake requirements, tone, and approval rules. The examples below are starting points, not claims of legal specialization.</p>
         </div>
         <div class="practice-grid" aria-label="Example law firm practice areas">
@@ -260,14 +261,16 @@ const structuredData = [
       <div class="container two-column">
         <div>
           <p class="subtitle">SEO FOR LAW FIRMS</p>
-          <h2>Rank for the questions your best clients ask before they call.</h2>
+          <h2>How can AI support law firm SEO and AEO?</h2>
         </div>
         <div class="rich-copy">
           <p>A strong <strong>law firm SEO</strong> program needs more than keyword lists. It needs pages that match search intent, explain the practice area plainly, make the attorney or firm credible, and guide the visitor toward the right next step.</p>
-          <p>Markethink can support topic planning, page outlines, FAQ sections, internal links, local landing-page direction, attorney bio improvements, and campaign briefs. The firm keeps final review where legal accuracy and attorney advertising standards matter.</p>
+          <p>Markethink can support topic planning, page outlines, FAQ sections, internal links, local landing-page direction, attorney bio improvements, and campaign briefs. The firm retains final review, and attorney-advertising rules vary by jurisdiction.</p>
           <div class="supporting-link">
             <p>Related Markethink pages and guides:</p>
             <ul>
+              <li><a href="/">Markethink's managed marketing system</a></li>
+              <li><a href="/blog/how-to-show-up-in-ai-search/">How to show up in AI search</a></li>
               <li><a href="/ai-marketing-for-small-business/">AI marketing for small business</a></li>
               <li><a href="/blog/consistent-marketing-beats-chasing-ai-tools/">Why consistent marketing beats chasing every new AI tool</a></li>
               <li><a href="/blog/brand-memory-feedback-approved-campaigns/">How brand memory turns feedback into faster approved campaigns</a></li>
@@ -334,7 +337,7 @@ const structuredData = [
         </div>
         <div class="audit-action">
           <p>You leave with a prioritized view of what is working, what is disconnected, and where Markethink should help first.</p>
-          <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+          <a href={walkthroughHref} class="button">Request available times</a>
         </div>
       </div>
     </section>
@@ -361,11 +364,11 @@ const structuredData = [
         <p class="subtitle">START WITH THE SYSTEM</p>
         <h2>Build the AI marketing system around the way your firm actually works.</h2>
         <p>Start with a focused audit of your website, search visibility, practice-area pages, campaigns, intake, follow-up, and approval process. Then map the first workflow Markethink should improve.</p>
-        <a href={walkthroughHref} class="button">Request a Law Firm Marketing Audit</a>
+        <a href={walkthroughHref} class="button">Request available times</a>
       </div>
     </section>
   </main>
-  <Footer />
+  <Footer walkthroughLabel="Request available times" walkthroughHref={walkthroughHref} />
 </Layout>
 
 <style>
