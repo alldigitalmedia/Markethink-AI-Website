@@ -1,5 +1,5 @@
 ---
-const { animate = true } = Astro.props as { animate?: boolean };
+const { animate = true, walkthroughLabel = "Book a focused walkthrough." } = Astro.props as { animate?: boolean; walkthroughLabel?: string };
 
 const auditOutputs = [
   "Where your marketing is getting stuck",
@@ -88,7 +88,7 @@ const auditOutputs = [
       <div class="form-recaptcha" data-netlify-recaptcha="true" style="min-height:78px;margin-bottom:14px"></div>
 
       <button type="submit" class="button form-button">Request My Marketing System Audit</button>
-      <p class="form-note">Prefer a conversation? <a href="/schedule-a-walkthrough/">Book a focused walkthrough.</a> By submitting, you agree to our <a href="/privacy/">privacy policy</a>.</p>
+      <p class="form-note">Prefer a conversation? <a href="/schedule-a-walkthrough/">{walkthroughLabel}</a> By submitting, you agree to our <a href="/privacy/">privacy policy</a>.</p>
     </form>
   </div>
 </section>
