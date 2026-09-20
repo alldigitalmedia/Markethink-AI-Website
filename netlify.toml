@@ -133,3 +133,9 @@
     Content-Type = "application/zip"
     Content-Disposition = "attachment; filename=\"markethink-new-website-launch-checklist.zip\""
 
+# Private prospect presentation: reinforce page-level noindex at the edge.
+[[headers]]
+  for = "/presentation-marketing-operation/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
