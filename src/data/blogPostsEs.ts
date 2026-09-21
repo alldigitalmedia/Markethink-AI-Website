@@ -342,4 +342,91 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
       },
     ],
   },
+  {
+    sourceSlug: "seo-content-feedback-loop",
+    slug: "ciclo-de-retroalimentacion-de-contenido-seo",
+    title: "El ciclo de retroalimentación de contenido SEO: mejora las páginas existentes antes de publicar más",
+    seoTitle: "Ciclo de retroalimentación de contenido SEO: sistema práctico | Markethink",
+    description:
+      "Construye un ciclo de retroalimentación para SEO y búsqueda con IA que priorice oportunidades, pase los cambios por revisión experta y mida el impacto en el negocio.",
+    excerpt:
+      "Un sistema práctico y respaldado por fuentes para encontrar oportunidades de contenido, hacer mejoras enfocadas, aprobar cambios y aprender de los resultados de búsqueda y conversión.",
+    label: "GUÍA OPERATIVA",
+    ...editorialImage("/blog/seo-content-feedback-loop/"),
+    imageAlt:
+      "Flujo de aprobación de Markethink que conecta la retroalimentación, la memoria del negocio y una pieza de marketing aprobada.",
+    publishedDate: "2026-08-24",
+    updatedDate: "2026-08-24",
+    readingTime: "11 min de lectura",
+    category: "Estrategia de búsqueda",
+    keywords: [
+      "ciclo de retroalimentación de contenido SEO",
+      "flujo de optimización de contenido",
+      "flujo SEO con IA",
+      "estrategia de actualización de contenido",
+      "auditoría de contenido SEO",
+      "optimización para búsqueda con IA",
+      "estrategia de contenido AEO",
+      "medición del rendimiento de contenido",
+    ],
+    author: {
+      name: "Markethink Editorial Team",
+      title: "AI marketing systems managed by expert marketers",
+    },
+    intro: [
+      "La mayoría de los programas de contenido tratan la publicación como la meta final. Se elige un tema, se redacta una página y el equipo sigue adelante. El resultado es una biblioteca creciente con muy poca memoria operativa.",
+      "Un modelo más sólido trata cada página existente como una fuente de evidencia. El rendimiento en buscadores muestra dónde se pierde atención. Los datos de la página y de conversión indican si la visita genera valor. La revisión experta convierte esa evidencia en un cambio enfocado, y el resultado orienta lo que ocurre después.",
+      "Esta guía explica cómo construir ese ciclo sin entregar las decisiones de estrategia o publicación a la automatización, sin reaccionar de forma excesiva a datos de corto plazo y sin tratar la optimización para motores de respuesta como una colección separada de trucos.",
+    ],
+    methodNote:
+      "Esta guía presenta el marco operativo de Markethink para mejorar contenido existente. Separa observación, recomendación, revisión, publicación y medición; no presenta resultados de clientes ni garantías de rendimiento.",
+    relatedSlugs: [],
+    sections: [
+      { heading: "Publicar no es la meta final", body: [] },
+      { heading: "Comienza con la página", body: [] },
+      { heading: "Prioriza según la oportunidad", body: [] },
+      { heading: "Haz mejoras enfocadas", body: [] },
+      { heading: "Mantén una revisión experta", body: [] },
+      { heading: "Mide la página, el sitio y el pipeline", body: [] },
+      { heading: "Divide el trabajo con claridad", body: [] },
+      { heading: "Trabaja con un ritmo mensual", body: [] },
+    ],
+    faq: [
+      {
+        question: "¿Qué es un ciclo de retroalimentación de contenido SEO?",
+        answer:
+          "Es un proceso repetible que usa evidencia de la página, la búsqueda y la conversión para identificar una oportunidad, recomendar un cambio enfocado, pasarlo por revisión experta, publicarlo, medir el resultado y usar ese aprendizaje para elegir la siguiente acción.",
+      },
+      {
+        question: "¿Una empresa debe actualizar contenido antiguo o publicar contenido nuevo?",
+        answer:
+          "Debe hacer ambas cosas, pero priorizar según la oportunidad de negocio y búsqueda, no solo por la antigüedad. Conviene actualizar una página cuando la evidencia muestra un problema específico de visibilidad, clics, relevancia, conversión o funcionamiento técnico. Conviene publicar una página nueva cuando la audiencia tiene una pregunta importante que el sitio actual no responde bien.",
+      },
+      {
+        question: "¿Cómo se deben priorizar las oportunidades de actualización de contenido?",
+        answer:
+          "Las categorías útiles incluyen páginas que pierden visibilidad, páginas con impresiones pero una tasa de clics baja, páginas cercanas a mejores posiciones, páginas con evidencia faltante o brechas de intención, y páginas con problemas técnicos o de enlaces internos. Los umbrales exactos deben reflejar el sitio y el mercado.",
+      },
+      {
+        question: "¿Cuánto tiempo hay que esperar antes de medir una actualización de contenido SEO?",
+        answer:
+          "Una comparación de 28 días antes y después es un punto de partida práctico para muchos sitios, pero las páginas con poco volumen, los mercados estacionales y los rastreos lentos pueden necesitar más tiempo. Compara periodos equivalentes y contrasta la página editada con la tendencia orgánica de todo el sitio.",
+      },
+      {
+        question: "¿El AEO requiere contenido diferente del SEO?",
+        answer:
+          "No como sistema de contenido separado. Google indica que sus prácticas fundamentales de SEO siguen siendo aplicables a AI Overviews y AI Mode. El contenido claro, útil, original, rastreable y respaldado por evidencia precisa sigue siendo la base. Google Search no exige archivos especiales para IA, fragmentación forzada ni reescrituras exclusivas para motores de respuesta.",
+      },
+      {
+        question: "¿La IA puede publicar cambios SEO automáticamente?",
+        answer:
+          "Técnicamente puede automatizar partes del flujo, pero la recomendación y la publicación deben permanecer separadas. Un experto debe revisar el diagnóstico, las afirmaciones del negocio, la voz de marca, el riesgo técnico y el plan de medición antes de publicar un cambio importante.",
+      },
+      {
+        question: "¿Qué métricas importan después de actualizar contenido?",
+        answer:
+          "Usa Search Console para impresiones, clics, CTR, consultas y posición promedio. Usa analítica y datos del CRM para interacción, acciones calificadas, prospectos y conversiones. No evalúes el éxito solo por las posiciones.",
+      },
+    ],
+  },
 ];

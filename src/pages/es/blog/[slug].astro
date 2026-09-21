@@ -4,6 +4,7 @@ import Navbar from "../../../components/Navbar.astro";
 import Footer from "../../../components/Footer.astro";
 import BlogAuthor from "../../../components/blog/BlogAuthor.astro";
 import AiLogoBrandIdentityGuideEs from "../../../components/blog/AiLogoBrandIdentityGuideEs.astro";
+import SeoContentFeedbackLoopGuideEs from "../../../components/blog/SeoContentFeedbackLoopGuideEs.astro";
 import { getBlogAuthorSchema, santiagoSosaAuthorEs } from "../../../data/blogAuthors";
 import { spanishInsightPosts, type SpanishBlogPost } from "../../../data/blogPostsEs";
 
@@ -20,6 +21,7 @@ const canonical = `${siteUrl}/es/blog/${post.slug}/`;
 const englishCanonical = `${siteUrl}/blog/${post.sourceSlug}/`;
 const socialImage = post.imageSharing;
 const isAiLogoBrandIdentityGuide = post.sourceSlug === "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business";
+const isSeoContentFeedbackLoop = post.sourceSlug === "seo-content-feedback-loop";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -36,7 +38,9 @@ const articleSchema = {
   },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: getBlogAuthorSchema(santiagoSosaAuthorEs),
+  author: isSeoContentFeedbackLoop
+    ? { "@type": "Organization", name: "Equipo editorial de Markethink", url: `${siteUrl}/es/` }
+    : getBlogAuthorSchema(santiagoSosaAuthorEs),
   publisher: {
     "@type": "Organization",
     "@id": `${siteUrl}/#organization`,
@@ -99,7 +103,11 @@ const breadcrumbSchema = {
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Detalles del artículo">
-              <span>Por <a href="/es/autores/santiago-sosa/">{santiagoSosaAuthorEs.name}</a>, {santiagoSosaAuthorEs.title}</span>
+              {isSeoContentFeedbackLoop ? (
+                <span>Por el Equipo editorial de Markethink</span>
+              ) : (
+                <span>Por <a href="/es/autores/santiago-sosa/">{santiagoSosaAuthorEs.name}</a>, {santiagoSosaAuthorEs.title}</span>
+              )}
               <span>{post.readingTime}</span>
               <span>Actualizado el {new Date(post.updatedDate).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}</span>
             </div>
@@ -147,6 +155,8 @@ const breadcrumbSchema = {
 
           {isAiLogoBrandIdentityGuide ? (
             <AiLogoBrandIdentityGuideEs />
+          ) : isSeoContentFeedbackLoop ? (
+            <SeoContentFeedbackLoopGuideEs />
           ) : (
             post.sections.map((section, index) => (
               <section id={`seccion-${index + 1}`} class="article-section">
@@ -189,7 +199,7 @@ const breadcrumbSchema = {
             ))}
           </section>
 
-          <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />
+          {!isSeoContentFeedbackLoop && <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />}
         </div>
       </div>
     </article>
