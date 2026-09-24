@@ -4,6 +4,7 @@ import Navbar from "../../../components/Navbar.astro";
 import Footer from "../../../components/Footer.astro";
 import BlogAuthor from "../../../components/blog/BlogAuthor.astro";
 import AiLogoBrandIdentityGuideEs from "../../../components/blog/AiLogoBrandIdentityGuideEs.astro";
+import AiMarketingPracticalGuideEs from "../../../components/blog/AiMarketingPracticalGuideEs.astro";
 import SeoContentFeedbackLoopGuideEs from "../../../components/blog/SeoContentFeedbackLoopGuideEs.astro";
 import { getBlogAuthorSchema, santiagoSosaAuthorEs } from "../../../data/blogAuthors";
 import { spanishInsightPosts, type SpanishBlogPost } from "../../../data/blogPostsEs";
@@ -21,7 +22,9 @@ const canonical = `${siteUrl}/es/blog/${post.slug}/`;
 const englishCanonical = `${siteUrl}/blog/${post.sourceSlug}/`;
 const socialImage = post.imageSharing;
 const isAiLogoBrandIdentityGuide = post.sourceSlug === "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business";
+const isAiMarketingPracticalGuide = post.sourceSlug === "how-to-use-ai-for-marketing-small-business";
 const isSeoContentFeedbackLoop = post.sourceSlug === "seo-content-feedback-loop";
+const isEditorialTeam = isAiMarketingPracticalGuide || isSeoContentFeedbackLoop;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -38,7 +41,7 @@ const articleSchema = {
   },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: isSeoContentFeedbackLoop
+  author: isEditorialTeam
     ? { "@type": "Organization", name: "Equipo editorial de Markethink", url: `${siteUrl}/es/` }
     : getBlogAuthorSchema(santiagoSosaAuthorEs),
   publisher: {
@@ -103,7 +106,7 @@ const breadcrumbSchema = {
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Detalles del artículo">
-              {isSeoContentFeedbackLoop ? (
+              {isEditorialTeam ? (
                 <span>Por el Equipo editorial de Markethink</span>
               ) : (
                 <span>Por <a href="/es/autores/santiago-sosa/">{santiagoSosaAuthorEs.name}</a>, {santiagoSosaAuthorEs.title}</span>
@@ -148,13 +151,26 @@ const breadcrumbSchema = {
                 <p>{post.methodNote}</p>
               </aside>
             )}
-            <p class="article-hub-link">
-              Si estás evaluando un proveedor y no solo aprendiendo sobre la categoría, conoce cómo <a href="/es/">Markethink opera como un sistema de marketing con IA gestionado por expertos</a>.
-            </p>
+            {isAiMarketingPracticalGuide ? (
+              <>
+                <p class="article-hub-link">
+                  {post.seoHubLink?.copy} <a href={post.seoHubLink?.href}>{post.seoHubLink?.anchor}</a>.
+                </p>
+                <p class="article-hub-link">
+                  {post.recommendedGuide?.copy} <a href={post.recommendedGuide?.href}>{post.recommendedGuide?.anchor}</a>.
+                </p>
+              </>
+            ) : (
+              <p class="article-hub-link">
+                Si estás evaluando un proveedor y no solo aprendiendo sobre la categoría, conoce cómo <a href="/es/">Markethink opera como un sistema de marketing con IA gestionado por expertos</a>.
+              </p>
+            )}
           </section>
 
           {isAiLogoBrandIdentityGuide ? (
             <AiLogoBrandIdentityGuideEs />
+          ) : isAiMarketingPracticalGuide ? (
+            <AiMarketingPracticalGuideEs />
           ) : isSeoContentFeedbackLoop ? (
             <SeoContentFeedbackLoopGuideEs />
           ) : (
@@ -181,9 +197,11 @@ const breadcrumbSchema = {
 
           {!isAiLogoBrandIdentityGuide && <section class="article-cta">
             <p class="article-cta-label">La perspectiva de Markethink</p>
-            <h2>El marketing mejora más rápido cuando el sistema recuerda el trabajo.</h2>
+            <h2>{isAiMarketingPracticalGuide ? "Construye una operación de marketing que publica y mejora con cada ciclo." : "El marketing mejora más rápido cuando el sistema recuerda el trabajo."}</h2>
             <p>
-              Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día, conecta las campañas con los prospectos y el seguimiento, y mejora con cada aprobación, corrección y resultado.
+              {isAiMarketingPracticalGuide
+                ? "Markethink es un sistema de marketing con IA gestionado por expertos. Conocemos tu negocio, ejecutamos el trabajo diario de marketing, conectamos las campañas con los prospectos y el seguimiento, y mejoramos con cada aprobación, corrección y resultado."
+                : "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día, conecta las campañas con los prospectos y el seguimiento, y mejora con cada aprobación, corrección y resultado."}
             </p>
             <a href="/es/solicitar-demo/" class="button">Solicitar una demo</a>
           </section>}
@@ -199,7 +217,7 @@ const breadcrumbSchema = {
             ))}
           </section>
 
-          {!isSeoContentFeedbackLoop && <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />}
+          {!isEditorialTeam && <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />}
         </div>
       </div>
     </article>
