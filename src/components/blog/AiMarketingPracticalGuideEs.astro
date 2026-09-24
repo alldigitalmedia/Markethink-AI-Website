@@ -1,0 +1,282 @@
+---
+const useCases = [
+  {
+    task: "Investigación de clientes y mercado",
+    aiRole: "Organizar reseñas, notas de llamadas, preguntas y temas de la competencia para identificar patrones.",
+    humanCheck: "Confirmar las fuentes, elegir el problema real del cliente y descartar conclusiones inventadas.",
+    measure: "Hallazgos útiles añadidos al brief",
+  },
+  {
+    task: "Planificación de campañas",
+    aiRole: "Convertir un objetivo en un plan de canales, una lista de piezas, un cronograma y un primer borrador del brief.",
+    humanCheck: "Definir la audiencia, la oferta, la evidencia, el presupuesto, el riesgo y la prioridad final de la campaña.",
+    measure: "Brief aprobado y piezas publicadas",
+  },
+  {
+    task: "Producción de contenido",
+    aiRole: "Preparar borradores para páginas de destino, correos, conceptos para redes sociales, esquemas de artículos, preguntas frecuentes y variantes.",
+    humanCheck: "Dirigir el enfoque, comprobar las afirmaciones, proteger la voz y aprobar el trabajo final.",
+    measure: "Visitas calificadas, respuestas y conversiones",
+  },
+  {
+    task: "Captación de prospectos y seguimiento",
+    aiRole: "Clasificar consultas, preparar borradores de respuesta, resumir el contexto y recordar al equipo los siguientes pasos.",
+    humanCheck: "Calificar la oportunidad, hacerse cargo de la relación, aprobar mensajes delicados y cerrar el ciclo.",
+    measure: "Tiempo de respuesta y conversaciones calificadas",
+  },
+  {
+    task: "Informes y aprendizaje",
+    aiRole: "Recopilar resultados, compararlos con el objetivo e identificar patrones que valga la pena probar después.",
+    humanCheck: "Interpretar la causalidad, elegir el siguiente movimiento y decidir qué aprendizaje pasa a formar parte del sistema.",
+    measure: "Decisiones tomadas a partir de resultados reales",
+  },
+];
+
+const workflowSteps = [
+  ["Objetivo", "Elige un resultado de negocio."],
+  ["Brief", "Define la audiencia, la oferta, la evidencia y el llamado a la acción."],
+  ["Crear", "Produce el conjunto de piezas conectadas."],
+  ["Revisar", "Los expertos comprueban la estrategia, la calidad y las afirmaciones."],
+  ["Aprobar", "La empresa toma la decisión final."],
+  ["Lanzar", "Publica en los canales seleccionados."],
+  ["Captar", "Dirige las respuestas y los prospectos a un solo lugar."],
+  ["Dar seguimiento", "Responde con contexto y un siguiente paso claro."],
+  ["Aprender", "Usa las aprobaciones y los resultados para mejorar el siguiente ciclo."],
+];
+
+const ownershipRows = [
+  ["Objetivo de negocio y oferta", "Apoyar", "Dirigir", "Aprobar"],
+  ["Investigación y síntesis", "Producir", "Validar", "Informar"],
+  ["Estrategia de campaña", "Apoyar", "Asumir", "Aprobar"],
+  ["Borradores de texto y creatividad", "Producir", "Dirigir y revisar", "Aprobar"],
+  ["Afirmaciones, precios y riesgo", "Señalar", "Revisar", "Asumir"],
+  ["Publicación y flujo de trabajo", "Ejecutar el trabajo aprobado", "Supervisar", "Autorizar"],
+  ["Borradores de respuesta a prospectos", "Preparar", "Revisar cuando sea necesario", "Gestionar la relación"],
+  ["Análisis del rendimiento", "Organizar", "Interpretar", "Elegir la siguiente prioridad"],
+];
+
+const monthPlan = [
+  ["Semana 1", "Elige el resultado y construye el contexto", "Elige una oferta, una audiencia, un llamado a la acción y un resultado que quieras mejorar. Reúne información aprobada sobre la marca, los clientes, la evidencia, los canales y los riesgos."],
+  ["Semana 2", "Construye una campaña conectada", "Crea el conjunto mínimo de piezas útiles: actualización de la página de destino, contenido principal, correo o seguimiento, ruta de prospectos y plan de medición."],
+  ["Semana 3", "Revisa, aprueba y lanza", "Comprueba los hechos y la coherencia con la marca. Registra cada corrección. Publica solo la versión aprobada y confirma que la ruta de respuesta funciona."],
+  ["Semana 4", "Da seguimiento y aprende", "Revisa las consultas, el tiempo de respuesta, los pasos de conversión y el rendimiento de las piezas. Elige un cambio para el siguiente ciclo."],
+];
+---
+
+<div class="practical-guide">
+  <section id="section-1" class="guide-section">
+    <p class="eyebrow">EL PUNTO DE PARTIDA PRÁCTICO</p>
+    <h2>Comienza con un resultado de negocio, no con una herramienta de IA.</h2>
+    <p>Las pequeñas empresas suelen comenzar preguntándose qué herramientas de marketing con IA deberían usar. Esa no es la primera pregunta correcta. Una herramienta puede generar más actividad sin mejorar el negocio. El punto de partida útil es un resultado: más consultas calificadas, más compras recurrentes, una mejor respuesta a los prospectos, un lanzamiento más sólido o un sitio web que convierta mejor la demanda que ya tienes.</p>
+    <p>Escribe el resultado con palabras sencillas y conéctalo con una acción medible. “Conseguir más prospectos” es demasiado amplio. “Generar solicitudes calificadas de una demostración de nuestro servicio de mayor valor” le da a la campaña un comprador, una oferta y un siguiente paso.</p>
+    <div class="answer-card">
+      <strong>Respuesta breve: ¿Cómo debe usar una pequeña empresa la IA para marketing?</strong>
+      <p>Usa la IA para acelerar la investigación, organizar información, preparar borradores de piezas conectadas, apoyar la ejecución repetitiva y presentar resultados. Los expertos en marketing deben seguir a cargo de la estrategia, la dirección creativa, la revisión y la responsabilidad. La empresa debe seguir a cargo de las ofertas, las afirmaciones, las decisiones de marca, el riesgo y la aprobación final.</p>
+    </div>
+    <div class="goal-grid" aria-label="Objetivo de campaña en tres partes">
+      <article><span>01</span><h3>Resultado de negocio</h3><p>¿Qué debería cambiar para el negocio?</p></article>
+      <article><span>02</span><h3>Acción del comprador</h3><p>¿Qué debería hacer a continuación la persona adecuada?</p></article>
+      <article><span>03</span><h3>Señal de éxito</h3><p>¿Qué evidencia mostrará un avance útil?</p></article>
+    </div>
+  </section>
+
+  <section id="section-2" class="guide-section">
+    <p class="eyebrow">EL PAQUETE DE CONTEXTO</p>
+    <h2>Construye el contexto de negocio que la IA necesita antes de pedirle que cree.</h2>
+    <p>El resultado de la IA se vuelve genérico cuando la información de entrada es genérica. Antes de preparar una campaña, reúne la información que pediría un profesional de marketing competente. Esto es más valioso que un prompt ingenioso de un solo uso porque el mismo contexto aprobado puede respaldar el sitio web, el contenido para redes sociales, el correo electrónico, la publicidad, el seguimiento de prospectos y las campañas futuras.</p>
+    <div class="checklist-panel">
+      <div>
+        <h3>Negocio</h3>
+        <ul><li>Oferta y postura de precios</li><li>Cliente ideal y situación de compra</li><li>Geografía y limitaciones del servicio</li><li>Objetivo principal del negocio</li></ul>
+      </div>
+      <div>
+        <h3>Marca</h3>
+        <ul><li>Voz y referencias visuales aprobadas</li><li>Afirmaciones que la empresa puede demostrar</li><li>Palabras, promesas e imágenes que se deben evitar</li><li>Ejemplos que el equipo ha aprobado</li></ul>
+      </div>
+      <div>
+        <h3>Campaña</h3>
+        <ul><li>Audiencia, oferta y objeción</li><li>Llamado a la acción principal y ruta de seguimiento</li><li>Canales y requisitos de las piezas</li><li>Responsable, revisor y fecha límite de aprobación</li></ul>
+      </div>
+    </div>
+    <h3 class="subhead">Usa la evidencia que la empresa ya tiene.</h3>
+    <p>El contexto más sólido suele provenir de materiales operativos cotidianos: notas de llamadas de ventas, correos de clientes, consultas de búsqueda, formularios enviados, preguntas de soporte, propuestas aprobadas, detalles del producto y las correcciones que los líderes hacen repetidamente. La IA puede ayudar a organizar este material por temas, pero debe conservar la fuente para que una persona pueda distinguir un patrón real de clientes de una invención que solo suena convincente.</p>
+    <p>Divide el paquete en tres niveles. Los <strong>hechos aprobados</strong> pueden aparecer en materiales públicos. Las <strong>hipótesis de trabajo</strong> pueden orientar la investigación y las pruebas, pero no deben presentarse como hechos. La <strong>información restringida</strong> no debe entrar en un flujo de marketing a menos que la empresa haya aprobado explícitamente cómo se manejará. Esta distinción sencilla acelera la investigación y hace más segura la revisión.</p>
+    <p>Una regla sencilla ayuda: si un hecho sería importante para un cliente, no permitas que la IA lo adivine. Apórtalo, verifícalo o déjalo fuera.</p>
+  </section>
+
+  <section id="section-3" class="guide-section">
+    <p class="eyebrow">EL CICLO OPERATIVO</p>
+    <h2>Sigue un solo flujo de trabajo desde el objetivo hasta el resultado.</h2>
+    <p>La mayor debilidad de muchas guías de marketing con IA es que se detienen después de crear contenido. Las pequeñas empresas necesitan el recorrido completo. Una campaña útil debe llegar al comprador, captar la respuesta, apoyar el seguimiento y enseñar al equipo qué hacer después.</p>
+    <div class="workflow-loop" aria-label="Flujo de marketing con IA de nueve pasos">
+      {workflowSteps.map(([title, copy], index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{title}</h3>
+          <p>{copy}</p>
+        </article>
+      ))}
+    </div>
+    <figure class="guide-image">
+      <img src="/images/ai-marketing-guide/ai-marketing-guide-campaign.svg" alt="Fundador de una pequeña empresa y experta en marketing planificando una campaña conectada desde el brief hasta la aprobación" width="1536" height="1024" loading="lazy" />
+      <figcaption>La IA puede acelerar el trabajo. La campaña todavía necesita un objetivo claro, dirección experta, aprobación de la empresa y una ruta real de seguimiento.</figcaption>
+    </figure>
+  </section>
+
+  <section id="section-4" class="guide-section">
+    <p class="eyebrow">PRIORIDAD DE CASOS DE USO</p>
+    <h2>Usa la IA donde reduzca fricción sin eliminar el criterio.</h2>
+    <p>Los mejores casos de uso de marketing con IA son lo bastante repetitivos como para beneficiarse de la velocidad y lo bastante importantes como para seguir conectados con la estrategia. Comienza donde el trabajo se detiene una y otra vez: síntesis de investigación, briefs de campaña, primeros borradores, actualizaciones del sitio web, adaptación de contenido, asignación de prospectos, preparación del seguimiento o informes.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Casos prácticos de marketing con IA para pequeñas empresas</caption>
+        <thead><tr><th>Tarea de marketing</th><th>Función útil de la IA</th><th>Revisión humana</th><th>Medición</th></tr></thead>
+        <tbody>{useCases.map((row) => (<tr><th scope="row">{row.task}</th><td data-label="Función útil de la IA">{row.aiRole}</td><td data-label="Revisión humana">{row.humanCheck}</td><td data-label="Medición">{row.measure}</td></tr>))}</tbody>
+      </table>
+    </div>
+    <h3 class="subhead">Prioriza las tareas según repetición, contexto y riesgo.</h3>
+    <p>Una buena primera tarea ocurre con frecuencia, usa información que puedes aportar y tiene un punto de revisión claro. Resumir diez entrevistas con clientes es un mejor punto de partida que pedirle a la IA que invente un nuevo posicionamiento. Convertir un brief de campaña aprobado en primeros borradores para cada canal es más seguro que pedirles a herramientas separadas que decidan la estrategia de forma independiente.</p>
+    <p>Para consultar contexto independiente y respaldado por fuentes sobre la adopción y el uso actuales, revisa el <a href="/ai-marketing-statistics/">registro de investigación sobre estadísticas de marketing con IA</a>. La adopción agregada describe el uso reportado, no si un flujo de trabajo específico es eficaz.</p>
+    <p>Usa una regla de tres niveles. <strong>Asistir</strong> significa que la IA prepara material mientras una persona realiza la tarea. <strong>Ejecutar después de la aprobación</strong> significa que la IA puede avanzar un paso repetitivo una vez aprobadas las entradas y la versión final. <strong>Solo personas</strong> cubre decisiones donde la confianza, la negociación, la privacidad, la reputación o el riesgo del negocio pesan más que el beneficio de automatizar. La mayoría de las pequeñas empresas debería comenzar con Asistir, documentar lo que funciona y ampliar solo cuando el estándar de revisión sea confiable.</p>
+    <div class="priority-note"><strong>Primer caso de uso recomendado:</strong> construye un brief de campaña y su lista de piezas conectadas. Esto obliga a la empresa a aclarar el objetivo antes de que la IA cree más material.</div>
+  </section>
+
+  <section id="section-5" class="guide-section">
+    <p class="eyebrow">BRIEF PARA COPIAR Y ENVIAR</p>
+    <h2>Envía este brief al asistente de IA que ya utilizas.</h2>
+    <p>No hay nada que configurar. Sustituye los campos entre corchetes con la información de tu empresa, copia el brief completo y pide un primer plan de campaña. Trata la respuesta como material de trabajo para revisión experta, no como una estrategia aprobada.</p>
+    <div class="prompt-panel">
+      <div class="prompt-intro">
+        <strong>Cómo usar este brief</strong>
+        <ol>
+          <li>Completa los campos de contexto del negocio y de la campaña.</li>
+          <li>Envía el brief completo al asistente de IA que prefieras.</li>
+          <li>Revisa la estrategia, los hechos, las afirmaciones, la coherencia con la marca y la responsabilidad del seguimiento.</li>
+        </ol>
+      </div>
+      <pre aria-label="Brief de campaña de marketing con IA para copiar y enviar">Estás ayudando a una pequeña empresa a preparar una campaña de marketing conectada.
+
+REGLAS IMPORTANTES
+• Usa únicamente la información del negocio que aparece a continuación.
+• Si falta información, enumera lo que falta. No inventes hechos, evidencia, afirmaciones, precios, citas de clientes ni cifras de rendimiento.
+• Conecta cada recomendación con un resultado de negocio y una acción del comprador.
+• Indica qué puede preparar la IA, qué debe revisar un experto en marketing y qué debe aprobar la empresa.
+
+CONTEXTO DEL NEGOCIO
+Negocio: [nombre y descripción sencilla]
+Audiencia: [cliente ideal y situación de compra]
+Oferta: [producto o servicio que se promociona]
+Geografía y limitaciones: [dónde opera la empresa y límites importantes]
+Evidencia aprobada: [hechos, ejemplos, credenciales o resultados que podamos verificar]
+Voz de marca: [de tres a cinco rasgos]
+Afirmaciones, palabras e imágenes que se deben evitar: [lista]
+
+DATOS DE LA CAMPAÑA
+Resultado de negocio: [qué debería cambiar para la empresa]
+Acción del comprador: [qué debería hacer después la persona adecuada]
+Problema del cliente: [problema específico que aborda esta campaña]
+Mensaje principal: [una idea clara]
+Canales: [sitio web, búsqueda, redes sociales, correo, publicidad o contacto directo]
+Destino del prospecto: [formulario, página de reservas, bandeja de entrada, teléfono o tienda]
+Responsable y plazo del seguimiento: [quién responde y cuándo]
+Responsable de la aprobación final: [nombre o cargo]
+Fechas de campaña: [fecha de inicio y revisión]
+
+DEVUELVE EL PLAN EN ESTE ORDEN
+1. Estrategia de campaña en una sola frase.
+2. Brief de campaña: audiencia, oferta, problema, mensaje, evidencia, llamado a la acción y señal de éxito.
+3. Tabla del plan de canales con estas columnas completas: canal, función, pieza, mensaje, llamado a la acción, responsable, revisor, punto de aprobación y medición.
+4. Lista de control de producción para cada pieza necesaria.
+5. Lista de control para la revisión experta que cubra estrategia, hechos, afirmaciones, calidad creativa y coherencia con la marca.
+6. Lista de control para la aprobación de la empresa que cubra oferta, precios, promesas, riesgo y decisión final de publicación.
+7. Plan de captación de prospectos con campos de fuente, campaña, oferta, contacto, consentimiento, calificación, responsable y siguiente paso.
+8. Plan de seguimiento con primera respuesta, transferencia a una persona, recordatorio y actualización del CRM.
+9. Plan de medición con un resultado principal, señales de diagnóstico, fecha de revisión y siguiente hipótesis.
+10. Una lista de la información faltante que debe resolverse antes del lanzamiento.</pre>
+    </div>
+    <div class="prompt-note"><strong>No envíes información confidencial de clientes.</strong> Elimina datos privados, accesos a cuentas, precios confidenciales y cualquier información que la empresa no haya aprobado para procesamiento externo.</div>
+  </section>
+
+  <section id="section-6" class="guide-section">
+    <p class="eyebrow">CONEXIÓN CON EL PIPELINE</p>
+    <h2>Conecta la campaña con prospectos, CRM y seguimiento.</h2>
+    <p>El marketing no termina cuando se publica un contenido o comienza a circular un anuncio. Decide a dónde llegará la respuesta antes del lanzamiento. Cada formulario, mensaje, llamada o respuesta debe tener una persona responsable, suficiente contexto de origen y una siguiente acción clara.</p>
+    <div class="pipeline-strip">
+      <article><span>1</span><h3>Captar</h3><p>Recopila la consulta con el contexto de fuente, campaña, oferta y consentimiento.</p></article>
+      <article><span>2</span><h3>Calificar</h3><p>Separa las oportunidades reales del spam, los contactos poco adecuados y las solicitudes que necesitan más información.</p></article>
+      <article><span>3</span><h3>Responder</h3><p>Usa el contexto para preparar una respuesta útil y humana con un siguiente paso específico.</p></article>
+      <article><span>4</span><h3>Aprender</h3><p>Devuelve las objeciones, las preguntas, los aciertos y las pérdidas a la siguiente campaña.</p></article>
+    </div>
+    <h3 class="subhead">Ejemplo: de un clic en la campaña a una conversación útil.</h3>
+    <p>Imagina que una empresa local de servicios lanza una campaña para una consulta de alto valor. El formulario de la página de destino registra el servicio, la ubicación, la fuente de la campaña, el momento y la pregunta que el prospecto quiere resolver. La IA resume la consulta y prepara una respuesta usando la oferta y las reglas de programación aprobadas. Una persona comprueba si existe un buen encaje, personaliza el mensaje y se hace cargo de la conversación. Si la misma objeción aparece repetidamente, el equipo de marketing actualiza la página de destino y el brief de la siguiente campaña. El flujo hace más que mover un prospecto. Mejora el marketing que lo generó.</p>
+    <figure class="guide-image">
+      <img src="/images/ai-marketing-guide/ai-marketing-guide-followup.svg" alt="Propietario de una empresa y experta en marketing organizando un prospecto, el siguiente paso en el CRM y el seguimiento" width="1536" height="1024" loading="lazy" />
+      <figcaption>El sistema debe conservar el contexto de la campaña para que el seguimiento se sienta informado, no automatizado sin propósito.</figcaption>
+    </figure>
+    <p>La IA puede resumir la consulta, sugerir una respuesta, asignar una tarea o señalar un siguiente paso atrasado. La empresa sigue siendo responsable de la relación. Las conversaciones delicadas, de alto valor, inusuales o con clientes insatisfechos deben recibir criterio humano directo.</p>
+  </section>
+
+  <section id="section-7" class="guide-section">
+    <p class="eyebrow">MATRIZ DE RESPONSABILIDADES</p>
+    <h2>Decide qué hace la IA, qué dirigen los expertos y qué aprueba la empresa.</h2>
+    <p>Una responsabilidad clara evita dos fallos comunes: que las personas confíen en resultados sin revisar o que revisen cada tarea mínima porque el sistema no tiene reglas. El límite adecuado depende del riesgo, pero esta matriz ofrece un punto de partida práctico.</p>
+    <div class="table-wrap ownership-table">
+      <table>
+        <caption>Matriz de responsabilidades del marketing con IA</caption>
+        <thead><tr><th>Decisión o tarea</th><th>Sistema de IA</th><th>Expertos en marketing</th><th>Empresa</th></tr></thead>
+        <tbody>{ownershipRows.map((row) => (<tr>{row.map((cell, index) => index === 0 ? <th scope="row">{cell}</th> : <td data-label={["Sistema de IA", "Expertos en marketing", "Empresa"][index - 1]}>{cell}</td>)}</tr>))}</tbody>
+      </table>
+    </div>
+    <div class="risk-rule"><strong>Aumenta la revisión humana cuando aumenta el riesgo.</strong> Los precios, las promesas a clientes, los temas regulados, los mensajes sensibles para la reputación, los datos personales, las decisiones presupuestarias importantes y las afirmaciones públicas nunca deben avanzar mediante automatización genérica.</div>
+  </section>
+
+  <section id="section-8" class="guide-section">
+    <p class="eyebrow">MEDICIÓN</p>
+    <h2>Mide el avance dentro del sistema, no el volumen de resultados de la IA.</h2>
+    <p>Más borradores, publicaciones y prompts son métricas de producción. No demuestran que el marketing haya funcionado. Elige una señal principal del negocio y un conjunto reducido de señales de diagnóstico que expliquen lo ocurrido.</p>
+    <div class="measure-grid">
+      <article><p>Resultado principal</p><h3>Acciones calificadas</h3><span>Consultas, compras, demostraciones, respuestas u otros siguientes pasos reales.</span></article>
+      <article><p>Señal de conversión</p><h3>Avance del comprador</h3><span>Conversión de la página de destino, formularios completados, tasa de respuesta o avance en la etapa comercial.</span></article>
+      <article><p>Señal operativa</p><h3>Estado del flujo de trabajo</h3><span>Tiempo de aprobación, tiempo de respuesta, consistencia de publicación y seguimientos atrasados.</span></article>
+      <article><p>Señal de aprendizaje</p><h3>Mejores decisiones siguientes</h3><span>¿Qué mensaje, oferta, objeción o canal debería cambiar después?</span></article>
+    </div>
+    <h3 class="subhead">Usa un ritmo sencillo de revisión.</h3>
+    <p>Revisa cada semana las señales operativas: qué se publicó, qué espera aprobación, qué consultas necesitan respuesta y si el seguimiento de datos funciona. Revisa los resultados del negocio con un ritmo que corresponda al ciclo de compra. Una campaña local de citas puede mostrar señales útiles rápidamente; un servicio B2B complejo puede necesitar más tiempo antes de que maduren las oportunidades calificadas.</p>
+    <p>Compara los resultados con el brief original, no con la expectativa imprecisa de que la IA debería mejorarlo todo. Haz cuatro preguntas: ¿la audiencia adecuada vio la campaña? ¿El mensaje generó la acción prevista? ¿El seguimiento ocurrió con suficiente contexto? ¿Qué cambio concreto tiene la mejor evidencia? Guarda la respuesta con el registro de la campaña para que el siguiente brief parta de la realidad.</p>
+    <p>No cambies todo a la vez. Registra el objetivo, la campaña aprobada, el resultado y la siguiente hipótesis. Así es como el marketing con IA se convierte en un ciclo de aprendizaje en lugar de una máquina de contenido.</p>
+  </section>
+
+  <section id="section-9" class="guide-section">
+    <p class="eyebrow">PLAN DE 30 DÍAS</p>
+    <h2>Usa el primer mes para validar un flujo de trabajo repetible.</h2>
+    <p>El primer mes no debe ser una carrera para automatizar todos los canales. Debe demostrar que una campaña puede pasar del contexto del negocio a la ejecución aprobada, la respuesta a prospectos y una mejor decisión siguiente.</p>
+    <p>Usa la <a href="/seo-aio-strategy/">hoja de ruta pública de SEO y AIO de Markethink</a> junto con este flujo del primer mes cuando el trabajo incluya evidencia de búsqueda, implementación de páginas y revisión de producción.</p>
+    <div class="month-plan">{monthPlan.map(([week, title, copy]) => (<article><span>{week}</span><div><h3>{title}</h3><p>{copy}</p></div></article>))}</div>
+    <div class="definition-card">
+      <strong>Definición de trabajo terminado después de 30 días</strong>
+      <ul><li>Un resultado de negocio y un brief de campaña claros</li><li>Un conjunto conectado de piezas de marketing aprobadas</li><li>Una ruta funcional de captación y seguimiento de prospectos</li><li>Una revisión de resultados con el siguiente movimiento documentado</li><li>Correcciones registradas que mejoran el siguiente ciclo</li></ul>
+    </div>
+    <h3 class="subhead">Amplía solo cuando el primer ciclo sea confiable.</h3>
+    <p>Añade otro canal cuando el equipo pueda explicar por qué pertenece a la campaña, quién revisará el trabajo, a dónde llegarán las respuestas y cómo se evaluará el éxito. Añade más automatización cuando se entiendan las excepciones y una persona pueda intervenir. Aumenta el volumen de contenido solo cuando el trabajo existente sea preciso, diferenciado y esté conectado con una acción del comprador. Esto evita que el crecimiento multiplique la confusión.</p>
+  </section>
+
+  <section id="section-10" class="guide-section">
+    <p class="eyebrow">ERRORES COMUNES</p>
+    <h2>Evita los atajos que generan más ruido de marketing.</h2>
+    <div class="mistake-grid">
+      <article><h3>Comenzar con las herramientas</h3><p>Corrección: comienza con el resultado del negocio y después elige el flujo útil más pequeño.</p></article>
+      <article><h3>Publicar primeros borradores</h3><p>Corrección: exige una revisión de hechos, afirmaciones, claridad de la oferta, coherencia con la marca y riesgo para el cliente.</p></article>
+      <article><h3>Generar piezas aisladas</h3><p>Corrección: construye la página de destino, el contenido, el correo, el anuncio, la captación y el seguimiento alrededor de un solo brief de campaña.</p></article>
+      <article><h3>Automatizar la relación</h3><p>Corrección: usa la IA para preparar y asignar mientras las personas se encargan de las conversaciones importantes.</p></article>
+      <article><h3>Ignorar la retroalimentación aprobada</h3><p>Corrección: registra las correcciones para que la siguiente campaña comience con mejor contexto.</p></article>
+      <article><h3>Medir el volumen de contenido</h3><p>Corrección: mide las acciones calificadas, el avance del comprador, el estado del flujo y el aprendizaje.</p></article>
+    </div>
+    <p>La ventaja práctica no es que la IA pueda producir más marketing. Es que un sistema bien gestionado puede ayudar a una pequeña empresa a planificar, publicar, dar seguimiento y aprender con mayor consistencia sin reducir el estándar.</p>
+  </section>
+</div>
+
+
+
+<style>
+  .practical-guide{display:flex;flex-direction:column;gap:0}.guide-section{padding:1rem 0 3rem;scroll-margin-top:7rem;color:#0f1213}.guide-section+ .guide-section{border-top:1px solid rgba(245,245,241,.08);padding-top:3rem}.guide-section h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 1.5rem}.subhead{font-family:var(--font-body);font-size:1.3rem;line-height:1.3;margin:2rem 0 .75rem;color:#0f1213!important}.guide-section>p{font-size:1.08rem;line-height:1.75;color:#303536!important;margin:0 0 1.25rem}.guide-section>p a{color:#2f7026;text-decoration:underline;text-underline-offset:.16em}.eyebrow{font-size:.72rem!important;letter-spacing:.14em;font-weight:700;color:#477a3b!important;margin-bottom:1rem!important}.answer-card,.definition-card,.risk-rule,.priority-note{border:1px solid rgba(15,18,19,.12);border-radius:22px;padding:1.5rem;background:#edf4ea;margin:2rem 0}.answer-card strong,.definition-card strong{display:block;font-size:1.1rem;margin-bottom:.55rem}.answer-card p,.risk-rule,.priority-note{line-height:1.7;color:rgba(15,18,19,.78)}.goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}.goal-grid article,.measure-grid article,.mistake-grid article{background:#0f1213;color:#f5f5f1;border-radius:20px;padding:1.35rem}.goal-grid span{color:#69d254;font-weight:700;font-size:.75rem}.goal-grid h3,.measure-grid h3,.mistake-grid h3{font-family:var(--font-body);font-size:1.08rem;margin:.55rem 0}.goal-grid p,.measure-grid span,.mistake-grid p{font-size:.9rem;line-height:1.6;color:#b4b6b6}.checklist-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}.checklist-panel>div{background:#f5f5f1;border:1px solid rgba(15,18,19,.12);border-radius:20px;padding:1.35rem}.checklist-panel h3{font-family:var(--font-body);font-size:1.05rem;margin-bottom:.8rem}.checklist-panel ul,.definition-card ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.55rem;color:rgba(15,18,19,.72);line-height:1.5}.workflow-loop{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(15,18,19,.16);border:1px solid rgba(15,18,19,.16);border-radius:24px;overflow:hidden;margin:2rem 0}.workflow-loop article{background:#0f1213;color:#f5f5f1;padding:1.35rem;min-height:160px}.workflow-loop span{color:#69d254;font-size:.72rem;font-weight:700}.workflow-loop h3{font-family:var(--font-body);font-size:1.05rem;margin:.8rem 0 .4rem}.workflow-loop p{font-size:.88rem;line-height:1.55;color:#b4b6b6}.guide-image{margin:2.5rem 0}.guide-image img{display:block;width:100%;height:auto;border-radius:24px;background:#edf4ea}.guide-image figcaption{font-size:.82rem;line-height:1.55;color:#686b6c;margin-top:.75rem}.table-wrap{overflow-x:auto;margin:2rem 0;border:1px solid rgba(15,18,19,.12);border-radius:22px}.table-wrap table{border-collapse:collapse;width:100%;min-width:760px;background:#f5f5f1}.table-wrap caption{text-align:left;padding:1.2rem 1.25rem;font-weight:700;background:#0f1213;color:#f5f5f1}.table-wrap th,.table-wrap td{text-align:left;vertical-align:top;padding:1rem;border-bottom:1px solid rgba(15,18,19,.1);font-size:.88rem;line-height:1.55;color:#202425!important}.table-wrap thead th{background:#edf4ea;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:#202425!important}.table-wrap tbody th{width:18%;color:#0f1213!important}.pipeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0}.pipeline-strip article{border-top:3px solid #69d254;background:#f5f5f1;border-radius:0 0 18px 18px;padding:1.2rem}.pipeline-strip span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#0f1213;color:#69d254;font-size:.75rem}.pipeline-strip h3{font-family:var(--font-body);font-size:1rem;margin:.8rem 0 .45rem}.pipeline-strip p{font-size:.86rem;line-height:1.55;color:#686b6c}.measure-grid,.mistake-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}.measure-grid article>p{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#69d254}.measure-grid h3{font-size:1.15rem}.month-plan{display:flex;flex-direction:column;gap:1rem;margin:2rem 0}.month-plan article{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;background:#f5f5f1;border:1px solid rgba(15,18,19,.1);border-radius:18px;padding:1.25rem}.month-plan span{color:#477a3b;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.month-plan h3{font-family:var(--font-body);font-size:1.05rem;margin-bottom:.35rem}.month-plan p{font-size:.9rem;line-height:1.6;color:#686b6c}.mistake-grid article{background:#f5f5f1;color:#0f1213;border:1px solid rgba(15,18,19,.1)}.mistake-grid p{color:#686b6c}.risk-rule{background:#0f1213;color:#f5f5f1}.risk-rule strong{color:#69d254}.ownership-table td:nth-child(2){background:rgba(105,210,84,.08)}.prompt-panel{background:#f5f5f1;border:1px solid rgba(245,245,241,.2);border-radius:22px;padding:1.5rem;margin:2rem 0;color:#202425}.prompt-intro{padding-bottom:1.2rem;border-bottom:1px solid rgba(15,18,19,.12)}.prompt-intro strong{display:block;color:#0f1213!important;font-size:1.12rem;margin-bottom:.65rem}.prompt-intro ol{margin:0;padding-left:1.2rem;display:grid;gap:.45rem;color:#45494a;line-height:1.55}.prompt-panel pre{margin:1.25rem 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--font-body);font-size:.9rem;line-height:1.65;color:#202425!important;background:#fff;border:1px solid rgba(15,18,19,.12);border-radius:16px;padding:1.25rem}.prompt-note{border-left:3px solid #69d254;background:#edf4ea;color:#202425!important;border-radius:0 16px 16px 0;padding:1rem 1.2rem;line-height:1.6}.prompt-note strong{color:#0f1213!important}.checklist-panel h3,.pipeline-strip h3,.month-plan h3,.mistake-grid h3{color:#0f1213!important}.answer-card strong,.definition-card strong{color:#0f1213!important}.answer-card p,.definition-card li,.pipeline-strip p,.month-plan p,.mistake-grid p{color:#555b5c!important}@media(max-width:900px){.goal-grid,.checklist-panel,.workflow-loop,.pipeline-strip{grid-template-columns:1fr 1fr}.measure-grid,.mistake-grid{grid-template-columns:1fr}}@media(max-width:720px){.guide-section{padding-bottom:2.5rem}.guide-section+ .guide-section{padding-top:2.5rem}.guide-section h2{font-size:2.35rem}.goal-grid,.checklist-panel,.workflow-loop,.pipeline-strip{grid-template-columns:1fr}.month-plan article{grid-template-columns:1fr;gap:.5rem}.guide-image img{border-radius:16px}.prompt-panel{padding:1rem}.prompt-panel pre{font-size:.84rem;padding:1rem}.table-wrap{overflow:visible;border:0;border-radius:0}.table-wrap table{display:block;min-width:0;background:transparent}.table-wrap caption{display:block;border-radius:14px 14px 0 0}.table-wrap thead{display:none}.table-wrap tbody{display:grid;gap:1rem}.table-wrap tr{display:block;overflow:hidden;background:#f5f5f1;border:1px solid rgba(15,18,19,.12);border-radius:14px}.table-wrap tbody th{display:block;width:auto;background:#edf4ea;padding:.9rem 1rem}.table-wrap td{display:grid;grid-template-columns:minmax(92px,.38fr) 1fr;gap:.75rem;padding:.85rem 1rem}.table-wrap td::before{content:attr(data-label);font-size:.65rem;line-height:1.35;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#477a3b}.ownership-table td:nth-child(2){background:rgba(105,210,84,.08)}}
+</style>
