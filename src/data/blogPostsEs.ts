@@ -429,4 +429,109 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
       },
     ],
   },
+  {
+    sourceSlug: "how-to-use-ai-for-marketing-small-business",
+    slug: "como-usar-la-ia-para-marketing-en-pequenas-empresas",
+    title: "Cómo usar la IA para marketing: guía práctica para pequeñas empresas",
+    seoTitle: "Cómo usar la IA para marketing: guía para pequeñas empresas | Markethink",
+    description:
+      "Aprende a usar la IA para marketing con un flujo práctico, una matriz de responsabilidades, un brief de campaña para copiar y enviar y un plan completo de 30 días.",
+    excerpt:
+      "Una guía paso a paso para usar la IA en investigación, campañas, contenido, aprobaciones, captación de prospectos, seguimiento, medición y mejora continua.",
+    label: "GUÍA PRÁCTICA",
+    ...editorialImage("/blog/how-to-use-ai-for-marketing-small-business/"),
+    imageAlt:
+      "Escena editorial conceptual de un equipo que convierte una entrevista con un experto en una secuencia de campaña conectada.",
+    publishedDate: "2026-08-10",
+    updatedDate: "2026-08-12",
+    readingTime: "18 min de lectura",
+    category: "Marketing con IA",
+    keywords: [
+      "cómo usar la IA para marketing",
+      "cómo usar la IA para marketing de pequeñas empresas",
+      "marketing con IA para pequeñas empresas",
+      "flujo de marketing con IA",
+      "automatización de marketing con IA",
+      "flujo de automatización de marketing",
+      "flujo de campañas de marketing",
+      "plan de marketing con IA",
+      "seguimiento de prospectos con IA",
+      "nutrición de prospectos con IA",
+      "ejemplos de flujos de CRM",
+    ],
+    author: {
+      name: "Equipo editorial de Markethink",
+      title: "Sistemas de marketing con IA gestionados por expertos en marketing",
+    },
+    intro: [
+      "La IA puede ayudar a una pequeña empresa a investigar a sus clientes, planificar campañas, preparar borradores de contenido, mejorar su sitio web, organizar prospectos, preparar el seguimiento y aprender de los resultados. La ventaja no proviene de generar más material. Proviene de conectar esas tareas con un resultado de negocio claro.",
+      "Esta guía muestra cómo usar la IA para marketing sin entregar la estrategia, el criterio de marca ni las relaciones con clientes a una máquina. La IA aporta velocidad, organización y ejecución repetitiva. Los expertos en marketing dirigen y revisan el trabajo. La empresa aprueba la oferta, las afirmaciones, el riesgo y las decisiones finales de publicación.",
+      "Usa el flujo de trabajo, las tablas completas, la matriz de responsabilidades y el brief de campaña para copiar y enviar que aparecen a continuación para construir un ciclo completo: objetivo, brief, producción, revisión experta, aprobación, lanzamiento, captación de prospectos, seguimiento, resultados y la siguiente campaña mejorada.",
+    ],
+    seoHubLink: {
+      copy: "Para conocer el sistema y el servicio detrás de este enfoque operativo, consulta",
+      anchor: "el sistema de marketing con IA de Markethink",
+      href: "/es/",
+    },
+    recommendedGuide: {
+      copy: "Si estás comparando modelos operativos, lee",
+      anchor: "¿Qué es una agencia de marketing con IA? Lo que realmente gestiona",
+      href: "/es/blog/que-es-una-agencia-de-marketing-con-ia/",
+    },
+    relatedSlugs: [],
+    sections: [
+      { heading: "Comienza con un resultado", body: [] },
+      { heading: "Construye contexto que la IA pueda usar", body: [] },
+      { heading: "Sigue el flujo de nueve pasos", body: [] },
+      { heading: "Elige tareas útiles para el marketing con IA", body: [] },
+      { heading: "Construye tu primera campaña", body: [] },
+      { heading: "Conecta los prospectos y el seguimiento", body: [] },
+      { heading: "Decide quién se encarga de cada tarea", body: [] },
+      { heading: "Mide lo que importa", body: [] },
+      { heading: "Usa el plan de 30 días", body: [] },
+      { heading: "Evita los errores comunes", body: [] },
+    ],
+    faq: [
+      {
+        question: "¿Cómo puede usar una pequeña empresa la IA para marketing?",
+        answer:
+          "Una pequeña empresa puede usar la IA para organizar la investigación de clientes, preparar briefs de campaña, crear primeros borradores, adaptar contenido entre canales, apoyar actualizaciones del sitio web, resumir consultas, preparar seguimientos y organizar resultados. La estrategia, las afirmaciones, la dirección creativa, las aprobaciones y las conversaciones importantes con clientes deben seguir bajo responsabilidad humana.",
+      },
+      {
+        question: "¿Cuál es el mejor primer caso de uso de la IA para marketing?",
+        answer:
+          "Comienza con un brief de campaña conectado con un resultado de negocio medible. Úsalo para crear un conjunto mínimo de piezas conectadas, definir la ruta de aprobación, dirigir los prospectos y registrar los resultados. Esto es más útil que comenzar con una gran colección de herramientas desconectadas.",
+      },
+      {
+        question: "¿Puede la IA crear una estrategia de marketing completa?",
+        answer:
+          "La IA puede apoyar la investigación, organizar datos, identificar opciones y preparar un borrador del plan. Un experto en marketing todavía debe elegir la audiencia, el posicionamiento, la oferta, la combinación de canales, el presupuesto, la dirección creativa y el enfoque de medición. La empresa debe aprobar las afirmaciones, el riesgo y las prioridades finales.",
+      },
+      {
+        question: "¿Qué tareas de marketing no deberían automatizarse por completo?",
+        answer:
+          "No automatices por completo las decisiones de precios, las promesas a clientes, las respuestas delicadas, los cambios importantes de presupuesto, las afirmaciones reguladas o sensibles para la reputación, la aprobación creativa final ni las conversaciones de alto valor. Aumenta la revisión humana a medida que aumenta el riesgo.",
+      },
+      {
+        question: "¿En qué se diferencia la automatización de marketing con IA de un flujo de marketing?",
+        answer:
+          "La automatización mueve una tarea cuando se cumple una regla. Un flujo de marketing define todo el recorrido de responsabilidades: objetivo, información de entrada, producción, revisión, aprobación, lanzamiento, gestión de prospectos, medición y aprendizaje. Un buen flujo puede incluir automatización sin renunciar al criterio humano.",
+      },
+      {
+        question: "¿Cómo debe medir una pequeña empresa el marketing con IA?",
+        answer:
+          "Mide las acciones de compradores calificados, la conversión hacia el siguiente paso, el tiempo de respuesta a prospectos, el estado del flujo de trabajo y lo que aprendió la empresa. La cantidad de prompts, borradores o publicaciones no demuestra el impacto del marketing.",
+      },
+      {
+        question: "¿Cuánto tiempo se necesita para comenzar a usar la IA para marketing?",
+        answer:
+          "Una pequeña empresa puede construir y probar un flujo enfocado en unos 30 días: definir el objetivo y el contexto, crear una campaña conectada, revisarla y lanzarla, y después evaluar el seguimiento y los resultados. La ampliación a más canales solo debe ocurrir cuando funcione el primer ciclo.",
+      },
+      {
+        question: "¿Usar IA significa reemplazar a un equipo de marketing?",
+        answer:
+          "No. El modelo más sólido combina la velocidad y la consistencia de la IA con estrategia, revisión, criterio y responsabilidad de expertos. La IA apoya la operación de marketing; no elimina la necesidad de personas con experiencia ni de la aprobación final de la empresa.",
+      },
+    ],
+  },
 ];
