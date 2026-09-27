@@ -5,6 +5,7 @@ import Footer from "../../../components/Footer.astro";
 import BlogAuthor from "../../../components/blog/BlogAuthor.astro";
 import AiLogoBrandIdentityGuideEs from "../../../components/blog/AiLogoBrandIdentityGuideEs.astro";
 import AiMarketingPracticalGuideEs from "../../../components/blog/AiMarketingPracticalGuideEs.astro";
+import AiSearchInteractiveGuideEs from "../../../components/blog/AiSearchInteractiveGuideEs.astro";
 import SeoContentFeedbackLoopGuideEs from "../../../components/blog/SeoContentFeedbackLoopGuideEs.astro";
 import { getBlogAuthorSchema, santiagoSosaAuthorEs } from "../../../data/blogAuthors";
 import { spanishInsightPosts, type SpanishBlogPost } from "../../../data/blogPostsEs";
@@ -23,8 +24,10 @@ const englishCanonical = `${siteUrl}/blog/${post.sourceSlug}/`;
 const socialImage = post.imageSharing;
 const isAiLogoBrandIdentityGuide = post.sourceSlug === "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business";
 const isAiMarketingPracticalGuide = post.sourceSlug === "how-to-use-ai-for-marketing-small-business";
+const isAiSearchInteractiveGuide = post.sourceSlug === "how-to-show-up-in-ai-search";
 const isSeoContentFeedbackLoop = post.sourceSlug === "seo-content-feedback-loop";
-const isEditorialTeam = isAiMarketingPracticalGuide || isSeoContentFeedbackLoop;
+const isEditorialTeam = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide || isSeoContentFeedbackLoop;
+const usesTeamLedCta = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -171,6 +174,8 @@ const breadcrumbSchema = {
             <AiLogoBrandIdentityGuideEs />
           ) : isAiMarketingPracticalGuide ? (
             <AiMarketingPracticalGuideEs />
+          ) : isAiSearchInteractiveGuide ? (
+            <AiSearchInteractiveGuideEs />
           ) : isSeoContentFeedbackLoop ? (
             <SeoContentFeedbackLoopGuideEs />
           ) : (
@@ -197,9 +202,9 @@ const breadcrumbSchema = {
 
           {!isAiLogoBrandIdentityGuide && <section class="article-cta">
             <p class="article-cta-label">La perspectiva de Markethink</p>
-            <h2>{isAiMarketingPracticalGuide ? "Construye una operación de marketing que publica y mejora con cada ciclo." : "El marketing mejora más rápido cuando el sistema recuerda el trabajo."}</h2>
+            <h2>{usesTeamLedCta ? "Construye una operación de marketing que publica y mejora con cada ciclo." : "El marketing mejora más rápido cuando el sistema recuerda el trabajo."}</h2>
             <p>
-              {isAiMarketingPracticalGuide
+              {usesTeamLedCta
                 ? "Markethink es un sistema de marketing con IA gestionado por expertos. Conocemos tu negocio, ejecutamos el trabajo diario de marketing, conectamos las campañas con los prospectos y el seguimiento, y mejoramos con cada aprobación, corrección y resultado."
                 : "Markethink es un sistema de marketing con IA gestionado por expertos. Aprende tu negocio, ejecuta el marketing día a día, conecta las campañas con los prospectos y el seguimiento, y mejora con cada aprobación, corrección y resultado."}
             </p>

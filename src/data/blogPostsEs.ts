@@ -534,4 +534,93 @@ export const spanishInsightPosts: SpanishBlogPost[] = [
       },
     ],
   },
+  {
+    sourceSlug: "how-to-show-up-in-ai-search",
+    slug: "como-lograr-que-tu-negocio-aparezca-en-busquedas-con-ia",
+    title: "Cómo lograr que tu negocio aparezca en búsquedas con IA",
+    seoTitle: "Cómo aparecer en búsquedas con IA: guía práctica | Markethink",
+    description:
+      "Aprende a mejorar la visibilidad en búsquedas con IA mediante contenido listo para responder, evidencia confiable, medición y un plan práctico de 30 días.",
+    excerpt:
+      "Una guía práctica y respaldada por fuentes para evaluar la preparación, fortalecer la evidencia y conectar la visibilidad en búsquedas con IA con resultados de negocio.",
+    label: "GUÍA INTERACTIVA",
+    ...editorialImage("/blog/how-to-show-up-in-ai-search/"),
+    imageAlt:
+      "Escena editorial conceptual de un equipo que organiza fuentes, evidencia y medición para mejorar la visibilidad en búsquedas con IA.",
+    publishedDate: "2026-07-17",
+    updatedDate: "2026-09-10",
+    readingTime: "16 min de lectura",
+    category: "Búsqueda con IA",
+    keywords: [
+      "cómo aparecer en búsquedas con IA",
+      "cómo lograr que un negocio aparezca en búsquedas con IA",
+      "AEO para pequeñas empresas",
+      "optimización para motores de respuesta",
+      "optimización para motores generativos",
+      "optimización de búsquedas con IA",
+      "Google AI Overviews",
+      "visibilidad en búsquedas de ChatGPT",
+    ],
+    author: {
+      name: "Equipo editorial de Markethink",
+      title: "Sistemas de marketing con IA y estrategia de búsqueda",
+    },
+    intro: [
+      "Para mejorar las posibilidades de aparecer en búsquedas con IA, facilita el rastreo de tu sitio web, responde con claridad preguntas específicas de tus clientes, mantén consistentes los datos del negocio, publica evidencia verificable, consigue menciones confiables y mide las citas y las visitas referidas.",
+      "Ninguna plataforma garantiza que una empresa será citada, mencionada o posicionada en primer lugar. El objetivo práctico es hacer que tu empresa sea más fácil de encontrar, comprender, verificar y elegir en distintos entornos de búsqueda y respuesta.",
+      "Esta guía interactiva muestra qué puedes controlar, qué puedes influir, cómo encontrar la señal más débil y qué mejorar durante los próximos 30 días.",
+    ],
+    seoHubLink: {
+      copy: "La visibilidad en búsquedas con IA funciona mejor cuando se conecta con el resto de la operación de marketing. Conoce",
+      anchor: "el sistema de marketing con IA de Markethink",
+      href: "/es/",
+    },
+    recommendedGuide: {
+      copy: "Para conocer el flujo operativo completo, consulta",
+      anchor: "Cómo usar la IA para marketing: guía práctica para pequeñas empresas",
+      href: "/es/blog/como-usar-la-ia-para-marketing-en-pequenas-empresas/",
+    },
+    relatedSlugs: [],
+    sections: [
+      { heading: "Qué significa aparecer en búsquedas con IA", body: [] },
+      { heading: "SEO, AEO y GEO: qué cambia realmente", body: [] },
+      { heading: "Evalúa tu preparación para las búsquedas con IA", body: [] },
+      { heading: "Crea páginas que faciliten respuestas útiles", body: [] },
+      { heading: "Fortalece la evidencia fuera de tu sitio web", body: [] },
+      { heading: "Mide citas, visitas y resultados de negocio", body: [] },
+      { heading: "Aplica un plan práctico de 30 días", body: [] },
+    ],
+    faq: [
+      {
+        question: "¿Qué es AEO en marketing?",
+        answer:
+          "La optimización para motores de respuesta, o AEO, busca facilitar que los sistemas de búsqueda y respuesta con IA encuentren, comprendan y utilicen el contenido. Se apoya en fundamentos de SEO como el rastreo, las respuestas claras, la evidencia confiable y una cobertura temática conectada.",
+      },
+      {
+        question: "¿Necesito un marcado especial para aparecer en Google AI Overviews?",
+        answer:
+          "Google indica que sus funciones de IA no requieren requisitos técnicos adicionales ni tipos especiales de datos estructurados. Las prácticas estándar de SEO siguen vigentes. Los datos estructurados deben coincidir con el contenido visible, pero no garantizan la inclusión.",
+      },
+      {
+        question: "¿Una pequeña empresa puede aparecer en búsquedas con IA?",
+        answer:
+          "Sí. Una pequeña empresa puede mejorar sus posibilidades con datos de negocio precisos, páginas de servicios útiles, respuestas claras, evidencia original, perfiles consistentes y señales externas confiables. Ninguna empresa puede garantizar que un sistema de IA la citará o mencionará.",
+      },
+      {
+        question: "¿Cuánto tiempo requiere la optimización para búsquedas con IA?",
+        answer:
+          "No existe un plazo universal. Los sistemas de búsqueda deben descubrir y volver a evaluar las fuentes actualizadas, y la visibilidad también depende de la relevancia, la competencia, la evidencia y la pregunta realizada. Mide mejoras concretas en lugar de prometer una fecha fija.",
+      },
+      {
+        question: "¿Cómo puedo medir si mi empresa aparece en búsquedas con IA?",
+        answer:
+          "Usa el informe de rendimiento de IA generativa de Search Console para observar impresiones de AI Overviews y AI Mode por página, país, fecha y dispositivo. Google indica que completó el despliegue mundial el 31 de agosto de 2026. Complementa esos datos con el informe AI Performance de Bing Webmaster Tools, analítica de visitas referidas, notas de origen en el CRM y una muestra estable de preguntas reales de clientes.",
+      },
+      {
+        question: "¿Necesito un archivo especial para IA como llms.txt?",
+        answer:
+          "Google indica que sus funciones de IA no requieren un archivo nuevo legible por máquinas. Usa controles estándar de rastreo y vista previa, mapas del sitio precisos, contenido visible útil y las instrucciones para rastreadores publicadas por cada plataforma. Un archivo especial por sí solo no crea visibilidad ni autoridad.",
+      },
+    ],
+  },
 ];
