@@ -1,0 +1,119 @@
+---
+const { lang = "en" } = Astro.props;
+const isEs = lang === "es";
+const base = "https://dashboard.markethink.ai/generated/landing/villazzo/villazzo-edit-03-instagram-preview/";
+const slides = [
+  ["drive-updated-just-sold-cover-e727f80aac6f.jpg", "Just Sold cover with the property interior and agent"],
+  ["drive-dining-area-de7f6a2f80c3.jpg", "Dining room overlooking the pool"],
+  ["drive-added-living-room-side-view-46bae68c5e2f.jpg", "Living room and dining area"],
+  ["drive-kitchen-62cb6fded91f.jpg", "Kitchen"],
+  ["drive-full-dining-room-30236fd166bf.jpg", "Dining room"],
+  ["drive-full-small-dining-area-8dae8cab8fc5.jpg", "Small dining area"],
+  ["drive-full-bathroom-14674a4f9c34.jpg", "Bathroom"],
+  ["drive-full-bathroom-2-4f83a059381c.jpg", "Second bathroom"],
+  ["drive-full-music-room-2fcfee3a20a7.jpg", "Music room"],
+  ["drive-bedroom-2-0409381c1166.jpg", "Second bedroom"],
+  ["drive-bedroom-c1020e099153.jpg", "Bedroom"],
+  ["drive-added-outside-of-the-house-d5b2b86d8ff5.jpg", "House exterior and walkway"],
+  ["drive-full-pool-126b95c5d209.jpg", "Pool"],
+  ["drive-full-river-view-boat-side-of-the-house-78b056d1323d.jpg", "Waterside exterior and boat"],
+];
+const esAlts = ["Portada de venta con sala y agente", "Comedor con vista a la piscina", "Sala y comedor", "Cocina", "Comedor", "Comedor pequeño", "Baño", "Segundo baño", "Sala de música", "Segunda habitación", "Habitación", "Exterior de la casa y entrada", "Piscina", "Vista de la casa desde el agua y bote"];
+---
+
+<dialog id="villazzo-carousel" class="carousel-dialog" data-villazzo-carousel aria-labelledby="villazzo-carousel-title" aria-describedby="villazzo-carousel-description">
+  <div class="carousel-shell">
+    <div class="carousel-header">
+      <div>
+        <p class="carousel-eyebrow">VILLAZZO · INSTAGRAM</p>
+        <h2 id="villazzo-carousel-title">{isEs ? "Publicación Just Sold" : "Just Sold post"}</h2>
+        <p id="villazzo-carousel-description">{isEs ? "Recorre las imágenes de esta publicación de Villazzo." : "Browse the images in this Villazzo post."}</p>
+      </div>
+      <button type="button" class="carousel-close" data-carousel-close aria-label={isEs ? "Cerrar vista previa" : "Close preview"}>×</button>
+    </div>
+    <div class="carousel-stage">
+      <button type="button" class="carousel-arrow" data-carousel-prev aria-label={isEs ? "Imagen anterior" : "Previous slide"}>‹</button>
+      <div class="carousel-images">
+        {slides.map(([file, alt], index) => (
+          <img src={`${base}${file}`} alt={isEs ? esAlts[index] : alt} width="1080" height="1350" loading={index === 0 ? "eager" : "lazy"} data-carousel-slide hidden={index !== 0} />
+        ))}
+      </div>
+      <button type="button" class="carousel-arrow" data-carousel-next aria-label={isEs ? "Imagen siguiente" : "Next slide"}>›</button>
+    </div>
+    <div class="carousel-footer">
+      <span data-carousel-count aria-live="polite">{isEs ? "1 de 14" : "1 of 14"}</span>
+      <div class="carousel-dots" role="group" aria-label={isEs ? "Elegir imagen" : "Choose slide"}>
+        {slides.map((_, index) => (
+          <button type="button" class="carousel-dot" data-carousel-dot={index} aria-label={`${isEs ? "Imagen" : "Slide"} ${index + 1}`} aria-current={index === 0 ? "true" : undefined}></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("[data-villazzo-carousel]");
+  const trigger = document.querySelector<HTMLAnchorElement>("[data-carousel-trigger]");
+  if (dialog && trigger) {
+    const slides = Array.from(dialog.querySelectorAll<HTMLImageElement>("[data-carousel-slide]"));
+    const dots = Array.from(dialog.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"));
+    const count = dialog.querySelector<HTMLElement>("[data-carousel-count]");
+    const isEs = document.documentElement.lang.startsWith("es");
+    let index = 0;
+    const show = (next: number) => {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => { slide.hidden = i !== index; });
+      dots.forEach((dot, i) => {
+        if (i === index) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+      if (count) count.textContent = isEs ? `${index + 1} de ${slides.length}` : `${index + 1} of ${slides.length}`;
+    };
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      show(0);
+      dialog.showModal();
+      dialog.querySelector<HTMLButtonElement>("[data-carousel-close]")?.focus();
+    });
+    dialog.querySelector("[data-carousel-close]")?.addEventListener("click", () => dialog.close());
+    dialog.querySelector("[data-carousel-prev]")?.addEventListener("click", () => show(index - 1));
+    dialog.querySelector("[data-carousel-next]")?.addEventListener("click", () => show(index + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => show(i)));
+    dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") { event.preventDefault(); show(index - 1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); show(index + 1); }
+    });
+  }
+</script>
+
+<style>
+  .carousel-dialog { max-width: min(850px, calc(100vw - 2rem)); width: 100%; max-height: calc(100dvh - 2rem); padding: 0; border: 1px solid rgba(245,245,241,.2); border-radius: 1.25rem; background: #0f1213; color: #f5f5f1; box-shadow: 0 25px 80px rgba(0,0,0,.4); }
+  .carousel-dialog::backdrop { background: rgba(4,8,7,.85); backdrop-filter: blur(8px); }
+  .carousel-shell { padding: clamp(1rem,3vw,1.6rem); }
+  .carousel-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+  .carousel-eyebrow { margin: 0 0 .35rem; color: #69d254; font: 700 .65rem/1.2 Inter,sans-serif; letter-spacing: .14em; }
+  .carousel-header h2 { margin: 0 0 .25rem; font: 400 clamp(1.8rem,4vw,2.6rem)/1 "Instrument Serif",Georgia,serif; }
+  .carousel-header p:last-child { margin: 0; color: #bbc2bb; font-size: .85rem; }
+  .carousel-close, .carousel-arrow { border: 1px solid rgba(245,245,241,.4); background: rgba(15,18,19,.72); color: #f5f5f1; cursor: pointer; }
+  .carousel-close { flex: 0 0 2.6rem; width: 2.6rem; height: 2.6rem; border-radius: 50%; font-size: 1.7rem; line-height: 1; }
+  .carousel-stage { display: grid; grid-template-columns: 2.75rem minmax(0,1fr) 2.75rem; align-items: center; gap: .5rem; }
+  .carousel-arrow { width: 2.75rem; height: 2.75rem; border-radius: 50%; font-size: 2rem; line-height: 1; }
+  .carousel-images { display: grid; place-items: center; min-width: 0; height: min(65dvh, 680px); background: #080b0a; border-radius: .65rem; overflow: hidden; }
+  .carousel-images img { grid-area: 1/1; display: block; height: 100%; width: 100%; object-fit: contain; }
+  .carousel-images img[hidden] { display: none; }
+  .carousel-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; color: #d4d9d3; font-size: .78rem; }
+  .carousel-dots { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .35rem; }
+  .carousel-dot { width: .55rem; height: .55rem; padding: 0; border: 0; border-radius: 50%; background: #677067; cursor: pointer; }
+  .carousel-dot[aria-current="true"] { background: #69d254; }
+  .carousel-dialog button:focus-visible { outline: 3px solid #69d254; outline-offset: 3px; }
+  @media (max-width: 600px) {
+    .carousel-dialog { max-width: calc(100vw - .5rem); max-height: calc(100dvh - .5rem); }
+    .carousel-header p:last-child { font-size: .75rem; }
+    .carousel-stage { grid-template-columns: 2rem minmax(0,1fr) 2rem; gap: .2rem; }
+    .carousel-arrow { width: 2rem; height: 2rem; font-size: 1.6rem; }
+    .carousel-images { height: min(65dvh, 580px); }
+    .carousel-dots { max-width: 75%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .carousel-dialog::backdrop { backdrop-filter: none; } }
+</style>
