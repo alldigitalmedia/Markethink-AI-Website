@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
-import VillazzoCarousel from "../components/VillazzoCarousel.astro";
 
 const pageTitle = "What Our Clients Shipped | Markethink";
 const pageDescription = "See the websites, campaigns, content, advertising, and pipeline work clients are shipping with Markethink, powered by AI and managed by expert marketers.";
@@ -76,18 +75,6 @@ const workItems = [
     href: "https://www.instagram.com/villazzo/",
     action: "View on Instagram",
     tone: "green",
-  },
-  {
-    category: "social",
-    client: "Villazzo",
-    work: "Just Sold Instagram carousel and residential photography",
-    image: "https://dashboard.markethink.ai/generated/landing/villazzo/villazzo-edit-03-instagram-preview/drive-updated-just-sold-cover-e727f80aac6f.jpg",
-    alt: "Just Sold Instagram carousel cover with a real estate agent in a living room",
-    href: "#villazzo-carousel",
-    action: "View 14-slide carousel",
-    tone: "warm",
-    fit: "contain",
-    preview: true,
   },
   {
     category: "email",
@@ -181,7 +168,7 @@ const structuredData = [
 
       <div class="work-grid" data-work-grid>
         {workItems.map((item, index) => (
-          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href?.startsWith("http") ? "_blank" : undefined} rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined} data-carousel-trigger={item.preview ? "" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
+          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href ? "_blank" : undefined} rel={item.href ? "noopener noreferrer" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
             <div
               class:list={["card-media", item.fit === "contain" && "fit-contain"]}
               style={item.fit === "contain" ? `--card-image: url("${item.image}")` : undefined}
@@ -194,7 +181,7 @@ const structuredData = [
                 loading={index < 2 ? "eager" : "lazy"}
               />
               <div class="card-wash"></div>
-              <span class="anonymized-label">{item.action}{item.href?.startsWith("http") ? " ↗" : ""}</span>
+              <span class="anonymized-label">{item.action}{item.href ? " ↗" : ""}</span>
             </div>
             <div class="card-copy">
               <h3>{item.client}</h3>
@@ -203,8 +190,6 @@ const structuredData = [
           </a>
         ))}
       </div>
-
-      <VillazzoCarousel lang="en" />
 
       <p class="empty-state" data-empty-state hidden>No public work is available in this category yet.</p>
     </section>
