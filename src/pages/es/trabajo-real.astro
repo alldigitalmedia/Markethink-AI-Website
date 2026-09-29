@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.astro";
 import Navbar from "../../components/Navbar.astro";
-import VillazzoCarousel from "../../components/VillazzoCarousel.astro";
 
 const pageTitle = "Trabajo real de nuestros clientes | Markethink";
 const pageDescription = "Explora sitios web, campañas, contenido, publicidad y sistemas de crecimiento creados para clientes con Markethink, impulsado por IA y gestionado por expertos en marketing.";
@@ -76,18 +75,6 @@ const workItems = [
     href: "https://www.instagram.com/villazzo/",
     action: "Ver en Instagram",
     tone: "green",
-  },
-  {
-    category: "social",
-    client: "Villazzo",
-    work: "Carrusel de Instagram Just Sold con fotografía residencial",
-    image: "https://dashboard.markethink.ai/generated/landing/villazzo/villazzo-edit-03-instagram-preview/drive-updated-just-sold-cover-e727f80aac6f.jpg",
-    alt: "Portada del carrusel Just Sold con una agente inmobiliaria en la sala",
-    href: "#villazzo-carousel",
-    action: "Ver carrusel de 14 imágenes",
-    tone: "warm",
-    fit: "contain",
-    preview: true,
   },
   {
     category: "email",
@@ -181,7 +168,7 @@ const structuredData = [
 
       <div class="work-grid" data-work-grid>
         {workItems.map((item, index) => (
-          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href?.startsWith("http") ? "_blank" : undefined} rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined} data-carousel-trigger={item.preview ? "" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
+          <a class:list={["work-card", `tone-${item.tone}`, !item.href && "is-static"]} href={item.href} target={item.href ? "_blank" : undefined} rel={item.href ? "noopener noreferrer" : undefined} data-categories={item.category} style={`--card-index:${index}`} aria-label={item.href ? `${item.action}: ${item.client}` : `${item.client}: ${item.action}`}>
             <div
               class:list={["card-media", item.fit === "contain" && "fit-contain"]}
               style={item.fit === "contain" ? `--card-image: url("${item.image}")` : undefined}
@@ -194,7 +181,7 @@ const structuredData = [
                 loading={index < 2 ? "eager" : "lazy"}
               />
               <div class="card-wash"></div>
-              <span class="anonymized-label">{item.action}{item.href?.startsWith("http") ? " ↗" : ""}</span>
+              <span class="anonymized-label">{item.action}{item.href ? " ↗" : ""}</span>
             </div>
             <div class="card-copy">
               <h3>{item.client}</h3>
@@ -203,8 +190,6 @@ const structuredData = [
           </a>
         ))}
       </div>
-
-      <VillazzoCarousel lang="es" />
 
       <p class="empty-state" data-empty-state hidden>Todavía no hay trabajo público disponible en esta categoría.</p>
     </section>
