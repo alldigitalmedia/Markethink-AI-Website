@@ -97,10 +97,6 @@ export const insightPosts: BlogPost[] = [
           "outsourced marketing team",
           "hire a marketing agency"
       ],
-      "author": {
-          "name": "Markethink Editorial Team",
-          "title": "AI marketing systems managed by expert marketers"
-      },
       "intro": [
           "If your founder is still rewriting the homepage at night, approving social posts between customer calls, and wondering who followed up with yesterday’s inquiry, the issue is not simply headcount. The marketing work has no clear owner and no dependable path from an idea to a customer conversation.",
           "The short answer: hire for the gap you actually have. An employee is often the right choice when the business needs a full-time internal decision-maker close to product and sales. An outsourced team can fit when you need several disciplines, a defined operating rhythm, and accountable execution but not enough continuous work for a full internal department. A hybrid can be stronger than either alone.",
@@ -112,7 +108,7 @@ export const insightPosts: BlogPost[] = [
           "href": "/ai-marketing-for-small-business/"
       },
       "recommendedGuide": {
-          "copy": "To understand the difference between a provider and an AI tool, read",
+          "copy": "For a fuller breakdown of an external team’s scope, read",
           "anchor": "what an AI marketing agency actually manages",
           "href": "/blog/what-is-an-ai-marketing-agency/"
       },
@@ -125,6 +121,7 @@ export const insightPosts: BlogPost[] = [
           {
               "heading": "Who should a small business hire to manage all its marketing?",
               "body": [
+                  "Hire an in-house manager when daily business decisions and close coordination are the bottleneck; use a freelancer for a defined specialty or an outsourced team for coordinated work across channels. Whichever model you choose, name an internal owner for priorities, approvals, and the customer relationship.",
                   "First list the decisions and the work. Someone must choose the audience, offer, campaign priorities, budget, claims, and approval rules. Someone must produce and maintain the website, content, social, email, and advertising where those channels are justified. Someone must make sure inquiries reach a named owner in the CRM and receive appropriate follow-up. One job title rarely covers every specialty at the same depth.",
                   "Choose an in-house manager when daily access to leadership, product knowledge, cross-team coordination, and rapid internal decisions are the main bottleneck. Give that person an actual mandate and a production budget; a manager without makers or outside specialists can become a one-person approval queue.",
                   "Choose a specialist freelancer for a contained need such as paid-search setup, design, or technical SEO when you already have someone to direct and integrate the work. Choose an agency or managed team when the work spans multiple channels and you need a single plan, delivery capacity, expert review, and clear accountability. A founder or sales lead still needs to supply business context and approve consequential decisions."
@@ -138,6 +135,7 @@ export const insightPosts: BlogPost[] = [
           {
               "heading": "Is outsourcing marketing cheaper than hiring an employee?",
               "body": [
+                  "Outsourcing is not automatically cheaper than an employee. Compare the same scope and period, including employer costs and specialist support for a hire, versus the outside fee, exclusions, tools, internal review time, and media spend.",
                   "Sometimes, but a monthly retainer cannot be compared with a salary alone. For an employee, include salary, employer benefits and payroll obligations, recruiting, onboarding, management time, software, specialist contractors, and paid-media spend. For outside help, include the contracted scope, setup, revisions, required software, internal review time, additional specialists, and ad spend. Avoid double-counting shared costs and compare the same deliverables over the same period.",
                   "For context, the U.S. Bureau of Labor Statistics reports that the median annual wage for marketing managers was $166,790 in May 2025. That is a national occupational median, not a quote for your next hire or a fair comparison with a marketing coordinator. BLS also reports that benefits accounted for 30.0% of average private-industry employer compensation in June 2026; that economy-wide average is not a marketing-manager-specific multiplier. Use local role and employer-cost estimates in your own model.",
                   "An outsourced engagement may cost less than building a multi-specialist department if the workload is intermittent. It may cost more than one focused employee if the scope is broad or the provider requires extensive internal coordination. Ask for a written scope and compare the cost per useful capacity and the quality of the operating handoff, not just the invoice."
@@ -149,8 +147,9 @@ export const insightPosts: BlogPost[] = [
               ]
           },
           {
-              "heading": "At what revenue should a company hire a marketing agency?",
+              "heading": "At what revenue or stage should a company hire a marketing agency?",
               "body": [
+                  "There is no universal revenue threshold for hiring an agency. Consider one when your offer and sales follow-up are ready, campaigns are stalling for lack of execution, and you can fund a bounded scope without counting on promised returns.",
                   "There is no universal revenue threshold. Revenue alone hides margin, cash reserves, sales cycle, customer lifetime value, capacity, and whether the business can follow up on demand. A company with a small, clear offer and strong economics may benefit from outside help before a larger company whose offer is still changing. Neither case guarantees a return.",
                   "Look for operational signals instead: valuable campaigns are repeatedly delayed; the website no longer reflects the offer; lead sources and follow-up are disconnected; a founder is making every routine marketing decision; or the team has budget for execution but no one to run the work. If the offer is unproven or the sales team cannot handle inquiries, fix those constraints before expanding spend.",
                   "Set a bounded test: choose one audience and offer, specify the landing or website change, one or two supporting channels, approval owner, lead destination, and review point. Agree on what will be measured: qualified inquiries, response and handoff quality, and the next decision. An initial scope should be affordable from available operating cash without relying on a promised uplift."
@@ -159,9 +158,24 @@ export const insightPosts: BlogPost[] = [
           {
               "heading": "Can an outsourced marketing team replace an in-house marketing manager?",
               "body": [
+                  "An outsourced team can lead day-to-day planning and deliver website, content, campaigns, and channel work, but it cannot replace the business’s ownership of priorities, approvals, budgets, and customer relationships. When there is an in-house manager, the better arrangement is often to extend that person’s capacity.",
                   "It can perform many production and specialist-management tasks, and in some smaller businesses it can serve as the day-to-day marketing lead. But it does not remove the need for an internal accountable owner. Someone at the business must set priorities, approve offers and claims, share sales feedback, make budget decisions, and resolve conflicts between marketing and operations.",
                   "If the company has a strong in-house manager, an outside team should extend that person’s capacity rather than undermine it. The manager owns context, internal alignment, and decisions; the team adds strategy, production, channel specialists, QA, and reporting by agreement. If the company has no manager, designate a founder or senior operator as the decision owner and require the provider to name its lead. Do not leave authority implicit.",
                   "An expert-managed AI marketing system is another operating option: AI can help organize context, prepare drafts, adapt approved assets, and maintain continuity across website, content, social, campaigns, advertising, leads, CRM, and follow-up. Expert marketers direct strategy, review quality, and stay accountable. The business retains approvals and customer relationships. Ask what is actually included before assuming an integration or channel is covered."
+              ]
+          },
+          {
+              "heading": "What are the disadvantages of outsourcing marketing?",
+              "body": [
+                  "Outsourcing adds a handoff: an external team needs timely product context, access, approvals, and sales feedback to make useful decisions. Without a named internal owner, even strong production can stall or miss the voice and constraints of the business.",
+                  "Scope gaps can create surprise work or fees, while provider turnover and locked-away accounts can disrupt continuity. Before signing, define the deliverables and exclusions, review cadence, access and asset ownership, escalation path, and how the team will transfer its work if the engagement ends. An in-house hire has its own recruitment, management, and coverage risks; compare both models against the actual workload."
+              ]
+          },
+          {
+              "heading": "When does a hybrid in-house and outsourced team make sense?",
+              "body": [
+                  "A hybrid fits when the business needs someone close to leadership and sales every day but also needs specialist production it cannot justify staffing continuously. The internal owner sets priorities, supplies customer and product context, approves consequential work, and owns the pipeline; the external team plans and delivers an agreed scope, reports what happened, and brings decisions back for review.",
+                  "Start with one workflow such as a campaign and its landing page, lead handoff, and follow-up. Name both leads, agree on approvals and response times, and review actual delivery before expanding the remit. The outside team should make the internal team more capable, not make its decision rights disappear."
               ]
           },
           {
@@ -175,20 +189,20 @@ export const insightPosts: BlogPost[] = [
       ],
       "faq": [
           {
-              "question": "Who should a small business hire to manage all its marketing?",
-              "answer": "Hire for the main constraint. An in-house manager fits constant internal decisions; a freelancer fits a defined specialty; an agency or managed team fits coordinated multi-channel delivery. Keep an internal business owner in every model."
+              "question": "Who should own the ad accounts, website, and creative assets?",
+              "answer": "Agree in writing who controls account access, domains, files, data, and reuse rights before work starts. Keep the business able to access its core accounts and assets, and specify how they will be handed over if the engagement ends."
           },
           {
-              "question": "Is outsourcing marketing cheaper than hiring an employee?",
-              "answer": "Not always. Compare the same scope over the same period, including employer costs and extra specialists on the hire side, and fees, setup, exclusions, tools, internal review time, and media spend on the outside side."
+              "question": "Can we outsource only part of our marketing?",
+              "answer": "Yes. Keep business priorities and approvals in-house, then scope outside help around a bottleneck such as campaign production, paid search, or technical SEO. Assign a lead on each side so the specialist work connects to sales and the rest of marketing."
           },
           {
-              "question": "At what revenue should a company hire a marketing agency?",
-              "answer": "There is no reliable universal revenue cutoff. Look at available cash, margins, offer clarity, campaign delays, follow-up capacity, and whether a bounded engagement can solve a defined bottleneck."
+              "question": "How long should we test an outsourced marketing engagement?",
+              "answer": "Set a review point after a defined first scope rather than using a universal number of weeks. Allow time for onboarding and delivery, then assess whether agreed work shipped, leads were handed off properly, and the team used feedback to improve. Sales results may take longer than the first delivery cycle."
           },
           {
-              "question": "Can an outsourced marketing team replace an in-house marketing manager?",
-              "answer": "It can cover some day-to-day management and production, but it should not eliminate internal ownership of priorities, approvals, budgets, and customer relationships. Many businesses work best with a hybrid."
+              "question": "How is a fractional CMO different from an outsourced marketing team?",
+              "answer": "A fractional CMO generally supplies part-time senior marketing leadership and decision support; an outsourced team is contracted to deliver an agreed mix of planning, production, and channel work. The roles can complement each other, but ask who will actually make assets, manage handoffs, and own reviews."
           }
       ]
   },
