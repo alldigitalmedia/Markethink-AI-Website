@@ -28,6 +28,7 @@ const isAiSearchInteractiveGuide = post.sourceSlug === "how-to-show-up-in-ai-sea
 const isSeoContentFeedbackLoop = post.sourceSlug === "seo-content-feedback-loop";
 const isEditorialTeam = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide || isSeoContentFeedbackLoop;
 const isOutsourcingBuyerGuide = post.sourceSlug === "outsourced-marketing-vs-in-house-small-business";
+const isConsistentMarketing = post.sourceSlug === "consistent-marketing-beats-chasing-ai-tools";
 const isCompanyAuthored = post.author.schemaType === "Organization";
 const usesTeamLedCta = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide;
 
@@ -168,6 +169,11 @@ const breadcrumbSchema = {
                 <p class="article-hub-link">
                   {post.recommendedGuide?.copy} <a href={post.recommendedGuide?.href}>{post.recommendedGuide?.anchor}</a>.
                 </p>
+              </>
+            ) : isConsistentMarketing ? (
+              <>
+                <p class="article-hub-link">{post.seoHubLink?.copy} <a href={post.seoHubLink?.href}>{post.seoHubLink?.anchor}</a>.</p>
+                <p class="article-hub-link">{post.recommendedGuide?.copy} <a href={post.recommendedGuide?.href}>{post.recommendedGuide?.anchor}</a>.</p>
               </>
             ) : isAiMarketingPracticalGuide ? (
               <>
