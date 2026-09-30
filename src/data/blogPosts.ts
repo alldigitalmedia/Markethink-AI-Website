@@ -78,6 +78,120 @@ const editorialImage = (route: string) => {
 
 export const insightPosts: BlogPost[] = [
   {
+      "slug": "outsourced-marketing-vs-in-house-small-business",
+      "title": "Outsourced Marketing vs. In-House: What Should a Small Business Hire?",
+      "seoTitle": "Outsourced Marketing vs. In-House for Small Business | Markethink",
+      "description": "Compare an in-house hire, freelancer, agency, and expert-managed marketing team. Learn the full-cost test, hiring signals, and who stays accountable.",
+      "excerpt": "A practical hiring decision guide: who owns marketing, when outside help makes sense, how to compare full costs, and where an internal manager still matters.",
+      "label": "BUYER’S GUIDE",
+      ...editorialImage("/blog/outsourced-marketing-vs-in-house-small-business/"),
+      "publishedDate": "2026-09-30",
+      "updatedDate": "2026-09-30",
+      "readingTime": "10 min read",
+      "category": "Marketing Operations",
+      "keywords": [
+          "outsourced marketing vs in house",
+          "in house marketing vs agency",
+          "outsourced marketing for small business",
+          "outsourced marketing team",
+          "hire a marketing agency"
+      ],
+      "author": {
+          "name": "Markethink Editorial Team",
+          "title": "AI marketing systems managed by expert marketers"
+      },
+      "intro": [
+          "If your founder is still rewriting the homepage at night, approving social posts between customer calls, and wondering who followed up with yesterday’s inquiry, the issue is not simply headcount. The marketing work has no clear owner and no dependable path from an idea to a customer conversation.",
+          "The short answer: hire for the gap you actually have. An employee is often the right choice when the business needs a full-time internal decision-maker close to product and sales. An outsourced team can fit when you need several disciplines, a defined operating rhythm, and accountable execution but not enough continuous work for a full internal department. A hybrid can be stronger than either alone.",
+          "This is a buying framework, not a promise that outsourcing is always cheaper or that AI replaces a manager. Compare scope, total cost, ownership, and the handoff from campaigns to leads before signing a contract."
+      ],
+      "seoHubLink": {
+          "copy": "For the broader managed operating model, see",
+          "anchor": "AI marketing for small business",
+          "href": "/ai-marketing-for-small-business/"
+      },
+      "recommendedGuide": {
+          "copy": "To understand the difference between a provider and an AI tool, read",
+          "anchor": "what an AI marketing agency actually manages",
+          "href": "/blog/what-is-an-ai-marketing-agency/"
+      },
+      "relatedSlugs": [
+          "what-is-an-ai-marketing-agency",
+          "how-to-use-ai-for-marketing-small-business",
+          "consistent-marketing-beats-chasing-ai-tools"
+      ],
+      "sections": [
+          {
+              "heading": "Who should a small business hire to manage all its marketing?",
+              "body": [
+                  "First list the decisions and the work. Someone must choose the audience, offer, campaign priorities, budget, claims, and approval rules. Someone must produce and maintain the website, content, social, email, and advertising where those channels are justified. Someone must make sure inquiries reach a named owner in the CRM and receive appropriate follow-up. One job title rarely covers every specialty at the same depth.",
+                  "Choose an in-house manager when daily access to leadership, product knowledge, cross-team coordination, and rapid internal decisions are the main bottleneck. Give that person an actual mandate and a production budget; a manager without makers or outside specialists can become a one-person approval queue.",
+                  "Choose a specialist freelancer for a contained need such as paid-search setup, design, or technical SEO when you already have someone to direct and integrate the work. Choose an agency or managed team when the work spans multiple channels and you need a single plan, delivery capacity, expert review, and clear accountability. A founder or sales lead still needs to supply business context and approve consequential decisions."
+              ],
+              "bullets": [
+                  "Name the internal business owner and the external delivery owner.",
+                  "Define the first business outcome and the buyer action, not a posting quota.",
+                  "Document who can approve claims, budgets, publishing, and customer-facing follow-up."
+              ]
+          },
+          {
+              "heading": "Is outsourcing marketing cheaper than hiring an employee?",
+              "body": [
+                  "Sometimes, but a monthly retainer cannot be compared with a salary alone. For an employee, include salary, employer benefits and payroll obligations, recruiting, onboarding, management time, software, specialist contractors, and paid-media spend. For outside help, include the contracted scope, setup, revisions, required software, internal review time, additional specialists, and ad spend. Avoid double-counting shared costs and compare the same deliverables over the same period.",
+                  "For context, the U.S. Bureau of Labor Statistics reports that the median annual wage for marketing managers was $166,790 in May 2025. That is a national occupational median, not a quote for your next hire or a fair comparison with a marketing coordinator. BLS also reports that benefits accounted for 30.0% of average private-industry employer compensation in June 2026; that economy-wide average is not a marketing-manager-specific multiplier. Use local role and employer-cost estimates in your own model.",
+                  "An outsourced engagement may cost less than building a multi-specialist department if the workload is intermittent. It may cost more than one focused employee if the scope is broad or the provider requires extensive internal coordination. Ask for a written scope and compare the cost per useful capacity and the quality of the operating handoff, not just the invoice."
+              ],
+              "bullets": [
+                  "Employee column: salary + employer costs + tools + additional specialists + internal management.",
+                  "Outside column: fee + setup + exclusions + tools + internal owner time + media spend.",
+                  "For both: list outputs, decision rights, speed, continuity risk, and how leads are handled."
+              ]
+          },
+          {
+              "heading": "At what revenue should a company hire a marketing agency?",
+              "body": [
+                  "There is no universal revenue threshold. Revenue alone hides margin, cash reserves, sales cycle, customer lifetime value, capacity, and whether the business can follow up on demand. A company with a small, clear offer and strong economics may benefit from outside help before a larger company whose offer is still changing. Neither case guarantees a return.",
+                  "Look for operational signals instead: valuable campaigns are repeatedly delayed; the website no longer reflects the offer; lead sources and follow-up are disconnected; a founder is making every routine marketing decision; or the team has budget for execution but no one to run the work. If the offer is unproven or the sales team cannot handle inquiries, fix those constraints before expanding spend.",
+                  "Set a bounded test: choose one audience and offer, specify the landing or website change, one or two supporting channels, approval owner, lead destination, and review point. Agree on what will be measured: qualified inquiries, response and handoff quality, and the next decision. An initial scope should be affordable from available operating cash without relying on a promised uplift."
+              ]
+          },
+          {
+              "heading": "Can an outsourced marketing team replace an in-house marketing manager?",
+              "body": [
+                  "It can perform many production and specialist-management tasks, and in some smaller businesses it can serve as the day-to-day marketing lead. But it does not remove the need for an internal accountable owner. Someone at the business must set priorities, approve offers and claims, share sales feedback, make budget decisions, and resolve conflicts between marketing and operations.",
+                  "If the company has a strong in-house manager, an outside team should extend that person’s capacity rather than undermine it. The manager owns context, internal alignment, and decisions; the team adds strategy, production, channel specialists, QA, and reporting by agreement. If the company has no manager, designate a founder or senior operator as the decision owner and require the provider to name its lead. Do not leave authority implicit.",
+                  "An expert-managed AI marketing system is another operating option: AI can help organize context, prepare drafts, adapt approved assets, and maintain continuity across website, content, social, campaigns, advertising, leads, CRM, and follow-up. Expert marketers direct strategy, review quality, and stay accountable. The business retains approvals and customer relationships. Ask what is actually included before assuming an integration or channel is covered."
+              ]
+          },
+          {
+              "heading": "A decision checklist to use before you hire",
+              "body": [
+                  "Write the work down before comparing proposals. What needs to ship each week, which work needs daily internal access, which specialties are intermittent, and where does a buyer response go? Ask each candidate to show the first campaign as a complete path, from offer and brief to approved work, lead record, follow-up owner, and results review.",
+                  "Ask what the fee or compensation covers, what is excluded, who owns accounts and assets, how feedback is recorded, who reviews claims and creative, and what happens when the work underperforms. A plan that only promises more posts without a lead and follow-up path does not solve the operating problem.",
+                  "If you want to examine an expert-managed option, Markethink connects campaigns, web, content, approvals, and pipeline follow-up in one system. Start with a marketing system audit to identify the first workflow worth fixing; packages depend on scope. The better choice may still be an internal hire, a hybrid, or a narrower specialist."
+              ]
+          }
+      ],
+      "faq": [
+          {
+              "question": "Who should a small business hire to manage all its marketing?",
+              "answer": "Hire for the main constraint. An in-house manager fits constant internal decisions; a freelancer fits a defined specialty; an agency or managed team fits coordinated multi-channel delivery. Keep an internal business owner in every model."
+          },
+          {
+              "question": "Is outsourcing marketing cheaper than hiring an employee?",
+              "answer": "Not always. Compare the same scope over the same period, including employer costs and extra specialists on the hire side, and fees, setup, exclusions, tools, internal review time, and media spend on the outside side."
+          },
+          {
+              "question": "At what revenue should a company hire a marketing agency?",
+              "answer": "There is no reliable universal revenue cutoff. Look at available cash, margins, offer clarity, campaign delays, follow-up capacity, and whether a bounded engagement can solve a defined bottleneck."
+          },
+          {
+              "question": "Can an outsourced marketing team replace an in-house marketing manager?",
+              "answer": "It can cover some day-to-day management and production, but it should not eliminate internal ownership of priorities, approvals, budgets, and customer relationships. Many businesses work best with a hybrid."
+          }
+      ]
+  },
+  {
     slug: "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
     title: "How to Create a Logo With AI and Build a Usable Brand Identity",
     seoTitle: "How to Create a Logo With AI: Complete Field Guide | Markethink",
