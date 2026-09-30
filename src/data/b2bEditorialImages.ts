@@ -22,6 +22,24 @@ const assetBase =
 
 export const b2bEditorialImages: B2BEditorialImage[] = [
   {
+    placement: 0,
+    title: "Outsourced versus in-house marketing buyer guide",
+    route: "/blog/outsourced-marketing-vs-in-house-small-business/",
+    desktop: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-desktop.webp`,
+    mobile: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-mobile.webp`,
+    thumbnail: `${assetBase}b2b-editorial-review-20260912-p01-statistics-resource-thumbnail.webp`,
+    sharing: `${assetBase}markethink-v2-p01-statistics-resource-sharing-1200x630-20260913.jpg`,
+    alt: "Conceptual scene of a marketer reviewing two campaign directions in a production workspace.",
+    desktopWidth: 1440,
+    desktopHeight: 960,
+    mobileWidth: 960,
+    mobileHeight: 640,
+    thumbnailWidth: 960,
+    thumbnailHeight: 720,
+    sharingWidth: 1200,
+    sharingHeight: 630,
+  },
+  {
     placement: 1,
     title: "AI marketing statistics resource",
     route: "/ai-marketing-statistics/",
