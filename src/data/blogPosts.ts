@@ -79,6 +79,7 @@ const editorialImage = (route: string) => {
 export const insightPosts: BlogPost[] = [
   {
       "slug": "outsourced-marketing-vs-in-house-small-business",
+      "author": { "name": "Markethink", "title": "Published by the Markethink team", "schemaType": "Organization", "url": "https://markethink.ai/" },
       "title": "Outsourced Marketing vs. In-House: What Should a Small Business Hire?",
       "seoTitle": "Outsourced Marketing vs. In-House for Small Business | Markethink",
       "description": "Compare an in-house hire, freelancer, agency, and expert-managed marketing team. Learn the full-cost test, hiring signals, and who stays accountable.",
