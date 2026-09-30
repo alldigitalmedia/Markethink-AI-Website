@@ -18,6 +18,99 @@ const editorialImage = (route: string) => {
 
 export const spanishInsightPosts: SpanishBlogPost[] = [
   {
+    sourceSlug: "outsourced-marketing-vs-in-house-small-business",
+    slug: "marketing-externo-vs-equipo-interno-pequenas-empresas",
+    title: "Marketing externo o equipo interno: ¿a quién debería contratar una pequeña empresa?",
+    seoTitle: "Marketing externo vs. equipo interno para pequeñas empresas | Markethink",
+    description: "Compara un responsable interno, un especialista independiente y un equipo externo. Evalúa los costos completos, las señales para contratar y quién conserva la responsabilidad.",
+    excerpt: "Una guía práctica para decidir quién dirige el marketing, cuándo conviene buscar ayuda externa, cómo comparar costos y qué debe permanecer dentro de la empresa.",
+    label: "GUÍA PARA COMPRADORES",
+    ...editorialImage("/blog/outsourced-marketing-vs-in-house-small-business/"),
+    imageAlt: "Escena editorial conceptual de una persona que revisa dos enfoques de campaña en un espacio de producción.",
+    publishedDate: "2026-09-30",
+    updatedDate: "2026-09-30",
+    readingTime: "10 min de lectura",
+    category: "Operación de marketing",
+    keywords: ["marketing externo vs equipo interno", "marketing interno o agencia", "externalizar marketing para pequeñas empresas", "equipo de marketing externo", "contratar una agencia de marketing"],
+    author: { name: "Markethink", title: "Publicado por el equipo de Markethink", schemaType: "Organization", url: "https://markethink.ai/es/" },
+    intro: [
+      "Si quien fundó la empresa todavía reescribe el inicio del sitio web por la noche, aprueba publicaciones para redes sociales entre llamadas con clientes y se pregunta quién dio seguimiento a la consulta de ayer, el problema no es solo la cantidad de personal. El trabajo de marketing no tiene una persona claramente responsable ni una ruta confiable desde la idea hasta la conversación con un cliente.",
+      "La respuesta breve: contrata según la brecha que realmente tienes. Una persona empleada suele ser la mejor opción cuando la empresa necesita decisiones internas de tiempo completo, cerca del producto y de ventas. Un equipo externo puede encajar cuando necesitas varias especialidades, un ritmo de trabajo definido y ejecución con responsables claros, pero no suficiente trabajo continuo para un departamento interno completo. Un modelo híbrido puede ser mejor que cualquiera de las dos opciones por separado.",
+      "Esta es una guía de decisión, no una promesa de que externalizar siempre cueste menos ni de que la IA reemplace a quien dirige el marketing. Antes de firmar un contrato, compara alcance, costo total, responsabilidades y el traspaso de las campañas a la gestión de prospectos.",
+    ],
+    seoHubLink: { copy: "Para conocer un modelo operativo gestionado más amplio, consulta", anchor: "el marketing con IA para pequeñas empresas", href: "/ai-marketing-for-small-business/" },
+    recommendedGuide: { copy: "Para entender el alcance de un equipo externo, lee", anchor: "qué gestiona realmente una agencia de marketing con IA", href: "/es/blog/que-es-una-agencia-de-marketing-con-ia/" },
+    relatedSlugs: [],
+    sections: [
+      {
+        heading: "¿A quién debería contratar una pequeña empresa para gestionar todo su marketing?",
+        body: [
+          "Contrata a una persona responsable dentro de la empresa si el obstáculo son las decisiones diarias y la coordinación cercana; recurre a un especialista independiente para una tarea definida o a un equipo externo para coordinar varios canales. En cualquier caso, designa a alguien dentro de la empresa para las prioridades, aprobaciones y relaciones con clientes.",
+          "Primero enumera las decisiones y el trabajo. Alguien debe elegir la audiencia, la oferta, las prioridades de campaña, el presupuesto, las afirmaciones comerciales y las reglas de aprobación. Alguien debe producir y mantener el sitio web, el contenido, las redes sociales, el correo electrónico y la publicidad cuando esos canales tengan sentido. Alguien debe asegurar que cada consulta llegue a una persona responsable en el CRM y reciba el seguimiento adecuado. Un solo puesto rara vez cubre todas las especialidades con la misma profundidad.",
+          "Elige a una persona que dirija el marketing desde dentro cuando el principal obstáculo sea el acceso diario a la dirección, el conocimiento del producto, la coordinación entre áreas y la rapidez de las decisiones internas. Dale autoridad real y presupuesto de producción; sin equipo de ejecución ni especialistas externos, puede convertirse en el único punto de espera para aprobarlo todo.",
+          "Elige a un especialista independiente para una necesidad acotada, como configurar anuncios en buscadores, diseñar o resolver cuestiones técnicas de SEO, si ya tienes a alguien que pueda dirigir e integrar su trabajo. Elige una agencia o un equipo gestionado cuando el trabajo abarque varios canales y necesites un plan común, capacidad de entrega, revisión experta y responsabilidades claras. La persona fundadora o quien dirige ventas todavía debe aportar contexto del negocio y aprobar las decisiones importantes.",
+        ],
+        bullets: ["Nombra a la persona responsable del negocio y a quien liderará la entrega externa.", "Define el primer resultado de negocio y la acción que esperas del comprador, no una cuota de publicaciones.", "Documenta quién aprueba las afirmaciones, los presupuestos, la publicación y el seguimiento de cara al cliente."],
+      },
+      {
+        heading: "¿Es más barato externalizar el marketing que contratar a una persona?",
+        body: [
+          "No necesariamente. Compara el mismo alcance durante el mismo periodo: costos del empleador y apoyo de especialistas en el caso de una contratación; honorarios, exclusiones, herramientas, tiempo de revisión interna e inversión en medios en el caso de un proveedor externo.",
+          "A veces puede serlo, pero no compares una cuota mensual solo con un salario. Para una contratación, incluye salario, prestaciones y obligaciones laborales del empleador, búsqueda de personal, incorporación, tiempo de dirección, software, especialistas contratados e inversión en publicidad. Para ayuda externa, incluye el alcance contratado, la puesta en marcha, las revisiones, el software necesario, el tiempo de revisión interna, otros especialistas y la inversión publicitaria. Evita contar dos veces los costos compartidos y compara los mismos entregables en el mismo periodo.",
+          "Como contexto, la Oficina de Estadísticas Laborales de Estados Unidos (BLS) informa que la remuneración anual mediana de los gerentes de marketing fue de USD 166.790 en mayo de 2025. Es una mediana ocupacional nacional, no un presupuesto para tu próxima contratación ni una comparación justa con un puesto de coordinación de marketing. La BLS también informa que las prestaciones representaron el 30,0 % de la compensación promedio pagada por empleadores del sector privado en junio de 2026; ese promedio para toda la economía no es un multiplicador específico para gerentes de marketing. Usa estimaciones locales para el puesto y los costos de empleador en tu propio cálculo.",
+          "Un acuerdo externo puede costar menos que crear un departamento con varias especialidades cuando la carga de trabajo es intermitente. Puede costar más que una sola contratación enfocada si el alcance es amplio o el proveedor exige mucha coordinación interna. Pide el alcance por escrito y compara la capacidad útil y la calidad del traspaso operativo, no solo la factura.",
+        ],
+        bullets: ["Contratación: salario + costos del empleador + herramientas + especialistas adicionales + dirección interna.", "Equipo externo: honorarios + puesta en marcha + exclusiones + herramientas + tiempo de la persona responsable interna + inversión en medios.", "En ambos casos: entregables, facultades de decisión, velocidad, riesgo de continuidad y gestión de prospectos."],
+      },
+      {
+        heading: "¿Con qué nivel de ingresos o en qué etapa conviene contratar una agencia de marketing?",
+        body: [
+          "No existe un umbral universal de ingresos para contratar una agencia. Considérala cuando la oferta y el seguimiento comercial estén listos, las campañas se atrasen por falta de ejecución y puedas financiar un alcance acotado sin depender de resultados prometidos.",
+          "Los ingresos por sí solos no muestran el margen, las reservas de efectivo, el ciclo de ventas, el valor del cliente a lo largo del tiempo, la capacidad de atención ni la posibilidad de dar seguimiento a la demanda. Una empresa con una oferta pequeña y clara y una economía sólida puede aprovechar ayuda externa antes que otra más grande cuya oferta todavía cambia. Ninguno de los dos casos garantiza un retorno.",
+          "Busca señales operativas: las campañas valiosas se retrasan repetidamente; el sitio web ya no refleja la oferta; las fuentes de prospectos y el seguimiento están desconectados; quien fundó la empresa toma todas las decisiones rutinarias de marketing; o hay presupuesto para ejecutar pero nadie que dirija el trabajo. Si la oferta no está validada o ventas no puede atender las consultas, resuelve esos obstáculos antes de aumentar el gasto.",
+          "Define una prueba acotada: elige una audiencia y una oferta, especifica el cambio en la página de destino o el sitio web, uno o dos canales de apoyo, la persona que aprueba, el destino de los prospectos y el momento de revisión. Acuerda qué medirás: consultas calificadas, calidad de la respuesta y del traspaso, y la siguiente decisión. El alcance inicial debe poder pagarse con el efectivo operativo disponible sin contar con un incremento prometido.",
+        ],
+      },
+      {
+        heading: "¿Puede un equipo de marketing externo reemplazar a quien dirige el marketing dentro de la empresa?",
+        body: [
+          "Un equipo externo puede dirigir la planificación diaria y entregar trabajo de sitio web, contenido, campañas y canales, pero no puede reemplazar la responsabilidad de la empresa sobre las prioridades, aprobaciones, presupuestos y relaciones con clientes. Si ya existe una persona que dirige el marketing internamente, suele ser mejor ampliar su capacidad.",
+          "Puede asumir muchas tareas de producción y coordinación de especialistas y, en algunas empresas pequeñas, liderar el marketing cotidiano. Pero siempre hace falta una persona responsable dentro del negocio. Alguien debe establecer prioridades, aprobar ofertas y afirmaciones, compartir lo que aprende ventas, decidir sobre presupuestos y resolver conflictos entre marketing y operaciones.",
+          "Si la empresa cuenta con una persona sólida al frente del marketing, el equipo externo debe ampliar su capacidad, no restarle autoridad. La persona interna conserva el contexto, la coordinación y las decisiones; el equipo aporta estrategia, producción, especialistas por canal, control de calidad e informes según lo acordado. Si no existe ese puesto, designa a quien fundó la empresa o a otra persona de la dirección como responsable de las decisiones y exige que el proveedor nombre a quien liderará el trabajo. No dejes la autoridad implícita.",
+          "Un sistema de marketing con IA gestionado por expertos es otra opción operativa: la IA puede ayudar a organizar el contexto, preparar borradores, adaptar materiales aprobados y mantener la continuidad entre sitio web, contenido, redes sociales, campañas, publicidad, prospectos, CRM y seguimiento. Los expertos en marketing dirigen la estrategia, revisan la calidad y mantienen la responsabilidad. La empresa conserva las aprobaciones y las relaciones con clientes. Pregunta qué incluye realmente el servicio antes de asumir que cubre alguna integración o canal.",
+        ],
+      },
+      {
+        heading: "¿Cuáles son las desventajas de externalizar el marketing?",
+        body: [
+          "Externalizar añade un traspaso de información: el equipo externo necesita conocer a tiempo el producto, tener acceso, recibir aprobaciones y obtener comentarios de ventas para tomar buenas decisiones. Sin una persona responsable dentro de la empresa, incluso una producción sólida puede detenerse o pasar por alto la voz y las limitaciones del negocio.",
+          "Los vacíos en el alcance pueden generar trabajo o cargos inesperados; la rotación del personal del proveedor y las cuentas a las que la empresa no tiene acceso pueden interrumpir la continuidad. Antes de firmar, define entregables y exclusiones, frecuencia de revisión, acceso y propiedad de los materiales, ruta de escalamiento y cómo se transferirá el trabajo si termina la relación. Una contratación interna también implica riesgos de selección, dirección y cobertura; compara ambos modelos con la carga real de trabajo.",
+        ],
+      },
+      {
+        heading: "¿Cuándo conviene combinar un equipo interno con uno externo?",
+        body: [
+          "Un modelo híbrido encaja cuando el negocio necesita a alguien cerca de la dirección y de ventas todos los días, pero también requiere producción especializada que no justifica contratar de forma permanente. La persona interna establece prioridades, aporta contexto de clientes y producto, aprueba el trabajo importante y se encarga del proceso comercial; el equipo externo planifica y entrega el alcance acordado, informa lo ocurrido y presenta decisiones para revisión.",
+          "Comienza con un flujo de trabajo, por ejemplo una campaña con su página de destino, el traspaso del prospecto y el seguimiento. Nombra a quien lidera cada lado, acuerda aprobaciones y tiempos de respuesta, y revisa las entregas reales antes de ampliar el alcance. El equipo externo debe fortalecer al interno, no hacer desaparecer sus facultades de decisión.",
+        ],
+      },
+      {
+        heading: "Lista de verificación para decidir antes de contratar",
+        body: [
+          "Anota el trabajo antes de comparar propuestas. ¿Qué debe publicarse cada semana, qué necesita acceso interno diario, qué especialidades se necesitan solo a veces y adónde va la respuesta de un comprador? Pide a cada candidato que muestre la primera campaña como un recorrido completo: desde la oferta y el resumen de campaña hasta el trabajo aprobado, el registro del prospecto, la persona a cargo del seguimiento y la revisión de resultados.",
+          "Pregunta qué cubre la remuneración o los honorarios, qué queda fuera, quién es titular de las cuentas y materiales, cómo se registra la retroalimentación, quién revisa las afirmaciones y la creatividad, y qué ocurre si el trabajo no rinde como se esperaba. Un plan que solo promete más publicaciones sin una ruta para los prospectos y el seguimiento no resuelve el problema operativo.",
+          "Si quieres evaluar una opción gestionada por expertos, Markethink conecta campañas, sitio web, contenido, aprobaciones y seguimiento del proceso comercial en un sistema. Comienza con una auditoría del sistema de marketing para identificar el primer flujo que conviene mejorar; los paquetes dependen del alcance. La mejor opción todavía puede ser una contratación interna, un modelo híbrido o un especialista para un problema más acotado.",
+        ],
+      },
+    ],
+    faq: [
+      { question: "¿Quién debe ser titular de las cuentas publicitarias, el sitio web y los materiales creativos?", answer: "Acuerden por escrito quién controla el acceso a las cuentas, los dominios, los archivos, los datos y los derechos de reutilización antes de comenzar. La empresa debe poder acceder a sus cuentas y materiales principales, y deben especificar cómo se transferirán si termina la relación." },
+      { question: "¿Podemos externalizar solo una parte del marketing?", answer: "Sí. Mantén dentro de la empresa las prioridades y aprobaciones, y delimita la ayuda externa alrededor de un obstáculo, como la producción de campañas, la publicidad en buscadores o el SEO técnico. Designa a una persona responsable en cada lado para conectar el trabajo especializado con ventas y el resto del marketing." },
+      { question: "¿Durante cuánto tiempo debemos probar un acuerdo de marketing externo?", answer: "Fija un momento de revisión tras un primer alcance definido, en vez de aplicar un número universal de semanas. Deja tiempo para la incorporación y las entregas; luego evalúa si se publicó lo acordado, si se transfirieron correctamente los prospectos y si el equipo usó los comentarios para mejorar. Los resultados de ventas pueden tardar más que el primer ciclo de entrega." },
+      { question: "¿En qué se diferencia un director de marketing a tiempo parcial de un equipo externo?", answer: "Un director de marketing a tiempo parcial suele aportar liderazgo sénior y apoyo a las decisiones durante parte de la semana; un equipo externo se contrata para entregar una combinación acordada de planificación, producción y trabajo por canal. Los dos roles pueden complementarse, pero pregunta quién producirá los materiales, gestionará los traspasos y se encargará de las revisiones." },
+    ],
+  },
+  {
     sourceSlug: "how-to-use-ai-to-create-an-impactful-logo-and-brand-identity-for-your-business",
     slug: "como-crear-un-logo-con-ia-y-construir-una-identidad-de-marca-util",
     title: "Cómo crear un logo con IA y construir una identidad de marca útil",
