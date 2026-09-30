@@ -35,7 +35,7 @@ const externalProfileUrl = author.sameAs.find((url) => url !== author.url);
     )
   }
   <div class="blog-author__content">
-    <p class="blog-author__eyebrow">{isSpanish ? "Sobre el autor" : "About the author"}</p>
+    <p class="blog-author__eyebrow">{author.schemaType === "Organization" ? (isSpanish ? "Publicado por" : "Published by") : (isSpanish ? "Sobre el autor" : "About the author")}</p>
     <h2 id="blog-author-name">
       {profileHref ? <a class="blog-author__name-link" href={profileHref}>{author.name}</a> : author.name}
     </h2>
