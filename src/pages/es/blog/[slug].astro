@@ -27,6 +27,8 @@ const isAiMarketingPracticalGuide = post.sourceSlug === "how-to-use-ai-for-marke
 const isAiSearchInteractiveGuide = post.sourceSlug === "how-to-show-up-in-ai-search";
 const isSeoContentFeedbackLoop = post.sourceSlug === "seo-content-feedback-loop";
 const isEditorialTeam = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide || isSeoContentFeedbackLoop;
+const isOutsourcingBuyerGuide = post.sourceSlug === "outsourced-marketing-vs-in-house-small-business";
+const isCompanyAuthored = post.author.schemaType === "Organization";
 const usesTeamLedCta = isAiMarketingPracticalGuide || isAiSearchInteractiveGuide;
 
 const articleSchema = {
@@ -44,7 +46,9 @@ const articleSchema = {
   },
   datePublished: post.publishedDate,
   dateModified: post.updatedDate,
-  author: isEditorialTeam
+  author: isCompanyAuthored
+    ? { "@type": "Organization", name: post.author.name, url: post.author.url ?? `${siteUrl}/es/` }
+    : isEditorialTeam
     ? { "@type": "Organization", name: "Equipo editorial de Markethink", url: `${siteUrl}/es/` }
     : getBlogAuthorSchema(santiagoSosaAuthorEs),
   publisher: {
@@ -109,7 +113,9 @@ const breadcrumbSchema = {
             <h1>{post.title}</h1>
             <p class="article-excerpt">{post.excerpt}</p>
             <div class="article-meta" aria-label="Detalles del artículo">
-              {isEditorialTeam ? (
+              {isCompanyAuthored ? (
+                <span data-blog-byline>Por {post.author.name}, {post.author.title}</span>
+              ) : isEditorialTeam ? (
                 <span>Por el Equipo editorial de Markethink</span>
               ) : (
                 <span>Por <a href="/es/autores/santiago-sosa/">{santiagoSosaAuthorEs.name}</a>, {santiagoSosaAuthorEs.title}</span>
@@ -154,7 +160,16 @@ const breadcrumbSchema = {
                 <p>{post.methodNote}</p>
               </aside>
             )}
-            {isAiMarketingPracticalGuide ? (
+            {isOutsourcingBuyerGuide ? (
+              <>
+                <p class="article-hub-link">
+                  {post.seoHubLink?.copy} <a href={post.seoHubLink?.href}>{post.seoHubLink?.anchor}</a>. Esta guía explica cómo conectar herramientas, contenido, aprobaciones y seguimiento en un sistema de marketing repetible.
+                </p>
+                <p class="article-hub-link">
+                  {post.recommendedGuide?.copy} <a href={post.recommendedGuide?.href}>{post.recommendedGuide?.anchor}</a>.
+                </p>
+              </>
+            ) : isAiMarketingPracticalGuide ? (
               <>
                 <p class="article-hub-link">
                   {post.seoHubLink?.copy} <a href={post.seoHubLink?.href}>{post.seoHubLink?.anchor}</a>.
@@ -200,7 +215,19 @@ const breadcrumbSchema = {
             ))
           )}
 
-          {!isAiLogoBrandIdentityGuide && <section class="article-cta">
+          {isOutsourcingBuyerGuide && (
+            <section class="article-section" aria-label="Fuentes y límites">
+              <h2>Fuentes y límites</h2>
+              <p>Los datos de costos citados arriba provienen de fuentes oficiales del gobierno de Estados Unidos, no de estimaciones de proveedores. La mediana salarial nacional de una ocupación y el promedio de prestaciones de toda una economía describen poblaciones distintas; ninguno es una cotización para tu empresa ni un parámetro de honorarios de agencia. El marco para decidir la contratación es un análisis de Markethink, no una recomendación del gobierno.</p>
+              <ul>
+                <li><a href="https://www.bls.gov/ooh/management/advertising-promotions-and-marketing-managers.htm">Oficina de Estadísticas Laborales de Estados Unidos: salarios de gerentes de marketing (mayo de 2025)</a></li>
+                <li><a href="https://www.bls.gov/news.release/ecec.htm">Oficina de Estadísticas Laborales de Estados Unidos: costos de compensación de empleadores (junio de 2026)</a></li>
+                <li><a href="https://www.sba.gov/counseling/manage-your-business">Administración de Pequeñas Empresas de Estados Unidos: gestión del negocio, análisis de costos y beneficios y contratación</a></li>
+              </ul>
+            </section>
+          )}
+
+          {!isAiLogoBrandIdentityGuide && !isOutsourcingBuyerGuide && <section class="article-cta">
             <p class="article-cta-label">La perspectiva de Markethink</p>
             <h2>{usesTeamLedCta ? "Construye una operación de marketing que publica y mejora con cada ciclo." : "El marketing mejora más rápido cuando el sistema recuerda el trabajo."}</h2>
             <p>
@@ -222,7 +249,7 @@ const breadcrumbSchema = {
             ))}
           </section>
 
-          {!isEditorialTeam && <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />}
+          {!isEditorialTeam && !isCompanyAuthored && <BlogAuthor author={santiagoSosaAuthorEs} lang="es" theme="dark" />}
         </div>
       </div>
     </article>
