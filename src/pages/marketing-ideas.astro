@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { marketingIdeas, marketingIdeaCategories, marketingIdeasMeta } from "../data/marketingIdeas.mjs";
+
+const tierCount = (tier: string) => marketingIdeas.filter((idea) => idea.tier === tier).length;
+const pageSchema = {
+  "@context": "https://schema.org", "@type": "CollectionPage",
+  mainEntity: {
+    "@type": "ItemList", numberOfItems: marketingIdeas.length,
+    itemListElement: marketingIdeas.map((idea, index) => ({
+      "@type": "ListItem", position: index + 1, name: idea.title,
+      url: `${marketingIdeasMeta.canonical}#${idea.id}`,
+      description: idea.summary,
+    })),
+  },
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://markethink.ai/" },
+    { "@type": "ListItem", position: 2, name: "Marketing Ideas", item: marketingIdeasMeta.canonical },
+  ],
+};
+---
+
+<Layout title={marketingIdeasMeta.title} description={marketingIdeasMeta.description}
+  canonical={marketingIdeasMeta.canonical} structuredData={[pageSchema, breadcrumbSchema]}>
+  <Navbar />
+  <a class="ideas-skip" href="#idea-library">Skip to the ideas</a>
+  <main class="ideas-page" data-marketing-ideas>
+    <section class="ideas-hero" aria-labelledby="ideas-title">
+      <div class="ideas-shell">
+        <nav class="ideas-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Marketing Ideas</span></nav>
+        <div class="ideas-hero-grid">
+          <div>
+            <p class="ideas-eyebrow">A growing field guide</p>
+            <h1 id="ideas-title">Marketing ideas<br />worth <em>testing.</em></h1>
+            <p class="ideas-intro">Practical ways to use AI across sales, creative, websites and search. Find an idea, shape a small test, and measure what actually changes.</p>
+            <a class="ideas-jump" href="#idea-library">Explore the ideas <span aria-hidden="true">↓</span></a>
+          </div>
+          <aside class="ideas-index" aria-label="Inside the repository">
+            <span class="ideas-index-label">The starting collection</span>
+            <p class="ideas-total">{marketingIdeas.length}<span>ideas to build on</span></p>
+            <div class="ideas-tier-counts"><span><strong>{tierCount("S")}</strong> S tier</span><span><strong>{tierCount("A")}</strong> A tier</span></div>
+            <p>Each idea includes a first test, a way to measure it and a limitation to keep in view.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="ideas-library ideas-shell" id="idea-library" aria-labelledby="library-heading">
+      <div class="ideas-library-heading">
+        <div><p class="ideas-eyebrow">The repository</p><h2 id="library-heading">Choose your next experiment.</h2></div>
+        <p class="ideas-method">S and A are editorial priorities, not measured performance. S marks the boldest starting points; A marks supporting tests. The 30-reel, 100-page and 1,000-question counts are proposed scales, not results or requirements. Start small and validate with real buyers.</p>
+      </div>
+      <div class="ideas-controls" data-idea-controls hidden>
+        <div class="ideas-field ideas-search"><label for="idea-query">Search ideas</label><input id="idea-query" type="search" placeholder="Try citations, reels or sales" autocomplete="off" aria-controls="idea-results" /></div>
+        <div class="ideas-field"><label for="idea-tier">Tier</label><select id="idea-tier" aria-controls="idea-results"><option value="all">All tiers</option><option value="S">S tier</option><option value="A">A tier</option></select></div>
+        <div class="ideas-field"><label for="idea-category">Category</label><select id="idea-category" aria-controls="idea-results"><option value="all">All categories</option>{marketingIdeaCategories.map((category) => <option value={category}>{category}</option>)}</select></div>
+        <button class="ideas-reset" type="button" data-idea-reset>Clear filters</button>
+      </div>
+      <p class="ideas-status" data-idea-status role="status" aria-live="polite" aria-atomic="true">Showing {marketingIdeas.length} of {marketingIdeas.length} ideas</p>
+      <div class="ideas-grid" id="idea-results">
+        {marketingIdeas.map((idea, index) => (
+          <article class="idea-card" id={idea.id} data-idea-card data-tier={idea.tier} data-category={idea.category}
+            data-search-text={Object.values(idea).join(" ")} aria-labelledby={`${idea.id}-title`}>
+            <div class="idea-meta"><span class:list={["idea-tier", { "idea-tier-s": idea.tier === "S" }]}>{idea.tier} tier</span><span>{idea.category}</span><span class="idea-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span></div>
+            <h3 id={`${idea.id}-title`}><a href={`#${idea.id}`}>{idea.title}</a></h3>
+            <p class="idea-summary">{idea.summary}</p>
+            <details class="idea-plan"><summary>Plan the first test <span class="idea-expand" aria-hidden="true">+</span></summary>
+              <div class="idea-plan-body"><dl>
+                <div><dt>First test</dt><dd>{idea.firstTest}</dd></div>
+                <div><dt>What to measure</dt><dd>{idea.measure}</dd></div>
+                <div><dt>Keep in view</dt><dd>{idea.watchOut}</dd></div>
+              </dl><a class="idea-permalink" href={`#${idea.id}`}>Link to this idea <span aria-hidden="true">↗</span></a></div>
+            </details>
+          </article>
+        ))}
+      </div>
+      <div class="ideas-empty" data-idea-empty hidden><h3>No matching ideas yet.</h3><p>Try a broader search or clear the filters to see the full collection.</p></div>
+      <noscript><p class="ideas-noscript">All ideas are shown. Open any test plan to read the details.</p></noscript>
+    </section>
+
+    <section class="ideas-next">
+      <div class="ideas-shell ideas-next-grid"><div><p class="ideas-eyebrow">From idea to a useful test</p><h2>One hypothesis.<br />One clear next step.</h2></div><div><p>Choose a business problem, name the result you want to observe and set a limit on time, traffic and cost before you start. Keep a person responsible for the decisions.</p><a href="/ai-marketing-strategies/">Explore the strategy playbooks <span aria-hidden="true">↗</span></a></div></div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { initMarketingIdeaFilters } from "../scripts/marketing-ideas-filters.mjs";
+  initMarketingIdeaFilters(document.querySelector("[data-marketing-ideas]"));
+</script>
+
+<style is:global>
+  body:has(.ideas-page) { background: #f5f5f1; color: #0f1213; }
+  body:has(.ideas-page) .mt-site-header { background: #0f1213 !important; }
+</style>
+<style>
+  .ideas-page { background: #f5f5f1; color: #0f1213; }
+  .ideas-page [hidden] { display: none !important; }
+  .ideas-shell { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
+  .ideas-skip { position: fixed; top: 12px; left: 12px; padding: 14px 20px; background: #69d254; color: #0f1213; z-index: 10000; transform: translateY(-180%); }
+  .ideas-skip:focus { transform: translateY(0); }
+  .ideas-hero { padding: 126px 0 74px; background: #edf4ea; border-bottom: 1px solid #b4b6b6; }
+  .ideas-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 46px; font-size: .78rem; }
+  .ideas-breadcrumb a { text-decoration: underline; text-underline-offset: 4px; }
+  .ideas-hero-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(230px, .65fr); gap: clamp(48px, 7vw, 110px); align-items: end; }
+  .ideas-eyebrow { margin-bottom: 22px; font-size: .72rem; line-height: 1.5; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; }
+  h1 { font-size: clamp(3.5rem, 6.5vw, 6.25rem); letter-spacing: -.045em; line-height: .98; }
+  h1 em { font-weight: 400; }
+  .ideas-intro { max-width: 620px; margin-top: 28px; font-size: 1.1rem; line-height: 1.7; }
+  .ideas-jump { display: inline-flex; gap: 30px; align-items: center; min-height: 48px; padding: 12px 22px; margin-top: 30px; background: #69d254; border-radius: 999px; font-size: .9rem; font-weight: 600; }
+  .ideas-index { padding-top: 20px; border-top: 2px solid #0f1213; }
+  .ideas-index-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; }
+  .ideas-total { display: flex; gap: 20px; align-items: center; margin-block: 20px; font-family: "Instrument Serif", Georgia, serif; font-size: 6rem; line-height: 1; }
+  .ideas-total span { max-width: 100px; font-family: "Inter", sans-serif; font-size: .9rem; line-height: 1.5; }
+  .ideas-tier-counts { display: flex; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #b4b6b6; font-size: .85rem; }
+  .ideas-tier-counts strong { font-size: 1.1rem; margin-right: 6px; }
+  .ideas-index > p:last-child { font-size: .85rem; line-height: 1.65; }
+  .ideas-library { padding-block: 74px 90px; scroll-margin-top: 110px; }
+  .ideas-library-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 38px; }
+  h2 { font-size: clamp(2.4rem, 4vw, 3.4rem); line-height: 1.05; letter-spacing: -.035em; }
+  .ideas-method { font-size: .85rem; line-height: 1.7; }
+  .ideas-controls { display: grid; grid-template-columns: minmax(200px, 1.5fr) minmax(120px, .65fr) minmax(180px, 1fr) auto; gap: 16px; align-items: end; padding: 24px; border: 1px solid #b4b6b6; border-radius: 10px; }
+  .ideas-field { min-width: 0; }
+  .ideas-field label { display: block; margin-bottom: 8px; font-size: .75rem; font-weight: 600; }
+  .ideas-field input, .ideas-field select { display: block; width: 100%; min-height: 48px; border: 1px solid #686b6c; border-radius: 5px; padding: 10px 12px; background: #f5f5f1; color: #0f1213; font: inherit; font-size: .9rem; }
+  .ideas-field input::placeholder { color: #686b6c; opacity: 1; }
+  .ideas-reset { min-height: 48px; padding: 10px 14px; border: 1px solid #0f1213; border-radius: 5px; background: #0f1213; color: #f5f5f1; font: inherit; font-size: .82rem; cursor: pointer; }
+  .ideas-status { margin: 24px 0 18px; font-size: .78rem; }
+  .ideas-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .idea-card { min-width: 0; border: 1px solid #b4b6b6; padding: clamp(24px, 3vw, 38px); border-radius: 10px; scroll-margin-top: 110px; overflow-wrap: anywhere; }
+  .idea-card:target { outline: 2px solid #0f1213; outline-offset: 4px; }
+  .idea-meta { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 26px; font-size: .7rem; }
+  .idea-tier { display: inline-block; padding: 5px 10px; border: 1px solid #0f1213; border-radius: 999px; font-weight: 600; }
+  .idea-tier-s { background: #0f1213; color: #f5f5f1; }
+  .idea-number { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .idea-card h3 { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.05; letter-spacing: -.025em; }
+  .idea-card h3 a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+  .idea-summary { margin-top: 22px; font-size: .96rem; line-height: 1.75; }
+  .idea-plan { margin-top: 28px; border-top: 1px solid #b4b6b6; }
+  .idea-plan summary { display: flex; justify-content: space-between; gap: 16px; align-items: center; min-height: 54px; padding-top: 14px; font-size: .83rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .idea-plan summary::-webkit-details-marker { display: none; }
+  .idea-expand { font-size: 1.5rem; font-weight: 400; }
+  .idea-plan[open] .idea-expand { transform: rotate(45deg); }
+  .idea-plan-body { padding-top: 20px; }
+  .idea-plan dl { display: grid; gap: 22px; }
+  .idea-plan dt { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+  .idea-plan dd { margin: 0; font-size: .87rem; line-height: 1.75; }
+  .idea-permalink { display: inline-flex; align-items: center; min-height: 44px; gap: 12px; margin-top: 20px; text-decoration: underline; text-underline-offset: 4px; font-size: .8rem; }
+  .ideas-empty { padding: 48px 24px; border: 1px solid #b4b6b6; text-align: center; }
+  .ideas-empty h3 { font-size: 2rem; margin-bottom: 12px; }
+  .ideas-empty p, .ideas-noscript { font-size: .9rem; }
+  .ideas-next { padding: 74px 0 150px; background: #edf4ea; border-top: 1px solid #b4b6b6; }
+  .ideas-next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+  .ideas-next-grid > div:last-child p { max-width: 560px; font-size: 1rem; line-height: 1.75; }
+  .ideas-next a { display: inline-flex; gap: 14px; align-items: center; margin-top: 22px; min-height: 48px; text-decoration: underline; text-underline-offset: 5px; font-size: .9rem; font-weight: 600; }
+  .ideas-page :is(a, button, input, select, summary):focus-visible { outline: 3px solid #0f1213; outline-offset: 4px; }
+  @media (max-width: 1000px) {
+    .ideas-controls { grid-template-columns: 1fr 1fr; }
+    .ideas-search { grid-column: 1 / -1; }
+    .ideas-reset { grid-column: 1 / -1; justify-self: start; }
+  }
+  @media (max-width: 800px) {
+    .ideas-shell { width: calc(100% - 36px); }
+    .ideas-hero { padding: 112px 0 52px; }
+    .ideas-breadcrumb { margin-bottom: 34px; }
+    .ideas-hero-grid, .ideas-library-heading, .ideas-grid, .ideas-next-grid { grid-template-columns: 1fr; gap: 32px; }
+    h1 { font-size: clamp(3.25rem, 11vw, 5rem); }
+    .ideas-index { max-width: 440px; margin-top: 12px; }
+    .ideas-total { font-size: 4.5rem; }
+    .ideas-library { padding-block: 52px 64px; }
+    .ideas-controls { padding: 18px; }
+    .ideas-grid { gap: 18px; }
+    .idea-card { padding: 26px 24px; }
+    .idea-card h3 { font-size: 2.3rem; }
+    .ideas-next { padding: 58px 0 132px; }
+  }
+  @media (max-width: 420px) {
+    .ideas-shell { width: calc(100% - 28px); }
+    .ideas-controls { grid-template-columns: 1fr; }
+    .ideas-search, .ideas-reset { grid-column: auto; }
+    .ideas-reset { justify-self: stretch; }
+    .idea-card { padding: 24px 20px; }
+    .idea-card h3 { font-size: 2.1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ideas-page * { scroll-behavior: auto; transition: none; }
+  }
+</style>
