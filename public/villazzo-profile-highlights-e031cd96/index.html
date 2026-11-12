@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Villazzo Highlight Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;1,300;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --graphite:#3A3D42; --graphite-2:#2E3033; --ink:#2E3033; --muted:#6B6E73;
+  --ivory:#F7F3EA; --sand:#EFE8DA; --card:#FFFDF8; --line:#DDD3C0;
+  --gold:#C9A45C; --gold-soft:#D4B062; --gold-deep:#8C6A2B;
+  --serif:'Cinzel',Georgia,serif; --display:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,video{display:block;max-width:100%}
+
+.top{background:var(--graphite);color:var(--ivory);padding:18px 24px;display:flex;align-items:center;gap:18px}
+.top img{height:20px}
+.top span{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft)}
+.top a{margin-left:auto;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);opacity:.75;text-decoration:none}
+.top a:hover{opacity:1}
+
+.layout{max-width:1280px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:400px minmax(0,1fr);gap:64px;align-items:start}
+.layout > *{min-width:0}
+
+/* phone */
+.phone-col{position:sticky;top:24px}
+.phone{width:400px;max-width:100%;background:#111;border-radius:52px;padding:13px;box-shadow:0 30px 80px rgba(0,0,0,.22)}
+.screen{background:#fff;border-radius:40px;overflow:hidden;height:820px;overflow-y:auto;color:#111;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-size:14px;scrollbar-width:none;position:relative}
+.screen::-webkit-scrollbar{display:none}
+.status{display:flex;justify-content:space-between;padding:14px 28px 4px;font-weight:600;font-size:14px}
+.ig-top{display:flex;align-items:center;gap:12px;padding:8px 16px 10px;font-weight:700;font-size:17px;position:sticky;top:0;background:#fff;z-index:2}
+.ig-top .u{flex:1;text-align:center}
+.ig-head{display:flex;align-items:center;gap:18px;padding:6px 16px}
+.ig-av{width:86px;height:86px;border-radius:50%;background:var(--graphite);display:grid;place-items:center;flex:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--gold)}
+.ig-av img{width:62px}
+.ig-stats{display:flex;justify-content:space-around;flex:1;text-align:center}
+.ig-stats b{display:block;font-size:17px}.ig-stats span{font-size:13px}
+.ig-bio{padding:10px 16px 0;line-height:1.38}
+.ig-bio .nm{font-weight:600}.ig-bio .cat{color:#737373}
+.ig-bio a{color:var(--gold-deep);font-weight:600;text-decoration:none}
+.ig-btns{display:flex;gap:6px;padding:12px 16px}
+.ig-btns span{flex:1;text-align:center;border-radius:8px;padding:7px 0;font-weight:600;font-size:13.5px;border:1px solid #dbdbdb}
+.ig-btns span.pri{background:var(--graphite);border-color:var(--graphite);color:#fff}
+.ig-btns span.ic{flex:0 0 40px}
+.ig-hl{display:flex;gap:12px;padding:8px 16px 14px;overflow-x:auto;scrollbar-width:none}
+.ig-hl::-webkit-scrollbar{display:none}
+.hl{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none;width:66px;font-size:12px}
+.hl .ring{width:66px;height:66px;border-radius:50%;border:1px solid #dbdbdb;padding:3px;transition:border-color .2s}
+.hl:hover .ring{border-color:var(--gold)}
+.hl .cov{width:100%;height:100%;border-radius:50%;overflow:hidden}
+.ig-tabs{display:flex;border-top:1px solid #dbdbdb}
+.ig-tabs span{flex:1;display:grid;place-items:center;padding:10px 0;color:#8e8e8e}
+.ig-tabs span.on{color:#111;border-bottom:1.5px solid #111}
+.ig-tabs svg{width:24px;height:24px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.tile{position:relative;aspect-ratio:3/4;overflow:hidden;background:#ddd;cursor:pointer}
+.tile img,.tile video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover img,.tile:hover video{transform:scale(1.04)}
+.tile .ico{position:absolute;top:7px;right:7px;width:18px;height:18px;fill:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.flash{animation:flash .6s ease}
+@keyframes flash{0%{transform:scale(.92);opacity:.4}100%{transform:none;opacity:1}}
+.phone-cap{margin-top:18px;text-align:center;font-size:13px;color:var(--muted)}
+.phone-cap b{color:var(--ink);font-weight:500}
+
+/* cover styles */
+.cov{position:relative;display:grid;place-items:center}
+.cov svg.i{width:46%;height:46%;fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.cov.photo img{width:100%;height:100%;object-fit:cover}
+.cov .mono{font-style:normal;font-family:var(--serif);font-size:42cqw;line-height:1;letter-spacing:-.02em}
+.cov{container-type:inline-size}
+
+/* options panel */
+.intro .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+.intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,46px);line-height:1.1;color:var(--graphite);margin-top:12px}
+.intro p{font-family:var(--display);font-size:22px;line-height:1.4;margin-top:16px;max-width:720px}
+.opts{margin-top:40px;display:flex;flex-direction:column;gap:22px}
+.opt{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:26px 28px;cursor:pointer;transition:border-color .25s,box-shadow .25s;position:relative}
+.opt:hover{border-color:#cdbf9f}
+.opt.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 40px rgba(140,106,43,.12)}
+.opt-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px}
+.opt-h h2{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--graphite)}
+.opt-h h2 em{font-style:normal;color:var(--gold-deep);margin-right:10px}
+.badge{font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--graphite);color:var(--gold-soft);border-radius:20px;padding:4px 10px}
+.state{margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.opt.on .state{color:var(--gold-deep)}
+.circles{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:22px}
+.circle{display:flex;flex-direction:column;align-items:center;gap:10px}
+.circle .cov{width:100%;max-width:96px;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.circle > span{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ink)}
+.opt-b{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;margin-top:20px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.opt-b b{color:var(--ink);font-weight:500}
+.opt-b ul{list-style:none}
+.opt-b li{padding-left:16px;position:relative}
+.opt-b li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--gold-deep)}
+.foot{margin-top:34px;text-align:center;font-family:var(--display);font-style:italic;letter-spacing:.3em;text-transform:uppercase;font-size:15px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(20,21,23,.86);display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.mbox{background:#fff;display:grid;grid-template-columns:auto 380px;max-width:96vw;max-height:92vh;border-radius:6px;overflow:hidden;color:#111;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif}
+.mbox > *{min-width:0}
+.media{position:relative;background:#000;overflow:hidden;height:min(88vh,840px);aspect-ratio:4/5}
+.media.reel{aspect-ratio:9/16}
+.media .track{display:flex;height:100%;width:100%;transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.media .track > *{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.arrow.l{left:12px}.arrow.r{right:12px}
+.arrow svg{width:16px;height:16px;stroke:#111;stroke-width:2.4;fill:none}
+.dots{position:absolute;bottom:14px;left:0;right:0;display:flex;gap:5px;justify-content:center}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45)}.dots i.on{background:#fff}
+.side{display:flex;flex-direction:column;min-height:0;max-height:92vh}
+.side-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #efefef}
+.mini-av{width:32px;height:32px;border-radius:50%;background:var(--graphite);display:grid;place-items:center;box-shadow:0 0 0 1.5px var(--gold);flex:none}
+.mini-av img{width:22px}
+.side-h .close{margin-left:auto;font-size:26px;line-height:1}
+.side-b{padding:16px;overflow-y:auto;flex:1;font-size:14.5px;line-height:1.5}
+.cap{white-space:pre-line}.tags{color:#00376b;margin-top:10px}
+.meta-box{margin-top:18px;padding:14px;background:#faf8f3;border:1px solid #eee5d2;border-radius:8px;font-size:13px;color:#555}
+.meta-box div+div{margin-top:6px}
+.mclose{position:absolute;top:16px;right:22px;color:#fff;font-size:34px;line-height:1}
+
+/* stories */
+.story{position:fixed;inset:0;z-index:110;background:#141517;display:none;align-items:center;justify-content:center}
+.story.open{display:flex}
+.sbox{position:relative;width:min(420px,92vw);aspect-ratio:9/16;max-height:94vh;border-radius:14px;overflow:hidden;background:var(--graphite)}
+.sbox .frame{position:absolute;inset:0}
+.sbox .frame > img,.sbox .frame > video{width:100%;height:100%;object-fit:cover}
+.sbox .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 55%,rgba(46,48,51,.85) 100%)}
+.sbox .stext{position:absolute;left:24px;right:24px;bottom:80px;color:#fff;font-family:var(--display);font-size:30px;line-height:1.2;text-align:center}
+.sbox .stext small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-top:12px}
+.sbox .quote{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:40px;color:var(--ivory);text-align:center;background:var(--graphite)}
+.sbox .quote p{font-family:var(--display);font-style:italic;font-size:30px;line-height:1.3}
+.sbox .quote span{margin-top:18px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.sbox .share{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--graphite)}
+.sbox .share .bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(18px) brightness(.55)}
+.sbox .share .scard{position:relative;width:76%;aspect-ratio:4/5;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.sbox .share .scard img{width:100%;height:100%;object-fit:cover}
+.sbox .share p{position:relative;color:#fff;font:600 13px/1.2 -apple-system,system-ui,sans-serif;text-align:center}
+.sbox .share p span{display:block;font-weight:400;opacity:.75;margin-top:4px}
+.sbox .sticker{position:absolute;left:50%;transform:translateX(-50%);bottom:24px;background:#fff;color:#111;border-radius:10px;padding:8px 16px;font:600 13px/1 -apple-system,system-ui,sans-serif;white-space:nowrap;z-index:2}
+.prog{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px;z-index:3}
+.prog i{flex:1;height:2.5px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.prog i b{display:block;height:100%;width:0;background:#fff}
+.shead{position:absolute;top:22px;left:14px;display:flex;align-items:center;gap:8px;color:#fff;font:600 13px -apple-system,system-ui,sans-serif;z-index:3}
+.shead .hlmini{width:32px;height:32px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.sclose{position:absolute;top:18px;right:16px;color:#fff;font-size:30px;z-index:4;line-height:1}
+.tap{position:absolute;top:0;bottom:0;width:40%;z-index:2}.tap.l{left:0}.tap.r{right:0;width:60%}
+
+@media (max-width:1060px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:40px}
+  .phone-col{position:relative;top:0;display:flex;flex-direction:column;align-items:center}
+  .circles{grid-template-columns:repeat(3,1fr)}
+  .opt-b{grid-template-columns:1fr}
+  .modal{padding:10px}
+  .mbox{grid-template-columns:minmax(0,1fr);overflow-y:auto;width:100%;max-width:560px}
+  .media,.media.reel{width:100%;height:auto;aspect-ratio:4/5}
+}
+@media (max-width:520px){
+  .layout{padding:28px 16px 60px}
+  .phone{border-radius:40px;padding:10px}
+  .screen{height:740px;border-radius:30px}
+  .opt{padding:20px 16px}
+  .circle > span{font-size:16px}
+  .top a{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><img src="https://dashboard.markethink.ai/generated/landing/markethink/villazzo-profile-highlights-e031cd96/logo.png" alt="Villazzo"><span>Instagram · Highlight covers</span></div>
+
+<main class="layout">
+  <div class="phone-col">
+    <div class="phone">
+      <div class="screen" id="screen">
+        <div class="status"><span>10:24</span><span>▮▮▮ ◔ ▬</span></div>
+        <div class="ig-top"><span>‹</span><span class="u">villazzo</span><span>🔔 ···</span></div>
+        <div class="ig-head">
+          <div class="ig-av"><img src="https://dashboard.markethink.ai/generated/landing/markethink/villazzo-profile-highlights-e031cd96/logo.png" alt=""></div>
+          <div class="ig-stats">
+            <div><b>782</b><span>posts</span></div>
+            <div><b>9,379</b><span>followers</span></div>
+            <div><b>192</b><span>following</span></div>
+          </div>
+        </div>
+        <div class="ig-bio">
+          <div class="nm">Villazzo | Luxury Villa Rental</div>
+          <div class="cat">Luxury villa rental agency</div>
+          <div>Private villas with 5★ hotel service<br>Chef · Concierge · Yacht · Spa<br>Miami · St-Tropez · Aspen · Ibiza · St. Barths<br>Request your stay ↓</div>
+          <a href="#">🔗 villazzo.com/request-your-stay</a>
+        </div>
+        <div class="ig-btns"><span class="pri">Follow</span><span>Message</span><span class="ic">+</span></div>
+        <div class="ig-hl" id="hls"></div>
+        <div class="ig-tabs">
+          <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 8h18M8 3l3 5M14 3l3 5"/><path d="M10 12v5l4-2.5z" fill="currentColor"/></svg></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1.5-3 4-4 6-4s4.5 1 6 4"/></svg></span>
+        </div>
+        <div class="ig-grid" id="grid"></div>
+      </div>
+    </div>
+    <p class="phone-cap">Previewing <b id="cur">Option 1</b> · tap a highlight or a post</p>
+  </div>
+
+  <section>
+    <div class="intro">
+      <p class="eyebrow">Optimized profile · Highlight covers</p>
+      <h1>Same brand, four ways to frame it</h1>
+      <p>Six highlights that walk a guest from inspiration to booking: Book, Services, Reviews, Destinations, Villas and Experience. Choose a cover style below and see it live on the profile.</p>
+    </div>
+    <div class="opts" id="opts"></div>
+    <p class="foot">Same brand &nbsp;|&nbsp; Different looks</p>
+  </section>
+</main>
+
+<!-- post modal -->
+<div class="modal" id="modal" aria-hidden="true">
+  <button class="mclose" id="mclose" aria-label="Close">×</button>
+  <div class="mbox" role="dialog" aria-modal="true">
+    <div class="media" id="media">
+      <div class="track" id="track"></div>
+      <button class="arrow l" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="arrow r" id="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="side">
+      <div class="side-h"><div class="mini-av"><img src="https://dashboard.markethink.ai/generated/landing/markethink/villazzo-profile-highlights-e031cd96/logo.png" alt=""></div><b>villazzo</b><span style="color:#737373;font-size:13px" id="loc"></span><button class="close" id="mclose2" aria-label="Close">×</button></div>
+      <div class="side-b"><div><b>villazzo</b> <span class="cap" id="cap"></span></div><div class="tags" id="tags"></div><div class="meta-box" id="meta"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- stories -->
+<div class="story" id="story" aria-hidden="true">
+  <div class="sbox">
+    <div class="prog" id="prog"></div>
+    <div class="shead"><div class="hlmini" id="shl"></div><span>villazzo</span><span id="sname" style="opacity:.75;font-weight:400"></span></div>
+    <button class="sclose" id="sclose" aria-label="Close">×</button>
+    <div class="frame" id="sframe"></div>
+    <div class="tap l" id="sprev"></div><div class="tap r" id="snext"></div>
+  </div>
+</div>
+
+<script>
+const A='https://dashboard.markethink.ai/generated/landing/markethink/villazzo-profile-highlights-e031cd96/';
+const C={graphite:'#3A3D42',graphite2:'#2E3033',ivory:'#F7F3EA',sand:'#EFE8DA',gold:'#C9A45C',goldSoft:'#D4B062',goldDeep:'#8C6A2B'};
+
+/* ---------- highlights ---------- */
+const NAMES=['Book','Services','Reviews','Destinations','Villas','Experience'];
+const ICON={
+  Book:'<rect x="4" y="5.5" width="16" height="14.5" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4M9 14.5l2 2 4-4"/>',
+  Services:'<path d="M3.5 17h17M5.5 17a6.5 6.5 0 0 1 13 0M12 10.5V9M10.5 9h3M2.5 20h19"/>',
+  Reviews:'<path d="M12 3.8l2.4 5 5.4.6-4 3.7 1.1 5.3L12 15.7l-4.9 2.7 1.1-5.3-4-3.7 5.4-.6z"/>',
+  Destinations:'<circle cx="12" cy="12" r="8.5"/><path d="M15.6 8.4l-2.2 5-5 2.2 2.2-5z"/><path d="M12 3.5v1.5M12 19v1.5M3.5 12H5M19 12h1.5"/>',
+  Villas:'<path d="M5 20V10.5a7 7 0 0 1 14 0V20M3 20h18M9.5 20v-6a2.5 2.5 0 0 1 5 0v6"/>',
+  Experience:'<circle cx="12" cy="9.5" r="3.4"/><path d="M12 3v1.3M5.6 5.6l.9.9M18.4 5.6l-.9.9M3.5 15c2-1.3 3.6-1.3 5.6 0s3.6 1.3 5.6 0 3.6-1.3 5.6 0M3.5 19c2-1.3 3.6-1.3 5.6 0s3.6 1.3 5.6 0 3.6-1.3 5.6 0"/>'
+};
+/* textures built from SVG noise, tinted to the Villazzo palette */
+function tex({base,grad,tint,fx,fy,oct=3,k=1,b=0,seed=2,type='fractalNoise',tint2,fx2,fy2,k2,b2}){
+  const g = grad ? `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">${grad.map((c,i)=>`<stop offset="${i/(grad.length-1)}" stop-color="${c}"/>`).join('')}</linearGradient></defs><rect width="200" height="200" fill="url(#g)"/>` : `<rect width="200" height="200" fill="${base}"/>`;
+  const layer=(t,x,y,kk,bb,id)=>{const [r,gg,bl]=[1,3,5].map(i=>parseInt(t.slice(i,i+2),16)/255);
+    return `<filter id="${id}" x="0" y="0" width="100%" height="100%"><feTurbulence type="${type}" baseFrequency="${x} ${y}" numOctaves="${oct}" seed="${seed}"/><feColorMatrix values="0 0 0 0 ${r} 0 0 0 0 ${gg} 0 0 0 0 ${bl} ${kk} 0 0 0 ${bb}"/></filter><rect width="200" height="200" filter="url(#${id})"/>`;};
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">${g}${layer(tint,fx,fy,k,b,'a')}`;
+  if(tint2) s+=layer(tint2,fx2,fy2,k2,b2,'b');
+  return `url('data:image/svg+xml,${encodeURIComponent(s+'</svg>').replace(/'/g,'%27')}')`;
+}
+const TEX={
+  Book: tex({grad:['#A97C34','#E8CB82','#C9A45C','#9A6F2C'],tint:'#5A3E12',fx:.002,fy:.7,oct:2,k:1.3,b:-.55}),            // brushed gold
+  Services: tex({base:'#EBE1CD',tint:'#BBA987',fx:.006,fy:.11,oct:4,k:2.4,b:-1.15,seed:7}),                                  // travertine
+  Reviews: tex({base:'#3A3D42',tint:'#6B7078',fx:.65,fy:.65,oct:3,k:1.4,b:-.55,seed:4}),                                     // graphite stone
+  Destinations: tex({base:'#EFE8DA',tint:'#C3B596',fx:.9,fy:.015,oct:2,k:1.6,b:-.75,tint2:'#C3B596',fx2:.015,fy2:.9,k2:1.6,b2:-.75}), // sand linen
+  Villas: tex({base:'#F4F0E8',tint:'#8E8A82',fx:.006,fy:.02,oct:4,k:-12,b:1.9,seed:11,type:'turbulence',tint2:'#D9D2C4',fx2:.03,fy2:.03,k2:1.2,b2:-.5}),                 // white marble veins
+  Experience: tex({grad:['#6E531F','#A88545','#8C6A2B','#5E4519'],tint:'#E2C27C',fx:.003,fy:.6,oct:2,k:1.2,b:-.6,seed:5})   // bronze
+};
+const PHOTO={Book:'hl-50-Bedroom-1-16.jpg',Services:'dining.jpg',Reviews:'p2.jpg',Destinations:'hero.jpg',Villas:'hl-10-Villa-Vanya-1.jpg',Experience:'hl-75-Dock.jpg'};
+const MONO=[[C.graphite,C.goldSoft],[C.ivory,C.graphite],[C.gold,C.ivory],[C.sand,C.goldDeep],[C.goldDeep,C.ivory],[C.graphite2,C.ivory]];
+
+const OPTIONS=[
+  {key:'line', title:'Gold line icons', badge:'Recommended',
+   cover:(n,i)=>`<div class="cov" style="background:${C.graphite}"><svg class="i" viewBox="0 0 24 24" style="stroke:${C.goldSoft}">${ICON[n]}</svg></div>`,
+   why:'The logo gold on graphite, one icon per highlight. Quiet and consistent, so the photo grid stays the hero.',
+   pros:['Matches the logo and the post templates','Easiest to keep consistent as highlights grow','Reads clearly at small size']},
+  {key:'tex', title:'Villa materials',
+   cover:(n,i)=>`<div class="cov" style="background:${TEX[n]};background-size:cover"></div>`,
+   why:'Brushed gold, travertine, stone, linen, marble and bronze: the materials of the villas themselves, without icons.',
+   pros:['Tactile, high-end feel','No text or icons to maintain','Pairs with an editorial grid']},
+  {key:'photo', title:'Photographic detail',
+   cover:(n,i)=>`<div class="cov photo"><img src="${A+PHOTO[n]}" alt=""></div>`,
+   why:'A real detail from a Villazzo villa for each highlight: the bedroom, the chef’s table, the bay, the dock.',
+   pros:['The most aspirational option','Shows real villas from the first tap','Needs a consistent photo edit to stay clean']},
+  {key:'mono', title:'Monogram',
+   cover:(n,i)=>`<div class="cov" style="background:${MONO[i][0]}"><span class="mono" style="color:${MONO[i][1]}">V</span></div>`,
+   why:'The Villazzo “V” in the brand tones, rotating graphite, ivory, gold and sand. The label does the explaining.',
+   pros:['Strong brand recall','Timeless, never needs updating','Relies on the labels to explain each highlight']}
+];
+let OPT=0;
+
+/* ---------- posts ---------- */
+const POSTS={
+  P1:{type:'post',imgs:['p1.jpg'],loc:'Miami Beach',title:'The best of both worlds',pillar:'Brand and team',when:'Week 1 · Monday',
+    cap:"Why choose between the privacy of a villa and the service of a five-star hotel?\nWith Villazzo you have both: your own Hotel Manager, butler, private chef and a team trained by us, just for you.\nTell us your dates and we'll design your stay. Link in bio.",tags:'#Villazzo #VillaHotel #LuxuryVillas #PrivateVilla #LuxuryTravel'},
+  R1:{type:'reel',video:'r1-9x16.mp4',loc:'',title:'The first swim of the day',pillar:'VillaHotel experience',when:'Week 1 · Wednesday',
+    cap:"The first swim of the day, before anyone else is awake.\nA private pool, Mediterranean light and nowhere to be. This is a VillaHotel morning.\nWhere would you start your day? Tell us below.",tags:'#Villazzo #VillaHotel #MorningSwim #PrivateVilla #LuxuryTravel'},
+  C1:{type:'carousel',imgs:['c1-1.jpg','c1-2.jpg','c1-3.jpg','c1-4.jpg'],loc:'Aspen, Colorado',title:'Aspen, slowly',pillar:'Destinations',when:'Week 1 · Friday',
+    cap:"Aspen, slowly.\nFirst tracks while the mountain is still quiet. Après at altitude as the Rockies turn pink. Downtown after dark. And then home, where your chef has dinner ready by the fire.\nDM us “ASPEN” for the season.",tags:'#Villazzo #VillaHotel #Aspen #Snowmass #SkiSeason #LuxuryVillas'},
+  C3:{type:'carousel',imgs:['c3-1.jpg','c3-2.jpg','c3-3.jpg'],loc:'Miami Beach',title:'Villa Vanya',pillar:'The villas',when:'Week 2 · Monday',
+    cap:"Surrounded by water, minutes from the city.\nVilla Vanya sits on the bay in Miami Beach: an infinity pool, a sun deck made for sunsets and floor-to-ceiling views of the skyline. Your Villazzo team takes care of the rest.\nDM us “VANYA” for dates.",tags:'#Villazzo #VillaHotel #MiamiBeach #LuxuryVilla #Miami'},
+  P2:{type:'post',imgs:['p2.jpg'],loc:'Miami Beach',title:'The best table is yours',pillar:'VillaHotel experience',when:'Week 2 · Wednesday',
+    cap:"Sunset, the Miami skyline and a table set by your private chef.\nNo reservations, no waiting: at a Villazzo VillaHotel, the best table in town is your own terrace.\nTell us your dates. Link in bio.",tags:'#Villazzo #VillaHotel #PrivateChef #MiamiBeach #LuxuryVillas'},
+  C6:{type:'carousel',imgs:['c6-1.jpg','c6-2.jpg','c6-3.jpg'],loc:'Aspen · St. Barths · St. Tropez',title:'Inside, outside',pillar:'The villas + Destinations',when:'Week 2 · Friday',
+    cap:"Inside, the calm of your villa. Outside, the destination you chose.\nIn Aspen, St. Barths or St. Tropez, the view is part of the house. And inside, a five-star team takes care of everything else.\nWhich of these views would you like to wake up to? Save this and tell us.",tags:'#Villazzo #VillaHotel #InsideOut #LuxuryVillas #PrivateVilla #LuxuryTravel'}
+};
+const GRID=['C6','P2','C3','C1','R1','P1'];
+
+/* ---------- stories per highlight ---------- */
+const STORIES={
+  Book:[{img:'p2.jpg',text:'Tell us your dates.<small>Your villa, your team, your stay</small>',sticker:'🔗 REQUEST YOUR STAY'}],
+  Services:[{img:'dining.jpg',text:'Private chef · Butler · Concierge 24/7<small>All part of your VillaHotel</small>'},{img:'p1.jpg',text:'And if you want more: a yacht, an in-villa spa, a trainer.<small>VillaHotel experience</small>'}],
+  Reviews:[{quote:'“Excellent service and beautiful accommodations.”',who:'Julie D.'},{quote:'“#1 in the market. Perfection during the whole stay.”',who:'Gonzalo S.'},{quote:'“The best luxury villa experience I have had.”',who:'Liz H.'}],
+  Destinations:[{share:'c1-1.jpg',label:'Aspen',sub:'New post · Tap to view'},{img:'hero.jpg',text:'Miami Beach<small>Winter on the bay</small>'},{share:'c6-2.jpg',label:'St. Barths',sub:'New post · Tap to view'},{share:'c6-3.jpg',label:'St. Tropez',sub:'New post · Tap to view'}],
+  Villas:[{share:'c3-1.jpg',label:'Villa Vanya · Miami Beach',sub:'New post',sticker:'💬 DM “VANYA”'},{img:'hl-76-Dock.jpg',text:'Villa Vanya<small>The dock at sunset</small>'},{share:'c6-1.jpg',label:'Villa Justine · Aspen',sub:'New post',sticker:'💬 DM “ASPEN”'}],
+  Experience:[{video:'r1-9x16.mp4'}]
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const SVG_CAR='<svg class="ico" viewBox="0 0 24 24"><path d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7z"/><rect x="3" y="7" width="14" height="14" rx="2"/></svg>';
+const SVG_REEL='<svg class="ico" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+
+function renderOptions(){
+  $('#opts').innerHTML=OPTIONS.map((o,k)=>`
+   <article class="opt${k===OPT?' on':''}" data-o="${k}" tabindex="0" role="button" aria-pressed="${k===OPT}">
+     <div class="opt-h"><h2><em>Option ${k+1}</em>${o.title}</h2>${o.badge?`<span class="badge">${o.badge}</span>`:''}<span class="state">${k===OPT?'● On profile':'Preview on profile'}</span></div>
+     <div class="circles">${NAMES.map((n,i)=>`<div class="circle">${o.cover(n,i)}<span>${n}</span></div>`).join('')}</div>
+     <div class="opt-b"><p>${o.why}</p><ul>${o.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+   </article>`).join('');
+}
+function renderHighlights(){
+  const o=OPTIONS[OPT];
+  $('#hls').innerHTML=NAMES.map((n,i)=>`<button class="hl flash" data-h="${n}"><span class="ring">${o.cover(n,i)}</span>${n}</button>`).join('');
+  $('#cur').textContent=`Option ${OPT+1} · ${o.title}`;
+}
+function pick(k){ OPT=k; renderOptions(); renderHighlights();
+  if(innerWidth<=1060) $('.phone').scrollIntoView({behavior:'smooth',block:'start'}); }
+$('#grid').innerHTML=GRID.map(id=>{const p=POSTS[id];
+  const m=p.type==='reel'?`<video src="${A+p.video}" muted loop playsinline autoplay preload="metadata"></video>`:`<img src="${A+p.imgs[0]}" alt="${esc(p.title)}" loading="lazy">`;
+  const ico=p.type==='carousel'?SVG_CAR:p.type==='reel'?SVG_REEL:'';
+  return `<div class="tile" data-id="${id}" role="button" tabindex="0">${m}${ico}</div>`;}).join('');
+renderOptions(); renderHighlights();
+
+/* ---------- interactions ---------- */
+document.addEventListener('click',e=>{
+  const o=e.target.closest('.opt'); if(o){ pick(+o.dataset.o); return; }
+  const t=e.target.closest('.tile'); if(t){ openPost(t.dataset.id); return; }
+  const h=e.target.closest('.hl'); if(h){ openStory(h.dataset.h); }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ const o=e.target.closest?.('.opt'); if(o) pick(+o.dataset.o); const t=e.target.closest?.('.tile'); if(t) openPost(t.dataset.id); }
+  if($('#modal').classList.contains('open')){ if(e.key==='Escape')closePost(); if(e.key==='ArrowRight')slide(idx+1); if(e.key==='ArrowLeft')slide(idx-1); }
+  if($('#story').classList.contains('open')){ if(e.key==='Escape')closeStory(); if(e.key==='ArrowRight')sNext(); if(e.key==='ArrowLeft')sPrev(); }
+});
+
+/* post modal */
+let cur=null,idx=0;
+function slide(i){const p=POSTS[cur];const n=p.type==='carousel'?p.imgs.length:1;idx=Math.max(0,Math.min(n-1,i));
+  $('#track').style.transform=`translateX(${-idx*100}%)`;$('#prev').style.display=idx>0?'':'none';$('#next').style.display=idx<n-1?'':'none';
+  $('#dots').innerHTML=n>1?Array.from({length:n},(_,k)=>`<i class="${k===idx?'on':''}"></i>`).join(''):'';}
+function openPost(id){cur=id;const p=POSTS[id];$('#media').classList.toggle('reel',p.type==='reel');
+  $('#track').innerHTML=p.type==='reel'?`<video src="${A+p.video}" autoplay loop playsinline controls muted></video>`:p.imgs.map(s=>`<img src="${A+s}" alt="">`).join('');
+  $('#loc').textContent=p.loc?'· '+p.loc:'';$('#cap').textContent=p.cap;$('#tags').textContent=p.tags;
+  const t={post:'Post',carousel:`Carousel · ${p.imgs?.length} slides`,reel:'Reel'}[p.type];
+  $('#meta').innerHTML=`<div><b>${id} · ${esc(p.title)}</b></div><div>Format: ${t}</div><div>Pillar: ${p.pillar}</div><div>Publishing: ${p.when}</div>`;
+  slide(0);$('#modal').classList.add('open');document.body.style.overflow='hidden';}
+function closePost(){$('#modal').classList.remove('open');$('#track').innerHTML='';document.body.style.overflow='';}
+$('#prev').onclick=()=>slide(idx-1);$('#next').onclick=()=>slide(idx+1);
+$('#mclose').onclick=closePost;$('#mclose2').onclick=closePost;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closePost();});
+let tx=null;$('#media').addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+$('#media').addEventListener('touchend',e=>{if(tx===null)return;const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>40)slide(idx+(d<0?1:-1));tx=null;});
+
+/* stories */
+let sh=0,sf=0,timer=null,start=0;const DUR=5000;
+function renderFrame(){
+  const name=NAMES[sh], f=STORIES[name][sf]; let html='', dur=DUR;
+  if(f.quote) html=`<div class="quote"><p>${f.quote}</p><span>${f.who}</span><span style="margin-top:28px;opacity:.6;letter-spacing:.1em;text-transform:none">Review from villazzo.com</span></div>`;
+  else if(f.share) html=`<div class="share"><img class="bg" src="${A+f.share}" alt=""><div class="scard"><img src="${A+f.share}" alt=""></div><p>${f.label}<span>${f.sub}</span></p></div>`;
+  else { html=f.video?`<video src="${A+f.video}" autoplay muted playsinline></video>`:`<img src="${A+f.img}" alt="">`; if(f.video) dur=5800;
+    if(f.text) html+=`<div class="shade"></div><div class="stext">${f.text}</div>`; }
+  if(f.sticker) html+=`<div class="sticker">${f.sticker}</div>`;
+  $('#sframe').innerHTML=html; $('#sname').textContent=name;
+  $('#shl').innerHTML=OPTIONS[OPT].cover(name,sh);
+  $('#prog').innerHTML=STORIES[name].map((_,k)=>`<i><b style="width:${k<sf?100:0}%"></b></i>`).join('');
+  start=performance.now(); cancelAnimationFrame(timer); tick(dur);
+}
+function tick(dur){const el=$('#prog').children[sf]?.firstChild;if(!el)return;const p=Math.min(1,(performance.now()-start)/dur);el.style.width=(p*100)+'%';if(p>=1)return sNext();timer=requestAnimationFrame(()=>tick(dur));}
+function sNext(){const n=STORIES[NAMES[sh]].length;if(sf<n-1){sf++;renderFrame();}else if(sh<NAMES.length-1){sh++;sf=0;renderFrame();}else closeStory();}
+function sPrev(){if(sf>0){sf--;renderFrame();}else if(sh>0){sh--;sf=0;renderFrame();}else renderFrame();}
+function openStory(name){sh=NAMES.indexOf(name);sf=0;$('#story').classList.add('open');document.body.style.overflow='hidden';renderFrame();}
+function closeStory(){cancelAnimationFrame(timer);$('#story').classList.remove('open');$('#sframe').innerHTML='';document.body.style.overflow='';}
+$('#snext').onclick=sNext;$('#sprev').onclick=sPrev;$('#sclose').onclick=closeStory;
+</script>
+</body>
+</html>

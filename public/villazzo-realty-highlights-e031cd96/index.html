@@ -1,0 +1,436 @@
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8">
+<title>Villazzo Realty Highlights</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: a working board. Phone mockup on the left stays put; the four highlight systems sit on the right and repaint the phone when chosen. Below: bio before/after and the post plan. */
+:root{
+  --paper:#F5F0E6; --card:#FBF8F2; --ink:#121110; --muted:#6E675C; --line:#DDD4C3;
+  --gold:#C9A45C; --gold-deep:#8A6A2E; --phone:#0B0B0B; --screen:#ffffff; --screen-fg:#111;
+  --screen-muted:#737373; --screen-line:#dbdbdb; --sel:#121110; --sel-fg:#F5F0E6;
+  --display:'Cinzel','Trajan Pro',Georgia,serif;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11100E; --card:#1A1815; --ink:#F2ECE1; --muted:#A79F91; --line:#2E2A24;
+  --gold:#D4B062; --gold-deep:#D4B062; --phone:#000; --screen:#000; --screen-fg:#f5f5f5;
+  --screen-muted:#a8a8a8; --screen-line:#262626; --sel:#D4B062; --sel-fg:#11100E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11100E; --card:#1A1815; --ink:#F2ECE1; --muted:#A79F91; --line:#2E2A24;
+  --gold:#D4B062; --gold-deep:#D4B062; --phone:#000; --screen:#000; --screen-fg:#f5f5f5;
+  --screen-muted:#a8a8a8; --screen-line:#262626; --sel:#D4B062; --sel-fg:#11100E; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+button:focus-visible,.tile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{padding-block:48px 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,52px);line-height:1.08;margin:12px 0 0;letter-spacing:.03em;text-wrap:balance}
+.lede{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.4;max-width:62ch;margin:14px 0 0;color:var(--ink)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.6vw,30px);letter-spacing:.03em;margin:0;text-wrap:balance}
+.small{font-size:14px;color:var(--muted)}
+
+/* board */
+.board{display:grid;grid-template-columns:400px minmax(0,1fr);gap:48px;padding-block:40px;align-items:start}
+.board > *{min-width:0}
+.phone{width:380px;max-width:100%;background:var(--phone);border-radius:46px;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.22);position:sticky;top:20px}
+.screen{background:var(--screen);color:var(--screen-fg);border-radius:35px;height:760px;overflow-y:auto;scrollbar-width:none;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-size:13.5px}
+.screen::-webkit-scrollbar{display:none}
+.ig-top{position:sticky;top:0;z-index:2;background:var(--screen);display:flex;justify-content:space-between;align-items:center;padding:16px 16px 8px;font-weight:700;font-size:19px}
+.ig-top svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+.ig-head{display:flex;align-items:center;gap:16px;padding:6px 16px}
+.avatar{width:82px;height:82px;border-radius:50%;background:#000;display:grid;place-items:center;flex:none;box-shadow:0 0 0 2px var(--screen),0 0 0 4px var(--gold)}
+.avatar img{width:60px}
+.stats{display:flex;justify-content:space-around;flex:1;text-align:center}
+.stats b{display:block;font-size:16px}
+.bio{padding:10px 16px 0;line-height:1.38}
+.bio .nm{font-weight:600}
+.bio .cat{color:var(--screen-muted)}
+.bio a{color:#4f8fd6;text-decoration:none;font-weight:600}
+.ig-btns{display:flex;gap:6px;padding:12px 16px}
+.ig-btns span{flex:1;text-align:center;border-radius:8px;padding:7px 0;font-weight:600;font-size:13px;background:rgba(127,127,127,.16)}
+.ig-btns span.pri{background:#0095f6;color:#fff}
+.hls{display:flex;gap:12px;padding:6px 16px 14px;overflow-x:auto;scrollbar-width:none}
+.hls::-webkit-scrollbar{display:none}
+.hl{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none;width:66px;font-size:11.5px;color:var(--screen-fg)}
+.hl .ring{width:64px;height:64px;border-radius:50%;border:1px solid var(--screen-line);padding:3px}
+.hl .ring > span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;overflow:hidden;background-size:cover;background-position:center}
+.hl:hover .ring{border-color:var(--gold)}
+.tabs{display:flex;border-top:1px solid var(--screen-line)}
+.tabs span{flex:1;display:grid;place-items:center;padding:10px 0;color:var(--screen-muted)}
+.tabs span.on{color:var(--screen-fg);box-shadow:inset 0 -1.5px 0 var(--screen-fg)}
+.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.tile{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;background:#ddd}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.tile:hover img{transform:scale(1.04)}
+.tile .ico{position:absolute;top:6px;right:6px;width:17px;height:17px;fill:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.tile .tag{position:absolute;left:6px;bottom:6px;font:600 9.5px/1 var(--sans);letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.72);padding:4px 6px;border-radius:3px}
+.phone-cap{margin-top:14px;text-align:center;font-size:13px;color:var(--muted)}
+.phone-cap b{color:var(--ink);font-weight:500}
+
+/* option cards */
+.opts{display:flex;flex-direction:column;gap:16px;margin-top:22px}
+.opt{display:grid;grid-template-columns:1fr;gap:14px;text-align:left;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--card);transition:border-color .2s,box-shadow .2s}
+.opt:hover{border-color:var(--gold)}
+.opt[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.opt-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.opt-n{font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--gold-deep)}
+.opt-t{font-family:var(--display);font-size:19px;letter-spacing:.06em}
+.opt-pick{margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.opt[aria-pressed="true"] .opt-pick{background:var(--sel);color:var(--sel-fg);border-color:var(--sel)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:flex;flex-direction:column;align-items:center;gap:6px;width:62px}
+.chip > span{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background-size:cover;background-position:center}
+.chip em{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--muted);white-space:nowrap}
+.opt p{margin:0;font-size:15px;color:var(--ink);max-width:62ch}
+.opt .why{font-size:14px;color:var(--muted)}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13.5px}
+.pc div{min-width:0}
+.pc b{display:block;font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:2px}
+
+/* covers */
+.ic svg{width:26px;height:26px;fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.mono{font-family:var(--display);font-size:19px;letter-spacing:.04em;line-height:1}
+
+/* sections */
+section.band{padding-block:56px;border-top:1px solid var(--line)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px}
+.ba > div{padding:26px;min-width:0}
+.ba .b{background:var(--card)}
+.ba .a{background:#121110;color:#F5F0E6}
+.ba .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.ba .a .lbl{color:#D4B062}
+.ba pre{margin:0;font-family:var(--sans);white-space:pre-wrap;font-size:15.5px;line-height:1.6}
+.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:24px}
+.notes div{border-top:1px solid var(--gold);padding-top:14px;min-width:0}
+.notes h3{font-size:15px;font-weight:500;margin:0 0 4px}
+.notes p{margin:0;font-size:14px;color:var(--muted)}
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.plan button{text-align:left;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.plan img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.plan .pt{padding:10px 12px 12px}
+.plan .pt b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);font-weight:500}
+.plan .pt span{font-size:14px}
+.trend{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+.trend div{min-width:0}
+.trend h3{font-family:var(--serif);font-size:22px;font-weight:400;margin:0 0 6px}
+.trend p{margin:0;font-size:14.5px;color:var(--muted)}
+footer{padding-block:36px 56px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(10,10,10,.86);display:none;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.modal.open{display:flex}
+.mbox{background:#fff;color:#111;display:grid;grid-template-columns:auto 360px;max-height:92vh;max-width:96vw;border-radius:6px;overflow:hidden;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif}
+.mbox > *{min-width:0}
+.media{position:relative;background:#000;height:min(86vh,800px);aspect-ratio:4/5;overflow:hidden}
+.track{display:flex;height:100%;transition:transform .4s cubic-bezier(.3,.7,.2,1)}
+.track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.arr{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.arr.l{left:10px}.arr.r{right:10px}
+.arr svg{width:15px;height:15px;stroke:#111;stroke-width:2.4;fill:none}
+.dots{position:absolute;bottom:12px;left:0;right:0;display:flex;gap:5px;justify-content:center}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45)}
+.dots i.on{background:#fff}
+.side{display:flex;flex-direction:column;max-height:92vh}
+.side-h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #efefef;font-size:14px}
+.side-h .av{width:30px;height:30px;border-radius:50%;background:#000;display:grid;place-items:center;box-shadow:0 0 0 1.5px #C9A45C}
+.side-h .av img{width:22px}
+.side-h .x{margin-left:auto;font-size:26px;line-height:1}
+.side-b{padding:14px;overflow-y:auto;font-size:14px;line-height:1.5;white-space:pre-line}
+.side-b .tags{color:#00376b;margin-top:10px}
+.side-b .meta{margin-top:14px;padding:12px;background:#faf8f3;border:1px solid #eee5d2;border-radius:8px;font-size:12.5px;color:#555;white-space:normal}
+
+/* story */
+.story{position:fixed;inset:0;z-index:60;background:#121212;display:none;align-items:center;justify-content:center}
+.story.open{display:flex}
+.sbox{position:relative;width:min(400px,92vw);aspect-ratio:9/16;max-height:92vh;border-radius:14px;overflow:hidden;background:#000}
+.sframe{position:absolute;inset:0}
+.sframe img.bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(16px) brightness(.5)}
+.sframe .card{position:absolute;left:12%;right:12%;top:50%;transform:translateY(-50%);aspect-ratio:4/5;border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.sframe .card img{width:100%;height:100%;object-fit:cover}
+.sframe .lab{position:absolute;left:0;right:0;bottom:64px;text-align:center;color:#fff;font:600 13px/1.3 -apple-system,system-ui,sans-serif}
+.sframe .lab span{display:block;font-weight:400;opacity:.75}
+.sframe .q{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:40px;text-align:center;background:#121110;color:#F5F0E6}
+.sframe .q p{font-family:var(--serif);font-style:italic;font-size:27px;line-height:1.3;margin:0}
+.sframe .q span{margin-top:18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#D4B062}
+.prog{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px;z-index:3}
+.prog i{flex:1;height:2.5px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}
+.prog b{display:block;height:100%;width:0;background:#fff}
+.shead{position:absolute;top:22px;left:12px;display:flex;align-items:center;gap:8px;color:#fff;font:600 13px -apple-system,system-ui,sans-serif;z-index:3}
+.shead .ring{width:30px;height:30px;border-radius:50%;overflow:hidden;background-size:cover;background-position:center;display:grid;place-items:center}
+.sx{position:absolute;top:16px;right:14px;color:#fff;font-size:28px;z-index:4;line-height:1}
+.tap{position:absolute;top:0;bottom:0;z-index:2}
+.tap.l{left:0;width:40%}.tap.r{right:0;width:60%}
+
+@media (max-width:980px){
+  .board{grid-template-columns:minmax(0,1fr)}
+  .phone{position:relative;top:0;margin:0 auto}
+  .notes{grid-template-columns:1fr 1fr}
+  .plan{grid-template-columns:repeat(3,1fr)}
+  .mbox{grid-template-columns:minmax(0,1fr);overflow-y:auto;width:100%;max-width:520px}
+  .media{width:100%;height:auto}
+  .side{max-height:none}
+}
+@media (max-width:640px){
+  .ba,.trend{grid-template-columns:1fr}
+  .notes,.plan{grid-template-columns:1fr 1fr}
+  .pc{grid-template-columns:1fr}
+  .screen{height:700px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="eyebrow">@villazzorealty · Profile proposal · November 2026</div>
+  <h1>Four ways to dress the highlights</h1>
+  <p class="lede">The optimized profile, with the posts already planned for the feed. Choose one of the four highlight systems on the right and the phone updates. Tap a highlight to watch its stories, or a post to see it in full with its caption.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="board">
+    <div>
+      <div class="phone"><div class="screen" id="screen">
+        <div class="ig-top"><span>villazzorealty</span><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
+        <div class="ig-head">
+          <div class="avatar"><img src="https://dashboard.markethink.ai/generated/landing/markethink/villazzo-realty-highlights-e031cd96/logo.png" alt="Villazzo Realty logo"></div>
+          <div class="stats"><div><b>96</b>posts</div><div><b>17.2K</b>followers</div><div><b>30</b>following</div></div>
+        </div>
+        <div class="bio">
+          <div class="nm">Villazzo Realty | Miami Luxury Real Estate</div>
+          <div class="cat">Real estate agent</div>
+          <div>Buy · Sell · Lease · Pre-construction<br>$52.25M sold in Miami Beach · EN | ES<br>The Villazzo Edit, monthly ↓</div>
+          <a href="https://www.villazzorealty.com/" target="_blank" rel="noopener">villazzorealty.com/start</a>
+        </div>
+        <div class="ig-btns"><span class="pri">Follow</span><span>Message</span><span>Contact</span></div>
+        <div class="hls" id="hls"></div>
+        <div class="tabs">
+          <span class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 8h18M8 3l3 5M14 3l3 5"/><path d="M10 12v5l4-2.5z"/></svg></span>
+          <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1.5-3 4-4 6-4s4.5 1 6 4"/></svg></span>
+        </div>
+        <div class="grid" id="grid"></div>
+      </div></div>
+      <p class="phone-cap">Showing <b id="curName">Option 1 · Signature Line</b></p>
+    </div>
+
+    <div>
+      <div class="eyebrow">Highlights · choose one</div>
+      <h2 style="margin-top:8px">Seven circles, one path to a private viewing</h2>
+      <p class="small" style="max-width:62ch;margin:10px 0 0">The same seven highlights in every option: Listings, Sold, New Dev, Areas, Guide, Reviews and The Edit. They follow what a buyer or seller asks before sending a message. Only the cover style changes.</p>
+      <div class="opts" id="opts"></div>
+    </div>
+  </div>
+</main>
+
+<section class="band"><div class="wrap">
+  <div class="eyebrow">Bio · optimized</div>
+  <h2 style="margin-top:8px">A bio that says what you do and proves it</h2>
+  <div class="ba">
+    <div class="b"><div class="lbl">Today</div><pre>Villazzo Realty
+Miami's Premier Luxury Real Estate Service
+Link: villazzorealty.com homepage
+Highlights: VR Listings · VR Team</pre></div>
+    <div class="a"><div class="lbl">Proposed</div><pre>Villazzo Realty | Miami Luxury Real Estate
+Buy · Sell · Lease · Pre-construction
+$52.25M sold in Miami Beach · EN | ES
+The Villazzo Edit, monthly ↓
+villazzorealty.com/start</pre></div>
+  </div>
+  <div class="notes">
+    <div><h3>Searchable name</h3><p>"Miami Luxury Real Estate" sits in the name field, which Instagram search reads first.</p></div>
+    <div><h3>What we do</h3><p>Four services in one line, so buyers, sellers, tenants and investors all see themselves.</p></div>
+    <div><h3>Proof, not adjectives</h3><p>A real sales figure and both languages the team works in.</p></div>
+    <div><h3>A reason to tap</h3><p>The link opens a hub: listings, The Villazzo Edit and a private call. The URL shown is an example.</p></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="eyebrow">What luxury real estate accounts do</div>
+  <h2 style="margin-top:8px">Patterns worth borrowing</h2>
+  <div class="trend">
+    <div><h3>Highlights as a showroom</h3><p>Top agents organize highlights by neighborhood, sold, listings and press, so the profile works as a portfolio before anyone sends a message.</p></div>
+    <div><h3>One cover system</h3><p>Every circle follows the same palette and style. The brand reads as one company, never as a collection of random stories.</p></div>
+    <div><h3>Pinned proof</h3><p>The three pinned posts usually show results, the flagship project and a guide. Here: $52.25M sold, Waldorf Astoria and Buying in Miami.</p></div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="eyebrow">The grid · planned posts</div>
+  <h2 style="margin-top:8px">Every piece in the phone, in publishing order</h2>
+  <div class="plan" id="plan"></div>
+</div></section>
+
+<footer><div class="wrap">Proposal for Villazzo Realty · Highlight covers are mockups; the chosen system will be produced at 1080 × 1920 for Instagram. Reels are being edited.</div></footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="mbox" role="dialog" aria-modal="true" aria-label="Post preview">
+    <div class="media"><div class="track" id="track"></div>
+      <button class="arr l" id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="arr r" id="next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="dots" id="dots"></div></div>
+    <div class="side">
+      <div class="side-h"><span class="av"><img src="https://dashboard.markethink.ai/generated/landing/markethink/villazzo-realty-highlights-e031cd96/logo.png" alt=""></span><b>villazzorealty</b><button class="x" id="mx" aria-label="Close">×</button></div>
+      <div class="side-b"><b>villazzorealty</b> <span id="cap"></span><div class="tags" id="tags"></div><div class="meta" id="meta"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="story" id="story" aria-hidden="true">
+  <div class="sbox">
+    <div class="prog" id="prog"></div>
+    <div class="shead"><span class="ring" id="sring"></span><span>villazzorealty</span><span id="sname" style="opacity:.75;font-weight:400"></span></div>
+    <button class="sx" id="sx" aria-label="Close">×</button>
+    <div class="sframe" id="sframe"></div>
+    <button class="tap l" id="sp" aria-label="Previous story"></button><button class="tap r" id="sn" aria-label="Next story"></button>
+  </div>
+</div>
+
+<script>
+const CAPS = {"C1": {"cap": "Miami's new summit.\n\nRising over Biscayne Boulevard, Waldorf Astoria Residences Miami brings the service of a Waldorf Astoria hotel into the home: concierge, private dining, wellness and owners-only spaces, with the bay, the ocean and the city on every side.\n\nLocation: 300 Biscayne Blvd, Downtown Miami\nEstimated completion: 2027\nResidences and penthouses currently available for pre-construction purchase.\n\nRequest the private brochure, floor plans and pricing. DM us \"WALDORF\".", "tags": "#VillazzoRealty #WaldorfAstoriaResidences #MiamiPreConstruction #BrandedResidences #DowntownMiami #MiamiLuxuryRealEstate #MiamiPenthouse"}, "C2": {"cap": "Three addresses. $52.25M.\n\n10 Palm Avenue · $24,500,000\n2000 N Bay Road · $14,000,000\n369 N Hibiscus Drive · $13,750,000\n\nThree Miami Beach homes, from Palm Island to North Bay Road, sold by Villazzo Realty. Behind every closing: discreet marketing, qualified buyers and a team that knows these streets.\n\nThinking of selling? DM us \"VALUE\" for a private, confidential valuation.", "tags": "#VillazzoRealty #SoldByVillazzo #MiamiBeach #PalmIsland #HibiscusIsland #NorthBayRoad #MiamiLuxuryRealEstate"}, "C3": {"cap": "Branded Residences in Brickell.\n\nSix of the world's most recognized names now sign homes in one Miami neighborhood:\n\nDolce & Gabbana · 888 Brickell Ave · Est. 2027\nBugatti · 75 SW Miami Ave Rd · Est. 2027\nBaccarat · 444 Brickell Ave · Est. 2028\nCipriani · 1420 S Miami Ave · Est. 2028\nSt. Regis · 1809 Brickell Ave · Est. 2027\nMercedes-Benz · 1133 SW 2nd Ave · Est. 2027\n\nA branded residence means the design, service and standards of the brand, delivered to your door, plus the long-term appeal that comes with the name.\n\nWhich signature is yours? DM us \"BRICKELL\" for brochures and pricing.", "tags": "#VillazzoRealty #BrandedResidences #Brickell #MiamiPreConstruction #BugattiResidences #CiprianiResidences #BaccaratResidences #MiamiLuxuryRealEstate"}, "C4": {"cap": "Buying in Miami, from anywhere.\n\nHow international buyers secure a pre-construction residence:\n01 · Choose with intent: project, location and delivery date.\n02 · Reserve in stages: deposits are paid in phases, set by each developer.\n03 · Close remotely: sign from abroad and close at delivery.\n\nEvery project has its own terms, and we walk you through each one, in English or Spanish.\n\nSave this for later, and DM us \"GUIDE\" to speak with our team.\n\nThis content is for general information only and is not legal or tax advice.", "tags": "#VillazzoRealty #MiamiPreConstruction #InternationalBuyers #BuyInMiami #MiamiInvestment #MiamiRealEstate"}, "C5": {"cap": "Designed by Alizée Brion, high above Biscayne Bay.\n\nThis 3-bedroom, 3-bath corner residence at Biscayne Beach opens from a private elevator foyer into bright living spaces, a media room with Sonos sound and two balconies facing the bay. Fully furnished with custom pieces by designer Alizée Brion.\n\nThe building: a beach club, two pools, tennis courts, a fitness center, a dog park and valet.\n\nOffered for lease at $13,000/month · Two assigned parking spaces · Edgewater, Miami\n\nDM us \"BISCAYNE\" for a private viewing.", "tags": "#VillazzoRealty #BiscayneBeach #Edgewater #MiamiLuxuryRentals #MiamiInteriors #MiamiLiving"}, "C6": {"cap": "Above the bay, after dark.\n\nThe crown jewel of Paraiso Bay: a fully renovated, turnkey penthouse reached by private elevator, with 3 bedrooms plus a second living room.\n\n· A private rooftop of over 1,000 sq ft with jacuzzi, outdoor kitchen, BBQ, dining and lounge areas\n· Floor-to-ceiling glass with panoramic views of Biscayne Bay, Miami Beach and the city\n· A chef's kitchen with a diamond-matched stone island, invisible cooktop and Sub-Zero appliances\n· Smart home automation, invisible speakers and two assigned parking spaces\n\nResort amenities include a beach-style pool, spa, cinema, wine room, cigar lounge, tennis and two gyms.\n\nOffered for lease at $26,000/month · Fully furnished\n\nDM us \"PARAISO\" for a private viewing.", "tags": "#VillazzoRealty #ParaisoBay #MiamiPenthouse #Edgewater #RooftopLiving #MiamiLuxuryRentals"}, "F3": {"cap": "Fifty floors up.\n\nThe rooftop pool at Brickell Heights, where the weekend starts above the city: skyline, bay and the best sunsets in Brickell.\n\nLooking for a residence in one of Brickell's most complete buildings? DM us \"BRICKELL\" for current availability.", "tags": "#VillazzoRealty #BrickellHeights #Brickell #RooftopPool #MiamiLiving"}, "R1": {"cap": "Your private Miami retreat. For lease.\n\nA boutique-style home with its own resort in the backyard:\n\n· 3 bedrooms · 2 bathrooms\n· Heated and chilled saltwater pool, tropical landscaping, lawn and screened patio\n· Open-concept living with Bose sound inside and out\n· Utilities* and landscaping included\n· Parking for up to 4 vehicles and hurricane-impact windows\n\nMinutes from FIU, Dolphin Mall and Tropical Park, and 15–20 minutes from Brickell, Wynwood and Miami Beach.\n\n10795 SW 34th St · Miami, FL 33165\n$12,500/month · Entire home and private backyard\n\nDM us \"RETREAT\" or call Gabriel Henriquez at +1 (305) 772 6880 to schedule a viewing.", "tags": "#VillazzoRealty #MiamiRentals #MiamiHomes #PrivatePool #MiamiLiving #ForLease"}};
+const A = 'https://dashboard.markethink.ai/generated/landing/markethink/villazzo-realty-highlights-e031cd96/';
+const POSTS = {
+  C2:{type:'carousel',n:5,title:'Sold by Villazzo · $52.25M',when:'Pinned · Results',pinned:true},
+  C1:{type:'carousel',n:3,title:'Waldorf Astoria Residences',when:'Pinned · Pre-construction',pinned:true},
+  C4:{type:'carousel',n:5,title:'Buying in Miami, from anywhere',when:'Pinned · Guide',pinned:true},
+  C5:{type:'carousel',n:8,title:'Biscayne Beach',when:'Listing · For lease'},
+  F3:{type:'post',img:'f3.jpg',title:'Brickell Heights rooftop',when:'Lifestyle · Text-free post'},
+  C3:{type:'carousel',n:8,title:'Branded Residences in Brickell',when:'Pre-construction'},
+  C6:{type:'carousel',n:8,title:'Paraiso Bay Penthouse',when:'Listing · For lease'},
+  R1:{type:'reel',img:'r1.jpg',title:'Step Inside',when:'Reel · In editing'}
+};
+const imgs = id => { const p=POSTS[id]; return p.type==='carousel' ? Array.from({length:p.n},(_,i)=>`${id.toLowerCase()}-${String(i+1).padStart(2,'0')}.jpg`) : [p.img]; };
+const GRID = ['C2','C1','C4','C5','F3','C3','C6','R1'];
+const PLAN = ['R1','C1','C2','C6','C3','C4','F3','C5'];
+
+const LABELS = ['Listings','Sold','New Dev','Areas','Guide','Reviews','The Edit'];
+const KEYS = ['listings','sold','newdev','areas','guide','reviews','edit'];
+const ICONS = {
+  listings:'<path d="M3.5 11 12 4l8.5 7M6 10v10h12V10M10 20v-5h4v5"/>',
+  sold:'<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l1.5 1.5"/>',
+  newdev:'<path d="M7 21V5l5-2 5 2v16M10 8h1M13 8h1M10 11h1M13 11h1M10 14h1M13 14h1M10 17h4M4 21h16"/>',
+  areas:'<path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
+  guide:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.7 2.6 14.3 0 17M12 3.5c-2.6 2.7-2.6 14.3 0 17"/>',
+  reviews:'<path d="M12 3.5l2.5 5.3 5.8.7-4.3 4 1.1 5.8L12 16.5l-5.1 2.8 1.1-5.8-4.3-4 5.8-.7z"/>',
+  edit:'<path d="M6 3.5h9l3.5 3.5v13.5H6zM14.5 3.5v4h4M9 11h6.5M9 14h6.5M9 17h4"/>'
+};
+const OPTIONS = [
+  {n:'01',t:'Signature Line',
+   d:'Fine gold line icons on black, the colors of the logo. Quiet, instantly recognizable and the easiest to keep consistent as new highlights are added.',
+   why:'Common among boutique luxury brokerages: it reads as one brand and never competes with the property photos in the grid.',
+   pro:'Most on-brand; timeless; produced once', con:'Shows no property; the least emotional',
+   cover:k=>({cls:'ic',style:'background:#0E0D0C',html:`<svg viewBox="0 0 24 24" style="stroke:#C9A45C">${ICONS[k]}</svg>`})},
+  {n:'02',t:'Miami Materials',
+   d:'Each circle is a material from the homes Villazzo sells: white and black marble, brushed gold, pool water, oak and stone, taken from real listing photos.',
+   why:'Speaks the language of interiors and finishes that high-end buyers notice. It feels tactile and expensive without showing a single address.',
+   pro:'Very elegant; unique in the niche', con:'Needs a clear label; covers must be cropped with care',
+   cover:k=>({cls:'',style:`background-image:url(${A}m-${k}.jpg)`,html:''})},
+  {n:'03',t:'Property Moments',
+   d:'A crop from the portfolio for each highlight: a living room over the bay, the 10 Palm Avenue pool, the Waldorf tower, Fisher Island, a rooftop at night.',
+   why:'The most common choice among top-producing agents: the profile sells the lifestyle before anyone opens a story.',
+   pro:'Most aspirational; shows real inventory', con:'Covers need updating when listings change',
+   cover:k=>({cls:'',style:`background-image:url(${A}p-${k}.jpg)`,html:''})},
+  {n:'04',t:'Monogram',
+   d:'The VR monogram set in the brand serif, alternating black, ivory, gold and graphite. The label under each circle carries the meaning.',
+   why:'A classic for heritage and private-office brands: discreet, formal and clearly Villazzo, even at thumbnail size.',
+   pro:'Strong brand recall; very clean', con:'Covers look alike; relies entirely on the labels',
+   cover:(k,i)=>{const s=[['#0E0D0C','#C9A45C'],['#F5F0E6','#121110'],['#C9A45C','#0E0D0C'],['#3A3833','#F5F0E6']][i%4];
+     return {cls:'mono',style:`background:${s[0]};color:${s[1]};box-shadow:inset 0 0 0 1px rgba(201,164,92,.35)`,html:'VR'}}}
+];
+
+const STORIES = {
+  listings:[{share:'c5-01.jpg',l:'Biscayne Beach',s:'For lease · $13,000/month'},{share:'c6-01.jpg',l:'Paraiso Bay Penthouse',s:'For lease · $26,000/month'},{share:'f3.jpg',l:'Brickell Heights',s:'Rooftop · DM for availability'}],
+  sold:[{share:'c2-01.jpg',l:'Sold by Villazzo',s:'$52.25M across three addresses'},{share:'c2-02.jpg',l:'10 Palm Avenue',s:'$24,500,000'},{share:'c2-03.jpg',l:'2000 N Bay Road',s:'$14,000,000'}],
+  newdev:[{share:'c1-01.jpg',l:'Waldorf Astoria Residences',s:'Est. completion 2027'},{share:'c3-01.jpg',l:'Branded Residences in Brickell',s:'Six signatures'},{share:'c3-03.jpg',l:'Bugatti Residences',s:'Est. completion 2027'}],
+  areas:[{share:'c4-02.jpg',l:'Fisher Island',s:'Reached only by ferry or boat'},{share:'c3-01.jpg',l:'Brickell',s:'The branded residence district'},{share:'c5-02.jpg',l:'Edgewater',s:'Living above Biscayne Bay'}],
+  guide:[{share:'c4-01.jpg',l:'Buying in Miami, from anywhere',s:'Pre-construction · step by step'},{q:'Ask us anything about buying from abroad.',w:'Question box · answered every Saturday'}],
+  reviews:[{q:'“By far and away the best real estate agent I have ever worked with.”',w:'Client review · villazzorealty.com'},{q:'“She was able to help us secure an off-market condo.”',w:'Client review · villazzorealty.com'},{q:'“Her knowledge of the market is unparalleled.”',w:'Client review · villazzorealty.com'}],
+  edit:[{q:'The Villazzo Edit',w:'Miami market notes, once a month'},{share:'c6-02.jpg',l:'Subscribe through the link in bio',s:'Market notes, curated'}]
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let opt = 0;
+try { const v = parseInt(localStorage.getItem('vr-hl-opt'),10); if (v>=0 && v<4) opt = v; } catch(e) {}
+
+function cover(o,k,i){ return OPTIONS[o].cover(k,i); }
+function circle(o,k,i){ const c=cover(o,k,i); return `<span class="${c.cls}" style="${c.style}">${c.html}</span>`; }
+
+function renderOpts(){
+  $('#opts').innerHTML = OPTIONS.map((o,oi)=>`
+    <button class="opt" data-o="${oi}" aria-pressed="${oi===opt}">
+      <div class="opt-h"><span class="opt-n">OPTION ${o.n}</span><span class="opt-t">${o.t}</span><span class="opt-pick">${oi===opt?'Showing':'Preview'}</span></div>
+      <div class="row">${KEYS.map((k,i)=>`<span class="chip">${circle(oi,k,i)}<em>${LABELS[i]}</em></span>`).join('')}</div>
+      <p>${o.d}</p>
+      <p class="why">${o.why}</p>
+      <div class="pc"><div><b>Strength</b>${o.pro}</div><div><b>Watch out</b>${o.con}</div></div>
+    </button>`).join('');
+}
+function renderHls(){
+  $('#hls').innerHTML = KEYS.map((k,i)=>`<button class="hl" data-h="${i}"><span class="ring">${circle(opt,k,i)}</span>${LABELS[i]}</button>`).join('');
+  $('#curName').textContent = `Option ${OPTIONS[opt].n} · ${OPTIONS[opt].t}`;
+}
+function setOpt(o){ opt=o; try{localStorage.setItem('vr-hl-opt',o)}catch(e){} renderOpts(); renderHls(); }
+
+const SVG_CAR='<svg class="ico" viewBox="0 0 24 24"><path d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7z"/><rect x="3" y="7" width="14" height="14" rx="2"/></svg>';
+const SVG_REEL='<svg class="ico" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const SVG_PIN='<svg class="ico" viewBox="0 0 24 24" style="transform:rotate(45deg)"><path d="M14 3l7 7-3 1-4 4 1 5-2 1-4-5-5 5-1-1 5-5-5-4 1-2 5 1 4-4z"/></svg>';
+$('#grid').innerHTML = GRID.map(id=>{const p=POSTS[id];const ico=p.pinned?SVG_PIN:p.type==='carousel'?SVG_CAR:p.type==='reel'?SVG_REEL:'';
+  return `<div class="tile" role="button" tabindex="0" data-id="${id}" aria-label="${esc(p.title)}"><img src="${A+imgs(id)[0]}" alt="" loading="lazy">${ico}${p.type==='reel'?'<span class="tag">IN EDITING</span>':''}</div>`}).join('');
+$('#plan').innerHTML = PLAN.map((id,i)=>{const p=POSTS[id];const t={carousel:'Carousel',post:'Post',reel:'Reel'}[p.type];
+  return `<button data-id="${id}"><img src="${A+imgs(id)[0]}" alt="" loading="lazy"><div class="pt"><b>${String(i+1).padStart(2,'0')} · ${t}</b><span>${esc(p.title)}</span></div></button>`}).join('');
+
+/* modal */
+let cur=null, idx=0;
+function slide(i){ const n=imgs(cur).length; idx=Math.max(0,Math.min(n-1,i));
+  $('#track').style.transform=`translateX(${-idx*100}%)`;
+  $('#prev').hidden=idx===0; $('#next').hidden=idx>=n-1;
+  $('#dots').innerHTML=n>1?Array.from({length:n},(_,k)=>`<i class="${k===idx?'on':''}"></i>`).join(''):''; }
+function openPost(id){ cur=id; const p=POSTS[id], c=CAPS[id]||{cap:'',tags:''};
+  $('#track').innerHTML=imgs(id).map(s=>`<img src="${A+s}" alt="">`).join('');
+  $('#cap').textContent=c.cap; $('#tags').textContent=c.tags;
+  $('#meta').innerHTML=`<b>${esc(p.title)}</b><br>${esc(p.when)}${p.type==='reel'?' · the video is being edited; the cover is shown here':''}`;
+  slide(0); $('#modal').classList.add('open'); $('#modal').setAttribute('aria-hidden','false'); }
+function closePost(){ $('#modal').classList.remove('open'); $('#modal').setAttribute('aria-hidden','true'); }
+$('#prev').onclick=()=>slide(idx-1); $('#next').onclick=()=>slide(idx+1); $('#mx').onclick=closePost;
+$('#modal').addEventListener('click',e=>{ if(e.target.id==='modal') closePost(); });
+let tx=null; $('#track').addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+$('#track').addEventListener('touchend',e=>{ if(tx===null)return; const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>40) slide(idx+(d<0?1:-1)); tx=null; });
+
+/* stories */
+let sh=0, sf=0, timer=null, t0=0; const DUR=4500;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function frame(){ const k=KEYS[sh], f=STORIES[k][sf];
+  let h = f.q ? `<div class="q"><p>${esc(f.q)}</p><span>${esc(f.w)}</span></div>`
+              : `<img class="bg" src="${A+f.share}" alt=""><div class="card"><img src="${A+f.share}" alt=""></div><div class="lab">${esc(f.l)}<span>${esc(f.s)}</span></div>`;
+  $('#sframe').innerHTML=h; $('#sname').textContent=LABELS[sh];
+  const c=cover(opt,k,sh); $('#sring').className='ring '+c.cls; $('#sring').style.cssText=c.style+';font-size:12px'; $('#sring').innerHTML=c.html.replace('width:26px','');
+  $('#prog').innerHTML=STORIES[k].map((_,i)=>`<i><b style="width:${i<sf?100:0}%"></b></i>`).join('');
+  t0=performance.now(); cancelAnimationFrame(timer); if(!reduce) tick(); }
+function tick(){ const el=$('#prog').children[sf]?.firstChild; if(!el) return; const p=Math.min(1,(performance.now()-t0)/DUR); el.style.width=(p*100)+'%'; if(p>=1) return sNext(); timer=requestAnimationFrame(tick); }
+function sNext(){ const n=STORIES[KEYS[sh]].length; if(sf<n-1){sf++;frame();} else if(sh<KEYS.length-1){sh++;sf=0;frame();} else closeStory(); }
+function sPrev(){ if(sf>0){sf--;frame();} else if(sh>0){sh--;sf=0;frame();} else frame(); }
+function openStory(i){ sh=i; sf=0; $('#story').classList.add('open'); $('#story').setAttribute('aria-hidden','false'); frame(); }
+function closeStory(){ cancelAnimationFrame(timer); $('#story').classList.remove('open'); $('#story').setAttribute('aria-hidden','true'); $('#sframe').innerHTML=''; }
+$('#sn').onclick=sNext; $('#sp').onclick=sPrev; $('#sx').onclick=closeStory;
+$('#story').addEventListener('click',e=>{ if(e.target.id==='story') closeStory(); });
+
+document.addEventListener('click',e=>{
+  const o=e.target.closest('.opt'); if(o){ setOpt(+o.dataset.o); if(innerWidth<980) document.querySelector('.phone').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); return; }
+  const h=e.target.closest('.hl'); if(h){ openStory(+h.dataset.h); return; }
+  const t=e.target.closest('[data-id]'); if(t) openPost(t.dataset.id);
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter' && e.target.dataset?.id) openPost(e.target.dataset.id);
+  if($('#modal').classList.contains('open')){ if(e.key==='Escape')closePost(); if(e.key==='ArrowRight')slide(idx+1); if(e.key==='ArrowLeft')slide(idx-1); }
+  if($('#story').classList.contains('open')){ if(e.key==='Escape')closeStory(); if(e.key==='ArrowRight')sNext(); if(e.key==='ArrowLeft')sPrev(); }
+});
+setOpt(opt);
+</script>
