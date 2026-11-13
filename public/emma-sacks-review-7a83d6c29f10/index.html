@@ -1,22 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Emma Sacks Interiors | Instagram Audit &amp; Content Plan</title>
-<meta name="description" content="Instagram audit for @emmasacksinteriors: documented profile findings, optimization priorities and proposed content directions.">
+<title>Emma Sacks on Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Orpheus Pro';src:url('https://markethink.ai/margarita-bravo-ec292d9b4c2f/assets/fonts/OrpheusPro.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Caviar Dreams';src:url('https://markethink.ai/margarita-bravo-ec292d9b4c2f/assets/fonts/CaviarDreams.ttf') format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:'Caviar Dreams';src:url('https://markethink.ai/margarita-bravo-ec292d9b4c2f/assets/fonts/CaviarDreams_Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Kudryashev';src:url('assets/fonts/kudryashevheadline.woff') format('woff');font-weight:400;font-display:swap}
 :root{
-  --char:#2B2A28; --char-2:#232220; --ink:#2B2A28; --muted:#6E6A64;
-  --ivory:#F6F2EC; --sand:#ECE5DA; --card:#FFFDF9; --line:#DCD3C6;
-  --bronze:#C2A783; --bronze-deep:#86694A; --bronze-soft:#D2BC9C;
-  --red:#A8473F;
-  --serif:'Orpheus Pro','Cormorant Garamond',Georgia,serif;
-  --sans:'Caviar Dreams','Josefin Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --char:#4A3027; --char-2:#3A251E; --ink:#3B2A23; --muted:#7A6A62;
+  --ivory:#F4EFE7; --sand:#ECE4D9; --card:#FBF8F3; --line:#DDD0C4;
+  --bronze:#A9785C; --bronze-deep:#865F50; --bronze-soft:#CFB8AF;
+  --red:#9A4A3A;
+  --serif:'Kudryashev','Cormorant Garamond',Didot,Georgia,serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
   --maxw:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -54,7 +52,7 @@ h3{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--char)}
 .dark .small{color:#C6C1B9}
 
 .hero{min-height:88vh;display:flex;align-items:flex-end;position:relative;color:var(--ivory);padding:0 24px 90px;background:#222 center/cover no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.66) 30%,rgba(0,0,0,.78) 60%,rgba(0,0,0,.9) 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.05) 40%,rgba(0,0,0,.85) 100%)}
 .hero .wrap{position:relative;width:100%}
 .hero img.logo{height:26px;margin-bottom:38px}
 .hero h1{font-family:var(--serif);font-size:clamp(44px,7vw,92px);line-height:1}
@@ -73,7 +71,7 @@ h3{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--char)}
 .dark .feature p{color:#D3CEC6}
 .list{list-style:none}
 .list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:12px}
-.list li::before{content:"•";color:var(--red);flex:none}
+.list li::before{content:"—";color:var(--red);flex:none}
 
 .tbl{width:100%;border-collapse:collapse;font-size:15px}
 .tbl th{text-align:left;font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:12px 10px;border-bottom:2px solid var(--char)}
@@ -146,6 +144,29 @@ h3{font-family:var(--sans);font-size:18px;font-weight:700;color:var(--char)}
 .tile.old{cursor:default}
 .tile.old::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.08)}
 
+/* highlight cover options */
+.hl .ring div{overflow:hidden;background-size:cover;background-position:center}
+.hl .ring div img{width:100%;height:100%;object-fit:cover}
+.hl .ring div .mono{font-family:var(--serif);font-size:19px;letter-spacing:.02em;line-height:1}
+.hl .ring div svg.circ{width:100%;height:100%;stroke:none}
+.opts{display:flex;flex-direction:column;gap:14px;margin-bottom:34px}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;transition:border-color .2s,box-shadow .2s}
+.opt:hover{border-color:var(--bronze)}
+.opt.on{border-color:var(--char);box-shadow:0 0 0 1px var(--char),0 12px 30px rgba(0,0,0,.08)}
+.opt-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.opt-h .k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze-deep);font-weight:700}
+.opt-h h3{font-family:var(--serif);font-weight:400;font-size:23px}
+.opt-h .sel{margin-left:auto;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.opt.on .sel{color:var(--char);font-weight:700}
+.opt-row{display:flex;gap:10px;margin:16px 0 12px;flex-wrap:wrap}
+.opt-row .c{display:flex;flex-direction:column;align-items:center;gap:6px;width:62px;font-size:11.5px;color:var(--muted)}
+.opt-row .c > div{width:58px;height:58px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.opt-row .c img{width:100%;height:100%;object-fit:cover}
+.opt-row .c svg{width:24px;height:24px;fill:none;stroke-width:1.2}
+.opt-row .c svg.circ{width:100%;height:100%}
+.opt-row .c .mono{font-family:var(--serif);font-size:17px}
+.opt p{font-size:14.5px;color:var(--muted)}
+.opt p b{color:var(--char)}
 .callouts{display:flex;flex-direction:column;gap:18px}
 .callout{display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:start;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:10px}
 .callout .n{width:38px;height:38px;border-radius:50%;background:var(--char);color:var(--bronze-soft);display:grid;place-items:center;font-family:var(--serif);font-size:17px}
@@ -252,50 +273,48 @@ footer img{height:16px;margin-bottom:22px}
   .stat b{font-size:50px}
   .hero{padding:0 16px 70px}
 }
-@media (max-width:360px){.ig-head{flex-wrap:wrap;row-gap:10px}.ig-stats{flex-basis:100%}}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{scroll-behavior:auto}}
-/* Audit-backed editorial concepts replace unrelated source photographs. */
-section[id]{scroll-margin-top:68px}
-#competencia .tbl{min-width:820px}
-#competencia .tbl td:first-child{width:20%}
-#competencia .tbl td:nth-child(2){width:16%}
-.hero{min-height:76vh;padding-top:90px}
-.audit-concept{height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;padding:22px;background:var(--sand);color:var(--char);font-family:var(--sans);text-align:left;overflow-wrap:anywhere}
-.audit-concept small{font-size:11px;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze-deep);margin-bottom:14px}
-.audit-concept strong{font-family:var(--serif);font-weight:400;font-size:clamp(22px,3vw,36px);line-height:1.2}
-.audit-concept span{font-size:15px;line-height:1.5;margin-top:20px}
-.tile .audit-concept{padding:12px}.tile .audit-concept small{font-size:9px;margin-bottom:10px}.tile .audit-concept strong{font-size:18px}.tile .audit-concept span{display:none}
-.cal .d .audit-concept{height:auto;aspect-ratio:4/5;padding:16px}.cal .d .audit-concept strong{font-size:23px}.cal .d .audit-concept span{display:none}
-.media .track>.audit-concept{object-fit:initial}.media{background:var(--sand)}
-.ig-av,.mini-av{display:grid;place-items:center;background:var(--sand);color:var(--char);font-family:var(--serif)}
-.ig-av{font-size:34px}.mini-av{font-size:14px}
-.sbox .quote p{font-size:27px}.sbox .quote span{letter-spacing:.04em;text-transform:none}
-.pill-row{grid-template-columns:220px 1fr 140px}
-@media(max-width:640px){.pill-row{grid-template-columns:1fr}.pill-row .c2{grid-column:auto}.audit-concept{padding:22px}.tile .audit-concept strong{font-size:17px}}
+.hero::before{background:linear-gradient(180deg,rgba(20,14,11,.55) 0%,rgba(20,14,11,.45) 45%,rgba(20,14,11,.88) 100%)!important}
+.avatar{width:100%;height:100%;background:var(--ivory);display:grid;place-items:center}
+.avatar img{width:58%!important;height:auto!important}
+.hl{background:none;border:0;font:inherit;color:inherit}
+.hl .ring div .mono{color:var(--ivory);font-size:13px;letter-spacing:.04em}
+.cal{grid-template-columns:repeat(3,1fr)}
+@media (min-width:981px){.cal{grid-template-columns:repeat(9,1fr)}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px;background:var(--card)}
+.seg button{padding:8px 16px;border-radius:999px;font-size:13.5px;color:var(--muted)}
+.seg button.on{background:var(--char);color:var(--ivory)}
+.hl .ring div.cv{border:0}
+.cv{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;overflow:hidden;background-size:cover;background-position:center}
+.cv svg{width:52%!important;height:52%!important;fill:none;stroke-width:1.3}
+.cv .mono{font-family:var(--serif);font-size:22px!important;letter-spacing:-.04em}
+.opt-row .c .cv svg{width:52%!important;height:52%!important}
+.opt-row .c .cv .mono{font-size:22px}
+.av-photo{width:100%;height:100%;object-fit:cover;display:block}
+.ig-bio a{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 </head>
 <body>
-<aside aria-label="Audit scope" style="padding:14px 24px;background:#ECE5DA;color:#2B2A28;font:14px/1.5 var(--sans);border-bottom:1px solid #DCD3C6"><strong>Instagram audit: @emmasacksinteriors.</strong> Based on the supplied public-profile audit, not live account data. Insights and full captions were unavailable; benchmark observations cover headers and grids only. The profile and text-led content concepts below are proposals, not published posts or photographs of Emma's work.</aside>
 
 <nav class="nav"><div class="nav-in">
-  <span style="display:block;flex:none;font:400 14px/1 var(--sans);letter-spacing:.16em;white-space:nowrap">Emma Sacks</span>
+  <img src="assets/logo-white.svg" alt="Emma Sacks Interiors">
   <a href="#diagnostico">Audit</a>
-  <a href="#competencia">Competition</a>
+  <a href="#competencia">Benchmark</a>
   <a href="#oportunidades">Opportunities</a>
   <a href="#optimizacion">Optimization</a>
-  <a href="#aspiracional">Aspirational</a>
+  <a href="#aspiracional">The thread</a>
   <a href="#perfil">The new profile</a>
   <a href="#porque">Why</a>
   <a href="#plan">Plan &amp; KPIs</a>
 </div></nav>
 
-<header class="hero">
+<header class="hero" style="background-image:url('assets/hero.jpg')">
   <div class="wrap">
-    <span class="logo" style="display:block;font:400 26px/1 var(--sans);letter-spacing:.16em;margin-bottom:38px">Emma Sacks</span>
-    <p class="eyebrow" style="color:var(--bronze-soft)">Instagram audit &amp; content plan · @emmasacksinteriors</p>
+    <img class="logo" src="assets/logo-white.svg" alt="Emma Sacks Interiors">
+    <p class="eyebrow" style="color:var(--bronze-soft)">Instagram audit &amp; content plan · November 2026</p>
     <h1>Emma Sacks<br>on Instagram</h1>
-    <p class="lead">A clear design point of view. The next step is a profile that explains the service, introduces the designer and gives prospective clients a reason to enquire.</p>
-    <p class="meta">Audit · Competition · Optimization · The new profile</p>
+    <p class="lead">Timeless interiors deserve a feed that explains them. Fewer words on the image, more reasons behind every room, and a clear path to a consultation.</p>
+    <p class="meta">Audit · Benchmark · Optimization · The new profile · Plan</p>
   </div>
 </header>
 
@@ -303,64 +322,61 @@ section[id]{scroll-margin-top:68px}
 <section id="diagnostico">
   <div class="wrap">
     <p class="eyebrow">01 · Audit</p>
-    <h2 class="reveal">A premium aesthetic, without a steady rhythm</h2>
-    <p class="lead reveal">The audit describes a warm, consistent visual identity, strong photography and useful highlights. The gaps are irregular posting, a generic bio, limited founder visibility and too little narrative or social proof.</p>
+    <h2 class="reveal">A strong eye, an account that goes quiet</h2>
+    <p class="lead reveal">The aesthetic is clear and premium. The problem is rhythm and purpose: long silences between posts, a generic bio and a feed that shows the work without the person or the reasons behind it.</p>
     <div class="grid g4 mt reveal">
-      <div class="card stat"><b>317</b><span>followers in the audit snapshot</span></div>
-      <div class="card stat"><b>36</b><span>posts in the audit snapshot</span></div>
-      <div class="card stat"><b>516</b><span>accounts followed</span></div>
-      <div class="card stat alert"><b>12–26</b><span>visible likes per reviewed post</span></div>
+      <div class="card stat"><b>317</b><span>followers</span></div>
+      <div class="card stat"><b>36</b><span>posts published</span></div>
+      <div class="card stat alert"><b>516</b><span>accounts followed, more than followers</span></div>
+      <div class="card stat alert"><b>12–26</b><span>likes per post, with 2 to 5 comments</span></div>
     </div>
-    <p class="small mt-s">Source: supplied Instagram Audit, @emmasacksinteriors. Reviewed posts: November 29, 2025 (26 likes, 5 comments); November 20, 2025 (20 likes, 2 comments); July 14, 2025 (12 likes, 3 comments). Visible comments range from 2 to 5. These observations do not measure reach or enquiries.</p>
+    <p class="small mt-s">Source: public profile at the time of the audit (posts reviewed from July to November 2025). Reach, saves, clicks and messages are not public, so they are not included.</p>
+
     <div class="grid g2 mt">
       <div class="reveal">
         <h3 style="margin-bottom:18px">What already works</h3>
         <div class="grid g2" style="gap:22px">
-          <div class="feature"><h3>A clear point of view</h3><p class="small">Warm tones, marble, deep greens and wood give the work a premium identity.</p></div>
-          <div class="feature"><h3>Strong photography</h3><p class="small">The audit identifies photography as an existing strength to preserve.</p></div>
-          <div class="feature"><h3>Useful highlights</h3><p class="small">BTS, Services, Process, Inspo and Projects already give visitors a useful starting point.</p></div>
-          <div class="feature"><h3>Format variety</h3><p class="small">Carousels, reels, graphic pieces and renders offer several ways to tell a story.</p></div>
-          <div class="feature"><h3>Contact details present</h3><p class="small">The current bio includes an email and a website.</p></div>
-          <div class="feature"><h3>A founder introduction</h3><p class="small">One founder portrait appears in the reviewed grid. More regular visibility is an opportunity.</p></div>
+          <div class="feature"><h3>A clear point of view</h3><p class="small">Warm palette, marble, deep greens and wood, shot to a professional standard.</p></div>
+          <div class="feature"><h3>Named projects</h3><p class="small">Westchester, Irvington, Harrison and Coral Gables: four complete, well-photographed homes and spaces.</p></div>
+          <div class="feature"><h3>The right highlights</h3><p class="small">Services, Process and Projects already exist; they only need order and covers.</p></div>
+          <div class="feature"><h3>Format variety</h3><p class="small">Carousels, reels, renders and a portrait of the founder.</p></div>
+          <div class="feature"><h3>Tagging partners</h3><p class="small">The Plenitude Med Spa post shows the collaboration habit worth keeping.</p></div>
+          <div class="feature"><h3>Custom furniture</h3><p class="small">A service on the website that the feed has never shown.</p></div>
         </div>
       </div>
       <div class="reveal">
         <h3 style="margin-bottom:8px">What holds the account back</h3>
         <ul class="list">
-          <li>Long posting gaps across July, August and November 2025. The latest post recorded in the audit is November 29, 2025.</li>
-          <li>“Timeless interiors, thoughtfully curated” does not define an audience, service or next step. “MIAMI NY” leaves the service area unclear.</li>
-          <li>Only one founder portrait, with little of the person behind the studio.</li>
-          <li>Few reels and limited storytelling. The reviewed reel focuses on marble texture with music credits.</li>
-          <li>No testimonials, results or before-and-afters identified in the reviewed material.</li>
-          <li>Short captions with no questions or prompts to save, share or comment.</li>
-          <li>516 following versus 317 followers. The audit recommends reviewing accounts for commercial relevance.</li>
-          <li>Promotional graphics and tweet-style screenshots interrupt the editorial photography.</li>
+          <li>Irregular posting, with gaps of months; one grid piece even says "We're back".</li>
+          <li>A bio that says "timeless interiors" but not who it is for, what it sells or what to do.</li>
+          <li>Almost no presence of Emma: clients buy trust in the designer.</li>
+          <li>Few reels, and not narrative (a marble texture with music).</li>
+          <li>No testimonials, results or before-and-afters.</li>
+          <li>Short captions with no question and no call to action.</li>
+          <li>Tweet-style screenshots that break the editorial grid.</li>
+          <li>Following more accounts than follow back.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 02 COMPETITION -->
+<!-- 02 BENCHMARK -->
 <section id="competencia" class="sand">
   <div class="wrap">
-    <p class="eyebrow">02 · Niche references</p>
-    <h2 class="reveal">Portfolio, personality, education and selling</h2>
-    <p class="lead reveal">Studio McGee and Amber Interiors show how founder presence and useful content can sit alongside a strong portfolio. They are large-brand format references, not evidence of the results a similarly sized studio should expect.</p>
-    <div class="card mt reveal">
-      <h3 style="margin-bottom:12px">What the audit observed</h3>
-      <div class="grid g3" id="bars"></div>
-    </div>
+    <p class="eyebrow">02 · Benchmark</p>
+    <h2 class="reveal">The leaders mix portfolio, person and reasons</h2>
+    <p class="lead reveal">The biggest studios in the niche do four things at once: show the work, show the designer, teach something and sell. Emma Sacks currently does the first one only.</p>
     <div class="card mt reveal tbl-wrap">
       <table class="tbl">
-        <thead><tr><th>Account</th><th>Audit snapshot</th><th>What works</th><th>What to adapt</th></tr></thead>
+        <thead><tr><th>Account</th><th>Followers</th><th>What works</th><th>What to borrow</th></tr></thead>
         <tbody>
-          <tr><td>Studio McGee</td><td>Approx. 4M followers</td><td>Founder inside projects; seasonal content; educational series such as “Why this room works”; project-led highlights and a clear bio.</td><td>A recurring educational series and a recognizable person behind the work.</td></tr>
-          <tr><td>Amber Interiors</td><td>Approx. 2M followers</td><td>Lifestyle and work in themed highlights; founder speaking to camera; links to a book, shop and related brand.</td><td>A more approachable founder presence and a clearer route through the profile.</td></tr>
-          <tr class="me"><td>@emmasacksinteriors</td><td>317 followers</td><td>Premium aesthetic, strong photography, varied formats and service-oriented highlights.</td><td>Add personality, explanation and a next step to a portfolio-led feed.</td></tr>
+          <tr><td>Studio McGee</td><td>~4M</td><td>The founder inside her projects. Educational reels with a series title ("Why this room works"). Seasonal content. Highlights named after each project.</td><td>A named series that explains design decisions, and highlights per project.</td></tr>
+          <tr><td>Amber Interiors</td><td>~2M</td><td>An approachable founder who speaks to camera. Themed highlights that mix life and work. Clear links to shop and book.</td><td>The designer's voice in first person, even without video.</td></tr>
+          <tr class="me"><td>Emma Sacks Interiors</td><td>317</td><td>A premium aesthetic and real projects, but portfolio only.</td><td>Add the reasons, the person and one clear next step.</td></tr>
         </tbody>
       </table>
-      <p class="small mt-s">Source: supplied audit. Benchmark review was limited to profile headers and grids. Pfuner Design was inactive and excluded as a useful reference; no similarly sized studio comparison was available.</p>
+      <p class="small mt-s">Source: public profile headers and grids, reviewed for the audit. These are aspirational references for format, not direct competitors; a benchmark of three or four similar-size studios is a pending next step.</p>
     </div>
   </div>
 </section>
@@ -368,14 +384,15 @@ section[id]{scroll-margin-top:68px}
 <!-- OPPORTUNITIES -->
 <section id="oportunidades" class="dark">
   <div class="wrap">
-    <p class="eyebrow">02 · What the audit tells us</p>
+    <p class="eyebrow">02 · What the website tells us</p>
     <h2 class="reveal">Four openings Emma Sacks can take</h2>
     <div class="grid g4 mt">
-      <div class="feature reveal"><h3>Make the service clear</h3><p>Replace the generic tagline with an audience, a service and a consultation CTA. Confirm how Miami and NY should be described.</p></div>
-      <div class="feature reveal"><h3>Show the process</h3><p>Use moodboards, material selection and render-to-real sequences. The audit cites the Plenitude Spa floor plan, render and final photograph as a useful format.</p></div>
-      <div class="feature reveal"><h3>Put the founder in the story</h3><p>Build trust through one founder-led reel each week, on camera or on site, rather than relying on the portfolio alone.</p></div>
-      <div class="feature reveal"><h3>Build local relationships</h3><p>Tag relevant vendors and clients; explore Miami showroom and furniture-brand collaborations; use specific local tags and reply to comments promptly.</p></div>
+      <div class="feature reveal"><h3>Every project, named</h3><p>Linen &amp; Green, Botanical Alcove, Marble &amp; Curves, Pale Oak Lines: four photographed projects that can each become a story.</p></div>
+      <div class="feature reveal"><h3>Designed from afar</h3><p>The website speaks to people relocating to Miami or New York and managing projects remotely. No studio in the sample owns that message.</p></div>
+      <div class="feature reveal"><h3>Made for this room</h3><p>Custom furniture is a service on the website and a natural answer to the studio's stance against "dupes".</p></div>
+      <div class="feature reveal"><h3>Reasons, not just rooms</h3><p>Explaining why a room works builds authority and gets saved and shared, without needing anyone on camera.</p></div>
     </div>
+    <p class="small mt">Projects, services and positioning come from emmasacks.com. The website has no testimonials and no founder bio yet; both are requested from the client.</p>
   </div>
 </section>
 
@@ -383,52 +400,57 @@ section[id]{scroll-margin-top:68px}
 <section id="optimizacion">
   <div class="wrap">
     <p class="eyebrow">03 · Optimization</p>
-    <h2 class="reveal">A profile that makes the next step clear</h2>
+    <h2 class="reveal">A profile that says who it is for</h2>
     <div class="ba mt reveal">
       <div class="before">
-        <p class="tag">Recorded in the audit</p>
-<pre>Timeless interiors, thoughtfully curated
+        <p class="tag">Today</p>
+<pre>Emma Sacks Interiors
+Timeless interiors, thoughtfully curated
 MIAMI NY
-Email and website present
-No clear call to action</pre>
+email · website</pre>
       </div>
       <div class="after">
-        <p class="tag">Proposed direction</p>
-<pre>Emma Sacks Interiors
-Interior design, thoughtfully curated
-Book your consultation</pre>
+        <p class="tag">Proposed</p>
+<pre>Interior Designer | Emma Sacks
+Full-service interior design
+Renovation &amp; custom furniture
+Miami | New York City
+Tell us about your project ↓</pre>
       </div>
     </div>
     <div class="grid g3 mt-s">
-      <p class="small">Lead with the service. The audit suggests “Residential &amp; commercial interior design” once the studio confirms that scope.</p>
-      <p class="small">Clarify whether the studio serves both Miami and NY before adding “Miami + NY” as a service-area promise.</p>
-      <p class="small">Recommended link-in-bio destinations: consultation booking, portfolio and contact. This review does not activate them.</p>
+      <p class="small">"Interior Designer" in the name field, because it counts most in Instagram search.</p>
+      <p class="small">One main link, emmasacks.com; the inquiry form is one tap from the home page.</p>
+      <p class="small">"Miami | New York City" replaces the ambiguous "MIAMI NY". Confirm both cities are served equally.</p>
     </div>
-    <h3 class="mt" style="font-family:var(--serif);font-size:30px;font-weight:400">Highlights that answer a client's questions</h3>
-    <p class="lead" style="font-size:20px">Keep BTS, Services, Process, Inspo and Projects. Add Testimonials or Before &amp; After when the supporting material is available, and pin a post that explains the design process.</p>
-    <h3 class="mt" style="font-family:var(--serif);font-size:30px;font-weight:400">Content directions for the next 30 to 60 days</h3>
+
+    <h3 class="mt" style="font-family:var(--serif);font-size:30px;font-weight:400">Highlights that work as a showroom</h3>
+    <p class="lead" style="font-size:20px">Five circles in one style: Projects, Services, Process, About and Contact, with photographic covers from her own projects (option 3 of four in section 04). Three pinned posts: How we work, the Coral Gables Spa reel and the testimonial.</p>
+
+    <h3 class="mt" style="font-family:var(--serif);font-size:30px;font-weight:400">Four content pillars</h3>
     <div class="mt-s" id="pillars"></div>
-    <p class="small mt-s">The audit recommends a total cadence of 3 to 4 posts per week, including at least one founder-led reel. This is an editorial recommendation, not a new service commitment.</p>
+    <p class="small mt-s">Every month we reinforce the pillars that bring the most saves, profile visits, link clicks and messages.</p>
+
     <h3 class="mt" style="font-family:var(--serif);font-size:30px;font-weight:400">House rules for every post</h3>
     <div class="grid g4 mt-s">
-      <div class="card"><h3>Copy</h3><p class="small">Open with a hook, explain the design decision and end with a question or a relevant save, share or consultation prompt.</p></div>
-      <div class="card"><h3>Visual system</h3><p class="small">Match graphic templates to the studio's typography and palette. Preserve the premium photography and avoid standalone tweet screenshots.</p></div>
-      <div class="card"><h3>Reels</h3><p class="small">Show walkthroughs, before-and-afters, moodboards and material choices. Include the founder on camera or on site each week.</p></div>
-      <div class="card"><h3>Community</h3><p class="small">Reply within the first hour. Tag vendors, brands and clients, ask them to share and engage with local architects, builders and real estate agents.</p></div>
+      <div class="card"><h3>Text on 10% of posts</h3><p class="small">Full-bleed photography, no text on the image. Only when text is needed (a client quote) does it go on the image. The explanation lives in the caption.</p></div>
+      <div class="card"><h3>Copy</h3><p class="small">A hook, the design decision, then a question or a call to action. "We" for the studio, "I" when Emma speaks. English only.</p></div>
+      <div class="card"><h3>Reels without a camera</h3><p class="small">Slow pans across real photographs, no text on screen and, when possible, Emma's voice-over recorded on her phone.</p></div>
+      <div class="card"><h3>Community</h3><p class="small">Reply to every comment in the first hour. Tag vendors and clients. Comment on local architects, builders and agents.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ASPIRATIONAL -->
-<section id="aspiracional" class="asp">
+<!-- THE THREAD -->
+<section id="aspiracional" class="asp" style="background-image:url('assets/asp.jpg')">
   <div class="wrap">
-    <p class="eyebrow" style="color:var(--bronze-soft)">The creative principle</p>
-    <h2 class="reveal">Show what it feels like to live there</h2>
-    <p class="quote reveal">Show the space. Explain the choices. Introduce the designer.</p>
+    <p class="eyebrow" style="color:var(--bronze-soft)">The thread of the account</p>
+    <h2 class="reveal">Designed with intention</h2>
+    <p class="quote reveal">Every room has a reason. We show it.</p>
     <div class="grid g3 mt">
-      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">Make them imagine</h3><p style="color:#E6E0D6">Use a strong opening, then explain how a material, layout or texture changes the way a space feels.</p></div>
-      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">Real projects, named</h3><p style="color:#E6E0D6">Use the studio's own project material, with accurate context. Keep renders distinct from finished-space photographs.</p></div>
-      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">Minimal intervention</h3><p style="color:#E6E0D6">Let photography lead, with coherent graphic templates where they help explain a decision. Avoid screenshots that break the feed's aesthetic.</p></div>
+      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">Who we talk to</h3><p style="color:#E6E0D6">Homeowners moving to Miami or New York, buying a second home or renovating, who want to hand off the whole project. Second: the agents, architects and builders who refer them.</p></div>
+      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">How we sound</h3><p style="color:#E6E0D6">A calm expert who explains her criteria, not a brand that sells. Concrete material words (honed marble, white oak), few emojis, no hype.</p></div>
+      <div class="feature reveal" style="border-top-color:var(--bronze)"><h3 style="color:var(--ivory)">Emma, without the camera</h3><p style="color:#E6E0D6">One short shoot a month, voice-overs recorded on her phone, photos of her on site and captions in her own voice.</p></div>
     </div>
   </div>
 </section>
@@ -437,26 +459,25 @@ Book your consultation</pre>
 <section id="perfil" class="sand">
   <div class="wrap">
     <p class="eyebrow">04 · The new profile</p>
-    <h2 class="reveal">A proposed profile for @emmasacksinteriors</h2>
-    <p class="lead reveal">A clearer bio, the five existing highlights and one suggested Before &amp; After highlight. The grid shows text-led editorial concepts drawn from the audit. Tap a concept for its direction and sample wording.</p>
+    <h2 class="reveal">The @emmasacksinteriors profile, optimized</h2>
+    <p class="lead reveal">A new bio, five highlights with four cover options, and a grid with the eight pieces of the plan. Tap any post to see it in full with its caption, or a highlight to preview it.</p>
     <div class="mock-layout mt">
       <div class="phone">
         <div class="screen">
-          <div class="ig-top"><span style="font-size:17px">emmasacksinteriors</span><span style="font-size:22px">☰</span></div>
+          <div class="ig-top"><span>emmasacksinteriors</span><span style="font-size:22px">☰</span></div>
           <div class="ig-head">
-            <div class="ig-av" aria-label="Emma Sacks initials, not a portrait">ES</div>
+            <div class="ig-av"><img class="av-photo" src="assets/avatar.jpg" alt="Emma Sacks"></div>
             <div class="ig-stats">
-              <div><b>36</b><span>posts</span></div>
+              <div><b>44</b><span>posts</span></div>
               <div><b>317</b><span>followers</span></div>
               <div><b>516</b><span>following</span></div>
             </div>
           </div>
           <div class="ig-bio">
-            <div class="nm">Emma Sacks Interiors</div>
+            <div class="nm">Interior Designer | Emma Sacks</div>
             <div class="cat">Interior designer</div>
-            <div>Interior design, thoughtfully curated<br>Book your consultation</div>
-            <span style="color:#00376b;font-weight:600">Consultation · Portfolio · Contact</span>
-            <div style="font-size:12px;color:#737373;margin-top:5px">Proposed bio · statistics from audit snapshot</div>
+            <div>Full-service interior design<br>Renovation &amp; custom furniture<br>Miami | New York City<br>Tell us about your project ↓</div>
+            <a href="https://emmasacks.com" target="_blank" rel="noopener">emmasacks.com</a>
           </div>
           <div class="ig-btns"><span class="pri">Follow</span><span>Message</span><span>Contact</span></div>
           <div class="ig-hl" id="hls"></div>
@@ -468,15 +489,21 @@ Book your consultation</pre>
           <div class="ig-grid" id="grid"></div>
         </div>
       </div>
+      <div>
+        <p class="eyebrow">Highlight covers · four options</p>
+        <h3 style="font-family:var(--serif);font-weight:400;font-size:30px;margin-bottom:6px">Same brand, different looks</h3>
+        <p class="small" style="margin-bottom:20px">Choose an option to see it on the profile. Five circles: Projects, Services, Process, About and Contact, in olive, terracotta, linen, stone blue and brass.</p>
+        <div class="opts" id="opts"></div>
       <div class="callouts">
         <span class="hint"><i></i> The phone is interactive: tap the grid and the highlights</span>
-        <div class="callout reveal"><div class="n">1</div><div><h3>A clear studio identity</h3><p>Use Emma Sacks Interiors and the documented handle, @emmasacksinteriors, without borrowing another studio's portrait or credentials.</p></div></div>
-        <div class="callout reveal"><div class="n">2</div><div><h3>A service-led bio</h3><p>State interior design and a consultation CTA. Confirm the audience and service area before adding residential, commercial or Miami + NY claims.</p></div></div>
-        <div class="callout reveal"><div class="n">3</div><div><h3>A useful link path</h3><p>The audit recommends consultation booking, portfolio and contact as the link-in-bio destinations.</p></div></div>
-        <div class="callout reveal"><div class="n">4</div><div><h3>Existing highlights, strengthened</h3><p>BTS, Services, Process, Inspo and Projects stay. Before &amp; After is shown as a proposed addition, not as existing proof.</p></div></div>
-        <div class="callout reveal"><div class="n">5</div><div><h3>A coherent grid</h3><p>Alternate project stories, educational content and founder presence while keeping the studio's palette and typography consistent.</p></div></div>
-        <div class="callout reveal"><div class="n">6</div><div><h3>The process, pinned</h3><p>Make the first pinned piece explain how the studio works, as recommended in the audit. Add founder-led content every week.</p></div></div>
-        <div class="callout reveal"><div class="n">7</div><div><h3>Concepts, not borrowed projects</h3><p>These text-led examples demonstrate topics and structure. Actual posts need Emma's own photographs, footage and project details.</p></div></div>
+        <div class="callout reveal"><div class="n">1</div><div><h3>A searchable name</h3><p>"Interior Designer | Emma Sacks" appears when people search for an interior designer, not only for the studio's name.</p></div></div>
+        <div class="callout reveal"><div class="n">2</div><div><h3>A bio that says who it is for</h3><p>What the studio does, where, what makes it different (custom furniture, remote management) and what to do next.</p></div></div>
+        <div class="callout reveal"><div class="n">3</div><div><h3>One main link</h3><p>emmasacks.com, with the three-step inquiry form one tap away. "Tell us about your project" mirrors the form's own wording.</p></div></div>
+        <div class="callout reveal"><div class="n">4</div><div><h3>Five highlights in one style</h3><p>Projects, Services, Process, About and Contact, with photographic covers taken from her own projects (option 3).</p></div></div>
+        <div class="callout reveal"><div class="n">5</div><div><h3>A calm, photographic feed</h3><p>Full-bleed photography with no text on the image; only the testimonial (one post in eight) carries words. The story lives in the caption. No screenshots.</p></div></div>
+        <div class="callout reveal"><div class="n">6</div><div><h3>How we work, pinned first</h3><p>The first thing a future client sees is the process, then a project reel and what clients say.</p></div></div>
+        <div class="callout reveal"><div class="n">7</div><div><h3>Clean up who we follow</h3><p>Unfollow accounts with no commercial relevance; keep architects, builders, agents, showrooms and brands.</p></div></div>
+      </div>
       </div>
     </div>
   </div>
@@ -486,19 +513,19 @@ Book your consultation</pre>
 <section id="porque">
   <div class="wrap">
     <p class="eyebrow">05 · Why this change</p>
-    <h2 class="reveal">Give the portfolio a person, a story and a next step</h2>
-    <p class="lead reveal">The recommendation is to build on the visual identity, not replace it. A steady rhythm, useful explanations and a visible founder give prospective clients more reasons to remember the studio and start a conversation.</p>
+    <h2 class="reveal">Clients buy trust before they buy a room</h2>
+    <p class="lead reveal">Interior design is a high-ticket, high-trust decision. A feed that explains decisions, shows the designer and posts on a steady rhythm earns that trust; a quiet gallery does not.</p>
     <div class="grid g3 mt why">
-      <div class="card reveal"><h3>Consistency creates a rhythm</h3><p class="small">Address the long gaps recorded in the audit with a realistic 3 to 4 posts each week.</p></div>
-      <div class="card reveal"><h3>Founder presence builds familiarity</h3><p class="small">The niche references put a person behind the work. One weekly founder reel is the proposed starting point.</p></div>
-      <div class="card reveal"><h3>Process makes expertise visible</h3><p class="small">Show material choices, moodboards and render-to-real sequences rather than only finished spaces.</p></div>
-      <div class="card reveal"><h3>Education gives a reason to save</h3><p class="small">Marble choices, texture combinations and renovation-budget questions turn design knowledge into useful content.</p></div>
-      <div class="card reveal"><h3>Proof supports trust</h3><p class="small">Add real testimonials and before-and-afters when the studio supplies the supporting material.</p></div>
-      <div class="card reveal"><h3>Enquiries are the business measure</h3><p class="small">Review reach, saves, profile visits and link clicks monthly, then connect the work to enquiries from Instagram.</p></div>
+      <div class="card reveal"><h3>Consistency is reach</h3><p class="small">Four posts a week on fixed days tell the algorithm, and the client, that the studio is active.</p></div>
+      <div class="card reveal"><h3>Reasons get saved</h3><p class="small">"Why it works" carousels are the content people save and send, which extends reach without paid media.</p></div>
+      <div class="card reveal"><h3>A face without a camera</h3><p class="small">Emma's voice in captions and voice-overs builds the personal brand with almost no recording time.</p></div>
+      <div class="card reveal"><h3>The photography is already there</h3><p class="small">Four professionally shot projects: the plan starts now, with no new production.</p></div>
+      <div class="card reveal"><h3>A message no one owns</h3><p class="small">"Designed from afar" speaks directly to people relocating to Miami or New York.</p></div>
+      <div class="card reveal"><h3>We measure inquiries</h3><p class="small">Messages with HOME or MOVE, link clicks and profile visits, not likes.</p></div>
     </div>
     <div class="ba mt reveal">
-      <div class="before"><p class="tag">Audit observations</p><ul class="list"><li>Irregular posting.</li><li>A generic bio without a CTA.</li><li>Limited founder visibility.</li><li>Few narrative reels or proof-led posts.</li></ul></div>
-      <div class="after"><p class="tag">Recommended direction</p><ul class="list" style="color:var(--ivory)"><li style="border-color:rgba(255,255,255,.12)">3 to 4 posts per week.</li><li style="border-color:rgba(255,255,255,.12)">A clear service and consultation prompt.</li><li style="border-color:rgba(255,255,255,.12)">At least one founder-led reel each week.</li><li style="border-color:rgba(255,255,255,.12)">Process, education and genuine social proof.</li></ul></div>
+      <div class="before"><p class="tag">Today</p><ul class="list"><li>Months without posting.</li><li>Portfolio only.</li><li>Short captions, no call to action.</li><li>Screenshots mixed with editorial photos.</li></ul></div>
+      <div class="after"><p class="tag">Proposed</p><ul class="list" style="color:var(--ivory)"><li style="border-color:rgba(255,255,255,.12)">Four posts a week, on fixed days.</li><li style="border-color:rgba(255,255,255,.12)">Portfolio, reasons, Emma and proof.</li><li style="border-color:rgba(255,255,255,.12)">A question or a consultation in every caption.</li><li style="border-color:rgba(255,255,255,.12)">Photography only; text on ~10% of posts.</li></ul></div>
     </div>
   </div>
 </section>
@@ -507,23 +534,48 @@ Book your consultation</pre>
 <section id="plan" class="sand">
   <div class="wrap">
     <p class="eyebrow">06 · Plan &amp; KPIs</p>
-    <h2 class="reveal">Start with the profile, then build a repeatable rhythm</h2>
-    <p class="lead reveal">First, clarify the bio, link path and highlights, then pin a process introduction. Over the next 30 to 60 days, use the audit's recommended 3 to 4 weekly posts to balance projects, education, founder presence and proof.</p>
+    <h2 class="reveal">Eight pieces, over two weeks</h2>
+    <p class="lead reveal">November 16 to 29: four carousels, three reels and one testimonial, all from existing photography, plus daily stories. Only the testimonial carries text on the image. Tap a piece to see it in full with its caption.</p>
     <div class="cal mt" id="cal"></div>
-    <p class="small mt-s">Content directions, not a dated publishing calendar. Reel cards describe proposed footage and storytelling, not completed videos.</p>
-    <div class="grid g3 mt">
-      <div class="card reveal"><h3>Review monthly</h3><p class="small">Reach, saves, profile visits and link clicks from the professional account, with Instagram enquiries as the key business metric.</p></div>
-      <div class="card reveal"><h3>Build the missing comparison</h3><p class="small">The audit's next research step is a benchmark of 3 or 4 similarly sized studios. No like-for-like performance target is set here.</p></div>
-      <div class="card reveal"><h3>Prepare the next production round</h3><p class="small">Confirm the service area and service scope, gather approved project assets and genuine client proof, then develop the proposed four-week calendar and captions.</p></div>
+    <p class="small mt-s">Reels show their cover and the photographs they are edited from. Thursday 26 is Thanksgiving: a story only, no post. The new bio, link and highlight covers go live on Sunday 15.</p>
+
+    <div class="grid g2 mt">
+      <div class="card reveal">
+        <h3>We judge by inquiries, not likes</h3>
+        <table class="tbl mt-s">
+          <thead><tr><th>Metric</th><th>Target</th></tr></thead>
+          <tbody>
+            <tr><td>Posts per week</td><td>4, on fixed days</td></tr>
+            <tr><td>Inquiries from Instagram (DMs with HOME / MOVE, form)</td><td>[__]</td></tr>
+            <tr><td>Link-in-bio clicks</td><td>[__]</td></tr>
+            <tr><td>Saves and shares per carousel</td><td>[__]</td></tr>
+            <tr><td>Reel reach vs. carousel reach</td><td>Defines the mix for weeks 3–4</td></tr>
+            <tr><td>Net followers</td><td>Secondary</td></tr>
+          </tbody>
+        </table>
+        <p class="small mt-s">Targets are set once we have the account insights as a baseline.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Next steps</h3>
+        <ol style="margin:16px 0 0 20px;display:grid;gap:10px">
+          <li>Approve the new name, bio and main link.</li>
+          <li>Share one real client testimonial, approved for publication (blocks the post on Sunday 22).</li>
+          <li>Send 2–3 photos of Emma and a 1–2 minute voice note on working with remote clients.</li>
+          <li>Confirm Miami + New York, the custom furniture pieces and the marble tips.</li>
+          <li>Share "before" photos and sketches if they exist; they unlock Before / After posts.</li>
+          <li>Give access to Instagram insights to set the baseline.</li>
+        </ol>
+        <p class="small mt-s">All pieces are editable in Canva.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span style="display:block;font:400 16px/1 var(--sans);letter-spacing:.16em;margin-bottom:22px">Emma Sacks Interiors</span>
-    <p>Start with the bio and a pinned process introduction. Confirm the service area, share the studio's own project material and use account Insights to establish the next measurement baseline.</p>
-    <p style="margin-top:14px">Markethink · Your marketing operation, powered by AI and managed by experts.</p>
+    <img src="assets/logo-white.svg" alt="Emma Sacks Interiors">
+    <p>Approve the plan, send the testimonial and Emma's photos, and we start publishing on November 16.</p>
+    <p style="margin-top:8px">[Agency name] · [contact]</p>
   </div>
 </footer>
 
@@ -537,9 +589,9 @@ Book your consultation</pre>
       <div class="dots" id="dots"></div>
     </div>
     <div class="side">
-      <div class="side-h"><div class="mini-av" aria-label="Emma Sacks initials">ES</div><b>Emma Sacks</b><span style="color:#737373;font-size:13px" id="loc"></span><button class="close" id="mclose2" aria-label="Close">×</button></div>
+      <div class="side-h"><div class="mini-av"><img class="av-photo" src="assets/avatar.jpg" alt="Emma Sacks"></div><b>emmasacksinteriors</b><span style="color:#737373;font-size:13px" id="loc"></span><button class="close" id="mclose2" aria-label="Close">×</button></div>
       <div class="side-b">
-        <div><b>Emma Sacks</b> <span class="cap" id="cap"></span></div>
+        <div><b>emmasacksinteriors</b> <span class="cap" id="cap"></span></div>
         <div class="tags" id="tags"></div>
         <div class="meta-box" id="meta"></div>
       </div>
@@ -556,7 +608,7 @@ Book your consultation</pre>
 <div class="story" id="story" aria-hidden="true">
   <div class="sbox">
     <div class="prog" id="prog"></div>
-    <div class="shead"><div class="mini-av" aria-label="Emma Sacks initials">ES</div><span>Emma Sacks</span><span id="sname" style="opacity:.75;font-weight:400"></span></div>
+    <div class="shead"><div class="mini-av"><img class="av-photo" src="assets/avatar.jpg" alt="Emma Sacks"></div><span>emmasacksinteriors</span><span id="sname" style="opacity:.75;font-weight:400"></span></div>
     <button class="sclose" id="sclose" aria-label="Close">×</button>
     <div class="frame" id="sframe"></div>
     <div class="tap l" id="sprev"></div><div class="tap r" id="snext"></div>
@@ -564,329 +616,95 @@ Book your consultation</pre>
 </div>
 
 <script>
-const A = ''; // No third-party project imagery is used in the audit revision.
-const POSTS = {
-  "P0": {
-    "type": "carousel",
-    "pinned": true,
-    "loc": "Proposed process introduction",
-    "title": "How the process unfolds",
-    "pillar": "Process",
-    "goal": "Make the service easier to understand",
-    "series": "Pinned introduction",
-    "cap": "What happens before a finished space?\nA moodboard, a material choice and a render can each explain a design decision.\nWhich part of the process would you like to see?",
-    "note": "Proposed structure. Build the post from the studio’s actual process and project material.",
-    "imgs": [
-      "Start with the design question",
-      "Show the moodboard",
-      "Explain a material choice"
-    ],
-    "tags": ""
-  },
-  "P1": {
-    "type": "carousel",
-    "loc": "Proposed educational topic",
-    "title": "3 mistakes when choosing marble",
-    "pillar": "Education",
-    "goal": "Saves and shares",
-    "series": "Design decisions",
-    "cap": "Choosing marble? Start with the questions, not only the photograph.\nA useful carousel can explain the choices behind a material selection.\nSave this topic for your next design conversation.",
-    "note": "Topic proposed in the audit. Technical advice needs review by the studio before publication.",
-    "imgs": [
-      "3 mistakes when choosing marble",
-      "Explain the design decision",
-      "Close with a useful save prompt"
-    ],
-    "tags": ""
-  },
-  "P2": {
-    "type": "reel",
-    "loc": "Proposed educational topic",
-    "title": "How to mix textures",
-    "pillar": "Education & inspiration",
-    "goal": "Make the design point of view useful",
-    "series": "Design decisions",
-    "cap": "How do different textures work together?\nShow the materials side by side and explain the choice behind the combination.\nWhich texture would you start with?",
-    "note": "Suggested footage and copy structure, not a finished reel.",
-    "imgs": [
-      "How to mix textures",
-      "Show the material combination",
-      "Explain the choice on camera"
-    ],
-    "tags": ""
-  },
-  "P3": {
-    "type": "reel",
-    "loc": "Proposed founder-led format",
-    "title": "The designer behind the space",
-    "pillar": "Founder presence",
-    "goal": "Build familiarity and trust",
-    "series": "From the studio",
-    "cap": "There is a person behind every design decision.\nA founder-led reel can introduce the thinking behind a space or a material choice.\nWhat would you ask an interior designer?",
-    "note": "The audit recommends at least one founder-led reel weekly. Use the founder’s own approved footage.",
-    "imgs": [
-      "Introduce the designer",
-      "Explain one design decision",
-      "Invite a question"
-    ],
-    "tags": ""
-  },
-  "P4": {
-    "type": "reel",
-    "loc": "Audit-cited process reference",
-    "title": "Floor plan → render → final space",
-    "pillar": "Projects & process",
-    "goal": "Show how an idea develops",
-    "series": "Project evolution",
-    "cap": "From a floor plan to a space you can walk into.\nShow the plan, the render and the finished photograph in sequence, with the design decision explained.\nWhich stage would you like to see more of?",
-    "note": "The audit cites Plenitude Spa as a reference for this sequence. No project imagery is reproduced here.",
-    "imgs": [
-      "Begin with the floor plan",
-      "Show the render",
-      "Compare the final photograph"
-    ],
-    "tags": ""
-  },
-  "P5": {
-    "type": "carousel",
-    "loc": "Proposed proof-led format",
-    "title": "Before & after, with context",
-    "pillar": "Social proof",
-    "goal": "Support trust with real evidence",
-    "series": "Project proof",
-    "cap": "What changed, and why?\nPair the before and after views with the project context and a genuine client comment.\nWhich change makes the biggest difference?",
-    "note": "A recommended format, not an existing testimonial or claimed result. Requires real project and client material.",
-    "imgs": [
-      "Show the starting space",
-      "Explain the design change",
-      "Pair the result with genuine proof"
-    ],
-    "tags": ""
-  },
-  "P6": {
-    "type": "carousel",
-    "loc": "Proposed seasonal topic",
-    "title": "A palette, explained",
-    "pillar": "Seasonal inspiration",
-    "goal": "Encourage saves and conversation",
-    "series": "Materials & palettes",
-    "cap": "A palette is more than a set of colours.\nShow the materials together and explain the mood behind the combination.\nWould you choose a warm or a cool direction?",
-    "note": "Develop with the studio’s current palette and approved material imagery.",
-    "imgs": [
-      "Introduce a seasonal palette",
-      "Show the material relationships",
-      "Ask the audience to choose"
-    ],
-    "tags": ""
-  }
-};
-const GRID = ['P0','P1','P2','P3','P4','P5','P6'];
-const CAL = [...GRID];
-
-const ICON = {
-  team:'<circle cx="9" cy="9" r="3"/><circle cx="16.5" cy="10" r="2.4"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5M14.5 15.2c2.6-.6 5 .8 6 3.8"/>',
-  proj:'<path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/>',
-  proc:'<path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2"/><circle cx="14" cy="18" r="2"/>',
-  serv:'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>',
-  sorella:'<path d="M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M4 11h16v5H4zM6 16v3M18 16v3"/>',
-  city:'<path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/>',
-  press:'<path d="M5 4h11v16H6a1 1 0 0 1-1-1zM16 8h3v11a1 1 0 0 1-2 0V8M8 8h5M8 12h5M8 16h3"/>'
-};
-const HL = [
-  {
-    "name": "BTS",
-    "icon": "team",
-    "frames": [
-      {
-        "quote": "Show the work behind the finished image.",
-        "who": "BTS · existing highlight",
-        "extra": "Proposed direction: moodboards, site visits and material selection."
-      }
-    ]
-  },
-  {
-    "name": "Services",
-    "icon": "serv",
-    "frames": [
-      {
-        "quote": "Explain who the studio helps and what it offers.",
-        "who": "Services · existing highlight",
-        "extra": "Confirm the exact service scope and Miami / NY coverage before publishing."
-      }
-    ]
-  },
-  {
-    "name": "Process",
-    "icon": "proc",
-    "frames": [
-      {
-        "quote": "Make the design process easy to understand.",
-        "who": "Process · existing highlight",
-        "extra": "Proposed sequence: floor plan, render and final photograph."
-      }
-    ]
-  },
-  {
-    "name": "Inspo",
-    "icon": "sorella",
-    "frames": [
-      {
-        "quote": "Explain a palette or a material combination.",
-        "who": "Inspo · existing highlight",
-        "extra": "Keep seasonal inspiration connected to the studio’s design point of view."
-      }
-    ]
-  },
-  {
-    "name": "Projects",
-    "icon": "proj",
-    "frames": [
-      {
-        "quote": "Show the space and the decisions behind it.",
-        "who": "Projects · existing highlight",
-        "extra": "Use Emma’s own project material and tag relevant collaborators."
-      }
-    ]
-  },
-  {
-    "name": "Before & After",
-    "icon": "press",
-    "frames": [
-      {
-        "quote": "Add genuine project proof.",
-        "who": "Before & After · suggested addition",
-        "extra": "The audit found no before-and-afters or testimonials. Build this highlight from real supporting material."
-      }
-    ]
-  }
+const P = (k,n,pre='p') => Array.from({length:n},(_,i)=>`assets/pieces/${pre}${k}-${String(i+1).padStart(2,'0')}.jpg`);
+const POSTS = [
+ {day:'Mon 16', type:'Carousel', title:'How we work', loc:'Our process', slides:P('01',5), pin:true,
+  cap:`Designing a home shouldn't feel like guesswork.\nEvery project follows the same four steps: we listen, we design, we build, and you live in it. From the first call to the last cushion, we handle the details so you don't have to, even if you're in another city.\nReady to start? Book a consultation through the link in bio.`,
+  tags:'#EmmaSacksInteriors #InteriorDesignProcess #MiamiInteriorDesign #NYInteriorDesigner #DesignedWithIntention',
+  meta:['Pillar: Emma / process','Pinned first','Photos only; the four steps are in the caption','Note: add a photo of Emma as the first slide when available']},
+ {day:'Wed 18', type:'Carousel', title:'Marble, chosen well', loc:'Why it works', slides:P('02',4),
+  cap:`Marble is forever. So are the mistakes.\n01 Read the veining: bold veins want a simple shape around them.\n02 Honed or polished: honed hides etching in kitchens; polished shines in low-traffic rooms.\n03 Seal it, then live on it.\nWhich finish would you choose? Save this for your remodel.`,
+  tags:'#EmmaSacksInteriors #MarbleDesign #KitchenDesign #InteriorDesignTips #DesignedWithIntention',
+  meta:['Pillar: education','Note: validate the three tips with Emma']},
+ {day:'Fri 20', type:'Reel', title:'Coral Gables Spa', loc:'Coral Gables, FL', slides:[...P('03',1),...P('03',7,'r')], reel:true, pin:true,
+  cap:`From the first step inside, calm.\nFluted oak, warm stone floors and soft wall light: we designed Coral Gables Spa so every client slows down before their treatment even begins.\nOpening a wellness space in Miami? Let's talk.`,
+  tags:'#EmmaSacksInteriors #CoralGables #SpaDesign #CommercialInteriorDesign #MiamiInteriorDesign',
+  meta:['Pillar: portfolio','Edit: slow pans, 2–3 s per photo, no text on screen','Tag Plenitude Med Spa and vendors']},
+ {day:'Sun 22', type:'Carousel', title:'Kind words', loc:'Westchester, NY', slides:P('04',4), pin:true,
+  cap:`"[Real client testimonial, 1–2 sentences]"\nKind words from our Westchester clients, and the home behind them.\nThinking about your own home? DM us "HOME" to start.`,
+  tags:'#EmmaSacksInteriors #ClientLove #WestchesterInteriors #FamilyHome #DesignedWithIntention',
+  meta:['Pillar: social proof','The only post with text on the image (the quote)','Blocked until the client approves a real quote']},
+ {day:'Mon 23', type:'Reel', title:'Designed from afar', loc:'Miami, FL', slides:[...P('05',1),...P('05',5,'r')], reel:true,
+  cap:`You don't have to be in Miami to build your home here.\nMany of our clients start their project from another city. We send samples to your door, walk you through every choice on video, and manage the build on site until the day you arrive.\nRelocating? DM us "MOVE".`,
+  tags:'#EmmaSacksInteriors #MovingToMiami #RemoteDesign #MiamiInteriorDesign #NYInteriorDesigner',
+  meta:['Pillar: Emma / process','Emma voice-over recorded on her phone; no text on screen']},
+ {day:'Wed 25', type:'Carousel', title:'Ready to host', loc:'Hosting season', slides:P('06',4),
+  cap:`Your guests will notice the light before the food.\n01 Warm, low light. 02 Keep centerpieces low. 03 Room to linger.\nSave it for Thursday. Happy hosting.`,
+  tags:'#EmmaSacksInteriors #HostingSeason #ThanksgivingTable #DiningRoomDesign #InteriorDesignTips',
+  meta:['Pillar: education + season']},
+ {day:'Fri 27', type:'Reel', title:'Made for this room', loc:'Custom furniture', slides:[...P('07',1),...P('07',4,'r')], reel:true,
+  cap:`This desk doesn't exist anywhere else, and that's the point.\nCustom furniture is designed for one room, one light and one way of living. No dupes, no compromises.\nWould you go custom or vintage? Tell us below.`,
+  tags:'#EmmaSacksInteriors #CustomFurniture #MadeToMeasure #InteriorDesign #DesignedWithIntention',
+  meta:['Pillar: portfolio + service','Add sketches or workshop photos if Emma has them']},
+ {day:'Sun 29', type:'Carousel', title:'Linen & Green', loc:'Why it works', slides:P('08',3),
+  cap:`Same walls, completely different feeling.\n01 One color, every wall: green on walls, trim and cabinetry makes the room feel wrapped, not boxed in.\n02 One bold accent gives the eye somewhere to rest.\nWhich room should we show next? Tell us in the comments.`,
+  tags:'#EmmaSacksInteriors #WhyItWorks #GreenInteriors #WestchesterInteriors #DesignedWithIntention',
+  meta:['Pillar: education','Becomes Before / After if "before" photos exist']},
 ];
+const PILLARS=[['Portfolio','Walkthroughs and named projects',35,'Desire and authority'],['Education','"Why it works" carousels',25,'Saves and shares'],['Emma & process','Her voice, her steps, behind the scenes',25,'Trust in the designer'],['Proof + CTA','Testimonials and consultations',15,'Inquiries']];
+const HLN=['Projects','Services','Process','About','Contact'];
+const HLC=['#6B6A2E','#B9562F','#F1E4D0','#6F8FA6','#C9922F'];
+const HLINK=['#F4EFE7','#F4EFE7','#4A3027','#F4EFE7','#F4EFE7'];
+const ICONS=['<path d="M7 21V10a5 5 0 0 1 10 0v11M5 21h14"/>','<path d="M4 16v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M3 16h18v3H3zM6 10V8h12v2M5 19v2M19 19v2"/>','<path d="M8 3h8l3 7H5zM12 10v10M8 21h8"/>','<path d="M10 9h4l1 3a4 4 0 0 1-3 8 4 4 0 0 1-3-8zM12 9V4M12 6l-3-3M12 6l3-3M12 5l-4 0M12 5h4"/>','<rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 7l9 6 9-6"/>'];
+const TEX=['radial-gradient(circle at 30% 30%,#8A8A4A 0 10%,transparent 11%),repeating-linear-gradient(35deg,#5E5E28 0 9px,#D9CFA6 9px 10px,#6B6A2E 10px 22px)','radial-gradient(circle at 35% 35%,#D2734A,#A84A27 70%)','repeating-linear-gradient(0deg,#EADBC3 0 2px,#F3E7D3 2px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.04) 0 2px,transparent 2px 4px)','repeating-linear-gradient(-30deg,#5D7F97 0 12px,#C9D7E0 12px 13px,#6F8FA6 13px 26px)','linear-gradient(135deg,#9C6E1E,#E7C06A 45%,#B98428 60%,#E9C878)'];
+const OPTS=[
+ {k:'Option 1',t:'Minimal icons (line art)',p:'Clean and legible at small size; the icons describe each section without words.'},
+ {k:'Option 2',t:'Textured materials',p:'Marble, plaster, linen and brass: the materials Emma works with, abstracted into color.'},
+ {k:'Option 3',t:'Photographic detail',p:'<b>Chosen.</b> Details from her own projects: the dining room, a marble mantel, the woven pendant, a velvet chair and the green library.'},
+ {k:'Option 4',t:'Monogram style',p:'The ES monogram in five colors. The most branded option; the circles rely on the label to tell sections apart.'}];
+const HLS=HLN.map((n,i)=>[n,`assets/hl/${n.toLowerCase()}.jpg`]);
+function cover(o,i){
+ if(o===0) return `<div class="cv" style="background:${HLC[i]}"><svg viewBox="0 0 24 24" style="stroke:${HLINK[i]}">${ICONS[i]}</svg></div>`;
+ if(o===1) return `<div class="cv" style="background:${TEX[i]}"></div>`;
+ if(o===2) return `<div class="cv" style="background-image:url('assets/hl/${HLN[i].toLowerCase()}.jpg')"></div>`;
+ return `<div class="cv" style="background:${HLC[i]}"><span class="mono" style="color:${HLINK[i]}">ES</span></div>`;}
+let OPT=2;
+function renderHL(){ $('#hls').innerHTML=HLN.map((n,i)=>`<button class="hl" data-i="${i}"><div class="ring">${cover(OPT,i).replace('class="cv"','class="cv"')}</div><span>${n}</span></button>`).join('');
+ document.querySelectorAll('#hls .ring > .cv').forEach(c=>{c.parentElement.style.padding='3px'});
+ $('#opts').innerHTML=OPTS.map((o,j)=>`<button class="opt ${j===OPT?'on':''}" data-o="${j}"><div class="opt-h"><span class="k">${o.k}</span><h3>${o.t}</h3><span class="sel">${j===OPT?'On the profile':'Preview'}</span></div><div class="opt-row">${HLN.map((n,i)=>`<div class="c">${cover(j,i)}<span>${n}</span></div>`).join('')}</div><p>${o.p}</p></button>`).join('');}
 
-const $ = s => document.querySelector(s);
-const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const concept = (title, label, detail='') => `<div class="audit-concept"><small>${esc(label)}</small><strong>${esc(title)}</strong>${detail?`<span>${esc(detail)}</span>`:''}</div>`;
-const SVG_CAR = '<svg class="ico" viewBox="0 0 24 24"><path d="M7 3h11a3 3 0 0 1 3 3v11h-2V6a1 1 0 0 0-1-1H7z"/><rect x="3" y="7" width="14" height="14" rx="2"/></svg>';
-const SVG_REEL = '<svg class="ico" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-const SVG_PIN = '<svg class="pin" viewBox="0 0 24 24"><path d="M14 3l7 7-3 1-4 4 1 5-2 1-4-5-5 5-1-1 5-5-5-4 1-2 5 1 4-4z"/></svg>';
+const $=s=>document.querySelector(s);
+if($('#pillars'))$('#pillars').innerHTML=PILLARS.map(p=>`<div class="pill-row"><div><h3>${p[0]}</h3></div><div class="small c2">${p[1]}</div><div class="c3"><div class="share"><i data-w="${p[2]}"></i></div><span class="small">${p[3]}</span></div><b style="text-align:right">${p[2]}%</b></div>`).join('');
+// grid: newest first, 8 new + 1 previous post
+const order=[...POSTS.keys()].reverse();
+const pinned=order.filter(i=>POSTS[i].pin), rest=order.filter(i=>!POSTS[i].pin);
+const ico={reel:'<svg class="ico" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',car:'<svg class="ico" viewBox="0 0 24 24"><path d="M7 3h14v14H7z" opacity=".9"/><path d="M3 7v14h14" fill="none" stroke="#fff" stroke-width="2"/></svg>',pin:'<svg class="pin" viewBox="0 0 24 24"><path d="M14 2l8 8-3 1-4 4 1 5-2 2-5-5-5 5-1-1 5-5-5-5 2-2 5 1 4-4z"/></svg>'};
+const GRIDHTML=[...[...pinned].reverse().map(i=>[i,true]),...rest.map(i=>[i,false])].map(([i,pin])=>`<div class="tile" data-i="${i}"><img src="${POSTS[i].slides[0]}" alt="${POSTS[i].title}" loading="lazy">${pin?ico.pin:(POSTS[i].reel?ico.reel:ico.car)}</div>`).join('')+`<div class="tile old"><img src="assets/pieces/r03-01.jpg" alt="Previous post" style="filter:grayscale(.4) opacity(.6)"></div>`;
+if($('#cal'))$('#cal').innerHTML=POSTS.map((p,i)=>`<div class="d" data-i="${i}"><img src="${p.slides[0]}" alt="${p.title}" loading="lazy"><div><b>${p.day} · ${p.type}</b><span>${p.title}</span></div></div>`).join('')+`<div class="d" style="cursor:default"><div style="aspect-ratio:4/5;background:var(--char);display:grid;place-items:center;color:var(--ivory);font-family:var(--serif);font-size:20px;text-align:center;padding:12px">Happy Thanksgiving</div><div><b>Thu 26 · Story</b><span>Story only</span></div></div>`;
 
-$('#grid').innerHTML = GRID.map(id => {
-  const p = POSTS[id];
-  const ico = p.pinned ? SVG_PIN : p.type==='reel' ? SVG_REEL : SVG_CAR;
-  return `<div class="tile" data-id="${id}" role="button" tabindex="0" aria-label="${esc(p.title)}">${concept(({P0:'The process',P1:'Marble choices',P2:'Mixing textures',P3:'Meet the designer',P4:'Plan to final space',P5:'Before & after',P6:'Seasonal palette'})[id], 'Concept')}${ico}</div>`;
-}).join('');
-
-$('#cal').innerHTML = CAL.map(id => {
-  const p = POSTS[id];
-  const t = {carousel:'Carousel', reel:'Reel'}[p.type];
-  return `<div class="d reveal" data-id="${id}" role="button" tabindex="0">${concept(p.title,'Content direction')}<div><span>${t} · ${esc(p.title)}</span></div></div>`;
-}).join('');
-
-$('#hls').innerHTML = HL.map((h,i) => `<button class="hl" data-i="${i}"><span class="ring"><div><svg viewBox="0 0 24 24">${ICON[h.icon]}</svg></div></span>${h.name}</button>`).join('');
-
-const BARS = [
-  ['Portfolio','Keep the strong photography and premium aesthetic.'],
-  ['Personality','Introduce the founder regularly, on site or on camera.'],
-  ['Useful content','Explain design choices and give visitors a clear next step.']
-];
-$('#bars').innerHTML = BARS.map(([n,t])=>`<div class="feature"><h3>${n}</h3><p class="small">${t}</p></div>`).join('');
-const PIL = [
-  ['Projects & process','Walkthroughs, before-and-afters, moodboards, material choices and render-to-real sequences.','Narrative reels'],
-  ['Education','Marble choices, texture combinations and questions about bathroom-remodel budgets.','Saveable carousels'],
-  ['Founder presence','The designer on camera or on site, explaining decisions and the process.','At least 1 reel / week'],
-  ['Social proof','Genuine testimonials paired with a photograph and real project context.','When evidence is available'],
-  ['Seasonal inspiration','Palettes, materials and trends, in a coherent visual system.','Within 3–4 posts / week']
-];
-$('#pillars').innerHTML = PIL.map(([n,c,f]) => `<div class="pill-row reveal"><div><h3>${n}</h3></div><div class="c2 small">${c}</div><div class="small">${f}</div></div>`).join('');
-
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  e.target.classList.add('in');
-  e.target.querySelectorAll('[data-w]').forEach(el => el.style.width = el.dataset.w + '%');
-  io.unobserve(e.target);
-}), {threshold:.15});
-document.querySelectorAll('.reveal, #bars').forEach(el => io.observe(el));
-
-const links = [...document.querySelectorAll('.nav a')];
-const so = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
-}), {rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('section[id]').forEach(s => so.observe(s));
-
-let cur = null, idx = 0;
-function slide(i){
-  const n = POSTS[cur].imgs.length;
-  idx = Math.max(0, Math.min(n-1, i));
-  $('#track').style.transform = `translateX(${-idx*100}%)`;
-  $('#prev').style.display = idx>0 ? '' : 'none';
-  $('#next').style.display = idx<n-1 ? '' : 'none';
-  $('#dots').innerHTML = n>1 ? Array.from({length:n},(_,k)=>`<i class="${k===idx?'on':''}"></i>`).join('') : '';
-}
-function openPost(id){
-  cur = id; idx = 0;
-  const p = POSTS[id];
-  $('#media').classList.toggle('reel', p.type==='reel');
-  $('#track').innerHTML = p.imgs.map((s,i) => concept(s, `Content concept · ${i+1} / ${p.imgs.length}`, p.type==='reel'?'Suggested footage and story direction':'Suggested slide direction')).join('');
-  $('#loc').textContent = '· ' + p.loc;
-  $('#cap').textContent = 'Illustrative draft: ' + p.cap;
-  $('#tags').textContent = p.tags;
-  const t = p.type==='reel' ? `Reel concept · ${p.imgs.length} story beats` : `Carousel concept · ${p.imgs.length} suggested slides`;
-  $('#meta').innerHTML = `<div><b>${esc(p.title)}</b></div><div>Format: ${t}</div><div>Series: ${p.series}</div><div>Pillar: ${p.pillar}</div><div>Goal: ${p.goal}</div>${p.note?`<div class="note">${esc(p.note)}</div>`:''}`;
-  slide(0);
-  $('#modal').classList.add('open'); $('#modal').setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
-}
-function closePost(){
-  $('#modal').classList.remove('open'); $('#modal').setAttribute('aria-hidden','true');
-  $('#track').innerHTML = ''; document.body.style.overflow = '';
-}
-document.addEventListener('click', e => {
-  const t = e.target.closest('[data-id]'); if (t) openPost(t.dataset.id);
-  const h = e.target.closest('.hl'); if (h) openStory(+h.dataset.i);
-});
-document.addEventListener('keydown', e => {
-  if (e.key==='Enter' && e.target.dataset?.id) openPost(e.target.dataset.id);
-  if ($('#modal').classList.contains('open')){
-    if (e.key==='Escape') closePost();
-    if (e.key==='ArrowRight') slide(idx+1);
-    if (e.key==='ArrowLeft') slide(idx-1);
-  }
-  if ($('#story').classList.contains('open')){
-    if (e.key==='Escape') closeStory();
-    if (e.key==='ArrowRight') sNext();
-    if (e.key==='ArrowLeft') sPrev();
-  }
-});
-$('#prev').onclick = () => slide(idx-1);
-$('#next').onclick = () => slide(idx+1);
-$('#mclose').onclick = closePost; $('#mclose2').onclick = closePost;
-$('#modal').addEventListener('click', e => { if (e.target.id==='modal') closePost(); });
-let tx=null; $('#media').addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive:true});
-$('#media').addEventListener('touchend', e => { if (tx===null) return; const d = e.changedTouches[0].clientX - tx; if (Math.abs(d)>40) slide(idx + (d<0?1:-1)); tx=null; });
-
-let sh = 0, sf = 0, timer = null, start = 0;
-const DUR = 5000;
-function renderFrame(){
-  const f = HL[sh].frames[sf];
-  let html = '';
-  html = `<div class="quote"><p>${f.quote}</p><span>${f.who}</span><span style="margin-top:28px;opacity:.8;letter-spacing:.04em;text-transform:none">${f.extra||''}</span></div>`;
-  if (f.sticker) html += `<div class="sticker">${f.sticker}</div>`;
-  $('#sframe').innerHTML = html;
-  $('#sname').textContent = HL[sh].name;
-  $('#prog').innerHTML = HL[sh].frames.map((_,k) => `<i><b style="width:${k<sf?100:0}%"></b></i>`).join('');
-  start = performance.now(); cancelAnimationFrame(timer); tick();
-}
-function tick(){
-  const el = $('#prog').children[sf]?.firstChild; if (!el) return;
-  const p = Math.min(1, (performance.now()-start)/DUR);
-  el.style.width = (p*100)+'%';
-  if (p>=1) return sNext();
-  timer = requestAnimationFrame(tick);
-}
-function sNext(){ if (sf < HL[sh].frames.length-1){ sf++; renderFrame(); } else if (sh < HL.length-1){ sh++; sf=0; renderFrame(); } else closeStory(); }
-function sPrev(){ if (sf>0){ sf--; renderFrame(); } else if (sh>0){ sh--; sf=0; renderFrame(); } else renderFrame(); }
-function openStory(i){ sh=i; sf=0; $('#story').classList.add('open'); $('#story').setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; renderFrame(); }
-function closeStory(){ cancelAnimationFrame(timer); $('#story').classList.remove('open'); $('#story').setAttribute('aria-hidden','true'); $('#sframe').innerHTML=''; document.body.style.overflow=''; }
-$('#snext').onclick = sNext; $('#sprev').onclick = sPrev; $('#sclose').onclick = closeStory;
-$('#story').addEventListener('click', e => { if (e.target.id==='story') closeStory(); });
+const FEED=Array.from({length:9},(_,i)=>`assets/feed/f${String(i+1).padStart(2,'0')}.jpg`);
+let MODE='pieces';
+function renderGrid(){ if(!$('#segnote')){ $('#grid').innerHTML=GRIDHTML; return; } if(MODE==='photos'){ $('#grid').innerHTML=FEED.map(f=>`<div class="tile old"><img src="${f}" alt="" loading="lazy"></div>`).join(''); $('#segnote').textContent='The same photography with no text on the grid: a calm, editorial feed. Covers with a phrase stay inside the carousels.'; }
+ else { $('#grid').innerHTML=GRIDHTML; $('#segnote').textContent='The eight pieces of the plan, newest first, with the three pinned posts on top.'; }
+ document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.m===MODE)); }
+document.addEventListener('click',e=>{const o=e.target.closest('.opt[data-o]');if(o){OPT=+o.dataset.o;renderHL();}const s=e.target.closest('#seg button');if(s){MODE=s.dataset.m;renderGrid();}});
+renderHL(); renderGrid();
+let cur=null,idx=0;
+function show(){const p=POSTS[cur];$('#track').style.transform=`translateX(-${idx*100}%)`;$('#dots').innerHTML=p.slides.length>1?p.slides.map((_,j)=>`<i class="${j===idx?'on':''}"></i>`).join(''):'';$('#prev').style.display=idx>0?'grid':'none';$('#next').style.display=idx<p.slides.length-1?'grid':'none';}
+function openPost(i){cur=i;idx=0;const p=POSTS[i];$('#media').classList.toggle('reel',!!p.reel);$('#track').innerHTML=p.slides.map(s=>`<img src="${s}" alt="">`).join('');$('#cap').textContent=p.cap;$('#tags').textContent=p.tags;$('#loc').textContent='· '+p.loc;$('#meta').innerHTML=`<div><b>${p.day} · ${p.type}</b> · ${p.title}</div>`+p.meta.map(m=>`<div class="${m.startsWith('Note')||m.startsWith('Blocked')?'note':''}">${m}</div>`).join('')+(p.reel?'<div>Frames shown: cover + the photographs the reel is edited from.</div>':'');$('#modal').classList.add('open');show();}
+function closeM(){$('#modal').classList.remove('open');}
+document.addEventListener('click',e=>{const t=e.target.closest('.tile[data-i],.cal .d[data-i]');if(t)openPost(+t.dataset.i);const h=e.target.closest('.hl');if(h)openStory(+h.dataset.i);});
+$('#prev').onclick=()=>{idx=Math.max(0,idx-1);show()};$('#next').onclick=()=>{idx=Math.min(POSTS[cur].slides.length-1,idx+1);show()};
+$('#mclose').onclick=closeM;$('#mclose2').onclick=closeM;$('#modal').onclick=e=>{if(e.target.id==='modal')closeM()};
+let sT=null;
+function openStory(i){const h=HLS[i];$('#sname').textContent=' · '+h[0];$('#prog').innerHTML='<i><b></b></i>';$('#sframe').innerHTML=`<img src="${h[1]}" alt=""><div class="shade"></div><div class="stext">${h[0]}<small>Emma Sacks Interiors</small></div>`;$('#story').classList.add('open');const b=$('#prog b');b.style.transition='none';b.style.width='0';requestAnimationFrame(()=>{b.style.transition='width 4s linear';b.style.width='100%'});clearTimeout(sT);sT=setTimeout(closeS,4000);}
+function closeS(){$('#story').classList.remove('open');clearTimeout(sT);}
+$('#sclose').onclick=closeS;$('#snext').onclick=closeS;$('#sprev').onclick=closeS;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();closeS();}if($('#modal').classList.contains('open')){if(e.key==='ArrowRight')$('#next').click();if(e.key==='ArrowLeft')$('#prev').click();}});
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');en.target.querySelectorAll('[data-w]').forEach(x=>x.style.width=x.dataset.w+'%');io.unobserve(en.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal,.pill-row').forEach(el=>io.observe(el));
+const links=[...document.querySelectorAll('.nav a')];const so=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
 </script>
 </body>
 </html>
