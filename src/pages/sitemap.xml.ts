@@ -22,6 +22,12 @@ type SitemapPage = {
 
 const staticPages: SitemapPage[] = [
   {
+    path: "/integrations/google-ads/",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-11-17",
+  },
+  {
     path: "/",
     priority: "1.0",
     changefreq: "weekly",
