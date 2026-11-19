@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Newsletter request submitted | Markethink" description="Your Markethink newsletter signup request has been submitted." noindex={true} canonical="https://markethink.ai/newsletter/thanks/">
+  <main class="newsletter-thanks" data-newsletter-confirmation>
+    <a class="newsletter-home" href="/" aria-label="Markethink home"><img src="/images/logo-white.svg" alt="Markethink" width="160" height="40" /></a>
+    <div>
+      <p class="newsletter-eyebrow">Newsletter</p>
+      <h1>Thanks for your interest.</h1>
+      <p>Your newsletter signup request has been submitted.</p>
+      <a class="button" href="/blog/">Explore marketing ideas <span aria-hidden="true">↗</span></a>
+      <a class="newsletter-back" href="/">Back to Markethink</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .newsletter-thanks { width: min(760px, calc(100% - 40px)); min-height: 100svh; margin: auto; padding: 36px 0 72px; display: flex; flex-direction: column; gap: 96px; color: #F5F5F1; }
+  .newsletter-home { display: inline-block; width: 160px; }
+  .newsletter-home img { width: 160px; height: auto; }
+  .newsletter-eyebrow { color: #69D254; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { margin: 18px 0; font-size: clamp(44px, 7vw, 76px); line-height: 1.05; }
+  h1 + p { color: #B4B6B6; font-size: 18px; line-height: 1.6; }
+  .button { margin-top: 32px; min-height: 48px; }
+  .newsletter-back { display: block; width: fit-content; margin-top: 20px; padding-block: 10px; color: #B4B6B6; text-decoration: underline; text-underline-offset: 4px; }
+  a:focus-visible { outline: 2px solid #69D254; outline-offset: 5px; }
+</style>
