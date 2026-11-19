@@ -6,7 +6,6 @@ export function validateSignup(fields) {
   const email = String(fields.get('email') || '').trim();
   if (!name || name.length > 80) errors.first_name = 'Enter your first name.';
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Enter a valid email address.';
-  if (fields.get('newsletter_consent') !== 'yes') errors.newsletter_consent = 'Please confirm you would like the newsletter.';
   return errors;
 }
 
@@ -68,7 +67,7 @@ export function initNewsletterForms(root) {
     const status = form.querySelector('[data-newsletter-status]');
     if (!button || !label || !status) return;
     const originalLabel = label.textContent;
-    const names = ['first_name', 'email', 'newsletter_consent'];
+    const names = ['first_name', 'email'];
     const request = createSignupRequest({ onState(state, errors = {}) {
       for (const name of names) {
         const field = form.elements.namedItem(name);

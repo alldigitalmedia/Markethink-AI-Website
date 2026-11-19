@@ -2,17 +2,22 @@
 // Homepage-only newsletter capture. No campaign enrollment or sending.
 ---
 
-<aside class="newsletter-band" id="newsletter" aria-labelledby="newsletter-title" data-newsletter-version="email-v1">
+<aside class="newsletter-band" id="newsletter" aria-labelledby="newsletter-title" data-newsletter-version="email-v2">
   <div class="newsletter-intro">
-    <p class="newsletter-eyebrow">Newsletter</p>
-    <h2 class="newsletter-title" id="newsletter-title">Practical AI marketing.<br />For founders.</h2>
-    <p class="newsletter-description">Ideas for sharper campaigns, clearer websites, and better follow-up.</p>
+    <p class="newsletter-eyebrow">NEWSLETTER · EVERY TUESDAY</p>
+    <h2 class="newsletter-title" id="newsletter-title">Steal one AI marketing play.<br />Every week.</h2>
+    <p class="newsletter-description">The exact prompts, workflows and results from the AI marketing we run for real businesses every day. A 5-minute read.</p>
+    <ul class="newsletter-benefits">
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>A copy-paste prompt that got a real result</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>One client win, with the numbers</span></li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>One tool worth your time (and one to skip)</span></li>
+    </ul>
   </div>
   <form name="markethink-newsletter" method="POST" action="/newsletter/thanks/" data-netlify="true" netlify-honeypot="bot-field" data-newsletter-form aria-labelledby="newsletter-title">
     <input type="hidden" name="form-name" value="markethink-newsletter" />
     <input type="hidden" name="source" value="homepage-newsletter" />
-    <input type="hidden" name="consent_version" value="newsletter-email-v1" />
-    <input type="hidden" name="consent_text" value="Email me Markethink's marketing newsletter." />
+    <input type="hidden" name="consent_version" value="newsletter-email-v2" />
+    <input type="hidden" name="consent_text" value="Submitting this form signs me up for Markethink's newsletter. Unsubscribe anytime." />
     <input type="hidden" name="signup_path" value="/" />
     <input type="hidden" name="consent_recorded_at" value="" />
     <div class="newsletter-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
@@ -27,13 +32,10 @@
         <input id="newsletter-email" type="email" name="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@company.com" aria-describedby="newsletter-email-error" required />
         <p class="newsletter-field-error" id="newsletter-email-error" data-error-for="email" hidden></p>
       </div>
-      <button class="newsletter-submit" type="submit"><span data-newsletter-button-label>Get the ideas</span><span aria-hidden="true">↗</span></button>
+      <button class="newsletter-submit" type="submit"><span data-newsletter-button-label>Join free</span><span aria-hidden="true">→</span></button>
     </div>
-    <label class="newsletter-consent" for="newsletter-consent">
-      <input id="newsletter-consent" type="checkbox" name="newsletter_consent" value="yes" aria-describedby="newsletter-consent-error" required />
-      <span>Email me Markethink's marketing newsletter.</span>
-    </label>
-    <p class="newsletter-field-error" id="newsletter-consent-error" data-error-for="newsletter_consent" hidden></p>
+    <p class="newsletter-privacy">Free. Unsubscribe anytime. We never share your email. <a href="/privacy/">Privacy policy</a></p>
+    <p class="newsletter-proof">From the Markethink team, running AI marketing for businesses across the US and Latin America.</p>
     <p class="newsletter-status" data-newsletter-status role="status" aria-live="polite" aria-atomic="true"></p>
   </form>
 </aside>
@@ -62,21 +64,23 @@
   .newsletter-eyebrow { margin: 0 0 10px; color: #69D254; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
   .newsletter-band .newsletter-title { margin: 0; font: 400 clamp(30px, 2.9vw, 42px)/1.08 "Instrument Serif", Georgia, serif; letter-spacing: -.015em; text-wrap: initial; }
   .newsletter-description { max-width: 340px; margin: 14px 0 0; color: #B4B6B6; font-size: 14px; line-height: 1.6; }
+  .newsletter-benefits { display: grid; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
+  .newsletter-benefits li { display: flex; align-items: flex-start; gap: 12px; color: #F5F5F1; font-size: 13px; line-height: 1.6; }
+  .newsletter-benefits svg { flex: 0 0 16px; margin-top: 2px; color: #69D254; }
   .newsletter-fields { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr) auto; align-items: start; gap: 12px; }
   .newsletter-field label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 500; line-height: 20px; }
   .newsletter-field input { display: block; width: 100%; min-width: 0; min-height: 48px; border: 1px solid rgba(245, 245, 241, .12); border-radius: 11px; padding: 12px 14px; background: rgba(245, 245, 241, .065); color: #F5F5F1; font: 400 16px/1.4 "Inter", system-ui, sans-serif; }
   .newsletter-field input::placeholder { color: #B4B6B6; opacity: 1; }
-  .newsletter-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 28px; border: 1px solid #69D254; border-radius: 999px; padding: 12px 20px; background: #69D254; color: #0F1213; font: 600 12px/1.5 "Inter", system-ui, sans-serif; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
+  .newsletter-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 28px; border: 1px solid #69D254; border-radius: 999px; padding: 12px 20px; background: #69D254; color: #0F1213; font: 600 12px/1.5 "Inter", system-ui, sans-serif; text-transform: none; white-space: nowrap; cursor: pointer; }
   .newsletter-submit > span:last-child { font-size: 20px; line-height: 1; }
   .newsletter-submit:hover:not(:disabled) { background: #F5F5F1; border-color: #F5F5F1; }
   .newsletter-submit:disabled { cursor: default; opacity: .8; }
-  .newsletter-consent { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 10px; color: #B4B6B6; font-size: 12px; line-height: 1.6; cursor: pointer; }
-  .newsletter-consent input { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; accent-color: #69D254; }
-  .newsletter-privacy { margin: 0; color: #B4B6B6; font-size: 12px; line-height: 1.6; }
+  .newsletter-privacy { margin: 14px 0 0; color: #B4B6B6; font-size: 12px; line-height: 1.6; }
   .newsletter-privacy a { color: #F5F5F1; text-decoration: underline; text-underline-offset: 3px; }
+  .newsletter-proof { max-width: 560px; margin: 14px 0 0; color: #B4B6B6; font-size: 12px; line-height: 1.6; }
   .newsletter-field-error { margin: 6px 0 0; color: #F5F5F1; font-size: 12px; line-height: 1.5; }
   .newsletter-status { min-height: 20px; margin: 8px 0 0; color: #B4B6B6; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
-  .newsletter-field input[aria-invalid="true"], .newsletter-consent input[aria-invalid="true"] { outline: 2px solid #F5F5F1; outline-offset: 2px; }
+  .newsletter-field input[aria-invalid="true"] { outline: 2px solid #F5F5F1; outline-offset: 2px; }
   .newsletter-band input:focus-visible, .newsletter-band button:focus-visible, .newsletter-band a:focus-visible { outline: 2px solid #69D254; outline-offset: 4px; }
   .newsletter-submit:focus-visible { outline-color: #F5F5F1; }
   .newsletter-honeypot, .newsletter-band [hidden] { display: none !important; }
@@ -88,7 +92,5 @@
     .newsletter-band { padding: 28px 18px; gap: 24px; }
     .newsletter-fields { grid-template-columns: 1fr; gap: 16px; }
     .newsletter-submit { width: 100%; min-height: 50px; margin-top: 0; }
-    .newsletter-consent { align-items: flex-start; padding-block: 10px; }
-    .newsletter-consent input { margin-top: 2px; }
   }
 </style>
