@@ -312,6 +312,7 @@ const schemaGraph = {
 
       function initFormNotifications() {
         document.querySelectorAll<HTMLFormElement>('form[data-netlify="true"], form[netlify]').forEach((form) => {
+          if (form.hasAttribute("data-newsletter-form")) return;
           if (form.dataset.markethinkNotifyAttached === "true") return;
           form.dataset.markethinkNotifyAttached = "true";
           form.addEventListener("submit", () => notifyMarkethinkFormSubmission(form));
