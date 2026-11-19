@@ -2,21 +2,16 @@
 // Homepage-only newsletter capture. No campaign enrollment or sending.
 ---
 
-<aside class="newsletter-band" id="newsletter" aria-labelledby="newsletter-title" data-newsletter-version="email-v2">
+<aside class="newsletter-band" id="newsletter" aria-labelledby="newsletter-title" data-newsletter-version="email-v3">
   <div class="newsletter-intro">
     <p class="newsletter-eyebrow">NEWSLETTER · EVERY TUESDAY</p>
-    <h2 class="newsletter-title" id="newsletter-title">Steal one AI marketing play.<br />Every week.</h2>
-    <p class="newsletter-description">The exact prompts, workflows and results from the AI marketing we run for real businesses every day. A 5-minute read.</p>
-    <ul class="newsletter-benefits">
-      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>A copy-paste prompt that got a real result</span></li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>One client win, with the numbers</span></li>
-      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.3 4.3L6 11.6L2.7 8.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg><span>One tool worth your time (and one to skip)</span></li>
-    </ul>
+    <h2 class="newsletter-title" id="newsletter-title">Practical AI marketing.<br />For founders.</h2>
+    <p class="newsletter-description">One idea you can use this week. Five minutes, every Tuesday.</p>
   </div>
   <form name="markethink-newsletter" method="POST" action="/newsletter/thanks/" data-netlify="true" netlify-honeypot="bot-field" data-newsletter-form aria-labelledby="newsletter-title">
     <input type="hidden" name="form-name" value="markethink-newsletter" />
     <input type="hidden" name="source" value="homepage-newsletter" />
-    <input type="hidden" name="consent_version" value="newsletter-email-v2" />
+    <input type="hidden" name="consent_version" value="newsletter-email-v3" />
     <input type="hidden" name="consent_text" value="Submitting this form signs me up for Markethink's newsletter. Unsubscribe anytime." />
     <input type="hidden" name="signup_path" value="/" />
     <input type="hidden" name="consent_recorded_at" value="" />
@@ -34,8 +29,7 @@
       </div>
       <button class="newsletter-submit" type="submit"><span data-newsletter-button-label>Join free</span><span aria-hidden="true">→</span></button>
     </div>
-    <p class="newsletter-privacy">Free. Unsubscribe anytime. We never share your email. <a href="/privacy/">Privacy policy</a></p>
-    <p class="newsletter-proof">From the Markethink team, running AI marketing for businesses across the US and Latin America.</p>
+    <p class="newsletter-privacy">Free. Unsubscribe anytime. <a href="/privacy/">Privacy policy</a></p>
     <p class="newsletter-status" data-newsletter-status role="status" aria-live="polite" aria-atomic="true"></p>
   </form>
 </aside>
