@@ -1,0 +1,95 @@
+---
+// Homepage-only newsletter capture. No campaign enrollment or sending.
+---
+
+<aside class="newsletter-band" id="newsletter" aria-labelledby="newsletter-title" data-newsletter-version="email-v1">
+  <div class="newsletter-intro">
+    <p class="newsletter-eyebrow">Newsletter</p>
+    <h2 class="newsletter-title" id="newsletter-title">Practical AI marketing.<br />For founders.</h2>
+    <p class="newsletter-description">Ideas for sharper campaigns, clearer websites, and better follow-up.</p>
+  </div>
+  <form name="markethink-newsletter" method="POST" action="/newsletter/thanks/" data-netlify="true" netlify-honeypot="bot-field" data-newsletter-form aria-labelledby="newsletter-title">
+    <input type="hidden" name="form-name" value="markethink-newsletter" />
+    <input type="hidden" name="source" value="homepage-newsletter" />
+    <input type="hidden" name="consent_version" value="newsletter-email-v1" />
+    <input type="hidden" name="consent_text" value="Email me Markethink's marketing newsletter." />
+    <input type="hidden" name="signup_path" value="/" />
+    <input type="hidden" name="consent_recorded_at" value="" />
+    <div class="newsletter-honeypot" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
+    <div class="newsletter-fields">
+      <div class="newsletter-field">
+        <label for="newsletter-first-name">First name</label>
+        <input id="newsletter-first-name" type="text" name="first_name" autocomplete="given-name" maxlength="80" placeholder="First name" aria-describedby="newsletter-first-name-error" required />
+        <p class="newsletter-field-error" id="newsletter-first-name-error" data-error-for="first_name" hidden></p>
+      </div>
+      <div class="newsletter-field">
+        <label for="newsletter-email">Email</label>
+        <input id="newsletter-email" type="email" name="email" inputmode="email" autocomplete="email" maxlength="254" placeholder="you@company.com" aria-describedby="newsletter-email-error" required />
+        <p class="newsletter-field-error" id="newsletter-email-error" data-error-for="email" hidden></p>
+      </div>
+      <button class="newsletter-submit" type="submit"><span data-newsletter-button-label>Get the ideas</span><span aria-hidden="true">↗</span></button>
+    </div>
+    <label class="newsletter-consent" for="newsletter-consent">
+      <input id="newsletter-consent" type="checkbox" name="newsletter_consent" value="yes" aria-describedby="newsletter-consent-error" required />
+      <span>Email me Markethink's marketing newsletter.</span>
+    </label>
+    <p class="newsletter-field-error" id="newsletter-consent-error" data-error-for="newsletter_consent" hidden></p>
+    <p class="newsletter-privacy">Read our <a href="/privacy/">privacy policy</a>.</p>
+    <p class="newsletter-status" data-newsletter-status role="status" aria-live="polite" aria-atomic="true"></p>
+  </form>
+</aside>
+
+<script>
+  import { initNewsletterForms } from '../scripts/newsletter-signup.mjs';
+  initNewsletterForms(document);
+</script>
+
+<style>
+  .newsletter-band {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.45fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 60px);
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 36px clamp(20px, 3vw, 36px);
+    border-block: 1px solid rgba(245, 245, 241, .16);
+    background: #0F1213;
+    color: #F5F5F1;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  .newsletter-intro, .newsletter-band form, .newsletter-field { min-width: 0; }
+  .newsletter-eyebrow { margin: 0 0 10px; color: #69D254; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .newsletter-band .newsletter-title { margin: 0; font: 400 clamp(30px, 2.9vw, 42px)/1.08 "Instrument Serif", Georgia, serif; letter-spacing: -.015em; text-wrap: initial; }
+  .newsletter-description { max-width: 340px; margin: 14px 0 0; color: #B4B6B6; font-size: 14px; line-height: 1.6; }
+  .newsletter-fields { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr) auto; align-items: start; gap: 12px; }
+  .newsletter-field label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 500; line-height: 20px; }
+  .newsletter-field input { display: block; width: 100%; min-width: 0; min-height: 48px; border: 1px solid rgba(245, 245, 241, .12); border-radius: 11px; padding: 12px 14px; background: rgba(245, 245, 241, .065); color: #F5F5F1; font: 400 16px/1.4 "Inter", system-ui, sans-serif; }
+  .newsletter-field input::placeholder { color: #B4B6B6; opacity: 1; }
+  .newsletter-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 28px; border: 1px solid #69D254; border-radius: 999px; padding: 12px 20px; background: #69D254; color: #0F1213; font: 600 12px/1.5 "Inter", system-ui, sans-serif; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
+  .newsletter-submit > span:last-child { font-size: 20px; line-height: 1; }
+  .newsletter-submit:hover:not(:disabled) { background: #F5F5F1; border-color: #F5F5F1; }
+  .newsletter-submit:disabled { cursor: default; opacity: .8; }
+  .newsletter-consent { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 10px; color: #B4B6B6; font-size: 12px; line-height: 1.6; cursor: pointer; }
+  .newsletter-consent input { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; accent-color: #69D254; }
+  .newsletter-privacy { margin: 0; color: #B4B6B6; font-size: 12px; line-height: 1.6; }
+  .newsletter-privacy a { color: #F5F5F1; text-decoration: underline; text-underline-offset: 3px; }
+  .newsletter-field-error { margin: 6px 0 0; color: #F5F5F1; font-size: 12px; line-height: 1.5; }
+  .newsletter-status { min-height: 20px; margin: 8px 0 0; color: #B4B6B6; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+  .newsletter-field input[aria-invalid="true"], .newsletter-consent input[aria-invalid="true"] { outline: 2px solid #F5F5F1; outline-offset: 2px; }
+  .newsletter-band input:focus-visible, .newsletter-band button:focus-visible, .newsletter-band a:focus-visible { outline: 2px solid #69D254; outline-offset: 4px; }
+  .newsletter-submit:focus-visible { outline-color: #F5F5F1; }
+  .newsletter-honeypot, .newsletter-band [hidden] { display: none !important; }
+  @media (max-width: 980px) {
+    .newsletter-band { grid-template-columns: 1fr; gap: 28px; }
+    .newsletter-description { max-width: 520px; }
+  }
+  @media (max-width: 560px) {
+    .newsletter-band { padding: 28px 18px; gap: 24px; }
+    .newsletter-fields { grid-template-columns: 1fr; gap: 16px; }
+    .newsletter-submit { width: 100%; min-height: 50px; margin-top: 0; }
+    .newsletter-consent { align-items: flex-start; padding-block: 10px; }
+    .newsletter-consent input { margin-top: 2px; }
+  }
+</style>
