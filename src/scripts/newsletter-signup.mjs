@@ -45,7 +45,7 @@ export function createSignupRequest({ send = globalThis.fetch, onState = () => {
         });
         // An arbitrary 200 or an echoed homepage is not an acknowledgement.
         // This confirms the configured response, not storage or list enrollment.
-        if (!response.ok || !(await response.text()).includes('data-newsletter-confirmation')) throw new Error('Unconfirmed response');
+        if (!response.ok || !/<main\b[^>]*\bdata-newsletter-confirmation(?:\s|=|>)/i.test(await response.text())) throw new Error('Unconfirmed response');
         state = 'submitted';
         onState(state);
         return state;
