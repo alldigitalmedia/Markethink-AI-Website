@@ -167,5 +167,17 @@
       <select name="buyer_path"><option value="">Selecciona una</option></select>
       <textarea name="marketing_bottleneck"></textarea>
     </form>
+    <form name="markethink-newsletter" method="POST" action="/newsletter/thanks/" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="markethink-newsletter" />
+      <input type="hidden" name="source" value="homepage-newsletter" />
+      <input name="bot-field" />
+      <input type="text" name="first_name" />
+      <input type="email" name="email" />
+      <input type="checkbox" name="newsletter_consent" value="yes" />
+      <input type="hidden" name="consent_version" value="newsletter-email-v1" />
+      <input type="hidden" name="consent_text" value="Email me Markethink's marketing newsletter." />
+      <input type="hidden" name="signup_path" value="/" />
+      <input type="hidden" name="consent_recorded_at" value="" />
+    </form>
   </body>
 </html>
