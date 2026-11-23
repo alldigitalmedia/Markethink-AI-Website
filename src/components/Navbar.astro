@@ -264,7 +264,7 @@ const labels = isSpanish
 
   .mt-language-switcher a[aria-current="page"],
   .mt-mobile-language-switcher a[aria-current="page"] {
-    background: #69d254;
+    background: var(--accent, #69d254);
     color: #0f1213;
   }
 
@@ -275,9 +275,9 @@ const labels = isSpanish
     justify-content: center;
     min-height: 44px;
     padding: 0 20px;
-    border: 1px solid #69d254;
+    border: 1px solid var(--accent, #69d254);
     border-radius: 999px;
-    background: #69d254;
+    background: var(--accent, #69d254);
     color: #0f1213;
     text-decoration: none;
     font: 700 12px/1 Inter, system-ui, sans-serif;
@@ -289,8 +289,8 @@ const labels = isSpanish
   .mt-nav-cta:focus-visible,
   .mt-mobile-menu-cta:hover,
   .mt-mobile-menu-cta:focus-visible {
-    background: #82df6f;
-    border-color: #82df6f;
+    background: var(--accent-hover, #82df6f);
+    border-color: var(--accent-hover, #82df6f);
     transform: translateY(-2px);
   }
 
@@ -300,7 +300,7 @@ const labels = isSpanish
   .mt-mobile-menu a:focus-visible,
   .mt-mobile-menu button:focus-visible,
   .mt-mobile-menu-toggle:focus-visible {
-    outline: 2px solid #69d254;
+    outline: 2px solid var(--accent, #69d254);
     outline-offset: 3px;
   }
 
@@ -327,9 +327,9 @@ const labels = isSpanish
       justify-content: center;
       flex-direction: column;
       gap: 6px;
-      border: 1px solid rgba(105, 210, 84, 0.44);
+      border: 1px solid rgba(var(--accent-rgb, 105, 210, 84), 0.44);
       border-radius: 50%;
-      background: rgba(105, 210, 84, 0.08);
+      background: rgba(var(--accent-rgb, 105, 210, 84), 0.08);
       color: #f5f5f1;
       cursor: pointer;
       box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
@@ -360,8 +360,8 @@ const labels = isSpanish
       display: block;
       overflow: hidden;
       background:
-        radial-gradient(circle at 7% 8%, rgba(105, 210, 84, 0.2), transparent 34%),
-        radial-gradient(circle at 92% 82%, rgba(237, 244, 234, 0.08), transparent 32%),
+        radial-gradient(circle at 7% 8%, rgba(var(--accent-rgb, 105, 210, 84), 0.2), transparent 34%),
+        radial-gradient(circle at 92% 82%, rgba(var(--accent-pale-rgb, 237, 244, 234), 0.08), transparent 32%),
         #090d0b;
       color: #f5f5f1;
       opacity: 0;
@@ -376,8 +376,8 @@ const labels = isSpanish
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(105, 210, 84, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(105, 210, 84, 0.055) 1px, transparent 1px);
+        linear-gradient(rgba(var(--accent-rgb, 105, 210, 84), 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--accent-rgb, 105, 210, 84), 0.055) 1px, transparent 1px);
       background-size: 72px 72px;
       mask-image: linear-gradient(135deg, #000, transparent 72%);
       pointer-events: none;
@@ -465,7 +465,7 @@ const labels = isSpanish
     }
 
     .mt-mobile-menu-nav small {
-      color: #69d254;
+      color: var(--accent, #69d254);
       font: 700 9px/1 Inter, system-ui, sans-serif;
       letter-spacing: 0.12em;
     }
@@ -477,7 +477,7 @@ const labels = isSpanish
 
     .mt-mobile-menu-nav a:hover,
     .mt-mobile-menu-nav a:focus-visible {
-      color: #69d254;
+      color: var(--accent, #69d254);
     }
 
     .mt-mobile-menu.is-open .mt-mobile-menu-nav a {
@@ -524,7 +524,7 @@ const labels = isSpanish
     }
 
     .mt-mobile-menu-login span {
-      color: #69d254;
+      color: var(--accent, #69d254);
     }
 
     .mt-mobile-menu-footer p {

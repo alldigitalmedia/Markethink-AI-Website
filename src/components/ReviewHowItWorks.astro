@@ -266,7 +266,7 @@ const steps = isSpanish ? [
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 85% 18%, rgba(105, 210, 84, 0.14), transparent 30rem);
+    background: radial-gradient(circle at 85% 18%, rgba(var(--accent-rgb, 105, 210, 84), 0.14), transparent 30rem);
     pointer-events: none;
   }
 
@@ -287,7 +287,7 @@ const steps = isSpanish ? [
 
   .story-intro p {
     margin: 0 0 0.8rem;
-    color: #69d254;
+    color: var(--accent, #69d254);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -296,7 +296,7 @@ const steps = isSpanish ? [
   }
 
   .story-intro.is-light p {
-    color: #315b28;
+    color: var(--accent-ink, #315b28);
   }
 
   .story-intro h2 {
@@ -345,7 +345,7 @@ const steps = isSpanish ? [
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 85% 18%, rgba(105, 210, 84, 0.14), transparent 30rem);
+    background: radial-gradient(circle at 85% 18%, rgba(var(--accent-rgb, 105, 210, 84), 0.14), transparent 30rem);
     pointer-events: none;
   }
 
@@ -398,7 +398,7 @@ const steps = isSpanish ? [
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background: #69d254;
+    background: var(--accent, #69d254);
     color: #0f1213;
     letter-spacing: 0;
   }
@@ -455,7 +455,7 @@ const steps = isSpanish ? [
   .story-panel li i {
     width: 2.7rem;
     height: 1px;
-    background: rgba(105, 210, 84, 0.58);
+    background: rgba(var(--accent-rgb, 105, 210, 84), 0.58);
   }
 
   .story-progress {
@@ -482,7 +482,7 @@ const steps = isSpanish ? [
   .story-progress span.is-active,
   .story.is-light .story-progress span.is-active {
     width: 4.5rem;
-    background: #69d254;
+    background: var(--accent, #69d254);
   }
 
   .story-stage {
@@ -550,7 +550,7 @@ const steps = isSpanish ? [
     display: flex;
     align-items: center;
     gap: 0.45rem;
-    color: #69d254;
+    color: var(--accent, #69d254);
     font-size: 0.62rem;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -560,8 +560,8 @@ const steps = isSpanish ? [
     width: 0.48rem;
     height: 0.48rem;
     border-radius: 50%;
-    background: #69d254;
-    box-shadow: 0 0 0 0.25rem rgba(105, 210, 84, 0.12);
+    background: var(--accent, #69d254);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb, 105, 210, 84), 0.12);
   }
 
   .story-visual figcaption strong {
@@ -653,4 +653,8 @@ const steps = isSpanish ? [
       transition: none;
     }
   }
+
+  /* The story changes to a light theme while scrolling. Keep its thin rules visible. */
+  .story.is-light .story-panel li i{background:var(--accent-ink, rgba(105, 210, 84, 0.58))}
+  .story.is-light .story-progress span.is-active{background:var(--accent-ink, #69d254)}
 </style>

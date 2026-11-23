@@ -1,0 +1,11 @@
+/* Opt-in only: other routes inherit the existing green and exact legacy fallbacks. */
+:root[data-home-accent="lime"] {
+  --accent: #D6FD3A;
+  --accent-rgb: 214, 253, 58;
+  --accent-ink: #4A6200;
+  --accent-ink-rgb: 74, 98, 0;
+  --accent-pale: #F2F8D6;
+  --accent-pale-rgb: 242, 248, 214;
+  --accent-hover: #E0FE6B;
+  --accent-soft: var(--accent);
+}

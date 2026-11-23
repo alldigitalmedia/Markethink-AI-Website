@@ -76,7 +76,7 @@ const cards = [
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 84% 18%, rgba(237, 244, 234, 0.96), transparent 32rem);
+    background: radial-gradient(circle at 84% 18%, rgba(var(--accent-pale-rgb, 237, 244, 234), 0.96), transparent 32rem);
     pointer-events: none;
   }
 
@@ -104,7 +104,7 @@ const cards = [
   }
 
   .system-card:hover {
-    border-color: rgba(105, 210, 84, 0.3);
+    border-color: var(--accent-ink, rgba(105, 210, 84, 0.3));
     transform: translateY(-4px);
   }
 
@@ -113,7 +113,7 @@ const cards = [
     width: 100%;
     aspect-ratio: 368 / 282;
     overflow: hidden;
-    background: #edf4ea;
+    background: var(--accent-pale, #edf4ea);
     border-bottom: 1px solid var(--neutral-200);
     isolation: isolate;
   }
@@ -174,7 +174,7 @@ const cards = [
   .system-card-dashboard .chip-3 {
     right: 11%;
     bottom: 11%;
-    border-color: rgba(105, 210, 84, 0.36);
+    border-color: var(--accent-ink, rgba(105, 210, 84, 0.36));
   }
 
   .system-card-operator .motion-chip {
@@ -201,7 +201,7 @@ const cards = [
     right: 7%;
     bottom: 18%;
     min-width: 7.25rem;
-    border-color: rgba(105, 210, 84, 0.38);
+    border-color: var(--accent-ink, rgba(105, 210, 84, 0.38));
   }
 
   .system-card-team .chip-1 {
@@ -228,8 +228,8 @@ const cards = [
     height: 0.46rem;
     margin-right: 0.42rem;
     border-radius: 50%;
-    background: #69d254;
-    box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+    background: var(--accent, #69d254);
+    box-shadow: 0 0 0 0 rgba(var(--accent-rgb, 105, 210, 84), 0.42);
     animation: pulse-dot 2.35s ease-out infinite;
   }
 
@@ -294,11 +294,11 @@ const cards = [
 
   @keyframes pulse-dot {
     0% {
-      box-shadow: 0 0 0 0 rgba(105, 210, 84, 0.42);
+      box-shadow: 0 0 0 0 rgba(var(--accent-rgb, 105, 210, 84), 0.42);
     }
 
     70%, 100% {
-      box-shadow: 0 0 0 0.65rem rgba(105, 210, 84, 0);
+      box-shadow: 0 0 0 0.65rem rgba(var(--accent-rgb, 105, 210, 84), 0);
     }
   }
 
