@@ -55,17 +55,17 @@
     font-family: "Inter", system-ui, sans-serif;
   }
   .newsletter-intro, .newsletter-band form, .newsletter-field { min-width: 0; }
-  .newsletter-eyebrow { margin: 0 0 10px; color: #69D254; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .newsletter-eyebrow { margin: 0 0 10px; color: var(--accent, #69D254); font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
   .newsletter-band .newsletter-title { margin: 0; font: 400 clamp(30px, 2.9vw, 42px)/1.08 "Instrument Serif", Georgia, serif; letter-spacing: -.015em; text-wrap: initial; }
   .newsletter-description { max-width: 340px; margin: 14px 0 0; color: #B4B6B6; font-size: 14px; line-height: 1.6; }
   .newsletter-benefits { display: grid; gap: 10px; margin: 20px 0 0; padding: 0; list-style: none; }
   .newsletter-benefits li { display: flex; align-items: flex-start; gap: 12px; color: #F5F5F1; font-size: 13px; line-height: 1.6; }
-  .newsletter-benefits svg { flex: 0 0 16px; margin-top: 2px; color: #69D254; }
+  .newsletter-benefits svg { flex: 0 0 16px; margin-top: 2px; color: var(--accent, #69D254); }
   .newsletter-fields { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr) auto; align-items: start; gap: 12px; }
   .newsletter-field label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 500; line-height: 20px; }
   .newsletter-field input { display: block; width: 100%; min-width: 0; min-height: 48px; border: 1px solid rgba(245, 245, 241, .12); border-radius: 11px; padding: 12px 14px; background: rgba(245, 245, 241, .065); color: #F5F5F1; font: 400 16px/1.4 "Inter", system-ui, sans-serif; }
   .newsletter-field input::placeholder { color: #B4B6B6; opacity: 1; }
-  .newsletter-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 28px; border: 1px solid #69D254; border-radius: 999px; padding: 12px 20px; background: #69D254; color: #0F1213; font: 600 12px/1.5 "Inter", system-ui, sans-serif; text-transform: none; white-space: nowrap; cursor: pointer; }
+  .newsletter-submit { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 28px; border: 1px solid var(--accent, #69D254); border-radius: 999px; padding: 12px 20px; background: var(--accent, #69D254); color: #0F1213; font: 600 12px/1.5 "Inter", system-ui, sans-serif; text-transform: none; white-space: nowrap; cursor: pointer; }
   .newsletter-submit > span:last-child { font-size: 20px; line-height: 1; }
   .newsletter-submit:hover:not(:disabled) { background: #F5F5F1; border-color: #F5F5F1; }
   .newsletter-submit:disabled { cursor: default; opacity: .8; }
@@ -75,7 +75,7 @@
   .newsletter-field-error { margin: 6px 0 0; color: #F5F5F1; font-size: 12px; line-height: 1.5; }
   .newsletter-status { min-height: 20px; margin: 8px 0 0; color: #B4B6B6; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
   .newsletter-field input[aria-invalid="true"] { outline: 2px solid #F5F5F1; outline-offset: 2px; }
-  .newsletter-band input:focus-visible, .newsletter-band button:focus-visible, .newsletter-band a:focus-visible { outline: 2px solid #69D254; outline-offset: 4px; }
+  .newsletter-band input:focus-visible, .newsletter-band button:focus-visible, .newsletter-band a:focus-visible { outline: 2px solid var(--accent, #69D254); outline-offset: 4px; }
   .newsletter-submit:focus-visible { outline-color: #F5F5F1; }
   .newsletter-honeypot, .newsletter-band [hidden] { display: none !important; }
   @media (max-width: 980px) {
