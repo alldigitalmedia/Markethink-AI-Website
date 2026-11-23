@@ -61,6 +61,11 @@ const companyLinks = isSpanish ? [
       <div>
         <strong>{isSpanish ? "Explora" : "Explore"}</strong>
         {exploreLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        {!isSpanish && <>
+          <strong>Compare</strong>
+          <a href="/compare/alternatives-to-a-marketing-agency/">Alternatives to an agency</a>
+          <a href="/compare/markethink-vs-freelancer/">Markethink vs a freelancer</a>
+        </>}
       </div>
       <div>
         <strong>{isSpanish ? "Conecta" : "Connect"}</strong>
