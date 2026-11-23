@@ -385,7 +385,7 @@ const homeStructuredData = {
             {faq.map(([question, answer], index) => (
               <details open={index === 0}>
                 <summary>{question}<span aria-hidden="true">+</span></summary>
-                <p>{answer}</p>
+                <p>{answer}{question === "How is Markethink different from a traditional marketing agency or freelancer?" && <>{" "}<a href="/compare/markethink-vs-freelancer/">Compare Markethink and a freelancer.</a></>}</p>
               </details>
             ))}
           </div>
