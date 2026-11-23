@@ -275,6 +275,9 @@ const breadcrumbSchema = {
                   {section.body.map((paragraph) => (
                     <p>{paragraph}</p>
                   ))}
+                  {isOutsourcingBuyerGuide && section.heading === "Who should a small business hire to manage all its marketing?" && (
+                    <p class="article-hub-link"><a href="/compare/alternatives-to-a-marketing-agency/">compare all five options side by side</a></p>
+                  )}
                   {section.image && (
                     <figure class="article-section-image">
                       <img
