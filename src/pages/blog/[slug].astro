@@ -13,10 +13,12 @@ import {
   resolveBlogAuthor,
 } from "../../data/blogAuthors";
 import { insightPosts, type BlogPost } from "../../data/blogPosts";
+import { getMarkdownBlogPosts } from "../../data/blogMarkdown";
 import { spanishInsightPosts } from "../../data/blogPostsEs";
 
-export function getStaticPaths() {
-  return insightPosts.map((post) => ({
+export async function getStaticPaths() {
+  const markdownPosts = await getMarkdownBlogPosts();
+  return [...insightPosts, ...markdownPosts].map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
@@ -134,7 +136,7 @@ const breadcrumbSchema = {
     { lang: "es", href: spanishCanonical },
     { lang: "x-default", href: canonical },
   ] : []}
-  structuredData={[articleSchema, faqSchema, breadcrumbSchema]}
+  structuredData={post.faq.length ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema]}
 >
   <Navbar ctaLabel={isAiSearchInteractiveGuide ? "Request available times" : undefined} alternatePath={spanishPost ? `/es/blog/${spanishPost.slug}/` : undefined} />
   <main class="article-page">
@@ -345,7 +347,7 @@ const breadcrumbSchema = {
             >
           </section>}
 
-          <section class="article-faq">
+          {post.faq.length > 0 && <section class="article-faq">
             <p class="article-cta-label">FAQ</p>
             <h2>Common questions</h2>
             {
@@ -356,7 +358,7 @@ const breadcrumbSchema = {
                 </details>
               ))
             }
-          </section>
+          </section>}
 
           <BlogAuthor author={resolvedAuthor} />
         </div>

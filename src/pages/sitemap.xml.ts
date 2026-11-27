@@ -1,5 +1,6 @@
 import { insightPosts } from "../data/blogPosts";
 import { spanishInsightPosts } from "../data/blogPostsEs";
+import { getMarkdownBlogPosts } from "../data/blogMarkdown";
 
 export const prerender = true;
 
@@ -225,8 +226,17 @@ const escapeXml = (value: string) =>
 
 const absolute = (path: string) => new URL(path, siteUrl).toString();
 
-export function GET() {
-  const urls = [...staticPages, ...articlePages, ...spanishArticlePages]
+// Markdown posts (src/content/blog) sit next to the curated articles; no Spanish twin yet.
+const markdownArticlePages = async (): Promise<SitemapPage[]> =>
+  (await getMarkdownBlogPosts()).map((post) => ({
+    path: `/blog/${post.slug}/`,
+    priority: "0.7",
+    changefreq: "monthly",
+    lastmod: post.updatedDate,
+  }));
+
+export async function GET() {
+  const urls = [...staticPages, ...articlePages, ...(await markdownArticlePages()), ...spanishArticlePages]
     .map((page) => {
       const lastmod = page.lastmod
         ? `\n    <lastmod>${escapeXml(page.lastmod)}</lastmod>`
