@@ -626,9 +626,9 @@ img[src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-b
 /* Scoped restoration: original bento, chapters and editorial scale remain intact. */
 /* Website button base; only the hero specimens use the website pill variant. */
 .pill{min-height:48px;padding:0 2em;border:2px solid transparent;border-radius:4px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;justify-content:center;gap:.5em;transition:background .25s,color .25s,border-color .25s,transform .2s}
-.pill.hero-pill{border-radius:999px}.pill .ar{transform:none;transition:none}
-.pill.o,.pill.ok{border-width:2px}.pill.loop,.pill.loop .ar{animation:none}
-@media(hover:hover){.pill:hover{transform:translateY(-2px)}.pill:hover .ar{transform:none}.pill.t:hover{background:#000;color:#FBCA04}}
+.pill.hero-pill{border-radius:999px}.pill .ar{transform:rotate(-45deg);transition:transform .28s var(--ease)}
+.pill.o,.pill.ok{border-width:2px}
+@media(hover:hover){.pill:hover{transform:translateY(-2px)}.pill:hover .ar{transform:rotate(0deg)}.pill.t:hover{background:#000;color:#FBCA04}}
 /* Keep the exact original application tiles and display supplied images whole. */
 .polo-supplied{position:relative;z-index:2;width:94%;height:auto;object-fit:contain;border-radius:4px}
 .instagram-supplied{position:relative;width:min(440px,calc(100% - 48px));margin:0;box-shadow:0 24px 50px rgba(0,0,0,.18);border-radius:6px;overflow:hidden;background:#fff}
@@ -652,27 +652,24 @@ img[src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-b
 #region-38 .ptab b{font-family:var(--font);font-size:14px;font-weight:600;letter-spacing:normal}
 #region-38 .ptab.on{background:#000;color:#fff;border-color:#000}
 #region-38 .tab-icon,#region-38 .ptab::after{display:none}
-#region-38 .ppanel.on{animation:none}
 @media(hover:hover){#region-38 .pc:hover{transform:none}#region-38 .pc:hover img{transform:scale(1.035)}#region-38 .ptab:not(.on):hover{background:#f5f5f3}}
 @media(max-width:1000px){#region-38 .pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){#region-38 .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}#region-38 .pc b{font-size:19px}#region-38 .pc dl{font-size:12px}#region-38 .ptabs{gap:6px;justify-content:flex-start}#region-38 .ptab{padding:8px 10px}#region-38 .ptab b{font-size:13px}}
 /* Actual-site walkthroughs stay within the same original seven motion tiles. */
 #region-29 .gifimg{display:block;object-fit:contain;background:#fff}
 .navigation-mobile,.product-exploration{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}
-/* Stop reference-only animation applications, not sections or authored controls. */
-.cover img.hs{animation:none;transform:none;opacity:0;z-index:1}.cover img.hs:first-child{opacity:1;z-index:3}
-.sysloop .sc,.sysloop .sc::before,.sysloop .sc .ic,.sysloop .sc i,.revloop .pc,.kb img{animation:none}
-.revloop .pc{opacity:1;transform:none}.revloop .pc:hover{transform:none}.sysloop .sc i{transform:none}.kb img{transform:none}.gc::before{animation:none}
-.band img{top:0;height:100%;will-change:auto;transform:none}
-@media(hover:hover){
- .sw:hover{flex:1;transform:none}.sw.main:hover{flex:2.4}
- .tile:hover>img.fill:not(.bgp),.tile:hover .badge,.tile:hover .charger,.tile:hover .polo-img,.tile:hover .polo-mock,.tile:hover .story .ph img,.story .ph:hover img,.step:hover img,.capc:hover img,.capc:hover .ic,.rule-c:hover,.pillar:hover,.list .row:hover .ic,.node:hover .ic{transform:none}
+/* Authored motion restored; reduced motion keeps every example readable. */
+@media(prefers-reduced-motion:reduce){
+ .rv,.rv.in,.revloop .pc{opacity:1!important}
+ .rv,.rv.in,.rvc img,.band img,.kb img,.clipbox img,.clip-t,.sysloop .sc,.sysloop .sc::before,.sysloop .sc i,.pill,.pill .ar{transform:none!important}
+ .rvc img,.clipbox img{clip-path:none!important}.clip-t{opacity:1!important}
+ .tile:hover>img.fill:not(.bgp),.tile:hover .badge,.tile:hover .charger,.tile:hover .polo-img,.tile:hover .polo-mock,.story .ph:hover img,.step:hover img,.capc:hover img,.capc:hover .ic,.rule-c:hover,.pillar:hover,.pillar:hover::before,.list .row:hover .ic,.node:hover .ic,.devices:hover .laptop,.devices:hover .laptop .site img,.devices:hover .phone,.pc:hover,.pc:hover img,.pc:hover .ar2{transform:none!important}
+ .sw:hover{flex:1;transform:none!important}.sw.main:hover{flex:2.4}
  .tile:hover .bc.a{transform:rotate(-8deg)}.tile:hover .bc.b{transform:rotate(5deg)}
  .tile:hover .sheet{transform:rotate(-2deg)}.letter-tile:hover .sheet1{transform:rotate(-2deg)}.letter-tile:hover .sheet2{transform:rotate(5deg) translate(70px,16px)}
- .devices:hover .laptop,.devices:hover .laptop .site img,.devices:hover .phone{transform:none}
 }
-@media(max-width:1000px) and (hover:hover){.letter-tile:hover .sheet2{transform:rotate(4deg) translate(22px,14px)}}
-@media(max-width:600px) and (hover:hover){.tile:hover .sheet{transform:none}}
+@media(prefers-reduced-motion:reduce) and (max-width:1000px){.letter-tile:hover .sheet2{transform:rotate(4deg) translate(22px,14px)}}
+@media(prefers-reduced-motion:reduce) and (max-width:600px){.tile:hover .sheet{transform:none}}
 @media(prefers-reduced-motion:reduce){#region-29 .gifimg{display:none}.navigation-mobile,.product-exploration{display:none}#region-29 .mo:has(.navigation-mobile),#region-29 .mo:has(.product-exploration){background:#fff url('https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-brandbook/hero-1-v2-6fd218e775.jpg') center/contain no-repeat}}
 </style>
 <meta content="noindex,nofollow,noarchive" name="robots"/><meta content="Propuesta de identidad y aplicaciones de J&amp;C Goods, basada en el sitio público de la marca." name="description"/><meta content="no-referrer" name="referrer"/><link href="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-brandbook/favicon-fb4fbcbe10.png" rel="icon" type="image/png"/><link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&amp;family=Barlow+Condensed:wght@600;700;800&amp;display=swap" rel="stylesheet"/></head>
@@ -869,7 +866,7 @@ img[src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-b
 <div class="tile app bg-mint" style="min-height:1080px;padding:60px 0"><figure class="instagram-supplied"><img alt="Captura suministrada del perfil de Instagram jcgoodsllc, con biografía y seis publicaciones" decoding="async" loading="eager" src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-brandbook/instagram-profile-jcgoodsllc-335d609b13.jpg"/><figcaption>Perfil de Instagram · captura suministrada; refleja el momento de la captura, no métricas actuales.<br/><a data-link-id="link-06" href="https://jcgoodsstore.com/">jcgoodsstore.com</a></figcaption></figure><span class="mk">Instagram · captura suministrada</span></div>
 </section>
 
-<div class="sec" data-qa-region="true" id="seccion-07"><div class="n">07</div><h2>Motion <span class="l">&amp; GIF</span></h2><p>Tres recorridos visuales muestran navegación de escritorio, navegación móvil y exploración de productos con capturas reales del sitio y transiciones entre estados; no son grabaciones continuas. Se conservan las siete composiciones de esta sección. Las tarjetas, el botón y la fotografía permanecen como ejemplos estáticos o de respuesta al cursor, sin los bucles decorativos heredados. El logo permanece estático.</p></div>
+<div class="sec" data-qa-region="true" id="seccion-07"><div class="n">07</div><h2>Motion <span class="l">&amp; GIF</span></h2><p>Tres recorridos visuales muestran navegación de escritorio, navegación móvil y exploración de productos con capturas reales del sitio y transiciones entre estados; no son grabaciones continuas. Se conservan las siete composiciones de esta sección. Las tarjetas, el botón y la fotografía recuperan sus secuencias animadas, con entradas suaves y efectos de respuesta al cursor. El logo permanece estático.</p></div>
 <section class="grid g3" data-qa-region="true" id="region-29">
 <div class="tile bg-white mo" style="grid-column:span 2;aspect-ratio:920/575;min-height:0"><img alt="Recorrido visual de navegación de escritorio con capturas reales de J&amp;C Goods" class="gifimg" decoding="async" loading="eager" src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-brandbook/review-navigation-desktop-86286254e4-b3c0113bad.svg"/><span class="gc gif">GIF · navegación de escritorio</span></div>
 <div class="tile mo bg-black" style="padding:0"><img alt="Recorrido visual de navegación móvil con capturas reales de J&amp;C Goods" class="navigation-mobile" decoding="async" loading="eager" src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-brandbook/review-navigation-mobile-f04c30c11c-20e3ad95fa.svg"/><span class="gc gif">GIF · navegación móvil</span></div>
@@ -928,7 +925,43 @@ img[src="https://dashboard.markethink.ai/generated/landing/markethink/jc-goods-b
 <footer data-qa-region="true" id="region-40"><b>J&amp;C Goods · Brandbook</b><span class="sources">Propuesta para revisión · 2026<br/>Base pública: <a data-link-id="link-37" href="https://jcgoodsstore.com/" rel="noopener noreferrer" target="_blank">tienda J&amp;C Goods</a> y su catálogo. Identidad existente: logo, favicon, paleta y tipografías. Composiciones, mockups, voz y criterios editoriales: propuestas, no normas aprobadas.</span></footer>
 <script>
 (function(){
-  // Sin reveal/parallax decorativos heredados; las pestañas funcionales se conservan.
+  var html=document.documentElement;
+  var motion=matchMedia('(prefers-reduced-motion:reduce)');
+  // Original reveal targets; looping demo cards own their own visibility.
+  var els=Array.prototype.filter.call(document.querySelectorAll('.tile > img.fill:not(.bgp),.step,.rule-c,.pillar,.capc,.pc,.manifesto h2,.manifesto p,.sec > *,.story .tx,.story .ph'),function(e){return !e.closest('.revloop');});
+  var io=null,bands=document.querySelectorAll('.band img'),tick=false;
+  function par(){
+    tick=false;
+    if(motion.matches){bands.forEach(function(im){im.style.removeProperty('transform');});return;}
+    var vh=innerHeight;
+    bands.forEach(function(im){
+      var r=im.parentNode.getBoundingClientRect();
+      if(r.bottom<0||r.top>vh)return;
+      // Stay inside the authored 7% image overscan, even on tall viewports.
+      var room=Math.max(0,(im.offsetHeight-im.parentNode.clientHeight)/2-1);
+      var y=Math.max(-room,Math.min(room,(r.top+r.height/2-vh/2)*-.09));
+      im.style.transform='translateY('+y.toFixed(1)+'px)';
+    });
+  }
+  function schedulePar(){if(!tick){tick=true;requestAnimationFrame(par);}}
+  function syncMotion(){
+    if(io){io.disconnect();io=null;}
+    if(motion.matches||!('IntersectionObserver' in window)){
+      html.classList.remove('js');
+      els.forEach(function(e){e.classList.add('rv','in');});
+      bands.forEach(function(im){im.style.removeProperty('transform');});
+      return;
+    }
+    html.classList.add('js');
+    io=new IntersectionObserver(function(entries){entries.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.1});
+    els.forEach(function(e){e.classList.add('rv');if(!e.classList.contains('in'))io.observe(e);});
+    schedulePar();
+  }
+  addEventListener('scroll',schedulePar,{passive:true});
+  addEventListener('resize',schedulePar,{passive:true});
+  if(motion.addEventListener)motion.addEventListener('change',syncMotion);
+  else motion.addListener(syncMotion);
+  syncMotion();
   // pestañas del portafolio
   var ptabs=document.querySelectorAll('.ptab');
   ptabs.forEach(function(t){t.addEventListener('click',function(){var k=t.dataset.k;
