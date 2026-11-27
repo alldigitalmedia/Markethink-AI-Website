@@ -170,6 +170,17 @@ function authorFrom(name: string): BlogAuthorInput {
   return KNOWN_AUTHORS[trimmed.toLowerCase()] ?? { name: trimmed, title: "Markethink" };
 }
 
+// The sharing image as an absolute URL. A malformed value never breaks the build: the default image is used and the
+// entry is named in the warning.
+function absoluteImageUrl(value: string, entryId: string): string {
+  try {
+    return new URL(value, SITE_URL).toString();
+  } catch {
+    console.warn(`[blog] "${entryId}": imageSharing "${value}" is not a URL; using the default sharing image.`);
+    return new URL(DEFAULT_IMAGE, SITE_URL).toString();
+  }
+}
+
 export function markdownEntryToBlogPost(entry: CollectionEntry<"blog">): BlogPost {
   const { data } = entry;
   const body = entry.body ?? "";
@@ -185,7 +196,7 @@ export function markdownEntryToBlogPost(entry: CollectionEntry<"blog">): BlogPos
     image,
     imageMobile: data.imageMobile ?? image,
     imageThumbnail: data.imageThumbnail ?? image,
-    imageSharing: new URL(data.imageSharing ?? image, SITE_URL).toString(),
+    imageSharing: absoluteImageUrl(data.imageSharing ?? image, entry.id),
     imageAlt: data.imageAlt ?? (data.image ? "" : DEFAULT_IMAGE_ALT),
     publishedDate: data.publishedDate,
     updatedDate: data.updatedDate ?? data.publishedDate,
